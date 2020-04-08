@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_hrm_leave</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_leave`(
+					  `id` int(19) NOT NULL,
+					  `employ_id` int(11) DEFAULT NULL,
+					  `from_date` varchar(255) DEFAULT NULL,
+					  `to_date` varchar(255) DEFAULT NULL,
+					  `note` varchar(255) DEFAULT NULL,
+					  `hrm_leave_type` varchar(255) DEFAULT NULL,
+					  `partial_day` varchar(255) DEFAULT NULL,
+					  `hr` varchar(255) DEFAULT NULL,
+					  `hrm_leave_action` varchar(255) DEFAULT NULL,
+					  PRIMARY KEY  (`id`)
+					) ENGINE=InnoDB DEFAULT CHARSET=utf8
+						
+				]]></sql>
+		</table>
+	</tables>
+</schema>

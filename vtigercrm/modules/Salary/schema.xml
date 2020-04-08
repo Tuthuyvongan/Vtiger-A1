@@ -1,0 +1,22 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_hrm_salaryreference</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_salaryreference`(
+					  `id` int(19) NOT NULL,
+					  `employ_id` int(11) DEFAULT NULL,
+					  `current_salary` varchar(255) DEFAULT NULL,
+					  `before_increase_date` varchar(255) DEFAULT NULL,
+					  `salary_after` varchar(255) DEFAULT NULL,
+					  `reviewer` varchar(255) DEFAULT NULL,
+					  `hr_salary_action` varchar(255) DEFAULT NULL,
+					  `note` varchar(255) DEFAULT NULL,
+					  `review_date` varchar(255) DEFAULT NULL,
+					  PRIMARY KEY  (`id`)
+					) ENGINE=InnoDB DEFAULT CHARSET=utf8
+						
+				]]></sql>
+		</table>
+	</tables>
+</schema>

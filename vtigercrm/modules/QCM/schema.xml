@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_hrm_qcm</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_qcm` (
+							`qcmid` INT(11) NOT NULL,
+							`qcm_title` varchar(255) DEFAULT NULL,
+							`qcm_code` varchar(255) DEFAULT NULL,
+							`qcm_category` varchar(255) DEFAULT NULL,
+							`qcm_classify` varchar(255) DEFAULT NULL,
+							`qcm_created` varchar(255) DEFAULT NULL,
+							`qcm_status` varchar(255) DEFAULT NULL,
+							`fined` varchar(255) DEFAULT NULL,
+							`description` text DEFAULT NULL,
+							`position` varchar(100) DEFAULT NULL,
+							PRIMARY KEY (`qcmid`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+					]]></sql>
+		</table>
+		<table>
+			<name>vtiger_hrm_qcmcf</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_qcmcf` (
+							`qcmid` INT(11) NOT NULL,
+							PRIMARY KEY (`qcmid`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+			   ]]></sql>
+		</table>
+	</tables>
+</schema>

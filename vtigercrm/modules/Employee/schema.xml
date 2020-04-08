@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_hrm_employee</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_employee` (
+							`employid` INT(11) NOT NULL,
+							`firstname` varchar(255) DEFAULT NULL,
+							`lastname` varchar(255) DEFAULT NULL,
+							`employ_gender` varchar(255) DEFAULT NULL,
+							`email` varchar(255) DEFAULT NULL,
+							`user_id` varchar(255) DEFAULT NULL,
+							`date_of_birth` varchar(100) DEFAULT NULL,
+							`mobile` varchar(100) DEFAULT NULL,
+							`position` varchar(255) DEFAULT NULL,
+							`employ_marital_status` varchar(50) DEFAULT NULL,
+							`address` varchar(255) DEFAULT NULL,
+							`city` varchar(255) DEFAULT NULL,
+							`country` varchar(100) DEFAULT NULL,
+							`flag` varchar(100) DEFAULT NULL,
+							  `candidate_id` varchar(100) DEFAULT NULL,
+							  `action` varchar(100) DEFAULT NULL,
+							  `start_work_date` varchar(100) DEFAULT NULL,
+							  `employ_number` varchar(100) DEFAULT NULL,
+							  `official_date` varchar(100) DEFAULT NULL,	 
+							  `desired_salary` varchar(100) DEFAULT NULL,	 
+							  `probality_period` varchar(100) DEFAULT NULL,	 
+							  `official_salary` varchar(100) DEFAULT NULL,	 
+							  `private_email` varchar(100) DEFAULT NULL,	 
+							PRIMARY KEY (`employid`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+							
+						]]></sql>
+		</table>
+		<table>
+			<name>vtiger_hrm_employcf</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_employcf` (
+						  `employid` int(19) NOT NULL default '0',
+						  PRIMARY KEY  (`employid`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+				   ]]></sql>
+		</table>
+	</tables>
+</schema>

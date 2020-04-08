@@ -1,0 +1,59 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_hrm_candidate</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_candidate` (
+					  `id` int(19) NOT NULL,
+					  `email` varchar(255) DEFAULT NULL,
+					  `firstname` varchar(255) DEFAULT NULL,
+					  `lastname` varchar(255) DEFAULT NULL,
+					  `date_of_birth` varchar(255) DEFAULT NULL,
+					  `mobile` varchar(255) DEFAULT NULL,
+					  `position` varchar(255) DEFAULT NULL,
+					  `description` text DEFAULT NULL,
+					  `application_date` varchar(255) DEFAULT NULL,
+					  `candidate_resource_cv` varchar(255) DEFAULT NULL,
+					  `candidate_action` varchar(255) DEFAULT NULL,
+					  `reject_note` text DEFAULT NULL,
+					  `shortlist_note` text DEFAULT NULL,
+					  `si_name` varchar(255) DEFAULT NULL,
+					  `si_date` varchar(255) DEFAULT NULL,
+					  `si_time` varchar(255) DEFAULT NULL,
+					  `si_note` varchar(255) DEFAULT NULL,
+					  `mip_swork` varchar(255) DEFAULT NULL,
+					  `mip_de_salary` varchar(255) DEFAULT NULL,
+					  `mip_probation` varchar(255) DEFAULT NULL,
+					  `mip_note` text DEFAULT NULL,
+					  `status` varchar(255) DEFAULT NULL,
+					  `mif_note` text DEFAULT NULL,
+					  `oj_note` text DEFAULT NULL,
+					  `official_salary` text DEFAULT NULL,
+					  PRIMARY KEY  (`id`)
+					) ENGINE=InnoDB DEFAULT CHARSET=utf8
+				]]></sql>
+		</table>
+		<table>
+			<name>vtiger_hrm_candidatecf</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_candidatecf` (
+					  `id` int(19) NOT NULL default '0',
+					  PRIMARY KEY  (`id`)
+					) ENGINE=InnoDB DEFAULT CHARSET=utf8
+						
+			   ]]></sql>
+		</table>
+		<table>
+			<name>hrm_employee_history</name>
+			<sql><![CDATA[CREATE TABLE IF NOT EXISTS hrm_employee_history(
+						`id` INT(11) NOT NULL AUTO_INCREMENT,
+						`employ_id` INT(11) DEFAULT NULL,
+						`note` TEXT DEFAULT NULL,
+						`date` datetime,
+						`action` VARCHAR(255) DEFAULT NULL,
+						`si_name` VARCHAR(255) DEFAULT NULL,
+						PRIMARY KEY  (`id`)
+					) ENGINE=InnoDB DEFAULT CHARSET=utf8
+			   ]]></sql>
+		</table>
+	</tables>
+</schema>

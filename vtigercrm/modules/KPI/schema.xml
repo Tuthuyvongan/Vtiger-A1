@@ -1,0 +1,37 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_hrm_kpi</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_kpi` (
+							`id` INT(11) NOT NULL,
+							`kpi_name` varchar(255) NOT NULL,
+							`kpi_description` varchar(255) NOT NULL,
+							`kpi_status` varchar(255) NOT NULL,
+							`kpi_type` varchar(100) NOT NULL,
+							`kpi_manager` varchar(100) NOT NULL,
+							`kpi_department` varchar(100) NOT NULL,
+							`start_date` varchar(100) NOT NULL,
+							`due_date` varchar(100) NOT NULL,
+							`cf_01` varchar(100) NOT NULL,
+							`cf_02` varchar(100) NOT NULL,
+							`cf_03` varchar(100) NOT NULL,
+							`cf_04` varchar(100) NOT NULL,
+							`kpi_weight` varchar(100) NOT NULL,
+							`kpi_ranking` varchar(100) NOT NULL,
+							`cf_07` varchar(100) NOT NULL,
+							PRIMARY KEY (`id`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+						]]></sql>
+		</table>
+		<table>
+			<name>vtiger_hrm_kpicf</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_kpicf` (
+						  `id` int(19) NOT NULL default '0',
+						  PRIMARY KEY  (`id`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+							
+				   ]]></sql>
+		</table>
+	</tables>
+</schema>

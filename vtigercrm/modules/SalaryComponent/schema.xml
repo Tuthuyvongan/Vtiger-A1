@@ -1,0 +1,40 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_hrm_settingdepartment</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_settingdepartment` (
+						  `id` int(19) NOT NULL,
+						  `name` varchar(255) DEFAULT NULL,
+						  `description` varchar(255) DEFAULT NULL,
+						  PRIMARY KEY  (`id`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+					]]></sql>
+		</table>
+		<table>
+			<name>vtiger_hrm_settingdepartmentcf</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_settingdepartmentcf` (
+						  `id` int(19) NOT NULL default '0',
+						  PRIMARY KEY  (`id`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+				   ]]></sql>
+		</table>
+		<table>
+			<name>vtiger_hrm_settingdepartmentcust</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_settingdepartmentcust` (
+						`id` INT NOT NULL AUTO_INCREMENT,
+						`department_id` varchar(255) NOT NULL,
+						`experience` varchar(255) DEFAULT NULL,
+						  `salary` varchar(255) DEFAULT NULL,
+						  `qualification` varchar(255) DEFAULT NULL,
+						  `management_scale` varchar(255) DEFAULT NULL,
+						  `time_to_review` varchar(100) DEFAULT NULL,
+						  `level1` varchar(100) DEFAULT NULL,
+						  `level2` varchar(100) DEFAULT NULL,
+						  `level3` varchar(100) DEFAULT NULL,
+						PRIMARY KEY (`id`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+				   ]]></sql>
+		</table>
+	</tables>
+</schema>

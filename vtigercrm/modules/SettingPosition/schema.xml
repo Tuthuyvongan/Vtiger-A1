@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_hrm_position</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_position`(
+					  `id` int(19) NOT NULL,
+					  `name` varchar(255) DEFAULT NULL,
+					  `description` text DEFAULT NULL,
+					  PRIMARY KEY  (`id`)
+					) ENGINE=InnoDB DEFAULT CHARSET=utf8
+						
+				]]></sql>
+		</table>
+	</tables>
+</schema>

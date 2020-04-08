@@ -1,0 +1,40 @@
+<?xml version='1.0'?>
+<schema>
+	<tables>
+		<table>
+			<name>vtiger_hrm_jd</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_jd` (
+						  `id` int(19) NOT NULL,
+						  `name` varchar(255) DEFAULT NULL,
+						  `description` varchar(255) DEFAULT NULL,
+						  `jd_category` varchar(255) DEFAULT NULL,
+						  `jd_status` varchar(255) DEFAULT NULL,
+						  `jd_classify` varchar(255) DEFAULT NULL,
+						  `position` varchar(100) DEFAULT NULL,
+						  PRIMARY KEY  (`id`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+							
+					]]></sql>
+		</table>
+		<table>
+			<name>vtiger_hrm_jdcf</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_jdcf` (
+						  `id` int(19) NOT NULL default '0',
+						  PRIMARY KEY  (`id`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+							
+				   ]]></sql>
+		</table>
+		<table>
+			<name>vtiger_hrm_jd_tasks</name>
+			<sql><![CDATA[CREATE TABLE `vtiger_hrm_jd_tasks` (
+						  `id` INT NOT NULL AUTO_INCREMENT,
+						`task_name` varchar(255) NOT NULL,
+						`task_desc` TEXT NOT NULL,
+						`jd_id` INT(11) NOT NULL,
+						PRIMARY KEY (`id`)
+						) ENGINE=InnoDB DEFAULT CHARSET=utf8
+				   ]]></sql>
+		</table>
+	</tables>
+</schema>
