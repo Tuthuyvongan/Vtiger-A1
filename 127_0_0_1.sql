@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 16, 2020 lúc 03:36 PM
+-- Thời gian đã tạo: Th4 17, 2020 lúc 03:20 PM
 -- Phiên bản máy phục vụ: 10.4.11-MariaDB
 -- Phiên bản PHP: 7.4.4
 
@@ -273,7 +273,7 @@ CREATE TABLE `pma__userconfig` (
 --
 
 INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2020-04-16 13:36:18', '{\"Console\\/Mode\":\"collapse\",\"lang\":\"vi\",\"SendErrorReports\":\"always\"}');
+('root', '2020-04-17 13:19:55', '{\"Console\\/Mode\":\"collapse\",\"lang\":\"vi\",\"SendErrorReports\":\"always\"}');
 
 -- --------------------------------------------------------
 
@@ -3168,7 +3168,10 @@ INSERT INTO `vtiger_customview` (`cvid`, `viewname`, `setdefault`, `setmetrics`,
 (60, 'All', 1, 0, 'Candidates', 0, 1),
 (61, 'All', 1, 0, 'Leave', 0, 1),
 (62, 'All', 1, 0, 'Employee', 0, 1),
-(63, 'Thông tin nhân viên', 0, 0, 'Employee', 1, 1);
+(63, 'Thông tin nhân viên', 0, 0, 'Employee', 1, 1),
+(64, 'Marketing Group', 1, 0, 'JD', 1, 1),
+(65, 'Support Group', 0, 0, 'JD', 1, 1),
+(66, 'Team Selling', 0, 0, 'JD', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -3185,7 +3188,7 @@ CREATE TABLE `vtiger_customview_seq` (
 --
 
 INSERT INTO `vtiger_customview_seq` (`id`) VALUES
-(63);
+(66);
 
 -- --------------------------------------------------------
 
@@ -3650,7 +3653,22 @@ INSERT INTO `vtiger_cvcolumnlist` (`cvid`, `columnindex`, `columnname`) VALUES
 (63, 4, 'vtiger_hrm_employee:start_work_date:start_work_date:Employee_Start_Work_Date:D'),
 (63, 5, 'vtiger_hrm_employee:official_salary:official_salary:Employee_Official_Salary:V'),
 (63, 6, 'vtiger_hrm_employee:address:address:Employee_Address:V'),
-(63, 7, 'vtiger_hrm_employee:country:country:Employee_Country:V');
+(63, 7, 'vtiger_hrm_employee:country:country:Employee_Country:V'),
+(64, 0, 'vtiger_hrm_jd:name:name:JD_Name:V'),
+(64, 1, 'vtiger_hrm_jd:description:description:JD_Description:V'),
+(64, 2, 'vtiger_hrm_jd:position:position:JD_Position:V'),
+(64, 3, 'vtiger_hrm_jd:jd_category:jd_category:JD_Category:V'),
+(64, 4, 'vtiger_hrm_jd:jd_status:jd_status:JD_Status:V'),
+(65, 0, 'vtiger_hrm_jd:name:name:JD_Name:V'),
+(65, 1, 'vtiger_hrm_jd:description:description:JD_Description:V'),
+(65, 2, 'vtiger_hrm_jd:position:position:JD_Position:V'),
+(65, 3, 'vtiger_hrm_jd:jd_category:jd_category:JD_Category:V'),
+(65, 4, 'vtiger_hrm_jd:jd_status:jd_status:JD_Status:V'),
+(66, 0, 'vtiger_hrm_jd:name:name:JD_Name:V'),
+(66, 1, 'vtiger_hrm_jd:description:description:JD_Description:V'),
+(66, 2, 'vtiger_hrm_jd:position:position:JD_Position:V'),
+(66, 3, 'vtiger_hrm_jd:jd_category:jd_category:JD_Category:V'),
+(66, 4, 'vtiger_hrm_jd:jd_status:jd_status:JD_Status:V');
 
 -- --------------------------------------------------------
 
@@ -9147,7 +9165,8 @@ INSERT INTO `vtiger_loginhistory` (`login_id`, `user_name`, `user_ip`, `logout_t
 (5, 'admin', '::1', '2020-04-13 01:14:04', '2020-04-13 08:14:04', 'Signed in'),
 (6, 'admin', '::1', '2020-04-13 02:02:17', '2020-04-13 09:02:17', 'Signed in'),
 (7, 'admin', '::1', '2020-04-13 03:05:04', '2020-04-13 10:05:04', 'Signed in'),
-(8, 'admin', '::1', '2020-04-16 05:32:33', '2020-04-16 12:32:33', 'Signed in');
+(8, 'admin', '::1', '2020-04-16 05:32:33', '2020-04-16 12:32:33', 'Signed in'),
+(9, 'admin', '::1', '2020-04-17 05:56:26', '2020-04-17 12:56:26', 'Signed in');
 
 -- --------------------------------------------------------
 
@@ -22181,6 +22200,13 @@ CREATE TABLE `vtiger_user_module_preferences` (
   `default_cvid` int(19) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Đang đổ dữ liệu cho bảng `vtiger_user_module_preferences`
+--
+
+INSERT INTO `vtiger_user_module_preferences` (`userid`, `tabid`, `default_cvid`) VALUES
+(1, 56, 64);
+
 -- --------------------------------------------------------
 
 --
@@ -26174,7 +26200,7 @@ ALTER TABLE `vtiger_lead_view`
 -- AUTO_INCREMENT cho bảng `vtiger_loginhistory`
 --
 ALTER TABLE `vtiger_loginhistory`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `vtiger_mailscanner`
