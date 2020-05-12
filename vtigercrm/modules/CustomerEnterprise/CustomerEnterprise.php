@@ -10,27 +10,27 @@
 
 include_once 'modules/Vtiger/CRMEntity.php';
 
-class CustomerStandalone extends Vtiger_CRMEntity {
-	var $table_name = 'vtiger_customerstandalone';
-	var $table_index= 'customerstandaloneid';
+class CustomerEnterprise extends Vtiger_CRMEntity {
+	var $table_name = 'vtiger_customerenterprise';
+	var $table_index= 'customerenterpriseid';
 
 	/**
 	 * Mandatory table for supporting custom fields.
 	 */
-	var $customFieldTable = Array('vtiger_customerstandalonecf', 'customerstandaloneid');
+	var $customFieldTable = Array('vtiger_customerenterprisecf', 'customerenterpriseid');
 
 	/**
 	 * Mandatory for Saving, Include tables related to this module.
 	 */
-	var $tab_name = Array('vtiger_crmentity', 'vtiger_customerstandalone', 'vtiger_customerstandalonecf');
+	var $tab_name = Array('vtiger_crmentity', 'vtiger_customerenterprise', 'vtiger_customerenterprisecf');
 
 	/**
 	 * Mandatory for Saving, Include tablename and tablekey columnname here.
 	 */
 	var $tab_name_index = Array(
 		'vtiger_crmentity' => 'crmid',
-		'vtiger_customerstandalone' => 'customerstandaloneid',
-		'vtiger_customerstandalonecf'=>'customerstandaloneid');
+		'vtiger_customerenterprise' => 'customerenterpriseid',
+		'vtiger_customerenterprisecf'=>'customerenterpriseid');
 
 	/**
 	 * Mandatory for Listing (Related listview)
@@ -38,7 +38,7 @@ class CustomerStandalone extends Vtiger_CRMEntity {
 	var $list_fields = Array (
 		/* Format: Field Label => Array(tablename, columnname) */
 		// tablename should not have prefix 'vtiger_'
-		'Ma Khach Hang' => Array('customerstandalone', 'makhachhang'),
+		'Ma Khach Hang' => Array('customerenterprise', 'makhachhang'),
 		'Assigned To' => Array('crmentity','smownerid')
 	);
 	var $list_fields_name = Array (
@@ -47,13 +47,13 @@ class CustomerStandalone extends Vtiger_CRMEntity {
 	);
 
 	// Make the field link to detail view
-	var $list_link_field = 'makhachhang';
+	var $list_link_field = '<entityfieldname>';
 
 	// For Popup listview and UI type support
 	var $search_fields = Array(
 		/* Format: Field Label => Array(tablename, columnname) */
 		// tablename should not have prefix 'vtiger_'
-		'Ma Khach Hang' => Array('customerstandalone', 'makhachhang'),
+		'Ma Khach Hang' => Array('customerenterprise', 'makhachhang'),
 	);
 	var $search_fields_name = Array (
 		/* Format: Field Label => fieldname */

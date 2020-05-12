@@ -3,7 +3,7 @@ include_once 'vtlib/Vtiger/Module.php';
 
 $Vtiger_Utils_Log = true;
 
-$MODULENAME='CustomerStandalone';
+$MODULENAME='CustomerEnterprise';
 $module_instance = Vtiger_Module::getInstance($MODULENAME);
 if($module_instance || file_exists('modules/'.$MODULENAME))
 {
@@ -25,7 +25,7 @@ else
 	$block = new Vtiger_Block();
     $block->label = 'LBL_'. strtoupper($moduleInstance->name) . '_INFORMATION';
 	$moduleInstance->addBlock($block);
-	echo "add block LBL_CUSTOMERSTANDALONE_INFORMATION .... OK\n";
+	echo "add block LBL_CUSTOMERENTERPRISE_INFORMATION .... OK\n";
 	
 	$blockcf = new Vtiger_Block();
     $blockcf->label = 'LBL_CUSTOM_INFORMATION';
