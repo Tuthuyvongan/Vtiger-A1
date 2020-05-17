@@ -10,27 +10,27 @@
 
 include_once 'modules/Vtiger/CRMEntity.php';
 
-class CustomerStandalone extends Vtiger_CRMEntity {
-	var $table_name = 'vtiger_customerstandalone';
-	var $table_index= 'customerstandaloneid';
+class ProblemCategory extends Vtiger_CRMEntity {
+	var $table_name = 'vtiger_problemcategory';
+	var $table_index= 'problemcategoryid';
 
 	/**
 	 * Mandatory table for supporting custom fields.
 	 */
-	var $customFieldTable = Array('vtiger_customerstandalonecf', 'customerstandaloneid');
+	var $customFieldTable = Array('vtiger_problemcategorycf', 'problemcategoryid');
 
 	/**
 	 * Mandatory for Saving, Include tables related to this module.
 	 */
-	var $tab_name = Array('vtiger_crmentity', 'vtiger_customerstandalone', 'vtiger_customerstandalonecf');
+	var $tab_name = Array('vtiger_crmentity', 'vtiger_problemcategory', 'vtiger_problemcategorycf');
 
 	/**
 	 * Mandatory for Saving, Include tablename and tablekey columnname here.
 	 */
 	var $tab_name_index = Array(
 		'vtiger_crmentity' => 'crmid',
-		'vtiger_customerstandalone' => 'customerstandaloneid',
-		'vtiger_customerstandalonecf'=>'customerstandaloneid');
+		'vtiger_problemcategory' => 'problemcategoryid',
+		'vtiger_problemcategorycf'=>'problemcategoryid');
 
 	/**
 	 * Mandatory for Listing (Related listview)
@@ -38,41 +38,41 @@ class CustomerStandalone extends Vtiger_CRMEntity {
 	var $list_fields = Array (
 		/* Format: Field Label => Array(tablename, columnname) */
 		// tablename should not have prefix 'vtiger_'
-		'Ma Khach Hang' => Array('customerstandalone', 'makhachhang'),
+		'Loai van de' => Array('problemcategory', 'loaivande'),
 	);
 	var $list_fields_name = Array (
 		/* Format: Field Label => fieldname */
-		'Ma Khach Hang' => 'makhachhang',
+		'Loai van de' => 'loaivande',
 	);
 
 	// Make the field link to detail view
-	var $list_link_field = 'makhachhang';
+	var $list_link_field = 'loaivande';
 
 	// For Popup listview and UI type support
 	var $search_fields = Array(
 		/* Format: Field Label => Array(tablename, columnname) */
 		// tablename should not have prefix 'vtiger_'
-		'Ma Khach Hang' => Array('customerstandalone', 'makhachhang'),
+		'Loai van de' => Array('problemcategory', 'loaivande'),
 	);
 	var $search_fields_name = Array (
 		/* Format: Field Label => fieldname */
-		'Ma Khach Hang' => 'makhachhang',
+		'Loai van de' => 'loaivande',
 	);
 
 	// For Popup window record selection
-	var $popup_fields = Array ('makhachhang');
+	var $popup_fields = Array ('loaivande');
 
 	// For Alphabetical search
-	var $def_basicsearch_col = 'makhachhang';
+	var $def_basicsearch_col = 'loaivande';
 
 	// Column value to use on detail view record text display
-	var $def_detailview_recname = 'makhachhang';
+	var $def_detailview_recname = 'loaivande';
 
 	// Used when enabling/disabling the mandatory fields for the module.
 	// Refers to vtiger_field.fieldname values.
-	var $mandatory_fields = Array('makhachhang');
+	var $mandatory_fields = Array('loaivande');
 
-	var $default_order_by = 'makhachhang';
+	var $default_order_by = 'loaivande';
 	var $default_sort_order='ASC';
 
 	/**

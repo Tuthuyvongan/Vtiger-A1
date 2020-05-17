@@ -230,7 +230,7 @@ class Vtiger_MenuStructure_Model extends Vtiger_Base_Model {
 	 * @return <array>
 	 */
 	public static function getAppMenuList(){
-		return array('MARKETING','SALES','INVENTORY','SUPPORT','PROJECT','TOOLS','HRM');
+		return array('MARKETING','SALES','INVENTORY','SUPPORT','PROJECT','TOOLS','HRM','CONTACTS');
 	}
 
 	public static function getAppIcons() {
@@ -239,7 +239,8 @@ class Vtiger_MenuStructure_Model extends Vtiger_Base_Model {
 								'SUPPORT'	=> 'fa-life-ring',
 								'INVENTORY'	=> 'vicon-inventory',
 								'PROJECT'	=> 'fa-briefcase',
-								'TOOLS'		=> 'fa-wrench','HRM'		=> 'fa-users'
+								'TOOLS'		=> 'fa-wrench','HRM'		=> 'fa-users',
+		                          'CONTACTS' => 'fa-users'
 							);
 		return $appImageIcons;
 	}

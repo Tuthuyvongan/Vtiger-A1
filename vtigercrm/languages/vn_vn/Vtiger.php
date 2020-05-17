@@ -9,6 +9,7 @@
  * *********************************************************************************** */
 $languageStrings = array(
 	'--None--' => '--None--',
+	'LBL_CONTACTS'=>'Thông tin liên lạc',
 	'Account Name' => 'Tên Khách hàng',
 	'Accounts' => 'Khách hàng',
 	'Acquired' => 'Đã mua',

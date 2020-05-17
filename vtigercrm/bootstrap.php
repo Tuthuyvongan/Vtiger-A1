@@ -3,7 +3,7 @@ include_once 'vtlib/Vtiger/Module.php';
 
 $Vtiger_Utils_Log = true;
 
-$MODULENAME='CustomerEnterprise';
+$MODULENAME='SupportProtocol';
 $module_instance = Vtiger_Module::getInstance($MODULENAME);
 if($module_instance || file_exists('modules/'.$MODULENAME))
 {
@@ -34,8 +34,8 @@ else
 	
 	//Customer information
 	$field1 = new Vtiger_Field();
-	$field1->name = 'makhachhang';
-	$field1->label = 'Ma Khach Hang';
+	$field1->name = 'hinhthuchotro';
+	$field1->label = 'Hinh thuc ho tro';
 	$field1->uitype = 8;
 	$field1->column = $field1->name;
 	$field1->columntype = 'VARCHAR(255)';

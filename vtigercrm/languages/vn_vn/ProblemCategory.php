@@ -9,18 +9,16 @@
  ************************************************************************************/
 
 $languageStrings = Array(
-	'CustomerStandalone' => 'Khách hàng vãng lai',
-	'SINGLE_CustomerStandalone' => 'Khách hàng vãng lai',
-	'CustomerStandalone ID' => 'ID Khách Hàng',
-	
-	'LBL_CUSTOMERSTANDALONE_INFORMATION' => 'Thông tin Khách Hàng',
+	'ProblemCategory' => 'Loại vấn đề',
+	'SINGLE_ProblemCategory' => 'Loại vấn đề',
+	'ProblemCategory ID' => 'ProblemCategory ID',
+
+	'LBL_PROBLEMCATEGORY_INFORMATION' => 'Thông tin loại vấn đề',
 	'LBL_MODULEBLOCK_INFORMATION' => 'ModuleBlock Information',
 
-	'Ma Khach Hang' => 'Mã khách hàng',
-	'Email Ca nhan'=>'Email Cá nhân',
-	'Dia chi'=>'Địa chỉ',
-	'So dien thoai'=>'Số điện thoại',
-	'Ten khach hang'=>'Tên khách hàng'
+	'ModuleFieldLabel' => 'ModuleFieldLabel Text',
+	'Loai van de'=>'Loại vấn đề',
+	'Mo ta chi tiet'=>'Mô tả chi tiết'
 );
 
 ?>
