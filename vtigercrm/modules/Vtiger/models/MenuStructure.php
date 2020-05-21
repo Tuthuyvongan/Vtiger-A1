@@ -239,8 +239,9 @@ class Vtiger_MenuStructure_Model extends Vtiger_Base_Model {
 								'SUPPORT'	=> 'fa-life-ring',
 								'INVENTORY'	=> 'vicon-inventory',
 								'PROJECT'	=> 'fa-briefcase',
-								'TOOLS'		=> 'fa-wrench','HRM'		=> 'fa-users',
-		                          'CONTACTS' => 'fa-users'
+								'TOOLS'		=> 'fa-wrench',
+		                        'HRM'		=> 'fa-users',
+		                        'CONTACTS' => 'fa-users'
 							);
 		return $appImageIcons;
 	}

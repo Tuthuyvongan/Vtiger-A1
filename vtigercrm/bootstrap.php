@@ -3,7 +3,7 @@ include_once 'vtlib/Vtiger/Module.php';
 
 $Vtiger_Utils_Log = true;
 
-$MODULENAME='SupportProtocol';
+$MODULENAME='PhuongTienTruyenThong';
 $module_instance = Vtiger_Module::getInstance($MODULENAME);
 if($module_instance || file_exists('modules/'.$MODULENAME))
 {
@@ -13,7 +13,7 @@ else
 {
 	$moduleInstance = new Vtiger_Module();
 	$moduleInstance->name = $MODULENAME;
-	$moduleInstance->parent = 'Support';
+	$moduleInstance->parent = 'Marketing';
 	$moduleInstance->save();
 	
 	//Schema setup
@@ -34,8 +34,8 @@ else
 	
 	//Customer information
 	$field1 = new Vtiger_Field();
-	$field1->name = 'hinhthuchotro';
-	$field1->label = 'Hinh thuc ho tro';
+	$field1->name = 'phuongtientruyenthong';
+	$field1->label = 'Phuong tien truyen thong';
 	$field1->uitype = 8;
 	$field1->column = $field1->name;
 	$field1->columntype = 'VARCHAR(255)';
@@ -44,6 +44,13 @@ else
 	
 	$moduleInstance->setEntityIdentifier($field1);
 	
+	$field2 = new Vtiger_Field();
+	$field2->name = 'motachitiet';
+	$field2->label = 'Mo ta chi tiet';
+	$field2->uitype = 21;
+	$field2->column = $field2->name;
+	$field2->typeofdata = 'V~O';
+	$block->addField($field2);
 	// Recommended common fields every Entity module should have (linked to core table)
 
         $mfield2 = new Vtiger_Field();

@@ -31,10 +31,11 @@ class Campaigns extends CRMEntity {
 	var $list_fields = Array(
 					'Campaign Name'=>Array('campaign'=>'campaignname'),
 					'Campaign Type'=>Array('campaign'=>'campaigntype'),
-					'Campaign Status'=>Array('campaign'=>'campaignstatus'),
+					'Campaign Status'=>Array('campaign'=>'campaignstatus'), 
 					'Expected Revenue'=>Array('campaign'=>'expectedrevenue'),
 					'Expected Close Date'=>Array('campaign'=>'closingdate'),
-					'Assigned To' => Array('crmentity'=>'smownerid')
+					'Assigned To' => Array('crmentity'=>'smownerid'),
+	                'Phuong tien truyen thong' => Array('phuongtientruyenthong'=>'phuongtientruyenthong')
 				);
 
 	var $list_fields_name = Array(
@@ -43,7 +44,8 @@ class Campaigns extends CRMEntity {
 					'Campaign Status'=>'campaignstatus',
 					'Expected Revenue'=>'expectedrevenue',
 					'Expected Close Date'=>'closingdate',
-					'Assigned To'=>'assigned_user_id'
+					'Assigned To'=>'assigned_user_id',
+	                'Phuong tien truyen thong'=>'phuongtientruyenthong'
 				     );
 
 	var $list_link_field= 'campaignname';
