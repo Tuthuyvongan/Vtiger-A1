@@ -22,7 +22,8 @@ if($block == NULL)
 $fieldPTTT = new Vtiger_Field();
 $fieldPTTT->name = 'phuongtientruyenthong';
 $fieldPTTT->label = 'Phuong tien truyen thong';
-$fieldPTTT->uitype = 15;
+$fieldPTTT->uitype = 10 ;
 $fieldPTTT->table = 'vtiger_phuongtientruyenthong';
 $fieldPTTT->column = 'phuongtientruyenthong';
+$fieldPTTT->setRelatedModules('PhuongTienTruyenThong');
 $block->addField($fieldPTTT);

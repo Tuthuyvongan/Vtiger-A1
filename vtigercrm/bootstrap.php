@@ -3,7 +3,7 @@ include_once 'vtlib/Vtiger/Module.php';
 
 $Vtiger_Utils_Log = true;
 
-$MODULENAME='PhuongTienTruyenThong';
+$MODULENAME='HinhThucTruyenThong';
 $module_instance = Vtiger_Module::getInstance($MODULENAME);
 if($module_instance || file_exists('modules/'.$MODULENAME))
 {
@@ -34,8 +34,8 @@ else
 	
 	//Customer information
 	$field1 = new Vtiger_Field();
-	$field1->name = 'phuongtientruyenthong';
-	$field1->label = 'Phuong tien truyen thong';
+	$field1->name = 'httt';
+	$field1->label = 'Hinh thuc truyen thong';
 	$field1->uitype = 8;
 	$field1->column = $field1->name;
 	$field1->columntype = 'VARCHAR(255)';

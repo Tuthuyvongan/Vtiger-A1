@@ -8,6 +8,8 @@
  * All Rights Reserved.
  *************************************************************************************/
 $languageStrings = array(
+	'Hinh thuc truyen thong'=>'Hình thức truyền thông',
+	'Phuong tien truyen thong'=>'Phương tiện truyền thông',
 	'Actual Cost' => 'Chi phí thực',
 	'Actual Response Count' => 'Tổng nhu cầu thực tế',
 	'Actual ROI' => 'ROI Thực tế',

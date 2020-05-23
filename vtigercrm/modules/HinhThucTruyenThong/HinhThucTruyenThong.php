@@ -38,41 +38,43 @@ class HinhThucTruyenThong extends Vtiger_CRMEntity {
 	var $list_fields = Array (
 		/* Format: Field Label => Array(tablename, columnname) */
 		// tablename should not have prefix 'vtiger_'
-		'Hinh thuc truyen thong' => Array('hinhthuctruyenthong', 'hinhthuctruyenthong'),
+	    'Mo ta chi tiet'=> Array('hinhthuctruyenthong','motachitiet'),
+		'Hinh thuc truyen thong' => Array('hinhthuctruyenthong', 'httt'),
 	);
 	var $list_fields_name = Array (
 		/* Format: Field Label => fieldname */
-		'hinhthuctruyenthong' => 'hinhthuctruyenthong',
+	    'Mo ta chi tiet'=>'motachitiet',
+		'Hinh thuc truyen thong' => 'httt',
 	);
 
 	// Make the field link to detail view
-	var $list_link_field = 'hinhthuctruyenthong';
+	var $list_link_field = 'httt';
 
 	// For Popup listview and UI type support
 	var $search_fields = Array(
 		/* Format: Field Label => Array(tablename, columnname) */
 		// tablename should not have prefix 'vtiger_'
-		'Hinh thuc truyen thong' => Array('hinhthuctruyenthong', 'hinhthuctruyenthong'),
+		'Hinh thuc truyen thong' => Array('hinhthuctruyenthong', 'httt'),
 	);
 	var $search_fields_name = Array (
 		/* Format: Field Label => fieldname */
-		'Hinh thuc truyen thong' => 'hinhthuctruyenthong',
+		'Hinh thuc truyen thong' => 'httt',
 	);
 
 	// For Popup window record selection
-	var $popup_fields = Array ('hinhthuctruyenthong');
+	var $popup_fields = Array ('httt');
 
 	// For Alphabetical search
-	var $def_basicsearch_col = 'hinhthuctruyenthong';
+	var $def_basicsearch_col = 'httt';
 
 	// Column value to use on detail view record text display
-	var $def_detailview_recname = 'hinhthuctruyenthong';
+	var $def_detailview_recname = 'httt';
 
 	// Used when enabling/disabling the mandatory fields for the module.
 	// Refers to vtiger_field.fieldname values.
-	var $mandatory_fields = Array('hinhthuctruyenthong');
+	var $mandatory_fields = Array('httt');
 
-	var $default_order_by = 'hinhthuctruyenthong';
+	var $default_order_by = 'httt';
 	var $default_sort_order='ASC';
 
 	/**
@@ -88,6 +90,9 @@ class HinhThucTruyenThong extends Vtiger_CRMEntity {
 			// TODO Handle actions before this module is being uninstalled.
 		} else if($eventType == 'module.preuninstall') {
 			// TODO Handle actions when this module is about to be deleted.
+		    global $adb;
+		    $sql = 'DROP TABLE vtiger_phuongtientruyenthongcf; DROP TABLE vtiger_phuongtientruyenthong;';
+		    $adb->query($sql);
 		} else if($eventType == 'module.preupdate') {
 			// TODO Handle actions before this module is updated.
 		} else if($eventType == 'module.postupdate') {
