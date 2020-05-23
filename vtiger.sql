@@ -1,5 +1,32 @@
-﻿--
--- Cấu trúc bảng cho bảng `com_vtiger_workflows`
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 23, 2020 at 05:45 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `vtiger`
+--
+CREATE DATABASE IF NOT EXISTS `vtiger` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `vtiger`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `com_vtiger_workflows`
 --
 
 CREATE TABLE `com_vtiger_workflows` (
@@ -22,7 +49,7 @@ CREATE TABLE `com_vtiger_workflows` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `com_vtiger_workflows`
+-- Dumping data for table `com_vtiger_workflows`
 --
 
 INSERT INTO `com_vtiger_workflows` (`workflow_id`, `module_name`, `summary`, `test`, `execution_condition`, `defaultworkflow`, `type`, `filtersavedinnew`, `schtypeid`, `schdayofmonth`, `schdayofweek`, `schannualdates`, `schtime`, `nexttrigger_time`, `status`, `workflowname`) VALUES
@@ -53,7 +80,7 @@ INSERT INTO `com_vtiger_workflows` (`workflow_id`, `module_name`, `summary`, `te
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflows_seq`
+-- Table structure for table `com_vtiger_workflows_seq`
 --
 
 CREATE TABLE `com_vtiger_workflows_seq` (
@@ -61,7 +88,7 @@ CREATE TABLE `com_vtiger_workflows_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `com_vtiger_workflows_seq`
+-- Dumping data for table `com_vtiger_workflows_seq`
 --
 
 INSERT INTO `com_vtiger_workflows_seq` (`id`) VALUES
@@ -70,7 +97,7 @@ INSERT INTO `com_vtiger_workflows_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflowtasks`
+-- Table structure for table `com_vtiger_workflowtasks`
 --
 
 CREATE TABLE `com_vtiger_workflowtasks` (
@@ -81,7 +108,7 @@ CREATE TABLE `com_vtiger_workflowtasks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `com_vtiger_workflowtasks`
+-- Dumping data for table `com_vtiger_workflowtasks`
 --
 
 INSERT INTO `com_vtiger_workflowtasks` (`task_id`, `workflow_id`, `summary`, `task`) VALUES
@@ -111,7 +138,7 @@ INSERT INTO `com_vtiger_workflowtasks` (`task_id`, `workflow_id`, `summary`, `ta
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflowtasks_entitymethod`
+-- Table structure for table `com_vtiger_workflowtasks_entitymethod`
 --
 
 CREATE TABLE `com_vtiger_workflowtasks_entitymethod` (
@@ -123,7 +150,7 @@ CREATE TABLE `com_vtiger_workflowtasks_entitymethod` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `com_vtiger_workflowtasks_entitymethod`
+-- Dumping data for table `com_vtiger_workflowtasks_entitymethod`
 --
 
 INSERT INTO `com_vtiger_workflowtasks_entitymethod` (`workflowtasks_entitymethod_id`, `module_name`, `method_name`, `function_path`, `function_name`) VALUES
@@ -141,7 +168,7 @@ INSERT INTO `com_vtiger_workflowtasks_entitymethod` (`workflowtasks_entitymethod
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflowtasks_entitymethod_seq`
+-- Table structure for table `com_vtiger_workflowtasks_entitymethod_seq`
 --
 
 CREATE TABLE `com_vtiger_workflowtasks_entitymethod_seq` (
@@ -149,7 +176,7 @@ CREATE TABLE `com_vtiger_workflowtasks_entitymethod_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `com_vtiger_workflowtasks_entitymethod_seq`
+-- Dumping data for table `com_vtiger_workflowtasks_entitymethod_seq`
 --
 
 INSERT INTO `com_vtiger_workflowtasks_entitymethod_seq` (`id`) VALUES
@@ -158,7 +185,7 @@ INSERT INTO `com_vtiger_workflowtasks_entitymethod_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflowtasks_seq`
+-- Table structure for table `com_vtiger_workflowtasks_seq`
 --
 
 CREATE TABLE `com_vtiger_workflowtasks_seq` (
@@ -166,7 +193,7 @@ CREATE TABLE `com_vtiger_workflowtasks_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `com_vtiger_workflowtasks_seq`
+-- Dumping data for table `com_vtiger_workflowtasks_seq`
 --
 
 INSERT INTO `com_vtiger_workflowtasks_seq` (`id`) VALUES
@@ -175,7 +202,7 @@ INSERT INTO `com_vtiger_workflowtasks_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflowtask_queue`
+-- Table structure for table `com_vtiger_workflowtask_queue`
 --
 
 CREATE TABLE `com_vtiger_workflowtask_queue` (
@@ -189,7 +216,7 @@ CREATE TABLE `com_vtiger_workflowtask_queue` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflowtemplates`
+-- Table structure for table `com_vtiger_workflowtemplates`
 --
 
 CREATE TABLE `com_vtiger_workflowtemplates` (
@@ -202,7 +229,7 @@ CREATE TABLE `com_vtiger_workflowtemplates` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflow_activatedonce`
+-- Table structure for table `com_vtiger_workflow_activatedonce`
 --
 
 CREATE TABLE `com_vtiger_workflow_activatedonce` (
@@ -213,7 +240,7 @@ CREATE TABLE `com_vtiger_workflow_activatedonce` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflow_tasktypes`
+-- Table structure for table `com_vtiger_workflow_tasktypes`
 --
 
 CREATE TABLE `com_vtiger_workflow_tasktypes` (
@@ -228,7 +255,7 @@ CREATE TABLE `com_vtiger_workflow_tasktypes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `com_vtiger_workflow_tasktypes`
+-- Dumping data for table `com_vtiger_workflow_tasktypes`
 --
 
 INSERT INTO `com_vtiger_workflow_tasktypes` (`id`, `tasktypename`, `label`, `classname`, `classpath`, `templatepath`, `modules`, `sourcemodule`) VALUES
@@ -243,7 +270,7 @@ INSERT INTO `com_vtiger_workflow_tasktypes` (`id`, `tasktypename`, `label`, `cla
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `com_vtiger_workflow_tasktypes_seq`
+-- Table structure for table `com_vtiger_workflow_tasktypes_seq`
 --
 
 CREATE TABLE `com_vtiger_workflow_tasktypes_seq` (
@@ -251,7 +278,7 @@ CREATE TABLE `com_vtiger_workflow_tasktypes_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `com_vtiger_workflow_tasktypes_seq`
+-- Dumping data for table `com_vtiger_workflow_tasktypes_seq`
 --
 
 INSERT INTO `com_vtiger_workflow_tasktypes_seq` (`id`) VALUES
@@ -260,7 +287,7 @@ INSERT INTO `com_vtiger_workflow_tasktypes_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `hrm_employee_history`
+-- Table structure for table `hrm_employee_history`
 --
 
 CREATE TABLE `hrm_employee_history` (
@@ -275,7 +302,7 @@ CREATE TABLE `hrm_employee_history` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_account`
+-- Table structure for table `vtiger_account`
 --
 
 CREATE TABLE `vtiger_account` (
@@ -306,7 +333,7 @@ CREATE TABLE `vtiger_account` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_accountbillads`
+-- Table structure for table `vtiger_accountbillads`
 --
 
 CREATE TABLE `vtiger_accountbillads` (
@@ -322,7 +349,7 @@ CREATE TABLE `vtiger_accountbillads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_accountrating`
+-- Table structure for table `vtiger_accountrating`
 --
 
 CREATE TABLE `vtiger_accountrating` (
@@ -335,7 +362,7 @@ CREATE TABLE `vtiger_accountrating` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_accountscf`
+-- Table structure for table `vtiger_accountscf`
 --
 
 CREATE TABLE `vtiger_accountscf` (
@@ -345,7 +372,7 @@ CREATE TABLE `vtiger_accountscf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_accountshipads`
+-- Table structure for table `vtiger_accountshipads`
 --
 
 CREATE TABLE `vtiger_accountshipads` (
@@ -361,7 +388,7 @@ CREATE TABLE `vtiger_accountshipads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_accounttype`
+-- Table structure for table `vtiger_accounttype`
 --
 
 CREATE TABLE `vtiger_accounttype` (
@@ -374,7 +401,7 @@ CREATE TABLE `vtiger_accounttype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_accounttype`
+-- Dumping data for table `vtiger_accounttype`
 --
 
 INSERT INTO `vtiger_accounttype` (`accounttypeid`, `accounttype`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -392,7 +419,7 @@ INSERT INTO `vtiger_accounttype` (`accounttypeid`, `accounttype`, `presence`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_accounttype_seq`
+-- Table structure for table `vtiger_accounttype_seq`
 --
 
 CREATE TABLE `vtiger_accounttype_seq` (
@@ -400,7 +427,7 @@ CREATE TABLE `vtiger_accounttype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_accounttype_seq`
+-- Dumping data for table `vtiger_accounttype_seq`
 --
 
 INSERT INTO `vtiger_accounttype_seq` (`id`) VALUES
@@ -409,7 +436,7 @@ INSERT INTO `vtiger_accounttype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_actionmapping`
+-- Table structure for table `vtiger_actionmapping`
 --
 
 CREATE TABLE `vtiger_actionmapping` (
@@ -419,7 +446,7 @@ CREATE TABLE `vtiger_actionmapping` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_actionmapping`
+-- Dumping data for table `vtiger_actionmapping`
 --
 
 INSERT INTO `vtiger_actionmapping` (`actionid`, `actionname`, `securitycheck`) VALUES
@@ -451,7 +478,7 @@ INSERT INTO `vtiger_actionmapping` (`actionid`, `actionname`, `securitycheck`) V
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activity`
+-- Table structure for table `vtiger_activity`
 --
 
 CREATE TABLE `vtiger_activity` (
@@ -479,7 +506,7 @@ CREATE TABLE `vtiger_activity` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activitycf`
+-- Table structure for table `vtiger_activitycf`
 --
 
 CREATE TABLE `vtiger_activitycf` (
@@ -489,7 +516,7 @@ CREATE TABLE `vtiger_activitycf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activityproductrel`
+-- Table structure for table `vtiger_activityproductrel`
 --
 
 CREATE TABLE `vtiger_activityproductrel` (
@@ -500,7 +527,7 @@ CREATE TABLE `vtiger_activityproductrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activitytype`
+-- Table structure for table `vtiger_activitytype`
 --
 
 CREATE TABLE `vtiger_activitytype` (
@@ -513,7 +540,7 @@ CREATE TABLE `vtiger_activitytype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_activitytype`
+-- Dumping data for table `vtiger_activitytype`
 --
 
 INSERT INTO `vtiger_activitytype` (`activitytypeid`, `activitytype`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -524,7 +551,7 @@ INSERT INTO `vtiger_activitytype` (`activitytypeid`, `activitytype`, `presence`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activitytype_seq`
+-- Table structure for table `vtiger_activitytype_seq`
 --
 
 CREATE TABLE `vtiger_activitytype_seq` (
@@ -532,7 +559,7 @@ CREATE TABLE `vtiger_activitytype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_activitytype_seq`
+-- Dumping data for table `vtiger_activitytype_seq`
 --
 
 INSERT INTO `vtiger_activitytype_seq` (`id`) VALUES
@@ -541,7 +568,7 @@ INSERT INTO `vtiger_activitytype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activity_recurring_info`
+-- Table structure for table `vtiger_activity_recurring_info`
 --
 
 CREATE TABLE `vtiger_activity_recurring_info` (
@@ -552,7 +579,7 @@ CREATE TABLE `vtiger_activity_recurring_info` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activity_reminder`
+-- Table structure for table `vtiger_activity_reminder`
 --
 
 CREATE TABLE `vtiger_activity_reminder` (
@@ -565,7 +592,7 @@ CREATE TABLE `vtiger_activity_reminder` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activity_reminder_popup`
+-- Table structure for table `vtiger_activity_reminder_popup`
 --
 
 CREATE TABLE `vtiger_activity_reminder_popup` (
@@ -580,7 +607,7 @@ CREATE TABLE `vtiger_activity_reminder_popup` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activity_view`
+-- Table structure for table `vtiger_activity_view`
 --
 
 CREATE TABLE `vtiger_activity_view` (
@@ -591,7 +618,7 @@ CREATE TABLE `vtiger_activity_view` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_activity_view`
+-- Dumping data for table `vtiger_activity_view`
 --
 
 INSERT INTO `vtiger_activity_view` (`activity_viewid`, `activity_view`, `sortorderid`, `presence`) VALUES
@@ -604,7 +631,7 @@ INSERT INTO `vtiger_activity_view` (`activity_viewid`, `activity_view`, `sortord
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_activity_view_seq`
+-- Table structure for table `vtiger_activity_view_seq`
 --
 
 CREATE TABLE `vtiger_activity_view_seq` (
@@ -612,7 +639,7 @@ CREATE TABLE `vtiger_activity_view_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_activity_view_seq`
+-- Dumping data for table `vtiger_activity_view_seq`
 --
 
 INSERT INTO `vtiger_activity_view_seq` (`id`) VALUES
@@ -621,7 +648,7 @@ INSERT INTO `vtiger_activity_view_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_announcement`
+-- Table structure for table `vtiger_announcement`
 --
 
 CREATE TABLE `vtiger_announcement` (
@@ -634,7 +661,7 @@ CREATE TABLE `vtiger_announcement` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_app2tab`
+-- Table structure for table `vtiger_app2tab`
 --
 
 CREATE TABLE `vtiger_app2tab` (
@@ -645,7 +672,7 @@ CREATE TABLE `vtiger_app2tab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_app2tab`
+-- Dumping data for table `vtiger_app2tab`
 --
 
 INSERT INTO `vtiger_app2tab` (`tabid`, `appname`, `sequence`, `visible`) VALUES
@@ -659,7 +686,7 @@ INSERT INTO `vtiger_app2tab` (`tabid`, `appname`, `sequence`, `visible`) VALUES
 (20, 'SALES', 2, 1),
 (4, 'SALES', 6, 1),
 (6, 'SALES', 7, 1),
-(14, 'SALES', 3, 1),
+(14, 'SALES', 1, 1),
 (36, 'SALES', 4, 1),
 (4, 'MARKETING', 3, 1),
 (6, 'MARKETING', 4, 1),
@@ -667,8 +694,8 @@ INSERT INTO `vtiger_app2tab` (`tabid`, `appname`, `sequence`, `visible`) VALUES
 (26, 'MARKETING', 1, 1),
 (4, 'INVENTORY', 8, 1),
 (6, 'INVENTORY', 9, 1),
-(22, 'INVENTORY', 5, 1),
-(23, 'INVENTORY', 4, 1),
+(22, 'INVENTORY', 3, 1),
+(23, 'INVENTORY', 2, 1),
 (14, 'INVENTORY', 1, 1),
 (18, 'INVENTORY', 7, 1),
 (19, 'INVENTORY', 3, 1),
@@ -698,12 +725,18 @@ INSERT INTO `vtiger_app2tab` (`tabid`, `appname`, `sequence`, `visible`) VALUES
 (58, 'HRM', 8, 1),
 (59, 'HRM', 9, 1),
 (60, 'HRM', 10, 1),
-(61, 'HRM', 11, 1);
+(61, 'HRM', 11, 1),
+(63, 'CONTACTS', 1, 1),
+(64, 'CONTACTS', 2, 1),
+(65, 'SUPPORT', 1, 1),
+(66, 'SUPPORT', 2, 1),
+(70, 'MARKETING', NULL, 1),
+(71, 'MARKETING', NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_assets`
+-- Table structure for table `vtiger_assets`
 --
 
 CREATE TABLE `vtiger_assets` (
@@ -727,7 +760,7 @@ CREATE TABLE `vtiger_assets` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_assetscf`
+-- Table structure for table `vtiger_assetscf`
 --
 
 CREATE TABLE `vtiger_assetscf` (
@@ -737,7 +770,7 @@ CREATE TABLE `vtiger_assetscf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_assetstatus`
+-- Table structure for table `vtiger_assetstatus`
 --
 
 CREATE TABLE `vtiger_assetstatus` (
@@ -750,7 +783,7 @@ CREATE TABLE `vtiger_assetstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_assetstatus`
+-- Dumping data for table `vtiger_assetstatus`
 --
 
 INSERT INTO `vtiger_assetstatus` (`assetstatusid`, `assetstatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -760,7 +793,7 @@ INSERT INTO `vtiger_assetstatus` (`assetstatusid`, `assetstatus`, `presence`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_assetstatus_seq`
+-- Table structure for table `vtiger_assetstatus_seq`
 --
 
 CREATE TABLE `vtiger_assetstatus_seq` (
@@ -768,7 +801,7 @@ CREATE TABLE `vtiger_assetstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_assetstatus_seq`
+-- Dumping data for table `vtiger_assetstatus_seq`
 --
 
 INSERT INTO `vtiger_assetstatus_seq` (`id`) VALUES
@@ -777,7 +810,7 @@ INSERT INTO `vtiger_assetstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_asterisk`
+-- Table structure for table `vtiger_asterisk`
 --
 
 CREATE TABLE `vtiger_asterisk` (
@@ -791,7 +824,7 @@ CREATE TABLE `vtiger_asterisk` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_asteriskextensions`
+-- Table structure for table `vtiger_asteriskextensions`
 --
 
 CREATE TABLE `vtiger_asteriskextensions` (
@@ -801,7 +834,7 @@ CREATE TABLE `vtiger_asteriskextensions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_asteriskextensions`
+-- Dumping data for table `vtiger_asteriskextensions`
 --
 
 INSERT INTO `vtiger_asteriskextensions` (`userid`, `asterisk_extension`, `use_asterisk`) VALUES
@@ -810,7 +843,7 @@ INSERT INTO `vtiger_asteriskextensions` (`userid`, `asterisk_extension`, `use_as
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_asteriskincomingcalls`
+-- Table structure for table `vtiger_asteriskincomingcalls`
 --
 
 CREATE TABLE `vtiger_asteriskincomingcalls` (
@@ -826,7 +859,7 @@ CREATE TABLE `vtiger_asteriskincomingcalls` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_asteriskincomingevents`
+-- Table structure for table `vtiger_asteriskincomingevents`
 --
 
 CREATE TABLE `vtiger_asteriskincomingevents` (
@@ -845,7 +878,7 @@ CREATE TABLE `vtiger_asteriskincomingevents` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_attachments`
+-- Table structure for table `vtiger_attachments`
 --
 
 CREATE TABLE `vtiger_attachments` (
@@ -861,7 +894,7 @@ CREATE TABLE `vtiger_attachments` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_attachmentsfolder`
+-- Table structure for table `vtiger_attachmentsfolder`
 --
 
 CREATE TABLE `vtiger_attachmentsfolder` (
@@ -873,7 +906,7 @@ CREATE TABLE `vtiger_attachmentsfolder` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_attachmentsfolder`
+-- Dumping data for table `vtiger_attachmentsfolder`
 --
 
 INSERT INTO `vtiger_attachmentsfolder` (`folderid`, `foldername`, `description`, `createdby`, `sequence`) VALUES
@@ -882,7 +915,7 @@ INSERT INTO `vtiger_attachmentsfolder` (`folderid`, `foldername`, `description`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_attachmentsfolder_seq`
+-- Table structure for table `vtiger_attachmentsfolder_seq`
 --
 
 CREATE TABLE `vtiger_attachmentsfolder_seq` (
@@ -890,7 +923,7 @@ CREATE TABLE `vtiger_attachmentsfolder_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_attachmentsfolder_seq`
+-- Dumping data for table `vtiger_attachmentsfolder_seq`
 --
 
 INSERT INTO `vtiger_attachmentsfolder_seq` (`id`) VALUES
@@ -899,7 +932,7 @@ INSERT INTO `vtiger_attachmentsfolder_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_audit_trial`
+-- Table structure for table `vtiger_audit_trial`
 --
 
 CREATE TABLE `vtiger_audit_trial` (
@@ -914,7 +947,7 @@ CREATE TABLE `vtiger_audit_trial` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_blocks`
+-- Table structure for table `vtiger_blocks`
 --
 
 CREATE TABLE `vtiger_blocks` (
@@ -932,7 +965,7 @@ CREATE TABLE `vtiger_blocks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_blocks`
+-- Dumping data for table `vtiger_blocks`
 --
 
 INSERT INTO `vtiger_blocks` (`blockid`, `tabid`, `blocklabel`, `sequence`, `show_title`, `visible`, `create_view`, `edit_view`, `detail_view`, `display_status`, `iscustom`) VALUES
@@ -1076,12 +1109,27 @@ INSERT INTO `vtiger_blocks` (`blockid`, `tabid`, `blocklabel`, `sequence`, `show
 (138, 59, 'LBL_MARK_INTERVEW_FAILED', 6, 0, 0, 0, 0, 0, 1, 0),
 (139, 59, 'LBL_OFFER_JOB', 7, 0, 0, 0, 0, 0, 1, 0),
 (140, 60, 'LBL_LEAVE_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
-(141, 61, 'LBL_PERSONAL_DETAIL', 1, 0, 0, 0, 0, 0, 1, 0);
+(141, 61, 'LBL_PERSONAL_DETAIL', 1, 0, 0, 0, 0, 0, 1, 0),
+(159, 63, 'LBL_CUSTOMERENTERPRISE_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
+(160, 63, 'LBL_CUSTOM_INFORMATION', 6, 0, 0, 0, 0, 0, 1, 0),
+(161, 63, 'Liên hệ chính', 2, 0, 0, 0, 0, 0, 1, 1),
+(162, 63, 'Thông tin khác', 3, 0, 0, 0, 0, 0, 1, 1),
+(169, 64, 'LBL_CUSTOMERSTANDALONE_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
+(170, 64, 'LBL_CUSTOM_INFORMATION', 2, 0, 0, 0, 0, 0, 1, 0),
+(171, 65, 'LBL_PROBLEMCATEGORY_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
+(172, 65, 'LBL_CUSTOM_INFORMATION', 2, 0, 0, 0, 0, 0, 1, 0),
+(173, 66, 'LBL_SUPPORTPROTOCOL_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
+(174, 66, 'LBL_CUSTOM_INFORMATION', 2, 0, 0, 0, 0, 0, 1, 0),
+(175, 63, 'Địa chỉ', 4, 0, 0, 0, 0, 0, 1, 1),
+(185, 70, 'LBL_PHUONGTIENTRUYENTHONG_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
+(186, 70, 'LBL_CUSTOM_INFORMATION', 2, 0, 0, 0, 0, 0, 1, 0),
+(187, 71, 'LBL_HINHTHUCTRUYENTHONG_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
+(188, 71, 'LBL_CUSTOM_INFORMATION', 2, 0, 0, 0, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_blocks_seq`
+-- Table structure for table `vtiger_blocks_seq`
 --
 
 CREATE TABLE `vtiger_blocks_seq` (
@@ -1089,16 +1137,16 @@ CREATE TABLE `vtiger_blocks_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_blocks_seq`
+-- Dumping data for table `vtiger_blocks_seq`
 --
 
 INSERT INTO `vtiger_blocks_seq` (`id`) VALUES
-(141);
+(188);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_calendarsharedtype`
+-- Table structure for table `vtiger_calendarsharedtype`
 --
 
 CREATE TABLE `vtiger_calendarsharedtype` (
@@ -1109,7 +1157,7 @@ CREATE TABLE `vtiger_calendarsharedtype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_calendarsharedtype`
+-- Dumping data for table `vtiger_calendarsharedtype`
 --
 
 INSERT INTO `vtiger_calendarsharedtype` (`calendarsharedtypeid`, `calendarsharedtype`, `sortorderid`, `presence`) VALUES
@@ -1120,7 +1168,7 @@ INSERT INTO `vtiger_calendarsharedtype` (`calendarsharedtypeid`, `calendarshared
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_calendarsharedtype_seq`
+-- Table structure for table `vtiger_calendarsharedtype_seq`
 --
 
 CREATE TABLE `vtiger_calendarsharedtype_seq` (
@@ -1128,7 +1176,7 @@ CREATE TABLE `vtiger_calendarsharedtype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_calendarsharedtype_seq`
+-- Dumping data for table `vtiger_calendarsharedtype_seq`
 --
 
 INSERT INTO `vtiger_calendarsharedtype_seq` (`id`) VALUES
@@ -1137,7 +1185,7 @@ INSERT INTO `vtiger_calendarsharedtype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_calendar_default_activitytypes`
+-- Table structure for table `vtiger_calendar_default_activitytypes`
 --
 
 CREATE TABLE `vtiger_calendar_default_activitytypes` (
@@ -1150,7 +1198,7 @@ CREATE TABLE `vtiger_calendar_default_activitytypes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_calendar_default_activitytypes`
+-- Dumping data for table `vtiger_calendar_default_activitytypes`
 --
 
 INSERT INTO `vtiger_calendar_default_activitytypes` (`id`, `module`, `fieldname`, `defaultcolor`, `isdefault`, `conditions`) VALUES
@@ -1166,7 +1214,7 @@ INSERT INTO `vtiger_calendar_default_activitytypes` (`id`, `module`, `fieldname`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_calendar_default_activitytypes_seq`
+-- Table structure for table `vtiger_calendar_default_activitytypes_seq`
 --
 
 CREATE TABLE `vtiger_calendar_default_activitytypes_seq` (
@@ -1174,7 +1222,7 @@ CREATE TABLE `vtiger_calendar_default_activitytypes_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_calendar_default_activitytypes_seq`
+-- Dumping data for table `vtiger_calendar_default_activitytypes_seq`
 --
 
 INSERT INTO `vtiger_calendar_default_activitytypes_seq` (`id`) VALUES
@@ -1183,7 +1231,7 @@ INSERT INTO `vtiger_calendar_default_activitytypes_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_calendar_user_activitytypes`
+-- Table structure for table `vtiger_calendar_user_activitytypes`
 --
 
 CREATE TABLE `vtiger_calendar_user_activitytypes` (
@@ -1195,7 +1243,7 @@ CREATE TABLE `vtiger_calendar_user_activitytypes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_calendar_user_activitytypes`
+-- Dumping data for table `vtiger_calendar_user_activitytypes`
 --
 
 INSERT INTO `vtiger_calendar_user_activitytypes` (`id`, `defaultid`, `userid`, `color`, `visible`) VALUES
@@ -1211,7 +1259,7 @@ INSERT INTO `vtiger_calendar_user_activitytypes` (`id`, `defaultid`, `userid`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_calendar_user_activitytypes_seq`
+-- Table structure for table `vtiger_calendar_user_activitytypes_seq`
 --
 
 CREATE TABLE `vtiger_calendar_user_activitytypes_seq` (
@@ -1219,7 +1267,7 @@ CREATE TABLE `vtiger_calendar_user_activitytypes_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_calendar_user_activitytypes_seq`
+-- Dumping data for table `vtiger_calendar_user_activitytypes_seq`
 --
 
 INSERT INTO `vtiger_calendar_user_activitytypes_seq` (`id`) VALUES
@@ -1228,7 +1276,7 @@ INSERT INTO `vtiger_calendar_user_activitytypes_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_callduration`
+-- Table structure for table `vtiger_callduration`
 --
 
 CREATE TABLE `vtiger_callduration` (
@@ -1239,7 +1287,7 @@ CREATE TABLE `vtiger_callduration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_callduration`
+-- Dumping data for table `vtiger_callduration`
 --
 
 INSERT INTO `vtiger_callduration` (`calldurationid`, `callduration`, `sortorderid`, `presence`) VALUES
@@ -1252,7 +1300,7 @@ INSERT INTO `vtiger_callduration` (`calldurationid`, `callduration`, `sortorderi
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_callduration_seq`
+-- Table structure for table `vtiger_callduration_seq`
 --
 
 CREATE TABLE `vtiger_callduration_seq` (
@@ -1260,7 +1308,7 @@ CREATE TABLE `vtiger_callduration_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_callduration_seq`
+-- Dumping data for table `vtiger_callduration_seq`
 --
 
 INSERT INTO `vtiger_callduration_seq` (`id`) VALUES
@@ -1269,7 +1317,7 @@ INSERT INTO `vtiger_callduration_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaign`
+-- Table structure for table `vtiger_campaign`
 --
 
 CREATE TABLE `vtiger_campaign` (
@@ -1294,13 +1342,16 @@ CREATE TABLE `vtiger_campaign` (
   `actualroi` decimal(25,8) DEFAULT NULL,
   `campaignid` int(19) NOT NULL,
   `closingdate` date DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  `cf_1251` int(10) DEFAULT NULL,
+  `cf_1262` int(10) DEFAULT NULL,
+  `cf_1270` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaignaccountrel`
+-- Table structure for table `vtiger_campaignaccountrel`
 --
 
 CREATE TABLE `vtiger_campaignaccountrel` (
@@ -1312,7 +1363,7 @@ CREATE TABLE `vtiger_campaignaccountrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaigncontrel`
+-- Table structure for table `vtiger_campaigncontrel`
 --
 
 CREATE TABLE `vtiger_campaigncontrel` (
@@ -1324,7 +1375,7 @@ CREATE TABLE `vtiger_campaigncontrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaignleadrel`
+-- Table structure for table `vtiger_campaignleadrel`
 --
 
 CREATE TABLE `vtiger_campaignleadrel` (
@@ -1336,7 +1387,7 @@ CREATE TABLE `vtiger_campaignleadrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaignrelstatus`
+-- Table structure for table `vtiger_campaignrelstatus`
 --
 
 CREATE TABLE `vtiger_campaignrelstatus` (
@@ -1348,7 +1399,7 @@ CREATE TABLE `vtiger_campaignrelstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_campaignrelstatus`
+-- Dumping data for table `vtiger_campaignrelstatus`
 --
 
 INSERT INTO `vtiger_campaignrelstatus` (`campaignrelstatusid`, `campaignrelstatus`, `sortorderid`, `presence`, `color`) VALUES
@@ -1359,7 +1410,7 @@ INSERT INTO `vtiger_campaignrelstatus` (`campaignrelstatusid`, `campaignrelstatu
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaignrelstatus_seq`
+-- Table structure for table `vtiger_campaignrelstatus_seq`
 --
 
 CREATE TABLE `vtiger_campaignrelstatus_seq` (
@@ -1367,7 +1418,7 @@ CREATE TABLE `vtiger_campaignrelstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_campaignrelstatus_seq`
+-- Dumping data for table `vtiger_campaignrelstatus_seq`
 --
 
 INSERT INTO `vtiger_campaignrelstatus_seq` (`id`) VALUES
@@ -1376,7 +1427,7 @@ INSERT INTO `vtiger_campaignrelstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaignscf`
+-- Table structure for table `vtiger_campaignscf`
 --
 
 CREATE TABLE `vtiger_campaignscf` (
@@ -1386,7 +1437,7 @@ CREATE TABLE `vtiger_campaignscf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaignstatus`
+-- Table structure for table `vtiger_campaignstatus`
 --
 
 CREATE TABLE `vtiger_campaignstatus` (
@@ -1399,7 +1450,7 @@ CREATE TABLE `vtiger_campaignstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_campaignstatus`
+-- Dumping data for table `vtiger_campaignstatus`
 --
 
 INSERT INTO `vtiger_campaignstatus` (`campaignstatusid`, `campaignstatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -1412,7 +1463,7 @@ INSERT INTO `vtiger_campaignstatus` (`campaignstatusid`, `campaignstatus`, `pres
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaignstatus_seq`
+-- Table structure for table `vtiger_campaignstatus_seq`
 --
 
 CREATE TABLE `vtiger_campaignstatus_seq` (
@@ -1420,7 +1471,7 @@ CREATE TABLE `vtiger_campaignstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_campaignstatus_seq`
+-- Dumping data for table `vtiger_campaignstatus_seq`
 --
 
 INSERT INTO `vtiger_campaignstatus_seq` (`id`) VALUES
@@ -1429,7 +1480,7 @@ INSERT INTO `vtiger_campaignstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaigntype`
+-- Table structure for table `vtiger_campaigntype`
 --
 
 CREATE TABLE `vtiger_campaigntype` (
@@ -1442,7 +1493,7 @@ CREATE TABLE `vtiger_campaigntype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_campaigntype`
+-- Dumping data for table `vtiger_campaigntype`
 --
 
 INSERT INTO `vtiger_campaigntype` (`campaigntypeid`, `campaigntype`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -1462,7 +1513,7 @@ INSERT INTO `vtiger_campaigntype` (`campaigntypeid`, `campaigntype`, `presence`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_campaigntype_seq`
+-- Table structure for table `vtiger_campaigntype_seq`
 --
 
 CREATE TABLE `vtiger_campaigntype_seq` (
@@ -1470,7 +1521,7 @@ CREATE TABLE `vtiger_campaigntype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_campaigntype_seq`
+-- Dumping data for table `vtiger_campaigntype_seq`
 --
 
 INSERT INTO `vtiger_campaigntype_seq` (`id`) VALUES
@@ -1479,7 +1530,7 @@ INSERT INTO `vtiger_campaigntype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_candidate_action`
+-- Table structure for table `vtiger_candidate_action`
 --
 
 CREATE TABLE `vtiger_candidate_action` (
@@ -1492,7 +1543,7 @@ CREATE TABLE `vtiger_candidate_action` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_candidate_action`
+-- Dumping data for table `vtiger_candidate_action`
 --
 
 INSERT INTO `vtiger_candidate_action` (`candidate_actionid`, `candidate_action`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -1513,7 +1564,7 @@ INSERT INTO `vtiger_candidate_action` (`candidate_actionid`, `candidate_action`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_candidate_action_seq`
+-- Table structure for table `vtiger_candidate_action_seq`
 --
 
 CREATE TABLE `vtiger_candidate_action_seq` (
@@ -1521,7 +1572,7 @@ CREATE TABLE `vtiger_candidate_action_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_candidate_action_seq`
+-- Dumping data for table `vtiger_candidate_action_seq`
 --
 
 INSERT INTO `vtiger_candidate_action_seq` (`id`) VALUES
@@ -1530,7 +1581,7 @@ INSERT INTO `vtiger_candidate_action_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_candidate_resource_cv`
+-- Table structure for table `vtiger_candidate_resource_cv`
 --
 
 CREATE TABLE `vtiger_candidate_resource_cv` (
@@ -1543,7 +1594,7 @@ CREATE TABLE `vtiger_candidate_resource_cv` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_candidate_resource_cv`
+-- Dumping data for table `vtiger_candidate_resource_cv`
 --
 
 INSERT INTO `vtiger_candidate_resource_cv` (`candidate_resource_cvid`, `candidate_resource_cv`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -1556,7 +1607,7 @@ INSERT INTO `vtiger_candidate_resource_cv` (`candidate_resource_cvid`, `candidat
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_candidate_resource_cv_seq`
+-- Table structure for table `vtiger_candidate_resource_cv_seq`
 --
 
 CREATE TABLE `vtiger_candidate_resource_cv_seq` (
@@ -1564,7 +1615,7 @@ CREATE TABLE `vtiger_candidate_resource_cv_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_candidate_resource_cv_seq`
+-- Dumping data for table `vtiger_candidate_resource_cv_seq`
 --
 
 INSERT INTO `vtiger_candidate_resource_cv_seq` (`id`) VALUES
@@ -1573,7 +1624,7 @@ INSERT INTO `vtiger_candidate_resource_cv_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_carrier`
+-- Table structure for table `vtiger_carrier`
 --
 
 CREATE TABLE `vtiger_carrier` (
@@ -1586,7 +1637,7 @@ CREATE TABLE `vtiger_carrier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_carrier`
+-- Dumping data for table `vtiger_carrier`
 --
 
 INSERT INTO `vtiger_carrier` (`carrierid`, `carrier`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -1599,7 +1650,7 @@ INSERT INTO `vtiger_carrier` (`carrierid`, `carrier`, `presence`, `picklist_valu
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_carrier_seq`
+-- Table structure for table `vtiger_carrier_seq`
 --
 
 CREATE TABLE `vtiger_carrier_seq` (
@@ -1607,7 +1658,7 @@ CREATE TABLE `vtiger_carrier_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_carrier_seq`
+-- Dumping data for table `vtiger_carrier_seq`
 --
 
 INSERT INTO `vtiger_carrier_seq` (`id`) VALUES
@@ -1616,7 +1667,332 @@ INSERT INTO `vtiger_carrier_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cntactivityrel`
+-- Table structure for table `vtiger_cf_1121`
+--
+
+CREATE TABLE `vtiger_cf_1121` (
+  `cf_1121id` int(11) NOT NULL,
+  `cf_1121` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1121`
+--
+
+INSERT INTO `vtiger_cf_1121` (`cf_1121id`, `cf_1121`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'Anh', 0, 1, NULL),
+(2, 'Chị', 1, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1121_seq`
+--
+
+CREATE TABLE `vtiger_cf_1121_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1121_seq`
+--
+
+INSERT INTO `vtiger_cf_1121_seq` (`id`) VALUES
+(2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1137`
+--
+
+CREATE TABLE `vtiger_cf_1137` (
+  `cf_1137id` int(11) NOT NULL,
+  `cf_1137` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1137`
+--
+
+INSERT INTO `vtiger_cf_1137` (`cf_1137id`, `cf_1137`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'Thân thiết', 0, 1, NULL),
+(2, 'Tiềm năng', 1, 1, NULL),
+(3, 'Mới', 2, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1137_seq`
+--
+
+CREATE TABLE `vtiger_cf_1137_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1137_seq`
+--
+
+INSERT INTO `vtiger_cf_1137_seq` (`id`) VALUES
+(3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1141`
+--
+
+CREATE TABLE `vtiger_cf_1141` (
+  `cf_1141id` int(11) NOT NULL,
+  `cf_1141` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1141`
+--
+
+INSERT INTO `vtiger_cf_1141` (`cf_1141id`, `cf_1141`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'Kế toán', 0, 1, NULL),
+(2, 'Kinh doanh', 1, 1, NULL),
+(3, 'IT', 2, 1, NULL),
+(4, 'Nhân sự', 3, 1, NULL),
+(5, 'Sales', 4, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1141_seq`
+--
+
+CREATE TABLE `vtiger_cf_1141_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1141_seq`
+--
+
+INSERT INTO `vtiger_cf_1141_seq` (`id`) VALUES
+(5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1143`
+--
+
+CREATE TABLE `vtiger_cf_1143` (
+  `cf_1143id` int(11) NOT NULL,
+  `cf_1143` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1143`
+--
+
+INSERT INTO `vtiger_cf_1143` (`cf_1143id`, `cf_1143`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'Nhân viên', 0, 1, NULL),
+(2, 'Trưởng phòng', 1, 1, NULL),
+(3, 'Giám đốc', 2, 1, NULL),
+(4, 'Chủ tịch', 3, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1143_seq`
+--
+
+CREATE TABLE `vtiger_cf_1143_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1143_seq`
+--
+
+INSERT INTO `vtiger_cf_1143_seq` (`id`) VALUES
+(4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1145`
+--
+
+CREATE TABLE `vtiger_cf_1145` (
+  `cf_1145id` int(11) NOT NULL,
+  `cf_1145` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1145`
+--
+
+INSERT INTO `vtiger_cf_1145` (`cf_1145id`, `cf_1145`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'Doanh nghiệp tư nhân', 0, 1, NULL),
+(2, 'Doanh nghiệp nhà nước', 1, 1, NULL),
+(3, 'Doanh nghiệp có vốn nước ngoài', 2, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1145_seq`
+--
+
+CREATE TABLE `vtiger_cf_1145_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1145_seq`
+--
+
+INSERT INTO `vtiger_cf_1145_seq` (`id`) VALUES
+(3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1147`
+--
+
+CREATE TABLE `vtiger_cf_1147` (
+  `cf_1147id` int(11) NOT NULL,
+  `cf_1147` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1147`
+--
+
+INSERT INTO `vtiger_cf_1147` (`cf_1147id`, `cf_1147`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'Công ty cổ phần', 0, 1, NULL),
+(2, 'Công ty trách nhiệm hữu hạn một thành viên', 1, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1147_seq`
+--
+
+CREATE TABLE `vtiger_cf_1147_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1147_seq`
+--
+
+INSERT INTO `vtiger_cf_1147_seq` (`id`) VALUES
+(2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1161`
+--
+
+CREATE TABLE `vtiger_cf_1161` (
+  `cf_1161id` int(11) NOT NULL,
+  `cf_1161` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1161`
+--
+
+INSERT INTO `vtiger_cf_1161` (`cf_1161id`, `cf_1161`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'Tài chính', 0, 1, NULL),
+(2, 'Chứng khoáng', 1, 1, NULL),
+(3, 'Công nghệ thông tin', 2, 1, NULL),
+(4, 'May mặc', 3, 1, NULL),
+(5, 'Cơ khí', 4, 1, NULL),
+(6, 'Điện lạnh', 5, 1, NULL),
+(7, 'Vận chuyển', 6, 1, NULL),
+(8, 'Nông nghiệp', 7, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1161_seq`
+--
+
+CREATE TABLE `vtiger_cf_1161_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1161_seq`
+--
+
+INSERT INTO `vtiger_cf_1161_seq` (`id`) VALUES
+(8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1221`
+--
+
+CREATE TABLE `vtiger_cf_1221` (
+  `cf_1221id` int(11) NOT NULL,
+  `cf_1221` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1221`
+--
+
+INSERT INTO `vtiger_cf_1221` (`cf_1221id`, `cf_1221`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'Việt nam', 0, 1, NULL),
+(2, 'Mỹ', 1, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1221_seq`
+--
+
+CREATE TABLE `vtiger_cf_1221_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1221_seq`
+--
+
+INSERT INTO `vtiger_cf_1221_seq` (`id`) VALUES
+(2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cntactivityrel`
 --
 
 CREATE TABLE `vtiger_cntactivityrel` (
@@ -1627,7 +2003,7 @@ CREATE TABLE `vtiger_cntactivityrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contactaddress`
+-- Table structure for table `vtiger_contactaddress`
 --
 
 CREATE TABLE `vtiger_contactaddress` (
@@ -1649,7 +2025,7 @@ CREATE TABLE `vtiger_contactaddress` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contactdetails`
+-- Table structure for table `vtiger_contactdetails`
 --
 
 CREATE TABLE `vtiger_contactdetails` (
@@ -1683,7 +2059,7 @@ CREATE TABLE `vtiger_contactdetails` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contactscf`
+-- Table structure for table `vtiger_contactscf`
 --
 
 CREATE TABLE `vtiger_contactscf` (
@@ -1693,7 +2069,7 @@ CREATE TABLE `vtiger_contactscf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contactsubdetails`
+-- Table structure for table `vtiger_contactsubdetails`
 --
 
 CREATE TABLE `vtiger_contactsubdetails` (
@@ -1711,7 +2087,7 @@ CREATE TABLE `vtiger_contactsubdetails` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contpotentialrel`
+-- Table structure for table `vtiger_contpotentialrel`
 --
 
 CREATE TABLE `vtiger_contpotentialrel` (
@@ -1722,7 +2098,7 @@ CREATE TABLE `vtiger_contpotentialrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contract_priority`
+-- Table structure for table `vtiger_contract_priority`
 --
 
 CREATE TABLE `vtiger_contract_priority` (
@@ -1735,7 +2111,7 @@ CREATE TABLE `vtiger_contract_priority` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_contract_priority`
+-- Dumping data for table `vtiger_contract_priority`
 --
 
 INSERT INTO `vtiger_contract_priority` (`contract_priorityid`, `contract_priority`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -1746,7 +2122,7 @@ INSERT INTO `vtiger_contract_priority` (`contract_priorityid`, `contract_priorit
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contract_priority_seq`
+-- Table structure for table `vtiger_contract_priority_seq`
 --
 
 CREATE TABLE `vtiger_contract_priority_seq` (
@@ -1754,7 +2130,7 @@ CREATE TABLE `vtiger_contract_priority_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_contract_priority_seq`
+-- Dumping data for table `vtiger_contract_priority_seq`
 --
 
 INSERT INTO `vtiger_contract_priority_seq` (`id`) VALUES
@@ -1763,7 +2139,7 @@ INSERT INTO `vtiger_contract_priority_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contract_status`
+-- Table structure for table `vtiger_contract_status`
 --
 
 CREATE TABLE `vtiger_contract_status` (
@@ -1776,7 +2152,7 @@ CREATE TABLE `vtiger_contract_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_contract_status`
+-- Dumping data for table `vtiger_contract_status`
 --
 
 INSERT INTO `vtiger_contract_status` (`contract_statusid`, `contract_status`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -1790,7 +2166,7 @@ INSERT INTO `vtiger_contract_status` (`contract_statusid`, `contract_status`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contract_status_seq`
+-- Table structure for table `vtiger_contract_status_seq`
 --
 
 CREATE TABLE `vtiger_contract_status_seq` (
@@ -1798,7 +2174,7 @@ CREATE TABLE `vtiger_contract_status_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_contract_status_seq`
+-- Dumping data for table `vtiger_contract_status_seq`
 --
 
 INSERT INTO `vtiger_contract_status_seq` (`id`) VALUES
@@ -1807,7 +2183,7 @@ INSERT INTO `vtiger_contract_status_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contract_type`
+-- Table structure for table `vtiger_contract_type`
 --
 
 CREATE TABLE `vtiger_contract_type` (
@@ -1820,7 +2196,7 @@ CREATE TABLE `vtiger_contract_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_contract_type`
+-- Dumping data for table `vtiger_contract_type`
 --
 
 INSERT INTO `vtiger_contract_type` (`contract_typeid`, `contract_type`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -1831,7 +2207,7 @@ INSERT INTO `vtiger_contract_type` (`contract_typeid`, `contract_type`, `presenc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_contract_type_seq`
+-- Table structure for table `vtiger_contract_type_seq`
 --
 
 CREATE TABLE `vtiger_contract_type_seq` (
@@ -1839,7 +2215,7 @@ CREATE TABLE `vtiger_contract_type_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_contract_type_seq`
+-- Dumping data for table `vtiger_contract_type_seq`
 --
 
 INSERT INTO `vtiger_contract_type_seq` (`id`) VALUES
@@ -1848,7 +2224,7 @@ INSERT INTO `vtiger_contract_type_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_convertleadmapping`
+-- Table structure for table `vtiger_convertleadmapping`
 --
 
 CREATE TABLE `vtiger_convertleadmapping` (
@@ -1861,7 +2237,7 @@ CREATE TABLE `vtiger_convertleadmapping` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_convertleadmapping`
+-- Dumping data for table `vtiger_convertleadmapping`
 --
 
 INSERT INTO `vtiger_convertleadmapping` (`cfmid`, `leadfid`, `accountfid`, `contactfid`, `potentialfid`, `editable`) VALUES
@@ -1899,7 +2275,7 @@ INSERT INTO `vtiger_convertleadmapping` (`cfmid`, `leadfid`, `accountfid`, `cont
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_convertpotentialmapping`
+-- Table structure for table `vtiger_convertpotentialmapping`
 --
 
 CREATE TABLE `vtiger_convertpotentialmapping` (
@@ -1910,7 +2286,7 @@ CREATE TABLE `vtiger_convertpotentialmapping` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_convertpotentialmapping`
+-- Dumping data for table `vtiger_convertpotentialmapping`
 --
 
 INSERT INTO `vtiger_convertpotentialmapping` (`cfmid`, `potentialfid`, `projectfid`, `editable`) VALUES
@@ -1920,7 +2296,7 @@ INSERT INTO `vtiger_convertpotentialmapping` (`cfmid`, `potentialfid`, `projectf
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_crmentity`
+-- Table structure for table `vtiger_crmentity`
 --
 
 CREATE TABLE `vtiger_crmentity` (
@@ -1943,16 +2319,21 @@ CREATE TABLE `vtiger_crmentity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_crmentity`
+-- Dumping data for table `vtiger_crmentity`
 --
 
 INSERT INTO `vtiger_crmentity` (`crmid`, `smcreatorid`, `smownerid`, `modifiedby`, `setype`, `description`, `createdtime`, `modifiedtime`, `viewedtime`, `status`, `version`, `presence`, `deleted`, `smgroupid`, `source`, `label`) VALUES
-(2, 1, 1, 1, 'Employee', NULL, '2020-04-08 13:35:13', '2020-04-08 13:35:24', NULL, NULL, 0, 1, 1, 0, 'CRM', 'Wang');
+(29, 1, 1, 1, 'Employee', NULL, '2020-05-18 15:18:04', '2020-05-18 15:18:04', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Wang'),
+(30, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-05-20 17:19:54', '2020-05-21 17:47:01', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"\"]'),
+(31, 1, 1, 1, 'Products', '', '2020-05-21 16:58:20', '2020-05-21 16:58:20', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Máy tính'),
+(32, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-05-22 15:27:08', '2020-05-22 15:27:08', NULL, NULL, 0, 1, 0, 0, 'CRM', NULL),
+(33, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-05-22 15:35:35', '2020-05-22 15:35:35', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Facebook\"]'),
+(34, 1, 1, 1, 'HinhThucTruyenThong', NULL, '2020-05-22 16:23:05', '2020-05-22 16:23:05', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Ch\\u1ea1y qu\\u1ea3ng c\\u00e1o\"]');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_crmentityrel`
+-- Table structure for table `vtiger_crmentityrel`
 --
 
 CREATE TABLE `vtiger_crmentityrel` (
@@ -1965,7 +2346,7 @@ CREATE TABLE `vtiger_crmentityrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_crmentity_seq`
+-- Table structure for table `vtiger_crmentity_seq`
 --
 
 CREATE TABLE `vtiger_crmentity_seq` (
@@ -1973,16 +2354,16 @@ CREATE TABLE `vtiger_crmentity_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_crmentity_seq`
+-- Dumping data for table `vtiger_crmentity_seq`
 --
 
 INSERT INTO `vtiger_crmentity_seq` (`id`) VALUES
-(2);
+(34);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_crmentity_user_field`
+-- Table structure for table `vtiger_crmentity_user_field`
 --
 
 CREATE TABLE `vtiger_crmentity_user_field` (
@@ -1992,16 +2373,32 @@ CREATE TABLE `vtiger_crmentity_user_field` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_crmentity_user_field`
+-- Dumping data for table `vtiger_crmentity_user_field`
 --
 
 INSERT INTO `vtiger_crmentity_user_field` (`recordid`, `userid`, `starred`) VALUES
-(2, 1, '0');
+(2, 1, '0'),
+(3, 1, '0'),
+(4, 1, '0'),
+(5, 1, '0'),
+(20, 1, '0'),
+(22, 1, '0'),
+(23, 1, '0'),
+(24, 1, '0'),
+(25, 1, '0'),
+(26, 1, '0'),
+(28, 1, '0'),
+(29, 1, '0'),
+(30, 1, '0'),
+(31, 1, '0'),
+(32, 1, '0'),
+(33, 1, '0'),
+(34, 1, '0');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_crmsetup`
+-- Table structure for table `vtiger_crmsetup`
 --
 
 CREATE TABLE `vtiger_crmsetup` (
@@ -2010,7 +2407,7 @@ CREATE TABLE `vtiger_crmsetup` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_crmsetup`
+-- Dumping data for table `vtiger_crmsetup`
 --
 
 INSERT INTO `vtiger_crmsetup` (`userid`, `setup_status`) VALUES
@@ -2019,7 +2416,7 @@ INSERT INTO `vtiger_crmsetup` (`userid`, `setup_status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cron_task`
+-- Table structure for table `vtiger_cron_task`
 --
 
 CREATE TABLE `vtiger_cron_task` (
@@ -2036,7 +2433,7 @@ CREATE TABLE `vtiger_cron_task` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_cron_task`
+-- Dumping data for table `vtiger_cron_task`
 --
 
 INSERT INTO `vtiger_cron_task` (`id`, `name`, `handler_file`, `frequency`, `laststart`, `lastend`, `status`, `module`, `sequence`, `description`) VALUES
@@ -2050,7 +2447,7 @@ INSERT INTO `vtiger_cron_task` (`id`, `name`, `handler_file`, `frequency`, `last
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currencies`
+-- Table structure for table `vtiger_currencies`
 --
 
 CREATE TABLE `vtiger_currencies` (
@@ -2061,7 +2458,7 @@ CREATE TABLE `vtiger_currencies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currencies`
+-- Dumping data for table `vtiger_currencies`
 --
 
 INSERT INTO `vtiger_currencies` (`currencyid`, `currency_name`, `currency_code`, `currency_symbol`) VALUES
@@ -2207,7 +2604,7 @@ INSERT INTO `vtiger_currencies` (`currencyid`, `currency_name`, `currency_code`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currencies_seq`
+-- Table structure for table `vtiger_currencies_seq`
 --
 
 CREATE TABLE `vtiger_currencies_seq` (
@@ -2215,7 +2612,7 @@ CREATE TABLE `vtiger_currencies_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currencies_seq`
+-- Dumping data for table `vtiger_currencies_seq`
 --
 
 INSERT INTO `vtiger_currencies_seq` (`id`) VALUES
@@ -2224,7 +2621,7 @@ INSERT INTO `vtiger_currencies_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency`
+-- Table structure for table `vtiger_currency`
 --
 
 CREATE TABLE `vtiger_currency` (
@@ -2237,7 +2634,7 @@ CREATE TABLE `vtiger_currency` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_decimal_separator`
+-- Table structure for table `vtiger_currency_decimal_separator`
 --
 
 CREATE TABLE `vtiger_currency_decimal_separator` (
@@ -2248,7 +2645,7 @@ CREATE TABLE `vtiger_currency_decimal_separator` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_decimal_separator`
+-- Dumping data for table `vtiger_currency_decimal_separator`
 --
 
 INSERT INTO `vtiger_currency_decimal_separator` (`currency_decimal_separatorid`, `currency_decimal_separator`, `sortorderid`, `presence`) VALUES
@@ -2261,7 +2658,7 @@ INSERT INTO `vtiger_currency_decimal_separator` (`currency_decimal_separatorid`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_decimal_separator_seq`
+-- Table structure for table `vtiger_currency_decimal_separator_seq`
 --
 
 CREATE TABLE `vtiger_currency_decimal_separator_seq` (
@@ -2269,7 +2666,7 @@ CREATE TABLE `vtiger_currency_decimal_separator_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_decimal_separator_seq`
+-- Dumping data for table `vtiger_currency_decimal_separator_seq`
 --
 
 INSERT INTO `vtiger_currency_decimal_separator_seq` (`id`) VALUES
@@ -2278,7 +2675,7 @@ INSERT INTO `vtiger_currency_decimal_separator_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_grouping_pattern`
+-- Table structure for table `vtiger_currency_grouping_pattern`
 --
 
 CREATE TABLE `vtiger_currency_grouping_pattern` (
@@ -2289,7 +2686,7 @@ CREATE TABLE `vtiger_currency_grouping_pattern` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_grouping_pattern`
+-- Dumping data for table `vtiger_currency_grouping_pattern`
 --
 
 INSERT INTO `vtiger_currency_grouping_pattern` (`currency_grouping_patternid`, `currency_grouping_pattern`, `sortorderid`, `presence`) VALUES
@@ -2301,7 +2698,7 @@ INSERT INTO `vtiger_currency_grouping_pattern` (`currency_grouping_patternid`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_grouping_pattern_seq`
+-- Table structure for table `vtiger_currency_grouping_pattern_seq`
 --
 
 CREATE TABLE `vtiger_currency_grouping_pattern_seq` (
@@ -2309,7 +2706,7 @@ CREATE TABLE `vtiger_currency_grouping_pattern_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_grouping_pattern_seq`
+-- Dumping data for table `vtiger_currency_grouping_pattern_seq`
 --
 
 INSERT INTO `vtiger_currency_grouping_pattern_seq` (`id`) VALUES
@@ -2318,7 +2715,7 @@ INSERT INTO `vtiger_currency_grouping_pattern_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_grouping_separator`
+-- Table structure for table `vtiger_currency_grouping_separator`
 --
 
 CREATE TABLE `vtiger_currency_grouping_separator` (
@@ -2329,7 +2726,7 @@ CREATE TABLE `vtiger_currency_grouping_separator` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_grouping_separator`
+-- Dumping data for table `vtiger_currency_grouping_separator`
 --
 
 INSERT INTO `vtiger_currency_grouping_separator` (`currency_grouping_separatorid`, `currency_grouping_separator`, `sortorderid`, `presence`) VALUES
@@ -2342,7 +2739,7 @@ INSERT INTO `vtiger_currency_grouping_separator` (`currency_grouping_separatorid
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_grouping_separator_seq`
+-- Table structure for table `vtiger_currency_grouping_separator_seq`
 --
 
 CREATE TABLE `vtiger_currency_grouping_separator_seq` (
@@ -2350,7 +2747,7 @@ CREATE TABLE `vtiger_currency_grouping_separator_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_grouping_separator_seq`
+-- Dumping data for table `vtiger_currency_grouping_separator_seq`
 --
 
 INSERT INTO `vtiger_currency_grouping_separator_seq` (`id`) VALUES
@@ -2359,7 +2756,7 @@ INSERT INTO `vtiger_currency_grouping_separator_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_info`
+-- Table structure for table `vtiger_currency_info`
 --
 
 CREATE TABLE `vtiger_currency_info` (
@@ -2374,7 +2771,7 @@ CREATE TABLE `vtiger_currency_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_info`
+-- Dumping data for table `vtiger_currency_info`
 --
 
 INSERT INTO `vtiger_currency_info` (`id`, `currency_name`, `currency_code`, `currency_symbol`, `conversion_rate`, `currency_status`, `defaultid`, `deleted`) VALUES
@@ -2383,7 +2780,7 @@ INSERT INTO `vtiger_currency_info` (`id`, `currency_name`, `currency_code`, `cur
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_info_seq`
+-- Table structure for table `vtiger_currency_info_seq`
 --
 
 CREATE TABLE `vtiger_currency_info_seq` (
@@ -2391,7 +2788,7 @@ CREATE TABLE `vtiger_currency_info_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_info_seq`
+-- Dumping data for table `vtiger_currency_info_seq`
 --
 
 INSERT INTO `vtiger_currency_info_seq` (`id`) VALUES
@@ -2400,7 +2797,7 @@ INSERT INTO `vtiger_currency_info_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_symbol_placement`
+-- Table structure for table `vtiger_currency_symbol_placement`
 --
 
 CREATE TABLE `vtiger_currency_symbol_placement` (
@@ -2411,7 +2808,7 @@ CREATE TABLE `vtiger_currency_symbol_placement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_symbol_placement`
+-- Dumping data for table `vtiger_currency_symbol_placement`
 --
 
 INSERT INTO `vtiger_currency_symbol_placement` (`currency_symbol_placementid`, `currency_symbol_placement`, `sortorderid`, `presence`) VALUES
@@ -2421,7 +2818,7 @@ INSERT INTO `vtiger_currency_symbol_placement` (`currency_symbol_placementid`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_currency_symbol_placement_seq`
+-- Table structure for table `vtiger_currency_symbol_placement_seq`
 --
 
 CREATE TABLE `vtiger_currency_symbol_placement_seq` (
@@ -2429,7 +2826,7 @@ CREATE TABLE `vtiger_currency_symbol_placement_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_currency_symbol_placement_seq`
+-- Dumping data for table `vtiger_currency_symbol_placement_seq`
 --
 
 INSERT INTO `vtiger_currency_symbol_placement_seq` (`id`) VALUES
@@ -2438,7 +2835,7 @@ INSERT INTO `vtiger_currency_symbol_placement_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_customaction`
+-- Table structure for table `vtiger_customaction`
 --
 
 CREATE TABLE `vtiger_customaction` (
@@ -2451,7 +2848,7 @@ CREATE TABLE `vtiger_customaction` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_customerdetails`
+-- Table structure for table `vtiger_customerdetails`
 --
 
 CREATE TABLE `vtiger_customerdetails` (
@@ -2464,7 +2861,70 @@ CREATE TABLE `vtiger_customerdetails` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_customerportal_fields`
+-- Table structure for table `vtiger_customerenterprise`
+--
+
+CREATE TABLE `vtiger_customerenterprise` (
+  `customerenterpriseid` int(19) NOT NULL,
+  `makhachhang` varchar(255) DEFAULT NULL,
+  `tags` varchar(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_customerenterprise`
+--
+
+INSERT INTO `vtiger_customerenterprise` (`customerenterpriseid`, `makhachhang`, `tags`) VALUES
+(20, '[\"DN-0\"]', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_customerenterprisecf`
+--
+
+CREATE TABLE `vtiger_customerenterprisecf` (
+  `customerenterpriseid` int(19) NOT NULL,
+  `cf_1103` varchar(255) DEFAULT '',
+  `cf_1105` varchar(255) DEFAULT '',
+  `cf_1107` varchar(10) DEFAULT '',
+  `cf_1109` varchar(10) DEFAULT '',
+  `cf_1111` varchar(10) DEFAULT '',
+  `cf_1113` varchar(13) DEFAULT '',
+  `cf_1115` varchar(50) DEFAULT '',
+  `cf_1119` varchar(255) DEFAULT '',
+  `cf_1121` varchar(255) DEFAULT '',
+  `cf_1123` varchar(255) DEFAULT '',
+  `cf_1135` text DEFAULT NULL,
+  `cf_1137` varchar(255) DEFAULT '',
+  `cf_1141` varchar(255) DEFAULT '',
+  `cf_1143` varchar(255) DEFAULT '',
+  `cf_1145` varchar(255) DEFAULT '',
+  `cf_1147` varchar(255) DEFAULT '',
+  `cf_1149` varchar(30) DEFAULT '',
+  `cf_1151` varchar(30) DEFAULT '',
+  `cf_1153` varchar(30) DEFAULT '',
+  `cf_1155` varchar(50) DEFAULT '',
+  `cf_1157` varchar(50) DEFAULT '',
+  `cf_1159` varchar(255) DEFAULT '',
+  `cf_1161` varchar(255) DEFAULT '',
+  `cf_1217` date DEFAULT NULL,
+  `cf_1219` text DEFAULT NULL,
+  `cf_1221` varchar(255) DEFAULT '',
+  `cf_1225` varchar(255) DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_customerenterprisecf`
+--
+
+INSERT INTO `vtiger_customerenterprisecf` (`customerenterpriseid`, `cf_1103`, `cf_1105`, `cf_1107`, `cf_1109`, `cf_1111`, `cf_1113`, `cf_1115`, `cf_1119`, `cf_1121`, `cf_1123`, `cf_1135`, `cf_1137`, `cf_1141`, `cf_1143`, `cf_1145`, `cf_1147`, `cf_1149`, `cf_1151`, `cf_1153`, `cf_1155`, `cf_1157`, `cf_1159`, `cf_1161`, `cf_1217`, `cf_1219`, `cf_1221`, `cf_1225`) VALUES
+(20, '', 'tung', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_customerportal_fields`
 --
 
 CREATE TABLE `vtiger_customerportal_fields` (
@@ -2474,7 +2934,7 @@ CREATE TABLE `vtiger_customerportal_fields` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_customerportal_fields`
+-- Dumping data for table `vtiger_customerportal_fields`
 --
 
 INSERT INTO `vtiger_customerportal_fields` (`tabid`, `fieldinfo`, `records_visible`) VALUES
@@ -2496,7 +2956,7 @@ INSERT INTO `vtiger_customerportal_fields` (`tabid`, `fieldinfo`, `records_visib
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_customerportal_prefs`
+-- Table structure for table `vtiger_customerportal_prefs`
 --
 
 CREATE TABLE `vtiger_customerportal_prefs` (
@@ -2506,7 +2966,7 @@ CREATE TABLE `vtiger_customerportal_prefs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_customerportal_prefs`
+-- Dumping data for table `vtiger_customerportal_prefs`
 --
 
 INSERT INTO `vtiger_customerportal_prefs` (`tabid`, `prefkey`, `prefvalue`) VALUES
@@ -2529,7 +2989,7 @@ INSERT INTO `vtiger_customerportal_prefs` (`tabid`, `prefkey`, `prefvalue`) VALU
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_customerportal_relatedmoduleinfo`
+-- Table structure for table `vtiger_customerportal_relatedmoduleinfo`
 --
 
 CREATE TABLE `vtiger_customerportal_relatedmoduleinfo` (
@@ -2538,7 +2998,7 @@ CREATE TABLE `vtiger_customerportal_relatedmoduleinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_customerportal_relatedmoduleinfo`
+-- Dumping data for table `vtiger_customerportal_relatedmoduleinfo`
 --
 
 INSERT INTO `vtiger_customerportal_relatedmoduleinfo` (`tabid`, `relatedmodules`) VALUES
@@ -2557,7 +3017,7 @@ INSERT INTO `vtiger_customerportal_relatedmoduleinfo` (`tabid`, `relatedmodules`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_customerportal_settings`
+-- Table structure for table `vtiger_customerportal_settings`
 --
 
 CREATE TABLE `vtiger_customerportal_settings` (
@@ -2572,7 +3032,7 @@ CREATE TABLE `vtiger_customerportal_settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_customerportal_settings`
+-- Dumping data for table `vtiger_customerportal_settings`
 --
 
 INSERT INTO `vtiger_customerportal_settings` (`id`, `url`, `default_assignee`, `support_notification`, `announcement`, `shortcuts`, `widgets`, `charts`) VALUES
@@ -2581,7 +3041,7 @@ INSERT INTO `vtiger_customerportal_settings` (`id`, `url`, `default_assignee`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_customerportal_tabs`
+-- Table structure for table `vtiger_customerportal_tabs`
 --
 
 CREATE TABLE `vtiger_customerportal_tabs` (
@@ -2593,7 +3053,7 @@ CREATE TABLE `vtiger_customerportal_tabs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_customerportal_tabs`
+-- Dumping data for table `vtiger_customerportal_tabs`
 --
 
 INSERT INTO `vtiger_customerportal_tabs` (`tabid`, `visible`, `sequence`, `createrecord`, `editrecord`) VALUES
@@ -2615,7 +3075,49 @@ INSERT INTO `vtiger_customerportal_tabs` (`tabid`, `visible`, `sequence`, `creat
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_customview`
+-- Table structure for table `vtiger_customerstandalone`
+--
+
+CREATE TABLE `vtiger_customerstandalone` (
+  `customerstandaloneid` int(19) NOT NULL,
+  `makhachhang` varchar(255) DEFAULT NULL,
+  `tags` varchar(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_customerstandalone`
+--
+
+INSERT INTO `vtiger_customerstandalone` (`customerstandaloneid`, `makhachhang`, `tags`) VALUES
+(27, '[\"VL-0\"]', ''),
+(28, '[\"VL-0\"]', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_customerstandalonecf`
+--
+
+CREATE TABLE `vtiger_customerstandalonecf` (
+  `customerstandaloneid` int(19) NOT NULL,
+  `cf_1193` varchar(50) DEFAULT '',
+  `cf_1195` text DEFAULT NULL,
+  `cf_1197` varchar(30) DEFAULT '',
+  `cf_1199` varchar(255) DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_customerstandalonecf`
+--
+
+INSERT INTO `vtiger_customerstandalonecf` (`customerstandaloneid`, `cf_1193`, `cf_1195`, `cf_1197`, `cf_1199`) VALUES
+(27, '', '', '093821111', 'Đồng Việt Tùng'),
+(28, '', '', '3', '4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_customview`
 --
 
 CREATE TABLE `vtiger_customview` (
@@ -2629,7 +3131,7 @@ CREATE TABLE `vtiger_customview` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_customview`
+-- Dumping data for table `vtiger_customview`
 --
 
 INSERT INTO `vtiger_customview` (`cvid`, `viewname`, `setdefault`, `setmetrics`, `entitytype`, `status`, `userid`) VALUES
@@ -2695,12 +3197,18 @@ INSERT INTO `vtiger_customview` (`cvid`, `viewname`, `setdefault`, `setmetrics`,
 (63, 'Thông tin nhân viên', 0, 0, 'Employee', 1, 1),
 (64, 'Marketing Group', 1, 0, 'JD', 1, 1),
 (65, 'Support Group', 0, 0, 'JD', 1, 1),
-(66, 'Team Selling', 0, 0, 'JD', 1, 1);
+(66, 'Team Selling', 0, 0, 'JD', 1, 1),
+(75, 'All', 1, 0, 'CustomerEnterprise', 0, 1),
+(79, 'All', 1, 0, 'CustomerStandalone', 0, 1),
+(80, 'All', 1, 0, 'ProblemCategory', 0, 1),
+(81, 'All', 1, 0, 'SupportProtocol', 0, 1),
+(86, 'All', 1, 0, 'PhuongTienTruyenThong', 0, 1),
+(87, 'All', 1, 0, 'HinhThucTruyenThong', 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_customview_seq`
+-- Table structure for table `vtiger_customview_seq`
 --
 
 CREATE TABLE `vtiger_customview_seq` (
@@ -2708,16 +3216,16 @@ CREATE TABLE `vtiger_customview_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_customview_seq`
+-- Dumping data for table `vtiger_customview_seq`
 --
 
 INSERT INTO `vtiger_customview_seq` (`id`) VALUES
-(66);
+(87);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cv2group`
+-- Table structure for table `vtiger_cv2group`
 --
 
 CREATE TABLE `vtiger_cv2group` (
@@ -2728,7 +3236,7 @@ CREATE TABLE `vtiger_cv2group` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cv2role`
+-- Table structure for table `vtiger_cv2role`
 --
 
 CREATE TABLE `vtiger_cv2role` (
@@ -2739,7 +3247,7 @@ CREATE TABLE `vtiger_cv2role` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cv2rs`
+-- Table structure for table `vtiger_cv2rs`
 --
 
 CREATE TABLE `vtiger_cv2rs` (
@@ -2750,7 +3258,7 @@ CREATE TABLE `vtiger_cv2rs` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cv2users`
+-- Table structure for table `vtiger_cv2users`
 --
 
 CREATE TABLE `vtiger_cv2users` (
@@ -2761,7 +3269,7 @@ CREATE TABLE `vtiger_cv2users` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cvadvfilter`
+-- Table structure for table `vtiger_cvadvfilter`
 --
 
 CREATE TABLE `vtiger_cvadvfilter` (
@@ -2775,7 +3283,7 @@ CREATE TABLE `vtiger_cvadvfilter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_cvadvfilter`
+-- Dumping data for table `vtiger_cvadvfilter`
 --
 
 INSERT INTO `vtiger_cvadvfilter` (`cvid`, `columnindex`, `columnname`, `comparator`, `value`, `groupid`, `column_condition`) VALUES
@@ -2799,7 +3307,7 @@ INSERT INTO `vtiger_cvadvfilter` (`cvid`, `columnindex`, `columnname`, `comparat
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cvadvfilter_grouping`
+-- Table structure for table `vtiger_cvadvfilter_grouping`
 --
 
 CREATE TABLE `vtiger_cvadvfilter_grouping` (
@@ -2810,7 +3318,7 @@ CREATE TABLE `vtiger_cvadvfilter_grouping` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_cvadvfilter_grouping`
+-- Dumping data for table `vtiger_cvadvfilter_grouping`
 --
 
 INSERT INTO `vtiger_cvadvfilter_grouping` (`groupid`, `cvid`, `group_condition`, `condition_expression`) VALUES
@@ -2833,7 +3341,7 @@ INSERT INTO `vtiger_cvadvfilter_grouping` (`groupid`, `cvid`, `group_condition`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cvcolumnlist`
+-- Table structure for table `vtiger_cvcolumnlist`
 --
 
 CREATE TABLE `vtiger_cvcolumnlist` (
@@ -2843,7 +3351,7 @@ CREATE TABLE `vtiger_cvcolumnlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_cvcolumnlist`
+-- Dumping data for table `vtiger_cvcolumnlist`
 --
 
 INSERT INTO `vtiger_cvcolumnlist` (`cvid`, `columnindex`, `columnname`) VALUES
@@ -2988,8 +3496,8 @@ INSERT INTO `vtiger_cvcolumnlist` (`cvid`, `columnindex`, `columnname`) VALUES
 (23, 3, 'vtiger_pricebook:currency_id:currency_id:PriceBooks_Currency:V'),
 (24, 0, 'vtiger_products:productcode:productcode:Products_Part_Number:V'),
 (24, 1, 'vtiger_products:productname:productname:Products_Product_Name:V'),
-(24, 2, 'vtiger_products:productcategory:productcategory:Products_Product_Category:V'),
-(24, 3, 'vtiger_products:qty_per_unit:qty_per_unit:Products_Qty/Unit:N'),
+(24, 2, 'vtiger_products:qty_per_unit:qty_per_unit:Products_Qty/Unit:N'),
+(24, 3, 'vtiger_products:productcategory:productcategory:Products_Product_Category:V'),
 (24, 4, 'vtiger_products:unit_price:unit_price:Products_Unit_Price:N'),
 (24, 5, 'vtiger_crmentity:description:description:Products_Description:V'),
 (25, 0, 'vtiger_purchaseorder:purchaseorder_no:purchaseorder_no:PurchaseOrder_PurchaseOrder_No:V'),
@@ -3106,15 +3614,13 @@ INSERT INTO `vtiger_cvcolumnlist` (`cvid`, `columnindex`, `columnname`) VALUES
 (48, 8, 'vtiger_projecttask:enddate:enddate:ProjectTask_End_Date:D'),
 (48, 9, 'vtiger_crmentity:smownerid:assigned_user_id:ProjectTask_Assigned_To:V'),
 (49, 0, 'vtiger_project:projectname:projectname:Project_Project_Name:V'),
-(49, 1, 'vtiger_project:linktoaccountscontacts:linktoaccountscontacts:Project_Related_to:V'),
-(49, 2, 'vtiger_project:startdate:startdate:Project_Start_Date:D'),
-(49, 3, 'vtiger_project:targetenddate:targetenddate:Project_Target_End_Date:D'),
-(49, 4, 'vtiger_project:actualenddate:actualenddate:Project_Actual_End_Date:D'),
-(49, 5, 'vtiger_project:targetbudget:targetbudget:Project_Target_Budget:V'),
-(49, 6, 'vtiger_project:progress:progress:Project_Progress:V'),
-(49, 7, 'vtiger_project:projectstatus:projectstatus:Project_Status:V'),
-(49, 8, 'vtiger_crmentity:smownerid:assigned_user_id:Project_Assigned_To:V'),
-(49, 19, 'vtiger_project:contactid:contactid:Project_Contact_Name:V'),
+(49, 1, 'vtiger_project:startdate:startdate:Project_Start_Date:D'),
+(49, 2, 'vtiger_project:targetenddate:targetenddate:Project_Target_End_Date:D'),
+(49, 3, 'vtiger_project:actualenddate:actualenddate:Project_Actual_End_Date:D'),
+(49, 4, 'vtiger_project:targetbudget:targetbudget:Project_Target_Budget:V'),
+(49, 5, 'vtiger_project:progress:progress:Project_Progress:V'),
+(49, 6, 'vtiger_project:projectstatus:projectstatus:Project_Status:V'),
+(49, 7, 'vtiger_crmentity:smownerid:assigned_user_id:Project_Assigned_To:V'),
 (50, 0, 'vtiger_products:productcode:productcode:Products_Part_Number:V'),
 (50, 1, 'vtiger_products:productname:productname:Products_Product_Name:V'),
 (50, 2, 'vtiger_products:productcategory:productcategory:Products_Product_Category:V'),
@@ -3192,12 +3698,29 @@ INSERT INTO `vtiger_cvcolumnlist` (`cvid`, `columnindex`, `columnname`) VALUES
 (66, 1, 'vtiger_hrm_jd:description:description:JD_Description:V'),
 (66, 2, 'vtiger_hrm_jd:position:position:JD_Position:V'),
 (66, 3, 'vtiger_hrm_jd:jd_category:jd_category:JD_Category:V'),
-(66, 4, 'vtiger_hrm_jd:jd_status:jd_status:JD_Status:V');
+(66, 4, 'vtiger_hrm_jd:jd_status:jd_status:JD_Status:V'),
+(75, 0, 'vtiger_customerenterprise:makhachhang:makhachhang:CustomerEnterprise_Ma_Khach_Hang:V'),
+(75, 1, 'vtiger_customerenterprisecf:cf_1105:cf_1105:CustomerEnterprise_Tên_khách_hàng:V'),
+(75, 2, 'vtiger_customerenterprisecf:cf_1143:cf_1143:CustomerEnterprise_Chức_danh:V'),
+(75, 3, 'vtiger_customerenterprisecf:cf_1149:cf_1149:CustomerEnterprise_ĐT_Di_động:V'),
+(75, 4, 'vtiger_customerenterprisecf:cf_1151:cf_1151:CustomerEnterprise_ĐT_Cơ_quan:V'),
+(75, 5, 'vtiger_customerenterprisecf:cf_1157:cf_1157:CustomerEnterprise_Email_Cơ_quan:E'),
+(79, 0, 'vtiger_customerstandalone:makhachhang:makhachhang:CustomerStandalone_Ma_Khach_Hang:V'),
+(79, 1, 'vtiger_customerstandalonecf:cf_1199:cf_1199:CustomerStandalone_Ten_khach_hang:V'),
+(79, 2, 'vtiger_customerstandalonecf:cf_1197:cf_1197:CustomerStandalone_So_dien_thoai:V'),
+(80, 0, 'vtiger_problemcategory:loaivande:loaivande:ProblemCategory_Loai_van_de:V'),
+(80, 1, 'vtiger_problemcategorycf:cf_1207:cf_1207:ProblemCategory_Mo_ta_chi_tiet:V'),
+(81, 0, 'vtiger_supportprotocol:hinhthuchotro:hinhthuchotro:SupportProtocol_Hinh_thuc_ho_tro:V'),
+(81, 1, 'vtiger_supportprotocolcf:cf_1215:cf_1215:SupportProtocol_Mo_ta_chi_tiet:V'),
+(86, 0, 'vtiger_phuongtientruyenthong:pttt:pttt:PhuongTienTruyenThong_Phuong_tien_truyen_thong:V'),
+(86, 1, 'vtiger_phuongtientruyenthong:motachitiet:motachitiet:PhuongTienTruyenThong_Mo_ta_chi_tiet:V'),
+(87, 0, 'vtiger_hinhthuctruyenthong:httt:httt:HinhThucTruyenThong_Hinh_thuc_truyen_thong:V'),
+(87, 1, 'vtiger_hinhthuctruyenthong:motachitiet:motachitiet:HinhThucTruyenThong_Mo_ta_chi_tiet:V');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_cvstdfilter`
+-- Table structure for table `vtiger_cvstdfilter`
 --
 
 CREATE TABLE `vtiger_cvstdfilter` (
@@ -3209,7 +3732,7 @@ CREATE TABLE `vtiger_cvstdfilter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_cvstdfilter`
+-- Dumping data for table `vtiger_cvstdfilter`
 --
 
 INSERT INTO `vtiger_cvstdfilter` (`cvid`, `columnname`, `stdfilter`, `startdate`, `enddate`) VALUES
@@ -3220,7 +3743,7 @@ INSERT INTO `vtiger_cvstdfilter` (`cvid`, `columnname`, `stdfilter`, `startdate`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_dashboard_tabs`
+-- Table structure for table `vtiger_dashboard_tabs`
 --
 
 CREATE TABLE `vtiger_dashboard_tabs` (
@@ -3234,7 +3757,7 @@ CREATE TABLE `vtiger_dashboard_tabs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_dashboard_tabs`
+-- Dumping data for table `vtiger_dashboard_tabs`
 --
 
 INSERT INTO `vtiger_dashboard_tabs` (`id`, `tabname`, `isdefault`, `sequence`, `appname`, `modulename`, `userid`) VALUES
@@ -3244,7 +3767,7 @@ INSERT INTO `vtiger_dashboard_tabs` (`id`, `tabname`, `isdefault`, `sequence`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_grp2grp`
+-- Table structure for table `vtiger_datashare_grp2grp`
 --
 
 CREATE TABLE `vtiger_datashare_grp2grp` (
@@ -3257,7 +3780,7 @@ CREATE TABLE `vtiger_datashare_grp2grp` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_grp2role`
+-- Table structure for table `vtiger_datashare_grp2role`
 --
 
 CREATE TABLE `vtiger_datashare_grp2role` (
@@ -3270,7 +3793,7 @@ CREATE TABLE `vtiger_datashare_grp2role` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_grp2rs`
+-- Table structure for table `vtiger_datashare_grp2rs`
 --
 
 CREATE TABLE `vtiger_datashare_grp2rs` (
@@ -3283,7 +3806,7 @@ CREATE TABLE `vtiger_datashare_grp2rs` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_module_rel`
+-- Table structure for table `vtiger_datashare_module_rel`
 --
 
 CREATE TABLE `vtiger_datashare_module_rel` (
@@ -3295,7 +3818,7 @@ CREATE TABLE `vtiger_datashare_module_rel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_relatedmodules`
+-- Table structure for table `vtiger_datashare_relatedmodules`
 --
 
 CREATE TABLE `vtiger_datashare_relatedmodules` (
@@ -3305,7 +3828,7 @@ CREATE TABLE `vtiger_datashare_relatedmodules` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_datashare_relatedmodules`
+-- Dumping data for table `vtiger_datashare_relatedmodules`
 --
 
 INSERT INTO `vtiger_datashare_relatedmodules` (`datashare_relatedmodule_id`, `tabid`, `relatedto_tabid`) VALUES
@@ -3322,7 +3845,7 @@ INSERT INTO `vtiger_datashare_relatedmodules` (`datashare_relatedmodule_id`, `ta
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_relatedmodules_seq`
+-- Table structure for table `vtiger_datashare_relatedmodules_seq`
 --
 
 CREATE TABLE `vtiger_datashare_relatedmodules_seq` (
@@ -3330,7 +3853,7 @@ CREATE TABLE `vtiger_datashare_relatedmodules_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_datashare_relatedmodules_seq`
+-- Dumping data for table `vtiger_datashare_relatedmodules_seq`
 --
 
 INSERT INTO `vtiger_datashare_relatedmodules_seq` (`id`) VALUES
@@ -3339,7 +3862,7 @@ INSERT INTO `vtiger_datashare_relatedmodules_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_relatedmodule_permission`
+-- Table structure for table `vtiger_datashare_relatedmodule_permission`
 --
 
 CREATE TABLE `vtiger_datashare_relatedmodule_permission` (
@@ -3351,7 +3874,7 @@ CREATE TABLE `vtiger_datashare_relatedmodule_permission` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_role2group`
+-- Table structure for table `vtiger_datashare_role2group`
 --
 
 CREATE TABLE `vtiger_datashare_role2group` (
@@ -3364,7 +3887,7 @@ CREATE TABLE `vtiger_datashare_role2group` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_role2role`
+-- Table structure for table `vtiger_datashare_role2role`
 --
 
 CREATE TABLE `vtiger_datashare_role2role` (
@@ -3377,7 +3900,7 @@ CREATE TABLE `vtiger_datashare_role2role` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_role2rs`
+-- Table structure for table `vtiger_datashare_role2rs`
 --
 
 CREATE TABLE `vtiger_datashare_role2rs` (
@@ -3390,7 +3913,7 @@ CREATE TABLE `vtiger_datashare_role2rs` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_rs2grp`
+-- Table structure for table `vtiger_datashare_rs2grp`
 --
 
 CREATE TABLE `vtiger_datashare_rs2grp` (
@@ -3403,7 +3926,7 @@ CREATE TABLE `vtiger_datashare_rs2grp` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_rs2role`
+-- Table structure for table `vtiger_datashare_rs2role`
 --
 
 CREATE TABLE `vtiger_datashare_rs2role` (
@@ -3416,7 +3939,7 @@ CREATE TABLE `vtiger_datashare_rs2role` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_datashare_rs2rs`
+-- Table structure for table `vtiger_datashare_rs2rs`
 --
 
 CREATE TABLE `vtiger_datashare_rs2rs` (
@@ -3429,7 +3952,7 @@ CREATE TABLE `vtiger_datashare_rs2rs` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_date_format`
+-- Table structure for table `vtiger_date_format`
 --
 
 CREATE TABLE `vtiger_date_format` (
@@ -3440,7 +3963,7 @@ CREATE TABLE `vtiger_date_format` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_date_format`
+-- Dumping data for table `vtiger_date_format`
 --
 
 INSERT INTO `vtiger_date_format` (`date_formatid`, `date_format`, `sortorderid`, `presence`) VALUES
@@ -3451,7 +3974,7 @@ INSERT INTO `vtiger_date_format` (`date_formatid`, `date_format`, `sortorderid`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_date_format_seq`
+-- Table structure for table `vtiger_date_format_seq`
 --
 
 CREATE TABLE `vtiger_date_format_seq` (
@@ -3459,7 +3982,7 @@ CREATE TABLE `vtiger_date_format_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_date_format_seq`
+-- Dumping data for table `vtiger_date_format_seq`
 --
 
 INSERT INTO `vtiger_date_format_seq` (`id`) VALUES
@@ -3468,7 +3991,7 @@ INSERT INTO `vtiger_date_format_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_dayoftheweek`
+-- Table structure for table `vtiger_dayoftheweek`
 --
 
 CREATE TABLE `vtiger_dayoftheweek` (
@@ -3479,7 +4002,7 @@ CREATE TABLE `vtiger_dayoftheweek` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_dayoftheweek`
+-- Dumping data for table `vtiger_dayoftheweek`
 --
 
 INSERT INTO `vtiger_dayoftheweek` (`dayoftheweekid`, `dayoftheweek`, `sortorderid`, `presence`) VALUES
@@ -3494,7 +4017,7 @@ INSERT INTO `vtiger_dayoftheweek` (`dayoftheweekid`, `dayoftheweek`, `sortorderi
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_dayoftheweek_seq`
+-- Table structure for table `vtiger_dayoftheweek_seq`
 --
 
 CREATE TABLE `vtiger_dayoftheweek_seq` (
@@ -3502,7 +4025,7 @@ CREATE TABLE `vtiger_dayoftheweek_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_dayoftheweek_seq`
+-- Dumping data for table `vtiger_dayoftheweek_seq`
 --
 
 INSERT INTO `vtiger_dayoftheweek_seq` (`id`) VALUES
@@ -3511,7 +4034,7 @@ INSERT INTO `vtiger_dayoftheweek_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_defaultactivitytype`
+-- Table structure for table `vtiger_defaultactivitytype`
 --
 
 CREATE TABLE `vtiger_defaultactivitytype` (
@@ -3523,7 +4046,7 @@ CREATE TABLE `vtiger_defaultactivitytype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_defaultactivitytype`
+-- Dumping data for table `vtiger_defaultactivitytype`
 --
 
 INSERT INTO `vtiger_defaultactivitytype` (`defaultactivitytypeid`, `defaultactivitytype`, `presence`, `picklist_valueid`, `sortorderid`) VALUES
@@ -3533,7 +4056,7 @@ INSERT INTO `vtiger_defaultactivitytype` (`defaultactivitytypeid`, `defaultactiv
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_defaultactivitytype_seq`
+-- Table structure for table `vtiger_defaultactivitytype_seq`
 --
 
 CREATE TABLE `vtiger_defaultactivitytype_seq` (
@@ -3541,7 +4064,7 @@ CREATE TABLE `vtiger_defaultactivitytype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_defaultactivitytype_seq`
+-- Dumping data for table `vtiger_defaultactivitytype_seq`
 --
 
 INSERT INTO `vtiger_defaultactivitytype_seq` (`id`) VALUES
@@ -3550,7 +4073,7 @@ INSERT INTO `vtiger_defaultactivitytype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_defaultcalendarview`
+-- Table structure for table `vtiger_defaultcalendarview`
 --
 
 CREATE TABLE `vtiger_defaultcalendarview` (
@@ -3561,7 +4084,7 @@ CREATE TABLE `vtiger_defaultcalendarview` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_defaultcalendarview`
+-- Dumping data for table `vtiger_defaultcalendarview`
 --
 
 INSERT INTO `vtiger_defaultcalendarview` (`defaultcalendarviewid`, `defaultcalendarview`, `sortorderid`, `presence`) VALUES
@@ -3572,7 +4095,7 @@ INSERT INTO `vtiger_defaultcalendarview` (`defaultcalendarviewid`, `defaultcalen
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_defaultcalendarview_seq`
+-- Table structure for table `vtiger_defaultcalendarview_seq`
 --
 
 CREATE TABLE `vtiger_defaultcalendarview_seq` (
@@ -3580,7 +4103,7 @@ CREATE TABLE `vtiger_defaultcalendarview_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_defaultcalendarview_seq`
+-- Dumping data for table `vtiger_defaultcalendarview_seq`
 --
 
 INSERT INTO `vtiger_defaultcalendarview_seq` (`id`) VALUES
@@ -3589,7 +4112,7 @@ INSERT INTO `vtiger_defaultcalendarview_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_defaultcv`
+-- Table structure for table `vtiger_defaultcv`
 --
 
 CREATE TABLE `vtiger_defaultcv` (
@@ -3601,7 +4124,7 @@ CREATE TABLE `vtiger_defaultcv` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_defaulteventstatus`
+-- Table structure for table `vtiger_defaulteventstatus`
 --
 
 CREATE TABLE `vtiger_defaulteventstatus` (
@@ -3613,7 +4136,7 @@ CREATE TABLE `vtiger_defaulteventstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_defaulteventstatus`
+-- Dumping data for table `vtiger_defaulteventstatus`
 --
 
 INSERT INTO `vtiger_defaulteventstatus` (`defaulteventstatusid`, `defaulteventstatus`, `presence`, `picklist_valueid`, `sortorderid`) VALUES
@@ -3624,7 +4147,7 @@ INSERT INTO `vtiger_defaulteventstatus` (`defaulteventstatusid`, `defaulteventst
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_defaulteventstatus_seq`
+-- Table structure for table `vtiger_defaulteventstatus_seq`
 --
 
 CREATE TABLE `vtiger_defaulteventstatus_seq` (
@@ -3632,7 +4155,7 @@ CREATE TABLE `vtiger_defaulteventstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_defaulteventstatus_seq`
+-- Dumping data for table `vtiger_defaulteventstatus_seq`
 --
 
 INSERT INTO `vtiger_defaulteventstatus_seq` (`id`) VALUES
@@ -3641,7 +4164,7 @@ INSERT INTO `vtiger_defaulteventstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_default_record_view`
+-- Table structure for table `vtiger_default_record_view`
 --
 
 CREATE TABLE `vtiger_default_record_view` (
@@ -3652,7 +4175,7 @@ CREATE TABLE `vtiger_default_record_view` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_default_record_view`
+-- Dumping data for table `vtiger_default_record_view`
 --
 
 INSERT INTO `vtiger_default_record_view` (`default_record_viewid`, `default_record_view`, `sortorderid`, `presence`) VALUES
@@ -3662,7 +4185,7 @@ INSERT INTO `vtiger_default_record_view` (`default_record_viewid`, `default_reco
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_default_record_view_seq`
+-- Table structure for table `vtiger_default_record_view_seq`
 --
 
 CREATE TABLE `vtiger_default_record_view_seq` (
@@ -3670,7 +4193,7 @@ CREATE TABLE `vtiger_default_record_view_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_default_record_view_seq`
+-- Dumping data for table `vtiger_default_record_view_seq`
 --
 
 INSERT INTO `vtiger_default_record_view_seq` (`id`) VALUES
@@ -3679,7 +4202,7 @@ INSERT INTO `vtiger_default_record_view_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_def_org_field`
+-- Table structure for table `vtiger_def_org_field`
 --
 
 CREATE TABLE `vtiger_def_org_field` (
@@ -3690,7 +4213,7 @@ CREATE TABLE `vtiger_def_org_field` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_def_org_field`
+-- Dumping data for table `vtiger_def_org_field`
 --
 
 INSERT INTO `vtiger_def_org_field` (`tabid`, `fieldid`, `visible`, `readonly`) VALUES
@@ -4665,12 +5188,196 @@ INSERT INTO `vtiger_def_org_field` (`tabid`, `fieldid`, `visible`, `readonly`) V
 (61, 1021, 0, 0),
 (61, 1022, 0, 0),
 (61, 1023, 0, 0),
-(61, 1024, 0, 0);
+(61, 1024, 0, 0),
+(62, 1025, 0, 0),
+(62, 1026, 0, 0),
+(62, 1027, 0, 0),
+(62, 1028, 0, 0),
+(62, 1029, 0, 0),
+(62, 1030, 0, 0),
+(62, 1031, 0, 0),
+(62, 1032, 0, 0),
+(62, 1033, 0, 0),
+(62, 1034, 0, 0),
+(62, 1035, 0, 0),
+(62, 1036, 0, 0),
+(62, 1037, 0, 0),
+(62, 1038, 0, 0),
+(62, 1039, 0, 0),
+(62, 1040, 0, 0),
+(62, 1041, 0, 0),
+(62, 1042, 0, 0),
+(62, 1043, 0, 0),
+(62, 1044, 0, 0),
+(62, 1045, 0, 0),
+(62, 1046, 0, 0),
+(62, 1047, 0, 0),
+(62, 1048, 0, 0),
+(62, 1049, 0, 0),
+(62, 1050, 0, 0),
+(62, 1051, 0, 0),
+(62, 1052, 0, 0),
+(62, 1053, 0, 0),
+(62, 1054, 0, 0),
+(63, 1055, 0, 0),
+(63, 1056, 0, 0),
+(63, 1057, 0, 0),
+(63, 1058, 0, 0),
+(62, 1059, 0, 0),
+(62, 1060, 0, 0),
+(62, 1061, 0, 0),
+(62, 1062, 0, 0),
+(62, 1063, 0, 0),
+(62, 1064, 0, 0),
+(62, 1065, 0, 0),
+(62, 1066, 0, 0),
+(62, 1067, 0, 0),
+(62, 1068, 0, 0),
+(62, 1071, 0, 0),
+(62, 1072, 0, 0),
+(62, 1073, 0, 0),
+(62, 1074, 0, 0),
+(62, 1075, 0, 0),
+(62, 1076, 0, 0),
+(62, 1078, 0, 0),
+(62, 1082, 0, 0),
+(62, 1084, 0, 0),
+(63, 1085, 0, 0),
+(63, 1086, 0, 0),
+(63, 1087, 0, 0),
+(63, 1088, 0, 0),
+(63, 1089, 0, 0),
+(63, 1090, 0, 0),
+(63, 1091, 0, 0),
+(63, 1092, 0, 0),
+(63, 1093, 0, 0),
+(63, 1094, 0, 0),
+(63, 1095, 0, 0),
+(63, 1096, 0, 0),
+(63, 1097, 0, 0),
+(63, 1098, 0, 0),
+(63, 1099, 0, 0),
+(63, 1100, 0, 0),
+(63, 1101, 0, 0),
+(63, 1102, 0, 0),
+(63, 1104, 0, 0),
+(63, 1106, 0, 0),
+(63, 1108, 0, 0),
+(63, 1110, 0, 0),
+(63, 1112, 0, 0),
+(63, 1114, 0, 0),
+(63, 1116, 0, 0),
+(63, 1120, 0, 0),
+(63, 1122, 0, 0),
+(63, 1124, 0, 0),
+(63, 1136, 0, 0),
+(63, 1138, 0, 0),
+(63, 1142, 0, 0),
+(63, 1144, 0, 0),
+(63, 1146, 0, 0),
+(63, 1148, 0, 0),
+(63, 1150, 0, 0),
+(63, 1152, 0, 0),
+(63, 1154, 0, 0),
+(63, 1156, 0, 0),
+(63, 1158, 0, 0),
+(63, 1160, 0, 0),
+(63, 1162, 0, 0),
+(64, 1163, 0, 0),
+(64, 1164, 0, 0),
+(64, 1165, 0, 0),
+(64, 1166, 0, 0),
+(64, 1167, 0, 0),
+(64, 1168, 0, 0),
+(64, 1169, 0, 0),
+(64, 1170, 0, 0),
+(64, 1171, 0, 0),
+(64, 1172, 0, 0),
+(64, 1173, 0, 0),
+(64, 1174, 0, 0),
+(64, 1175, 0, 0),
+(64, 1176, 0, 0),
+(64, 1177, 0, 0),
+(64, 1178, 0, 0),
+(64, 1179, 0, 0),
+(64, 1180, 0, 0),
+(64, 1182, 0, 0),
+(64, 1184, 0, 0),
+(64, 1186, 0, 0),
+(64, 1187, 0, 0),
+(64, 1188, 0, 0),
+(64, 1189, 0, 0),
+(64, 1190, 0, 0),
+(64, 1191, 0, 0),
+(64, 1192, 0, 0),
+(64, 1194, 0, 0),
+(64, 1196, 0, 0),
+(64, 1198, 0, 0),
+(64, 1200, 0, 0),
+(65, 1201, 0, 0),
+(65, 1202, 0, 0),
+(65, 1203, 0, 0),
+(65, 1204, 0, 0),
+(65, 1205, 0, 0),
+(65, 1206, 0, 0),
+(65, 1208, 0, 0),
+(66, 1209, 0, 0),
+(66, 1210, 0, 0),
+(66, 1211, 0, 0),
+(66, 1212, 0, 0),
+(66, 1213, 0, 0),
+(66, 1214, 0, 0),
+(66, 1216, 0, 0),
+(63, 1218, 0, 0),
+(63, 1220, 0, 0),
+(63, 1222, 0, 0),
+(63, 1226, 0, 0),
+(67, 1227, 0, 0),
+(67, 1228, 0, 0),
+(67, 1229, 0, 0),
+(67, 1230, 0, 0),
+(67, 1231, 0, 0),
+(67, 1232, 0, 0),
+(67, 1233, 0, 0),
+(67, 1234, 0, 0),
+(67, 1235, 0, 0),
+(67, 1236, 0, 0),
+(67, 1237, 0, 0),
+(67, 1238, 0, 0),
+(67, 1239, 0, 0),
+(67, 1240, 0, 0),
+(67, 1241, 0, 0),
+(67, 1242, 0, 0),
+(67, 1243, 0, 0),
+(68, 1244, 0, 0),
+(68, 1245, 0, 0),
+(68, 1246, 0, 0),
+(68, 1247, 0, 0),
+(68, 1248, 0, 0),
+(68, 1249, 0, 0),
+(68, 1250, 0, 0),
+(26, 1251, 0, 0),
+(70, 1255, 0, 0),
+(70, 1256, 0, 0),
+(70, 1257, 0, 0),
+(70, 1258, 0, 0),
+(70, 1259, 0, 0),
+(70, 1260, 0, 0),
+(70, 1261, 0, 0),
+(26, 1262, 0, 0),
+(71, 1263, 0, 0),
+(71, 1264, 0, 0),
+(71, 1265, 0, 0),
+(71, 1266, 0, 0),
+(71, 1267, 0, 0),
+(71, 1268, 0, 0),
+(71, 1269, 0, 0),
+(26, 1270, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_def_org_share`
+-- Table structure for table `vtiger_def_org_share`
 --
 
 CREATE TABLE `vtiger_def_org_share` (
@@ -4681,7 +5388,7 @@ CREATE TABLE `vtiger_def_org_share` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_def_org_share`
+-- Dumping data for table `vtiger_def_org_share`
 --
 
 INSERT INTO `vtiger_def_org_share` (`ruleid`, `tabid`, `permission`, `editstatus`) VALUES
@@ -4721,12 +5428,21 @@ INSERT INTO `vtiger_def_org_share` (`ruleid`, `tabid`, `permission`, `editstatus
 (34, 58, 2, 0),
 (35, 59, 2, 0),
 (36, 60, 2, 0),
-(37, 61, 2, 0);
+(37, 61, 2, 0),
+(38, 62, 2, 0),
+(39, 63, 2, 0),
+(40, 64, 2, 0),
+(41, 65, 2, 0),
+(42, 66, 2, 0),
+(43, 67, 2, 0),
+(44, 68, 2, 0),
+(45, 70, 2, 0),
+(46, 71, 2, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_def_org_share_seq`
+-- Table structure for table `vtiger_def_org_share_seq`
 --
 
 CREATE TABLE `vtiger_def_org_share_seq` (
@@ -4734,16 +5450,16 @@ CREATE TABLE `vtiger_def_org_share_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_def_org_share_seq`
+-- Dumping data for table `vtiger_def_org_share_seq`
 --
 
 INSERT INTO `vtiger_def_org_share_seq` (`id`) VALUES
-(37);
+(46);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_durationhrs`
+-- Table structure for table `vtiger_durationhrs`
 --
 
 CREATE TABLE `vtiger_durationhrs` (
@@ -4756,7 +5472,7 @@ CREATE TABLE `vtiger_durationhrs` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_durationmins`
+-- Table structure for table `vtiger_durationmins`
 --
 
 CREATE TABLE `vtiger_durationmins` (
@@ -4769,7 +5485,7 @@ CREATE TABLE `vtiger_durationmins` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_duration_minutes`
+-- Table structure for table `vtiger_duration_minutes`
 --
 
 CREATE TABLE `vtiger_duration_minutes` (
@@ -4781,7 +5497,7 @@ CREATE TABLE `vtiger_duration_minutes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_duration_minutes`
+-- Dumping data for table `vtiger_duration_minutes`
 --
 
 INSERT INTO `vtiger_duration_minutes` (`minutesid`, `duration_minutes`, `sortorderid`, `presence`, `color`) VALUES
@@ -4793,7 +5509,7 @@ INSERT INTO `vtiger_duration_minutes` (`minutesid`, `duration_minutes`, `sortord
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_duration_minutes_seq`
+-- Table structure for table `vtiger_duration_minutes_seq`
 --
 
 CREATE TABLE `vtiger_duration_minutes_seq` (
@@ -4801,7 +5517,7 @@ CREATE TABLE `vtiger_duration_minutes_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_duration_minutes_seq`
+-- Dumping data for table `vtiger_duration_minutes_seq`
 --
 
 INSERT INTO `vtiger_duration_minutes_seq` (`id`) VALUES
@@ -4810,7 +5526,7 @@ INSERT INTO `vtiger_duration_minutes_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_emaildetails`
+-- Table structure for table `vtiger_emaildetails`
 --
 
 CREATE TABLE `vtiger_emaildetails` (
@@ -4827,7 +5543,7 @@ CREATE TABLE `vtiger_emaildetails` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_emailslookup`
+-- Table structure for table `vtiger_emailslookup`
 --
 
 CREATE TABLE `vtiger_emailslookup` (
@@ -4837,10 +5553,17 @@ CREATE TABLE `vtiger_emailslookup` (
   `fieldid` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_emailslookup`
+--
+
+INSERT INTO `vtiger_emailslookup` (`crmid`, `setype`, `value`, `fieldid`) VALUES
+(29, 'Employee', 'ThienLang99999@gmail.com', 999);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_emails_recipientprefs`
+-- Table structure for table `vtiger_emails_recipientprefs`
 --
 
 CREATE TABLE `vtiger_emails_recipientprefs` (
@@ -4853,7 +5576,7 @@ CREATE TABLE `vtiger_emails_recipientprefs` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_emailtemplates`
+-- Table structure for table `vtiger_emailtemplates`
 --
 
 CREATE TABLE `vtiger_emailtemplates` (
@@ -4870,7 +5593,7 @@ CREATE TABLE `vtiger_emailtemplates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_emailtemplates`
+-- Dumping data for table `vtiger_emailtemplates`
 --
 
 INSERT INTO `vtiger_emailtemplates` (`foldername`, `templatename`, `templatepath`, `subject`, `description`, `body`, `deleted`, `templateid`, `systemtemplate`, `module`) VALUES
@@ -4893,7 +5616,7 @@ INSERT INTO `vtiger_emailtemplates` (`foldername`, `templatename`, `templatepath
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_emailtemplates_seq`
+-- Table structure for table `vtiger_emailtemplates_seq`
 --
 
 CREATE TABLE `vtiger_emailtemplates_seq` (
@@ -4901,7 +5624,7 @@ CREATE TABLE `vtiger_emailtemplates_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_emailtemplates_seq`
+-- Dumping data for table `vtiger_emailtemplates_seq`
 --
 
 INSERT INTO `vtiger_emailtemplates_seq` (`id`) VALUES
@@ -4910,7 +5633,7 @@ INSERT INTO `vtiger_emailtemplates_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_email_access`
+-- Table structure for table `vtiger_email_access`
 --
 
 CREATE TABLE `vtiger_email_access` (
@@ -4923,7 +5646,7 @@ CREATE TABLE `vtiger_email_access` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_email_track`
+-- Table structure for table `vtiger_email_track`
 --
 
 CREATE TABLE `vtiger_email_track` (
@@ -4936,7 +5659,7 @@ CREATE TABLE `vtiger_email_track` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_employ_gender`
+-- Table structure for table `vtiger_employ_gender`
 --
 
 CREATE TABLE `vtiger_employ_gender` (
@@ -4949,7 +5672,7 @@ CREATE TABLE `vtiger_employ_gender` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_employ_gender`
+-- Dumping data for table `vtiger_employ_gender`
 --
 
 INSERT INTO `vtiger_employ_gender` (`employ_genderid`, `employ_gender`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -4962,7 +5685,7 @@ INSERT INTO `vtiger_employ_gender` (`employ_genderid`, `employ_gender`, `presenc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_employ_gender_seq`
+-- Table structure for table `vtiger_employ_gender_seq`
 --
 
 CREATE TABLE `vtiger_employ_gender_seq` (
@@ -4970,7 +5693,7 @@ CREATE TABLE `vtiger_employ_gender_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_employ_gender_seq`
+-- Dumping data for table `vtiger_employ_gender_seq`
 --
 
 INSERT INTO `vtiger_employ_gender_seq` (`id`) VALUES
@@ -4979,7 +5702,7 @@ INSERT INTO `vtiger_employ_gender_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_employ_marital_status`
+-- Table structure for table `vtiger_employ_marital_status`
 --
 
 CREATE TABLE `vtiger_employ_marital_status` (
@@ -4992,7 +5715,7 @@ CREATE TABLE `vtiger_employ_marital_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_employ_marital_status`
+-- Dumping data for table `vtiger_employ_marital_status`
 --
 
 INSERT INTO `vtiger_employ_marital_status` (`employ_marital_statusid`, `employ_marital_status`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -5002,7 +5725,7 @@ INSERT INTO `vtiger_employ_marital_status` (`employ_marital_statusid`, `employ_m
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_employ_marital_status_seq`
+-- Table structure for table `vtiger_employ_marital_status_seq`
 --
 
 CREATE TABLE `vtiger_employ_marital_status_seq` (
@@ -5010,7 +5733,7 @@ CREATE TABLE `vtiger_employ_marital_status_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_employ_marital_status_seq`
+-- Dumping data for table `vtiger_employ_marital_status_seq`
 --
 
 INSERT INTO `vtiger_employ_marital_status_seq` (`id`) VALUES
@@ -5019,7 +5742,7 @@ INSERT INTO `vtiger_employ_marital_status_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_entityname`
+-- Table structure for table `vtiger_entityname`
 --
 
 CREATE TABLE `vtiger_entityname` (
@@ -5032,7 +5755,7 @@ CREATE TABLE `vtiger_entityname` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_entityname`
+-- Dumping data for table `vtiger_entityname`
 --
 
 INSERT INTO `vtiger_entityname` (`tabid`, `modulename`, `tablename`, `fieldname`, `entityidfield`, `entityidcolumn`) VALUES
@@ -5072,12 +5795,18 @@ INSERT INTO `vtiger_entityname` (`tabid`, `modulename`, `tablename`, `fieldname`
 (57, 'QCM', 'vtiger_hrm_qcm', 'qcm_title', 'qcmid', 'qcmid'),
 (58, 'KPI', 'vtiger_hrm_kpi', 'kpi_name', 'id', 'id'),
 (59, 'Candidates', 'vtiger_hrm_candidate', 'lastname', 'id', 'id'),
-(61, 'Employee', 'vtiger_hrm_employee', 'lastname', 'employid', 'employid');
+(61, 'Employee', 'vtiger_hrm_employee', 'lastname', 'employid', 'employid'),
+(63, 'CustomerEnterprise', 'vtiger_customerenterprise', 'makhachhang', 'customerenterpriseid', 'customerenterpriseid'),
+(64, 'CustomerStandalone', 'vtiger_customerstandalone', 'makhachhang', 'customerstandaloneid', 'customerstandaloneid'),
+(65, 'ProblemCategory', 'vtiger_problemcategory', 'loaivande', 'problemcategoryid', 'problemcategoryid'),
+(66, 'SupportProtocol', 'vtiger_supportprotocol', 'hinhthuchotro', 'supportprotocolid', 'supportprotocolid'),
+(70, 'PhuongTienTruyenThong', 'vtiger_phuongtientruyenthong', 'pttt', 'phuongtientruyenthongid', 'phuongtientruyenthongid'),
+(71, 'HinhThucTruyenThong', 'vtiger_hinhthuctruyenthong', 'httt', 'hinhthuctruyenthongid', 'hinhthuctruyenthongid');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_eventhandlers`
+-- Table structure for table `vtiger_eventhandlers`
 --
 
 CREATE TABLE `vtiger_eventhandlers` (
@@ -5091,7 +5820,7 @@ CREATE TABLE `vtiger_eventhandlers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_eventhandlers`
+-- Dumping data for table `vtiger_eventhandlers`
 --
 
 INSERT INTO `vtiger_eventhandlers` (`eventhandler_id`, `event_name`, `handler_path`, `handler_class`, `cond`, `is_active`, `dependent_on`) VALUES
@@ -5129,7 +5858,7 @@ INSERT INTO `vtiger_eventhandlers` (`eventhandler_id`, `event_name`, `handler_pa
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_eventhandlers_seq`
+-- Table structure for table `vtiger_eventhandlers_seq`
 --
 
 CREATE TABLE `vtiger_eventhandlers_seq` (
@@ -5137,7 +5866,7 @@ CREATE TABLE `vtiger_eventhandlers_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_eventhandlers_seq`
+-- Dumping data for table `vtiger_eventhandlers_seq`
 --
 
 INSERT INTO `vtiger_eventhandlers_seq` (`id`) VALUES
@@ -5146,7 +5875,7 @@ INSERT INTO `vtiger_eventhandlers_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_eventhandler_module`
+-- Table structure for table `vtiger_eventhandler_module`
 --
 
 CREATE TABLE `vtiger_eventhandler_module` (
@@ -5156,7 +5885,7 @@ CREATE TABLE `vtiger_eventhandler_module` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_eventhandler_module`
+-- Dumping data for table `vtiger_eventhandler_module`
 --
 
 INSERT INTO `vtiger_eventhandler_module` (`eventhandler_module_id`, `module_name`, `handler_class`) VALUES
@@ -5173,7 +5902,7 @@ INSERT INTO `vtiger_eventhandler_module` (`eventhandler_module_id`, `module_name
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_eventhandler_module_seq`
+-- Table structure for table `vtiger_eventhandler_module_seq`
 --
 
 CREATE TABLE `vtiger_eventhandler_module_seq` (
@@ -5181,7 +5910,7 @@ CREATE TABLE `vtiger_eventhandler_module_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_eventhandler_module_seq`
+-- Dumping data for table `vtiger_eventhandler_module_seq`
 --
 
 INSERT INTO `vtiger_eventhandler_module_seq` (`id`) VALUES
@@ -5190,7 +5919,7 @@ INSERT INTO `vtiger_eventhandler_module_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_eventstatus`
+-- Table structure for table `vtiger_eventstatus`
 --
 
 CREATE TABLE `vtiger_eventstatus` (
@@ -5203,7 +5932,7 @@ CREATE TABLE `vtiger_eventstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_eventstatus`
+-- Dumping data for table `vtiger_eventstatus`
 --
 
 INSERT INTO `vtiger_eventstatus` (`eventstatusid`, `eventstatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -5214,7 +5943,7 @@ INSERT INTO `vtiger_eventstatus` (`eventstatusid`, `eventstatus`, `presence`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_eventstatus_seq`
+-- Table structure for table `vtiger_eventstatus_seq`
 --
 
 CREATE TABLE `vtiger_eventstatus_seq` (
@@ -5222,7 +5951,7 @@ CREATE TABLE `vtiger_eventstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_eventstatus_seq`
+-- Dumping data for table `vtiger_eventstatus_seq`
 --
 
 INSERT INTO `vtiger_eventstatus_seq` (`id`) VALUES
@@ -5231,7 +5960,7 @@ INSERT INTO `vtiger_eventstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_expectedresponse`
+-- Table structure for table `vtiger_expectedresponse`
 --
 
 CREATE TABLE `vtiger_expectedresponse` (
@@ -5244,7 +5973,7 @@ CREATE TABLE `vtiger_expectedresponse` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_expectedresponse`
+-- Dumping data for table `vtiger_expectedresponse`
 --
 
 INSERT INTO `vtiger_expectedresponse` (`expectedresponseid`, `expectedresponse`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -5256,7 +5985,7 @@ INSERT INTO `vtiger_expectedresponse` (`expectedresponseid`, `expectedresponse`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_expectedresponse_seq`
+-- Table structure for table `vtiger_expectedresponse_seq`
 --
 
 CREATE TABLE `vtiger_expectedresponse_seq` (
@@ -5264,7 +5993,7 @@ CREATE TABLE `vtiger_expectedresponse_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_expectedresponse_seq`
+-- Dumping data for table `vtiger_expectedresponse_seq`
 --
 
 INSERT INTO `vtiger_expectedresponse_seq` (`id`) VALUES
@@ -5273,7 +6002,7 @@ INSERT INTO `vtiger_expectedresponse_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_extnstore_users`
+-- Table structure for table `vtiger_extnstore_users`
 --
 
 CREATE TABLE `vtiger_extnstore_users` (
@@ -5288,7 +6017,7 @@ CREATE TABLE `vtiger_extnstore_users` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_faq`
+-- Table structure for table `vtiger_faq`
 --
 
 CREATE TABLE `vtiger_faq` (
@@ -5305,7 +6034,7 @@ CREATE TABLE `vtiger_faq` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_faqcategories`
+-- Table structure for table `vtiger_faqcategories`
 --
 
 CREATE TABLE `vtiger_faqcategories` (
@@ -5318,7 +6047,7 @@ CREATE TABLE `vtiger_faqcategories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_faqcategories`
+-- Dumping data for table `vtiger_faqcategories`
 --
 
 INSERT INTO `vtiger_faqcategories` (`faqcategories_id`, `faqcategories`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -5327,7 +6056,7 @@ INSERT INTO `vtiger_faqcategories` (`faqcategories_id`, `faqcategories`, `presen
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_faqcategories_seq`
+-- Table structure for table `vtiger_faqcategories_seq`
 --
 
 CREATE TABLE `vtiger_faqcategories_seq` (
@@ -5335,7 +6064,7 @@ CREATE TABLE `vtiger_faqcategories_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_faqcategories_seq`
+-- Dumping data for table `vtiger_faqcategories_seq`
 --
 
 INSERT INTO `vtiger_faqcategories_seq` (`id`) VALUES
@@ -5344,7 +6073,7 @@ INSERT INTO `vtiger_faqcategories_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_faqcf`
+-- Table structure for table `vtiger_faqcf`
 --
 
 CREATE TABLE `vtiger_faqcf` (
@@ -5354,7 +6083,7 @@ CREATE TABLE `vtiger_faqcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_faqcomments`
+-- Table structure for table `vtiger_faqcomments`
 --
 
 CREATE TABLE `vtiger_faqcomments` (
@@ -5367,7 +6096,7 @@ CREATE TABLE `vtiger_faqcomments` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_faqstatus`
+-- Table structure for table `vtiger_faqstatus`
 --
 
 CREATE TABLE `vtiger_faqstatus` (
@@ -5380,7 +6109,7 @@ CREATE TABLE `vtiger_faqstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_faqstatus`
+-- Dumping data for table `vtiger_faqstatus`
 --
 
 INSERT INTO `vtiger_faqstatus` (`faqstatus_id`, `faqstatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -5392,7 +6121,7 @@ INSERT INTO `vtiger_faqstatus` (`faqstatus_id`, `faqstatus`, `presence`, `pickli
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_faqstatus_seq`
+-- Table structure for table `vtiger_faqstatus_seq`
 --
 
 CREATE TABLE `vtiger_faqstatus_seq` (
@@ -5400,7 +6129,7 @@ CREATE TABLE `vtiger_faqstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_faqstatus_seq`
+-- Dumping data for table `vtiger_faqstatus_seq`
 --
 
 INSERT INTO `vtiger_faqstatus_seq` (`id`) VALUES
@@ -5409,7 +6138,7 @@ INSERT INTO `vtiger_faqstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_feedback`
+-- Table structure for table `vtiger_feedback`
 --
 
 CREATE TABLE `vtiger_feedback` (
@@ -5420,7 +6149,7 @@ CREATE TABLE `vtiger_feedback` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_field`
+-- Table structure for table `vtiger_field`
 --
 
 CREATE TABLE `vtiger_field` (
@@ -5451,7 +6180,7 @@ CREATE TABLE `vtiger_field` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_field`
+-- Dumping data for table `vtiger_field`
 --
 
 INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `generatedtype`, `uitype`, `fieldname`, `fieldlabel`, `readonly`, `presence`, `defaultvalue`, `maximumlength`, `sequence`, `block`, `displaytype`, `typeofdata`, `quickcreate`, `quickcreatesequence`, `info_type`, `masseditable`, `helpinfo`, `summaryfield`, `headerfield`, `isunique`) VALUES
@@ -6454,12 +7183,86 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (61, 1021, 'salary_department', 'vtiger_hrm_employee', 1, '10', 'salary_department', 'Salary Department', 1, 2, '', 100, 1, 141, 1, 'V~O', 2, 0, 'BAS', 1, '', 1, 0, 0),
 (61, 1022, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 29, 141, 2, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
 (61, 1023, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 30, 141, 6, 'C~O', 3, 4, 'BAS', 0, '', 0, 0, 0),
-(61, 1024, 'tags', 'vtiger_hrm_employee', 1, '1', 'tags', 'tags', 1, 2, '', 100, 31, 141, 6, 'V~O', 3, 5, 'BAS', 0, '', 0, 0, 0);
+(61, 1024, 'tags', 'vtiger_hrm_employee', 1, '1', 'tags', 'tags', 1, 2, '', 100, 31, 141, 6, 'V~O', 3, 5, 'BAS', 0, '', 0, 0, 0),
+(63, 1097, 'makhachhang', 'vtiger_customerenterprise', 1, '8', 'makhachhang', 'Ma Khach Hang', 1, 2, '', 100, 1, 159, 1, 'V~M', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1098, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 2, '', 100, 2, 159, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1099, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 2, '', 100, 3, 159, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1100, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 4, 159, 2, 'V~O', 3, 1, 'BAS', 0, '', 0, 0, 0),
+(63, 1101, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 5, 159, 6, 'C~O', 3, 2, 'BAS', 0, '', 0, 0, 0);
+INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `generatedtype`, `uitype`, `fieldname`, `fieldlabel`, `readonly`, `presence`, `defaultvalue`, `maximumlength`, `sequence`, `block`, `displaytype`, `typeofdata`, `quickcreate`, `quickcreatesequence`, `info_type`, `masseditable`, `helpinfo`, `summaryfield`, `headerfield`, `isunique`) VALUES
+(63, 1102, 'tags', 'vtiger_customerenterprise', 1, '1', 'tags', 'tags', 1, 2, '', 100, 6, 159, 6, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
+(63, 1104, 'cf_1103', 'vtiger_customerenterprisecf', 2, '1', 'cf_1103', 'Mã số thuế', 1, 2, '', 100, 7, 159, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1106, 'cf_1105', 'vtiger_customerenterprisecf', 2, '1', 'cf_1105', 'Tên khách hàng', 1, 2, '', 100, 8, 159, 1, 'V~M~LE~255', 2, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1108, 'cf_1107', 'vtiger_customerenterprisecf', 2, '1', 'cf_1107', 'Tên viết tắt', 1, 2, '', 100, 9, 159, 1, 'V~O~LE~10', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1110, 'cf_1109', 'vtiger_customerenterprisecf', 2, '1', 'cf_1109', 'Mã NS', 1, 2, '', 100, 10, 159, 1, 'V~O~LE~10', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1112, 'cf_1111', 'vtiger_customerenterprisecf', 2, '1', 'cf_1111', 'Mã số KD', 1, 2, '', 100, 11, 159, 1, 'V~O~LE~10', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1114, 'cf_1113', 'vtiger_customerenterprisecf', 2, '1', 'cf_1113', 'Điện thoại', 1, 2, '', 100, 12, 159, 1, 'V~O~LE~13', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1116, 'cf_1115', 'vtiger_customerenterprisecf', 2, '1', 'cf_1115', 'Fax', 1, 2, '', 100, 13, 159, 1, 'V~O~LE~50', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1120, 'cf_1119', 'vtiger_customerenterprisecf', 2, '1', 'cf_1119', 'Email', 1, 2, '', 100, 14, 159, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1122, 'cf_1121', 'vtiger_customerenterprisecf', 2, '16', 'cf_1121', 'Xưng hô', 1, 2, ' ', 100, 1, 161, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1124, 'cf_1123', 'vtiger_customerenterprisecf', 2, '1', 'cf_1123', 'Họ và Tên', 1, 2, '', 100, 2, 161, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1136, 'cf_1135', 'vtiger_customerenterprisecf', 2, '21', 'cf_1135', 'Ghi chú', 1, 2, '', 100, 1, 160, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1138, 'cf_1137', 'vtiger_customerenterprisecf', 2, '16', 'cf_1137', 'Phân loại khách hàng', 1, 2, ' ', 100, 1, 162, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1142, 'cf_1141', 'vtiger_customerenterprisecf', 2, '16', 'cf_1141', 'Phòng ban', 1, 2, ' ', 100, 9, 161, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1144, 'cf_1143', 'vtiger_customerenterprisecf', 2, '16', 'cf_1143', 'Chức danh', 1, 2, ' ', 100, 10, 161, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1146, 'cf_1145', 'vtiger_customerenterprisecf', 2, '16', 'cf_1145', 'Loại hình', 1, 2, ' ', 100, 11, 161, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1148, 'cf_1147', 'vtiger_customerenterprisecf', 2, '16', 'cf_1147', 'Loại công ty', 1, 2, ' ', 100, 2, 162, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1150, 'cf_1149', 'vtiger_customerenterprisecf', 2, '11', 'cf_1149', 'ĐT Di động', 1, 2, '', 100, 12, 161, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1152, 'cf_1151', 'vtiger_customerenterprisecf', 2, '11', 'cf_1151', 'ĐT Cơ quan', 1, 2, '', 100, 13, 161, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1154, 'cf_1153', 'vtiger_customerenterprisecf', 2, '11', 'cf_1153', 'ĐT Di động khác', 1, 2, '', 100, 14, 161, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1156, 'cf_1155', 'vtiger_customerenterprisecf', 2, '13', 'cf_1155', 'Email Cá nhân', 1, 2, '', 100, 15, 161, 1, 'E~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1158, 'cf_1157', 'vtiger_customerenterprisecf', 2, '13', 'cf_1157', 'Email Cơ quan', 1, 2, '', 100, 16, 161, 1, 'E~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1160, 'cf_1159', 'vtiger_customerenterprisecf', 2, '1', 'cf_1159', 'Trực thuộc', 1, 2, '', 100, 3, 162, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1162, 'cf_1161', 'vtiger_customerenterprisecf', 2, '16', 'cf_1161', 'Lĩnh vực', 1, 2, ' ', 100, 4, 162, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(64, 1187, 'makhachhang', 'vtiger_customerstandalone', 1, '8', 'makhachhang', 'Ma Khach Hang', 1, 2, '', 100, 1, 169, 1, 'V~M', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(64, 1188, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 2, '', 100, 2, 169, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(64, 1189, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 2, '', 100, 3, 169, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(64, 1190, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 4, 169, 2, 'V~O', 3, 1, 'BAS', 0, '', 0, 0, 0),
+(64, 1191, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 5, 169, 6, 'C~O', 3, 2, 'BAS', 0, '', 0, 0, 0),
+(64, 1192, 'tags', 'vtiger_customerstandalone', 1, '1', 'tags', 'tags', 1, 2, '', 100, 6, 169, 6, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
+(64, 1194, 'cf_1193', 'vtiger_customerstandalonecf', 2, '13', 'cf_1193', 'Email Ca nhan', 1, 2, '', 100, 7, 169, 1, 'E~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(64, 1196, 'cf_1195', 'vtiger_customerstandalonecf', 2, '21', 'cf_1195', 'Dia chi', 1, 2, '', 100, 8, 169, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(64, 1198, 'cf_1197', 'vtiger_customerstandalonecf', 2, '11', 'cf_1197', 'So dien thoai', 1, 2, '', 100, 9, 169, 1, 'V~M', 2, 0, 'BAS', 1, '', 0, 0, 0),
+(64, 1200, 'cf_1199', 'vtiger_customerstandalonecf', 2, '1', 'cf_1199', 'Ten khach hang', 1, 2, '', 100, 10, 169, 1, 'V~M~LE~255', 2, 0, 'BAS', 1, '', 0, 0, 0),
+(65, 1201, 'loaivande', 'vtiger_problemcategory', 1, '8', 'loaivande', 'Loai van de', 1, 2, '', 100, 1, 171, 1, 'V~M', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(65, 1202, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 2, '', 100, 2, 171, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(65, 1203, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 2, '', 100, 3, 171, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(65, 1204, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 4, 171, 2, 'V~O', 3, 1, 'BAS', 0, '', 0, 0, 0),
+(65, 1205, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 5, 171, 6, 'C~O', 3, 2, 'BAS', 0, '', 0, 0, 0),
+(65, 1206, 'tags', 'vtiger_problemcategory', 1, '1', 'tags', 'tags', 1, 2, '', 100, 6, 171, 6, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
+(65, 1208, 'cf_1207', 'vtiger_problemcategorycf', 2, '21', 'cf_1207', 'Mo ta chi tiet', 1, 2, '', 100, 7, 171, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(66, 1209, 'hinhthuchotro', 'vtiger_supportprotocol', 1, '8', 'hinhthuchotro', 'Hinh thuc ho tro', 1, 2, '', 100, 1, 173, 1, 'V~M', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(66, 1210, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 2, '', 100, 2, 173, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(66, 1211, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 2, '', 100, 3, 173, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(66, 1212, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 4, 173, 2, 'V~O', 3, 1, 'BAS', 0, '', 0, 0, 0),
+(66, 1213, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 5, 173, 6, 'C~O', 3, 2, 'BAS', 0, '', 0, 0, 0),
+(66, 1214, 'tags', 'vtiger_supportprotocol', 1, '1', 'tags', 'tags', 1, 2, '', 100, 6, 173, 6, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
+(66, 1216, 'cf_1215', 'vtiger_supportprotocolcf', 2, '21', 'cf_1215', 'Mo ta chi tiet', 1, 2, '', 100, 7, 173, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1218, 'cf_1217', 'vtiger_customerenterprisecf', 2, '5', 'cf_1217', 'Là đối tác từ', 1, 2, '', 100, 5, 162, 1, 'D~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1220, 'cf_1219', 'vtiger_customerenterprisecf', 2, '21', 'cf_1219', 'Địa chỉ', 1, 2, '', 100, 1, 175, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1222, 'cf_1221', 'vtiger_customerenterprisecf', 2, '16', 'cf_1221', 'Quốc gia', 1, 2, ' ', 100, 2, 175, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1226, 'cf_1225', 'vtiger_customerenterprisecf', 2, '1', 'cf_1225', 'Website', 1, 2, '', 100, 15, 159, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(70, 1255, 'pttt', 'vtiger_phuongtientruyenthong', 1, '8', 'pttt', 'Phuong tien truyen thong', 1, 2, '', 100, 1, 185, 1, 'V~M', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(70, 1256, 'motachitiet', 'vtiger_phuongtientruyenthong', 1, '21', 'motachitiet', 'Mo ta chi tiet', 1, 2, '', 100, 2, 185, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(70, 1257, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 2, '', 100, 3, 185, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(70, 1258, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 2, '', 100, 4, 185, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(70, 1259, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 5, 185, 2, 'V~O', 3, 1, 'BAS', 0, '', 0, 0, 0),
+(70, 1260, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 6, 185, 6, 'C~O', 3, 2, 'BAS', 0, '', 0, 0, 0),
+(70, 1261, 'tags', 'vtiger_phuongtientruyenthong', 1, '1', 'tags', 'tags', 1, 2, '', 100, 7, 185, 6, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
+(26, 1262, 'cf_1262', 'vtiger_campaign', 2, '10', 'cf_1262', 'Phuong tien truyen thong', 1, 2, '', 100, 20, 74, 1, 'I~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(71, 1263, 'httt', 'vtiger_hinhthuctruyenthong', 1, '8', 'httt', 'Hinh thuc truyen thong', 1, 2, '', 100, 1, 187, 1, 'V~M', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(71, 1264, 'motachitiet', 'vtiger_hinhthuctruyenthong', 1, '21', 'motachitiet', 'Mo ta chi tiet', 1, 2, '', 100, 2, 187, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(71, 1265, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 2, '', 100, 3, 187, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(71, 1266, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 2, '', 100, 4, 187, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(71, 1267, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 5, 187, 2, 'V~O', 3, 1, 'BAS', 0, '', 0, 0, 0),
+(71, 1268, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 6, 187, 6, 'C~O', 3, 2, 'BAS', 0, '', 0, 0, 0),
+(71, 1269, 'tags', 'vtiger_hinhthuctruyenthong', 1, '1', 'tags', 'tags', 1, 2, '', 100, 7, 187, 6, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
+(26, 1270, 'cf_1270', 'vtiger_campaign', 2, '10', 'cf_1270', 'Hinh thuc truyen thong', 1, 2, '', 100, 21, 74, 1, 'I~O', 1, 0, 'BAS', 1, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_fieldmodulerel`
+-- Table structure for table `vtiger_fieldmodulerel`
 --
 
 CREATE TABLE `vtiger_fieldmodulerel` (
@@ -6471,7 +7274,7 @@ CREATE TABLE `vtiger_fieldmodulerel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_fieldmodulerel`
+-- Dumping data for table `vtiger_fieldmodulerel`
 --
 
 INSERT INTO `vtiger_fieldmodulerel` (`fieldid`, `module`, `relmodule`, `status`, `sequence`) VALUES
@@ -6535,12 +7338,15 @@ INSERT INTO `vtiger_fieldmodulerel` (`fieldid`, `module`, `relmodule`, `status`,
 (957, 'Candidates', 'SettingPosition', NULL, NULL),
 (982, 'Leave', 'Employee', NULL, NULL),
 (1003, 'Employee', 'SettingPosition', NULL, NULL),
-(1021, 'Employee', 'SalaryComponent', NULL, NULL);
+(1021, 'Employee', 'SalaryComponent', NULL, NULL),
+(1254, 'Campaigns', 'PhuongTienTruyenThong', NULL, NULL),
+(1262, 'Campaigns', 'PhuongTienTruyenThong', NULL, NULL),
+(1270, 'Campaigns', 'HinhThucTruyenThong', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_field_seq`
+-- Table structure for table `vtiger_field_seq`
 --
 
 CREATE TABLE `vtiger_field_seq` (
@@ -6548,16 +7354,16 @@ CREATE TABLE `vtiger_field_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_field_seq`
+-- Dumping data for table `vtiger_field_seq`
 --
 
 INSERT INTO `vtiger_field_seq` (`id`) VALUES
-(1024);
+(1270);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_freetagged_objects`
+-- Table structure for table `vtiger_freetagged_objects`
 --
 
 CREATE TABLE `vtiger_freetagged_objects` (
@@ -6571,7 +7377,7 @@ CREATE TABLE `vtiger_freetagged_objects` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_freetags`
+-- Table structure for table `vtiger_freetags`
 --
 
 CREATE TABLE `vtiger_freetags` (
@@ -6582,10 +7388,17 @@ CREATE TABLE `vtiger_freetags` (
   `owner` int(19) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_freetags`
+--
+
+INSERT INTO `vtiger_freetags` (`id`, `tag`, `raw_tag`, `visibility`, `owner`) VALUES
+(2, 'c', 'c', 'private', 1);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_freetags_seq`
+-- Table structure for table `vtiger_freetags_seq`
 --
 
 CREATE TABLE `vtiger_freetags_seq` (
@@ -6593,16 +7406,16 @@ CREATE TABLE `vtiger_freetags_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_freetags_seq`
+-- Dumping data for table `vtiger_freetags_seq`
 --
 
 INSERT INTO `vtiger_freetags_seq` (`id`) VALUES
-(1);
+(2);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_glacct`
+-- Table structure for table `vtiger_glacct`
 --
 
 CREATE TABLE `vtiger_glacct` (
@@ -6615,7 +7428,7 @@ CREATE TABLE `vtiger_glacct` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_glacct`
+-- Dumping data for table `vtiger_glacct`
 --
 
 INSERT INTO `vtiger_glacct` (`glacctid`, `glacct`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -6632,7 +7445,7 @@ INSERT INTO `vtiger_glacct` (`glacctid`, `glacct`, `presence`, `picklist_valueid
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_glacct_seq`
+-- Table structure for table `vtiger_glacct_seq`
 --
 
 CREATE TABLE `vtiger_glacct_seq` (
@@ -6640,7 +7453,7 @@ CREATE TABLE `vtiger_glacct_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_glacct_seq`
+-- Dumping data for table `vtiger_glacct_seq`
 --
 
 INSERT INTO `vtiger_glacct_seq` (`id`) VALUES
@@ -6649,7 +7462,7 @@ INSERT INTO `vtiger_glacct_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_google_event_calendar_mapping`
+-- Table structure for table `vtiger_google_event_calendar_mapping`
 --
 
 CREATE TABLE `vtiger_google_event_calendar_mapping` (
@@ -6661,7 +7474,7 @@ CREATE TABLE `vtiger_google_event_calendar_mapping` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_google_oauth2`
+-- Table structure for table `vtiger_google_oauth2`
 --
 
 CREATE TABLE `vtiger_google_oauth2` (
@@ -6674,7 +7487,7 @@ CREATE TABLE `vtiger_google_oauth2` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_google_sync_fieldmapping`
+-- Table structure for table `vtiger_google_sync_fieldmapping`
 --
 
 CREATE TABLE `vtiger_google_sync_fieldmapping` (
@@ -6688,7 +7501,7 @@ CREATE TABLE `vtiger_google_sync_fieldmapping` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_google_sync_settings`
+-- Table structure for table `vtiger_google_sync_settings`
 --
 
 CREATE TABLE `vtiger_google_sync_settings` (
@@ -6702,7 +7515,7 @@ CREATE TABLE `vtiger_google_sync_settings` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_group2grouprel`
+-- Table structure for table `vtiger_group2grouprel`
 --
 
 CREATE TABLE `vtiger_group2grouprel` (
@@ -6713,7 +7526,7 @@ CREATE TABLE `vtiger_group2grouprel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_group2role`
+-- Table structure for table `vtiger_group2role`
 --
 
 CREATE TABLE `vtiger_group2role` (
@@ -6722,7 +7535,7 @@ CREATE TABLE `vtiger_group2role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_group2role`
+-- Dumping data for table `vtiger_group2role`
 --
 
 INSERT INTO `vtiger_group2role` (`groupid`, `roleid`) VALUES
@@ -6733,7 +7546,7 @@ INSERT INTO `vtiger_group2role` (`groupid`, `roleid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_group2rs`
+-- Table structure for table `vtiger_group2rs`
 --
 
 CREATE TABLE `vtiger_group2rs` (
@@ -6742,7 +7555,7 @@ CREATE TABLE `vtiger_group2rs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_group2rs`
+-- Dumping data for table `vtiger_group2rs`
 --
 
 INSERT INTO `vtiger_group2rs` (`groupid`, `roleandsubid`) VALUES
@@ -6753,7 +7566,7 @@ INSERT INTO `vtiger_group2rs` (`groupid`, `roleandsubid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_groups`
+-- Table structure for table `vtiger_groups`
 --
 
 CREATE TABLE `vtiger_groups` (
@@ -6763,7 +7576,7 @@ CREATE TABLE `vtiger_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_groups`
+-- Dumping data for table `vtiger_groups`
 --
 
 INSERT INTO `vtiger_groups` (`groupid`, `groupname`, `description`) VALUES
@@ -6774,7 +7587,44 @@ INSERT INTO `vtiger_groups` (`groupid`, `groupname`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_homedashbd`
+-- Table structure for table `vtiger_hinhthuctruyenthong`
+--
+
+CREATE TABLE `vtiger_hinhthuctruyenthong` (
+  `hinhthuctruyenthongid` int(19) NOT NULL,
+  `httt` varchar(255) DEFAULT NULL,
+  `motachitiet` varchar(100) DEFAULT NULL,
+  `tags` varchar(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_hinhthuctruyenthong`
+--
+
+INSERT INTO `vtiger_hinhthuctruyenthong` (`hinhthuctruyenthongid`, `httt`, `motachitiet`, `tags`) VALUES
+(34, '[\"Ch\\u1ea1y qu\\u1ea3ng c\\u00e1o\"]', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_hinhthuctruyenthongcf`
+--
+
+CREATE TABLE `vtiger_hinhthuctruyenthongcf` (
+  `hinhthuctruyenthongid` int(19) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_hinhthuctruyenthongcf`
+--
+
+INSERT INTO `vtiger_hinhthuctruyenthongcf` (`hinhthuctruyenthongid`) VALUES
+(34);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_homedashbd`
 --
 
 CREATE TABLE `vtiger_homedashbd` (
@@ -6786,7 +7636,7 @@ CREATE TABLE `vtiger_homedashbd` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_homedefault`
+-- Table structure for table `vtiger_homedefault`
 --
 
 CREATE TABLE `vtiger_homedefault` (
@@ -6797,7 +7647,7 @@ CREATE TABLE `vtiger_homedefault` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_homedefault`
+-- Dumping data for table `vtiger_homedefault`
 --
 
 INSERT INTO `vtiger_homedefault` (`stuffid`, `hometype`, `maxentries`, `setype`) VALUES
@@ -6819,7 +7669,7 @@ INSERT INTO `vtiger_homedefault` (`stuffid`, `hometype`, `maxentries`, `setype`)
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_homemodule`
+-- Table structure for table `vtiger_homemodule`
 --
 
 CREATE TABLE `vtiger_homemodule` (
@@ -6833,7 +7683,7 @@ CREATE TABLE `vtiger_homemodule` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_homemoduleflds`
+-- Table structure for table `vtiger_homemoduleflds`
 --
 
 CREATE TABLE `vtiger_homemoduleflds` (
@@ -6844,7 +7694,7 @@ CREATE TABLE `vtiger_homemoduleflds` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_homereportchart`
+-- Table structure for table `vtiger_homereportchart`
 --
 
 CREATE TABLE `vtiger_homereportchart` (
@@ -6856,7 +7706,7 @@ CREATE TABLE `vtiger_homereportchart` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_homerss`
+-- Table structure for table `vtiger_homerss`
 --
 
 CREATE TABLE `vtiger_homerss` (
@@ -6868,7 +7718,7 @@ CREATE TABLE `vtiger_homerss` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_homestuff`
+-- Table structure for table `vtiger_homestuff`
 --
 
 CREATE TABLE `vtiger_homestuff` (
@@ -6881,7 +7731,7 @@ CREATE TABLE `vtiger_homestuff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_homestuff`
+-- Dumping data for table `vtiger_homestuff`
 --
 
 INSERT INTO `vtiger_homestuff` (`stuffid`, `stuffsequence`, `stufftype`, `userid`, `visible`, `stufftitle`) VALUES
@@ -6904,7 +7754,7 @@ INSERT INTO `vtiger_homestuff` (`stuffid`, `stuffsequence`, `stufftype`, `userid
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_homestuff_seq`
+-- Table structure for table `vtiger_homestuff_seq`
 --
 
 CREATE TABLE `vtiger_homestuff_seq` (
@@ -6912,7 +7762,7 @@ CREATE TABLE `vtiger_homestuff_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_homestuff_seq`
+-- Dumping data for table `vtiger_homestuff_seq`
 --
 
 INSERT INTO `vtiger_homestuff_seq` (`id`) VALUES
@@ -6921,7 +7771,7 @@ INSERT INTO `vtiger_homestuff_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_home_layout`
+-- Table structure for table `vtiger_home_layout`
 --
 
 CREATE TABLE `vtiger_home_layout` (
@@ -6932,7 +7782,7 @@ CREATE TABLE `vtiger_home_layout` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hour_format`
+-- Table structure for table `vtiger_hour_format`
 --
 
 CREATE TABLE `vtiger_hour_format` (
@@ -6943,7 +7793,7 @@ CREATE TABLE `vtiger_hour_format` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hour_format`
+-- Dumping data for table `vtiger_hour_format`
 --
 
 INSERT INTO `vtiger_hour_format` (`hour_formatid`, `hour_format`, `sortorderid`, `presence`) VALUES
@@ -6953,7 +7803,7 @@ INSERT INTO `vtiger_hour_format` (`hour_formatid`, `hour_format`, `sortorderid`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hour_format_seq`
+-- Table structure for table `vtiger_hour_format_seq`
 --
 
 CREATE TABLE `vtiger_hour_format_seq` (
@@ -6961,7 +7811,7 @@ CREATE TABLE `vtiger_hour_format_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hour_format_seq`
+-- Dumping data for table `vtiger_hour_format_seq`
 --
 
 INSERT INTO `vtiger_hour_format_seq` (`id`) VALUES
@@ -6970,7 +7820,7 @@ INSERT INTO `vtiger_hour_format_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hr`
+-- Table structure for table `vtiger_hr`
 --
 
 CREATE TABLE `vtiger_hr` (
@@ -6983,7 +7833,7 @@ CREATE TABLE `vtiger_hr` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hr`
+-- Dumping data for table `vtiger_hr`
 --
 
 INSERT INTO `vtiger_hr` (`hrid`, `hr`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -6993,7 +7843,7 @@ INSERT INTO `vtiger_hr` (`hrid`, `hr`, `presence`, `picklist_valueid`, `sortorde
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_candidate`
+-- Table structure for table `vtiger_hrm_candidate`
 --
 
 CREATE TABLE `vtiger_hrm_candidate` (
@@ -7028,7 +7878,7 @@ CREATE TABLE `vtiger_hrm_candidate` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_candidatecf`
+-- Table structure for table `vtiger_hrm_candidatecf`
 --
 
 CREATE TABLE `vtiger_hrm_candidatecf` (
@@ -7038,7 +7888,7 @@ CREATE TABLE `vtiger_hrm_candidatecf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_employcf`
+-- Table structure for table `vtiger_hrm_employcf`
 --
 
 CREATE TABLE `vtiger_hrm_employcf` (
@@ -7046,16 +7896,17 @@ CREATE TABLE `vtiger_hrm_employcf` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hrm_employcf`
+-- Dumping data for table `vtiger_hrm_employcf`
 --
 
 INSERT INTO `vtiger_hrm_employcf` (`employid`) VALUES
-(2);
+(2),
+(29);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_employee`
+-- Table structure for table `vtiger_hrm_employee`
 --
 
 CREATE TABLE `vtiger_hrm_employee` (
@@ -7087,16 +7938,17 @@ CREATE TABLE `vtiger_hrm_employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hrm_employee`
+-- Dumping data for table `vtiger_hrm_employee`
 --
 
 INSERT INTO `vtiger_hrm_employee` (`employid`, `firstname`, `lastname`, `employ_gender`, `email`, `user_id`, `date_of_birth`, `mobile`, `position`, `employ_marital_status`, `address`, `city`, `country`, `flag`, `candidate_id`, `action`, `start_work_date`, `employ_number`, `official_date`, `desired_salary`, `probality_period`, `official_salary`, `private_email`, `salary_department`, `tags`) VALUES
-(2, 'Leonce', 'Wang', '', 'ThienLang99999@gmail.com', '1', NULL, '', '', '', '', '', '', '', '', '', NULL, 'EMPL1', NULL, '', '', '', '', '', '');
+(2, 'Leonce', 'Wang', '', 'ThienLang99999@gmail.com', '1', NULL, '', '', '', '', '', '', '', '', '', NULL, 'EMPL1', NULL, '', '', '', '', '', ''),
+(29, 'Leonce', 'Wang', '', 'ThienLang99999@gmail.com', '1', NULL, '', '', '', '', '', '', '', '', '', NULL, 'EMPL1', NULL, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_jd`
+-- Table structure for table `vtiger_hrm_jd`
 --
 
 CREATE TABLE `vtiger_hrm_jd` (
@@ -7113,7 +7965,7 @@ CREATE TABLE `vtiger_hrm_jd` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_jdcf`
+-- Table structure for table `vtiger_hrm_jdcf`
 --
 
 CREATE TABLE `vtiger_hrm_jdcf` (
@@ -7123,7 +7975,7 @@ CREATE TABLE `vtiger_hrm_jdcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_jd_tasks`
+-- Table structure for table `vtiger_hrm_jd_tasks`
 --
 
 CREATE TABLE `vtiger_hrm_jd_tasks` (
@@ -7136,7 +7988,7 @@ CREATE TABLE `vtiger_hrm_jd_tasks` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_kpi`
+-- Table structure for table `vtiger_hrm_kpi`
 --
 
 CREATE TABLE `vtiger_hrm_kpi` (
@@ -7163,7 +8015,7 @@ CREATE TABLE `vtiger_hrm_kpi` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_kpicf`
+-- Table structure for table `vtiger_hrm_kpicf`
 --
 
 CREATE TABLE `vtiger_hrm_kpicf` (
@@ -7173,7 +8025,7 @@ CREATE TABLE `vtiger_hrm_kpicf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_leave`
+-- Table structure for table `vtiger_hrm_leave`
 --
 
 CREATE TABLE `vtiger_hrm_leave` (
@@ -7192,7 +8044,7 @@ CREATE TABLE `vtiger_hrm_leave` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_leave_action`
+-- Table structure for table `vtiger_hrm_leave_action`
 --
 
 CREATE TABLE `vtiger_hrm_leave_action` (
@@ -7205,7 +8057,7 @@ CREATE TABLE `vtiger_hrm_leave_action` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hrm_leave_action`
+-- Dumping data for table `vtiger_hrm_leave_action`
 --
 
 INSERT INTO `vtiger_hrm_leave_action` (`hrm_leave_actionid`, `hrm_leave_action`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -7215,7 +8067,7 @@ INSERT INTO `vtiger_hrm_leave_action` (`hrm_leave_actionid`, `hrm_leave_action`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_leave_action_seq`
+-- Table structure for table `vtiger_hrm_leave_action_seq`
 --
 
 CREATE TABLE `vtiger_hrm_leave_action_seq` (
@@ -7223,7 +8075,7 @@ CREATE TABLE `vtiger_hrm_leave_action_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hrm_leave_action_seq`
+-- Dumping data for table `vtiger_hrm_leave_action_seq`
 --
 
 INSERT INTO `vtiger_hrm_leave_action_seq` (`id`) VALUES
@@ -7232,7 +8084,7 @@ INSERT INTO `vtiger_hrm_leave_action_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_leave_type`
+-- Table structure for table `vtiger_hrm_leave_type`
 --
 
 CREATE TABLE `vtiger_hrm_leave_type` (
@@ -7245,7 +8097,7 @@ CREATE TABLE `vtiger_hrm_leave_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hrm_leave_type`
+-- Dumping data for table `vtiger_hrm_leave_type`
 --
 
 INSERT INTO `vtiger_hrm_leave_type` (`hrm_leave_typeid`, `hrm_leave_type`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -7258,7 +8110,7 @@ INSERT INTO `vtiger_hrm_leave_type` (`hrm_leave_typeid`, `hrm_leave_type`, `pres
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_leave_type_seq`
+-- Table structure for table `vtiger_hrm_leave_type_seq`
 --
 
 CREATE TABLE `vtiger_hrm_leave_type_seq` (
@@ -7266,7 +8118,7 @@ CREATE TABLE `vtiger_hrm_leave_type_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hrm_leave_type_seq`
+-- Dumping data for table `vtiger_hrm_leave_type_seq`
 --
 
 INSERT INTO `vtiger_hrm_leave_type_seq` (`id`) VALUES
@@ -7275,7 +8127,7 @@ INSERT INTO `vtiger_hrm_leave_type_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_position`
+-- Table structure for table `vtiger_hrm_position`
 --
 
 CREATE TABLE `vtiger_hrm_position` (
@@ -7288,7 +8140,7 @@ CREATE TABLE `vtiger_hrm_position` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_qcm`
+-- Table structure for table `vtiger_hrm_qcm`
 --
 
 CREATE TABLE `vtiger_hrm_qcm` (
@@ -7308,7 +8160,7 @@ CREATE TABLE `vtiger_hrm_qcm` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_qcmcf`
+-- Table structure for table `vtiger_hrm_qcmcf`
 --
 
 CREATE TABLE `vtiger_hrm_qcmcf` (
@@ -7318,7 +8170,7 @@ CREATE TABLE `vtiger_hrm_qcmcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_rating`
+-- Table structure for table `vtiger_hrm_rating`
 --
 
 CREATE TABLE `vtiger_hrm_rating` (
@@ -7336,7 +8188,7 @@ CREATE TABLE `vtiger_hrm_rating` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_ratingcf`
+-- Table structure for table `vtiger_hrm_ratingcf`
 --
 
 CREATE TABLE `vtiger_hrm_ratingcf` (
@@ -7346,7 +8198,7 @@ CREATE TABLE `vtiger_hrm_ratingcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_salaryreference`
+-- Table structure for table `vtiger_hrm_salaryreference`
 --
 
 CREATE TABLE `vtiger_hrm_salaryreference` (
@@ -7365,7 +8217,7 @@ CREATE TABLE `vtiger_hrm_salaryreference` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_setting`
+-- Table structure for table `vtiger_hrm_setting`
 --
 
 CREATE TABLE `vtiger_hrm_setting` (
@@ -7378,7 +8230,7 @@ CREATE TABLE `vtiger_hrm_setting` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_settingdepartment`
+-- Table structure for table `vtiger_hrm_settingdepartment`
 --
 
 CREATE TABLE `vtiger_hrm_settingdepartment` (
@@ -7391,7 +8243,7 @@ CREATE TABLE `vtiger_hrm_settingdepartment` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_settingdepartmentcf`
+-- Table structure for table `vtiger_hrm_settingdepartmentcf`
 --
 
 CREATE TABLE `vtiger_hrm_settingdepartmentcf` (
@@ -7401,7 +8253,7 @@ CREATE TABLE `vtiger_hrm_settingdepartmentcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_settingdepartmentcust`
+-- Table structure for table `vtiger_hrm_settingdepartmentcust`
 --
 
 CREATE TABLE `vtiger_hrm_settingdepartmentcust` (
@@ -7420,7 +8272,7 @@ CREATE TABLE `vtiger_hrm_settingdepartmentcust` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hrm_weight`
+-- Table structure for table `vtiger_hrm_weight`
 --
 
 CREATE TABLE `vtiger_hrm_weight` (
@@ -7432,7 +8284,7 @@ CREATE TABLE `vtiger_hrm_weight` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hr_salary_action`
+-- Table structure for table `vtiger_hr_salary_action`
 --
 
 CREATE TABLE `vtiger_hr_salary_action` (
@@ -7445,7 +8297,7 @@ CREATE TABLE `vtiger_hr_salary_action` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hr_salary_action`
+-- Dumping data for table `vtiger_hr_salary_action`
 --
 
 INSERT INTO `vtiger_hr_salary_action` (`hr_salary_actionid`, `hr_salary_action`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -7455,7 +8307,7 @@ INSERT INTO `vtiger_hr_salary_action` (`hr_salary_actionid`, `hr_salary_action`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hr_salary_action_seq`
+-- Table structure for table `vtiger_hr_salary_action_seq`
 --
 
 CREATE TABLE `vtiger_hr_salary_action_seq` (
@@ -7463,7 +8315,7 @@ CREATE TABLE `vtiger_hr_salary_action_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hr_salary_action_seq`
+-- Dumping data for table `vtiger_hr_salary_action_seq`
 --
 
 INSERT INTO `vtiger_hr_salary_action_seq` (`id`) VALUES
@@ -7472,7 +8324,7 @@ INSERT INTO `vtiger_hr_salary_action_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_hr_seq`
+-- Table structure for table `vtiger_hr_seq`
 --
 
 CREATE TABLE `vtiger_hr_seq` (
@@ -7480,7 +8332,7 @@ CREATE TABLE `vtiger_hr_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_hr_seq`
+-- Dumping data for table `vtiger_hr_seq`
 --
 
 INSERT INTO `vtiger_hr_seq` (`id`) VALUES
@@ -7489,7 +8341,7 @@ INSERT INTO `vtiger_hr_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_import_locks`
+-- Table structure for table `vtiger_import_locks`
 --
 
 CREATE TABLE `vtiger_import_locks` (
@@ -7503,7 +8355,7 @@ CREATE TABLE `vtiger_import_locks` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_import_maps`
+-- Table structure for table `vtiger_import_maps`
 --
 
 CREATE TABLE `vtiger_import_maps` (
@@ -7522,7 +8374,7 @@ CREATE TABLE `vtiger_import_maps` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_import_queue`
+-- Table structure for table `vtiger_import_queue`
 --
 
 CREATE TABLE `vtiger_import_queue` (
@@ -7541,7 +8393,7 @@ CREATE TABLE `vtiger_import_queue` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_industry`
+-- Table structure for table `vtiger_industry`
 --
 
 CREATE TABLE `vtiger_industry` (
@@ -7554,7 +8406,7 @@ CREATE TABLE `vtiger_industry` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_industry`
+-- Dumping data for table `vtiger_industry`
 --
 
 INSERT INTO `vtiger_industry` (`industryid`, `industry`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -7593,7 +8445,7 @@ INSERT INTO `vtiger_industry` (`industryid`, `industry`, `presence`, `picklist_v
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_industry_seq`
+-- Table structure for table `vtiger_industry_seq`
 --
 
 CREATE TABLE `vtiger_industry_seq` (
@@ -7601,7 +8453,7 @@ CREATE TABLE `vtiger_industry_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_industry_seq`
+-- Dumping data for table `vtiger_industry_seq`
 --
 
 INSERT INTO `vtiger_industry_seq` (`id`) VALUES
@@ -7610,7 +8462,7 @@ INSERT INTO `vtiger_industry_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventorycharges`
+-- Table structure for table `vtiger_inventorycharges`
 --
 
 CREATE TABLE `vtiger_inventorycharges` (
@@ -7626,7 +8478,7 @@ CREATE TABLE `vtiger_inventorycharges` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_inventorycharges`
+-- Dumping data for table `vtiger_inventorycharges`
 --
 
 INSERT INTO `vtiger_inventorycharges` (`chargeid`, `name`, `format`, `type`, `value`, `regions`, `istaxable`, `taxes`, `deleted`) VALUES
@@ -7635,7 +8487,7 @@ INSERT INTO `vtiger_inventorycharges` (`chargeid`, `name`, `format`, `type`, `va
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventorychargesrel`
+-- Table structure for table `vtiger_inventorychargesrel`
 --
 
 CREATE TABLE `vtiger_inventorychargesrel` (
@@ -7646,7 +8498,7 @@ CREATE TABLE `vtiger_inventorychargesrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventorynotification`
+-- Table structure for table `vtiger_inventorynotification`
 --
 
 CREATE TABLE `vtiger_inventorynotification` (
@@ -7659,7 +8511,7 @@ CREATE TABLE `vtiger_inventorynotification` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_inventorynotification`
+-- Dumping data for table `vtiger_inventorynotification`
 --
 
 INSERT INTO `vtiger_inventorynotification` (`notificationid`, `notificationname`, `notificationsubject`, `notificationbody`, `label`, `status`) VALUES
@@ -7670,7 +8522,7 @@ INSERT INTO `vtiger_inventorynotification` (`notificationid`, `notificationname`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventorynotification_seq`
+-- Table structure for table `vtiger_inventorynotification_seq`
 --
 
 CREATE TABLE `vtiger_inventorynotification_seq` (
@@ -7678,7 +8530,7 @@ CREATE TABLE `vtiger_inventorynotification_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_inventorynotification_seq`
+-- Dumping data for table `vtiger_inventorynotification_seq`
 --
 
 INSERT INTO `vtiger_inventorynotification_seq` (`id`) VALUES
@@ -7687,7 +8539,7 @@ INSERT INTO `vtiger_inventorynotification_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventoryproductrel`
+-- Table structure for table `vtiger_inventoryproductrel`
 --
 
 CREATE TABLE `vtiger_inventoryproductrel` (
@@ -7713,7 +8565,7 @@ CREATE TABLE `vtiger_inventoryproductrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventoryproductrel_seq`
+-- Table structure for table `vtiger_inventoryproductrel_seq`
 --
 
 CREATE TABLE `vtiger_inventoryproductrel_seq` (
@@ -7721,7 +8573,7 @@ CREATE TABLE `vtiger_inventoryproductrel_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_inventoryproductrel_seq`
+-- Dumping data for table `vtiger_inventoryproductrel_seq`
 --
 
 INSERT INTO `vtiger_inventoryproductrel_seq` (`id`) VALUES
@@ -7730,7 +8582,7 @@ INSERT INTO `vtiger_inventoryproductrel_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventoryshippingrel`
+-- Table structure for table `vtiger_inventoryshippingrel`
 --
 
 CREATE TABLE `vtiger_inventoryshippingrel` (
@@ -7743,7 +8595,7 @@ CREATE TABLE `vtiger_inventoryshippingrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventorysubproductrel`
+-- Table structure for table `vtiger_inventorysubproductrel`
 --
 
 CREATE TABLE `vtiger_inventorysubproductrel` (
@@ -7756,7 +8608,7 @@ CREATE TABLE `vtiger_inventorysubproductrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventorytaxinfo`
+-- Table structure for table `vtiger_inventorytaxinfo`
 --
 
 CREATE TABLE `vtiger_inventorytaxinfo` (
@@ -7772,7 +8624,7 @@ CREATE TABLE `vtiger_inventorytaxinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_inventorytaxinfo`
+-- Dumping data for table `vtiger_inventorytaxinfo`
 --
 
 INSERT INTO `vtiger_inventorytaxinfo` (`taxid`, `taxname`, `taxlabel`, `percentage`, `deleted`, `method`, `type`, `compoundon`, `regions`) VALUES
@@ -7783,7 +8635,7 @@ INSERT INTO `vtiger_inventorytaxinfo` (`taxid`, `taxname`, `taxlabel`, `percenta
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventorytaxinfo_seq`
+-- Table structure for table `vtiger_inventorytaxinfo_seq`
 --
 
 CREATE TABLE `vtiger_inventorytaxinfo_seq` (
@@ -7791,7 +8643,7 @@ CREATE TABLE `vtiger_inventorytaxinfo_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_inventorytaxinfo_seq`
+-- Dumping data for table `vtiger_inventorytaxinfo_seq`
 --
 
 INSERT INTO `vtiger_inventorytaxinfo_seq` (`id`) VALUES
@@ -7800,7 +8652,7 @@ INSERT INTO `vtiger_inventorytaxinfo_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventory_tandc`
+-- Table structure for table `vtiger_inventory_tandc`
 --
 
 CREATE TABLE `vtiger_inventory_tandc` (
@@ -7810,7 +8662,7 @@ CREATE TABLE `vtiger_inventory_tandc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_inventory_tandc`
+-- Dumping data for table `vtiger_inventory_tandc`
 --
 
 INSERT INTO `vtiger_inventory_tandc` (`id`, `type`, `tandc`) VALUES
@@ -7822,7 +8674,7 @@ INSERT INTO `vtiger_inventory_tandc` (`id`, `type`, `tandc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_inventory_tandc_seq`
+-- Table structure for table `vtiger_inventory_tandc_seq`
 --
 
 CREATE TABLE `vtiger_inventory_tandc_seq` (
@@ -7830,7 +8682,7 @@ CREATE TABLE `vtiger_inventory_tandc_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_inventory_tandc_seq`
+-- Dumping data for table `vtiger_inventory_tandc_seq`
 --
 
 INSERT INTO `vtiger_inventory_tandc_seq` (`id`) VALUES
@@ -7839,7 +8691,7 @@ INSERT INTO `vtiger_inventory_tandc_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_invitees`
+-- Table structure for table `vtiger_invitees`
 --
 
 CREATE TABLE `vtiger_invitees` (
@@ -7851,7 +8703,7 @@ CREATE TABLE `vtiger_invitees` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_invoice`
+-- Table structure for table `vtiger_invoice`
 --
 
 CREATE TABLE `vtiger_invoice` (
@@ -7895,7 +8747,7 @@ CREATE TABLE `vtiger_invoice` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_invoicebillads`
+-- Table structure for table `vtiger_invoicebillads`
 --
 
 CREATE TABLE `vtiger_invoicebillads` (
@@ -7911,7 +8763,7 @@ CREATE TABLE `vtiger_invoicebillads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_invoicecf`
+-- Table structure for table `vtiger_invoicecf`
 --
 
 CREATE TABLE `vtiger_invoicecf` (
@@ -7921,7 +8773,7 @@ CREATE TABLE `vtiger_invoicecf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_invoiceshipads`
+-- Table structure for table `vtiger_invoiceshipads`
 --
 
 CREATE TABLE `vtiger_invoiceshipads` (
@@ -7937,7 +8789,7 @@ CREATE TABLE `vtiger_invoiceshipads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_invoicestatus`
+-- Table structure for table `vtiger_invoicestatus`
 --
 
 CREATE TABLE `vtiger_invoicestatus` (
@@ -7950,7 +8802,7 @@ CREATE TABLE `vtiger_invoicestatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_invoicestatus`
+-- Dumping data for table `vtiger_invoicestatus`
 --
 
 INSERT INTO `vtiger_invoicestatus` (`invoicestatusid`, `invoicestatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -7965,7 +8817,7 @@ INSERT INTO `vtiger_invoicestatus` (`invoicestatusid`, `invoicestatus`, `presenc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_invoicestatushistory`
+-- Table structure for table `vtiger_invoicestatushistory`
 --
 
 CREATE TABLE `vtiger_invoicestatushistory` (
@@ -7980,7 +8832,7 @@ CREATE TABLE `vtiger_invoicestatushistory` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_invoicestatus_seq`
+-- Table structure for table `vtiger_invoicestatus_seq`
 --
 
 CREATE TABLE `vtiger_invoicestatus_seq` (
@@ -7988,7 +8840,7 @@ CREATE TABLE `vtiger_invoicestatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_invoicestatus_seq`
+-- Dumping data for table `vtiger_invoicestatus_seq`
 --
 
 INSERT INTO `vtiger_invoicestatus_seq` (`id`) VALUES
@@ -7997,7 +8849,7 @@ INSERT INTO `vtiger_invoicestatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_invoice_recurring_info`
+-- Table structure for table `vtiger_invoice_recurring_info`
 --
 
 CREATE TABLE `vtiger_invoice_recurring_info` (
@@ -8013,7 +8865,7 @@ CREATE TABLE `vtiger_invoice_recurring_info` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_jd_category`
+-- Table structure for table `vtiger_jd_category`
 --
 
 CREATE TABLE `vtiger_jd_category` (
@@ -8026,7 +8878,7 @@ CREATE TABLE `vtiger_jd_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_jd_category`
+-- Dumping data for table `vtiger_jd_category`
 --
 
 INSERT INTO `vtiger_jd_category` (`jd_categoryid`, `jd_category`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -8040,7 +8892,7 @@ INSERT INTO `vtiger_jd_category` (`jd_categoryid`, `jd_category`, `presence`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_jd_category_seq`
+-- Table structure for table `vtiger_jd_category_seq`
 --
 
 CREATE TABLE `vtiger_jd_category_seq` (
@@ -8048,7 +8900,7 @@ CREATE TABLE `vtiger_jd_category_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_jd_category_seq`
+-- Dumping data for table `vtiger_jd_category_seq`
 --
 
 INSERT INTO `vtiger_jd_category_seq` (`id`) VALUES
@@ -8057,7 +8909,7 @@ INSERT INTO `vtiger_jd_category_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_jd_classify`
+-- Table structure for table `vtiger_jd_classify`
 --
 
 CREATE TABLE `vtiger_jd_classify` (
@@ -8070,7 +8922,7 @@ CREATE TABLE `vtiger_jd_classify` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_jd_classify`
+-- Dumping data for table `vtiger_jd_classify`
 --
 
 INSERT INTO `vtiger_jd_classify` (`jd_classifyid`, `jd_classify`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -8083,7 +8935,7 @@ INSERT INTO `vtiger_jd_classify` (`jd_classifyid`, `jd_classify`, `presence`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_jd_classify_seq`
+-- Table structure for table `vtiger_jd_classify_seq`
 --
 
 CREATE TABLE `vtiger_jd_classify_seq` (
@@ -8091,7 +8943,7 @@ CREATE TABLE `vtiger_jd_classify_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_jd_classify_seq`
+-- Dumping data for table `vtiger_jd_classify_seq`
 --
 
 INSERT INTO `vtiger_jd_classify_seq` (`id`) VALUES
@@ -8100,7 +8952,7 @@ INSERT INTO `vtiger_jd_classify_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_jd_status`
+-- Table structure for table `vtiger_jd_status`
 --
 
 CREATE TABLE `vtiger_jd_status` (
@@ -8113,7 +8965,7 @@ CREATE TABLE `vtiger_jd_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_jd_status`
+-- Dumping data for table `vtiger_jd_status`
 --
 
 INSERT INTO `vtiger_jd_status` (`jd_statusid`, `jd_status`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -8123,7 +8975,7 @@ INSERT INTO `vtiger_jd_status` (`jd_statusid`, `jd_status`, `presence`, `picklis
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_jd_status_seq`
+-- Table structure for table `vtiger_jd_status_seq`
 --
 
 CREATE TABLE `vtiger_jd_status_seq` (
@@ -8131,7 +8983,7 @@ CREATE TABLE `vtiger_jd_status_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_jd_status_seq`
+-- Dumping data for table `vtiger_jd_status_seq`
 --
 
 INSERT INTO `vtiger_jd_status_seq` (`id`) VALUES
@@ -8140,7 +8992,7 @@ INSERT INTO `vtiger_jd_status_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_kpi_department`
+-- Table structure for table `vtiger_kpi_department`
 --
 
 CREATE TABLE `vtiger_kpi_department` (
@@ -8153,7 +9005,7 @@ CREATE TABLE `vtiger_kpi_department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_kpi_department`
+-- Dumping data for table `vtiger_kpi_department`
 --
 
 INSERT INTO `vtiger_kpi_department` (`kpi_departmentid`, `kpi_department`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -8167,7 +9019,7 @@ INSERT INTO `vtiger_kpi_department` (`kpi_departmentid`, `kpi_department`, `pres
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_kpi_department_seq`
+-- Table structure for table `vtiger_kpi_department_seq`
 --
 
 CREATE TABLE `vtiger_kpi_department_seq` (
@@ -8175,7 +9027,7 @@ CREATE TABLE `vtiger_kpi_department_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_kpi_department_seq`
+-- Dumping data for table `vtiger_kpi_department_seq`
 --
 
 INSERT INTO `vtiger_kpi_department_seq` (`id`) VALUES
@@ -8184,7 +9036,7 @@ INSERT INTO `vtiger_kpi_department_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_kpi_status`
+-- Table structure for table `vtiger_kpi_status`
 --
 
 CREATE TABLE `vtiger_kpi_status` (
@@ -8197,7 +9049,7 @@ CREATE TABLE `vtiger_kpi_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_kpi_status`
+-- Dumping data for table `vtiger_kpi_status`
 --
 
 INSERT INTO `vtiger_kpi_status` (`kpi_statusid`, `kpi_status`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -8210,7 +9062,7 @@ INSERT INTO `vtiger_kpi_status` (`kpi_statusid`, `kpi_status`, `presence`, `pick
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_kpi_status_seq`
+-- Table structure for table `vtiger_kpi_status_seq`
 --
 
 CREATE TABLE `vtiger_kpi_status_seq` (
@@ -8218,7 +9070,7 @@ CREATE TABLE `vtiger_kpi_status_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_kpi_status_seq`
+-- Dumping data for table `vtiger_kpi_status_seq`
 --
 
 INSERT INTO `vtiger_kpi_status_seq` (`id`) VALUES
@@ -8227,7 +9079,7 @@ INSERT INTO `vtiger_kpi_status_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_kpi_type`
+-- Table structure for table `vtiger_kpi_type`
 --
 
 CREATE TABLE `vtiger_kpi_type` (
@@ -8240,7 +9092,7 @@ CREATE TABLE `vtiger_kpi_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_kpi_type`
+-- Dumping data for table `vtiger_kpi_type`
 --
 
 INSERT INTO `vtiger_kpi_type` (`kpi_typeid`, `kpi_type`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -8249,7 +9101,7 @@ INSERT INTO `vtiger_kpi_type` (`kpi_typeid`, `kpi_type`, `presence`, `picklist_v
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_kpi_type_seq`
+-- Table structure for table `vtiger_kpi_type_seq`
 --
 
 CREATE TABLE `vtiger_kpi_type_seq` (
@@ -8257,7 +9109,7 @@ CREATE TABLE `vtiger_kpi_type_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_kpi_type_seq`
+-- Dumping data for table `vtiger_kpi_type_seq`
 --
 
 INSERT INTO `vtiger_kpi_type_seq` (`id`) VALUES
@@ -8266,7 +9118,7 @@ INSERT INTO `vtiger_kpi_type_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_language`
+-- Table structure for table `vtiger_language`
 --
 
 CREATE TABLE `vtiger_language` (
@@ -8281,7 +9133,7 @@ CREATE TABLE `vtiger_language` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_language`
+-- Dumping data for table `vtiger_language`
 --
 
 INSERT INTO `vtiger_language` (`id`, `name`, `prefix`, `label`, `lastupdated`, `sequence`, `isdefault`, `active`) VALUES
@@ -8306,7 +9158,7 @@ INSERT INTO `vtiger_language` (`id`, `name`, `prefix`, `label`, `lastupdated`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_language_seq`
+-- Table structure for table `vtiger_language_seq`
 --
 
 CREATE TABLE `vtiger_language_seq` (
@@ -8314,7 +9166,7 @@ CREATE TABLE `vtiger_language_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_language_seq`
+-- Dumping data for table `vtiger_language_seq`
 --
 
 INSERT INTO `vtiger_language_seq` (`id`) VALUES
@@ -8323,7 +9175,7 @@ INSERT INTO `vtiger_language_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_leadaddress`
+-- Table structure for table `vtiger_leadaddress`
 --
 
 CREATE TABLE `vtiger_leadaddress` (
@@ -8343,7 +9195,7 @@ CREATE TABLE `vtiger_leadaddress` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_leaddetails`
+-- Table structure for table `vtiger_leaddetails`
 --
 
 CREATE TABLE `vtiger_leaddetails` (
@@ -8388,7 +9240,7 @@ CREATE TABLE `vtiger_leaddetails` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_leadscf`
+-- Table structure for table `vtiger_leadscf`
 --
 
 CREATE TABLE `vtiger_leadscf` (
@@ -8398,7 +9250,7 @@ CREATE TABLE `vtiger_leadscf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_leadsource`
+-- Table structure for table `vtiger_leadsource`
 --
 
 CREATE TABLE `vtiger_leadsource` (
@@ -8411,7 +9263,7 @@ CREATE TABLE `vtiger_leadsource` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_leadsource`
+-- Dumping data for table `vtiger_leadsource`
 --
 
 INSERT INTO `vtiger_leadsource` (`leadsourceid`, `leadsource`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -8431,7 +9283,7 @@ INSERT INTO `vtiger_leadsource` (`leadsourceid`, `leadsource`, `presence`, `pick
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_leadsource_seq`
+-- Table structure for table `vtiger_leadsource_seq`
 --
 
 CREATE TABLE `vtiger_leadsource_seq` (
@@ -8439,7 +9291,7 @@ CREATE TABLE `vtiger_leadsource_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_leadsource_seq`
+-- Dumping data for table `vtiger_leadsource_seq`
 --
 
 INSERT INTO `vtiger_leadsource_seq` (`id`) VALUES
@@ -8448,7 +9300,7 @@ INSERT INTO `vtiger_leadsource_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_leadstage`
+-- Table structure for table `vtiger_leadstage`
 --
 
 CREATE TABLE `vtiger_leadstage` (
@@ -8461,7 +9313,7 @@ CREATE TABLE `vtiger_leadstage` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_leadstatus`
+-- Table structure for table `vtiger_leadstatus`
 --
 
 CREATE TABLE `vtiger_leadstatus` (
@@ -8474,7 +9326,7 @@ CREATE TABLE `vtiger_leadstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_leadstatus`
+-- Dumping data for table `vtiger_leadstatus`
 --
 
 INSERT INTO `vtiger_leadstatus` (`leadstatusid`, `leadstatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -8493,7 +9345,7 @@ INSERT INTO `vtiger_leadstatus` (`leadstatusid`, `leadstatus`, `presence`, `pick
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_leadstatus_seq`
+-- Table structure for table `vtiger_leadstatus_seq`
 --
 
 CREATE TABLE `vtiger_leadstatus_seq` (
@@ -8501,7 +9353,7 @@ CREATE TABLE `vtiger_leadstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_leadstatus_seq`
+-- Dumping data for table `vtiger_leadstatus_seq`
 --
 
 INSERT INTO `vtiger_leadstatus_seq` (`id`) VALUES
@@ -8510,7 +9362,7 @@ INSERT INTO `vtiger_leadstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_leadsubdetails`
+-- Table structure for table `vtiger_leadsubdetails`
 --
 
 CREATE TABLE `vtiger_leadsubdetails` (
@@ -8524,7 +9376,7 @@ CREATE TABLE `vtiger_leadsubdetails` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_lead_view`
+-- Table structure for table `vtiger_lead_view`
 --
 
 CREATE TABLE `vtiger_lead_view` (
@@ -8535,7 +9387,7 @@ CREATE TABLE `vtiger_lead_view` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_lead_view`
+-- Dumping data for table `vtiger_lead_view`
 --
 
 INSERT INTO `vtiger_lead_view` (`lead_viewid`, `lead_view`, `sortorderid`, `presence`) VALUES
@@ -8546,7 +9398,7 @@ INSERT INTO `vtiger_lead_view` (`lead_viewid`, `lead_view`, `sortorderid`, `pres
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_lead_view_seq`
+-- Table structure for table `vtiger_lead_view_seq`
 --
 
 CREATE TABLE `vtiger_lead_view_seq` (
@@ -8554,7 +9406,7 @@ CREATE TABLE `vtiger_lead_view_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_lead_view_seq`
+-- Dumping data for table `vtiger_lead_view_seq`
 --
 
 INSERT INTO `vtiger_lead_view_seq` (`id`) VALUES
@@ -8563,7 +9415,7 @@ INSERT INTO `vtiger_lead_view_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_links`
+-- Table structure for table `vtiger_links`
 --
 
 CREATE TABLE `vtiger_links` (
@@ -8581,7 +9433,7 @@ CREATE TABLE `vtiger_links` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_links`
+-- Dumping data for table `vtiger_links`
 --
 
 INSERT INTO `vtiger_links` (`linkid`, `tabid`, `linktype`, `linklabel`, `linkurl`, `linkicon`, `sequence`, `handler_path`, `handler_class`, `handler`, `parent_link`) VALUES
@@ -8648,7 +9500,7 @@ INSERT INTO `vtiger_links` (`linkid`, `tabid`, `linktype`, `linklabel`, `linkurl
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_links_seq`
+-- Table structure for table `vtiger_links_seq`
 --
 
 CREATE TABLE `vtiger_links_seq` (
@@ -8656,7 +9508,7 @@ CREATE TABLE `vtiger_links_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_links_seq`
+-- Dumping data for table `vtiger_links_seq`
 --
 
 INSERT INTO `vtiger_links_seq` (`id`) VALUES
@@ -8665,7 +9517,7 @@ INSERT INTO `vtiger_links_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_loginhistory`
+-- Table structure for table `vtiger_loginhistory`
 --
 
 CREATE TABLE `vtiger_loginhistory` (
@@ -8678,24 +9530,25 @@ CREATE TABLE `vtiger_loginhistory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_loginhistory`
+-- Dumping data for table `vtiger_loginhistory`
 --
 
 INSERT INTO `vtiger_loginhistory` (`login_id`, `user_name`, `user_ip`, `logout_time`, `login_time`, `status`) VALUES
-(1, 'admin', '::1', '2020-04-03 08:56:19', '2020-04-03 15:56:19', 'Signed in'),
-(2, 'admin', '::1', '2020-04-08 05:39:05', '2020-04-08 12:27:39', 'Signed off'),
-(3, 'admin', '::1', '2020-04-08 05:39:14', '2020-04-08 12:39:14', 'Signed in'),
-(4, 'admin', '::1', '2020-04-12 22:54:18', '2020-04-13 05:54:18', 'Signed in'),
-(5, 'admin', '::1', '2020-04-13 01:14:04', '2020-04-13 08:14:04', 'Signed in'),
-(6, 'admin', '::1', '2020-04-13 02:02:17', '2020-04-13 09:02:17', 'Signed in'),
-(7, 'admin', '::1', '2020-04-13 03:05:04', '2020-04-13 10:05:04', 'Signed in'),
-(8, 'admin', '::1', '2020-04-16 05:32:33', '2020-04-16 12:32:33', 'Signed in'),
-(9, 'admin', '::1', '2020-04-17 05:56:26', '2020-04-17 12:56:26', 'Signed in');
+(0, 'admin', '::1', '2020-05-05 03:09:30', '2020-05-05 10:09:30', 'Signed in'),
+(1, 'admin', '::1', '2020-04-03 01:56:19', '2020-04-03 15:56:19', 'Signed in'),
+(2, 'admin', '::1', '2020-04-07 22:39:05', '2020-04-08 12:27:39', 'Signed off'),
+(3, 'admin', '::1', '2020-04-07 22:39:14', '2020-04-08 12:39:14', 'Signed in'),
+(4, 'admin', '::1', '2020-04-12 15:54:18', '2020-04-13 05:54:18', 'Signed in'),
+(5, 'admin', '::1', '2020-04-12 18:14:04', '2020-04-13 08:14:04', 'Signed in'),
+(6, 'admin', '::1', '2020-04-12 19:02:17', '2020-04-13 09:02:17', 'Signed in'),
+(7, 'admin', '::1', '2020-04-12 20:05:04', '2020-04-13 10:05:04', 'Signed in'),
+(8, 'admin', '::1', '2020-04-15 22:32:33', '2020-04-16 12:32:33', 'Signed in'),
+(9, 'admin', '::1', '2020-05-05 03:53:36', '2020-04-17 12:56:26', 'Signed off');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailer_queue`
+-- Table structure for table `vtiger_mailer_queue`
 --
 
 CREATE TABLE `vtiger_mailer_queue` (
@@ -8714,7 +9567,7 @@ CREATE TABLE `vtiger_mailer_queue` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailer_queueattachments`
+-- Table structure for table `vtiger_mailer_queueattachments`
 --
 
 CREATE TABLE `vtiger_mailer_queueattachments` (
@@ -8728,7 +9581,7 @@ CREATE TABLE `vtiger_mailer_queueattachments` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailer_queueinfo`
+-- Table structure for table `vtiger_mailer_queueinfo`
 --
 
 CREATE TABLE `vtiger_mailer_queueinfo` (
@@ -8741,7 +9594,7 @@ CREATE TABLE `vtiger_mailer_queueinfo` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailmanager_mailattachments`
+-- Table structure for table `vtiger_mailmanager_mailattachments`
 --
 
 CREATE TABLE `vtiger_mailmanager_mailattachments` (
@@ -8757,7 +9610,7 @@ CREATE TABLE `vtiger_mailmanager_mailattachments` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailmanager_mailrecord`
+-- Table structure for table `vtiger_mailmanager_mailrecord`
 --
 
 CREATE TABLE `vtiger_mailmanager_mailrecord` (
@@ -8784,7 +9637,7 @@ CREATE TABLE `vtiger_mailmanager_mailrecord` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailmanager_mailrel`
+-- Table structure for table `vtiger_mailmanager_mailrel`
 --
 
 CREATE TABLE `vtiger_mailmanager_mailrel` (
@@ -8796,7 +9649,7 @@ CREATE TABLE `vtiger_mailmanager_mailrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailscanner`
+-- Table structure for table `vtiger_mailscanner`
 --
 
 CREATE TABLE `vtiger_mailscanner` (
@@ -8819,7 +9672,7 @@ CREATE TABLE `vtiger_mailscanner` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailscanner_actions`
+-- Table structure for table `vtiger_mailscanner_actions`
 --
 
 CREATE TABLE `vtiger_mailscanner_actions` (
@@ -8834,7 +9687,7 @@ CREATE TABLE `vtiger_mailscanner_actions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailscanner_folders`
+-- Table structure for table `vtiger_mailscanner_folders`
 --
 
 CREATE TABLE `vtiger_mailscanner_folders` (
@@ -8849,7 +9702,7 @@ CREATE TABLE `vtiger_mailscanner_folders` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailscanner_ids`
+-- Table structure for table `vtiger_mailscanner_ids`
 --
 
 CREATE TABLE `vtiger_mailscanner_ids` (
@@ -8862,7 +9715,7 @@ CREATE TABLE `vtiger_mailscanner_ids` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailscanner_ruleactions`
+-- Table structure for table `vtiger_mailscanner_ruleactions`
 --
 
 CREATE TABLE `vtiger_mailscanner_ruleactions` (
@@ -8873,7 +9726,7 @@ CREATE TABLE `vtiger_mailscanner_ruleactions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mailscanner_rules`
+-- Table structure for table `vtiger_mailscanner_rules`
 --
 
 CREATE TABLE `vtiger_mailscanner_rules` (
@@ -8895,7 +9748,7 @@ CREATE TABLE `vtiger_mailscanner_rules` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mail_accounts`
+-- Table structure for table `vtiger_mail_accounts`
 --
 
 CREATE TABLE `vtiger_mail_accounts` (
@@ -8921,7 +9774,7 @@ CREATE TABLE `vtiger_mail_accounts` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_manufacturer`
+-- Table structure for table `vtiger_manufacturer`
 --
 
 CREATE TABLE `vtiger_manufacturer` (
@@ -8934,7 +9787,7 @@ CREATE TABLE `vtiger_manufacturer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_manufacturer`
+-- Dumping data for table `vtiger_manufacturer`
 --
 
 INSERT INTO `vtiger_manufacturer` (`manufacturerid`, `manufacturer`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -8945,7 +9798,7 @@ INSERT INTO `vtiger_manufacturer` (`manufacturerid`, `manufacturer`, `presence`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_manufacturer_seq`
+-- Table structure for table `vtiger_manufacturer_seq`
 --
 
 CREATE TABLE `vtiger_manufacturer_seq` (
@@ -8953,7 +9806,7 @@ CREATE TABLE `vtiger_manufacturer_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_manufacturer_seq`
+-- Dumping data for table `vtiger_manufacturer_seq`
 --
 
 INSERT INTO `vtiger_manufacturer_seq` (`id`) VALUES
@@ -8962,7 +9815,7 @@ INSERT INTO `vtiger_manufacturer_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_mobile_alerts`
+-- Table structure for table `vtiger_mobile_alerts`
 --
 
 CREATE TABLE `vtiger_mobile_alerts` (
@@ -8974,7 +9827,7 @@ CREATE TABLE `vtiger_mobile_alerts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_mobile_alerts`
+-- Dumping data for table `vtiger_mobile_alerts`
 --
 
 INSERT INTO `vtiger_mobile_alerts` (`id`, `handler_path`, `handler_class`, `sequence`, `deleted`) VALUES
@@ -8989,7 +9842,7 @@ INSERT INTO `vtiger_mobile_alerts` (`id`, `handler_path`, `handler_class`, `sequ
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_modcomments`
+-- Table structure for table `vtiger_modcomments`
 --
 
 CREATE TABLE `vtiger_modcomments` (
@@ -9008,7 +9861,7 @@ CREATE TABLE `vtiger_modcomments` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_modcommentscf`
+-- Table structure for table `vtiger_modcommentscf`
 --
 
 CREATE TABLE `vtiger_modcommentscf` (
@@ -9018,7 +9871,7 @@ CREATE TABLE `vtiger_modcommentscf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_modentity_num`
+-- Table structure for table `vtiger_modentity_num`
 --
 
 CREATE TABLE `vtiger_modentity_num` (
@@ -9031,7 +9884,7 @@ CREATE TABLE `vtiger_modentity_num` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_modentity_num`
+-- Dumping data for table `vtiger_modentity_num`
 --
 
 INSERT INTO `vtiger_modentity_num` (`num_id`, `semodule`, `prefix`, `start_id`, `cur_id`, `active`) VALUES
@@ -9045,7 +9898,7 @@ INSERT INTO `vtiger_modentity_num` (`num_id`, `semodule`, `prefix`, `start_id`, 
 (8, 'SalesOrder', 'SO', '1', '1', '1'),
 (9, 'PurchaseOrder', 'PO', '1', '1', '1'),
 (10, 'Invoice', 'INV', '1', '1', '1'),
-(11, 'Products', 'PRO', '1', '1', '1'),
+(11, 'Products', 'PRO', '1', '2', '1'),
 (12, 'Vendors', 'VEN', '1', '1', '1'),
 (13, 'PriceBooks', 'PB', '1', '1', '1'),
 (14, 'Faq', 'FAQ', '1', '1', '1'),
@@ -9060,7 +9913,7 @@ INSERT INTO `vtiger_modentity_num` (`num_id`, `semodule`, `prefix`, `start_id`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_modentity_num_seq`
+-- Table structure for table `vtiger_modentity_num_seq`
 --
 
 CREATE TABLE `vtiger_modentity_num_seq` (
@@ -9068,7 +9921,7 @@ CREATE TABLE `vtiger_modentity_num_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_modentity_num_seq`
+-- Dumping data for table `vtiger_modentity_num_seq`
 --
 
 INSERT INTO `vtiger_modentity_num_seq` (`id`) VALUES
@@ -9077,7 +9930,7 @@ INSERT INTO `vtiger_modentity_num_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_modtracker_basic`
+-- Table structure for table `vtiger_modtracker_basic`
 --
 
 CREATE TABLE `vtiger_modtracker_basic` (
@@ -9089,10 +9942,34 @@ CREATE TABLE `vtiger_modtracker_basic` (
   `status` int(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_modtracker_basic`
+--
+
+INSERT INTO `vtiger_modtracker_basic` (`id`, `crmid`, `module`, `whodid`, `changedon`, `status`) VALUES
+(1, 31, 'Products', 1, '2020-05-21 16:58:20', 2);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_modtracker_detail`
+-- Table structure for table `vtiger_modtracker_basic_seq`
+--
+
+CREATE TABLE `vtiger_modtracker_basic_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_modtracker_basic_seq`
+--
+
+INSERT INTO `vtiger_modtracker_basic_seq` (`id`) VALUES
+(1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_modtracker_detail`
 --
 
 CREATE TABLE `vtiger_modtracker_detail` (
@@ -9102,10 +9979,31 @@ CREATE TABLE `vtiger_modtracker_detail` (
   `postvalue` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_modtracker_detail`
+--
+
+INSERT INTO `vtiger_modtracker_detail` (`id`, `fieldname`, `prevalue`, `postvalue`) VALUES
+(1, 'label', NULL, 'M&aacute;y t&iacute;nh'),
+(1, 'productname', NULL, 'M&aacute;y t&iacute;nh'),
+(1, 'product_no', NULL, 'PRO1'),
+(1, 'discontinued', NULL, '1'),
+(1, 'createdtime', NULL, '2020-05-21 16:58:20'),
+(1, 'modifiedby', NULL, '1'),
+(1, 'unit_price', NULL, '100000.00000000'),
+(1, 'commissionrate', NULL, '0.000'),
+(1, 'qty_per_unit', NULL, '0.00'),
+(1, 'qtyinstock', NULL, '0.000'),
+(1, 'assigned_user_id', NULL, '1'),
+(1, 'purchase_cost', NULL, '0.00000000'),
+(1, 'source', NULL, 'CRM'),
+(1, 'record_id', NULL, '31'),
+(1, 'record_module', NULL, 'Products');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_modtracker_relations`
+-- Table structure for table `vtiger_modtracker_relations`
 --
 
 CREATE TABLE `vtiger_modtracker_relations` (
@@ -9118,7 +10016,7 @@ CREATE TABLE `vtiger_modtracker_relations` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_modtracker_tabs`
+-- Table structure for table `vtiger_modtracker_tabs`
 --
 
 CREATE TABLE `vtiger_modtracker_tabs` (
@@ -9127,7 +10025,7 @@ CREATE TABLE `vtiger_modtracker_tabs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_modtracker_tabs`
+-- Dumping data for table `vtiger_modtracker_tabs`
 --
 
 INSERT INTO `vtiger_modtracker_tabs` (`tabid`, `visible`) VALUES
@@ -9163,7 +10061,7 @@ INSERT INTO `vtiger_modtracker_tabs` (`tabid`, `visible`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_module_dashboard_widgets`
+-- Table structure for table `vtiger_module_dashboard_widgets`
 --
 
 CREATE TABLE `vtiger_module_dashboard_widgets` (
@@ -9182,7 +10080,7 @@ CREATE TABLE `vtiger_module_dashboard_widgets` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_notebook_contents`
+-- Table structure for table `vtiger_notebook_contents`
 --
 
 CREATE TABLE `vtiger_notebook_contents` (
@@ -9194,7 +10092,7 @@ CREATE TABLE `vtiger_notebook_contents` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_notes`
+-- Table structure for table `vtiger_notes`
 --
 
 CREATE TABLE `vtiger_notes` (
@@ -9216,7 +10114,7 @@ CREATE TABLE `vtiger_notes` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_notescf`
+-- Table structure for table `vtiger_notescf`
 --
 
 CREATE TABLE `vtiger_notescf` (
@@ -9226,7 +10124,7 @@ CREATE TABLE `vtiger_notescf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_notificationscheduler`
+-- Table structure for table `vtiger_notificationscheduler`
 --
 
 CREATE TABLE `vtiger_notificationscheduler` (
@@ -9240,7 +10138,7 @@ CREATE TABLE `vtiger_notificationscheduler` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_notificationscheduler`
+-- Dumping data for table `vtiger_notificationscheduler`
 --
 
 INSERT INTO `vtiger_notificationscheduler` (`schedulednotificationid`, `schedulednotificationname`, `active`, `notificationsubject`, `notificationbody`, `label`, `type`) VALUES
@@ -9256,7 +10154,7 @@ INSERT INTO `vtiger_notificationscheduler` (`schedulednotificationid`, `schedule
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_notificationscheduler_seq`
+-- Table structure for table `vtiger_notificationscheduler_seq`
 --
 
 CREATE TABLE `vtiger_notificationscheduler_seq` (
@@ -9264,7 +10162,7 @@ CREATE TABLE `vtiger_notificationscheduler_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_notificationscheduler_seq`
+-- Dumping data for table `vtiger_notificationscheduler_seq`
 --
 
 INSERT INTO `vtiger_notificationscheduler_seq` (`id`) VALUES
@@ -9273,7 +10171,7 @@ INSERT INTO `vtiger_notificationscheduler_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_no_of_currency_decimals`
+-- Table structure for table `vtiger_no_of_currency_decimals`
 --
 
 CREATE TABLE `vtiger_no_of_currency_decimals` (
@@ -9284,7 +10182,7 @@ CREATE TABLE `vtiger_no_of_currency_decimals` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_no_of_currency_decimals`
+-- Dumping data for table `vtiger_no_of_currency_decimals`
 --
 
 INSERT INTO `vtiger_no_of_currency_decimals` (`no_of_currency_decimalsid`, `no_of_currency_decimals`, `sortorderid`, `presence`) VALUES
@@ -9298,7 +10196,7 @@ INSERT INTO `vtiger_no_of_currency_decimals` (`no_of_currency_decimalsid`, `no_o
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_no_of_currency_decimals_seq`
+-- Table structure for table `vtiger_no_of_currency_decimals_seq`
 --
 
 CREATE TABLE `vtiger_no_of_currency_decimals_seq` (
@@ -9306,7 +10204,7 @@ CREATE TABLE `vtiger_no_of_currency_decimals_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_no_of_currency_decimals_seq`
+-- Dumping data for table `vtiger_no_of_currency_decimals_seq`
 --
 
 INSERT INTO `vtiger_no_of_currency_decimals_seq` (`id`) VALUES
@@ -9315,7 +10213,7 @@ INSERT INTO `vtiger_no_of_currency_decimals_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_opportunitystage`
+-- Table structure for table `vtiger_opportunitystage`
 --
 
 CREATE TABLE `vtiger_opportunitystage` (
@@ -9329,7 +10227,7 @@ CREATE TABLE `vtiger_opportunitystage` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_opportunity_type`
+-- Table structure for table `vtiger_opportunity_type`
 --
 
 CREATE TABLE `vtiger_opportunity_type` (
@@ -9342,7 +10240,7 @@ CREATE TABLE `vtiger_opportunity_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_opportunity_type`
+-- Dumping data for table `vtiger_opportunity_type`
 --
 
 INSERT INTO `vtiger_opportunity_type` (`opptypeid`, `opportunity_type`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -9352,7 +10250,7 @@ INSERT INTO `vtiger_opportunity_type` (`opptypeid`, `opportunity_type`, `presenc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_opportunity_type_seq`
+-- Table structure for table `vtiger_opportunity_type_seq`
 --
 
 CREATE TABLE `vtiger_opportunity_type_seq` (
@@ -9360,7 +10258,7 @@ CREATE TABLE `vtiger_opportunity_type_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_opportunity_type_seq`
+-- Dumping data for table `vtiger_opportunity_type_seq`
 --
 
 INSERT INTO `vtiger_opportunity_type_seq` (`id`) VALUES
@@ -9369,7 +10267,7 @@ INSERT INTO `vtiger_opportunity_type_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_organizationdetails`
+-- Table structure for table `vtiger_organizationdetails`
 --
 
 CREATE TABLE `vtiger_organizationdetails` (
@@ -9389,7 +10287,7 @@ CREATE TABLE `vtiger_organizationdetails` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_organizationdetails`
+-- Dumping data for table `vtiger_organizationdetails`
 --
 
 INSERT INTO `vtiger_organizationdetails` (`organization_id`, `organizationname`, `address`, `city`, `state`, `country`, `code`, `phone`, `fax`, `website`, `logoname`, `logo`, `vatid`) VALUES
@@ -9398,7 +10296,7 @@ INSERT INTO `vtiger_organizationdetails` (`organization_id`, `organizationname`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_organizationdetails_seq`
+-- Table structure for table `vtiger_organizationdetails_seq`
 --
 
 CREATE TABLE `vtiger_organizationdetails_seq` (
@@ -9406,7 +10304,7 @@ CREATE TABLE `vtiger_organizationdetails_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_organizationdetails_seq`
+-- Dumping data for table `vtiger_organizationdetails_seq`
 --
 
 INSERT INTO `vtiger_organizationdetails_seq` (`id`) VALUES
@@ -9415,7 +10313,7 @@ INSERT INTO `vtiger_organizationdetails_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_org_share_action2tab`
+-- Table structure for table `vtiger_org_share_action2tab`
 --
 
 CREATE TABLE `vtiger_org_share_action2tab` (
@@ -9424,7 +10322,7 @@ CREATE TABLE `vtiger_org_share_action2tab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_org_share_action2tab`
+-- Dumping data for table `vtiger_org_share_action2tab`
 --
 
 INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
@@ -9465,6 +10363,12 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (0, 59),
 (0, 60),
 (0, 61),
+(0, 63),
+(0, 64),
+(0, 65),
+(0, 66),
+(0, 70),
+(0, 71),
 (1, 2),
 (1, 4),
 (1, 6),
@@ -9502,6 +10406,12 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (1, 59),
 (1, 60),
 (1, 61),
+(1, 63),
+(1, 64),
+(1, 65),
+(1, 66),
+(1, 70),
+(1, 71),
 (2, 2),
 (2, 4),
 (2, 6),
@@ -9539,6 +10449,12 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (2, 59),
 (2, 60),
 (2, 61),
+(2, 63),
+(2, 64),
+(2, 65),
+(2, 66),
+(2, 70),
+(2, 71),
 (3, 2),
 (3, 4),
 (3, 6),
@@ -9575,12 +10491,18 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (3, 58),
 (3, 59),
 (3, 60),
-(3, 61);
+(3, 61),
+(3, 63),
+(3, 64),
+(3, 65),
+(3, 66),
+(3, 70),
+(3, 71);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_org_share_action_mapping`
+-- Table structure for table `vtiger_org_share_action_mapping`
 --
 
 CREATE TABLE `vtiger_org_share_action_mapping` (
@@ -9589,7 +10511,7 @@ CREATE TABLE `vtiger_org_share_action_mapping` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_org_share_action_mapping`
+-- Dumping data for table `vtiger_org_share_action_mapping`
 --
 
 INSERT INTO `vtiger_org_share_action_mapping` (`share_action_id`, `share_action_name`) VALUES
@@ -9605,7 +10527,7 @@ INSERT INTO `vtiger_org_share_action_mapping` (`share_action_id`, `share_action_
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_othereventduration`
+-- Table structure for table `vtiger_othereventduration`
 --
 
 CREATE TABLE `vtiger_othereventduration` (
@@ -9616,7 +10538,7 @@ CREATE TABLE `vtiger_othereventduration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_othereventduration`
+-- Dumping data for table `vtiger_othereventduration`
 --
 
 INSERT INTO `vtiger_othereventduration` (`othereventdurationid`, `othereventduration`, `sortorderid`, `presence`) VALUES
@@ -9629,7 +10551,7 @@ INSERT INTO `vtiger_othereventduration` (`othereventdurationid`, `othereventdura
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_othereventduration_seq`
+-- Table structure for table `vtiger_othereventduration_seq`
 --
 
 CREATE TABLE `vtiger_othereventduration_seq` (
@@ -9637,7 +10559,7 @@ CREATE TABLE `vtiger_othereventduration_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_othereventduration_seq`
+-- Dumping data for table `vtiger_othereventduration_seq`
 --
 
 INSERT INTO `vtiger_othereventduration_seq` (`id`) VALUES
@@ -9646,7 +10568,7 @@ INSERT INTO `vtiger_othereventduration_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_parenttab`
+-- Table structure for table `vtiger_parenttab`
 --
 
 CREATE TABLE `vtiger_parenttab` (
@@ -9657,7 +10579,7 @@ CREATE TABLE `vtiger_parenttab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_parenttab`
+-- Dumping data for table `vtiger_parenttab`
 --
 
 INSERT INTO `vtiger_parenttab` (`parenttabid`, `parenttab_label`, `sequence`, `visible`) VALUES
@@ -9669,12 +10591,13 @@ INSERT INTO `vtiger_parenttab` (`parenttabid`, `parenttab_label`, `sequence`, `v
 (6, 'Inventory', 6, 0),
 (7, 'Tools', 7, 0),
 (8, 'Settings', 8, 0),
-(9, 'HRM', 9, 0);
+(9, 'HRM', 9, 0),
+(10, 'Contacts', 10, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_parenttabrel`
+-- Table structure for table `vtiger_parenttabrel`
 --
 
 CREATE TABLE `vtiger_parenttabrel` (
@@ -9684,7 +10607,7 @@ CREATE TABLE `vtiger_parenttabrel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_parenttabrel`
+-- Dumping data for table `vtiger_parenttabrel`
 --
 
 INSERT INTO `vtiger_parenttabrel` (`parenttabid`, `tabid`, `sequence`) VALUES
@@ -9778,12 +10701,19 @@ INSERT INTO `vtiger_parenttabrel` (`parenttabid`, `tabid`, `sequence`) VALUES
 (9, 60, 19),
 (9, 60, 20),
 (9, 61, 21),
-(9, 61, 22);
+(9, 61, 22),
+(10, 63, 1),
+(10, 64, 2),
+(4, 65, 17),
+(4, 66, 18),
+(10, 64, 3),
+(2, 70, 10),
+(2, 71, 11);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_payment_duration`
+-- Table structure for table `vtiger_payment_duration`
 --
 
 CREATE TABLE `vtiger_payment_duration` (
@@ -9795,7 +10725,7 @@ CREATE TABLE `vtiger_payment_duration` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_payment_duration`
+-- Dumping data for table `vtiger_payment_duration`
 --
 
 INSERT INTO `vtiger_payment_duration` (`payment_duration_id`, `payment_duration`, `sortorderid`, `presence`, `color`) VALUES
@@ -9806,7 +10736,7 @@ INSERT INTO `vtiger_payment_duration` (`payment_duration_id`, `payment_duration`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_payment_duration_seq`
+-- Table structure for table `vtiger_payment_duration_seq`
 --
 
 CREATE TABLE `vtiger_payment_duration_seq` (
@@ -9814,7 +10744,7 @@ CREATE TABLE `vtiger_payment_duration_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_payment_duration_seq`
+-- Dumping data for table `vtiger_payment_duration_seq`
 --
 
 INSERT INTO `vtiger_payment_duration_seq` (`id`) VALUES
@@ -9823,7 +10753,7 @@ INSERT INTO `vtiger_payment_duration_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_pbxmanager`
+-- Table structure for table `vtiger_pbxmanager`
 --
 
 CREATE TABLE `vtiger_pbxmanager` (
@@ -9846,7 +10776,7 @@ CREATE TABLE `vtiger_pbxmanager` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_pbxmanagercf`
+-- Table structure for table `vtiger_pbxmanagercf`
 --
 
 CREATE TABLE `vtiger_pbxmanagercf` (
@@ -9856,7 +10786,7 @@ CREATE TABLE `vtiger_pbxmanagercf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_pbxmanager_gateway`
+-- Table structure for table `vtiger_pbxmanager_gateway`
 --
 
 CREATE TABLE `vtiger_pbxmanager_gateway` (
@@ -9868,7 +10798,7 @@ CREATE TABLE `vtiger_pbxmanager_gateway` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_pbxmanager_phonelookup`
+-- Table structure for table `vtiger_pbxmanager_phonelookup`
 --
 
 CREATE TABLE `vtiger_pbxmanager_phonelookup` (
@@ -9882,7 +10812,44 @@ CREATE TABLE `vtiger_pbxmanager_phonelookup` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_picklist`
+-- Table structure for table `vtiger_phuongtientruyenthong`
+--
+
+CREATE TABLE `vtiger_phuongtientruyenthong` (
+  `phuongtientruyenthongid` int(19) NOT NULL,
+  `pttt` varchar(255) DEFAULT NULL,
+  `motachitiet` varchar(100) DEFAULT NULL,
+  `tags` varchar(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_phuongtientruyenthong`
+--
+
+INSERT INTO `vtiger_phuongtientruyenthong` (`phuongtientruyenthongid`, `pttt`, `motachitiet`, `tags`) VALUES
+(33, '[\"Facebook\"]', 'Chạy Facebook ads', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_phuongtientruyenthongcf`
+--
+
+CREATE TABLE `vtiger_phuongtientruyenthongcf` (
+  `phuongtientruyenthongid` int(19) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_phuongtientruyenthongcf`
+--
+
+INSERT INTO `vtiger_phuongtientruyenthongcf` (`phuongtientruyenthongid`) VALUES
+(33);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_picklist`
 --
 
 CREATE TABLE `vtiger_picklist` (
@@ -9891,7 +10858,7 @@ CREATE TABLE `vtiger_picklist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_picklist`
+-- Dumping data for table `vtiger_picklist`
 --
 
 INSERT INTO `vtiger_picklist` (`picklistid`, `name`) VALUES
@@ -9903,6 +10870,7 @@ INSERT INTO `vtiger_picklist` (`picklistid`, `name`) VALUES
 (60, 'candidate_action'),
 (59, 'candidate_resource_cv'),
 (5, 'carrier'),
+(66, 'cf_1139'),
 (33, 'contract_priority'),
 (32, 'contract_status'),
 (34, 'contract_type'),
@@ -9964,7 +10932,7 @@ INSERT INTO `vtiger_picklist` (`picklistid`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_picklistvalues_seq`
+-- Table structure for table `vtiger_picklistvalues_seq`
 --
 
 CREATE TABLE `vtiger_picklistvalues_seq` (
@@ -9972,16 +10940,16 @@ CREATE TABLE `vtiger_picklistvalues_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_picklistvalues_seq`
+-- Dumping data for table `vtiger_picklistvalues_seq`
 --
 
 INSERT INTO `vtiger_picklistvalues_seq` (`id`) VALUES
-(376);
+(385);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_picklist_dependency`
+-- Table structure for table `vtiger_picklist_dependency`
 --
 
 CREATE TABLE `vtiger_picklist_dependency` (
@@ -9997,7 +10965,7 @@ CREATE TABLE `vtiger_picklist_dependency` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_picklist_seq`
+-- Table structure for table `vtiger_picklist_seq`
 --
 
 CREATE TABLE `vtiger_picklist_seq` (
@@ -10005,16 +10973,16 @@ CREATE TABLE `vtiger_picklist_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_picklist_seq`
+-- Dumping data for table `vtiger_picklist_seq`
 --
 
 INSERT INTO `vtiger_picklist_seq` (`id`) VALUES
-(65);
+(66);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_picklist_transitions`
+-- Table structure for table `vtiger_picklist_transitions`
 --
 
 CREATE TABLE `vtiger_picklist_transitions` (
@@ -10026,7 +10994,7 @@ CREATE TABLE `vtiger_picklist_transitions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_pobillads`
+-- Table structure for table `vtiger_pobillads`
 --
 
 CREATE TABLE `vtiger_pobillads` (
@@ -10042,7 +11010,7 @@ CREATE TABLE `vtiger_pobillads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_portal`
+-- Table structure for table `vtiger_portal`
 --
 
 CREATE TABLE `vtiger_portal` (
@@ -10057,7 +11025,7 @@ CREATE TABLE `vtiger_portal` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_portalinfo`
+-- Table structure for table `vtiger_portalinfo`
 --
 
 CREATE TABLE `vtiger_portalinfo` (
@@ -10075,7 +11043,7 @@ CREATE TABLE `vtiger_portalinfo` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_poshipads`
+-- Table structure for table `vtiger_poshipads`
 --
 
 CREATE TABLE `vtiger_poshipads` (
@@ -10091,7 +11059,7 @@ CREATE TABLE `vtiger_poshipads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_postatus`
+-- Table structure for table `vtiger_postatus`
 --
 
 CREATE TABLE `vtiger_postatus` (
@@ -10104,7 +11072,7 @@ CREATE TABLE `vtiger_postatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_postatus`
+-- Dumping data for table `vtiger_postatus`
 --
 
 INSERT INTO `vtiger_postatus` (`postatusid`, `postatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -10117,7 +11085,7 @@ INSERT INTO `vtiger_postatus` (`postatusid`, `postatus`, `presence`, `picklist_v
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_postatushistory`
+-- Table structure for table `vtiger_postatushistory`
 --
 
 CREATE TABLE `vtiger_postatushistory` (
@@ -10132,7 +11100,7 @@ CREATE TABLE `vtiger_postatushistory` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_postatus_seq`
+-- Table structure for table `vtiger_postatus_seq`
 --
 
 CREATE TABLE `vtiger_postatus_seq` (
@@ -10140,7 +11108,7 @@ CREATE TABLE `vtiger_postatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_postatus_seq`
+-- Dumping data for table `vtiger_postatus_seq`
 --
 
 INSERT INTO `vtiger_postatus_seq` (`id`) VALUES
@@ -10149,7 +11117,7 @@ INSERT INTO `vtiger_postatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_potential`
+-- Table structure for table `vtiger_potential`
 --
 
 CREATE TABLE `vtiger_potential` (
@@ -10189,7 +11157,7 @@ CREATE TABLE `vtiger_potential` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_potentialscf`
+-- Table structure for table `vtiger_potentialscf`
 --
 
 CREATE TABLE `vtiger_potentialscf` (
@@ -10199,7 +11167,7 @@ CREATE TABLE `vtiger_potentialscf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_potstagehistory`
+-- Table structure for table `vtiger_potstagehistory`
 --
 
 CREATE TABLE `vtiger_potstagehistory` (
@@ -10216,7 +11184,7 @@ CREATE TABLE `vtiger_potstagehistory` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_pricebook`
+-- Table structure for table `vtiger_pricebook`
 --
 
 CREATE TABLE `vtiger_pricebook` (
@@ -10231,7 +11199,7 @@ CREATE TABLE `vtiger_pricebook` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_pricebookcf`
+-- Table structure for table `vtiger_pricebookcf`
 --
 
 CREATE TABLE `vtiger_pricebookcf` (
@@ -10241,7 +11209,7 @@ CREATE TABLE `vtiger_pricebookcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_pricebookproductrel`
+-- Table structure for table `vtiger_pricebookproductrel`
 --
 
 CREATE TABLE `vtiger_pricebookproductrel` (
@@ -10254,7 +11222,7 @@ CREATE TABLE `vtiger_pricebookproductrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_priority`
+-- Table structure for table `vtiger_priority`
 --
 
 CREATE TABLE `vtiger_priority` (
@@ -10267,7 +11235,30 @@ CREATE TABLE `vtiger_priority` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_productcategory`
+-- Table structure for table `vtiger_problemcategory`
+--
+
+CREATE TABLE `vtiger_problemcategory` (
+  `problemcategoryid` int(19) NOT NULL,
+  `loaivande` varchar(255) DEFAULT NULL,
+  `tags` varchar(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_problemcategorycf`
+--
+
+CREATE TABLE `vtiger_problemcategorycf` (
+  `problemcategoryid` int(19) NOT NULL,
+  `cf_1207` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_productcategory`
 --
 
 CREATE TABLE `vtiger_productcategory` (
@@ -10280,7 +11271,7 @@ CREATE TABLE `vtiger_productcategory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_productcategory`
+-- Dumping data for table `vtiger_productcategory`
 --
 
 INSERT INTO `vtiger_productcategory` (`productcategoryid`, `productcategory`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -10291,7 +11282,7 @@ INSERT INTO `vtiger_productcategory` (`productcategoryid`, `productcategory`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_productcategory_seq`
+-- Table structure for table `vtiger_productcategory_seq`
 --
 
 CREATE TABLE `vtiger_productcategory_seq` (
@@ -10299,7 +11290,7 @@ CREATE TABLE `vtiger_productcategory_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_productcategory_seq`
+-- Dumping data for table `vtiger_productcategory_seq`
 --
 
 INSERT INTO `vtiger_productcategory_seq` (`id`) VALUES
@@ -10308,17 +11299,24 @@ INSERT INTO `vtiger_productcategory_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_productcf`
+-- Table structure for table `vtiger_productcf`
 --
 
 CREATE TABLE `vtiger_productcf` (
   `productid` int(19) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_productcf`
+--
+
+INSERT INTO `vtiger_productcf` (`productid`) VALUES
+(31);
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_productcurrencyrel`
+-- Table structure for table `vtiger_productcurrencyrel`
 --
 
 CREATE TABLE `vtiger_productcurrencyrel` (
@@ -10331,7 +11329,7 @@ CREATE TABLE `vtiger_productcurrencyrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_products`
+-- Table structure for table `vtiger_products`
 --
 
 CREATE TABLE `vtiger_products` (
@@ -10372,10 +11370,17 @@ CREATE TABLE `vtiger_products` (
   `tags` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_products`
+--
+
+INSERT INTO `vtiger_products` (`productid`, `product_no`, `productname`, `productcode`, `productcategory`, `manufacturer`, `qty_per_unit`, `unit_price`, `weight`, `pack_size`, `sales_start_date`, `sales_end_date`, `start_date`, `expiry_date`, `cost_factor`, `commissionrate`, `commissionmethod`, `discontinued`, `usageunit`, `reorderlevel`, `website`, `taxclass`, `mfr_part_no`, `vendor_part_no`, `serialno`, `qtyinstock`, `productsheet`, `qtyindemand`, `glacct`, `vendor_id`, `imagename`, `currency_id`, `is_subproducts_viewable`, `purchase_cost`, `tags`) VALUES
+(31, 'PRO1', 'Máy tính', '', '', '', '0.00', '100000.00000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.000', NULL, 1, '', 0, '', '', '', '', '', '0.000', '', 0, '', 0, '', 1, 1, '0.00000000', '');
+
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_producttaxrel`
+-- Table structure for table `vtiger_producttaxrel`
 --
 
 CREATE TABLE `vtiger_producttaxrel` (
@@ -10388,7 +11393,7 @@ CREATE TABLE `vtiger_producttaxrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_profile`
+-- Table structure for table `vtiger_profile`
 --
 
 CREATE TABLE `vtiger_profile` (
@@ -10399,7 +11404,7 @@ CREATE TABLE `vtiger_profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_profile`
+-- Dumping data for table `vtiger_profile`
 --
 
 INSERT INTO `vtiger_profile` (`profileid`, `profilename`, `description`, `directly_related_to_role`) VALUES
@@ -10411,7 +11416,7 @@ INSERT INTO `vtiger_profile` (`profileid`, `profilename`, `description`, `direct
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_profile2field`
+-- Table structure for table `vtiger_profile2field`
 --
 
 CREATE TABLE `vtiger_profile2field` (
@@ -10423,7 +11428,7 @@ CREATE TABLE `vtiger_profile2field` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_profile2field`
+-- Dumping data for table `vtiger_profile2field`
 --
 
 INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
@@ -11399,6 +12404,190 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (1, 61, 1022, 0, 0),
 (1, 61, 1023, 0, 0),
 (1, 61, 1024, 0, 0),
+(1, 62, 1025, 0, 0),
+(1, 62, 1026, 0, 0),
+(1, 62, 1027, 0, 0),
+(1, 62, 1028, 0, 0),
+(1, 62, 1029, 0, 0),
+(1, 62, 1030, 0, 0),
+(1, 62, 1031, 0, 0),
+(1, 62, 1032, 0, 0),
+(1, 62, 1033, 0, 0),
+(1, 62, 1034, 0, 0),
+(1, 62, 1035, 0, 0),
+(1, 62, 1036, 0, 0),
+(1, 62, 1037, 0, 0),
+(1, 62, 1038, 0, 0),
+(1, 62, 1039, 0, 0),
+(1, 62, 1040, 0, 0),
+(1, 62, 1041, 0, 0),
+(1, 62, 1042, 0, 0),
+(1, 62, 1043, 0, 0),
+(1, 62, 1044, 0, 0),
+(1, 62, 1045, 0, 0),
+(1, 62, 1046, 0, 0),
+(1, 62, 1047, 0, 0),
+(1, 62, 1048, 0, 0),
+(1, 62, 1049, 0, 0),
+(1, 62, 1050, 0, 0),
+(1, 62, 1051, 0, 0),
+(1, 62, 1052, 0, 0),
+(1, 62, 1053, 0, 0),
+(1, 62, 1054, 0, 0),
+(1, 63, 1055, 0, 0),
+(1, 63, 1056, 0, 0),
+(1, 63, 1057, 0, 0),
+(1, 63, 1058, 0, 0),
+(1, 62, 1059, 0, 0),
+(1, 62, 1060, 0, 0),
+(1, 62, 1061, 0, 0),
+(1, 62, 1062, 0, 0),
+(1, 62, 1063, 0, 0),
+(1, 62, 1064, 0, 0),
+(1, 62, 1065, 0, 0),
+(1, 62, 1066, 0, 0),
+(1, 62, 1067, 0, 0),
+(1, 62, 1068, 0, 0),
+(1, 62, 1071, 0, 0),
+(1, 62, 1072, 0, 0),
+(1, 62, 1073, 0, 0),
+(1, 62, 1074, 0, 0),
+(1, 62, 1075, 0, 0),
+(1, 62, 1076, 0, 0),
+(1, 62, 1078, 0, 0),
+(1, 62, 1082, 0, 0),
+(1, 62, 1084, 0, 0),
+(1, 63, 1085, 0, 0),
+(1, 63, 1086, 0, 0),
+(1, 63, 1087, 0, 0),
+(1, 63, 1088, 0, 0),
+(1, 63, 1089, 0, 0),
+(1, 63, 1090, 0, 0),
+(1, 63, 1091, 0, 0),
+(1, 63, 1092, 0, 0),
+(1, 63, 1093, 0, 0),
+(1, 63, 1094, 0, 0),
+(1, 63, 1095, 0, 0),
+(1, 63, 1096, 0, 0),
+(1, 63, 1097, 0, 0),
+(1, 63, 1098, 0, 0),
+(1, 63, 1099, 0, 0),
+(1, 63, 1100, 0, 0),
+(1, 63, 1101, 0, 0),
+(1, 63, 1102, 0, 0),
+(1, 63, 1104, 0, 0),
+(1, 63, 1106, 0, 0),
+(1, 63, 1108, 0, 0),
+(1, 63, 1110, 0, 0),
+(1, 63, 1112, 0, 0),
+(1, 63, 1114, 0, 0),
+(1, 63, 1116, 0, 0),
+(1, 63, 1120, 0, 0),
+(1, 63, 1122, 0, 0),
+(1, 63, 1124, 0, 0),
+(1, 63, 1136, 0, 0),
+(1, 63, 1138, 0, 0),
+(1, 63, 1142, 0, 0),
+(1, 63, 1144, 0, 0),
+(1, 63, 1146, 0, 0),
+(1, 63, 1148, 0, 0),
+(1, 63, 1150, 0, 0),
+(1, 63, 1152, 0, 0),
+(1, 63, 1154, 0, 0),
+(1, 63, 1156, 0, 0),
+(1, 63, 1158, 0, 0),
+(1, 63, 1160, 0, 0),
+(1, 63, 1162, 0, 0),
+(1, 64, 1163, 0, 0),
+(1, 64, 1164, 0, 0),
+(1, 64, 1165, 0, 0),
+(1, 64, 1166, 0, 0),
+(1, 64, 1167, 0, 0),
+(1, 64, 1168, 0, 0),
+(1, 64, 1169, 0, 0),
+(1, 64, 1170, 0, 0),
+(1, 64, 1171, 0, 0),
+(1, 64, 1172, 0, 0),
+(1, 64, 1173, 0, 0),
+(1, 64, 1174, 0, 0),
+(1, 64, 1175, 0, 0),
+(1, 64, 1176, 0, 0),
+(1, 64, 1177, 0, 0),
+(1, 64, 1178, 0, 0),
+(1, 64, 1179, 0, 0),
+(1, 64, 1180, 0, 0),
+(1, 64, 1182, 0, 0),
+(1, 64, 1184, 0, 0),
+(1, 64, 1186, 0, 0),
+(1, 64, 1187, 0, 0),
+(1, 64, 1188, 0, 0),
+(1, 64, 1189, 0, 0),
+(1, 64, 1190, 0, 0),
+(1, 64, 1191, 0, 0),
+(1, 64, 1192, 0, 0),
+(1, 64, 1194, 0, 0),
+(1, 64, 1196, 0, 0),
+(1, 64, 1198, 0, 0),
+(1, 64, 1200, 0, 0),
+(1, 65, 1201, 0, 0),
+(1, 65, 1202, 0, 0),
+(1, 65, 1203, 0, 0),
+(1, 65, 1204, 0, 0),
+(1, 65, 1205, 0, 0),
+(1, 65, 1206, 0, 0),
+(1, 65, 1208, 0, 0),
+(1, 66, 1209, 0, 0),
+(1, 66, 1210, 0, 0),
+(1, 66, 1211, 0, 0),
+(1, 66, 1212, 0, 0),
+(1, 66, 1213, 0, 0),
+(1, 66, 1214, 0, 0),
+(1, 66, 1216, 0, 0),
+(1, 63, 1218, 0, 0),
+(1, 63, 1220, 0, 0),
+(1, 63, 1222, 0, 0),
+(1, 63, 1226, 0, 0),
+(1, 67, 1227, 0, 0),
+(1, 67, 1228, 0, 0),
+(1, 67, 1229, 0, 0),
+(1, 67, 1230, 0, 0),
+(1, 67, 1231, 0, 0),
+(1, 67, 1232, 0, 0),
+(1, 67, 1233, 0, 0),
+(1, 67, 1234, 0, 0),
+(1, 67, 1235, 0, 0),
+(1, 67, 1236, 0, 0),
+(1, 67, 1237, 0, 0),
+(1, 67, 1238, 0, 0),
+(1, 67, 1239, 0, 0),
+(1, 67, 1240, 0, 0),
+(1, 67, 1241, 0, 0),
+(1, 67, 1242, 0, 0),
+(1, 67, 1243, 0, 0),
+(1, 68, 1244, 0, 0),
+(1, 68, 1245, 0, 0),
+(1, 68, 1246, 0, 0),
+(1, 68, 1247, 0, 0),
+(1, 68, 1248, 0, 0),
+(1, 68, 1249, 0, 0),
+(1, 68, 1250, 0, 0),
+(1, 26, 1251, 0, 0),
+(1, 70, 1255, 0, 0),
+(1, 70, 1256, 0, 0),
+(1, 70, 1257, 0, 0),
+(1, 70, 1258, 0, 0),
+(1, 70, 1259, 0, 0),
+(1, 70, 1260, 0, 0),
+(1, 70, 1261, 0, 0),
+(1, 26, 1262, 0, 0),
+(1, 71, 1263, 0, 0),
+(1, 71, 1264, 0, 0),
+(1, 71, 1265, 0, 0),
+(1, 71, 1266, 0, 0),
+(1, 71, 1267, 0, 0),
+(1, 71, 1268, 0, 0),
+(1, 71, 1269, 0, 0),
+(1, 26, 1270, 0, 0),
 (2, 6, 1, 0, 0),
 (2, 6, 2, 0, 0),
 (2, 6, 3, 0, 0),
@@ -12371,6 +13560,190 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (2, 61, 1022, 0, 0),
 (2, 61, 1023, 0, 0),
 (2, 61, 1024, 0, 0),
+(2, 62, 1025, 0, 0),
+(2, 62, 1026, 0, 0),
+(2, 62, 1027, 0, 0),
+(2, 62, 1028, 0, 0),
+(2, 62, 1029, 0, 0),
+(2, 62, 1030, 0, 0),
+(2, 62, 1031, 0, 0),
+(2, 62, 1032, 0, 0),
+(2, 62, 1033, 0, 0),
+(2, 62, 1034, 0, 0),
+(2, 62, 1035, 0, 0),
+(2, 62, 1036, 0, 0),
+(2, 62, 1037, 0, 0),
+(2, 62, 1038, 0, 0),
+(2, 62, 1039, 0, 0),
+(2, 62, 1040, 0, 0),
+(2, 62, 1041, 0, 0),
+(2, 62, 1042, 0, 0),
+(2, 62, 1043, 0, 0),
+(2, 62, 1044, 0, 0),
+(2, 62, 1045, 0, 0),
+(2, 62, 1046, 0, 0),
+(2, 62, 1047, 0, 0),
+(2, 62, 1048, 0, 0),
+(2, 62, 1049, 0, 0),
+(2, 62, 1050, 0, 0),
+(2, 62, 1051, 0, 0),
+(2, 62, 1052, 0, 0),
+(2, 62, 1053, 0, 0),
+(2, 62, 1054, 0, 0),
+(2, 63, 1055, 0, 0),
+(2, 63, 1056, 0, 0),
+(2, 63, 1057, 0, 0),
+(2, 63, 1058, 0, 0),
+(2, 62, 1059, 0, 0),
+(2, 62, 1060, 0, 0),
+(2, 62, 1061, 0, 0),
+(2, 62, 1062, 0, 0),
+(2, 62, 1063, 0, 0),
+(2, 62, 1064, 0, 0),
+(2, 62, 1065, 0, 0),
+(2, 62, 1066, 0, 0),
+(2, 62, 1067, 0, 0),
+(2, 62, 1068, 0, 0),
+(2, 62, 1071, 0, 0),
+(2, 62, 1072, 0, 0),
+(2, 62, 1073, 0, 0),
+(2, 62, 1074, 0, 0),
+(2, 62, 1075, 0, 0),
+(2, 62, 1076, 0, 0),
+(2, 62, 1078, 0, 0),
+(2, 62, 1082, 0, 0),
+(2, 62, 1084, 0, 0),
+(2, 63, 1085, 0, 0),
+(2, 63, 1086, 0, 0),
+(2, 63, 1087, 0, 0),
+(2, 63, 1088, 0, 0),
+(2, 63, 1089, 0, 0),
+(2, 63, 1090, 0, 0),
+(2, 63, 1091, 0, 0),
+(2, 63, 1092, 0, 0),
+(2, 63, 1093, 0, 0),
+(2, 63, 1094, 0, 0),
+(2, 63, 1095, 0, 0),
+(2, 63, 1096, 0, 0),
+(2, 63, 1097, 0, 0),
+(2, 63, 1098, 0, 0),
+(2, 63, 1099, 0, 0),
+(2, 63, 1100, 0, 0),
+(2, 63, 1101, 0, 0),
+(2, 63, 1102, 0, 0),
+(2, 63, 1104, 0, 0),
+(2, 63, 1106, 0, 0),
+(2, 63, 1108, 0, 0),
+(2, 63, 1110, 0, 0),
+(2, 63, 1112, 0, 0),
+(2, 63, 1114, 0, 0),
+(2, 63, 1116, 0, 0),
+(2, 63, 1120, 0, 0),
+(2, 63, 1122, 0, 0),
+(2, 63, 1124, 0, 0),
+(2, 63, 1136, 0, 0),
+(2, 63, 1138, 0, 0),
+(2, 63, 1142, 0, 0),
+(2, 63, 1144, 0, 0),
+(2, 63, 1146, 0, 0),
+(2, 63, 1148, 0, 0),
+(2, 63, 1150, 0, 0),
+(2, 63, 1152, 0, 0),
+(2, 63, 1154, 0, 0),
+(2, 63, 1156, 0, 0),
+(2, 63, 1158, 0, 0),
+(2, 63, 1160, 0, 0),
+(2, 63, 1162, 0, 0),
+(2, 64, 1163, 0, 0),
+(2, 64, 1164, 0, 0),
+(2, 64, 1165, 0, 0),
+(2, 64, 1166, 0, 0),
+(2, 64, 1167, 0, 0),
+(2, 64, 1168, 0, 0),
+(2, 64, 1169, 0, 0),
+(2, 64, 1170, 0, 0),
+(2, 64, 1171, 0, 0),
+(2, 64, 1172, 0, 0),
+(2, 64, 1173, 0, 0),
+(2, 64, 1174, 0, 0),
+(2, 64, 1175, 0, 0),
+(2, 64, 1176, 0, 0),
+(2, 64, 1177, 0, 0),
+(2, 64, 1178, 0, 0),
+(2, 64, 1179, 0, 0),
+(2, 64, 1180, 0, 0),
+(2, 64, 1182, 0, 0),
+(2, 64, 1184, 0, 0),
+(2, 64, 1186, 0, 0),
+(2, 64, 1187, 0, 0),
+(2, 64, 1188, 0, 0),
+(2, 64, 1189, 0, 0),
+(2, 64, 1190, 0, 0),
+(2, 64, 1191, 0, 0),
+(2, 64, 1192, 0, 0),
+(2, 64, 1194, 0, 0),
+(2, 64, 1196, 0, 0),
+(2, 64, 1198, 0, 0),
+(2, 64, 1200, 0, 0),
+(2, 65, 1201, 0, 0),
+(2, 65, 1202, 0, 0),
+(2, 65, 1203, 0, 0),
+(2, 65, 1204, 0, 0),
+(2, 65, 1205, 0, 0),
+(2, 65, 1206, 0, 0),
+(2, 65, 1208, 0, 0),
+(2, 66, 1209, 0, 0),
+(2, 66, 1210, 0, 0),
+(2, 66, 1211, 0, 0),
+(2, 66, 1212, 0, 0),
+(2, 66, 1213, 0, 0),
+(2, 66, 1214, 0, 0),
+(2, 66, 1216, 0, 0),
+(2, 63, 1218, 0, 0),
+(2, 63, 1220, 0, 0),
+(2, 63, 1222, 0, 0),
+(2, 63, 1226, 0, 0),
+(2, 67, 1227, 0, 0),
+(2, 67, 1228, 0, 0),
+(2, 67, 1229, 0, 0),
+(2, 67, 1230, 0, 0),
+(2, 67, 1231, 0, 0),
+(2, 67, 1232, 0, 0),
+(2, 67, 1233, 0, 0),
+(2, 67, 1234, 0, 0),
+(2, 67, 1235, 0, 0),
+(2, 67, 1236, 0, 0),
+(2, 67, 1237, 0, 0),
+(2, 67, 1238, 0, 0),
+(2, 67, 1239, 0, 0),
+(2, 67, 1240, 0, 0),
+(2, 67, 1241, 0, 0),
+(2, 67, 1242, 0, 0),
+(2, 67, 1243, 0, 0),
+(2, 68, 1244, 0, 0),
+(2, 68, 1245, 0, 0),
+(2, 68, 1246, 0, 0),
+(2, 68, 1247, 0, 0),
+(2, 68, 1248, 0, 0),
+(2, 68, 1249, 0, 0),
+(2, 68, 1250, 0, 0),
+(2, 26, 1251, 0, 0),
+(2, 70, 1255, 0, 0),
+(2, 70, 1256, 0, 0),
+(2, 70, 1257, 0, 0),
+(2, 70, 1258, 0, 0),
+(2, 70, 1259, 0, 0),
+(2, 70, 1260, 0, 0),
+(2, 70, 1261, 0, 0),
+(2, 26, 1262, 0, 0),
+(2, 71, 1263, 0, 0),
+(2, 71, 1264, 0, 0),
+(2, 71, 1265, 0, 0),
+(2, 71, 1266, 0, 0),
+(2, 71, 1267, 0, 0),
+(2, 71, 1268, 0, 0),
+(2, 71, 1269, 0, 0),
+(2, 26, 1270, 0, 0),
 (3, 6, 1, 0, 0),
 (3, 6, 2, 0, 0),
 (3, 6, 3, 0, 0),
@@ -12855,7 +14228,8 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 29, 492, 0, 0),
 (3, 29, 493, 0, 0),
 (3, 29, 495, 0, 0),
-(3, 29, 496, 0, 0),
+(3, 29, 496, 0, 0);
+INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
 (3, 29, 497, 0, 0),
 (3, 29, 498, 0, 0),
 (3, 29, 499, 0, 0),
@@ -13245,8 +14619,7 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 57, 924, 0, 0),
 (3, 57, 925, 0, 0),
 (3, 57, 926, 0, 0),
-(3, 57, 927, 0, 0);
-INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
+(3, 57, 927, 0, 0),
 (3, 57, 928, 0, 0),
 (3, 57, 929, 0, 0),
 (3, 58, 930, 0, 0),
@@ -13344,6 +14717,190 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 61, 1022, 0, 0),
 (3, 61, 1023, 0, 0),
 (3, 61, 1024, 0, 0),
+(3, 62, 1025, 0, 0),
+(3, 62, 1026, 0, 0),
+(3, 62, 1027, 0, 0),
+(3, 62, 1028, 0, 0),
+(3, 62, 1029, 0, 0),
+(3, 62, 1030, 0, 0),
+(3, 62, 1031, 0, 0),
+(3, 62, 1032, 0, 0),
+(3, 62, 1033, 0, 0),
+(3, 62, 1034, 0, 0),
+(3, 62, 1035, 0, 0),
+(3, 62, 1036, 0, 0),
+(3, 62, 1037, 0, 0),
+(3, 62, 1038, 0, 0),
+(3, 62, 1039, 0, 0),
+(3, 62, 1040, 0, 0),
+(3, 62, 1041, 0, 0),
+(3, 62, 1042, 0, 0),
+(3, 62, 1043, 0, 0),
+(3, 62, 1044, 0, 0),
+(3, 62, 1045, 0, 0),
+(3, 62, 1046, 0, 0),
+(3, 62, 1047, 0, 0),
+(3, 62, 1048, 0, 0),
+(3, 62, 1049, 0, 0),
+(3, 62, 1050, 0, 0),
+(3, 62, 1051, 0, 0),
+(3, 62, 1052, 0, 0),
+(3, 62, 1053, 0, 0),
+(3, 62, 1054, 0, 0),
+(3, 63, 1055, 0, 0),
+(3, 63, 1056, 0, 0),
+(3, 63, 1057, 0, 0),
+(3, 63, 1058, 0, 0),
+(3, 62, 1059, 0, 0),
+(3, 62, 1060, 0, 0),
+(3, 62, 1061, 0, 0),
+(3, 62, 1062, 0, 0),
+(3, 62, 1063, 0, 0),
+(3, 62, 1064, 0, 0),
+(3, 62, 1065, 0, 0),
+(3, 62, 1066, 0, 0),
+(3, 62, 1067, 0, 0),
+(3, 62, 1068, 0, 0),
+(3, 62, 1071, 0, 0),
+(3, 62, 1072, 0, 0),
+(3, 62, 1073, 0, 0),
+(3, 62, 1074, 0, 0),
+(3, 62, 1075, 0, 0),
+(3, 62, 1076, 0, 0),
+(3, 62, 1078, 0, 0),
+(3, 62, 1082, 0, 0),
+(3, 62, 1084, 0, 0),
+(3, 63, 1085, 0, 0),
+(3, 63, 1086, 0, 0),
+(3, 63, 1087, 0, 0),
+(3, 63, 1088, 0, 0),
+(3, 63, 1089, 0, 0),
+(3, 63, 1090, 0, 0),
+(3, 63, 1091, 0, 0),
+(3, 63, 1092, 0, 0),
+(3, 63, 1093, 0, 0),
+(3, 63, 1094, 0, 0),
+(3, 63, 1095, 0, 0),
+(3, 63, 1096, 0, 0),
+(3, 63, 1097, 0, 0),
+(3, 63, 1098, 0, 0),
+(3, 63, 1099, 0, 0),
+(3, 63, 1100, 0, 0),
+(3, 63, 1101, 0, 0),
+(3, 63, 1102, 0, 0),
+(3, 63, 1104, 0, 0),
+(3, 63, 1106, 0, 0),
+(3, 63, 1108, 0, 0),
+(3, 63, 1110, 0, 0),
+(3, 63, 1112, 0, 0),
+(3, 63, 1114, 0, 0),
+(3, 63, 1116, 0, 0),
+(3, 63, 1120, 0, 0),
+(3, 63, 1122, 0, 0),
+(3, 63, 1124, 0, 0),
+(3, 63, 1136, 0, 0),
+(3, 63, 1138, 0, 0),
+(3, 63, 1142, 0, 0),
+(3, 63, 1144, 0, 0),
+(3, 63, 1146, 0, 0),
+(3, 63, 1148, 0, 0),
+(3, 63, 1150, 0, 0),
+(3, 63, 1152, 0, 0),
+(3, 63, 1154, 0, 0),
+(3, 63, 1156, 0, 0),
+(3, 63, 1158, 0, 0),
+(3, 63, 1160, 0, 0),
+(3, 63, 1162, 0, 0),
+(3, 64, 1163, 0, 0),
+(3, 64, 1164, 0, 0),
+(3, 64, 1165, 0, 0),
+(3, 64, 1166, 0, 0),
+(3, 64, 1167, 0, 0),
+(3, 64, 1168, 0, 0),
+(3, 64, 1169, 0, 0),
+(3, 64, 1170, 0, 0),
+(3, 64, 1171, 0, 0),
+(3, 64, 1172, 0, 0),
+(3, 64, 1173, 0, 0),
+(3, 64, 1174, 0, 0),
+(3, 64, 1175, 0, 0),
+(3, 64, 1176, 0, 0),
+(3, 64, 1177, 0, 0),
+(3, 64, 1178, 0, 0),
+(3, 64, 1179, 0, 0),
+(3, 64, 1180, 0, 0),
+(3, 64, 1182, 0, 0),
+(3, 64, 1184, 0, 0),
+(3, 64, 1186, 0, 0),
+(3, 64, 1187, 0, 0),
+(3, 64, 1188, 0, 0),
+(3, 64, 1189, 0, 0),
+(3, 64, 1190, 0, 0),
+(3, 64, 1191, 0, 0),
+(3, 64, 1192, 0, 0),
+(3, 64, 1194, 0, 0),
+(3, 64, 1196, 0, 0),
+(3, 64, 1198, 0, 0),
+(3, 64, 1200, 0, 0),
+(3, 65, 1201, 0, 0),
+(3, 65, 1202, 0, 0),
+(3, 65, 1203, 0, 0),
+(3, 65, 1204, 0, 0),
+(3, 65, 1205, 0, 0),
+(3, 65, 1206, 0, 0),
+(3, 65, 1208, 0, 0),
+(3, 66, 1209, 0, 0),
+(3, 66, 1210, 0, 0),
+(3, 66, 1211, 0, 0),
+(3, 66, 1212, 0, 0),
+(3, 66, 1213, 0, 0),
+(3, 66, 1214, 0, 0),
+(3, 66, 1216, 0, 0),
+(3, 63, 1218, 0, 0),
+(3, 63, 1220, 0, 0),
+(3, 63, 1222, 0, 0),
+(3, 63, 1226, 0, 0),
+(3, 67, 1227, 0, 0),
+(3, 67, 1228, 0, 0),
+(3, 67, 1229, 0, 0),
+(3, 67, 1230, 0, 0),
+(3, 67, 1231, 0, 0),
+(3, 67, 1232, 0, 0),
+(3, 67, 1233, 0, 0),
+(3, 67, 1234, 0, 0),
+(3, 67, 1235, 0, 0),
+(3, 67, 1236, 0, 0),
+(3, 67, 1237, 0, 0),
+(3, 67, 1238, 0, 0),
+(3, 67, 1239, 0, 0),
+(3, 67, 1240, 0, 0),
+(3, 67, 1241, 0, 0),
+(3, 67, 1242, 0, 0),
+(3, 67, 1243, 0, 0),
+(3, 68, 1244, 0, 0),
+(3, 68, 1245, 0, 0),
+(3, 68, 1246, 0, 0),
+(3, 68, 1247, 0, 0),
+(3, 68, 1248, 0, 0),
+(3, 68, 1249, 0, 0),
+(3, 68, 1250, 0, 0),
+(3, 26, 1251, 0, 0),
+(3, 70, 1255, 0, 0),
+(3, 70, 1256, 0, 0),
+(3, 70, 1257, 0, 0),
+(3, 70, 1258, 0, 0),
+(3, 70, 1259, 0, 0),
+(3, 70, 1260, 0, 0),
+(3, 70, 1261, 0, 0),
+(3, 26, 1262, 0, 0),
+(3, 71, 1263, 0, 0),
+(3, 71, 1264, 0, 0),
+(3, 71, 1265, 0, 0),
+(3, 71, 1266, 0, 0),
+(3, 71, 1267, 0, 0),
+(3, 71, 1268, 0, 0),
+(3, 71, 1269, 0, 0),
+(3, 26, 1270, 0, 0),
 (4, 6, 1, 0, 0),
 (4, 6, 2, 0, 0),
 (4, 6, 3, 0, 0),
@@ -14315,12 +15872,196 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (4, 61, 1021, 0, 0),
 (4, 61, 1022, 0, 0),
 (4, 61, 1023, 0, 0),
-(4, 61, 1024, 0, 0);
+(4, 61, 1024, 0, 0),
+(4, 62, 1025, 0, 0),
+(4, 62, 1026, 0, 0),
+(4, 62, 1027, 0, 0),
+(4, 62, 1028, 0, 0),
+(4, 62, 1029, 0, 0),
+(4, 62, 1030, 0, 0),
+(4, 62, 1031, 0, 0),
+(4, 62, 1032, 0, 0),
+(4, 62, 1033, 0, 0),
+(4, 62, 1034, 0, 0),
+(4, 62, 1035, 0, 0),
+(4, 62, 1036, 0, 0),
+(4, 62, 1037, 0, 0),
+(4, 62, 1038, 0, 0),
+(4, 62, 1039, 0, 0),
+(4, 62, 1040, 0, 0),
+(4, 62, 1041, 0, 0),
+(4, 62, 1042, 0, 0),
+(4, 62, 1043, 0, 0),
+(4, 62, 1044, 0, 0),
+(4, 62, 1045, 0, 0),
+(4, 62, 1046, 0, 0),
+(4, 62, 1047, 0, 0),
+(4, 62, 1048, 0, 0),
+(4, 62, 1049, 0, 0),
+(4, 62, 1050, 0, 0),
+(4, 62, 1051, 0, 0),
+(4, 62, 1052, 0, 0),
+(4, 62, 1053, 0, 0),
+(4, 62, 1054, 0, 0),
+(4, 63, 1055, 0, 0),
+(4, 63, 1056, 0, 0),
+(4, 63, 1057, 0, 0),
+(4, 63, 1058, 0, 0),
+(4, 62, 1059, 0, 0),
+(4, 62, 1060, 0, 0),
+(4, 62, 1061, 0, 0),
+(4, 62, 1062, 0, 0),
+(4, 62, 1063, 0, 0),
+(4, 62, 1064, 0, 0),
+(4, 62, 1065, 0, 0),
+(4, 62, 1066, 0, 0),
+(4, 62, 1067, 0, 0),
+(4, 62, 1068, 0, 0),
+(4, 62, 1071, 0, 0),
+(4, 62, 1072, 0, 0),
+(4, 62, 1073, 0, 0),
+(4, 62, 1074, 0, 0),
+(4, 62, 1075, 0, 0),
+(4, 62, 1076, 0, 0),
+(4, 62, 1078, 0, 0),
+(4, 62, 1082, 0, 0),
+(4, 62, 1084, 0, 0),
+(4, 63, 1085, 0, 0),
+(4, 63, 1086, 0, 0),
+(4, 63, 1087, 0, 0),
+(4, 63, 1088, 0, 0),
+(4, 63, 1089, 0, 0),
+(4, 63, 1090, 0, 0),
+(4, 63, 1091, 0, 0),
+(4, 63, 1092, 0, 0),
+(4, 63, 1093, 0, 0),
+(4, 63, 1094, 0, 0),
+(4, 63, 1095, 0, 0),
+(4, 63, 1096, 0, 0),
+(4, 63, 1097, 0, 0),
+(4, 63, 1098, 0, 0),
+(4, 63, 1099, 0, 0),
+(4, 63, 1100, 0, 0),
+(4, 63, 1101, 0, 0),
+(4, 63, 1102, 0, 0),
+(4, 63, 1104, 0, 0),
+(4, 63, 1106, 0, 0),
+(4, 63, 1108, 0, 0),
+(4, 63, 1110, 0, 0),
+(4, 63, 1112, 0, 0),
+(4, 63, 1114, 0, 0),
+(4, 63, 1116, 0, 0),
+(4, 63, 1120, 0, 0),
+(4, 63, 1122, 0, 0),
+(4, 63, 1124, 0, 0),
+(4, 63, 1136, 0, 0),
+(4, 63, 1138, 0, 0),
+(4, 63, 1142, 0, 0),
+(4, 63, 1144, 0, 0),
+(4, 63, 1146, 0, 0),
+(4, 63, 1148, 0, 0),
+(4, 63, 1150, 0, 0),
+(4, 63, 1152, 0, 0),
+(4, 63, 1154, 0, 0),
+(4, 63, 1156, 0, 0),
+(4, 63, 1158, 0, 0),
+(4, 63, 1160, 0, 0),
+(4, 63, 1162, 0, 0),
+(4, 64, 1163, 0, 0),
+(4, 64, 1164, 0, 0),
+(4, 64, 1165, 0, 0),
+(4, 64, 1166, 0, 0),
+(4, 64, 1167, 0, 0),
+(4, 64, 1168, 0, 0),
+(4, 64, 1169, 0, 0),
+(4, 64, 1170, 0, 0),
+(4, 64, 1171, 0, 0),
+(4, 64, 1172, 0, 0),
+(4, 64, 1173, 0, 0),
+(4, 64, 1174, 0, 0),
+(4, 64, 1175, 0, 0),
+(4, 64, 1176, 0, 0),
+(4, 64, 1177, 0, 0),
+(4, 64, 1178, 0, 0),
+(4, 64, 1179, 0, 0),
+(4, 64, 1180, 0, 0),
+(4, 64, 1182, 0, 0),
+(4, 64, 1184, 0, 0),
+(4, 64, 1186, 0, 0),
+(4, 64, 1187, 0, 0),
+(4, 64, 1188, 0, 0),
+(4, 64, 1189, 0, 0),
+(4, 64, 1190, 0, 0),
+(4, 64, 1191, 0, 0),
+(4, 64, 1192, 0, 0),
+(4, 64, 1194, 0, 0),
+(4, 64, 1196, 0, 0),
+(4, 64, 1198, 0, 0),
+(4, 64, 1200, 0, 0),
+(4, 65, 1201, 0, 0),
+(4, 65, 1202, 0, 0),
+(4, 65, 1203, 0, 0),
+(4, 65, 1204, 0, 0),
+(4, 65, 1205, 0, 0),
+(4, 65, 1206, 0, 0),
+(4, 65, 1208, 0, 0),
+(4, 66, 1209, 0, 0),
+(4, 66, 1210, 0, 0),
+(4, 66, 1211, 0, 0),
+(4, 66, 1212, 0, 0),
+(4, 66, 1213, 0, 0),
+(4, 66, 1214, 0, 0),
+(4, 66, 1216, 0, 0),
+(4, 63, 1218, 0, 0),
+(4, 63, 1220, 0, 0),
+(4, 63, 1222, 0, 0),
+(4, 63, 1226, 0, 0),
+(4, 67, 1227, 0, 0),
+(4, 67, 1228, 0, 0),
+(4, 67, 1229, 0, 0),
+(4, 67, 1230, 0, 0),
+(4, 67, 1231, 0, 0),
+(4, 67, 1232, 0, 0),
+(4, 67, 1233, 0, 0),
+(4, 67, 1234, 0, 0),
+(4, 67, 1235, 0, 0),
+(4, 67, 1236, 0, 0),
+(4, 67, 1237, 0, 0),
+(4, 67, 1238, 0, 0),
+(4, 67, 1239, 0, 0),
+(4, 67, 1240, 0, 0),
+(4, 67, 1241, 0, 0),
+(4, 67, 1242, 0, 0),
+(4, 67, 1243, 0, 0),
+(4, 68, 1244, 0, 0),
+(4, 68, 1245, 0, 0),
+(4, 68, 1246, 0, 0),
+(4, 68, 1247, 0, 0),
+(4, 68, 1248, 0, 0),
+(4, 68, 1249, 0, 0),
+(4, 68, 1250, 0, 0),
+(4, 26, 1251, 0, 0),
+(4, 70, 1255, 0, 0),
+(4, 70, 1256, 0, 0),
+(4, 70, 1257, 0, 0),
+(4, 70, 1258, 0, 0),
+(4, 70, 1259, 0, 0),
+(4, 70, 1260, 0, 0),
+(4, 70, 1261, 0, 0),
+(4, 26, 1262, 0, 0),
+(4, 71, 1263, 0, 0),
+(4, 71, 1264, 0, 0),
+(4, 71, 1265, 0, 0),
+(4, 71, 1266, 0, 0),
+(4, 71, 1267, 0, 0),
+(4, 71, 1268, 0, 0),
+(4, 71, 1269, 0, 0),
+(4, 26, 1270, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_profile2globalpermissions`
+-- Table structure for table `vtiger_profile2globalpermissions`
 --
 
 CREATE TABLE `vtiger_profile2globalpermissions` (
@@ -14330,7 +16071,7 @@ CREATE TABLE `vtiger_profile2globalpermissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_profile2globalpermissions`
+-- Dumping data for table `vtiger_profile2globalpermissions`
 --
 
 INSERT INTO `vtiger_profile2globalpermissions` (`profileid`, `globalactionid`, `globalactionpermission`) VALUES
@@ -14346,7 +16087,7 @@ INSERT INTO `vtiger_profile2globalpermissions` (`profileid`, `globalactionid`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_profile2standardpermissions`
+-- Table structure for table `vtiger_profile2standardpermissions`
 --
 
 CREATE TABLE `vtiger_profile2standardpermissions` (
@@ -14357,7 +16098,7 @@ CREATE TABLE `vtiger_profile2standardpermissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_profile2standardpermissions`
+-- Dumping data for table `vtiger_profile2standardpermissions`
 --
 
 INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operation`, `permissions`) VALUES
@@ -14595,6 +16336,42 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (1, 61, 3, 0),
 (1, 61, 4, 0),
 (1, 61, 7, 0),
+(1, 63, 0, 0),
+(1, 63, 1, 0),
+(1, 63, 2, 0),
+(1, 63, 3, 0),
+(1, 63, 4, 0),
+(1, 63, 7, 0),
+(1, 64, 0, 0),
+(1, 64, 1, 0),
+(1, 64, 2, 0),
+(1, 64, 3, 0),
+(1, 64, 4, 0),
+(1, 64, 7, 0),
+(1, 65, 0, 0),
+(1, 65, 1, 0),
+(1, 65, 2, 0),
+(1, 65, 3, 0),
+(1, 65, 4, 0),
+(1, 65, 7, 0),
+(1, 66, 0, 0),
+(1, 66, 1, 0),
+(1, 66, 2, 0),
+(1, 66, 3, 0),
+(1, 66, 4, 0),
+(1, 66, 7, 0),
+(1, 70, 0, 0),
+(1, 70, 1, 0),
+(1, 70, 2, 0),
+(1, 70, 3, 0),
+(1, 70, 4, 0),
+(1, 70, 7, 0),
+(1, 71, 0, 0),
+(1, 71, 1, 0),
+(1, 71, 2, 0),
+(1, 71, 3, 0),
+(1, 71, 4, 0),
+(1, 71, 7, 0),
 (2, 2, 0, 0),
 (2, 2, 1, 0),
 (2, 2, 2, 0),
@@ -14829,6 +16606,42 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (2, 61, 3, 0),
 (2, 61, 4, 0),
 (2, 61, 7, 0),
+(2, 63, 0, 0),
+(2, 63, 1, 0),
+(2, 63, 2, 0),
+(2, 63, 3, 0),
+(2, 63, 4, 0),
+(2, 63, 7, 0),
+(2, 64, 0, 0),
+(2, 64, 1, 0),
+(2, 64, 2, 0),
+(2, 64, 3, 0),
+(2, 64, 4, 0),
+(2, 64, 7, 0),
+(2, 65, 0, 0),
+(2, 65, 1, 0),
+(2, 65, 2, 0),
+(2, 65, 3, 0),
+(2, 65, 4, 0),
+(2, 65, 7, 0),
+(2, 66, 0, 0),
+(2, 66, 1, 0),
+(2, 66, 2, 0),
+(2, 66, 3, 0),
+(2, 66, 4, 0),
+(2, 66, 7, 0),
+(2, 70, 0, 0),
+(2, 70, 1, 0),
+(2, 70, 2, 0),
+(2, 70, 3, 0),
+(2, 70, 4, 0),
+(2, 70, 7, 0),
+(2, 71, 0, 0),
+(2, 71, 1, 0),
+(2, 71, 2, 0),
+(2, 71, 3, 0),
+(2, 71, 4, 0),
+(2, 71, 7, 0),
 (3, 2, 0, 1),
 (3, 2, 1, 1),
 (3, 2, 2, 1),
@@ -15063,6 +16876,42 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (3, 61, 3, 0),
 (3, 61, 4, 0),
 (3, 61, 7, 0),
+(3, 63, 0, 0),
+(3, 63, 1, 0),
+(3, 63, 2, 0),
+(3, 63, 3, 0),
+(3, 63, 4, 0),
+(3, 63, 7, 0),
+(3, 64, 0, 0),
+(3, 64, 1, 0),
+(3, 64, 2, 0),
+(3, 64, 3, 0),
+(3, 64, 4, 0),
+(3, 64, 7, 0),
+(3, 65, 0, 0),
+(3, 65, 1, 0),
+(3, 65, 2, 0),
+(3, 65, 3, 0),
+(3, 65, 4, 0),
+(3, 65, 7, 0),
+(3, 66, 0, 0),
+(3, 66, 1, 0),
+(3, 66, 2, 0),
+(3, 66, 3, 0),
+(3, 66, 4, 0),
+(3, 66, 7, 0),
+(3, 70, 0, 0),
+(3, 70, 1, 0),
+(3, 70, 2, 0),
+(3, 70, 3, 0),
+(3, 70, 4, 0),
+(3, 70, 7, 0),
+(3, 71, 0, 0),
+(3, 71, 1, 0),
+(3, 71, 2, 0),
+(3, 71, 3, 0),
+(3, 71, 4, 0),
+(3, 71, 7, 0),
 (4, 2, 0, 1),
 (4, 2, 1, 1),
 (4, 2, 2, 1),
@@ -15296,12 +17145,48 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (4, 61, 2, 0),
 (4, 61, 3, 0),
 (4, 61, 4, 0),
-(4, 61, 7, 0);
+(4, 61, 7, 0),
+(4, 63, 0, 0),
+(4, 63, 1, 0),
+(4, 63, 2, 0),
+(4, 63, 3, 0),
+(4, 63, 4, 0),
+(4, 63, 7, 0),
+(4, 64, 0, 0),
+(4, 64, 1, 0),
+(4, 64, 2, 0),
+(4, 64, 3, 0),
+(4, 64, 4, 0),
+(4, 64, 7, 0),
+(4, 65, 0, 0),
+(4, 65, 1, 0),
+(4, 65, 2, 0),
+(4, 65, 3, 0),
+(4, 65, 4, 0),
+(4, 65, 7, 0),
+(4, 66, 0, 0),
+(4, 66, 1, 0),
+(4, 66, 2, 0),
+(4, 66, 3, 0),
+(4, 66, 4, 0),
+(4, 66, 7, 0),
+(4, 70, 0, 0),
+(4, 70, 1, 0),
+(4, 70, 2, 0),
+(4, 70, 3, 0),
+(4, 70, 4, 0),
+(4, 70, 7, 0),
+(4, 71, 0, 0),
+(4, 71, 1, 0),
+(4, 71, 2, 0),
+(4, 71, 3, 0),
+(4, 71, 4, 0),
+(4, 71, 7, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_profile2tab`
+-- Table structure for table `vtiger_profile2tab`
 --
 
 CREATE TABLE `vtiger_profile2tab` (
@@ -15311,7 +17196,7 @@ CREATE TABLE `vtiger_profile2tab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_profile2tab`
+-- Dumping data for table `vtiger_profile2tab`
 --
 
 INSERT INTO `vtiger_profile2tab` (`profileid`, `tabid`, `permissions`) VALUES
@@ -15534,12 +17419,40 @@ INSERT INTO `vtiger_profile2tab` (`profileid`, `tabid`, `permissions`) VALUES
 (1, 61, 0),
 (2, 61, 0),
 (3, 61, 0),
-(4, 61, 0);
+(4, 61, 0),
+(1, 63, 0),
+(2, 63, 0),
+(3, 63, 0),
+(4, 63, 0),
+(1, 64, 0),
+(2, 64, 0),
+(3, 64, 0),
+(4, 64, 0),
+(1, 65, 0),
+(2, 65, 0),
+(3, 65, 0),
+(4, 65, 0),
+(1, 66, 0),
+(2, 66, 0),
+(3, 66, 0),
+(4, 66, 0),
+(1, 69, 0),
+(2, 69, 0),
+(3, 69, 0),
+(4, 69, 0),
+(1, 70, 0),
+(2, 70, 0),
+(3, 70, 0),
+(4, 70, 0),
+(1, 71, 0),
+(2, 71, 0),
+(3, 71, 0),
+(4, 71, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_profile2utility`
+-- Table structure for table `vtiger_profile2utility`
 --
 
 CREATE TABLE `vtiger_profile2utility` (
@@ -15550,7 +17463,7 @@ CREATE TABLE `vtiger_profile2utility` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_profile2utility`
+-- Dumping data for table `vtiger_profile2utility`
 --
 
 INSERT INTO `vtiger_profile2utility` (`profileid`, `tabid`, `activityid`, `permission`) VALUES
@@ -15914,7 +17827,7 @@ INSERT INTO `vtiger_profile2utility` (`profileid`, `tabid`, `activityid`, `permi
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_profile_seq`
+-- Table structure for table `vtiger_profile_seq`
 --
 
 CREATE TABLE `vtiger_profile_seq` (
@@ -15922,7 +17835,7 @@ CREATE TABLE `vtiger_profile_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_profile_seq`
+-- Dumping data for table `vtiger_profile_seq`
 --
 
 INSERT INTO `vtiger_profile_seq` (`id`) VALUES
@@ -15931,7 +17844,7 @@ INSERT INTO `vtiger_profile_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_progress`
+-- Table structure for table `vtiger_progress`
 --
 
 CREATE TABLE `vtiger_progress` (
@@ -15944,7 +17857,7 @@ CREATE TABLE `vtiger_progress` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_progress`
+-- Dumping data for table `vtiger_progress`
 --
 
 INSERT INTO `vtiger_progress` (`progressid`, `progress`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -15962,7 +17875,7 @@ INSERT INTO `vtiger_progress` (`progressid`, `progress`, `presence`, `picklist_v
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_progress_seq`
+-- Table structure for table `vtiger_progress_seq`
 --
 
 CREATE TABLE `vtiger_progress_seq` (
@@ -15970,7 +17883,7 @@ CREATE TABLE `vtiger_progress_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_progress_seq`
+-- Dumping data for table `vtiger_progress_seq`
 --
 
 INSERT INTO `vtiger_progress_seq` (`id`) VALUES
@@ -15979,7 +17892,7 @@ INSERT INTO `vtiger_progress_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_project`
+-- Table structure for table `vtiger_project`
 --
 
 CREATE TABLE `vtiger_project` (
@@ -16004,7 +17917,7 @@ CREATE TABLE `vtiger_project` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projectcf`
+-- Table structure for table `vtiger_projectcf`
 --
 
 CREATE TABLE `vtiger_projectcf` (
@@ -16014,7 +17927,7 @@ CREATE TABLE `vtiger_projectcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projectmilestone`
+-- Table structure for table `vtiger_projectmilestone`
 --
 
 CREATE TABLE `vtiger_projectmilestone` (
@@ -16030,7 +17943,7 @@ CREATE TABLE `vtiger_projectmilestone` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projectmilestonecf`
+-- Table structure for table `vtiger_projectmilestonecf`
 --
 
 CREATE TABLE `vtiger_projectmilestonecf` (
@@ -16040,7 +17953,7 @@ CREATE TABLE `vtiger_projectmilestonecf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projectmilestonetype`
+-- Table structure for table `vtiger_projectmilestonetype`
 --
 
 CREATE TABLE `vtiger_projectmilestonetype` (
@@ -16053,7 +17966,7 @@ CREATE TABLE `vtiger_projectmilestonetype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projectmilestonetype`
+-- Dumping data for table `vtiger_projectmilestonetype`
 --
 
 INSERT INTO `vtiger_projectmilestonetype` (`projectmilestonetypeid`, `projectmilestonetype`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16064,7 +17977,7 @@ INSERT INTO `vtiger_projectmilestonetype` (`projectmilestonetypeid`, `projectmil
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projectmilestonetype_seq`
+-- Table structure for table `vtiger_projectmilestonetype_seq`
 --
 
 CREATE TABLE `vtiger_projectmilestonetype_seq` (
@@ -16072,7 +17985,7 @@ CREATE TABLE `vtiger_projectmilestonetype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projectmilestonetype_seq`
+-- Dumping data for table `vtiger_projectmilestonetype_seq`
 --
 
 INSERT INTO `vtiger_projectmilestonetype_seq` (`id`) VALUES
@@ -16081,7 +17994,7 @@ INSERT INTO `vtiger_projectmilestonetype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projectpriority`
+-- Table structure for table `vtiger_projectpriority`
 --
 
 CREATE TABLE `vtiger_projectpriority` (
@@ -16094,7 +18007,7 @@ CREATE TABLE `vtiger_projectpriority` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projectpriority`
+-- Dumping data for table `vtiger_projectpriority`
 --
 
 INSERT INTO `vtiger_projectpriority` (`projectpriorityid`, `projectpriority`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16105,7 +18018,7 @@ INSERT INTO `vtiger_projectpriority` (`projectpriorityid`, `projectpriority`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projectpriority_seq`
+-- Table structure for table `vtiger_projectpriority_seq`
 --
 
 CREATE TABLE `vtiger_projectpriority_seq` (
@@ -16113,7 +18026,7 @@ CREATE TABLE `vtiger_projectpriority_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projectpriority_seq`
+-- Dumping data for table `vtiger_projectpriority_seq`
 --
 
 INSERT INTO `vtiger_projectpriority_seq` (`id`) VALUES
@@ -16122,7 +18035,7 @@ INSERT INTO `vtiger_projectpriority_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projectstatus`
+-- Table structure for table `vtiger_projectstatus`
 --
 
 CREATE TABLE `vtiger_projectstatus` (
@@ -16135,7 +18048,7 @@ CREATE TABLE `vtiger_projectstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projectstatus`
+-- Dumping data for table `vtiger_projectstatus`
 --
 
 INSERT INTO `vtiger_projectstatus` (`projectstatusid`, `projectstatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16151,7 +18064,7 @@ INSERT INTO `vtiger_projectstatus` (`projectstatusid`, `projectstatus`, `presenc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projectstatus_seq`
+-- Table structure for table `vtiger_projectstatus_seq`
 --
 
 CREATE TABLE `vtiger_projectstatus_seq` (
@@ -16159,7 +18072,7 @@ CREATE TABLE `vtiger_projectstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projectstatus_seq`
+-- Dumping data for table `vtiger_projectstatus_seq`
 --
 
 INSERT INTO `vtiger_projectstatus_seq` (`id`) VALUES
@@ -16168,7 +18081,7 @@ INSERT INTO `vtiger_projectstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttask`
+-- Table structure for table `vtiger_projecttask`
 --
 
 CREATE TABLE `vtiger_projecttask` (
@@ -16190,7 +18103,7 @@ CREATE TABLE `vtiger_projecttask` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttaskcf`
+-- Table structure for table `vtiger_projecttaskcf`
 --
 
 CREATE TABLE `vtiger_projecttaskcf` (
@@ -16200,7 +18113,7 @@ CREATE TABLE `vtiger_projecttaskcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttaskpriority`
+-- Table structure for table `vtiger_projecttaskpriority`
 --
 
 CREATE TABLE `vtiger_projecttaskpriority` (
@@ -16213,7 +18126,7 @@ CREATE TABLE `vtiger_projecttaskpriority` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttaskpriority`
+-- Dumping data for table `vtiger_projecttaskpriority`
 --
 
 INSERT INTO `vtiger_projecttaskpriority` (`projecttaskpriorityid`, `projecttaskpriority`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16224,7 +18137,7 @@ INSERT INTO `vtiger_projecttaskpriority` (`projecttaskpriorityid`, `projecttaskp
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttaskpriority_seq`
+-- Table structure for table `vtiger_projecttaskpriority_seq`
 --
 
 CREATE TABLE `vtiger_projecttaskpriority_seq` (
@@ -16232,7 +18145,7 @@ CREATE TABLE `vtiger_projecttaskpriority_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttaskpriority_seq`
+-- Dumping data for table `vtiger_projecttaskpriority_seq`
 --
 
 INSERT INTO `vtiger_projecttaskpriority_seq` (`id`) VALUES
@@ -16241,7 +18154,7 @@ INSERT INTO `vtiger_projecttaskpriority_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttaskprogress`
+-- Table structure for table `vtiger_projecttaskprogress`
 --
 
 CREATE TABLE `vtiger_projecttaskprogress` (
@@ -16254,7 +18167,7 @@ CREATE TABLE `vtiger_projecttaskprogress` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttaskprogress`
+-- Dumping data for table `vtiger_projecttaskprogress`
 --
 
 INSERT INTO `vtiger_projecttaskprogress` (`projecttaskprogressid`, `projecttaskprogress`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16272,7 +18185,7 @@ INSERT INTO `vtiger_projecttaskprogress` (`projecttaskprogressid`, `projecttaskp
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttaskprogress_seq`
+-- Table structure for table `vtiger_projecttaskprogress_seq`
 --
 
 CREATE TABLE `vtiger_projecttaskprogress_seq` (
@@ -16280,7 +18193,7 @@ CREATE TABLE `vtiger_projecttaskprogress_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttaskprogress_seq`
+-- Dumping data for table `vtiger_projecttaskprogress_seq`
 --
 
 INSERT INTO `vtiger_projecttaskprogress_seq` (`id`) VALUES
@@ -16289,7 +18202,7 @@ INSERT INTO `vtiger_projecttaskprogress_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttaskstatus`
+-- Table structure for table `vtiger_projecttaskstatus`
 --
 
 CREATE TABLE `vtiger_projecttaskstatus` (
@@ -16302,7 +18215,7 @@ CREATE TABLE `vtiger_projecttaskstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttaskstatus`
+-- Dumping data for table `vtiger_projecttaskstatus`
 --
 
 INSERT INTO `vtiger_projecttaskstatus` (`projecttaskstatusid`, `projecttaskstatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16315,7 +18228,7 @@ INSERT INTO `vtiger_projecttaskstatus` (`projecttaskstatusid`, `projecttaskstatu
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttaskstatus_seq`
+-- Table structure for table `vtiger_projecttaskstatus_seq`
 --
 
 CREATE TABLE `vtiger_projecttaskstatus_seq` (
@@ -16323,7 +18236,7 @@ CREATE TABLE `vtiger_projecttaskstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttaskstatus_seq`
+-- Dumping data for table `vtiger_projecttaskstatus_seq`
 --
 
 INSERT INTO `vtiger_projecttaskstatus_seq` (`id`) VALUES
@@ -16332,7 +18245,7 @@ INSERT INTO `vtiger_projecttaskstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttasktype`
+-- Table structure for table `vtiger_projecttasktype`
 --
 
 CREATE TABLE `vtiger_projecttasktype` (
@@ -16345,7 +18258,7 @@ CREATE TABLE `vtiger_projecttasktype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttasktype`
+-- Dumping data for table `vtiger_projecttasktype`
 --
 
 INSERT INTO `vtiger_projecttasktype` (`projecttasktypeid`, `projecttasktype`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16356,7 +18269,7 @@ INSERT INTO `vtiger_projecttasktype` (`projecttasktypeid`, `projecttasktype`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttasktype_seq`
+-- Table structure for table `vtiger_projecttasktype_seq`
 --
 
 CREATE TABLE `vtiger_projecttasktype_seq` (
@@ -16364,7 +18277,7 @@ CREATE TABLE `vtiger_projecttasktype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttasktype_seq`
+-- Dumping data for table `vtiger_projecttasktype_seq`
 --
 
 INSERT INTO `vtiger_projecttasktype_seq` (`id`) VALUES
@@ -16373,7 +18286,7 @@ INSERT INTO `vtiger_projecttasktype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttask_status_color`
+-- Table structure for table `vtiger_projecttask_status_color`
 --
 
 CREATE TABLE `vtiger_projecttask_status_color` (
@@ -16383,7 +18296,7 @@ CREATE TABLE `vtiger_projecttask_status_color` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttask_status_color`
+-- Dumping data for table `vtiger_projecttask_status_color`
 --
 
 INSERT INTO `vtiger_projecttask_status_color` (`status`, `defaultcolor`, `color`) VALUES
@@ -16396,7 +18309,7 @@ INSERT INTO `vtiger_projecttask_status_color` (`status`, `defaultcolor`, `color`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttype`
+-- Table structure for table `vtiger_projecttype`
 --
 
 CREATE TABLE `vtiger_projecttype` (
@@ -16409,7 +18322,7 @@ CREATE TABLE `vtiger_projecttype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttype`
+-- Dumping data for table `vtiger_projecttype`
 --
 
 INSERT INTO `vtiger_projecttype` (`projecttypeid`, `projecttype`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16420,7 +18333,7 @@ INSERT INTO `vtiger_projecttype` (`projecttypeid`, `projecttype`, `presence`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_projecttype_seq`
+-- Table structure for table `vtiger_projecttype_seq`
 --
 
 CREATE TABLE `vtiger_projecttype_seq` (
@@ -16428,7 +18341,7 @@ CREATE TABLE `vtiger_projecttype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_projecttype_seq`
+-- Dumping data for table `vtiger_projecttype_seq`
 --
 
 INSERT INTO `vtiger_projecttype_seq` (`id`) VALUES
@@ -16437,7 +18350,7 @@ INSERT INTO `vtiger_projecttype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_purchaseorder`
+-- Table structure for table `vtiger_purchaseorder`
 --
 
 CREATE TABLE `vtiger_purchaseorder` (
@@ -16477,7 +18390,7 @@ CREATE TABLE `vtiger_purchaseorder` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_purchaseordercf`
+-- Table structure for table `vtiger_purchaseordercf`
 --
 
 CREATE TABLE `vtiger_purchaseordercf` (
@@ -16487,7 +18400,7 @@ CREATE TABLE `vtiger_purchaseordercf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_qcm_category`
+-- Table structure for table `vtiger_qcm_category`
 --
 
 CREATE TABLE `vtiger_qcm_category` (
@@ -16500,7 +18413,7 @@ CREATE TABLE `vtiger_qcm_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_qcm_category`
+-- Dumping data for table `vtiger_qcm_category`
 --
 
 INSERT INTO `vtiger_qcm_category` (`qcm_categoryid`, `qcm_category`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16514,7 +18427,7 @@ INSERT INTO `vtiger_qcm_category` (`qcm_categoryid`, `qcm_category`, `presence`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_qcm_category_seq`
+-- Table structure for table `vtiger_qcm_category_seq`
 --
 
 CREATE TABLE `vtiger_qcm_category_seq` (
@@ -16522,7 +18435,7 @@ CREATE TABLE `vtiger_qcm_category_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_qcm_category_seq`
+-- Dumping data for table `vtiger_qcm_category_seq`
 --
 
 INSERT INTO `vtiger_qcm_category_seq` (`id`) VALUES
@@ -16531,7 +18444,7 @@ INSERT INTO `vtiger_qcm_category_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_qcm_classify`
+-- Table structure for table `vtiger_qcm_classify`
 --
 
 CREATE TABLE `vtiger_qcm_classify` (
@@ -16544,7 +18457,7 @@ CREATE TABLE `vtiger_qcm_classify` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_qcm_classify`
+-- Dumping data for table `vtiger_qcm_classify`
 --
 
 INSERT INTO `vtiger_qcm_classify` (`qcm_classifyid`, `qcm_classify`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16557,7 +18470,7 @@ INSERT INTO `vtiger_qcm_classify` (`qcm_classifyid`, `qcm_classify`, `presence`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_qcm_classify_seq`
+-- Table structure for table `vtiger_qcm_classify_seq`
 --
 
 CREATE TABLE `vtiger_qcm_classify_seq` (
@@ -16565,7 +18478,7 @@ CREATE TABLE `vtiger_qcm_classify_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_qcm_classify_seq`
+-- Dumping data for table `vtiger_qcm_classify_seq`
 --
 
 INSERT INTO `vtiger_qcm_classify_seq` (`id`) VALUES
@@ -16574,7 +18487,7 @@ INSERT INTO `vtiger_qcm_classify_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_qcm_status`
+-- Table structure for table `vtiger_qcm_status`
 --
 
 CREATE TABLE `vtiger_qcm_status` (
@@ -16587,7 +18500,7 @@ CREATE TABLE `vtiger_qcm_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_qcm_status`
+-- Dumping data for table `vtiger_qcm_status`
 --
 
 INSERT INTO `vtiger_qcm_status` (`qcm_statusid`, `qcm_status`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16597,7 +18510,7 @@ INSERT INTO `vtiger_qcm_status` (`qcm_statusid`, `qcm_status`, `presence`, `pick
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_qcm_status_seq`
+-- Table structure for table `vtiger_qcm_status_seq`
 --
 
 CREATE TABLE `vtiger_qcm_status_seq` (
@@ -16605,7 +18518,7 @@ CREATE TABLE `vtiger_qcm_status_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_qcm_status_seq`
+-- Dumping data for table `vtiger_qcm_status_seq`
 --
 
 INSERT INTO `vtiger_qcm_status_seq` (`id`) VALUES
@@ -16614,7 +18527,7 @@ INSERT INTO `vtiger_qcm_status_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_quotes`
+-- Table structure for table `vtiger_quotes`
 --
 
 CREATE TABLE `vtiger_quotes` (
@@ -16650,7 +18563,7 @@ CREATE TABLE `vtiger_quotes` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_quotesbillads`
+-- Table structure for table `vtiger_quotesbillads`
 --
 
 CREATE TABLE `vtiger_quotesbillads` (
@@ -16666,7 +18579,7 @@ CREATE TABLE `vtiger_quotesbillads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_quotescf`
+-- Table structure for table `vtiger_quotescf`
 --
 
 CREATE TABLE `vtiger_quotescf` (
@@ -16676,7 +18589,7 @@ CREATE TABLE `vtiger_quotescf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_quotesshipads`
+-- Table structure for table `vtiger_quotesshipads`
 --
 
 CREATE TABLE `vtiger_quotesshipads` (
@@ -16692,7 +18605,7 @@ CREATE TABLE `vtiger_quotesshipads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_quotestage`
+-- Table structure for table `vtiger_quotestage`
 --
 
 CREATE TABLE `vtiger_quotestage` (
@@ -16705,7 +18618,7 @@ CREATE TABLE `vtiger_quotestage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_quotestage`
+-- Dumping data for table `vtiger_quotestage`
 --
 
 INSERT INTO `vtiger_quotestage` (`quotestageid`, `quotestage`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16718,7 +18631,7 @@ INSERT INTO `vtiger_quotestage` (`quotestageid`, `quotestage`, `presence`, `pick
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_quotestagehistory`
+-- Table structure for table `vtiger_quotestagehistory`
 --
 
 CREATE TABLE `vtiger_quotestagehistory` (
@@ -16733,7 +18646,7 @@ CREATE TABLE `vtiger_quotestagehistory` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_quotestage_seq`
+-- Table structure for table `vtiger_quotestage_seq`
 --
 
 CREATE TABLE `vtiger_quotestage_seq` (
@@ -16741,7 +18654,7 @@ CREATE TABLE `vtiger_quotestage_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_quotestage_seq`
+-- Dumping data for table `vtiger_quotestage_seq`
 --
 
 INSERT INTO `vtiger_quotestage_seq` (`id`) VALUES
@@ -16750,7 +18663,7 @@ INSERT INTO `vtiger_quotestage_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_rating`
+-- Table structure for table `vtiger_rating`
 --
 
 CREATE TABLE `vtiger_rating` (
@@ -16763,7 +18676,7 @@ CREATE TABLE `vtiger_rating` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_rating`
+-- Dumping data for table `vtiger_rating`
 --
 
 INSERT INTO `vtiger_rating` (`rating_id`, `rating`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -16776,7 +18689,7 @@ INSERT INTO `vtiger_rating` (`rating_id`, `rating`, `presence`, `picklist_valuei
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_rating_seq`
+-- Table structure for table `vtiger_rating_seq`
 --
 
 CREATE TABLE `vtiger_rating_seq` (
@@ -16784,7 +18697,7 @@ CREATE TABLE `vtiger_rating_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_rating_seq`
+-- Dumping data for table `vtiger_rating_seq`
 --
 
 INSERT INTO `vtiger_rating_seq` (`id`) VALUES
@@ -16793,7 +18706,7 @@ INSERT INTO `vtiger_rating_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_recurringevents`
+-- Table structure for table `vtiger_recurringevents`
 --
 
 CREATE TABLE `vtiger_recurringevents` (
@@ -16809,7 +18722,7 @@ CREATE TABLE `vtiger_recurringevents` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_recurringtype`
+-- Table structure for table `vtiger_recurringtype`
 --
 
 CREATE TABLE `vtiger_recurringtype` (
@@ -16821,7 +18734,7 @@ CREATE TABLE `vtiger_recurringtype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_recurringtype`
+-- Dumping data for table `vtiger_recurringtype`
 --
 
 INSERT INTO `vtiger_recurringtype` (`recurringeventid`, `recurringtype`, `sortorderid`, `presence`, `color`) VALUES
@@ -16833,7 +18746,7 @@ INSERT INTO `vtiger_recurringtype` (`recurringeventid`, `recurringtype`, `sortor
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_recurringtype_seq`
+-- Table structure for table `vtiger_recurringtype_seq`
 --
 
 CREATE TABLE `vtiger_recurringtype_seq` (
@@ -16841,7 +18754,7 @@ CREATE TABLE `vtiger_recurringtype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_recurringtype_seq`
+-- Dumping data for table `vtiger_recurringtype_seq`
 --
 
 INSERT INTO `vtiger_recurringtype_seq` (`id`) VALUES
@@ -16850,7 +18763,7 @@ INSERT INTO `vtiger_recurringtype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_recurring_frequency`
+-- Table structure for table `vtiger_recurring_frequency`
 --
 
 CREATE TABLE `vtiger_recurring_frequency` (
@@ -16862,7 +18775,7 @@ CREATE TABLE `vtiger_recurring_frequency` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_recurring_frequency`
+-- Dumping data for table `vtiger_recurring_frequency`
 --
 
 INSERT INTO `vtiger_recurring_frequency` (`recurring_frequency_id`, `recurring_frequency`, `sortorderid`, `presence`, `color`) VALUES
@@ -16875,7 +18788,7 @@ INSERT INTO `vtiger_recurring_frequency` (`recurring_frequency_id`, `recurring_f
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_recurring_frequency_seq`
+-- Table structure for table `vtiger_recurring_frequency_seq`
 --
 
 CREATE TABLE `vtiger_recurring_frequency_seq` (
@@ -16883,7 +18796,7 @@ CREATE TABLE `vtiger_recurring_frequency_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_recurring_frequency_seq`
+-- Dumping data for table `vtiger_recurring_frequency_seq`
 --
 
 INSERT INTO `vtiger_recurring_frequency_seq` (`id`) VALUES
@@ -16892,7 +18805,7 @@ INSERT INTO `vtiger_recurring_frequency_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_relatedlists`
+-- Table structure for table `vtiger_relatedlists`
 --
 
 CREATE TABLE `vtiger_relatedlists` (
@@ -16910,7 +18823,7 @@ CREATE TABLE `vtiger_relatedlists` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_relatedlists`
+-- Dumping data for table `vtiger_relatedlists`
 --
 
 INSERT INTO `vtiger_relatedlists` (`relation_id`, `tabid`, `related_tabid`, `name`, `sequence`, `label`, `presence`, `actions`, `relationfieldid`, `source`, `relationtype`) VALUES
@@ -17088,7 +19001,7 @@ INSERT INTO `vtiger_relatedlists` (`relation_id`, `tabid`, `related_tabid`, `nam
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_relatedlists_rb`
+-- Table structure for table `vtiger_relatedlists_rb`
 --
 
 CREATE TABLE `vtiger_relatedlists_rb` (
@@ -17103,7 +19016,7 @@ CREATE TABLE `vtiger_relatedlists_rb` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_relatedlists_seq`
+-- Table structure for table `vtiger_relatedlists_seq`
 --
 
 CREATE TABLE `vtiger_relatedlists_seq` (
@@ -17111,16 +19024,16 @@ CREATE TABLE `vtiger_relatedlists_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_relatedlists_seq`
+-- Dumping data for table `vtiger_relatedlists_seq`
 --
 
 INSERT INTO `vtiger_relatedlists_seq` (`id`) VALUES
-(183);
+(185);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_relcriteria`
+-- Table structure for table `vtiger_relcriteria`
 --
 
 CREATE TABLE `vtiger_relcriteria` (
@@ -17134,7 +19047,7 @@ CREATE TABLE `vtiger_relcriteria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_relcriteria`
+-- Dumping data for table `vtiger_relcriteria`
 --
 
 INSERT INTO `vtiger_relcriteria` (`queryid`, `columnindex`, `columnname`, `comparator`, `value`, `groupid`, `column_condition`) VALUES
@@ -17153,7 +19066,7 @@ INSERT INTO `vtiger_relcriteria` (`queryid`, `columnindex`, `columnname`, `compa
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_relcriteria_grouping`
+-- Table structure for table `vtiger_relcriteria_grouping`
 --
 
 CREATE TABLE `vtiger_relcriteria_grouping` (
@@ -17164,7 +19077,7 @@ CREATE TABLE `vtiger_relcriteria_grouping` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_relcriteria_grouping`
+-- Dumping data for table `vtiger_relcriteria_grouping`
 --
 
 INSERT INTO `vtiger_relcriteria_grouping` (`groupid`, `queryid`, `group_condition`, `condition_expression`) VALUES
@@ -17182,7 +19095,7 @@ INSERT INTO `vtiger_relcriteria_grouping` (`groupid`, `queryid`, `group_conditio
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reminder_interval`
+-- Table structure for table `vtiger_reminder_interval`
 --
 
 CREATE TABLE `vtiger_reminder_interval` (
@@ -17193,7 +19106,7 @@ CREATE TABLE `vtiger_reminder_interval` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_reminder_interval`
+-- Dumping data for table `vtiger_reminder_interval`
 --
 
 INSERT INTO `vtiger_reminder_interval` (`reminder_intervalid`, `reminder_interval`, `sortorderid`, `presence`) VALUES
@@ -17208,7 +19121,7 @@ INSERT INTO `vtiger_reminder_interval` (`reminder_intervalid`, `reminder_interva
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reminder_interval_seq`
+-- Table structure for table `vtiger_reminder_interval_seq`
 --
 
 CREATE TABLE `vtiger_reminder_interval_seq` (
@@ -17216,7 +19129,7 @@ CREATE TABLE `vtiger_reminder_interval_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_reminder_interval_seq`
+-- Dumping data for table `vtiger_reminder_interval_seq`
 --
 
 INSERT INTO `vtiger_reminder_interval_seq` (`id`) VALUES
@@ -17225,7 +19138,7 @@ INSERT INTO `vtiger_reminder_interval_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_report`
+-- Table structure for table `vtiger_report`
 --
 
 CREATE TABLE `vtiger_report` (
@@ -17243,7 +19156,7 @@ CREATE TABLE `vtiger_report` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_report`
+-- Dumping data for table `vtiger_report`
 --
 
 INSERT INTO `vtiger_report` (`reportid`, `folderid`, `reportname`, `description`, `reporttype`, `queryid`, `state`, `customizable`, `category`, `owner`, `sharingtype`) VALUES
@@ -17276,7 +19189,7 @@ INSERT INTO `vtiger_report` (`reportid`, `folderid`, `reportname`, `description`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reportdatefilter`
+-- Table structure for table `vtiger_reportdatefilter`
 --
 
 CREATE TABLE `vtiger_reportdatefilter` (
@@ -17288,7 +19201,7 @@ CREATE TABLE `vtiger_reportdatefilter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_reportdatefilter`
+-- Dumping data for table `vtiger_reportdatefilter`
 --
 
 INSERT INTO `vtiger_reportdatefilter` (`datefilterid`, `datecolumnname`, `datefilter`, `startdate`, `enddate`) VALUES
@@ -17298,7 +19211,7 @@ INSERT INTO `vtiger_reportdatefilter` (`datefilterid`, `datecolumnname`, `datefi
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reportfilters`
+-- Table structure for table `vtiger_reportfilters`
 --
 
 CREATE TABLE `vtiger_reportfilters` (
@@ -17307,7 +19220,7 @@ CREATE TABLE `vtiger_reportfilters` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_reportfilters`
+-- Dumping data for table `vtiger_reportfilters`
 --
 
 INSERT INTO `vtiger_reportfilters` (`filterid`, `name`) VALUES
@@ -17318,7 +19231,7 @@ INSERT INTO `vtiger_reportfilters` (`filterid`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reportfolder`
+-- Table structure for table `vtiger_reportfolder`
 --
 
 CREATE TABLE `vtiger_reportfolder` (
@@ -17329,7 +19242,7 @@ CREATE TABLE `vtiger_reportfolder` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_reportfolder`
+-- Dumping data for table `vtiger_reportfolder`
 --
 
 INSERT INTO `vtiger_reportfolder` (`folderid`, `foldername`, `description`, `state`) VALUES
@@ -17349,7 +19262,7 @@ INSERT INTO `vtiger_reportfolder` (`folderid`, `foldername`, `description`, `sta
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reportgroupbycolumn`
+-- Table structure for table `vtiger_reportgroupbycolumn`
 --
 
 CREATE TABLE `vtiger_reportgroupbycolumn` (
@@ -17362,7 +19275,7 @@ CREATE TABLE `vtiger_reportgroupbycolumn` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reportmodules`
+-- Table structure for table `vtiger_reportmodules`
 --
 
 CREATE TABLE `vtiger_reportmodules` (
@@ -17372,7 +19285,7 @@ CREATE TABLE `vtiger_reportmodules` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_reportmodules`
+-- Dumping data for table `vtiger_reportmodules`
 --
 
 INSERT INTO `vtiger_reportmodules` (`reportmodulesid`, `primarymodule`, `secondarymodules`) VALUES
@@ -17405,7 +19318,7 @@ INSERT INTO `vtiger_reportmodules` (`reportmodulesid`, `primarymodule`, `seconda
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reportsharing`
+-- Table structure for table `vtiger_reportsharing`
 --
 
 CREATE TABLE `vtiger_reportsharing` (
@@ -17417,7 +19330,7 @@ CREATE TABLE `vtiger_reportsharing` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reportsortcol`
+-- Table structure for table `vtiger_reportsortcol`
 --
 
 CREATE TABLE `vtiger_reportsortcol` (
@@ -17428,7 +19341,7 @@ CREATE TABLE `vtiger_reportsortcol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_reportsortcol`
+-- Dumping data for table `vtiger_reportsortcol`
 --
 
 INSERT INTO `vtiger_reportsortcol` (`sortcolid`, `reportid`, `columnname`, `sortorder`) VALUES
@@ -17440,7 +19353,7 @@ INSERT INTO `vtiger_reportsortcol` (`sortcolid`, `reportid`, `columnname`, `sort
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reportsummary`
+-- Table structure for table `vtiger_reportsummary`
 --
 
 CREATE TABLE `vtiger_reportsummary` (
@@ -17452,7 +19365,7 @@ CREATE TABLE `vtiger_reportsummary` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_reporttype`
+-- Table structure for table `vtiger_reporttype`
 --
 
 CREATE TABLE `vtiger_reporttype` (
@@ -17463,7 +19376,7 @@ CREATE TABLE `vtiger_reporttype` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_report_sharegroups`
+-- Table structure for table `vtiger_report_sharegroups`
 --
 
 CREATE TABLE `vtiger_report_sharegroups` (
@@ -17474,7 +19387,7 @@ CREATE TABLE `vtiger_report_sharegroups` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_report_sharerole`
+-- Table structure for table `vtiger_report_sharerole`
 --
 
 CREATE TABLE `vtiger_report_sharerole` (
@@ -17485,7 +19398,7 @@ CREATE TABLE `vtiger_report_sharerole` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_report_sharers`
+-- Table structure for table `vtiger_report_sharers`
 --
 
 CREATE TABLE `vtiger_report_sharers` (
@@ -17496,7 +19409,7 @@ CREATE TABLE `vtiger_report_sharers` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_report_shareusers`
+-- Table structure for table `vtiger_report_shareusers`
 --
 
 CREATE TABLE `vtiger_report_shareusers` (
@@ -17507,7 +19420,7 @@ CREATE TABLE `vtiger_report_shareusers` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_role`
+-- Table structure for table `vtiger_role`
 --
 
 CREATE TABLE `vtiger_role` (
@@ -17519,7 +19432,7 @@ CREATE TABLE `vtiger_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_role`
+-- Dumping data for table `vtiger_role`
 --
 
 INSERT INTO `vtiger_role` (`roleid`, `rolename`, `parentrole`, `depth`, `allowassignedrecordsto`) VALUES
@@ -17532,7 +19445,7 @@ INSERT INTO `vtiger_role` (`roleid`, `rolename`, `parentrole`, `depth`, `allowas
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_role2picklist`
+-- Table structure for table `vtiger_role2picklist`
 --
 
 CREATE TABLE `vtiger_role2picklist` (
@@ -17543,7 +19456,7 @@ CREATE TABLE `vtiger_role2picklist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_role2picklist`
+-- Dumping data for table `vtiger_role2picklist`
 --
 
 INSERT INTO `vtiger_role2picklist` (`roleid`, `picklistvalueid`, `picklistid`, `sortid`) VALUES
@@ -17921,6 +19834,15 @@ INSERT INTO `vtiger_role2picklist` (`roleid`, `picklistvalueid`, `picklistid`, `
 ('H1', 374, 64, 5),
 ('H1', 375, 65, 1),
 ('H1', 376, 65, 2),
+('H1', 377, 66, 1),
+('H1', 378, 66, 2),
+('H1', 379, 66, 3),
+('H1', 380, 66, 4),
+('H1', 381, 66, 5),
+('H1', 382, 66, 6),
+('H1', 383, 66, 7),
+('H1', 384, 66, 8),
+('H1', 385, 66, 9),
 ('H2', 1, 1, 0),
 ('H2', 2, 1, 1),
 ('H2', 3, 1, 2),
@@ -18295,6 +20217,15 @@ INSERT INTO `vtiger_role2picklist` (`roleid`, `picklistvalueid`, `picklistid`, `
 ('H2', 374, 64, 5),
 ('H2', 375, 65, 1),
 ('H2', 376, 65, 2),
+('H2', 377, 66, 1),
+('H2', 378, 66, 2),
+('H2', 379, 66, 3),
+('H2', 380, 66, 4),
+('H2', 381, 66, 5),
+('H2', 382, 66, 6),
+('H2', 383, 66, 7),
+('H2', 384, 66, 8),
+('H2', 385, 66, 9),
 ('H3', 1, 1, 0),
 ('H3', 2, 1, 1),
 ('H3', 3, 1, 2),
@@ -18669,6 +20600,15 @@ INSERT INTO `vtiger_role2picklist` (`roleid`, `picklistvalueid`, `picklistid`, `
 ('H3', 374, 64, 5),
 ('H3', 375, 65, 1),
 ('H3', 376, 65, 2),
+('H3', 377, 66, 1),
+('H3', 378, 66, 2),
+('H3', 379, 66, 3),
+('H3', 380, 66, 4),
+('H3', 381, 66, 5),
+('H3', 382, 66, 6),
+('H3', 383, 66, 7),
+('H3', 384, 66, 8),
+('H3', 385, 66, 9),
 ('H4', 1, 1, 0),
 ('H4', 2, 1, 1),
 ('H4', 3, 1, 2),
@@ -19043,6 +20983,15 @@ INSERT INTO `vtiger_role2picklist` (`roleid`, `picklistvalueid`, `picklistid`, `
 ('H4', 374, 64, 5),
 ('H4', 375, 65, 1),
 ('H4', 376, 65, 2),
+('H4', 377, 66, 1),
+('H4', 378, 66, 2),
+('H4', 379, 66, 3),
+('H4', 380, 66, 4),
+('H4', 381, 66, 5),
+('H4', 382, 66, 6),
+('H4', 383, 66, 7),
+('H4', 384, 66, 8),
+('H4', 385, 66, 9),
 ('H5', 1, 1, 0),
 ('H5', 2, 1, 1),
 ('H5', 3, 1, 2),
@@ -19416,12 +21365,21 @@ INSERT INTO `vtiger_role2picklist` (`roleid`, `picklistvalueid`, `picklistid`, `
 ('H5', 373, 64, 4),
 ('H5', 374, 64, 5),
 ('H5', 375, 65, 1),
-('H5', 376, 65, 2);
+('H5', 376, 65, 2),
+('H5', 377, 66, 1),
+('H5', 378, 66, 2),
+('H5', 379, 66, 3),
+('H5', 380, 66, 4),
+('H5', 381, 66, 5),
+('H5', 382, 66, 6),
+('H5', 383, 66, 7),
+('H5', 384, 66, 8),
+('H5', 385, 66, 9);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_role2profile`
+-- Table structure for table `vtiger_role2profile`
 --
 
 CREATE TABLE `vtiger_role2profile` (
@@ -19430,7 +21388,7 @@ CREATE TABLE `vtiger_role2profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_role2profile`
+-- Dumping data for table `vtiger_role2profile`
 --
 
 INSERT INTO `vtiger_role2profile` (`roleid`, `profileid`) VALUES
@@ -19442,7 +21400,7 @@ INSERT INTO `vtiger_role2profile` (`roleid`, `profileid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_role_seq`
+-- Table structure for table `vtiger_role_seq`
 --
 
 CREATE TABLE `vtiger_role_seq` (
@@ -19450,7 +21408,7 @@ CREATE TABLE `vtiger_role_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_role_seq`
+-- Dumping data for table `vtiger_role_seq`
 --
 
 INSERT INTO `vtiger_role_seq` (`id`) VALUES
@@ -19459,7 +21417,7 @@ INSERT INTO `vtiger_role_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_rollupcomments_settings`
+-- Table structure for table `vtiger_rollupcomments_settings`
 --
 
 CREATE TABLE `vtiger_rollupcomments_settings` (
@@ -19472,7 +21430,7 @@ CREATE TABLE `vtiger_rollupcomments_settings` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_rowheight`
+-- Table structure for table `vtiger_rowheight`
 --
 
 CREATE TABLE `vtiger_rowheight` (
@@ -19483,7 +21441,7 @@ CREATE TABLE `vtiger_rowheight` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_rowheight`
+-- Dumping data for table `vtiger_rowheight`
 --
 
 INSERT INTO `vtiger_rowheight` (`rowheightid`, `rowheight`, `sortorderid`, `presence`) VALUES
@@ -19494,7 +21452,7 @@ INSERT INTO `vtiger_rowheight` (`rowheightid`, `rowheight`, `sortorderid`, `pres
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_rowheight_seq`
+-- Table structure for table `vtiger_rowheight_seq`
 --
 
 CREATE TABLE `vtiger_rowheight_seq` (
@@ -19502,7 +21460,7 @@ CREATE TABLE `vtiger_rowheight_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_rowheight_seq`
+-- Dumping data for table `vtiger_rowheight_seq`
 --
 
 INSERT INTO `vtiger_rowheight_seq` (`id`) VALUES
@@ -19511,7 +21469,7 @@ INSERT INTO `vtiger_rowheight_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_rss`
+-- Table structure for table `vtiger_rss`
 --
 
 CREATE TABLE `vtiger_rss` (
@@ -19525,7 +21483,7 @@ CREATE TABLE `vtiger_rss` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_salesmanactivityrel`
+-- Table structure for table `vtiger_salesmanactivityrel`
 --
 
 CREATE TABLE `vtiger_salesmanactivityrel` (
@@ -19536,7 +21494,7 @@ CREATE TABLE `vtiger_salesmanactivityrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_salesmanattachmentsrel`
+-- Table structure for table `vtiger_salesmanattachmentsrel`
 --
 
 CREATE TABLE `vtiger_salesmanattachmentsrel` (
@@ -19547,7 +21505,7 @@ CREATE TABLE `vtiger_salesmanattachmentsrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_salesmanticketrel`
+-- Table structure for table `vtiger_salesmanticketrel`
 --
 
 CREATE TABLE `vtiger_salesmanticketrel` (
@@ -19558,7 +21516,7 @@ CREATE TABLE `vtiger_salesmanticketrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_salesorder`
+-- Table structure for table `vtiger_salesorder`
 --
 
 CREATE TABLE `vtiger_salesorder` (
@@ -19601,7 +21559,7 @@ CREATE TABLE `vtiger_salesorder` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_salesordercf`
+-- Table structure for table `vtiger_salesordercf`
 --
 
 CREATE TABLE `vtiger_salesordercf` (
@@ -19611,7 +21569,7 @@ CREATE TABLE `vtiger_salesordercf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_sales_stage`
+-- Table structure for table `vtiger_sales_stage`
 --
 
 CREATE TABLE `vtiger_sales_stage` (
@@ -19624,7 +21582,7 @@ CREATE TABLE `vtiger_sales_stage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_sales_stage`
+-- Dumping data for table `vtiger_sales_stage`
 --
 
 INSERT INTO `vtiger_sales_stage` (`sales_stage_id`, `sales_stage`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -19642,7 +21600,7 @@ INSERT INTO `vtiger_sales_stage` (`sales_stage_id`, `sales_stage`, `presence`, `
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_sales_stage_seq`
+-- Table structure for table `vtiger_sales_stage_seq`
 --
 
 CREATE TABLE `vtiger_sales_stage_seq` (
@@ -19650,7 +21608,7 @@ CREATE TABLE `vtiger_sales_stage_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_sales_stage_seq`
+-- Dumping data for table `vtiger_sales_stage_seq`
 --
 
 INSERT INTO `vtiger_sales_stage_seq` (`id`) VALUES
@@ -19659,7 +21617,7 @@ INSERT INTO `vtiger_sales_stage_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_salutationtype`
+-- Table structure for table `vtiger_salutationtype`
 --
 
 CREATE TABLE `vtiger_salutationtype` (
@@ -19672,7 +21630,7 @@ CREATE TABLE `vtiger_salutationtype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_salutationtype`
+-- Dumping data for table `vtiger_salutationtype`
 --
 
 INSERT INTO `vtiger_salutationtype` (`salutationid`, `salutationtype`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -19685,7 +21643,7 @@ INSERT INTO `vtiger_salutationtype` (`salutationid`, `salutationtype`, `presence
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_salutationtype_seq`
+-- Table structure for table `vtiger_salutationtype_seq`
 --
 
 CREATE TABLE `vtiger_salutationtype_seq` (
@@ -19693,7 +21651,7 @@ CREATE TABLE `vtiger_salutationtype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_salutationtype_seq`
+-- Dumping data for table `vtiger_salutationtype_seq`
 --
 
 INSERT INTO `vtiger_salutationtype_seq` (`id`) VALUES
@@ -19702,7 +21660,7 @@ INSERT INTO `vtiger_salutationtype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_scheduled_reports`
+-- Table structure for table `vtiger_scheduled_reports`
 --
 
 CREATE TABLE `vtiger_scheduled_reports` (
@@ -19716,7 +21674,7 @@ CREATE TABLE `vtiger_scheduled_reports` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_schedulereports`
+-- Table structure for table `vtiger_schedulereports`
 --
 
 CREATE TABLE `vtiger_schedulereports` (
@@ -19736,7 +21694,7 @@ CREATE TABLE `vtiger_schedulereports` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_seactivityrel`
+-- Table structure for table `vtiger_seactivityrel`
 --
 
 CREATE TABLE `vtiger_seactivityrel` (
@@ -19747,7 +21705,7 @@ CREATE TABLE `vtiger_seactivityrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_seactivityrel_seq`
+-- Table structure for table `vtiger_seactivityrel_seq`
 --
 
 CREATE TABLE `vtiger_seactivityrel_seq` (
@@ -19755,7 +21713,7 @@ CREATE TABLE `vtiger_seactivityrel_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_seactivityrel_seq`
+-- Dumping data for table `vtiger_seactivityrel_seq`
 --
 
 INSERT INTO `vtiger_seactivityrel_seq` (`id`) VALUES
@@ -19764,7 +21722,7 @@ INSERT INTO `vtiger_seactivityrel_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_seattachmentsrel`
+-- Table structure for table `vtiger_seattachmentsrel`
 --
 
 CREATE TABLE `vtiger_seattachmentsrel` (
@@ -19775,7 +21733,7 @@ CREATE TABLE `vtiger_seattachmentsrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_selectcolumn`
+-- Table structure for table `vtiger_selectcolumn`
 --
 
 CREATE TABLE `vtiger_selectcolumn` (
@@ -19785,7 +21743,7 @@ CREATE TABLE `vtiger_selectcolumn` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_selectcolumn`
+-- Dumping data for table `vtiger_selectcolumn`
 --
 
 INSERT INTO `vtiger_selectcolumn` (`queryid`, `columnindex`, `columnname`) VALUES
@@ -19947,7 +21905,7 @@ INSERT INTO `vtiger_selectcolumn` (`queryid`, `columnindex`, `columnname`) VALUE
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_selectquery`
+-- Table structure for table `vtiger_selectquery`
 --
 
 CREATE TABLE `vtiger_selectquery` (
@@ -19957,7 +21915,7 @@ CREATE TABLE `vtiger_selectquery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_selectquery`
+-- Dumping data for table `vtiger_selectquery`
 --
 
 INSERT INTO `vtiger_selectquery` (`queryid`, `startindex`, `numofobjects`) VALUES
@@ -19990,7 +21948,7 @@ INSERT INTO `vtiger_selectquery` (`queryid`, `startindex`, `numofobjects`) VALUE
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_selectquery_seq`
+-- Table structure for table `vtiger_selectquery_seq`
 --
 
 CREATE TABLE `vtiger_selectquery_seq` (
@@ -19998,7 +21956,7 @@ CREATE TABLE `vtiger_selectquery_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_selectquery_seq`
+-- Dumping data for table `vtiger_selectquery_seq`
 --
 
 INSERT INTO `vtiger_selectquery_seq` (`id`) VALUES
@@ -20007,7 +21965,7 @@ INSERT INTO `vtiger_selectquery_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_senotesrel`
+-- Table structure for table `vtiger_senotesrel`
 --
 
 CREATE TABLE `vtiger_senotesrel` (
@@ -20018,7 +21976,7 @@ CREATE TABLE `vtiger_senotesrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_seproductsrel`
+-- Table structure for table `vtiger_seproductsrel`
 --
 
 CREATE TABLE `vtiger_seproductsrel` (
@@ -20031,7 +21989,7 @@ CREATE TABLE `vtiger_seproductsrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_service`
+-- Table structure for table `vtiger_service`
 --
 
 CREATE TABLE `vtiger_service` (
@@ -20058,7 +22016,7 @@ CREATE TABLE `vtiger_service` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_servicecategory`
+-- Table structure for table `vtiger_servicecategory`
 --
 
 CREATE TABLE `vtiger_servicecategory` (
@@ -20071,7 +22029,7 @@ CREATE TABLE `vtiger_servicecategory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_servicecategory`
+-- Dumping data for table `vtiger_servicecategory`
 --
 
 INSERT INTO `vtiger_servicecategory` (`servicecategoryid`, `servicecategory`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -20084,7 +22042,7 @@ INSERT INTO `vtiger_servicecategory` (`servicecategoryid`, `servicecategory`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_servicecategory_seq`
+-- Table structure for table `vtiger_servicecategory_seq`
 --
 
 CREATE TABLE `vtiger_servicecategory_seq` (
@@ -20092,7 +22050,7 @@ CREATE TABLE `vtiger_servicecategory_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_servicecategory_seq`
+-- Dumping data for table `vtiger_servicecategory_seq`
 --
 
 INSERT INTO `vtiger_servicecategory_seq` (`id`) VALUES
@@ -20101,7 +22059,7 @@ INSERT INTO `vtiger_servicecategory_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_servicecf`
+-- Table structure for table `vtiger_servicecf`
 --
 
 CREATE TABLE `vtiger_servicecf` (
@@ -20111,7 +22069,7 @@ CREATE TABLE `vtiger_servicecf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_servicecontracts`
+-- Table structure for table `vtiger_servicecontracts`
 --
 
 CREATE TABLE `vtiger_servicecontracts` (
@@ -20137,7 +22095,7 @@ CREATE TABLE `vtiger_servicecontracts` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_servicecontractscf`
+-- Table structure for table `vtiger_servicecontractscf`
 --
 
 CREATE TABLE `vtiger_servicecontractscf` (
@@ -20147,7 +22105,7 @@ CREATE TABLE `vtiger_servicecontractscf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_service_usageunit`
+-- Table structure for table `vtiger_service_usageunit`
 --
 
 CREATE TABLE `vtiger_service_usageunit` (
@@ -20160,7 +22118,7 @@ CREATE TABLE `vtiger_service_usageunit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_service_usageunit`
+-- Dumping data for table `vtiger_service_usageunit`
 --
 
 INSERT INTO `vtiger_service_usageunit` (`service_usageunitid`, `service_usageunit`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -20171,7 +22129,7 @@ INSERT INTO `vtiger_service_usageunit` (`service_usageunitid`, `service_usageuni
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_service_usageunit_seq`
+-- Table structure for table `vtiger_service_usageunit_seq`
 --
 
 CREATE TABLE `vtiger_service_usageunit_seq` (
@@ -20179,7 +22137,7 @@ CREATE TABLE `vtiger_service_usageunit_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_service_usageunit_seq`
+-- Dumping data for table `vtiger_service_usageunit_seq`
 --
 
 INSERT INTO `vtiger_service_usageunit_seq` (`id`) VALUES
@@ -20188,7 +22146,7 @@ INSERT INTO `vtiger_service_usageunit_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_seticketsrel`
+-- Table structure for table `vtiger_seticketsrel`
 --
 
 CREATE TABLE `vtiger_seticketsrel` (
@@ -20199,7 +22157,7 @@ CREATE TABLE `vtiger_seticketsrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_settings_blocks`
+-- Table structure for table `vtiger_settings_blocks`
 --
 
 CREATE TABLE `vtiger_settings_blocks` (
@@ -20209,7 +22167,7 @@ CREATE TABLE `vtiger_settings_blocks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_settings_blocks`
+-- Dumping data for table `vtiger_settings_blocks`
 --
 
 INSERT INTO `vtiger_settings_blocks` (`blockid`, `label`, `sequence`) VALUES
@@ -20227,7 +22185,7 @@ INSERT INTO `vtiger_settings_blocks` (`blockid`, `label`, `sequence`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_settings_blocks_seq`
+-- Table structure for table `vtiger_settings_blocks_seq`
 --
 
 CREATE TABLE `vtiger_settings_blocks_seq` (
@@ -20235,7 +22193,7 @@ CREATE TABLE `vtiger_settings_blocks_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_settings_blocks_seq`
+-- Dumping data for table `vtiger_settings_blocks_seq`
 --
 
 INSERT INTO `vtiger_settings_blocks_seq` (`id`) VALUES
@@ -20244,7 +22202,7 @@ INSERT INTO `vtiger_settings_blocks_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_settings_field`
+-- Table structure for table `vtiger_settings_field`
 --
 
 CREATE TABLE `vtiger_settings_field` (
@@ -20260,7 +22218,7 @@ CREATE TABLE `vtiger_settings_field` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_settings_field`
+-- Dumping data for table `vtiger_settings_field`
 --
 
 INSERT INTO `vtiger_settings_field` (`fieldid`, `blockid`, `name`, `iconpath`, `description`, `linkto`, `sequence`, `active`, `pinned`) VALUES
@@ -20290,18 +22248,19 @@ INSERT INTO `vtiger_settings_field` (`fieldid`, `blockid`, `name`, `iconpath`, `
 (30, 8, 'LBL_CUSTOMER_PORTAL', 'portal_icon.png', 'PORTAL_EXTENSION_DESCRIPTION', 'index.php?module=CustomerPortal&parent=Settings&view=Index', 2, 0, 0),
 (31, 7, 'Webforms', 'modules/Webforms/img/Webform.png', 'LBL_WEBFORMS_DESCRIPTION', 'index.php?module=Webforms&parent=Settings&view=List', 1, 1, 0),
 (32, 5, 'LBL_EDIT_FIELDS', '', 'LBL_LAYOUT_EDITOR_DESCRIPTION', 'index.php?module=LayoutEditor&parent=Settings&view=Index', 2, 0, 0),
-(33, 9, 'LBL_LEAD_MAPPING', 'NULL', 'NULL', 'index.php?parent=Settings&module=Leads&view=MappingDetail', 1, 1, 1),
+(33, 9, 'LBL_LEAD_MAPPING', 'NULL', 'NULL', 'index.php?parent=Settings&module=Leads&view=MappingDetail', 1, 0, 1),
 (34, 9, 'LBL_OPPORTUNITY_MAPPING', 'NULL', 'NULL', 'index.php?parent=Settings&module=Potentials&view=MappingDetail', 2, 1, 1),
 (35, 11, 'My Preferences', 'NULL', 'NULL', 'index.php?module=Users&view=PreferenceDetail&parent=Settings&record=1', 1, 0, 1),
 (36, 11, 'Calendar Settings', 'NULL', 'NULL', 'index.php?module=Users&parent=Settings&view=Calendar&record=1', 2, 0, 1),
 (37, 11, 'LBL_MY_TAGS', 'NULL', 'NULL', 'index.php?module=Tags&parent=Settings&view=List&record=1', 3, 0, 1),
 (38, 12, 'LBL_EXTENSION_STORE', 'NULL', 'NULL', 'index.php?module=ExtensionStore&parent=Settings&view=ExtensionStore', 1, 0, 1),
-(39, 12, 'LBL_GOOGLE', 'NULL', 'NULL', 'index.php?module=Contacts&parent=Settings&view=Extension&extensionModule=Google&extensionView=Index&mode=settings', 2, 1, 1);
+(39, 12, 'LBL_GOOGLE', 'NULL', 'NULL', 'index.php?module=Contacts&parent=Settings&view=Extension&extensionModule=Google&extensionView=Index&mode=settings', 2, 1, 1),
+(41, 4, 'VGS Related Field Generator', '', 'VGSRelatedFields Configuration', 'index.php?module=VGSRelatedFields&view=IndexVGSRelatedFields&parent=Settings', 10, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_settings_field_seq`
+-- Table structure for table `vtiger_settings_field_seq`
 --
 
 CREATE TABLE `vtiger_settings_field_seq` (
@@ -20309,16 +22268,16 @@ CREATE TABLE `vtiger_settings_field_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_settings_field_seq`
+-- Dumping data for table `vtiger_settings_field_seq`
 --
 
 INSERT INTO `vtiger_settings_field_seq` (`id`) VALUES
-(40);
+(41);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_sharedcalendar`
+-- Table structure for table `vtiger_sharedcalendar`
 --
 
 CREATE TABLE `vtiger_sharedcalendar` (
@@ -20329,7 +22288,7 @@ CREATE TABLE `vtiger_sharedcalendar` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_shareduserinfo`
+-- Table structure for table `vtiger_shareduserinfo`
 --
 
 CREATE TABLE `vtiger_shareduserinfo` (
@@ -20342,7 +22301,7 @@ CREATE TABLE `vtiger_shareduserinfo` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_shippingtaxinfo`
+-- Table structure for table `vtiger_shippingtaxinfo`
 --
 
 CREATE TABLE `vtiger_shippingtaxinfo` (
@@ -20358,7 +22317,7 @@ CREATE TABLE `vtiger_shippingtaxinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_shippingtaxinfo`
+-- Dumping data for table `vtiger_shippingtaxinfo`
 --
 
 INSERT INTO `vtiger_shippingtaxinfo` (`taxid`, `taxname`, `taxlabel`, `percentage`, `deleted`, `method`, `type`, `compoundon`, `regions`) VALUES
@@ -20369,7 +22328,7 @@ INSERT INTO `vtiger_shippingtaxinfo` (`taxid`, `taxname`, `taxlabel`, `percentag
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_shippingtaxinfo_seq`
+-- Table structure for table `vtiger_shippingtaxinfo_seq`
 --
 
 CREATE TABLE `vtiger_shippingtaxinfo_seq` (
@@ -20377,7 +22336,7 @@ CREATE TABLE `vtiger_shippingtaxinfo_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_shippingtaxinfo_seq`
+-- Dumping data for table `vtiger_shippingtaxinfo_seq`
 --
 
 INSERT INTO `vtiger_shippingtaxinfo_seq` (`id`) VALUES
@@ -20386,7 +22345,7 @@ INSERT INTO `vtiger_shippingtaxinfo_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_shorturls`
+-- Table structure for table `vtiger_shorturls`
 --
 
 CREATE TABLE `vtiger_shorturls` (
@@ -20402,7 +22361,7 @@ CREATE TABLE `vtiger_shorturls` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_smsnotifier`
+-- Table structure for table `vtiger_smsnotifier`
 --
 
 CREATE TABLE `vtiger_smsnotifier` (
@@ -20414,7 +22373,7 @@ CREATE TABLE `vtiger_smsnotifier` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_smsnotifiercf`
+-- Table structure for table `vtiger_smsnotifiercf`
 --
 
 CREATE TABLE `vtiger_smsnotifiercf` (
@@ -20424,7 +22383,7 @@ CREATE TABLE `vtiger_smsnotifiercf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_smsnotifier_servers`
+-- Table structure for table `vtiger_smsnotifier_servers`
 --
 
 CREATE TABLE `vtiger_smsnotifier_servers` (
@@ -20439,7 +22398,7 @@ CREATE TABLE `vtiger_smsnotifier_servers` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_smsnotifier_status`
+-- Table structure for table `vtiger_smsnotifier_status`
 --
 
 CREATE TABLE `vtiger_smsnotifier_status` (
@@ -20455,7 +22414,7 @@ CREATE TABLE `vtiger_smsnotifier_status` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_soapservice`
+-- Table structure for table `vtiger_soapservice`
 --
 
 CREATE TABLE `vtiger_soapservice` (
@@ -20467,7 +22426,7 @@ CREATE TABLE `vtiger_soapservice` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_sobillads`
+-- Table structure for table `vtiger_sobillads`
 --
 
 CREATE TABLE `vtiger_sobillads` (
@@ -20483,7 +22442,7 @@ CREATE TABLE `vtiger_sobillads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_soshipads`
+-- Table structure for table `vtiger_soshipads`
 --
 
 CREATE TABLE `vtiger_soshipads` (
@@ -20499,7 +22458,7 @@ CREATE TABLE `vtiger_soshipads` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_sostatus`
+-- Table structure for table `vtiger_sostatus`
 --
 
 CREATE TABLE `vtiger_sostatus` (
@@ -20512,7 +22471,7 @@ CREATE TABLE `vtiger_sostatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_sostatus`
+-- Dumping data for table `vtiger_sostatus`
 --
 
 INSERT INTO `vtiger_sostatus` (`sostatusid`, `sostatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -20524,7 +22483,7 @@ INSERT INTO `vtiger_sostatus` (`sostatusid`, `sostatus`, `presence`, `picklist_v
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_sostatushistory`
+-- Table structure for table `vtiger_sostatushistory`
 --
 
 CREATE TABLE `vtiger_sostatushistory` (
@@ -20539,7 +22498,7 @@ CREATE TABLE `vtiger_sostatushistory` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_sostatus_seq`
+-- Table structure for table `vtiger_sostatus_seq`
 --
 
 CREATE TABLE `vtiger_sostatus_seq` (
@@ -20547,7 +22506,7 @@ CREATE TABLE `vtiger_sostatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_sostatus_seq`
+-- Dumping data for table `vtiger_sostatus_seq`
 --
 
 INSERT INTO `vtiger_sostatus_seq` (`id`) VALUES
@@ -20556,7 +22515,7 @@ INSERT INTO `vtiger_sostatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_sqltimelog`
+-- Table structure for table `vtiger_sqltimelog`
 --
 
 CREATE TABLE `vtiger_sqltimelog` (
@@ -20571,7 +22530,7 @@ CREATE TABLE `vtiger_sqltimelog` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_start_hour`
+-- Table structure for table `vtiger_start_hour`
 --
 
 CREATE TABLE `vtiger_start_hour` (
@@ -20582,7 +22541,7 @@ CREATE TABLE `vtiger_start_hour` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_start_hour`
+-- Dumping data for table `vtiger_start_hour`
 --
 
 INSERT INTO `vtiger_start_hour` (`start_hourid`, `start_hour`, `sortorderid`, `presence`) VALUES
@@ -20614,7 +22573,7 @@ INSERT INTO `vtiger_start_hour` (`start_hourid`, `start_hour`, `sortorderid`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_start_hour_seq`
+-- Table structure for table `vtiger_start_hour_seq`
 --
 
 CREATE TABLE `vtiger_start_hour_seq` (
@@ -20622,7 +22581,7 @@ CREATE TABLE `vtiger_start_hour_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_start_hour_seq`
+-- Dumping data for table `vtiger_start_hour_seq`
 --
 
 INSERT INTO `vtiger_start_hour_seq` (`id`) VALUES
@@ -20631,7 +22590,7 @@ INSERT INTO `vtiger_start_hour_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_status`
+-- Table structure for table `vtiger_status`
 --
 
 CREATE TABLE `vtiger_status` (
@@ -20642,7 +22601,7 @@ CREATE TABLE `vtiger_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_status`
+-- Dumping data for table `vtiger_status`
 --
 
 INSERT INTO `vtiger_status` (`statusid`, `status`, `presence`, `picklist_valueid`) VALUES
@@ -20652,7 +22611,7 @@ INSERT INTO `vtiger_status` (`statusid`, `status`, `presence`, `picklist_valueid
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_status_seq`
+-- Table structure for table `vtiger_status_seq`
 --
 
 CREATE TABLE `vtiger_status_seq` (
@@ -20660,7 +22619,7 @@ CREATE TABLE `vtiger_status_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_status_seq`
+-- Dumping data for table `vtiger_status_seq`
 --
 
 INSERT INTO `vtiger_status_seq` (`id`) VALUES
@@ -20669,7 +22628,30 @@ INSERT INTO `vtiger_status_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_systems`
+-- Table structure for table `vtiger_supportprotocol`
+--
+
+CREATE TABLE `vtiger_supportprotocol` (
+  `supportprotocolid` int(19) NOT NULL,
+  `hinhthuchotro` varchar(255) DEFAULT NULL,
+  `tags` varchar(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_supportprotocolcf`
+--
+
+CREATE TABLE `vtiger_supportprotocolcf` (
+  `supportprotocolid` int(19) NOT NULL,
+  `cf_1215` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_systems`
 --
 
 CREATE TABLE `vtiger_systems` (
@@ -20687,7 +22669,7 @@ CREATE TABLE `vtiger_systems` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tab`
+-- Table structure for table `vtiger_tab`
 --
 
 CREATE TABLE `vtiger_tab` (
@@ -20711,7 +22693,7 @@ CREATE TABLE `vtiger_tab` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_tab`
+-- Dumping data for table `vtiger_tab`
 --
 
 INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`, `modifiedby`, `modifiedtime`, `customized`, `ownedby`, `isentitytype`, `trial`, `version`, `parent`, `source`, `issyncable`, `allowduplicates`, `sync_action_for_duplicates`) VALUES
@@ -20719,8 +22701,8 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 (2, 'Potentials', 1, 7, 'Potentials', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (3, 'Home', 0, 1, 'Home', NULL, NULL, 0, 1, 0, 0, NULL, NULL, NULL, 1, 1, 1),
 (4, 'Contacts', 1, 6, 'Contacts', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
-(6, 'Accounts', 0, 5, 'Accounts', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 0, 1),
-(7, 'Leads', 1, 4, 'Leads', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
+(6, 'Accounts', 1, 5, 'Accounts', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 0, 1),
+(7, 'Leads', 0, 4, 'Leads', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (8, 'Documents', 1, 9, 'Documents', NULL, NULL, 0, 0, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
 (9, 'Calendar', 1, 3, 'Calendar', NULL, NULL, 0, 0, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
 (10, 'Emails', 1, 10, 'Emails', NULL, NULL, 0, 1, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
@@ -20736,7 +22718,7 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 (23, 'Invoice', 0, -1, 'Invoice', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (24, 'Rss', 1, -1, 'Rss', NULL, NULL, 0, 1, 0, 0, NULL, 'Tools', NULL, 1, 1, 1),
 (25, 'Reports', 1, -1, 'Reports', NULL, NULL, 0, 1, 0, 0, NULL, 'Analytics', NULL, 1, 1, 1),
-(26, 'Campaigns', 1, -1, 'Campaigns', NULL, NULL, 0, 0, 1, 0, NULL, 'Marketing', NULL, 1, 1, 1),
+(26, 'Campaigns', 0, -1, 'Campaigns', NULL, NULL, 0, 0, 1, 0, NULL, 'Marketing', NULL, 1, 1, 1),
 (27, 'Portal', 1, -1, 'Portal', NULL, NULL, 0, 1, 0, 0, NULL, 'Tools', NULL, 1, 1, 1),
 (28, 'Webmails', 1, -1, 'Webmails', NULL, NULL, 0, 1, 1, 0, NULL, NULL, NULL, 1, 1, 1),
 (29, 'Users', 0, -1, 'Users', NULL, NULL, 0, 1, 0, 0, NULL, NULL, NULL, 1, 1, 1),
@@ -20756,7 +22738,7 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 (43, 'ProjectMilestone', 1, -1, 'ProjectMilestone', NULL, NULL, 0, 0, 1, 0, '3.0', 'Support', NULL, 1, 1, 1),
 (44, 'ProjectTask', 1, -1, 'ProjectTask', NULL, NULL, 0, 0, 1, 0, '3.1', 'Support', NULL, 1, 1, 1),
 (45, 'Project', 1, -1, 'Project', NULL, NULL, 0, 0, 1, 0, '3.3', 'Support', NULL, 1, 1, 1),
-(46, 'RecycleBin', 1, -1, 'Recycle Bin', NULL, NULL, 0, 0, 0, 0, '1.5', 'Tools', NULL, 1, 1, 1),
+(46, 'RecycleBin', 0, -1, 'Recycle Bin', NULL, NULL, 0, 0, 0, 0, '1.5', 'Tools', NULL, 1, 1, 1),
 (47, 'SMSNotifier', 1, -1, 'SMSNotifier', NULL, NULL, 0, 0, 1, 0, '2.1', 'Sales', NULL, 1, 1, 1),
 (48, 'Webforms', 1, -1, 'Webforms', NULL, NULL, 0, 0, 0, 0, '1.6', '', NULL, 1, 1, 1),
 (49, 'ExtensionStore', 0, -1, 'Extension Store', NULL, NULL, 1, 0, 0, 0, '1.2', NULL, NULL, 1, 1, 1),
@@ -20771,12 +22753,19 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 (58, 'KPI', 1, -1, 'KPI', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1),
 (59, 'Candidates', 1, -1, 'Candidates', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1),
 (60, 'Leave', 1, -1, 'Leave', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1),
-(61, 'Employee', 0, -1, 'Employee', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1);
+(61, 'Employee', 0, -1, 'Employee', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1),
+(63, 'CustomerEnterprise', 0, -1, 'CustomerEnterprise', NULL, NULL, 1, 0, 1, 0, '0', 'Contacts', 'custom', 0, 1, 1),
+(64, 'CustomerStandalone', 0, -1, 'CustomerStandalone', NULL, NULL, 1, 0, 1, 0, '0', 'Contacts', 'custom', 0, 1, 1),
+(65, 'ProblemCategory', 0, -1, 'ProblemCategory', NULL, NULL, 1, 0, 1, 0, '0', 'Support', 'custom', 0, 1, 1),
+(66, 'SupportProtocol', 0, -1, 'SupportProtocol', NULL, NULL, 1, 0, 1, 0, '0', 'Support', 'custom', 0, 1, 1),
+(69, 'VGSRelatedFields', 0, -1, 'VGS Related Fields', NULL, NULL, 1, 0, 0, 0, '2.0', '', 'custom', 0, 1, 1),
+(70, 'PhuongTienTruyenThong', 0, -1, 'PhuongTienTruyenThong', NULL, NULL, 1, 0, 1, 0, '0', 'Marketing', 'custom', 0, 1, 1),
+(71, 'HinhThucTruyenThong', 0, -1, 'HinhThucTruyenThong', NULL, NULL, 1, 0, 1, 0, '0', 'Marketing', 'custom', 0, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tab_info`
+-- Table structure for table `vtiger_tab_info`
 --
 
 CREATE TABLE `vtiger_tab_info` (
@@ -20786,7 +22775,7 @@ CREATE TABLE `vtiger_tab_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_tab_info`
+-- Dumping data for table `vtiger_tab_info`
 --
 
 INSERT INTO `vtiger_tab_info` (`tabid`, `prefname`, `prefvalue`) VALUES
@@ -20846,12 +22835,14 @@ INSERT INTO `vtiger_tab_info` (`tabid`, `prefname`, `prefvalue`) VALUES
 (60, 'vtiger_min_version', '7.1.0'),
 (60, 'vtiger_max_version', '7.*'),
 (61, 'vtiger_min_version', '7.1.0'),
-(61, 'vtiger_max_version', '7.*');
+(61, 'vtiger_max_version', '7.*'),
+(69, 'vtiger_min_version', '6.0.0'),
+(69, 'vtiger_max_version', '7.*');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_taskpriority`
+-- Table structure for table `vtiger_taskpriority`
 --
 
 CREATE TABLE `vtiger_taskpriority` (
@@ -20864,7 +22855,7 @@ CREATE TABLE `vtiger_taskpriority` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_taskpriority`
+-- Dumping data for table `vtiger_taskpriority`
 --
 
 INSERT INTO `vtiger_taskpriority` (`taskpriorityid`, `taskpriority`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -20875,7 +22866,7 @@ INSERT INTO `vtiger_taskpriority` (`taskpriorityid`, `taskpriority`, `presence`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_taskpriority_seq`
+-- Table structure for table `vtiger_taskpriority_seq`
 --
 
 CREATE TABLE `vtiger_taskpriority_seq` (
@@ -20883,7 +22874,7 @@ CREATE TABLE `vtiger_taskpriority_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_taskpriority_seq`
+-- Dumping data for table `vtiger_taskpriority_seq`
 --
 
 INSERT INTO `vtiger_taskpriority_seq` (`id`) VALUES
@@ -20892,7 +22883,7 @@ INSERT INTO `vtiger_taskpriority_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_taskstatus`
+-- Table structure for table `vtiger_taskstatus`
 --
 
 CREATE TABLE `vtiger_taskstatus` (
@@ -20905,7 +22896,7 @@ CREATE TABLE `vtiger_taskstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_taskstatus`
+-- Dumping data for table `vtiger_taskstatus`
 --
 
 INSERT INTO `vtiger_taskstatus` (`taskstatusid`, `taskstatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -20919,7 +22910,7 @@ INSERT INTO `vtiger_taskstatus` (`taskstatusid`, `taskstatus`, `presence`, `pick
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_taskstatus_seq`
+-- Table structure for table `vtiger_taskstatus_seq`
 --
 
 CREATE TABLE `vtiger_taskstatus_seq` (
@@ -20927,7 +22918,7 @@ CREATE TABLE `vtiger_taskstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_taskstatus_seq`
+-- Dumping data for table `vtiger_taskstatus_seq`
 --
 
 INSERT INTO `vtiger_taskstatus_seq` (`id`) VALUES
@@ -20936,7 +22927,7 @@ INSERT INTO `vtiger_taskstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_taxclass`
+-- Table structure for table `vtiger_taxclass`
 --
 
 CREATE TABLE `vtiger_taxclass` (
@@ -20947,7 +22938,7 @@ CREATE TABLE `vtiger_taxclass` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_taxclass`
+-- Dumping data for table `vtiger_taxclass`
 --
 
 INSERT INTO `vtiger_taxclass` (`taxclassid`, `taxclass`, `sortorderid`, `presence`) VALUES
@@ -20957,7 +22948,7 @@ INSERT INTO `vtiger_taxclass` (`taxclassid`, `taxclass`, `sortorderid`, `presenc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_taxclass_seq`
+-- Table structure for table `vtiger_taxclass_seq`
 --
 
 CREATE TABLE `vtiger_taxclass_seq` (
@@ -20965,7 +22956,7 @@ CREATE TABLE `vtiger_taxclass_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_taxclass_seq`
+-- Dumping data for table `vtiger_taxclass_seq`
 --
 
 INSERT INTO `vtiger_taxclass_seq` (`id`) VALUES
@@ -20974,7 +22965,7 @@ INSERT INTO `vtiger_taxclass_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_taxregions`
+-- Table structure for table `vtiger_taxregions`
 --
 
 CREATE TABLE `vtiger_taxregions` (
@@ -20985,7 +22976,7 @@ CREATE TABLE `vtiger_taxregions` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketcategories`
+-- Table structure for table `vtiger_ticketcategories`
 --
 
 CREATE TABLE `vtiger_ticketcategories` (
@@ -20998,7 +22989,7 @@ CREATE TABLE `vtiger_ticketcategories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ticketcategories`
+-- Dumping data for table `vtiger_ticketcategories`
 --
 
 INSERT INTO `vtiger_ticketcategories` (`ticketcategories_id`, `ticketcategories`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -21009,7 +23000,7 @@ INSERT INTO `vtiger_ticketcategories` (`ticketcategories_id`, `ticketcategories`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketcategories_seq`
+-- Table structure for table `vtiger_ticketcategories_seq`
 --
 
 CREATE TABLE `vtiger_ticketcategories_seq` (
@@ -21017,7 +23008,7 @@ CREATE TABLE `vtiger_ticketcategories_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ticketcategories_seq`
+-- Dumping data for table `vtiger_ticketcategories_seq`
 --
 
 INSERT INTO `vtiger_ticketcategories_seq` (`id`) VALUES
@@ -21026,7 +23017,7 @@ INSERT INTO `vtiger_ticketcategories_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketcf`
+-- Table structure for table `vtiger_ticketcf`
 --
 
 CREATE TABLE `vtiger_ticketcf` (
@@ -21037,7 +23028,7 @@ CREATE TABLE `vtiger_ticketcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketcomments`
+-- Table structure for table `vtiger_ticketcomments`
 --
 
 CREATE TABLE `vtiger_ticketcomments` (
@@ -21052,7 +23043,7 @@ CREATE TABLE `vtiger_ticketcomments` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketpriorities`
+-- Table structure for table `vtiger_ticketpriorities`
 --
 
 CREATE TABLE `vtiger_ticketpriorities` (
@@ -21065,7 +23056,7 @@ CREATE TABLE `vtiger_ticketpriorities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ticketpriorities`
+-- Dumping data for table `vtiger_ticketpriorities`
 --
 
 INSERT INTO `vtiger_ticketpriorities` (`ticketpriorities_id`, `ticketpriorities`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -21077,7 +23068,7 @@ INSERT INTO `vtiger_ticketpriorities` (`ticketpriorities_id`, `ticketpriorities`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketpriorities_seq`
+-- Table structure for table `vtiger_ticketpriorities_seq`
 --
 
 CREATE TABLE `vtiger_ticketpriorities_seq` (
@@ -21085,7 +23076,7 @@ CREATE TABLE `vtiger_ticketpriorities_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ticketpriorities_seq`
+-- Dumping data for table `vtiger_ticketpriorities_seq`
 --
 
 INSERT INTO `vtiger_ticketpriorities_seq` (`id`) VALUES
@@ -21094,7 +23085,7 @@ INSERT INTO `vtiger_ticketpriorities_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketseverities`
+-- Table structure for table `vtiger_ticketseverities`
 --
 
 CREATE TABLE `vtiger_ticketseverities` (
@@ -21107,7 +23098,7 @@ CREATE TABLE `vtiger_ticketseverities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ticketseverities`
+-- Dumping data for table `vtiger_ticketseverities`
 --
 
 INSERT INTO `vtiger_ticketseverities` (`ticketseverities_id`, `ticketseverities`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -21119,7 +23110,7 @@ INSERT INTO `vtiger_ticketseverities` (`ticketseverities_id`, `ticketseverities`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketseverities_seq`
+-- Table structure for table `vtiger_ticketseverities_seq`
 --
 
 CREATE TABLE `vtiger_ticketseverities_seq` (
@@ -21127,7 +23118,7 @@ CREATE TABLE `vtiger_ticketseverities_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ticketseverities_seq`
+-- Dumping data for table `vtiger_ticketseverities_seq`
 --
 
 INSERT INTO `vtiger_ticketseverities_seq` (`id`) VALUES
@@ -21136,7 +23127,7 @@ INSERT INTO `vtiger_ticketseverities_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketstatus`
+-- Table structure for table `vtiger_ticketstatus`
 --
 
 CREATE TABLE `vtiger_ticketstatus` (
@@ -21149,7 +23140,7 @@ CREATE TABLE `vtiger_ticketstatus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ticketstatus`
+-- Dumping data for table `vtiger_ticketstatus`
 --
 
 INSERT INTO `vtiger_ticketstatus` (`ticketstatus_id`, `ticketstatus`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -21161,7 +23152,7 @@ INSERT INTO `vtiger_ticketstatus` (`ticketstatus_id`, `ticketstatus`, `presence`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ticketstatus_seq`
+-- Table structure for table `vtiger_ticketstatus_seq`
 --
 
 CREATE TABLE `vtiger_ticketstatus_seq` (
@@ -21169,7 +23160,7 @@ CREATE TABLE `vtiger_ticketstatus_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ticketstatus_seq`
+-- Dumping data for table `vtiger_ticketstatus_seq`
 --
 
 INSERT INTO `vtiger_ticketstatus_seq` (`id`) VALUES
@@ -21178,7 +23169,7 @@ INSERT INTO `vtiger_ticketstatus_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_time_zone`
+-- Table structure for table `vtiger_time_zone`
 --
 
 CREATE TABLE `vtiger_time_zone` (
@@ -21189,7 +23180,7 @@ CREATE TABLE `vtiger_time_zone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_time_zone`
+-- Dumping data for table `vtiger_time_zone`
 --
 
 INSERT INTO `vtiger_time_zone` (`time_zoneid`, `time_zone`, `sortorderid`, `presence`) VALUES
@@ -21294,7 +23285,7 @@ INSERT INTO `vtiger_time_zone` (`time_zoneid`, `time_zone`, `sortorderid`, `pres
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_time_zone_seq`
+-- Table structure for table `vtiger_time_zone_seq`
 --
 
 CREATE TABLE `vtiger_time_zone_seq` (
@@ -21302,7 +23293,7 @@ CREATE TABLE `vtiger_time_zone_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_time_zone_seq`
+-- Dumping data for table `vtiger_time_zone_seq`
 --
 
 INSERT INTO `vtiger_time_zone_seq` (`id`) VALUES
@@ -21311,7 +23302,7 @@ INSERT INTO `vtiger_time_zone_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tmp_read_group_rel_sharing_per`
+-- Table structure for table `vtiger_tmp_read_group_rel_sharing_per`
 --
 
 CREATE TABLE `vtiger_tmp_read_group_rel_sharing_per` (
@@ -21324,7 +23315,7 @@ CREATE TABLE `vtiger_tmp_read_group_rel_sharing_per` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tmp_read_group_sharing_per`
+-- Table structure for table `vtiger_tmp_read_group_sharing_per`
 --
 
 CREATE TABLE `vtiger_tmp_read_group_sharing_per` (
@@ -21336,7 +23327,7 @@ CREATE TABLE `vtiger_tmp_read_group_sharing_per` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tmp_read_user_rel_sharing_per`
+-- Table structure for table `vtiger_tmp_read_user_rel_sharing_per`
 --
 
 CREATE TABLE `vtiger_tmp_read_user_rel_sharing_per` (
@@ -21349,7 +23340,7 @@ CREATE TABLE `vtiger_tmp_read_user_rel_sharing_per` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tmp_read_user_sharing_per`
+-- Table structure for table `vtiger_tmp_read_user_sharing_per`
 --
 
 CREATE TABLE `vtiger_tmp_read_user_sharing_per` (
@@ -21361,7 +23352,7 @@ CREATE TABLE `vtiger_tmp_read_user_sharing_per` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tmp_write_group_rel_sharing_per`
+-- Table structure for table `vtiger_tmp_write_group_rel_sharing_per`
 --
 
 CREATE TABLE `vtiger_tmp_write_group_rel_sharing_per` (
@@ -21374,7 +23365,7 @@ CREATE TABLE `vtiger_tmp_write_group_rel_sharing_per` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tmp_write_group_sharing_per`
+-- Table structure for table `vtiger_tmp_write_group_sharing_per`
 --
 
 CREATE TABLE `vtiger_tmp_write_group_sharing_per` (
@@ -21386,7 +23377,7 @@ CREATE TABLE `vtiger_tmp_write_group_sharing_per` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tmp_write_user_rel_sharing_per`
+-- Table structure for table `vtiger_tmp_write_user_rel_sharing_per`
 --
 
 CREATE TABLE `vtiger_tmp_write_user_rel_sharing_per` (
@@ -21399,7 +23390,7 @@ CREATE TABLE `vtiger_tmp_write_user_rel_sharing_per` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tmp_write_user_sharing_per`
+-- Table structure for table `vtiger_tmp_write_user_sharing_per`
 --
 
 CREATE TABLE `vtiger_tmp_write_user_sharing_per` (
@@ -21411,7 +23402,7 @@ CREATE TABLE `vtiger_tmp_write_user_sharing_per` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tracker`
+-- Table structure for table `vtiger_tracker`
 --
 
 CREATE TABLE `vtiger_tracker` (
@@ -21425,7 +23416,7 @@ CREATE TABLE `vtiger_tracker` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tracking_unit`
+-- Table structure for table `vtiger_tracking_unit`
 --
 
 CREATE TABLE `vtiger_tracking_unit` (
@@ -21438,7 +23429,7 @@ CREATE TABLE `vtiger_tracking_unit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_tracking_unit`
+-- Dumping data for table `vtiger_tracking_unit`
 --
 
 INSERT INTO `vtiger_tracking_unit` (`tracking_unitid`, `tracking_unit`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -21449,7 +23440,7 @@ INSERT INTO `vtiger_tracking_unit` (`tracking_unitid`, `tracking_unit`, `presenc
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_tracking_unit_seq`
+-- Table structure for table `vtiger_tracking_unit_seq`
 --
 
 CREATE TABLE `vtiger_tracking_unit_seq` (
@@ -21457,7 +23448,7 @@ CREATE TABLE `vtiger_tracking_unit_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_tracking_unit_seq`
+-- Dumping data for table `vtiger_tracking_unit_seq`
 --
 
 INSERT INTO `vtiger_tracking_unit_seq` (`id`) VALUES
@@ -21466,7 +23457,7 @@ INSERT INTO `vtiger_tracking_unit_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_troubletickets`
+-- Table structure for table `vtiger_troubletickets`
 --
 
 CREATE TABLE `vtiger_troubletickets` (
@@ -21492,7 +23483,7 @@ CREATE TABLE `vtiger_troubletickets` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_usageunit`
+-- Table structure for table `vtiger_usageunit`
 --
 
 CREATE TABLE `vtiger_usageunit` (
@@ -21505,7 +23496,7 @@ CREATE TABLE `vtiger_usageunit` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_usageunit`
+-- Dumping data for table `vtiger_usageunit`
 --
 
 INSERT INTO `vtiger_usageunit` (`usageunitid`, `usageunit`, `presence`, `picklist_valueid`, `sortorderid`, `color`) VALUES
@@ -21529,7 +23520,7 @@ INSERT INTO `vtiger_usageunit` (`usageunitid`, `usageunit`, `presence`, `picklis
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_usageunit_seq`
+-- Table structure for table `vtiger_usageunit_seq`
 --
 
 CREATE TABLE `vtiger_usageunit_seq` (
@@ -21537,7 +23528,7 @@ CREATE TABLE `vtiger_usageunit_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_usageunit_seq`
+-- Dumping data for table `vtiger_usageunit_seq`
 --
 
 INSERT INTO `vtiger_usageunit_seq` (`id`) VALUES
@@ -21546,7 +23537,7 @@ INSERT INTO `vtiger_usageunit_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_user2mergefields`
+-- Table structure for table `vtiger_user2mergefields`
 --
 
 CREATE TABLE `vtiger_user2mergefields` (
@@ -21559,7 +23550,7 @@ CREATE TABLE `vtiger_user2mergefields` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_user2role`
+-- Table structure for table `vtiger_user2role`
 --
 
 CREATE TABLE `vtiger_user2role` (
@@ -21568,7 +23559,7 @@ CREATE TABLE `vtiger_user2role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_user2role`
+-- Dumping data for table `vtiger_user2role`
 --
 
 INSERT INTO `vtiger_user2role` (`userid`, `roleid`) VALUES
@@ -21577,7 +23568,7 @@ INSERT INTO `vtiger_user2role` (`userid`, `roleid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_users`
+-- Table structure for table `vtiger_users`
 --
 
 CREATE TABLE `vtiger_users` (
@@ -21657,16 +23648,16 @@ CREATE TABLE `vtiger_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_users`
+-- Dumping data for table `vtiger_users`
 --
 
 INSERT INTO `vtiger_users` (`id`, `user_name`, `user_password`, `cal_color`, `first_name`, `last_name`, `reports_to_id`, `is_admin`, `currency_id`, `description`, `date_entered`, `date_modified`, `modified_user_id`, `title`, `department`, `phone_home`, `phone_mobile`, `phone_work`, `phone_other`, `phone_fax`, `email1`, `email2`, `secondaryemail`, `status`, `signature`, `address_street`, `address_city`, `address_state`, `address_country`, `address_postalcode`, `user_preferences`, `tz`, `holidays`, `namedays`, `workdays`, `weekstart`, `date_format`, `hour_format`, `start_hour`, `end_hour`, `is_owner`, `activity_view`, `lead_view`, `imagename`, `deleted`, `confirm_password`, `internal_mailer`, `reminder_interval`, `reminder_next_time`, `crypt_type`, `accesskey`, `theme`, `language`, `time_zone`, `currency_grouping_pattern`, `currency_decimal_separator`, `currency_grouping_separator`, `currency_symbol_placement`, `phone_crm_extension`, `no_of_currency_decimals`, `truncate_trailing_zeros`, `dayoftheweek`, `callduration`, `othereventduration`, `calendarsharedtype`, `default_record_view`, `leftpanelhide`, `rowheight`, `defaulteventstatus`, `defaultactivitytype`, `hidecompletedevents`, `defaultcalendarview`, `candidate`) VALUES
-(1, 'admin', '$2y$10$PkfxKe/NIdgDNOGBoFlmZelbtZ6d1eLQchtfVMyHMEXxnDcf6Er1K', '#E6FAD8', 'Leonce', 'Wang', '', 'on', 1, '', '2020-04-08 12:38:54', NULL, NULL, '', '', '', '', '', '', '', 'ThienLang99999@gmail.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'dd-mm-yyyy', '12', '00:00', '23:00', '1', 'This Week', 'Today', '', 0, '$2y$10$JGKsxD9u2tKpopO6tI9Zr.1/Y8GVGSfzSjr1cy1KNqqJapljAa0Ci', '1', '1 Minute', NULL, 'PHASH', 'jNG2wZe7gv9Rk0fl', 'alphagrey', 'vn_vn', 'Asia/Bangkok', '123,456,789', '.', ',', '1.0$', '', '2', '1', 'Sunday', '5', '5', 'public', 'Summary', '0', '', 'Planned', 'Call', 0, 'MyCalendar', NULL);
+(1, 'admin', '$2y$10$PkfxKe/NIdgDNOGBoFlmZelbtZ6d1eLQchtfVMyHMEXxnDcf6Er1K', '#E6FAD8', 'Leonce', 'Wang', '', 'on', 1, '', '2020-04-08 05:38:54', NULL, NULL, '', '', '', '', '', '', '', 'ThienLang99999@gmail.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'dd-mm-yyyy', '12', '00:00', '23:00', '1', 'This Week', 'Today', '', 0, '$2y$10$JGKsxD9u2tKpopO6tI9Zr.1/Y8GVGSfzSjr1cy1KNqqJapljAa0Ci', '1', '1 Minute', NULL, 'PHASH', 'jNG2wZe7gv9Rk0fl', 'alphagrey', 'vn_vn', 'Asia/Bangkok', '123,456,789', '.', ',', '1.0$', '', '2', '1', 'Sunday', '5', '5', 'public', 'Summary', '0', '', 'Planned', 'Call', 0, 'MyCalendar', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_users2group`
+-- Table structure for table `vtiger_users2group`
 --
 
 CREATE TABLE `vtiger_users2group` (
@@ -21675,7 +23666,7 @@ CREATE TABLE `vtiger_users2group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_users2group`
+-- Dumping data for table `vtiger_users2group`
 --
 
 INSERT INTO `vtiger_users2group` (`groupid`, `userid`) VALUES
@@ -21684,7 +23675,7 @@ INSERT INTO `vtiger_users2group` (`groupid`, `userid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_users_last_import`
+-- Table structure for table `vtiger_users_last_import`
 --
 
 CREATE TABLE `vtiger_users_last_import` (
@@ -21698,7 +23689,7 @@ CREATE TABLE `vtiger_users_last_import` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_users_seq`
+-- Table structure for table `vtiger_users_seq`
 --
 
 CREATE TABLE `vtiger_users_seq` (
@@ -21706,7 +23697,7 @@ CREATE TABLE `vtiger_users_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_users_seq`
+-- Dumping data for table `vtiger_users_seq`
 --
 
 INSERT INTO `vtiger_users_seq` (`id`) VALUES
@@ -21715,7 +23706,7 @@ INSERT INTO `vtiger_users_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_user_module_preferences`
+-- Table structure for table `vtiger_user_module_preferences`
 --
 
 CREATE TABLE `vtiger_user_module_preferences` (
@@ -21725,7 +23716,7 @@ CREATE TABLE `vtiger_user_module_preferences` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_user_module_preferences`
+-- Dumping data for table `vtiger_user_module_preferences`
 --
 
 INSERT INTO `vtiger_user_module_preferences` (`userid`, `tabid`, `default_cvid`) VALUES
@@ -21734,7 +23725,7 @@ INSERT INTO `vtiger_user_module_preferences` (`userid`, `tabid`, `default_cvid`)
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_vendor`
+-- Table structure for table `vtiger_vendor`
 --
 
 CREATE TABLE `vtiger_vendor` (
@@ -21759,7 +23750,7 @@ CREATE TABLE `vtiger_vendor` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_vendorcf`
+-- Table structure for table `vtiger_vendorcf`
 --
 
 CREATE TABLE `vtiger_vendorcf` (
@@ -21769,7 +23760,7 @@ CREATE TABLE `vtiger_vendorcf` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_vendorcontactrel`
+-- Table structure for table `vtiger_vendorcontactrel`
 --
 
 CREATE TABLE `vtiger_vendorcontactrel` (
@@ -21780,7 +23771,7 @@ CREATE TABLE `vtiger_vendorcontactrel` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_version`
+-- Table structure for table `vtiger_version`
 --
 
 CREATE TABLE `vtiger_version` (
@@ -21790,7 +23781,7 @@ CREATE TABLE `vtiger_version` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_version`
+-- Dumping data for table `vtiger_version`
 --
 
 INSERT INTO `vtiger_version` (`id`, `old_version`, `current_version`) VALUES
@@ -21799,7 +23790,7 @@ INSERT INTO `vtiger_version` (`id`, `old_version`, `current_version`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_version_seq`
+-- Table structure for table `vtiger_version_seq`
 --
 
 CREATE TABLE `vtiger_version_seq` (
@@ -21807,7 +23798,7 @@ CREATE TABLE `vtiger_version_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_version_seq`
+-- Dumping data for table `vtiger_version_seq`
 --
 
 INSERT INTO `vtiger_version_seq` (`id`) VALUES
@@ -21816,7 +23807,7 @@ INSERT INTO `vtiger_version_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_visibility`
+-- Table structure for table `vtiger_visibility`
 --
 
 CREATE TABLE `vtiger_visibility` (
@@ -21828,7 +23819,7 @@ CREATE TABLE `vtiger_visibility` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_visibility`
+-- Dumping data for table `vtiger_visibility`
 --
 
 INSERT INTO `vtiger_visibility` (`visibilityid`, `visibility`, `sortorderid`, `presence`, `color`) VALUES
@@ -21838,7 +23829,7 @@ INSERT INTO `vtiger_visibility` (`visibilityid`, `visibility`, `sortorderid`, `p
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_visibility_seq`
+-- Table structure for table `vtiger_visibility_seq`
 --
 
 CREATE TABLE `vtiger_visibility_seq` (
@@ -21846,7 +23837,7 @@ CREATE TABLE `vtiger_visibility_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_visibility_seq`
+-- Dumping data for table `vtiger_visibility_seq`
 --
 
 INSERT INTO `vtiger_visibility_seq` (`id`) VALUES
@@ -21855,7 +23846,7 @@ INSERT INTO `vtiger_visibility_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_webforms`
+-- Table structure for table `vtiger_webforms`
 --
 
 CREATE TABLE `vtiger_webforms` (
@@ -21876,7 +23867,7 @@ CREATE TABLE `vtiger_webforms` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_webforms_field`
+-- Table structure for table `vtiger_webforms_field`
 --
 
 CREATE TABLE `vtiger_webforms_field` (
@@ -21893,7 +23884,7 @@ CREATE TABLE `vtiger_webforms_field` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_webform_file_fields`
+-- Table structure for table `vtiger_webform_file_fields`
 --
 
 CREATE TABLE `vtiger_webform_file_fields` (
@@ -21907,7 +23898,7 @@ CREATE TABLE `vtiger_webform_file_fields` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_wordtemplates`
+-- Table structure for table `vtiger_wordtemplates`
 --
 
 CREATE TABLE `vtiger_wordtemplates` (
@@ -21926,7 +23917,7 @@ CREATE TABLE `vtiger_wordtemplates` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_wsapp`
+-- Table structure for table `vtiger_wsapp`
 --
 
 CREATE TABLE `vtiger_wsapp` (
@@ -21937,7 +23928,7 @@ CREATE TABLE `vtiger_wsapp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_wsapp`
+-- Dumping data for table `vtiger_wsapp`
 --
 
 INSERT INTO `vtiger_wsapp` (`appid`, `name`, `appkey`, `type`) VALUES
@@ -21946,7 +23937,7 @@ INSERT INTO `vtiger_wsapp` (`appid`, `name`, `appkey`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_wsapp_handlerdetails`
+-- Table structure for table `vtiger_wsapp_handlerdetails`
 --
 
 CREATE TABLE `vtiger_wsapp_handlerdetails` (
@@ -21956,7 +23947,7 @@ CREATE TABLE `vtiger_wsapp_handlerdetails` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_wsapp_handlerdetails`
+-- Dumping data for table `vtiger_wsapp_handlerdetails`
 --
 
 INSERT INTO `vtiger_wsapp_handlerdetails` (`type`, `handlerclass`, `handlerpath`) VALUES
@@ -21969,7 +23960,7 @@ INSERT INTO `vtiger_wsapp_handlerdetails` (`type`, `handlerclass`, `handlerpath`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_wsapp_logs_basic`
+-- Table structure for table `vtiger_wsapp_logs_basic`
 --
 
 CREATE TABLE `vtiger_wsapp_logs_basic` (
@@ -21991,7 +23982,7 @@ CREATE TABLE `vtiger_wsapp_logs_basic` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_wsapp_logs_details`
+-- Table structure for table `vtiger_wsapp_logs_details`
 --
 
 CREATE TABLE `vtiger_wsapp_logs_details` (
@@ -22009,7 +24000,7 @@ CREATE TABLE `vtiger_wsapp_logs_details` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_wsapp_queuerecords`
+-- Table structure for table `vtiger_wsapp_queuerecords`
 --
 
 CREATE TABLE `vtiger_wsapp_queuerecords` (
@@ -22022,7 +24013,7 @@ CREATE TABLE `vtiger_wsapp_queuerecords` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_wsapp_recordmapping`
+-- Table structure for table `vtiger_wsapp_recordmapping`
 --
 
 CREATE TABLE `vtiger_wsapp_recordmapping` (
@@ -22038,7 +24029,7 @@ CREATE TABLE `vtiger_wsapp_recordmapping` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_wsapp_sync_state`
+-- Table structure for table `vtiger_wsapp_sync_state`
 --
 
 CREATE TABLE `vtiger_wsapp_sync_state` (
@@ -22051,7 +24042,7 @@ CREATE TABLE `vtiger_wsapp_sync_state` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_entity`
+-- Table structure for table `vtiger_ws_entity`
 --
 
 CREATE TABLE `vtiger_ws_entity` (
@@ -22063,7 +24054,7 @@ CREATE TABLE `vtiger_ws_entity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_entity`
+-- Dumping data for table `vtiger_ws_entity`
 --
 
 INSERT INTO `vtiger_ws_entity` (`id`, `name`, `handler_path`, `handler_class`, `ismodule`) VALUES
@@ -22113,12 +24104,18 @@ INSERT INTO `vtiger_ws_entity` (`id`, `name`, `handler_path`, `handler_class`, `
 (44, 'KPI', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
 (45, 'Candidates', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
 (46, 'Leave', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
-(47, 'Employee', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1);
+(47, 'Employee', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
+(56, 'CustomerEnterprise', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
+(60, 'CustomerStandalone', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
+(61, 'ProblemCategory', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
+(62, 'SupportProtocol', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
+(67, 'PhuongTienTruyenThong', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
+(68, 'HinhThucTruyenThong', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_entity_fieldtype`
+-- Table structure for table `vtiger_ws_entity_fieldtype`
 --
 
 CREATE TABLE `vtiger_ws_entity_fieldtype` (
@@ -22129,7 +24126,7 @@ CREATE TABLE `vtiger_ws_entity_fieldtype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_entity_fieldtype`
+-- Dumping data for table `vtiger_ws_entity_fieldtype`
 --
 
 INSERT INTO `vtiger_ws_entity_fieldtype` (`fieldtypeid`, `table_name`, `field_name`, `fieldtype`) VALUES
@@ -22147,7 +24144,7 @@ INSERT INTO `vtiger_ws_entity_fieldtype` (`fieldtypeid`, `table_name`, `field_na
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_entity_fieldtype_seq`
+-- Table structure for table `vtiger_ws_entity_fieldtype_seq`
 --
 
 CREATE TABLE `vtiger_ws_entity_fieldtype_seq` (
@@ -22155,7 +24152,7 @@ CREATE TABLE `vtiger_ws_entity_fieldtype_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_entity_fieldtype_seq`
+-- Dumping data for table `vtiger_ws_entity_fieldtype_seq`
 --
 
 INSERT INTO `vtiger_ws_entity_fieldtype_seq` (`id`) VALUES
@@ -22164,7 +24161,7 @@ INSERT INTO `vtiger_ws_entity_fieldtype_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_entity_name`
+-- Table structure for table `vtiger_ws_entity_name`
 --
 
 CREATE TABLE `vtiger_ws_entity_name` (
@@ -22175,7 +24172,7 @@ CREATE TABLE `vtiger_ws_entity_name` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_entity_name`
+-- Dumping data for table `vtiger_ws_entity_name`
 --
 
 INSERT INTO `vtiger_ws_entity_name` (`entity_id`, `name_fields`, `index_field`, `table_name`) VALUES
@@ -22188,7 +24185,7 @@ INSERT INTO `vtiger_ws_entity_name` (`entity_id`, `name_fields`, `index_field`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_entity_referencetype`
+-- Table structure for table `vtiger_ws_entity_referencetype`
 --
 
 CREATE TABLE `vtiger_ws_entity_referencetype` (
@@ -22197,7 +24194,7 @@ CREATE TABLE `vtiger_ws_entity_referencetype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_entity_referencetype`
+-- Dumping data for table `vtiger_ws_entity_referencetype`
 --
 
 INSERT INTO `vtiger_ws_entity_referencetype` (`fieldtypeid`, `type`) VALUES
@@ -22213,7 +24210,7 @@ INSERT INTO `vtiger_ws_entity_referencetype` (`fieldtypeid`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_entity_seq`
+-- Table structure for table `vtiger_ws_entity_seq`
 --
 
 CREATE TABLE `vtiger_ws_entity_seq` (
@@ -22221,16 +24218,16 @@ CREATE TABLE `vtiger_ws_entity_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_entity_seq`
+-- Dumping data for table `vtiger_ws_entity_seq`
 --
 
 INSERT INTO `vtiger_ws_entity_seq` (`id`) VALUES
-(47);
+(68);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_entity_tables`
+-- Table structure for table `vtiger_ws_entity_tables`
 --
 
 CREATE TABLE `vtiger_ws_entity_tables` (
@@ -22239,7 +24236,7 @@ CREATE TABLE `vtiger_ws_entity_tables` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_entity_tables`
+-- Dumping data for table `vtiger_ws_entity_tables`
 --
 
 INSERT INTO `vtiger_ws_entity_tables` (`webservice_entity_id`, `table_name`) VALUES
@@ -22254,7 +24251,7 @@ INSERT INTO `vtiger_ws_entity_tables` (`webservice_entity_id`, `table_name`) VAL
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_fieldinfo`
+-- Table structure for table `vtiger_ws_fieldinfo`
 --
 
 CREATE TABLE `vtiger_ws_fieldinfo` (
@@ -22264,7 +24261,7 @@ CREATE TABLE `vtiger_ws_fieldinfo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_fieldinfo`
+-- Dumping data for table `vtiger_ws_fieldinfo`
 --
 
 INSERT INTO `vtiger_ws_fieldinfo` (`id`, `property_name`, `property_value`) VALUES
@@ -22273,7 +24270,7 @@ INSERT INTO `vtiger_ws_fieldinfo` (`id`, `property_name`, `property_value`) VALU
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_fieldtype`
+-- Table structure for table `vtiger_ws_fieldtype`
 --
 
 CREATE TABLE `vtiger_ws_fieldtype` (
@@ -22283,7 +24280,7 @@ CREATE TABLE `vtiger_ws_fieldtype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_fieldtype`
+-- Dumping data for table `vtiger_ws_fieldtype`
 --
 
 INSERT INTO `vtiger_ws_fieldtype` (`fieldtypeid`, `uitype`, `fieldtype`) VALUES
@@ -22331,7 +24328,7 @@ INSERT INTO `vtiger_ws_fieldtype` (`fieldtypeid`, `uitype`, `fieldtype`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_operation`
+-- Table structure for table `vtiger_ws_operation`
 --
 
 CREATE TABLE `vtiger_ws_operation` (
@@ -22344,7 +24341,7 @@ CREATE TABLE `vtiger_ws_operation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_operation`
+-- Dumping data for table `vtiger_ws_operation`
 --
 
 INSERT INTO `vtiger_ws_operation` (`operationid`, `name`, `handler_path`, `handler_method`, `type`, `prelogin`) VALUES
@@ -22389,7 +24386,7 @@ INSERT INTO `vtiger_ws_operation` (`operationid`, `name`, `handler_path`, `handl
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_operation_parameters`
+-- Table structure for table `vtiger_ws_operation_parameters`
 --
 
 CREATE TABLE `vtiger_ws_operation_parameters` (
@@ -22400,7 +24397,7 @@ CREATE TABLE `vtiger_ws_operation_parameters` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_operation_parameters`
+-- Dumping data for table `vtiger_ws_operation_parameters`
 --
 
 INSERT INTO `vtiger_ws_operation_parameters` (`operationid`, `name`, `type`, `sequence`) VALUES
@@ -22474,7 +24471,7 @@ INSERT INTO `vtiger_ws_operation_parameters` (`operationid`, `name`, `type`, `se
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_operation_seq`
+-- Table structure for table `vtiger_ws_operation_seq`
 --
 
 CREATE TABLE `vtiger_ws_operation_seq` (
@@ -22482,7 +24479,7 @@ CREATE TABLE `vtiger_ws_operation_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_operation_seq`
+-- Dumping data for table `vtiger_ws_operation_seq`
 --
 
 INSERT INTO `vtiger_ws_operation_seq` (`id`) VALUES
@@ -22491,7 +24488,7 @@ INSERT INTO `vtiger_ws_operation_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_referencetype`
+-- Table structure for table `vtiger_ws_referencetype`
 --
 
 CREATE TABLE `vtiger_ws_referencetype` (
@@ -22500,7 +24497,7 @@ CREATE TABLE `vtiger_ws_referencetype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Đang đổ dữ liệu cho bảng `vtiger_ws_referencetype`
+-- Dumping data for table `vtiger_ws_referencetype`
 --
 
 INSERT INTO `vtiger_ws_referencetype` (`fieldtypeid`, `type`) VALUES
@@ -22536,7 +24533,7 @@ INSERT INTO `vtiger_ws_referencetype` (`fieldtypeid`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `vtiger_ws_userauthtoken`
+-- Table structure for table `vtiger_ws_userauthtoken`
 --
 
 CREATE TABLE `vtiger_ws_userauthtoken` (
@@ -22546,50 +24543,50 @@ CREATE TABLE `vtiger_ws_userauthtoken` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `com_vtiger_workflows`
+-- Indexes for table `com_vtiger_workflows`
 --
 ALTER TABLE `com_vtiger_workflows`
   ADD PRIMARY KEY (`workflow_id`),
   ADD UNIQUE KEY `com_vtiger_workflows_idx` (`workflow_id`);
 
 --
--- Chỉ mục cho bảng `com_vtiger_workflowtasks`
+-- Indexes for table `com_vtiger_workflowtasks`
 --
 ALTER TABLE `com_vtiger_workflowtasks`
   ADD PRIMARY KEY (`task_id`),
   ADD UNIQUE KEY `com_vtiger_workflowtasks_idx` (`task_id`);
 
 --
--- Chỉ mục cho bảng `com_vtiger_workflowtasks_entitymethod`
+-- Indexes for table `com_vtiger_workflowtasks_entitymethod`
 --
 ALTER TABLE `com_vtiger_workflowtasks_entitymethod`
   ADD PRIMARY KEY (`workflowtasks_entitymethod_id`),
   ADD UNIQUE KEY `com_vtiger_workflowtasks_entitymethod_idx` (`workflowtasks_entitymethod_id`);
 
 --
--- Chỉ mục cho bảng `com_vtiger_workflowtemplates`
+-- Indexes for table `com_vtiger_workflowtemplates`
 --
 ALTER TABLE `com_vtiger_workflowtemplates`
   ADD PRIMARY KEY (`template_id`);
 
 --
--- Chỉ mục cho bảng `com_vtiger_workflow_activatedonce`
+-- Indexes for table `com_vtiger_workflow_activatedonce`
 --
 ALTER TABLE `com_vtiger_workflow_activatedonce`
   ADD PRIMARY KEY (`workflow_id`,`entity_id`);
 
 --
--- Chỉ mục cho bảng `hrm_employee_history`
+-- Indexes for table `hrm_employee_history`
 --
 ALTER TABLE `hrm_employee_history`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_account`
+-- Indexes for table `vtiger_account`
 --
 ALTER TABLE `vtiger_account`
   ADD PRIMARY KEY (`accountid`),
@@ -22597,45 +24594,45 @@ ALTER TABLE `vtiger_account`
   ADD KEY `email_idx` (`email1`,`email2`);
 
 --
--- Chỉ mục cho bảng `vtiger_accountbillads`
+-- Indexes for table `vtiger_accountbillads`
 --
 ALTER TABLE `vtiger_accountbillads`
   ADD PRIMARY KEY (`accountaddressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_accountrating`
+-- Indexes for table `vtiger_accountrating`
 --
 ALTER TABLE `vtiger_accountrating`
   ADD PRIMARY KEY (`accountratingid`),
   ADD UNIQUE KEY `accountrating_rating_idx` (`rating`);
 
 --
--- Chỉ mục cho bảng `vtiger_accountscf`
+-- Indexes for table `vtiger_accountscf`
 --
 ALTER TABLE `vtiger_accountscf`
   ADD PRIMARY KEY (`accountid`);
 
 --
--- Chỉ mục cho bảng `vtiger_accountshipads`
+-- Indexes for table `vtiger_accountshipads`
 --
 ALTER TABLE `vtiger_accountshipads`
   ADD PRIMARY KEY (`accountaddressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_accounttype`
+-- Indexes for table `vtiger_accounttype`
 --
 ALTER TABLE `vtiger_accounttype`
   ADD PRIMARY KEY (`accounttypeid`),
   ADD UNIQUE KEY `accounttype_accounttype_idx` (`accounttype`);
 
 --
--- Chỉ mục cho bảng `vtiger_actionmapping`
+-- Indexes for table `vtiger_actionmapping`
 --
 ALTER TABLE `vtiger_actionmapping`
   ADD PRIMARY KEY (`actionid`,`actionname`);
 
 --
--- Chỉ mục cho bảng `vtiger_activity`
+-- Indexes for table `vtiger_activity`
 --
 ALTER TABLE `vtiger_activity`
   ADD PRIMARY KEY (`activityid`),
@@ -22647,13 +24644,13 @@ ALTER TABLE `vtiger_activity`
   ADD KEY `activity_status_idx` (`status`);
 
 --
--- Chỉ mục cho bảng `vtiger_activitycf`
+-- Indexes for table `vtiger_activitycf`
 --
 ALTER TABLE `vtiger_activitycf`
   ADD PRIMARY KEY (`activityid`);
 
 --
--- Chỉ mục cho bảng `vtiger_activityproductrel`
+-- Indexes for table `vtiger_activityproductrel`
 --
 ALTER TABLE `vtiger_activityproductrel`
   ADD PRIMARY KEY (`activityid`,`productid`),
@@ -22661,119 +24658,119 @@ ALTER TABLE `vtiger_activityproductrel`
   ADD KEY `activityproductrel_productid_idx` (`productid`);
 
 --
--- Chỉ mục cho bảng `vtiger_activitytype`
+-- Indexes for table `vtiger_activitytype`
 --
 ALTER TABLE `vtiger_activitytype`
   ADD PRIMARY KEY (`activitytypeid`),
   ADD UNIQUE KEY `activitytype_activitytype_idx` (`activitytype`);
 
 --
--- Chỉ mục cho bảng `vtiger_activity_reminder`
+-- Indexes for table `vtiger_activity_reminder`
 --
 ALTER TABLE `vtiger_activity_reminder`
   ADD PRIMARY KEY (`activity_id`,`recurringid`);
 
 --
--- Chỉ mục cho bảng `vtiger_activity_reminder_popup`
+-- Indexes for table `vtiger_activity_reminder_popup`
 --
 ALTER TABLE `vtiger_activity_reminder_popup`
   ADD PRIMARY KEY (`reminderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_activity_view`
+-- Indexes for table `vtiger_activity_view`
 --
 ALTER TABLE `vtiger_activity_view`
   ADD PRIMARY KEY (`activity_viewid`);
 
 --
--- Chỉ mục cho bảng `vtiger_announcement`
+-- Indexes for table `vtiger_announcement`
 --
 ALTER TABLE `vtiger_announcement`
   ADD PRIMARY KEY (`creatorid`),
   ADD KEY `announcement_creatorid_idx` (`creatorid`);
 
 --
--- Chỉ mục cho bảng `vtiger_app2tab`
+-- Indexes for table `vtiger_app2tab`
 --
 ALTER TABLE `vtiger_app2tab`
   ADD KEY `vtiger_app2tab_fk_tab` (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_assets`
+-- Indexes for table `vtiger_assets`
 --
 ALTER TABLE `vtiger_assets`
   ADD PRIMARY KEY (`assetsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_assetscf`
+-- Indexes for table `vtiger_assetscf`
 --
 ALTER TABLE `vtiger_assetscf`
   ADD PRIMARY KEY (`assetsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_assetstatus`
+-- Indexes for table `vtiger_assetstatus`
 --
 ALTER TABLE `vtiger_assetstatus`
   ADD PRIMARY KEY (`assetstatusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_asteriskincomingevents`
+-- Indexes for table `vtiger_asteriskincomingevents`
 --
 ALTER TABLE `vtiger_asteriskincomingevents`
   ADD PRIMARY KEY (`uid`);
 
 --
--- Chỉ mục cho bảng `vtiger_attachments`
+-- Indexes for table `vtiger_attachments`
 --
 ALTER TABLE `vtiger_attachments`
   ADD PRIMARY KEY (`attachmentsid`),
   ADD KEY `attachments_attachmentsid_idx` (`attachmentsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_attachmentsfolder`
+-- Indexes for table `vtiger_attachmentsfolder`
 --
 ALTER TABLE `vtiger_attachmentsfolder`
   ADD PRIMARY KEY (`folderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_audit_trial`
+-- Indexes for table `vtiger_audit_trial`
 --
 ALTER TABLE `vtiger_audit_trial`
   ADD PRIMARY KEY (`auditid`);
 
 --
--- Chỉ mục cho bảng `vtiger_blocks`
+-- Indexes for table `vtiger_blocks`
 --
 ALTER TABLE `vtiger_blocks`
   ADD PRIMARY KEY (`blockid`),
   ADD KEY `block_tabid_idx` (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_calendarsharedtype`
+-- Indexes for table `vtiger_calendarsharedtype`
 --
 ALTER TABLE `vtiger_calendarsharedtype`
   ADD PRIMARY KEY (`calendarsharedtypeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_calendar_default_activitytypes`
+-- Indexes for table `vtiger_calendar_default_activitytypes`
 --
 ALTER TABLE `vtiger_calendar_default_activitytypes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_calendar_user_activitytypes`
+-- Indexes for table `vtiger_calendar_user_activitytypes`
 --
 ALTER TABLE `vtiger_calendar_user_activitytypes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_callduration`
+-- Indexes for table `vtiger_callduration`
 --
 ALTER TABLE `vtiger_callduration`
   ADD PRIMARY KEY (`calldurationid`);
 
 --
--- Chỉ mục cho bảng `vtiger_campaign`
+-- Indexes for table `vtiger_campaign`
 --
 ALTER TABLE `vtiger_campaign`
   ADD PRIMARY KEY (`campaignid`),
@@ -22782,60 +24779,108 @@ ALTER TABLE `vtiger_campaign`
   ADD KEY `campaign_campaignid_idx` (`campaignid`);
 
 --
--- Chỉ mục cho bảng `vtiger_campaigncontrel`
+-- Indexes for table `vtiger_campaigncontrel`
 --
 ALTER TABLE `vtiger_campaigncontrel`
   ADD PRIMARY KEY (`campaignid`,`contactid`,`campaignrelstatusid`),
   ADD KEY `campaigncontrel_contractid_idx` (`contactid`);
 
 --
--- Chỉ mục cho bảng `vtiger_campaignleadrel`
+-- Indexes for table `vtiger_campaignleadrel`
 --
 ALTER TABLE `vtiger_campaignleadrel`
   ADD PRIMARY KEY (`campaignid`,`leadid`,`campaignrelstatusid`),
   ADD KEY `campaignleadrel_leadid_campaignid_idx` (`leadid`,`campaignid`);
 
 --
--- Chỉ mục cho bảng `vtiger_campaignscf`
+-- Indexes for table `vtiger_campaignscf`
 --
 ALTER TABLE `vtiger_campaignscf`
   ADD PRIMARY KEY (`campaignid`);
 
 --
--- Chỉ mục cho bảng `vtiger_campaignstatus`
+-- Indexes for table `vtiger_campaignstatus`
 --
 ALTER TABLE `vtiger_campaignstatus`
   ADD PRIMARY KEY (`campaignstatusid`),
   ADD KEY `campaignstatus_campaignstatus_idx` (`campaignstatus`);
 
 --
--- Chỉ mục cho bảng `vtiger_campaigntype`
+-- Indexes for table `vtiger_campaigntype`
 --
 ALTER TABLE `vtiger_campaigntype`
   ADD PRIMARY KEY (`campaigntypeid`),
   ADD UNIQUE KEY `campaigntype_campaigntype_idx` (`campaigntype`);
 
 --
--- Chỉ mục cho bảng `vtiger_candidate_action`
+-- Indexes for table `vtiger_candidate_action`
 --
 ALTER TABLE `vtiger_candidate_action`
   ADD PRIMARY KEY (`candidate_actionid`);
 
 --
--- Chỉ mục cho bảng `vtiger_candidate_resource_cv`
+-- Indexes for table `vtiger_candidate_resource_cv`
 --
 ALTER TABLE `vtiger_candidate_resource_cv`
   ADD PRIMARY KEY (`candidate_resource_cvid`);
 
 --
--- Chỉ mục cho bảng `vtiger_carrier`
+-- Indexes for table `vtiger_carrier`
 --
 ALTER TABLE `vtiger_carrier`
   ADD PRIMARY KEY (`carrierid`),
   ADD UNIQUE KEY `carrier_carrier_idx` (`carrier`);
 
 --
--- Chỉ mục cho bảng `vtiger_cntactivityrel`
+-- Indexes for table `vtiger_cf_1121`
+--
+ALTER TABLE `vtiger_cf_1121`
+  ADD PRIMARY KEY (`cf_1121id`);
+
+--
+-- Indexes for table `vtiger_cf_1137`
+--
+ALTER TABLE `vtiger_cf_1137`
+  ADD PRIMARY KEY (`cf_1137id`);
+
+--
+-- Indexes for table `vtiger_cf_1141`
+--
+ALTER TABLE `vtiger_cf_1141`
+  ADD PRIMARY KEY (`cf_1141id`);
+
+--
+-- Indexes for table `vtiger_cf_1143`
+--
+ALTER TABLE `vtiger_cf_1143`
+  ADD PRIMARY KEY (`cf_1143id`);
+
+--
+-- Indexes for table `vtiger_cf_1145`
+--
+ALTER TABLE `vtiger_cf_1145`
+  ADD PRIMARY KEY (`cf_1145id`);
+
+--
+-- Indexes for table `vtiger_cf_1147`
+--
+ALTER TABLE `vtiger_cf_1147`
+  ADD PRIMARY KEY (`cf_1147id`);
+
+--
+-- Indexes for table `vtiger_cf_1161`
+--
+ALTER TABLE `vtiger_cf_1161`
+  ADD PRIMARY KEY (`cf_1161id`);
+
+--
+-- Indexes for table `vtiger_cf_1221`
+--
+ALTER TABLE `vtiger_cf_1221`
+  ADD PRIMARY KEY (`cf_1221id`);
+
+--
+-- Indexes for table `vtiger_cntactivityrel`
 --
 ALTER TABLE `vtiger_cntactivityrel`
   ADD PRIMARY KEY (`contactid`,`activityid`),
@@ -22843,13 +24888,13 @@ ALTER TABLE `vtiger_cntactivityrel`
   ADD KEY `cntactivityrel_activityid_idx` (`activityid`);
 
 --
--- Chỉ mục cho bảng `vtiger_contactaddress`
+-- Indexes for table `vtiger_contactaddress`
 --
 ALTER TABLE `vtiger_contactaddress`
   ADD PRIMARY KEY (`contactaddressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_contactdetails`
+-- Indexes for table `vtiger_contactdetails`
 --
 ALTER TABLE `vtiger_contactdetails`
   ADD PRIMARY KEY (`contactid`),
@@ -22857,19 +24902,19 @@ ALTER TABLE `vtiger_contactdetails`
   ADD KEY `email_idx` (`email`);
 
 --
--- Chỉ mục cho bảng `vtiger_contactscf`
+-- Indexes for table `vtiger_contactscf`
 --
 ALTER TABLE `vtiger_contactscf`
   ADD PRIMARY KEY (`contactid`);
 
 --
--- Chỉ mục cho bảng `vtiger_contactsubdetails`
+-- Indexes for table `vtiger_contactsubdetails`
 --
 ALTER TABLE `vtiger_contactsubdetails`
   ADD PRIMARY KEY (`contactsubscriptionid`);
 
 --
--- Chỉ mục cho bảng `vtiger_contpotentialrel`
+-- Indexes for table `vtiger_contpotentialrel`
 --
 ALTER TABLE `vtiger_contpotentialrel`
   ADD PRIMARY KEY (`contactid`,`potentialid`),
@@ -22877,37 +24922,37 @@ ALTER TABLE `vtiger_contpotentialrel`
   ADD KEY `contpotentialrel_contactid_idx` (`contactid`);
 
 --
--- Chỉ mục cho bảng `vtiger_contract_priority`
+-- Indexes for table `vtiger_contract_priority`
 --
 ALTER TABLE `vtiger_contract_priority`
   ADD PRIMARY KEY (`contract_priorityid`);
 
 --
--- Chỉ mục cho bảng `vtiger_contract_status`
+-- Indexes for table `vtiger_contract_status`
 --
 ALTER TABLE `vtiger_contract_status`
   ADD PRIMARY KEY (`contract_statusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_contract_type`
+-- Indexes for table `vtiger_contract_type`
 --
 ALTER TABLE `vtiger_contract_type`
   ADD PRIMARY KEY (`contract_typeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_convertleadmapping`
+-- Indexes for table `vtiger_convertleadmapping`
 --
 ALTER TABLE `vtiger_convertleadmapping`
   ADD PRIMARY KEY (`cfmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_convertpotentialmapping`
+-- Indexes for table `vtiger_convertpotentialmapping`
 --
 ALTER TABLE `vtiger_convertpotentialmapping`
   ADD PRIMARY KEY (`cfmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_crmentity`
+-- Indexes for table `vtiger_crmentity`
 --
 ALTER TABLE `vtiger_crmentity`
   ADD PRIMARY KEY (`crmid`),
@@ -22918,20 +24963,20 @@ ALTER TABLE `vtiger_crmentity`
   ADD KEY `vtiger_crmentity_labelidx` (`label`);
 
 --
--- Chỉ mục cho bảng `vtiger_crmentityrel`
+-- Indexes for table `vtiger_crmentityrel`
 --
 ALTER TABLE `vtiger_crmentityrel`
   ADD KEY `crmid_idx` (`crmid`),
   ADD KEY `relcrmid_idx` (`relcrmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_crmentity_user_field`
+-- Indexes for table `vtiger_crmentity_user_field`
 --
 ALTER TABLE `vtiger_crmentity_user_field`
   ADD KEY `record_user_idx` (`recordid`,`userid`);
 
 --
--- Chỉ mục cho bảng `vtiger_cron_task`
+-- Indexes for table `vtiger_cron_task`
 --
 ALTER TABLE `vtiger_cron_task`
   ADD PRIMARY KEY (`id`),
@@ -22939,134 +24984,158 @@ ALTER TABLE `vtiger_cron_task`
   ADD UNIQUE KEY `handler_file` (`handler_file`);
 
 --
--- Chỉ mục cho bảng `vtiger_currencies`
+-- Indexes for table `vtiger_currencies`
 --
 ALTER TABLE `vtiger_currencies`
   ADD PRIMARY KEY (`currencyid`);
 
 --
--- Chỉ mục cho bảng `vtiger_currency`
+-- Indexes for table `vtiger_currency`
 --
 ALTER TABLE `vtiger_currency`
   ADD PRIMARY KEY (`currencyid`),
   ADD UNIQUE KEY `currency_currency_idx` (`currency`);
 
 --
--- Chỉ mục cho bảng `vtiger_currency_decimal_separator`
+-- Indexes for table `vtiger_currency_decimal_separator`
 --
 ALTER TABLE `vtiger_currency_decimal_separator`
   ADD PRIMARY KEY (`currency_decimal_separatorid`);
 
 --
--- Chỉ mục cho bảng `vtiger_currency_grouping_pattern`
+-- Indexes for table `vtiger_currency_grouping_pattern`
 --
 ALTER TABLE `vtiger_currency_grouping_pattern`
   ADD PRIMARY KEY (`currency_grouping_patternid`);
 
 --
--- Chỉ mục cho bảng `vtiger_currency_grouping_separator`
+-- Indexes for table `vtiger_currency_grouping_separator`
 --
 ALTER TABLE `vtiger_currency_grouping_separator`
   ADD PRIMARY KEY (`currency_grouping_separatorid`);
 
 --
--- Chỉ mục cho bảng `vtiger_currency_info`
+-- Indexes for table `vtiger_currency_info`
 --
 ALTER TABLE `vtiger_currency_info`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_currency_symbol_placement`
+-- Indexes for table `vtiger_currency_symbol_placement`
 --
 ALTER TABLE `vtiger_currency_symbol_placement`
   ADD PRIMARY KEY (`currency_symbol_placementid`);
 
 --
--- Chỉ mục cho bảng `vtiger_customaction`
+-- Indexes for table `vtiger_customaction`
 --
 ALTER TABLE `vtiger_customaction`
   ADD KEY `customaction_cvid_idx` (`cvid`);
 
 --
--- Chỉ mục cho bảng `vtiger_customerdetails`
+-- Indexes for table `vtiger_customerdetails`
 --
 ALTER TABLE `vtiger_customerdetails`
   ADD PRIMARY KEY (`customerid`);
 
 --
--- Chỉ mục cho bảng `vtiger_customerportal_fields`
+-- Indexes for table `vtiger_customerenterprise`
+--
+ALTER TABLE `vtiger_customerenterprise`
+  ADD PRIMARY KEY (`customerenterpriseid`);
+
+--
+-- Indexes for table `vtiger_customerenterprisecf`
+--
+ALTER TABLE `vtiger_customerenterprisecf`
+  ADD PRIMARY KEY (`customerenterpriseid`);
+
+--
+-- Indexes for table `vtiger_customerportal_fields`
 --
 ALTER TABLE `vtiger_customerportal_fields`
   ADD PRIMARY KEY (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_customerportal_prefs`
+-- Indexes for table `vtiger_customerportal_prefs`
 --
 ALTER TABLE `vtiger_customerportal_prefs`
   ADD PRIMARY KEY (`tabid`,`prefkey`);
 
 --
--- Chỉ mục cho bảng `vtiger_customerportal_relatedmoduleinfo`
+-- Indexes for table `vtiger_customerportal_relatedmoduleinfo`
 --
 ALTER TABLE `vtiger_customerportal_relatedmoduleinfo`
   ADD PRIMARY KEY (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_customerportal_tabs`
+-- Indexes for table `vtiger_customerportal_tabs`
 --
 ALTER TABLE `vtiger_customerportal_tabs`
   ADD PRIMARY KEY (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_customview`
+-- Indexes for table `vtiger_customerstandalone`
+--
+ALTER TABLE `vtiger_customerstandalone`
+  ADD PRIMARY KEY (`customerstandaloneid`);
+
+--
+-- Indexes for table `vtiger_customerstandalonecf`
+--
+ALTER TABLE `vtiger_customerstandalonecf`
+  ADD PRIMARY KEY (`customerstandaloneid`);
+
+--
+-- Indexes for table `vtiger_customview`
 --
 ALTER TABLE `vtiger_customview`
   ADD PRIMARY KEY (`cvid`),
   ADD KEY `customview_entitytype_idx` (`entitytype`);
 
 --
--- Chỉ mục cho bảng `vtiger_cv2group`
+-- Indexes for table `vtiger_cv2group`
 --
 ALTER TABLE `vtiger_cv2group`
   ADD KEY `vtiger_cv2group_ibfk_1` (`cvid`),
   ADD KEY `vtiger_groups_ibfk_1` (`groupid`);
 
 --
--- Chỉ mục cho bảng `vtiger_cv2role`
+-- Indexes for table `vtiger_cv2role`
 --
 ALTER TABLE `vtiger_cv2role`
   ADD KEY `vtiger_cv2role_ibfk_1` (`cvid`),
   ADD KEY `vtiger_role_ibfk_1` (`roleid`);
 
 --
--- Chỉ mục cho bảng `vtiger_cv2rs`
+-- Indexes for table `vtiger_cv2rs`
 --
 ALTER TABLE `vtiger_cv2rs`
   ADD KEY `vtiger_cv2role_ibfk_1` (`cvid`),
   ADD KEY `vtiger_rolesd_ibfk_1` (`rsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_cv2users`
+-- Indexes for table `vtiger_cv2users`
 --
 ALTER TABLE `vtiger_cv2users`
   ADD KEY `vtiger_cv2users_ibfk_1` (`cvid`),
   ADD KEY `vtiger_users_ibfk_1` (`userid`);
 
 --
--- Chỉ mục cho bảng `vtiger_cvadvfilter`
+-- Indexes for table `vtiger_cvadvfilter`
 --
 ALTER TABLE `vtiger_cvadvfilter`
   ADD PRIMARY KEY (`cvid`,`columnindex`),
   ADD KEY `cvadvfilter_cvid_idx` (`cvid`);
 
 --
--- Chỉ mục cho bảng `vtiger_cvadvfilter_grouping`
+-- Indexes for table `vtiger_cvadvfilter_grouping`
 --
 ALTER TABLE `vtiger_cvadvfilter_grouping`
   ADD PRIMARY KEY (`groupid`,`cvid`);
 
 --
--- Chỉ mục cho bảng `vtiger_cvcolumnlist`
+-- Indexes for table `vtiger_cvcolumnlist`
 --
 ALTER TABLE `vtiger_cvcolumnlist`
   ADD PRIMARY KEY (`cvid`,`columnindex`),
@@ -23074,13 +25143,13 @@ ALTER TABLE `vtiger_cvcolumnlist`
   ADD KEY `cvcolumnlist_cvid_idx` (`cvid`);
 
 --
--- Chỉ mục cho bảng `vtiger_cvstdfilter`
+-- Indexes for table `vtiger_cvstdfilter`
 --
 ALTER TABLE `vtiger_cvstdfilter`
   ADD KEY `cvstdfilter_cvid_idx` (`cvid`);
 
 --
--- Chỉ mục cho bảng `vtiger_dashboard_tabs`
+-- Indexes for table `vtiger_dashboard_tabs`
 --
 ALTER TABLE `vtiger_dashboard_tabs`
   ADD PRIMARY KEY (`id`),
@@ -23088,7 +25157,7 @@ ALTER TABLE `vtiger_dashboard_tabs`
   ADD KEY `vtiger_dashboard_tabs_ibfk_1` (`userid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_grp2grp`
+-- Indexes for table `vtiger_datashare_grp2grp`
 --
 ALTER TABLE `vtiger_datashare_grp2grp`
   ADD PRIMARY KEY (`shareid`),
@@ -23096,7 +25165,7 @@ ALTER TABLE `vtiger_datashare_grp2grp`
   ADD KEY `datashare_grp2grp_to_groupid_idx` (`to_groupid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_grp2role`
+-- Indexes for table `vtiger_datashare_grp2role`
 --
 ALTER TABLE `vtiger_datashare_grp2role`
   ADD PRIMARY KEY (`shareid`),
@@ -23104,7 +25173,7 @@ ALTER TABLE `vtiger_datashare_grp2role`
   ADD KEY `idx_datashare_grp2role_to_roleid` (`to_roleid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_grp2rs`
+-- Indexes for table `vtiger_datashare_grp2rs`
 --
 ALTER TABLE `vtiger_datashare_grp2rs`
   ADD PRIMARY KEY (`shareid`),
@@ -23112,14 +25181,14 @@ ALTER TABLE `vtiger_datashare_grp2rs`
   ADD KEY `datashare_grp2rs_to_roleandsubid_idx` (`to_roleandsubid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_module_rel`
+-- Indexes for table `vtiger_datashare_module_rel`
 --
 ALTER TABLE `vtiger_datashare_module_rel`
   ADD PRIMARY KEY (`shareid`),
   ADD KEY `idx_datashare_module_rel_tabid` (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_relatedmodules`
+-- Indexes for table `vtiger_datashare_relatedmodules`
 --
 ALTER TABLE `vtiger_datashare_relatedmodules`
   ADD PRIMARY KEY (`datashare_relatedmodule_id`),
@@ -23127,14 +25196,14 @@ ALTER TABLE `vtiger_datashare_relatedmodules`
   ADD KEY `datashare_relatedmodules_relatedto_tabid_idx` (`relatedto_tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_relatedmodule_permission`
+-- Indexes for table `vtiger_datashare_relatedmodule_permission`
 --
 ALTER TABLE `vtiger_datashare_relatedmodule_permission`
   ADD PRIMARY KEY (`shareid`,`datashare_relatedmodule_id`),
   ADD KEY `datashare_relatedmodule_permission_shareid_permissions_idx` (`shareid`,`permission`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_role2group`
+-- Indexes for table `vtiger_datashare_role2group`
 --
 ALTER TABLE `vtiger_datashare_role2group`
   ADD PRIMARY KEY (`shareid`),
@@ -23142,7 +25211,7 @@ ALTER TABLE `vtiger_datashare_role2group`
   ADD KEY `idx_datashare_role2group_to_groupid` (`to_groupid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_role2role`
+-- Indexes for table `vtiger_datashare_role2role`
 --
 ALTER TABLE `vtiger_datashare_role2role`
   ADD PRIMARY KEY (`shareid`),
@@ -23150,7 +25219,7 @@ ALTER TABLE `vtiger_datashare_role2role`
   ADD KEY `datashare_role2role_to_roleid_idx` (`to_roleid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_role2rs`
+-- Indexes for table `vtiger_datashare_role2rs`
 --
 ALTER TABLE `vtiger_datashare_role2rs`
   ADD PRIMARY KEY (`shareid`),
@@ -23158,7 +25227,7 @@ ALTER TABLE `vtiger_datashare_role2rs`
   ADD KEY `datashare_role2s_to_roleandsubid_idx` (`to_roleandsubid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_rs2grp`
+-- Indexes for table `vtiger_datashare_rs2grp`
 --
 ALTER TABLE `vtiger_datashare_rs2grp`
   ADD PRIMARY KEY (`shareid`),
@@ -23166,7 +25235,7 @@ ALTER TABLE `vtiger_datashare_rs2grp`
   ADD KEY `datashare_rs2grp_to_groupid_idx` (`to_groupid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_rs2role`
+-- Indexes for table `vtiger_datashare_rs2role`
 --
 ALTER TABLE `vtiger_datashare_rs2role`
   ADD PRIMARY KEY (`shareid`),
@@ -23174,7 +25243,7 @@ ALTER TABLE `vtiger_datashare_rs2role`
   ADD KEY `datashare_rs2role_to_roleid_idx` (`to_roleid`);
 
 --
--- Chỉ mục cho bảng `vtiger_datashare_rs2rs`
+-- Indexes for table `vtiger_datashare_rs2rs`
 --
 ALTER TABLE `vtiger_datashare_rs2rs`
   ADD PRIMARY KEY (`shareid`),
@@ -23182,49 +25251,49 @@ ALTER TABLE `vtiger_datashare_rs2rs`
   ADD KEY `idx_datashare_rs2rs_to_roleandsubid_idx` (`to_roleandsubid`);
 
 --
--- Chỉ mục cho bảng `vtiger_date_format`
+-- Indexes for table `vtiger_date_format`
 --
 ALTER TABLE `vtiger_date_format`
   ADD PRIMARY KEY (`date_formatid`);
 
 --
--- Chỉ mục cho bảng `vtiger_dayoftheweek`
+-- Indexes for table `vtiger_dayoftheweek`
 --
 ALTER TABLE `vtiger_dayoftheweek`
   ADD PRIMARY KEY (`dayoftheweekid`);
 
 --
--- Chỉ mục cho bảng `vtiger_defaultactivitytype`
+-- Indexes for table `vtiger_defaultactivitytype`
 --
 ALTER TABLE `vtiger_defaultactivitytype`
   ADD PRIMARY KEY (`defaultactivitytypeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_defaultcalendarview`
+-- Indexes for table `vtiger_defaultcalendarview`
 --
 ALTER TABLE `vtiger_defaultcalendarview`
   ADD PRIMARY KEY (`defaultcalendarviewid`);
 
 --
--- Chỉ mục cho bảng `vtiger_defaultcv`
+-- Indexes for table `vtiger_defaultcv`
 --
 ALTER TABLE `vtiger_defaultcv`
   ADD PRIMARY KEY (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_defaulteventstatus`
+-- Indexes for table `vtiger_defaulteventstatus`
 --
 ALTER TABLE `vtiger_defaulteventstatus`
   ADD PRIMARY KEY (`defaulteventstatusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_default_record_view`
+-- Indexes for table `vtiger_default_record_view`
 --
 ALTER TABLE `vtiger_default_record_view`
   ADD PRIMARY KEY (`default_record_viewid`);
 
 --
--- Chỉ mục cho bảng `vtiger_def_org_field`
+-- Indexes for table `vtiger_def_org_field`
 --
 ALTER TABLE `vtiger_def_org_field`
   ADD PRIMARY KEY (`fieldid`),
@@ -23233,147 +25302,147 @@ ALTER TABLE `vtiger_def_org_field`
   ADD KEY `def_org_field_visible_fieldid_idx` (`visible`,`fieldid`);
 
 --
--- Chỉ mục cho bảng `vtiger_def_org_share`
+-- Indexes for table `vtiger_def_org_share`
 --
 ALTER TABLE `vtiger_def_org_share`
   ADD PRIMARY KEY (`ruleid`),
   ADD KEY `fk_1_vtiger_def_org_share` (`permission`);
 
 --
--- Chỉ mục cho bảng `vtiger_durationhrs`
+-- Indexes for table `vtiger_durationhrs`
 --
 ALTER TABLE `vtiger_durationhrs`
   ADD PRIMARY KEY (`hrsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_durationmins`
+-- Indexes for table `vtiger_durationmins`
 --
 ALTER TABLE `vtiger_durationmins`
   ADD PRIMARY KEY (`minsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_duration_minutes`
+-- Indexes for table `vtiger_duration_minutes`
 --
 ALTER TABLE `vtiger_duration_minutes`
   ADD PRIMARY KEY (`minutesid`);
 
 --
--- Chỉ mục cho bảng `vtiger_emaildetails`
+-- Indexes for table `vtiger_emaildetails`
 --
 ALTER TABLE `vtiger_emaildetails`
   ADD PRIMARY KEY (`emailid`);
 
 --
--- Chỉ mục cho bảng `vtiger_emailslookup`
+-- Indexes for table `vtiger_emailslookup`
 --
 ALTER TABLE `vtiger_emailslookup`
   ADD UNIQUE KEY `emailslookup_crmid_setype_fieldname_uk` (`crmid`,`setype`,`fieldid`),
   ADD KEY `emailslookup_fieldid_setype_idx` (`fieldid`,`setype`);
 
 --
--- Chỉ mục cho bảng `vtiger_emails_recipientprefs`
+-- Indexes for table `vtiger_emails_recipientprefs`
 --
 ALTER TABLE `vtiger_emails_recipientprefs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_emailtemplates`
+-- Indexes for table `vtiger_emailtemplates`
 --
 ALTER TABLE `vtiger_emailtemplates`
   ADD PRIMARY KEY (`templateid`),
   ADD KEY `emailtemplates_foldernamd_templatename_subject_idx` (`foldername`,`templatename`,`subject`);
 
 --
--- Chỉ mục cho bảng `vtiger_email_track`
+-- Indexes for table `vtiger_email_track`
 --
 ALTER TABLE `vtiger_email_track`
   ADD UNIQUE KEY `link_tabidtype_idx` (`crmid`,`mailid`);
 
 --
--- Chỉ mục cho bảng `vtiger_employ_gender`
+-- Indexes for table `vtiger_employ_gender`
 --
 ALTER TABLE `vtiger_employ_gender`
   ADD PRIMARY KEY (`employ_genderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_employ_marital_status`
+-- Indexes for table `vtiger_employ_marital_status`
 --
 ALTER TABLE `vtiger_employ_marital_status`
   ADD PRIMARY KEY (`employ_marital_statusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_entityname`
+-- Indexes for table `vtiger_entityname`
 --
 ALTER TABLE `vtiger_entityname`
   ADD PRIMARY KEY (`tabid`),
   ADD KEY `entityname_tabid_idx` (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_eventhandlers`
+-- Indexes for table `vtiger_eventhandlers`
 --
 ALTER TABLE `vtiger_eventhandlers`
   ADD PRIMARY KEY (`eventhandler_id`,`event_name`,`handler_class`),
   ADD UNIQUE KEY `eventhandler_idx` (`eventhandler_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_eventhandler_module`
+-- Indexes for table `vtiger_eventhandler_module`
 --
 ALTER TABLE `vtiger_eventhandler_module`
   ADD PRIMARY KEY (`eventhandler_module_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_eventstatus`
+-- Indexes for table `vtiger_eventstatus`
 --
 ALTER TABLE `vtiger_eventstatus`
   ADD PRIMARY KEY (`eventstatusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_expectedresponse`
+-- Indexes for table `vtiger_expectedresponse`
 --
 ALTER TABLE `vtiger_expectedresponse`
   ADD PRIMARY KEY (`expectedresponseid`),
   ADD UNIQUE KEY `CampaignExpRes_UK01` (`expectedresponse`);
 
 --
--- Chỉ mục cho bảng `vtiger_extnstore_users`
+-- Indexes for table `vtiger_extnstore_users`
 --
 ALTER TABLE `vtiger_extnstore_users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_faq`
+-- Indexes for table `vtiger_faq`
 --
 ALTER TABLE `vtiger_faq`
   ADD PRIMARY KEY (`id`),
   ADD KEY `faq_id_idx` (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_faqcategories`
+-- Indexes for table `vtiger_faqcategories`
 --
 ALTER TABLE `vtiger_faqcategories`
   ADD PRIMARY KEY (`faqcategories_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_faqcf`
+-- Indexes for table `vtiger_faqcf`
 --
 ALTER TABLE `vtiger_faqcf`
   ADD PRIMARY KEY (`faqid`);
 
 --
--- Chỉ mục cho bảng `vtiger_faqcomments`
+-- Indexes for table `vtiger_faqcomments`
 --
 ALTER TABLE `vtiger_faqcomments`
   ADD PRIMARY KEY (`commentid`),
   ADD KEY `faqcomments_faqid_idx` (`faqid`);
 
 --
--- Chỉ mục cho bảng `vtiger_faqstatus`
+-- Indexes for table `vtiger_faqstatus`
 --
 ALTER TABLE `vtiger_faqstatus`
   ADD PRIMARY KEY (`faqstatus_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_field`
+-- Indexes for table `vtiger_field`
 --
 ALTER TABLE `vtiger_field`
   ADD PRIMARY KEY (`fieldid`),
@@ -23383,94 +25452,106 @@ ALTER TABLE `vtiger_field`
   ADD KEY `field_displaytype_idx` (`displaytype`);
 
 --
--- Chỉ mục cho bảng `vtiger_freetagged_objects`
+-- Indexes for table `vtiger_freetagged_objects`
 --
 ALTER TABLE `vtiger_freetagged_objects`
   ADD PRIMARY KEY (`tag_id`,`tagger_id`,`object_id`),
   ADD KEY `freetagged_objects_tag_id_tagger_id_object_id_idx` (`tag_id`,`tagger_id`,`object_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_freetags`
+-- Indexes for table `vtiger_freetags`
 --
 ALTER TABLE `vtiger_freetags`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_glacct`
+-- Indexes for table `vtiger_glacct`
 --
 ALTER TABLE `vtiger_glacct`
   ADD PRIMARY KEY (`glacctid`),
   ADD UNIQUE KEY `glacct_glacct_idx` (`glacct`);
 
 --
--- Chỉ mục cho bảng `vtiger_group2grouprel`
+-- Indexes for table `vtiger_group2grouprel`
 --
 ALTER TABLE `vtiger_group2grouprel`
   ADD PRIMARY KEY (`groupid`,`containsgroupid`);
 
 --
--- Chỉ mục cho bảng `vtiger_group2role`
+-- Indexes for table `vtiger_group2role`
 --
 ALTER TABLE `vtiger_group2role`
   ADD PRIMARY KEY (`groupid`,`roleid`),
   ADD KEY `fk_2_vtiger_group2role` (`roleid`);
 
 --
--- Chỉ mục cho bảng `vtiger_group2rs`
+-- Indexes for table `vtiger_group2rs`
 --
 ALTER TABLE `vtiger_group2rs`
   ADD PRIMARY KEY (`groupid`,`roleandsubid`),
   ADD KEY `fk_2_vtiger_group2rs` (`roleandsubid`);
 
 --
--- Chỉ mục cho bảng `vtiger_groups`
+-- Indexes for table `vtiger_groups`
 --
 ALTER TABLE `vtiger_groups`
   ADD PRIMARY KEY (`groupid`),
   ADD UNIQUE KEY `groups_groupname_idx` (`groupname`);
 
 --
--- Chỉ mục cho bảng `vtiger_homedashbd`
+-- Indexes for table `vtiger_hinhthuctruyenthong`
+--
+ALTER TABLE `vtiger_hinhthuctruyenthong`
+  ADD PRIMARY KEY (`hinhthuctruyenthongid`);
+
+--
+-- Indexes for table `vtiger_hinhthuctruyenthongcf`
+--
+ALTER TABLE `vtiger_hinhthuctruyenthongcf`
+  ADD PRIMARY KEY (`hinhthuctruyenthongid`);
+
+--
+-- Indexes for table `vtiger_homedashbd`
 --
 ALTER TABLE `vtiger_homedashbd`
   ADD PRIMARY KEY (`stuffid`),
   ADD KEY `stuff_stuffid_idx` (`stuffid`);
 
 --
--- Chỉ mục cho bảng `vtiger_homedefault`
+-- Indexes for table `vtiger_homedefault`
 --
 ALTER TABLE `vtiger_homedefault`
   ADD PRIMARY KEY (`stuffid`),
   ADD KEY `stuff_stuffid_idx` (`stuffid`);
 
 --
--- Chỉ mục cho bảng `vtiger_homemodule`
+-- Indexes for table `vtiger_homemodule`
 --
 ALTER TABLE `vtiger_homemodule`
   ADD PRIMARY KEY (`stuffid`),
   ADD KEY `stuff_stuffid_idx` (`stuffid`);
 
 --
--- Chỉ mục cho bảng `vtiger_homemoduleflds`
+-- Indexes for table `vtiger_homemoduleflds`
 --
 ALTER TABLE `vtiger_homemoduleflds`
   ADD KEY `stuff_stuffid_idx` (`stuffid`);
 
 --
--- Chỉ mục cho bảng `vtiger_homereportchart`
+-- Indexes for table `vtiger_homereportchart`
 --
 ALTER TABLE `vtiger_homereportchart`
   ADD PRIMARY KEY (`stuffid`);
 
 --
--- Chỉ mục cho bảng `vtiger_homerss`
+-- Indexes for table `vtiger_homerss`
 --
 ALTER TABLE `vtiger_homerss`
   ADD PRIMARY KEY (`stuffid`),
   ADD KEY `stuff_stuffid_idx` (`stuffid`);
 
 --
--- Chỉ mục cho bảng `vtiger_homestuff`
+-- Indexes for table `vtiger_homestuff`
 --
 ALTER TABLE `vtiger_homestuff`
   ADD PRIMARY KEY (`stuffid`),
@@ -23478,207 +25559,207 @@ ALTER TABLE `vtiger_homestuff`
   ADD KEY `fk_1_vtiger_homestuff` (`userid`);
 
 --
--- Chỉ mục cho bảng `vtiger_home_layout`
+-- Indexes for table `vtiger_home_layout`
 --
 ALTER TABLE `vtiger_home_layout`
   ADD PRIMARY KEY (`userid`);
 
 --
--- Chỉ mục cho bảng `vtiger_hour_format`
+-- Indexes for table `vtiger_hour_format`
 --
 ALTER TABLE `vtiger_hour_format`
   ADD PRIMARY KEY (`hour_formatid`);
 
 --
--- Chỉ mục cho bảng `vtiger_hr`
+-- Indexes for table `vtiger_hr`
 --
 ALTER TABLE `vtiger_hr`
   ADD PRIMARY KEY (`hrid`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_candidate`
+-- Indexes for table `vtiger_hrm_candidate`
 --
 ALTER TABLE `vtiger_hrm_candidate`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_candidatecf`
+-- Indexes for table `vtiger_hrm_candidatecf`
 --
 ALTER TABLE `vtiger_hrm_candidatecf`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_employcf`
+-- Indexes for table `vtiger_hrm_employcf`
 --
 ALTER TABLE `vtiger_hrm_employcf`
   ADD PRIMARY KEY (`employid`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_employee`
+-- Indexes for table `vtiger_hrm_employee`
 --
 ALTER TABLE `vtiger_hrm_employee`
   ADD PRIMARY KEY (`employid`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_jd`
+-- Indexes for table `vtiger_hrm_jd`
 --
 ALTER TABLE `vtiger_hrm_jd`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_jdcf`
+-- Indexes for table `vtiger_hrm_jdcf`
 --
 ALTER TABLE `vtiger_hrm_jdcf`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_jd_tasks`
+-- Indexes for table `vtiger_hrm_jd_tasks`
 --
 ALTER TABLE `vtiger_hrm_jd_tasks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_kpi`
+-- Indexes for table `vtiger_hrm_kpi`
 --
 ALTER TABLE `vtiger_hrm_kpi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_kpicf`
+-- Indexes for table `vtiger_hrm_kpicf`
 --
 ALTER TABLE `vtiger_hrm_kpicf`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_leave`
+-- Indexes for table `vtiger_hrm_leave`
 --
 ALTER TABLE `vtiger_hrm_leave`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_leave_action`
+-- Indexes for table `vtiger_hrm_leave_action`
 --
 ALTER TABLE `vtiger_hrm_leave_action`
   ADD PRIMARY KEY (`hrm_leave_actionid`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_leave_type`
+-- Indexes for table `vtiger_hrm_leave_type`
 --
 ALTER TABLE `vtiger_hrm_leave_type`
   ADD PRIMARY KEY (`hrm_leave_typeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_position`
+-- Indexes for table `vtiger_hrm_position`
 --
 ALTER TABLE `vtiger_hrm_position`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_qcm`
+-- Indexes for table `vtiger_hrm_qcm`
 --
 ALTER TABLE `vtiger_hrm_qcm`
   ADD PRIMARY KEY (`qcmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_qcmcf`
+-- Indexes for table `vtiger_hrm_qcmcf`
 --
 ALTER TABLE `vtiger_hrm_qcmcf`
   ADD PRIMARY KEY (`qcmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_rating`
+-- Indexes for table `vtiger_hrm_rating`
 --
 ALTER TABLE `vtiger_hrm_rating`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_ratingcf`
+-- Indexes for table `vtiger_hrm_ratingcf`
 --
 ALTER TABLE `vtiger_hrm_ratingcf`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_salaryreference`
+-- Indexes for table `vtiger_hrm_salaryreference`
 --
 ALTER TABLE `vtiger_hrm_salaryreference`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_setting`
+-- Indexes for table `vtiger_hrm_setting`
 --
 ALTER TABLE `vtiger_hrm_setting`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_settingdepartment`
+-- Indexes for table `vtiger_hrm_settingdepartment`
 --
 ALTER TABLE `vtiger_hrm_settingdepartment`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_settingdepartmentcf`
+-- Indexes for table `vtiger_hrm_settingdepartmentcf`
 --
 ALTER TABLE `vtiger_hrm_settingdepartmentcf`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_settingdepartmentcust`
+-- Indexes for table `vtiger_hrm_settingdepartmentcust`
 --
 ALTER TABLE `vtiger_hrm_settingdepartmentcust`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hrm_weight`
+-- Indexes for table `vtiger_hrm_weight`
 --
 ALTER TABLE `vtiger_hrm_weight`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_hr_salary_action`
+-- Indexes for table `vtiger_hr_salary_action`
 --
 ALTER TABLE `vtiger_hr_salary_action`
   ADD PRIMARY KEY (`hr_salary_actionid`);
 
 --
--- Chỉ mục cho bảng `vtiger_import_locks`
+-- Indexes for table `vtiger_import_locks`
 --
 ALTER TABLE `vtiger_import_locks`
   ADD PRIMARY KEY (`vtiger_import_lock_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_import_maps`
+-- Indexes for table `vtiger_import_maps`
 --
 ALTER TABLE `vtiger_import_maps`
   ADD PRIMARY KEY (`id`),
   ADD KEY `import_maps_assigned_user_id_module_name_deleted_idx` (`assigned_user_id`,`module`,`name`,`deleted`);
 
 --
--- Chỉ mục cho bảng `vtiger_import_queue`
+-- Indexes for table `vtiger_import_queue`
 --
 ALTER TABLE `vtiger_import_queue`
   ADD PRIMARY KEY (`importid`);
 
 --
--- Chỉ mục cho bảng `vtiger_industry`
+-- Indexes for table `vtiger_industry`
 --
 ALTER TABLE `vtiger_industry`
   ADD PRIMARY KEY (`industryid`),
   ADD UNIQUE KEY `industry_industry_idx` (`industry`);
 
 --
--- Chỉ mục cho bảng `vtiger_inventorycharges`
+-- Indexes for table `vtiger_inventorycharges`
 --
 ALTER TABLE `vtiger_inventorycharges`
   ADD PRIMARY KEY (`chargeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_inventorynotification`
+-- Indexes for table `vtiger_inventorynotification`
 --
 ALTER TABLE `vtiger_inventorynotification`
   ADD PRIMARY KEY (`notificationid`);
 
 --
--- Chỉ mục cho bảng `vtiger_inventoryproductrel`
+-- Indexes for table `vtiger_inventoryproductrel`
 --
 ALTER TABLE `vtiger_inventoryproductrel`
   ADD PRIMARY KEY (`lineitem_id`),
@@ -23686,32 +25767,32 @@ ALTER TABLE `vtiger_inventoryproductrel`
   ADD KEY `inventoryproductrel_productid_idx` (`productid`);
 
 --
--- Chỉ mục cho bảng `vtiger_inventoryshippingrel`
+-- Indexes for table `vtiger_inventoryshippingrel`
 --
 ALTER TABLE `vtiger_inventoryshippingrel`
   ADD KEY `inventoryishippingrel_id_idx` (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_inventorytaxinfo`
+-- Indexes for table `vtiger_inventorytaxinfo`
 --
 ALTER TABLE `vtiger_inventorytaxinfo`
   ADD PRIMARY KEY (`taxid`),
   ADD KEY `inventorytaxinfo_taxname_idx` (`taxname`);
 
 --
--- Chỉ mục cho bảng `vtiger_inventory_tandc`
+-- Indexes for table `vtiger_inventory_tandc`
 --
 ALTER TABLE `vtiger_inventory_tandc`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_invitees`
+-- Indexes for table `vtiger_invitees`
 --
 ALTER TABLE `vtiger_invitees`
   ADD PRIMARY KEY (`activityid`,`inviteeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_invoice`
+-- Indexes for table `vtiger_invoice`
 --
 ALTER TABLE `vtiger_invoice`
   ADD PRIMARY KEY (`invoiceid`),
@@ -23719,93 +25800,93 @@ ALTER TABLE `vtiger_invoice`
   ADD KEY `fk_2_vtiger_invoice` (`salesorderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_invoicebillads`
+-- Indexes for table `vtiger_invoicebillads`
 --
 ALTER TABLE `vtiger_invoicebillads`
   ADD PRIMARY KEY (`invoicebilladdressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_invoicecf`
+-- Indexes for table `vtiger_invoicecf`
 --
 ALTER TABLE `vtiger_invoicecf`
   ADD PRIMARY KEY (`invoiceid`);
 
 --
--- Chỉ mục cho bảng `vtiger_invoiceshipads`
+-- Indexes for table `vtiger_invoiceshipads`
 --
 ALTER TABLE `vtiger_invoiceshipads`
   ADD PRIMARY KEY (`invoiceshipaddressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_invoicestatus`
+-- Indexes for table `vtiger_invoicestatus`
 --
 ALTER TABLE `vtiger_invoicestatus`
   ADD PRIMARY KEY (`invoicestatusid`),
   ADD UNIQUE KEY `invoicestatus_invoiestatus_idx` (`invoicestatus`);
 
 --
--- Chỉ mục cho bảng `vtiger_invoicestatushistory`
+-- Indexes for table `vtiger_invoicestatushistory`
 --
 ALTER TABLE `vtiger_invoicestatushistory`
   ADD PRIMARY KEY (`historyid`),
   ADD KEY `invoicestatushistory_invoiceid_idx` (`invoiceid`);
 
 --
--- Chỉ mục cho bảng `vtiger_invoice_recurring_info`
+-- Indexes for table `vtiger_invoice_recurring_info`
 --
 ALTER TABLE `vtiger_invoice_recurring_info`
   ADD PRIMARY KEY (`salesorderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_jd_category`
+-- Indexes for table `vtiger_jd_category`
 --
 ALTER TABLE `vtiger_jd_category`
   ADD PRIMARY KEY (`jd_categoryid`);
 
 --
--- Chỉ mục cho bảng `vtiger_jd_classify`
+-- Indexes for table `vtiger_jd_classify`
 --
 ALTER TABLE `vtiger_jd_classify`
   ADD PRIMARY KEY (`jd_classifyid`);
 
 --
--- Chỉ mục cho bảng `vtiger_jd_status`
+-- Indexes for table `vtiger_jd_status`
 --
 ALTER TABLE `vtiger_jd_status`
   ADD PRIMARY KEY (`jd_statusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_kpi_department`
+-- Indexes for table `vtiger_kpi_department`
 --
 ALTER TABLE `vtiger_kpi_department`
   ADD PRIMARY KEY (`kpi_departmentid`);
 
 --
--- Chỉ mục cho bảng `vtiger_kpi_status`
+-- Indexes for table `vtiger_kpi_status`
 --
 ALTER TABLE `vtiger_kpi_status`
   ADD PRIMARY KEY (`kpi_statusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_kpi_type`
+-- Indexes for table `vtiger_kpi_type`
 --
 ALTER TABLE `vtiger_kpi_type`
   ADD PRIMARY KEY (`kpi_typeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_language`
+-- Indexes for table `vtiger_language`
 --
 ALTER TABLE `vtiger_language`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_leadaddress`
+-- Indexes for table `vtiger_leadaddress`
 --
 ALTER TABLE `vtiger_leadaddress`
   ADD PRIMARY KEY (`leadaddressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_leaddetails`
+-- Indexes for table `vtiger_leaddetails`
 --
 ALTER TABLE `vtiger_leaddetails`
   ADD PRIMARY KEY (`leadid`),
@@ -23813,140 +25894,140 @@ ALTER TABLE `vtiger_leaddetails`
   ADD KEY `email_idx` (`email`);
 
 --
--- Chỉ mục cho bảng `vtiger_leadscf`
+-- Indexes for table `vtiger_leadscf`
 --
 ALTER TABLE `vtiger_leadscf`
   ADD PRIMARY KEY (`leadid`);
 
 --
--- Chỉ mục cho bảng `vtiger_leadsource`
+-- Indexes for table `vtiger_leadsource`
 --
 ALTER TABLE `vtiger_leadsource`
   ADD PRIMARY KEY (`leadsourceid`);
 
 --
--- Chỉ mục cho bảng `vtiger_leadstage`
+-- Indexes for table `vtiger_leadstage`
 --
 ALTER TABLE `vtiger_leadstage`
   ADD PRIMARY KEY (`leadstageid`),
   ADD UNIQUE KEY `leadstage_stage_idx` (`stage`);
 
 --
--- Chỉ mục cho bảng `vtiger_leadstatus`
+-- Indexes for table `vtiger_leadstatus`
 --
 ALTER TABLE `vtiger_leadstatus`
   ADD PRIMARY KEY (`leadstatusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_leadsubdetails`
+-- Indexes for table `vtiger_leadsubdetails`
 --
 ALTER TABLE `vtiger_leadsubdetails`
   ADD PRIMARY KEY (`leadsubscriptionid`);
 
 --
--- Chỉ mục cho bảng `vtiger_lead_view`
+-- Indexes for table `vtiger_lead_view`
 --
 ALTER TABLE `vtiger_lead_view`
   ADD PRIMARY KEY (`lead_viewid`);
 
 --
--- Chỉ mục cho bảng `vtiger_links`
+-- Indexes for table `vtiger_links`
 --
 ALTER TABLE `vtiger_links`
   ADD PRIMARY KEY (`linkid`),
   ADD KEY `link_tabidtype_idx` (`tabid`,`linktype`);
 
 --
--- Chỉ mục cho bảng `vtiger_loginhistory`
+-- Indexes for table `vtiger_loginhistory`
 --
 ALTER TABLE `vtiger_loginhistory`
   ADD PRIMARY KEY (`login_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_mailer_queue`
+-- Indexes for table `vtiger_mailer_queue`
 --
 ALTER TABLE `vtiger_mailer_queue`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_mailmanager_mailattachments`
+-- Indexes for table `vtiger_mailmanager_mailattachments`
 --
 ALTER TABLE `vtiger_mailmanager_mailattachments`
   ADD KEY `userid_muid_idx` (`userid`,`muid`);
 
 --
--- Chỉ mục cho bảng `vtiger_mailmanager_mailrecord`
+-- Indexes for table `vtiger_mailmanager_mailrecord`
 --
 ALTER TABLE `vtiger_mailmanager_mailrecord`
   ADD KEY `userid_lastsavedtime_idx` (`userid`,`lastsavedtime`),
   ADD KEY `userid_muid_idx` (`userid`,`muid`);
 
 --
--- Chỉ mục cho bảng `vtiger_mailscanner`
+-- Indexes for table `vtiger_mailscanner`
 --
 ALTER TABLE `vtiger_mailscanner`
   ADD PRIMARY KEY (`scannerid`);
 
 --
--- Chỉ mục cho bảng `vtiger_mailscanner_actions`
+-- Indexes for table `vtiger_mailscanner_actions`
 --
 ALTER TABLE `vtiger_mailscanner_actions`
   ADD PRIMARY KEY (`actionid`);
 
 --
--- Chỉ mục cho bảng `vtiger_mailscanner_folders`
+-- Indexes for table `vtiger_mailscanner_folders`
 --
 ALTER TABLE `vtiger_mailscanner_folders`
   ADD PRIMARY KEY (`folderid`),
   ADD KEY `folderid_idx` (`folderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_mailscanner_ids`
+-- Indexes for table `vtiger_mailscanner_ids`
 --
 ALTER TABLE `vtiger_mailscanner_ids`
   ADD KEY `scanner_message_ids_idx` (`scannerid`,`messageid`),
   ADD KEY `messageids_crmid_idx` (`crmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_mailscanner_rules`
+-- Indexes for table `vtiger_mailscanner_rules`
 --
 ALTER TABLE `vtiger_mailscanner_rules`
   ADD PRIMARY KEY (`ruleid`);
 
 --
--- Chỉ mục cho bảng `vtiger_mail_accounts`
+-- Indexes for table `vtiger_mail_accounts`
 --
 ALTER TABLE `vtiger_mail_accounts`
   ADD PRIMARY KEY (`account_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_manufacturer`
+-- Indexes for table `vtiger_manufacturer`
 --
 ALTER TABLE `vtiger_manufacturer`
   ADD PRIMARY KEY (`manufacturerid`),
   ADD UNIQUE KEY `manufacturer_manufacturer_idx` (`manufacturer`);
 
 --
--- Chỉ mục cho bảng `vtiger_mobile_alerts`
+-- Indexes for table `vtiger_mobile_alerts`
 --
 ALTER TABLE `vtiger_mobile_alerts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_modcomments`
+-- Indexes for table `vtiger_modcomments`
 --
 ALTER TABLE `vtiger_modcomments`
   ADD KEY `relatedto_idx` (`related_to`),
   ADD KEY `fk_crmid_vtiger_modcomments` (`modcommentsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_modcommentscf`
+-- Indexes for table `vtiger_modcommentscf`
 --
 ALTER TABLE `vtiger_modcommentscf`
   ADD PRIMARY KEY (`modcommentsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_modentity_num`
+-- Indexes for table `vtiger_modentity_num`
 --
 ALTER TABLE `vtiger_modentity_num`
   ADD PRIMARY KEY (`num_id`),
@@ -23954,7 +26035,7 @@ ALTER TABLE `vtiger_modentity_num`
   ADD KEY `semodule_active_idx` (`semodule`,`active`);
 
 --
--- Chỉ mục cho bảng `vtiger_modtracker_basic`
+-- Indexes for table `vtiger_modtracker_basic`
 --
 ALTER TABLE `vtiger_modtracker_basic`
   ADD PRIMARY KEY (`id`),
@@ -23962,32 +26043,32 @@ ALTER TABLE `vtiger_modtracker_basic`
   ADD KEY `idx` (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_modtracker_detail`
+-- Indexes for table `vtiger_modtracker_detail`
 --
 ALTER TABLE `vtiger_modtracker_detail`
   ADD KEY `idx` (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_modtracker_relations`
+-- Indexes for table `vtiger_modtracker_relations`
 --
 ALTER TABLE `vtiger_modtracker_relations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_modtracker_tabs`
+-- Indexes for table `vtiger_modtracker_tabs`
 --
 ALTER TABLE `vtiger_modtracker_tabs`
   ADD PRIMARY KEY (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_module_dashboard_widgets`
+-- Indexes for table `vtiger_module_dashboard_widgets`
 --
 ALTER TABLE `vtiger_module_dashboard_widgets`
   ADD PRIMARY KEY (`id`),
   ADD KEY `dashboardtabid` (`dashboardtabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_notes`
+-- Indexes for table `vtiger_notes`
 --
 ALTER TABLE `vtiger_notes`
   ADD PRIMARY KEY (`notesid`),
@@ -23995,79 +26076,79 @@ ALTER TABLE `vtiger_notes`
   ADD KEY `notes_notesid_idx` (`notesid`);
 
 --
--- Chỉ mục cho bảng `vtiger_notescf`
+-- Indexes for table `vtiger_notescf`
 --
 ALTER TABLE `vtiger_notescf`
   ADD PRIMARY KEY (`notesid`);
 
 --
--- Chỉ mục cho bảng `vtiger_notificationscheduler`
+-- Indexes for table `vtiger_notificationscheduler`
 --
 ALTER TABLE `vtiger_notificationscheduler`
   ADD PRIMARY KEY (`schedulednotificationid`),
   ADD UNIQUE KEY `notificationscheduler_schedulednotificationname_idx` (`schedulednotificationname`);
 
 --
--- Chỉ mục cho bảng `vtiger_no_of_currency_decimals`
+-- Indexes for table `vtiger_no_of_currency_decimals`
 --
 ALTER TABLE `vtiger_no_of_currency_decimals`
   ADD PRIMARY KEY (`no_of_currency_decimalsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_opportunitystage`
+-- Indexes for table `vtiger_opportunitystage`
 --
 ALTER TABLE `vtiger_opportunitystage`
   ADD PRIMARY KEY (`potstageid`),
   ADD UNIQUE KEY `opportunitystage_stage_idx` (`stage`);
 
 --
--- Chỉ mục cho bảng `vtiger_opportunity_type`
+-- Indexes for table `vtiger_opportunity_type`
 --
 ALTER TABLE `vtiger_opportunity_type`
   ADD PRIMARY KEY (`opptypeid`),
   ADD UNIQUE KEY `opportunity_type_opportunity_type_idx` (`opportunity_type`);
 
 --
--- Chỉ mục cho bảng `vtiger_organizationdetails`
+-- Indexes for table `vtiger_organizationdetails`
 --
 ALTER TABLE `vtiger_organizationdetails`
   ADD PRIMARY KEY (`organization_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_org_share_action2tab`
+-- Indexes for table `vtiger_org_share_action2tab`
 --
 ALTER TABLE `vtiger_org_share_action2tab`
   ADD PRIMARY KEY (`share_action_id`,`tabid`),
   ADD KEY `fk_2_vtiger_org_share_action2tab` (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_org_share_action_mapping`
+-- Indexes for table `vtiger_org_share_action_mapping`
 --
 ALTER TABLE `vtiger_org_share_action_mapping`
   ADD PRIMARY KEY (`share_action_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_othereventduration`
+-- Indexes for table `vtiger_othereventduration`
 --
 ALTER TABLE `vtiger_othereventduration`
   ADD PRIMARY KEY (`othereventdurationid`);
 
 --
--- Chỉ mục cho bảng `vtiger_parenttab`
+-- Indexes for table `vtiger_parenttab`
 --
 ALTER TABLE `vtiger_parenttab`
   ADD PRIMARY KEY (`parenttabid`),
   ADD KEY `parenttab_parenttabid_parenttabl_label_visible_idx` (`parenttabid`,`parenttab_label`,`visible`);
 
 --
--- Chỉ mục cho bảng `vtiger_parenttabrel`
+-- Indexes for table `vtiger_parenttabrel`
 --
 ALTER TABLE `vtiger_parenttabrel`
   ADD KEY `parenttabrel_tabid_parenttabid_idx` (`tabid`,`parenttabid`),
   ADD KEY `fk_2_vtiger_parenttabrel` (`parenttabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_pbxmanager`
+-- Indexes for table `vtiger_pbxmanager`
 --
 ALTER TABLE `vtiger_pbxmanager`
   ADD PRIMARY KEY (`pbxmanagerid`),
@@ -24075,84 +26156,96 @@ ALTER TABLE `vtiger_pbxmanager`
   ADD KEY `index_pbxmanager_id` (`pbxmanagerid`);
 
 --
--- Chỉ mục cho bảng `vtiger_pbxmanagercf`
+-- Indexes for table `vtiger_pbxmanagercf`
 --
 ALTER TABLE `vtiger_pbxmanagercf`
   ADD PRIMARY KEY (`pbxmanagerid`);
 
 --
--- Chỉ mục cho bảng `vtiger_pbxmanager_gateway`
+-- Indexes for table `vtiger_pbxmanager_gateway`
 --
 ALTER TABLE `vtiger_pbxmanager_gateway`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_pbxmanager_phonelookup`
+-- Indexes for table `vtiger_pbxmanager_phonelookup`
 --
 ALTER TABLE `vtiger_pbxmanager_phonelookup`
   ADD UNIQUE KEY `unique_key` (`crmid`,`setype`,`fieldname`),
   ADD KEY `index_phone_number` (`fnumber`,`rnumber`);
 
 --
--- Chỉ mục cho bảng `vtiger_picklist`
+-- Indexes for table `vtiger_phuongtientruyenthong`
+--
+ALTER TABLE `vtiger_phuongtientruyenthong`
+  ADD PRIMARY KEY (`phuongtientruyenthongid`);
+
+--
+-- Indexes for table `vtiger_phuongtientruyenthongcf`
+--
+ALTER TABLE `vtiger_phuongtientruyenthongcf`
+  ADD PRIMARY KEY (`phuongtientruyenthongid`);
+
+--
+-- Indexes for table `vtiger_picklist`
 --
 ALTER TABLE `vtiger_picklist`
   ADD PRIMARY KEY (`picklistid`),
   ADD UNIQUE KEY `picklist_name_idx` (`name`);
 
 --
--- Chỉ mục cho bảng `vtiger_picklist_dependency`
+-- Indexes for table `vtiger_picklist_dependency`
 --
 ALTER TABLE `vtiger_picklist_dependency`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_picklist_transitions`
+-- Indexes for table `vtiger_picklist_transitions`
 --
 ALTER TABLE `vtiger_picklist_transitions`
   ADD PRIMARY KEY (`fieldname`);
 
 --
--- Chỉ mục cho bảng `vtiger_pobillads`
+-- Indexes for table `vtiger_pobillads`
 --
 ALTER TABLE `vtiger_pobillads`
   ADD PRIMARY KEY (`pobilladdressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_portal`
+-- Indexes for table `vtiger_portal`
 --
 ALTER TABLE `vtiger_portal`
   ADD PRIMARY KEY (`portalid`),
   ADD KEY `portal_portalname_idx` (`portalname`);
 
 --
--- Chỉ mục cho bảng `vtiger_portalinfo`
+-- Indexes for table `vtiger_portalinfo`
 --
 ALTER TABLE `vtiger_portalinfo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_poshipads`
+-- Indexes for table `vtiger_poshipads`
 --
 ALTER TABLE `vtiger_poshipads`
   ADD PRIMARY KEY (`poshipaddressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_postatus`
+-- Indexes for table `vtiger_postatus`
 --
 ALTER TABLE `vtiger_postatus`
   ADD PRIMARY KEY (`postatusid`),
   ADD UNIQUE KEY `postatus_postatus_idx` (`postatus`);
 
 --
--- Chỉ mục cho bảng `vtiger_postatushistory`
+-- Indexes for table `vtiger_postatushistory`
 --
 ALTER TABLE `vtiger_postatushistory`
   ADD PRIMARY KEY (`historyid`),
   ADD KEY `postatushistory_purchaseorderid_idx` (`purchaseorderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_potential`
+-- Indexes for table `vtiger_potential`
 --
 ALTER TABLE `vtiger_potential`
   ADD PRIMARY KEY (`potentialid`),
@@ -24161,32 +26254,32 @@ ALTER TABLE `vtiger_potential`
   ADD KEY `potentail_sales_stage_amount_idx` (`amount`,`sales_stage`);
 
 --
--- Chỉ mục cho bảng `vtiger_potentialscf`
+-- Indexes for table `vtiger_potentialscf`
 --
 ALTER TABLE `vtiger_potentialscf`
   ADD PRIMARY KEY (`potentialid`);
 
 --
--- Chỉ mục cho bảng `vtiger_potstagehistory`
+-- Indexes for table `vtiger_potstagehistory`
 --
 ALTER TABLE `vtiger_potstagehistory`
   ADD PRIMARY KEY (`historyid`),
   ADD KEY `potstagehistory_potentialid_idx` (`potentialid`);
 
 --
--- Chỉ mục cho bảng `vtiger_pricebook`
+-- Indexes for table `vtiger_pricebook`
 --
 ALTER TABLE `vtiger_pricebook`
   ADD PRIMARY KEY (`pricebookid`);
 
 --
--- Chỉ mục cho bảng `vtiger_pricebookcf`
+-- Indexes for table `vtiger_pricebookcf`
 --
 ALTER TABLE `vtiger_pricebookcf`
   ADD PRIMARY KEY (`pricebookid`);
 
 --
--- Chỉ mục cho bảng `vtiger_pricebookproductrel`
+-- Indexes for table `vtiger_pricebookproductrel`
 --
 ALTER TABLE `vtiger_pricebookproductrel`
   ADD PRIMARY KEY (`pricebookid`,`productid`),
@@ -24194,46 +26287,58 @@ ALTER TABLE `vtiger_pricebookproductrel`
   ADD KEY `pricebookproductrel_productid_idx` (`productid`);
 
 --
--- Chỉ mục cho bảng `vtiger_priority`
+-- Indexes for table `vtiger_priority`
 --
 ALTER TABLE `vtiger_priority`
   ADD PRIMARY KEY (`priorityid`),
   ADD UNIQUE KEY `priority_priority_idx` (`priority`);
 
 --
--- Chỉ mục cho bảng `vtiger_productcategory`
+-- Indexes for table `vtiger_problemcategory`
+--
+ALTER TABLE `vtiger_problemcategory`
+  ADD PRIMARY KEY (`problemcategoryid`);
+
+--
+-- Indexes for table `vtiger_problemcategorycf`
+--
+ALTER TABLE `vtiger_problemcategorycf`
+  ADD PRIMARY KEY (`problemcategoryid`);
+
+--
+-- Indexes for table `vtiger_productcategory`
 --
 ALTER TABLE `vtiger_productcategory`
   ADD PRIMARY KEY (`productcategoryid`),
   ADD UNIQUE KEY `productcategory_productcategory_idx` (`productcategory`);
 
 --
--- Chỉ mục cho bảng `vtiger_productcf`
+-- Indexes for table `vtiger_productcf`
 --
 ALTER TABLE `vtiger_productcf`
   ADD PRIMARY KEY (`productid`);
 
 --
--- Chỉ mục cho bảng `vtiger_products`
+-- Indexes for table `vtiger_products`
 --
 ALTER TABLE `vtiger_products`
   ADD PRIMARY KEY (`productid`);
 
 --
--- Chỉ mục cho bảng `vtiger_producttaxrel`
+-- Indexes for table `vtiger_producttaxrel`
 --
 ALTER TABLE `vtiger_producttaxrel`
   ADD KEY `producttaxrel_productid_idx` (`productid`),
   ADD KEY `producttaxrel_taxid_idx` (`taxid`);
 
 --
--- Chỉ mục cho bảng `vtiger_profile`
+-- Indexes for table `vtiger_profile`
 --
 ALTER TABLE `vtiger_profile`
   ADD PRIMARY KEY (`profileid`);
 
 --
--- Chỉ mục cho bảng `vtiger_profile2field`
+-- Indexes for table `vtiger_profile2field`
 --
 ALTER TABLE `vtiger_profile2field`
   ADD PRIMARY KEY (`profileid`,`fieldid`),
@@ -24242,130 +26347,130 @@ ALTER TABLE `vtiger_profile2field`
   ADD KEY `profile2field_visible_profileid_idx` (`visible`,`profileid`);
 
 --
--- Chỉ mục cho bảng `vtiger_profile2globalpermissions`
+-- Indexes for table `vtiger_profile2globalpermissions`
 --
 ALTER TABLE `vtiger_profile2globalpermissions`
   ADD PRIMARY KEY (`profileid`,`globalactionid`),
   ADD KEY `idx_profile2globalpermissions` (`profileid`,`globalactionid`);
 
 --
--- Chỉ mục cho bảng `vtiger_profile2standardpermissions`
+-- Indexes for table `vtiger_profile2standardpermissions`
 --
 ALTER TABLE `vtiger_profile2standardpermissions`
   ADD PRIMARY KEY (`profileid`,`tabid`,`operation`),
   ADD KEY `profile2standardpermissions_profileid_tabid_operation_idx` (`profileid`,`tabid`,`operation`);
 
 --
--- Chỉ mục cho bảng `vtiger_profile2tab`
+-- Indexes for table `vtiger_profile2tab`
 --
 ALTER TABLE `vtiger_profile2tab`
   ADD KEY `profile2tab_profileid_tabid_idx` (`profileid`,`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_profile2utility`
+-- Indexes for table `vtiger_profile2utility`
 --
 ALTER TABLE `vtiger_profile2utility`
   ADD PRIMARY KEY (`profileid`,`tabid`,`activityid`),
   ADD KEY `profile2utility_profileid_tabid_activityid_idx` (`profileid`,`tabid`,`activityid`);
 
 --
--- Chỉ mục cho bảng `vtiger_progress`
+-- Indexes for table `vtiger_progress`
 --
 ALTER TABLE `vtiger_progress`
   ADD PRIMARY KEY (`progressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_project`
+-- Indexes for table `vtiger_project`
 --
 ALTER TABLE `vtiger_project`
   ADD PRIMARY KEY (`projectid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projectcf`
+-- Indexes for table `vtiger_projectcf`
 --
 ALTER TABLE `vtiger_projectcf`
   ADD PRIMARY KEY (`projectid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projectmilestone`
+-- Indexes for table `vtiger_projectmilestone`
 --
 ALTER TABLE `vtiger_projectmilestone`
   ADD PRIMARY KEY (`projectmilestoneid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projectmilestonecf`
+-- Indexes for table `vtiger_projectmilestonecf`
 --
 ALTER TABLE `vtiger_projectmilestonecf`
   ADD PRIMARY KEY (`projectmilestoneid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projectmilestonetype`
+-- Indexes for table `vtiger_projectmilestonetype`
 --
 ALTER TABLE `vtiger_projectmilestonetype`
   ADD PRIMARY KEY (`projectmilestonetypeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projectpriority`
+-- Indexes for table `vtiger_projectpriority`
 --
 ALTER TABLE `vtiger_projectpriority`
   ADD PRIMARY KEY (`projectpriorityid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projectstatus`
+-- Indexes for table `vtiger_projectstatus`
 --
 ALTER TABLE `vtiger_projectstatus`
   ADD PRIMARY KEY (`projectstatusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projecttask`
+-- Indexes for table `vtiger_projecttask`
 --
 ALTER TABLE `vtiger_projecttask`
   ADD PRIMARY KEY (`projecttaskid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projecttaskcf`
+-- Indexes for table `vtiger_projecttaskcf`
 --
 ALTER TABLE `vtiger_projecttaskcf`
   ADD PRIMARY KEY (`projecttaskid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projecttaskpriority`
+-- Indexes for table `vtiger_projecttaskpriority`
 --
 ALTER TABLE `vtiger_projecttaskpriority`
   ADD PRIMARY KEY (`projecttaskpriorityid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projecttaskprogress`
+-- Indexes for table `vtiger_projecttaskprogress`
 --
 ALTER TABLE `vtiger_projecttaskprogress`
   ADD PRIMARY KEY (`projecttaskprogressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projecttaskstatus`
+-- Indexes for table `vtiger_projecttaskstatus`
 --
 ALTER TABLE `vtiger_projecttaskstatus`
   ADD PRIMARY KEY (`projecttaskstatusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projecttasktype`
+-- Indexes for table `vtiger_projecttasktype`
 --
 ALTER TABLE `vtiger_projecttasktype`
   ADD PRIMARY KEY (`projecttasktypeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_projecttask_status_color`
+-- Indexes for table `vtiger_projecttask_status_color`
 --
 ALTER TABLE `vtiger_projecttask_status_color`
   ADD UNIQUE KEY `status` (`status`);
 
 --
--- Chỉ mục cho bảng `vtiger_projecttype`
+-- Indexes for table `vtiger_projecttype`
 --
 ALTER TABLE `vtiger_projecttype`
   ADD PRIMARY KEY (`projecttypeid`);
 
 --
--- Chỉ mục cho bảng `vtiger_purchaseorder`
+-- Indexes for table `vtiger_purchaseorder`
 --
 ALTER TABLE `vtiger_purchaseorder`
   ADD PRIMARY KEY (`purchaseorderid`),
@@ -24374,31 +26479,31 @@ ALTER TABLE `vtiger_purchaseorder`
   ADD KEY `purchaseorder_contactid_idx` (`contactid`);
 
 --
--- Chỉ mục cho bảng `vtiger_purchaseordercf`
+-- Indexes for table `vtiger_purchaseordercf`
 --
 ALTER TABLE `vtiger_purchaseordercf`
   ADD PRIMARY KEY (`purchaseorderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_qcm_category`
+-- Indexes for table `vtiger_qcm_category`
 --
 ALTER TABLE `vtiger_qcm_category`
   ADD PRIMARY KEY (`qcm_categoryid`);
 
 --
--- Chỉ mục cho bảng `vtiger_qcm_classify`
+-- Indexes for table `vtiger_qcm_classify`
 --
 ALTER TABLE `vtiger_qcm_classify`
   ADD PRIMARY KEY (`qcm_classifyid`);
 
 --
--- Chỉ mục cho bảng `vtiger_qcm_status`
+-- Indexes for table `vtiger_qcm_status`
 --
 ALTER TABLE `vtiger_qcm_status`
   ADD PRIMARY KEY (`qcm_statusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_quotes`
+-- Indexes for table `vtiger_quotes`
 --
 ALTER TABLE `vtiger_quotes`
   ADD PRIMARY KEY (`quoteid`),
@@ -24407,85 +26512,85 @@ ALTER TABLE `vtiger_quotes`
   ADD KEY `quotes_contactid_idx` (`contactid`);
 
 --
--- Chỉ mục cho bảng `vtiger_quotesbillads`
+-- Indexes for table `vtiger_quotesbillads`
 --
 ALTER TABLE `vtiger_quotesbillads`
   ADD PRIMARY KEY (`quotebilladdressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_quotescf`
+-- Indexes for table `vtiger_quotescf`
 --
 ALTER TABLE `vtiger_quotescf`
   ADD PRIMARY KEY (`quoteid`);
 
 --
--- Chỉ mục cho bảng `vtiger_quotesshipads`
+-- Indexes for table `vtiger_quotesshipads`
 --
 ALTER TABLE `vtiger_quotesshipads`
   ADD PRIMARY KEY (`quoteshipaddressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_quotestage`
+-- Indexes for table `vtiger_quotestage`
 --
 ALTER TABLE `vtiger_quotestage`
   ADD PRIMARY KEY (`quotestageid`),
   ADD UNIQUE KEY `quotestage_quotestage_idx` (`quotestage`);
 
 --
--- Chỉ mục cho bảng `vtiger_quotestagehistory`
+-- Indexes for table `vtiger_quotestagehistory`
 --
 ALTER TABLE `vtiger_quotestagehistory`
   ADD PRIMARY KEY (`historyid`),
   ADD KEY `quotestagehistory_quoteid_idx` (`quoteid`);
 
 --
--- Chỉ mục cho bảng `vtiger_rating`
+-- Indexes for table `vtiger_rating`
 --
 ALTER TABLE `vtiger_rating`
   ADD PRIMARY KEY (`rating_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_recurringevents`
+-- Indexes for table `vtiger_recurringevents`
 --
 ALTER TABLE `vtiger_recurringevents`
   ADD PRIMARY KEY (`recurringid`),
   ADD KEY `fk_1_vtiger_recurringevents` (`activityid`);
 
 --
--- Chỉ mục cho bảng `vtiger_recurringtype`
+-- Indexes for table `vtiger_recurringtype`
 --
 ALTER TABLE `vtiger_recurringtype`
   ADD PRIMARY KEY (`recurringeventid`),
   ADD UNIQUE KEY `recurringtype_status_idx` (`recurringtype`);
 
 --
--- Chỉ mục cho bảng `vtiger_relatedlists`
+-- Indexes for table `vtiger_relatedlists`
 --
 ALTER TABLE `vtiger_relatedlists`
   ADD PRIMARY KEY (`relation_id`),
   ADD KEY `relatedlists_relation_id_idx` (`relation_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_relcriteria`
+-- Indexes for table `vtiger_relcriteria`
 --
 ALTER TABLE `vtiger_relcriteria`
   ADD PRIMARY KEY (`queryid`,`columnindex`),
   ADD KEY `relcriteria_queryid_idx` (`queryid`);
 
 --
--- Chỉ mục cho bảng `vtiger_relcriteria_grouping`
+-- Indexes for table `vtiger_relcriteria_grouping`
 --
 ALTER TABLE `vtiger_relcriteria_grouping`
   ADD PRIMARY KEY (`groupid`,`queryid`);
 
 --
--- Chỉ mục cho bảng `vtiger_reminder_interval`
+-- Indexes for table `vtiger_reminder_interval`
 --
 ALTER TABLE `vtiger_reminder_interval`
   ADD PRIMARY KEY (`reminder_intervalid`);
 
 --
--- Chỉ mục cho bảng `vtiger_report`
+-- Indexes for table `vtiger_report`
 --
 ALTER TABLE `vtiger_report`
   ADD PRIMARY KEY (`reportid`),
@@ -24493,86 +26598,86 @@ ALTER TABLE `vtiger_report`
   ADD KEY `report_folderid_idx` (`folderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_reportdatefilter`
+-- Indexes for table `vtiger_reportdatefilter`
 --
 ALTER TABLE `vtiger_reportdatefilter`
   ADD PRIMARY KEY (`datefilterid`),
   ADD KEY `reportdatefilter_datefilterid_idx` (`datefilterid`);
 
 --
--- Chỉ mục cho bảng `vtiger_reportfolder`
+-- Indexes for table `vtiger_reportfolder`
 --
 ALTER TABLE `vtiger_reportfolder`
   ADD PRIMARY KEY (`folderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_reportgroupbycolumn`
+-- Indexes for table `vtiger_reportgroupbycolumn`
 --
 ALTER TABLE `vtiger_reportgroupbycolumn`
   ADD KEY `fk_1_vtiger_reportgroupbycolumn` (`reportid`);
 
 --
--- Chỉ mục cho bảng `vtiger_reportmodules`
+-- Indexes for table `vtiger_reportmodules`
 --
 ALTER TABLE `vtiger_reportmodules`
   ADD PRIMARY KEY (`reportmodulesid`);
 
 --
--- Chỉ mục cho bảng `vtiger_reportsortcol`
+-- Indexes for table `vtiger_reportsortcol`
 --
 ALTER TABLE `vtiger_reportsortcol`
   ADD PRIMARY KEY (`sortcolid`,`reportid`),
   ADD KEY `fk_1_vtiger_reportsortcol` (`reportid`);
 
 --
--- Chỉ mục cho bảng `vtiger_reportsummary`
+-- Indexes for table `vtiger_reportsummary`
 --
 ALTER TABLE `vtiger_reportsummary`
   ADD PRIMARY KEY (`reportsummaryid`,`summarytype`,`columnname`),
   ADD KEY `reportsummary_reportsummaryid_idx` (`reportsummaryid`);
 
 --
--- Chỉ mục cho bảng `vtiger_reporttype`
+-- Indexes for table `vtiger_reporttype`
 --
 ALTER TABLE `vtiger_reporttype`
   ADD PRIMARY KEY (`reportid`);
 
 --
--- Chỉ mục cho bảng `vtiger_report_sharegroups`
+-- Indexes for table `vtiger_report_sharegroups`
 --
 ALTER TABLE `vtiger_report_sharegroups`
   ADD KEY `vtiger_report_sharegroups_ibfk_1` (`reportid`),
   ADD KEY `vtiger_groups_groupid_ibfk_1` (`groupid`);
 
 --
--- Chỉ mục cho bảng `vtiger_report_sharerole`
+-- Indexes for table `vtiger_report_sharerole`
 --
 ALTER TABLE `vtiger_report_sharerole`
   ADD KEY `vtiger_report_sharerole_ibfk_1` (`reportid`),
   ADD KEY `vtiger_role_roleid_ibfk_1` (`roleid`);
 
 --
--- Chỉ mục cho bảng `vtiger_report_sharers`
+-- Indexes for table `vtiger_report_sharers`
 --
 ALTER TABLE `vtiger_report_sharers`
   ADD KEY `vtiger_report_sharers_ibfk_1` (`reportid`),
   ADD KEY `vtiger_rolesd_rsid_ibfk_1` (`rsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_report_shareusers`
+-- Indexes for table `vtiger_report_shareusers`
 --
 ALTER TABLE `vtiger_report_shareusers`
   ADD KEY `vtiger_report_shareusers_ibfk_1` (`reportid`),
   ADD KEY `vtiger_users_userid_ibfk_1` (`userid`);
 
 --
--- Chỉ mục cho bảng `vtiger_role`
+-- Indexes for table `vtiger_role`
 --
 ALTER TABLE `vtiger_role`
   ADD PRIMARY KEY (`roleid`);
 
 --
--- Chỉ mục cho bảng `vtiger_role2picklist`
+-- Indexes for table `vtiger_role2picklist`
 --
 ALTER TABLE `vtiger_role2picklist`
   ADD PRIMARY KEY (`roleid`,`picklistvalueid`,`picklistid`),
@@ -24580,32 +26685,32 @@ ALTER TABLE `vtiger_role2picklist`
   ADD KEY `fk_2_vtiger_role2picklist` (`picklistid`);
 
 --
--- Chỉ mục cho bảng `vtiger_role2profile`
+-- Indexes for table `vtiger_role2profile`
 --
 ALTER TABLE `vtiger_role2profile`
   ADD PRIMARY KEY (`roleid`,`profileid`),
   ADD KEY `role2profile_roleid_profileid_idx` (`roleid`,`profileid`);
 
 --
--- Chỉ mục cho bảng `vtiger_rollupcomments_settings`
+-- Indexes for table `vtiger_rollupcomments_settings`
 --
 ALTER TABLE `vtiger_rollupcomments_settings`
   ADD PRIMARY KEY (`rollupid`);
 
 --
--- Chỉ mục cho bảng `vtiger_rowheight`
+-- Indexes for table `vtiger_rowheight`
 --
 ALTER TABLE `vtiger_rowheight`
   ADD PRIMARY KEY (`rowheightid`);
 
 --
--- Chỉ mục cho bảng `vtiger_rss`
+-- Indexes for table `vtiger_rss`
 --
 ALTER TABLE `vtiger_rss`
   ADD PRIMARY KEY (`rssid`);
 
 --
--- Chỉ mục cho bảng `vtiger_salesmanactivityrel`
+-- Indexes for table `vtiger_salesmanactivityrel`
 --
 ALTER TABLE `vtiger_salesmanactivityrel`
   ADD PRIMARY KEY (`smid`,`activityid`),
@@ -24613,7 +26718,7 @@ ALTER TABLE `vtiger_salesmanactivityrel`
   ADD KEY `salesmanactivityrel_smid_idx` (`smid`);
 
 --
--- Chỉ mục cho bảng `vtiger_salesmanattachmentsrel`
+-- Indexes for table `vtiger_salesmanattachmentsrel`
 --
 ALTER TABLE `vtiger_salesmanattachmentsrel`
   ADD PRIMARY KEY (`smid`,`attachmentsid`),
@@ -24621,7 +26726,7 @@ ALTER TABLE `vtiger_salesmanattachmentsrel`
   ADD KEY `salesmanattachmentsrel_attachmentsid_idx` (`attachmentsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_salesmanticketrel`
+-- Indexes for table `vtiger_salesmanticketrel`
 --
 ALTER TABLE `vtiger_salesmanticketrel`
   ADD PRIMARY KEY (`smid`,`id`),
@@ -24629,7 +26734,7 @@ ALTER TABLE `vtiger_salesmanticketrel`
   ADD KEY `salesmanticketrel_id_idx` (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_salesorder`
+-- Indexes for table `vtiger_salesorder`
 --
 ALTER TABLE `vtiger_salesorder`
   ADD PRIMARY KEY (`salesorderid`),
@@ -24637,31 +26742,31 @@ ALTER TABLE `vtiger_salesorder`
   ADD KEY `salesorder_contactid_idx` (`contactid`);
 
 --
--- Chỉ mục cho bảng `vtiger_salesordercf`
+-- Indexes for table `vtiger_salesordercf`
 --
 ALTER TABLE `vtiger_salesordercf`
   ADD PRIMARY KEY (`salesorderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_sales_stage`
+-- Indexes for table `vtiger_sales_stage`
 --
 ALTER TABLE `vtiger_sales_stage`
   ADD PRIMARY KEY (`sales_stage_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_salutationtype`
+-- Indexes for table `vtiger_salutationtype`
 --
 ALTER TABLE `vtiger_salutationtype`
   ADD PRIMARY KEY (`salutationid`);
 
 --
--- Chỉ mục cho bảng `vtiger_scheduled_reports`
+-- Indexes for table `vtiger_scheduled_reports`
 --
 ALTER TABLE `vtiger_scheduled_reports`
   ADD PRIMARY KEY (`reportid`);
 
 --
--- Chỉ mục cho bảng `vtiger_seactivityrel`
+-- Indexes for table `vtiger_seactivityrel`
 --
 ALTER TABLE `vtiger_seactivityrel`
   ADD PRIMARY KEY (`crmid`,`activityid`),
@@ -24669,7 +26774,7 @@ ALTER TABLE `vtiger_seactivityrel`
   ADD KEY `seactivityrel_crmid_idx` (`crmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_seattachmentsrel`
+-- Indexes for table `vtiger_seattachmentsrel`
 --
 ALTER TABLE `vtiger_seattachmentsrel`
   ADD PRIMARY KEY (`crmid`,`attachmentsid`),
@@ -24678,21 +26783,21 @@ ALTER TABLE `vtiger_seattachmentsrel`
   ADD KEY `seattachmentsrel_attachmentsid_crmid_idx` (`attachmentsid`,`crmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_selectcolumn`
+-- Indexes for table `vtiger_selectcolumn`
 --
 ALTER TABLE `vtiger_selectcolumn`
   ADD PRIMARY KEY (`queryid`,`columnindex`),
   ADD KEY `selectcolumn_queryid_idx` (`queryid`);
 
 --
--- Chỉ mục cho bảng `vtiger_selectquery`
+-- Indexes for table `vtiger_selectquery`
 --
 ALTER TABLE `vtiger_selectquery`
   ADD PRIMARY KEY (`queryid`),
   ADD KEY `selectquery_queryid_idx` (`queryid`);
 
 --
--- Chỉ mục cho bảng `vtiger_senotesrel`
+-- Indexes for table `vtiger_senotesrel`
 --
 ALTER TABLE `vtiger_senotesrel`
   ADD PRIMARY KEY (`crmid`,`notesid`),
@@ -24700,7 +26805,7 @@ ALTER TABLE `vtiger_senotesrel`
   ADD KEY `senotesrel_crmid_idx` (`crmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_seproductsrel`
+-- Indexes for table `vtiger_seproductsrel`
 --
 ALTER TABLE `vtiger_seproductsrel`
   ADD PRIMARY KEY (`crmid`,`productid`),
@@ -24708,43 +26813,43 @@ ALTER TABLE `vtiger_seproductsrel`
   ADD KEY `seproductrel_crmid_idx` (`crmid`);
 
 --
--- Chỉ mục cho bảng `vtiger_service`
+-- Indexes for table `vtiger_service`
 --
 ALTER TABLE `vtiger_service`
   ADD PRIMARY KEY (`serviceid`);
 
 --
--- Chỉ mục cho bảng `vtiger_servicecategory`
+-- Indexes for table `vtiger_servicecategory`
 --
 ALTER TABLE `vtiger_servicecategory`
   ADD PRIMARY KEY (`servicecategoryid`);
 
 --
--- Chỉ mục cho bảng `vtiger_servicecf`
+-- Indexes for table `vtiger_servicecf`
 --
 ALTER TABLE `vtiger_servicecf`
   ADD PRIMARY KEY (`serviceid`);
 
 --
--- Chỉ mục cho bảng `vtiger_servicecontracts`
+-- Indexes for table `vtiger_servicecontracts`
 --
 ALTER TABLE `vtiger_servicecontracts`
   ADD KEY `fk_crmid_vtiger_servicecontracts` (`servicecontractsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_servicecontractscf`
+-- Indexes for table `vtiger_servicecontractscf`
 --
 ALTER TABLE `vtiger_servicecontractscf`
   ADD PRIMARY KEY (`servicecontractsid`);
 
 --
--- Chỉ mục cho bảng `vtiger_service_usageunit`
+-- Indexes for table `vtiger_service_usageunit`
 --
 ALTER TABLE `vtiger_service_usageunit`
   ADD PRIMARY KEY (`service_usageunitid`);
 
 --
--- Chỉ mục cho bảng `vtiger_seticketsrel`
+-- Indexes for table `vtiger_seticketsrel`
 --
 ALTER TABLE `vtiger_seticketsrel`
   ADD PRIMARY KEY (`crmid`,`ticketid`),
@@ -24752,108 +26857,120 @@ ALTER TABLE `vtiger_seticketsrel`
   ADD KEY `seticketsrel_ticketid_idx` (`ticketid`);
 
 --
--- Chỉ mục cho bảng `vtiger_settings_blocks`
+-- Indexes for table `vtiger_settings_blocks`
 --
 ALTER TABLE `vtiger_settings_blocks`
   ADD PRIMARY KEY (`blockid`);
 
 --
--- Chỉ mục cho bảng `vtiger_settings_field`
+-- Indexes for table `vtiger_settings_field`
 --
 ALTER TABLE `vtiger_settings_field`
   ADD PRIMARY KEY (`fieldid`),
   ADD KEY `fk_1_vtiger_settings_field` (`blockid`);
 
 --
--- Chỉ mục cho bảng `vtiger_sharedcalendar`
+-- Indexes for table `vtiger_sharedcalendar`
 --
 ALTER TABLE `vtiger_sharedcalendar`
   ADD PRIMARY KEY (`userid`,`sharedid`);
 
 --
--- Chỉ mục cho bảng `vtiger_shippingtaxinfo`
+-- Indexes for table `vtiger_shippingtaxinfo`
 --
 ALTER TABLE `vtiger_shippingtaxinfo`
   ADD PRIMARY KEY (`taxid`),
   ADD KEY `shippingtaxinfo_taxname_idx` (`taxname`);
 
 --
--- Chỉ mục cho bảng `vtiger_shorturls`
+-- Indexes for table `vtiger_shorturls`
 --
 ALTER TABLE `vtiger_shorturls`
   ADD PRIMARY KEY (`id`),
   ADD KEY `uid` (`uid`);
 
 --
--- Chỉ mục cho bảng `vtiger_smsnotifier`
+-- Indexes for table `vtiger_smsnotifier`
 --
 ALTER TABLE `vtiger_smsnotifier`
   ADD PRIMARY KEY (`smsnotifierid`);
 
 --
--- Chỉ mục cho bảng `vtiger_smsnotifiercf`
+-- Indexes for table `vtiger_smsnotifiercf`
 --
 ALTER TABLE `vtiger_smsnotifiercf`
   ADD PRIMARY KEY (`smsnotifierid`);
 
 --
--- Chỉ mục cho bảng `vtiger_smsnotifier_servers`
+-- Indexes for table `vtiger_smsnotifier_servers`
 --
 ALTER TABLE `vtiger_smsnotifier_servers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_smsnotifier_status`
+-- Indexes for table `vtiger_smsnotifier_status`
 --
 ALTER TABLE `vtiger_smsnotifier_status`
   ADD PRIMARY KEY (`statusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_sobillads`
+-- Indexes for table `vtiger_sobillads`
 --
 ALTER TABLE `vtiger_sobillads`
   ADD PRIMARY KEY (`sobilladdressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_soshipads`
+-- Indexes for table `vtiger_soshipads`
 --
 ALTER TABLE `vtiger_soshipads`
   ADD PRIMARY KEY (`soshipaddressid`);
 
 --
--- Chỉ mục cho bảng `vtiger_sostatus`
+-- Indexes for table `vtiger_sostatus`
 --
 ALTER TABLE `vtiger_sostatus`
   ADD PRIMARY KEY (`sostatusid`),
   ADD UNIQUE KEY `sostatus_sostatus_idx` (`sostatus`);
 
 --
--- Chỉ mục cho bảng `vtiger_sostatushistory`
+-- Indexes for table `vtiger_sostatushistory`
 --
 ALTER TABLE `vtiger_sostatushistory`
   ADD PRIMARY KEY (`historyid`),
   ADD KEY `sostatushistory_salesorderid_idx` (`salesorderid`);
 
 --
--- Chỉ mục cho bảng `vtiger_start_hour`
+-- Indexes for table `vtiger_start_hour`
 --
 ALTER TABLE `vtiger_start_hour`
   ADD PRIMARY KEY (`start_hourid`);
 
 --
--- Chỉ mục cho bảng `vtiger_status`
+-- Indexes for table `vtiger_status`
 --
 ALTER TABLE `vtiger_status`
   ADD PRIMARY KEY (`statusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_systems`
+-- Indexes for table `vtiger_supportprotocol`
+--
+ALTER TABLE `vtiger_supportprotocol`
+  ADD PRIMARY KEY (`supportprotocolid`);
+
+--
+-- Indexes for table `vtiger_supportprotocolcf`
+--
+ALTER TABLE `vtiger_supportprotocolcf`
+  ADD PRIMARY KEY (`supportprotocolid`);
+
+--
+-- Indexes for table `vtiger_systems`
 --
 ALTER TABLE `vtiger_systems`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_tab`
+-- Indexes for table `vtiger_tab`
 --
 ALTER TABLE `vtiger_tab`
   ADD PRIMARY KEY (`tabid`),
@@ -24862,149 +26979,149 @@ ALTER TABLE `vtiger_tab`
   ADD KEY `tab_tabid_idx` (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tab_info`
+-- Indexes for table `vtiger_tab_info`
 --
 ALTER TABLE `vtiger_tab_info`
   ADD KEY `fk_1_vtiger_tab_info` (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_taskpriority`
+-- Indexes for table `vtiger_taskpriority`
 --
 ALTER TABLE `vtiger_taskpriority`
   ADD PRIMARY KEY (`taskpriorityid`);
 
 --
--- Chỉ mục cho bảng `vtiger_taskstatus`
+-- Indexes for table `vtiger_taskstatus`
 --
 ALTER TABLE `vtiger_taskstatus`
   ADD PRIMARY KEY (`taskstatusid`);
 
 --
--- Chỉ mục cho bảng `vtiger_taxclass`
+-- Indexes for table `vtiger_taxclass`
 --
 ALTER TABLE `vtiger_taxclass`
   ADD PRIMARY KEY (`taxclassid`),
   ADD UNIQUE KEY `taxclass_carrier_idx` (`taxclass`);
 
 --
--- Chỉ mục cho bảng `vtiger_taxregions`
+-- Indexes for table `vtiger_taxregions`
 --
 ALTER TABLE `vtiger_taxregions`
   ADD PRIMARY KEY (`regionid`);
 
 --
--- Chỉ mục cho bảng `vtiger_ticketcategories`
+-- Indexes for table `vtiger_ticketcategories`
 --
 ALTER TABLE `vtiger_ticketcategories`
   ADD PRIMARY KEY (`ticketcategories_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_ticketcf`
+-- Indexes for table `vtiger_ticketcf`
 --
 ALTER TABLE `vtiger_ticketcf`
   ADD PRIMARY KEY (`ticketid`);
 
 --
--- Chỉ mục cho bảng `vtiger_ticketcomments`
+-- Indexes for table `vtiger_ticketcomments`
 --
 ALTER TABLE `vtiger_ticketcomments`
   ADD PRIMARY KEY (`commentid`),
   ADD KEY `ticketcomments_ticketid_idx` (`ticketid`);
 
 --
--- Chỉ mục cho bảng `vtiger_ticketpriorities`
+-- Indexes for table `vtiger_ticketpriorities`
 --
 ALTER TABLE `vtiger_ticketpriorities`
   ADD PRIMARY KEY (`ticketpriorities_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_ticketseverities`
+-- Indexes for table `vtiger_ticketseverities`
 --
 ALTER TABLE `vtiger_ticketseverities`
   ADD PRIMARY KEY (`ticketseverities_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_ticketstatus`
+-- Indexes for table `vtiger_ticketstatus`
 --
 ALTER TABLE `vtiger_ticketstatus`
   ADD PRIMARY KEY (`ticketstatus_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_time_zone`
+-- Indexes for table `vtiger_time_zone`
 --
 ALTER TABLE `vtiger_time_zone`
   ADD PRIMARY KEY (`time_zoneid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tmp_read_group_rel_sharing_per`
+-- Indexes for table `vtiger_tmp_read_group_rel_sharing_per`
 --
 ALTER TABLE `vtiger_tmp_read_group_rel_sharing_per`
   ADD PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`sharedgroupid`),
   ADD KEY `tmp_read_group_rel_sharing_per_userid_sharedgroupid_tabid` (`userid`,`sharedgroupid`,`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tmp_read_group_sharing_per`
+-- Indexes for table `vtiger_tmp_read_group_sharing_per`
 --
 ALTER TABLE `vtiger_tmp_read_group_sharing_per`
   ADD PRIMARY KEY (`userid`,`tabid`,`sharedgroupid`),
   ADD KEY `tmp_read_group_sharing_per_userid_sharedgroupid_idx` (`userid`,`sharedgroupid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tmp_read_user_rel_sharing_per`
+-- Indexes for table `vtiger_tmp_read_user_rel_sharing_per`
 --
 ALTER TABLE `vtiger_tmp_read_user_rel_sharing_per`
   ADD PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`shareduserid`),
   ADD KEY `tmp_read_user_rel_sharing_per_userid_shared_reltabid_idx` (`userid`,`shareduserid`,`relatedtabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tmp_read_user_sharing_per`
+-- Indexes for table `vtiger_tmp_read_user_sharing_per`
 --
 ALTER TABLE `vtiger_tmp_read_user_sharing_per`
   ADD PRIMARY KEY (`userid`,`tabid`,`shareduserid`),
   ADD KEY `tmp_read_user_sharing_per_userid_shareduserid_idx` (`userid`,`shareduserid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tmp_write_group_rel_sharing_per`
+-- Indexes for table `vtiger_tmp_write_group_rel_sharing_per`
 --
 ALTER TABLE `vtiger_tmp_write_group_rel_sharing_per`
   ADD PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`sharedgroupid`),
   ADD KEY `tmp_write_group_rel_sharing_per_userid_sharedgroupid_tabid_idx` (`userid`,`sharedgroupid`,`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tmp_write_group_sharing_per`
+-- Indexes for table `vtiger_tmp_write_group_sharing_per`
 --
 ALTER TABLE `vtiger_tmp_write_group_sharing_per`
   ADD PRIMARY KEY (`userid`,`tabid`,`sharedgroupid`),
   ADD KEY `tmp_write_group_sharing_per_UK1` (`userid`,`sharedgroupid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tmp_write_user_rel_sharing_per`
+-- Indexes for table `vtiger_tmp_write_user_rel_sharing_per`
 --
 ALTER TABLE `vtiger_tmp_write_user_rel_sharing_per`
   ADD PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`shareduserid`),
   ADD KEY `tmp_write_user_rel_sharing_per_userid_sharduserid_tabid_idx` (`userid`,`shareduserid`,`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tmp_write_user_sharing_per`
+-- Indexes for table `vtiger_tmp_write_user_sharing_per`
 --
 ALTER TABLE `vtiger_tmp_write_user_sharing_per`
   ADD PRIMARY KEY (`userid`,`tabid`,`shareduserid`),
   ADD KEY `tmp_write_user_sharing_per_userid_shareduserid_idx` (`userid`,`shareduserid`);
 
 --
--- Chỉ mục cho bảng `vtiger_tracker`
+-- Indexes for table `vtiger_tracker`
 --
 ALTER TABLE `vtiger_tracker`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_tracking_unit`
+-- Indexes for table `vtiger_tracking_unit`
 --
 ALTER TABLE `vtiger_tracking_unit`
   ADD PRIMARY KEY (`tracking_unitid`);
 
 --
--- Chỉ mục cho bảng `vtiger_troubletickets`
+-- Indexes for table `vtiger_troubletickets`
 --
 ALTER TABLE `vtiger_troubletickets`
   ADD PRIMARY KEY (`ticketid`),
@@ -25012,27 +27129,27 @@ ALTER TABLE `vtiger_troubletickets`
   ADD KEY `troubletickets_status_idx` (`status`);
 
 --
--- Chỉ mục cho bảng `vtiger_usageunit`
+-- Indexes for table `vtiger_usageunit`
 --
 ALTER TABLE `vtiger_usageunit`
   ADD PRIMARY KEY (`usageunitid`),
   ADD UNIQUE KEY `usageunit_usageunit_idx` (`usageunit`);
 
 --
--- Chỉ mục cho bảng `vtiger_user2mergefields`
+-- Indexes for table `vtiger_user2mergefields`
 --
 ALTER TABLE `vtiger_user2mergefields`
   ADD KEY `userid_tabid_idx` (`userid`,`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_user2role`
+-- Indexes for table `vtiger_user2role`
 --
 ALTER TABLE `vtiger_user2role`
   ADD PRIMARY KEY (`userid`),
   ADD KEY `user2role_roleid_idx` (`roleid`);
 
 --
--- Chỉ mục cho bảng `vtiger_users`
+-- Indexes for table `vtiger_users`
 --
 ALTER TABLE `vtiger_users`
   ADD PRIMARY KEY (`id`),
@@ -25040,7 +27157,7 @@ ALTER TABLE `vtiger_users`
   ADD KEY `user_user_password_idx` (`user_password`);
 
 --
--- Chỉ mục cho bảng `vtiger_users2group`
+-- Indexes for table `vtiger_users2group`
 --
 ALTER TABLE `vtiger_users2group`
   ADD PRIMARY KEY (`groupid`,`userid`),
@@ -25048,33 +27165,33 @@ ALTER TABLE `vtiger_users2group`
   ADD KEY `fk_2_vtiger_users2group` (`userid`);
 
 --
--- Chỉ mục cho bảng `vtiger_users_last_import`
+-- Indexes for table `vtiger_users_last_import`
 --
 ALTER TABLE `vtiger_users_last_import`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_user_id` (`assigned_user_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_user_module_preferences`
+-- Indexes for table `vtiger_user_module_preferences`
 --
 ALTER TABLE `vtiger_user_module_preferences`
   ADD PRIMARY KEY (`userid`,`tabid`),
   ADD KEY `fk_2_vtiger_user_module_preferences` (`tabid`);
 
 --
--- Chỉ mục cho bảng `vtiger_vendor`
+-- Indexes for table `vtiger_vendor`
 --
 ALTER TABLE `vtiger_vendor`
   ADD PRIMARY KEY (`vendorid`);
 
 --
--- Chỉ mục cho bảng `vtiger_vendorcf`
+-- Indexes for table `vtiger_vendorcf`
 --
 ALTER TABLE `vtiger_vendorcf`
   ADD PRIMARY KEY (`vendorid`);
 
 --
--- Chỉ mục cho bảng `vtiger_vendorcontactrel`
+-- Indexes for table `vtiger_vendorcontactrel`
 --
 ALTER TABLE `vtiger_vendorcontactrel`
   ADD PRIMARY KEY (`vendorid`,`contactid`),
@@ -25082,20 +27199,20 @@ ALTER TABLE `vtiger_vendorcontactrel`
   ADD KEY `vendorcontactrel_contact_idx` (`contactid`);
 
 --
--- Chỉ mục cho bảng `vtiger_version`
+-- Indexes for table `vtiger_version`
 --
 ALTER TABLE `vtiger_version`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_visibility`
+-- Indexes for table `vtiger_visibility`
 --
 ALTER TABLE `vtiger_visibility`
   ADD PRIMARY KEY (`visibilityid`),
   ADD UNIQUE KEY `visibility_visibility_idx` (`visibility`);
 
 --
--- Chỉ mục cho bảng `vtiger_webforms`
+-- Indexes for table `vtiger_webforms`
 --
 ALTER TABLE `vtiger_webforms`
   ADD PRIMARY KEY (`id`),
@@ -25104,7 +27221,7 @@ ALTER TABLE `vtiger_webforms`
   ADD KEY `webforms_webforms_id_idx` (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_webforms_field`
+-- Indexes for table `vtiger_webforms_field`
 --
 ALTER TABLE `vtiger_webforms_field`
   ADD PRIMARY KEY (`id`),
@@ -25113,2147 +27230,200 @@ ALTER TABLE `vtiger_webforms_field`
   ADD KEY `fk_2_vtiger_webforms_field` (`fieldname`);
 
 --
--- Chỉ mục cho bảng `vtiger_webform_file_fields`
+-- Indexes for table `vtiger_webform_file_fields`
 --
 ALTER TABLE `vtiger_webform_file_fields`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_vtiger_webforms` (`webformid`);
 
 --
--- Chỉ mục cho bảng `vtiger_wordtemplates`
+-- Indexes for table `vtiger_wordtemplates`
 --
 ALTER TABLE `vtiger_wordtemplates`
   ADD PRIMARY KEY (`templateid`);
 
 --
--- Chỉ mục cho bảng `vtiger_wsapp`
+-- Indexes for table `vtiger_wsapp`
 --
 ALTER TABLE `vtiger_wsapp`
   ADD PRIMARY KEY (`appid`);
 
 --
--- Chỉ mục cho bảng `vtiger_wsapp_logs_basic`
+-- Indexes for table `vtiger_wsapp_logs_basic`
 --
 ALTER TABLE `vtiger_wsapp_logs_basic`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_wsapp_logs_details`
+-- Indexes for table `vtiger_wsapp_logs_details`
 --
 ALTER TABLE `vtiger_wsapp_logs_details`
   ADD KEY `vtiger_wsapp_logs_basic_ibfk_1` (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_wsapp_recordmapping`
+-- Indexes for table `vtiger_wsapp_recordmapping`
 --
 ALTER TABLE `vtiger_wsapp_recordmapping`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_wsapp_sync_state`
+-- Indexes for table `vtiger_wsapp_sync_state`
 --
 ALTER TABLE `vtiger_wsapp_sync_state`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_entity`
+-- Indexes for table `vtiger_ws_entity`
 --
 ALTER TABLE `vtiger_ws_entity`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_entity_fieldtype`
+-- Indexes for table `vtiger_ws_entity_fieldtype`
 --
 ALTER TABLE `vtiger_ws_entity_fieldtype`
   ADD PRIMARY KEY (`fieldtypeid`),
   ADD UNIQUE KEY `vtiger_idx_1_tablename_fieldname` (`table_name`,`field_name`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_entity_name`
+-- Indexes for table `vtiger_ws_entity_name`
 --
 ALTER TABLE `vtiger_ws_entity_name`
   ADD PRIMARY KEY (`entity_id`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_entity_referencetype`
+-- Indexes for table `vtiger_ws_entity_referencetype`
 --
 ALTER TABLE `vtiger_ws_entity_referencetype`
   ADD PRIMARY KEY (`fieldtypeid`,`type`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_entity_tables`
+-- Indexes for table `vtiger_ws_entity_tables`
 --
 ALTER TABLE `vtiger_ws_entity_tables`
   ADD PRIMARY KEY (`webservice_entity_id`,`table_name`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_fieldinfo`
+-- Indexes for table `vtiger_ws_fieldinfo`
 --
 ALTER TABLE `vtiger_ws_fieldinfo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_fieldtype`
+-- Indexes for table `vtiger_ws_fieldtype`
 --
 ALTER TABLE `vtiger_ws_fieldtype`
   ADD PRIMARY KEY (`fieldtypeid`),
   ADD UNIQUE KEY `uitype_idx` (`uitype`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_operation`
+-- Indexes for table `vtiger_ws_operation`
 --
 ALTER TABLE `vtiger_ws_operation`
   ADD PRIMARY KEY (`operationid`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_operation_parameters`
+-- Indexes for table `vtiger_ws_operation_parameters`
 --
 ALTER TABLE `vtiger_ws_operation_parameters`
   ADD PRIMARY KEY (`operationid`,`name`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_referencetype`
+-- Indexes for table `vtiger_ws_referencetype`
 --
 ALTER TABLE `vtiger_ws_referencetype`
   ADD PRIMARY KEY (`fieldtypeid`,`type`);
 
 --
--- Chỉ mục cho bảng `vtiger_ws_userauthtoken`
+-- Indexes for table `vtiger_ws_userauthtoken`
 --
 ALTER TABLE `vtiger_ws_userauthtoken`
   ADD PRIMARY KEY (`userid`,`expiretime`),
   ADD UNIQUE KEY `userid_idx` (`userid`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `com_vtiger_workflows`
+-- AUTO_INCREMENT for table `com_vtiger_workflows`
 --
 ALTER TABLE `com_vtiger_workflows`
   MODIFY `workflow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT cho bảng `com_vtiger_workflowtasks`
+-- AUTO_INCREMENT for table `com_vtiger_workflowtasks`
 --
 ALTER TABLE `com_vtiger_workflowtasks`
   MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT cho bảng `com_vtiger_workflowtemplates`
+-- AUTO_INCREMENT for table `com_vtiger_workflowtemplates`
 --
 ALTER TABLE `com_vtiger_workflowtemplates`
   MODIFY `template_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `hrm_employee_history`
+-- AUTO_INCREMENT for table `hrm_employee_history`
 --
 ALTER TABLE `hrm_employee_history`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `vtiger_accountrating`
+-- AUTO_INCREMENT for table `vtiger_accountrating`
 --
 ALTER TABLE `vtiger_accountrating`
   MODIFY `accountratingid` int(19) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `vtiger_accounttype`
+-- AUTO_INCREMENT for table `vtiger_cf_1121`
 --
-ALTER TABLE `vtiger_accounttype`
-  MODIFY `accounttypeid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `vtiger_cf_1121`
+  MODIFY `cf_1121id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `vtiger_activitytype`
+-- AUTO_INCREMENT for table `vtiger_cf_1137`
 --
-ALTER TABLE `vtiger_activitytype`
-  MODIFY `activitytypeid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `vtiger_cf_1137`
+  MODIFY `cf_1137id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `vtiger_activity_reminder_popup`
+-- AUTO_INCREMENT for table `vtiger_cf_1141`
 --
-ALTER TABLE `vtiger_activity_reminder_popup`
-  MODIFY `reminderid` int(19) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `vtiger_cf_1141`
+  MODIFY `cf_1141id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `vtiger_activity_view`
+-- AUTO_INCREMENT for table `vtiger_cf_1143`
 --
-ALTER TABLE `vtiger_activity_view`
-  MODIFY `activity_viewid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `vtiger_cf_1143`
+  MODIFY `cf_1143id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT cho bảng `vtiger_assetstatus`
+-- AUTO_INCREMENT for table `vtiger_cf_1145`
 --
-ALTER TABLE `vtiger_assetstatus`
-  MODIFY `assetstatusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `vtiger_cf_1145`
+  MODIFY `cf_1145id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `vtiger_attachmentsfolder`
+-- AUTO_INCREMENT for table `vtiger_cf_1147`
 --
-ALTER TABLE `vtiger_attachmentsfolder`
-  MODIFY `folderid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `vtiger_cf_1147`
+  MODIFY `cf_1147id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `vtiger_calendarsharedtype`
+-- AUTO_INCREMENT for table `vtiger_cf_1161`
 --
-ALTER TABLE `vtiger_calendarsharedtype`
-  MODIFY `calendarsharedtypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `vtiger_cf_1161`
+  MODIFY `cf_1161id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `vtiger_callduration`
+-- AUTO_INCREMENT for table `vtiger_cf_1221`
 --
-ALTER TABLE `vtiger_callduration`
-  MODIFY `calldurationid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `vtiger_cf_1221`
+  MODIFY `cf_1221id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
 
---
--- AUTO_INCREMENT cho bảng `vtiger_campaignstatus`
---
-ALTER TABLE `vtiger_campaignstatus`
-  MODIFY `campaignstatusid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_campaigntype`
---
-ALTER TABLE `vtiger_campaigntype`
-  MODIFY `campaigntypeid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_candidate_action`
---
-ALTER TABLE `vtiger_candidate_action`
-  MODIFY `candidate_actionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_candidate_resource_cv`
---
-ALTER TABLE `vtiger_candidate_resource_cv`
-  MODIFY `candidate_resource_cvid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_carrier`
---
-ALTER TABLE `vtiger_carrier`
-  MODIFY `carrierid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_contract_priority`
---
-ALTER TABLE `vtiger_contract_priority`
-  MODIFY `contract_priorityid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_contract_status`
---
-ALTER TABLE `vtiger_contract_status`
-  MODIFY `contract_statusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_contract_type`
---
-ALTER TABLE `vtiger_contract_type`
-  MODIFY `contract_typeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_convertleadmapping`
---
-ALTER TABLE `vtiger_convertleadmapping`
-  MODIFY `cfmid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_convertpotentialmapping`
---
-ALTER TABLE `vtiger_convertpotentialmapping`
-  MODIFY `cfmid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_cron_task`
---
-ALTER TABLE `vtiger_cron_task`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_currencies`
---
-ALTER TABLE `vtiger_currencies`
-  MODIFY `currencyid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_currency`
---
-ALTER TABLE `vtiger_currency`
-  MODIFY `currencyid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_currency_decimal_separator`
---
-ALTER TABLE `vtiger_currency_decimal_separator`
-  MODIFY `currency_decimal_separatorid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_currency_grouping_pattern`
---
-ALTER TABLE `vtiger_currency_grouping_pattern`
-  MODIFY `currency_grouping_patternid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_currency_grouping_separator`
---
-ALTER TABLE `vtiger_currency_grouping_separator`
-  MODIFY `currency_grouping_separatorid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_currency_info`
---
-ALTER TABLE `vtiger_currency_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_currency_symbol_placement`
---
-ALTER TABLE `vtiger_currency_symbol_placement`
-  MODIFY `currency_symbol_placementid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_dashboard_tabs`
---
-ALTER TABLE `vtiger_dashboard_tabs`
-  MODIFY `id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_date_format`
---
-ALTER TABLE `vtiger_date_format`
-  MODIFY `date_formatid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_dayoftheweek`
---
-ALTER TABLE `vtiger_dayoftheweek`
-  MODIFY `dayoftheweekid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_defaultactivitytype`
---
-ALTER TABLE `vtiger_defaultactivitytype`
-  MODIFY `defaultactivitytypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_defaultcalendarview`
---
-ALTER TABLE `vtiger_defaultcalendarview`
-  MODIFY `defaultcalendarviewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_defaulteventstatus`
---
-ALTER TABLE `vtiger_defaulteventstatus`
-  MODIFY `defaulteventstatusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_default_record_view`
---
-ALTER TABLE `vtiger_default_record_view`
-  MODIFY `default_record_viewid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_def_org_share`
---
-ALTER TABLE `vtiger_def_org_share`
-  MODIFY `ruleid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_durationhrs`
---
-ALTER TABLE `vtiger_durationhrs`
-  MODIFY `hrsid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_durationmins`
---
-ALTER TABLE `vtiger_durationmins`
-  MODIFY `minsid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_duration_minutes`
---
-ALTER TABLE `vtiger_duration_minutes`
-  MODIFY `minutesid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_emails_recipientprefs`
---
-ALTER TABLE `vtiger_emails_recipientprefs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_emailtemplates`
---
-ALTER TABLE `vtiger_emailtemplates`
-  MODIFY `templateid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_employ_gender`
---
-ALTER TABLE `vtiger_employ_gender`
-  MODIFY `employ_genderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_employ_marital_status`
---
-ALTER TABLE `vtiger_employ_marital_status`
-  MODIFY `employ_marital_statusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_eventhandlers`
---
-ALTER TABLE `vtiger_eventhandlers`
-  MODIFY `eventhandler_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_eventhandler_module`
---
-ALTER TABLE `vtiger_eventhandler_module`
-  MODIFY `eventhandler_module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_eventstatus`
---
-ALTER TABLE `vtiger_eventstatus`
-  MODIFY `eventstatusid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_expectedresponse`
---
-ALTER TABLE `vtiger_expectedresponse`
-  MODIFY `expectedresponseid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_extnstore_users`
---
-ALTER TABLE `vtiger_extnstore_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_faq`
---
-ALTER TABLE `vtiger_faq`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_faqcategories`
---
-ALTER TABLE `vtiger_faqcategories`
-  MODIFY `faqcategories_id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_faqcomments`
---
-ALTER TABLE `vtiger_faqcomments`
-  MODIFY `commentid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_faqstatus`
---
-ALTER TABLE `vtiger_faqstatus`
-  MODIFY `faqstatus_id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_field`
---
-ALTER TABLE `vtiger_field`
-  MODIFY `fieldid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1025;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_glacct`
---
-ALTER TABLE `vtiger_glacct`
-  MODIFY `glacctid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_hour_format`
---
-ALTER TABLE `vtiger_hour_format`
-  MODIFY `hour_formatid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_hr`
---
-ALTER TABLE `vtiger_hr`
-  MODIFY `hrid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_hrm_jd_tasks`
---
-ALTER TABLE `vtiger_hrm_jd_tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_hrm_leave_action`
---
-ALTER TABLE `vtiger_hrm_leave_action`
-  MODIFY `hrm_leave_actionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_hrm_leave_type`
---
-ALTER TABLE `vtiger_hrm_leave_type`
-  MODIFY `hrm_leave_typeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_hrm_settingdepartmentcust`
---
-ALTER TABLE `vtiger_hrm_settingdepartmentcust`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_hr_salary_action`
---
-ALTER TABLE `vtiger_hr_salary_action`
-  MODIFY `hr_salary_actionid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_import_maps`
---
-ALTER TABLE `vtiger_import_maps`
-  MODIFY `id` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_industry`
---
-ALTER TABLE `vtiger_industry`
-  MODIFY `industryid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_inventorycharges`
---
-ALTER TABLE `vtiger_inventorycharges`
-  MODIFY `chargeid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_inventorynotification`
---
-ALTER TABLE `vtiger_inventorynotification`
-  MODIFY `notificationid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_inventoryproductrel`
---
-ALTER TABLE `vtiger_inventoryproductrel`
-  MODIFY `lineitem_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_invoicestatus`
---
-ALTER TABLE `vtiger_invoicestatus`
-  MODIFY `invoicestatusid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_invoicestatushistory`
---
-ALTER TABLE `vtiger_invoicestatushistory`
-  MODIFY `historyid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_jd_category`
---
-ALTER TABLE `vtiger_jd_category`
-  MODIFY `jd_categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_jd_classify`
---
-ALTER TABLE `vtiger_jd_classify`
-  MODIFY `jd_classifyid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_jd_status`
---
-ALTER TABLE `vtiger_jd_status`
-  MODIFY `jd_statusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_kpi_department`
---
-ALTER TABLE `vtiger_kpi_department`
-  MODIFY `kpi_departmentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_kpi_status`
---
-ALTER TABLE `vtiger_kpi_status`
-  MODIFY `kpi_statusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_kpi_type`
---
-ALTER TABLE `vtiger_kpi_type`
-  MODIFY `kpi_typeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_language`
---
-ALTER TABLE `vtiger_language`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_leadsource`
---
-ALTER TABLE `vtiger_leadsource`
-  MODIFY `leadsourceid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_leadstage`
---
-ALTER TABLE `vtiger_leadstage`
-  MODIFY `leadstageid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_leadstatus`
---
-ALTER TABLE `vtiger_leadstatus`
-  MODIFY `leadstatusid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_lead_view`
---
-ALTER TABLE `vtiger_lead_view`
-  MODIFY `lead_viewid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_loginhistory`
---
-ALTER TABLE `vtiger_loginhistory`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_mailscanner`
---
-ALTER TABLE `vtiger_mailscanner`
-  MODIFY `scannerid` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_mailscanner_actions`
---
-ALTER TABLE `vtiger_mailscanner_actions`
-  MODIFY `actionid` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_mailscanner_folders`
---
-ALTER TABLE `vtiger_mailscanner_folders`
-  MODIFY `folderid` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_mailscanner_rules`
---
-ALTER TABLE `vtiger_mailscanner_rules`
-  MODIFY `ruleid` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_manufacturer`
---
-ALTER TABLE `vtiger_manufacturer`
-  MODIFY `manufacturerid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_mobile_alerts`
---
-ALTER TABLE `vtiger_mobile_alerts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_module_dashboard_widgets`
---
-ALTER TABLE `vtiger_module_dashboard_widgets`
-  MODIFY `id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_notificationscheduler`
---
-ALTER TABLE `vtiger_notificationscheduler`
-  MODIFY `schedulednotificationid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_no_of_currency_decimals`
---
-ALTER TABLE `vtiger_no_of_currency_decimals`
-  MODIFY `no_of_currency_decimalsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_opportunitystage`
---
-ALTER TABLE `vtiger_opportunitystage`
-  MODIFY `potstageid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_opportunity_type`
---
-ALTER TABLE `vtiger_opportunity_type`
-  MODIFY `opptypeid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_othereventduration`
---
-ALTER TABLE `vtiger_othereventduration`
-  MODIFY `othereventdurationid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_pbxmanager`
---
-ALTER TABLE `vtiger_pbxmanager`
-  MODIFY `pbxmanagerid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_pbxmanager_gateway`
---
-ALTER TABLE `vtiger_pbxmanager_gateway`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_picklist`
---
-ALTER TABLE `vtiger_picklist`
-  MODIFY `picklistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_postatus`
---
-ALTER TABLE `vtiger_postatus`
-  MODIFY `postatusid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_postatushistory`
---
-ALTER TABLE `vtiger_postatushistory`
-  MODIFY `historyid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_potstagehistory`
---
-ALTER TABLE `vtiger_potstagehistory`
-  MODIFY `historyid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_priority`
---
-ALTER TABLE `vtiger_priority`
-  MODIFY `priorityid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_productcategory`
---
-ALTER TABLE `vtiger_productcategory`
-  MODIFY `productcategoryid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_profile`
---
-ALTER TABLE `vtiger_profile`
-  MODIFY `profileid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_progress`
---
-ALTER TABLE `vtiger_progress`
-  MODIFY `progressid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_projectmilestonetype`
---
-ALTER TABLE `vtiger_projectmilestonetype`
-  MODIFY `projectmilestonetypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_projectpriority`
---
-ALTER TABLE `vtiger_projectpriority`
-  MODIFY `projectpriorityid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_projectstatus`
---
-ALTER TABLE `vtiger_projectstatus`
-  MODIFY `projectstatusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_projecttaskpriority`
---
-ALTER TABLE `vtiger_projecttaskpriority`
-  MODIFY `projecttaskpriorityid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_projecttaskprogress`
---
-ALTER TABLE `vtiger_projecttaskprogress`
-  MODIFY `projecttaskprogressid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_projecttaskstatus`
---
-ALTER TABLE `vtiger_projecttaskstatus`
-  MODIFY `projecttaskstatusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_projecttasktype`
---
-ALTER TABLE `vtiger_projecttasktype`
-  MODIFY `projecttasktypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_projecttype`
---
-ALTER TABLE `vtiger_projecttype`
-  MODIFY `projecttypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_qcm_category`
---
-ALTER TABLE `vtiger_qcm_category`
-  MODIFY `qcm_categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_qcm_classify`
---
-ALTER TABLE `vtiger_qcm_classify`
-  MODIFY `qcm_classifyid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_qcm_status`
---
-ALTER TABLE `vtiger_qcm_status`
-  MODIFY `qcm_statusid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_quotestage`
---
-ALTER TABLE `vtiger_quotestage`
-  MODIFY `quotestageid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_quotestagehistory`
---
-ALTER TABLE `vtiger_quotestagehistory`
-  MODIFY `historyid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_rating`
---
-ALTER TABLE `vtiger_rating`
-  MODIFY `rating_id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_recurringevents`
---
-ALTER TABLE `vtiger_recurringevents`
-  MODIFY `recurringid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_recurringtype`
---
-ALTER TABLE `vtiger_recurringtype`
-  MODIFY `recurringeventid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_reminder_interval`
---
-ALTER TABLE `vtiger_reminder_interval`
-  MODIFY `reminder_intervalid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_reportfolder`
---
-ALTER TABLE `vtiger_reportfolder`
-  MODIFY `folderid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_rollupcomments_settings`
---
-ALTER TABLE `vtiger_rollupcomments_settings`
-  MODIFY `rollupid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_rowheight`
---
-ALTER TABLE `vtiger_rowheight`
-  MODIFY `rowheightid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_sales_stage`
---
-ALTER TABLE `vtiger_sales_stage`
-  MODIFY `sales_stage_id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_salutationtype`
---
-ALTER TABLE `vtiger_salutationtype`
-  MODIFY `salutationid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_servicecategory`
---
-ALTER TABLE `vtiger_servicecategory`
-  MODIFY `servicecategoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_service_usageunit`
---
-ALTER TABLE `vtiger_service_usageunit`
-  MODIFY `service_usageunitid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_shorturls`
---
-ALTER TABLE `vtiger_shorturls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_smsnotifier_servers`
---
-ALTER TABLE `vtiger_smsnotifier_servers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_smsnotifier_status`
---
-ALTER TABLE `vtiger_smsnotifier_status`
-  MODIFY `statusid` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_sostatus`
---
-ALTER TABLE `vtiger_sostatus`
-  MODIFY `sostatusid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_sostatushistory`
---
-ALTER TABLE `vtiger_sostatushistory`
-  MODIFY `historyid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_start_hour`
---
-ALTER TABLE `vtiger_start_hour`
-  MODIFY `start_hourid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_status`
---
-ALTER TABLE `vtiger_status`
-  MODIFY `statusid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_taskpriority`
---
-ALTER TABLE `vtiger_taskpriority`
-  MODIFY `taskpriorityid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_taskstatus`
---
-ALTER TABLE `vtiger_taskstatus`
-  MODIFY `taskstatusid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_taxclass`
---
-ALTER TABLE `vtiger_taxclass`
-  MODIFY `taxclassid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_taxregions`
---
-ALTER TABLE `vtiger_taxregions`
-  MODIFY `regionid` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ticketcategories`
---
-ALTER TABLE `vtiger_ticketcategories`
-  MODIFY `ticketcategories_id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ticketcomments`
---
-ALTER TABLE `vtiger_ticketcomments`
-  MODIFY `commentid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ticketpriorities`
---
-ALTER TABLE `vtiger_ticketpriorities`
-  MODIFY `ticketpriorities_id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ticketseverities`
---
-ALTER TABLE `vtiger_ticketseverities`
-  MODIFY `ticketseverities_id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ticketstatus`
---
-ALTER TABLE `vtiger_ticketstatus`
-  MODIFY `ticketstatus_id` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_time_zone`
---
-ALTER TABLE `vtiger_time_zone`
-  MODIFY `time_zoneid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_tracker`
---
-ALTER TABLE `vtiger_tracker`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_tracking_unit`
---
-ALTER TABLE `vtiger_tracking_unit`
-  MODIFY `tracking_unitid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_usageunit`
---
-ALTER TABLE `vtiger_usageunit`
-  MODIFY `usageunitid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_users`
---
-ALTER TABLE `vtiger_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_users_last_import`
---
-ALTER TABLE `vtiger_users_last_import`
-  MODIFY `id` int(36) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_version`
---
-ALTER TABLE `vtiger_version`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_visibility`
---
-ALTER TABLE `vtiger_visibility`
-  MODIFY `visibilityid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_webforms`
---
-ALTER TABLE `vtiger_webforms`
-  MODIFY `id` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_webforms_field`
---
-ALTER TABLE `vtiger_webforms_field`
-  MODIFY `id` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_webform_file_fields`
---
-ALTER TABLE `vtiger_webform_file_fields`
-  MODIFY `id` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_wsapp`
---
-ALTER TABLE `vtiger_wsapp`
-  MODIFY `appid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_wsapp_logs_basic`
---
-ALTER TABLE `vtiger_wsapp_logs_basic`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_wsapp_recordmapping`
---
-ALTER TABLE `vtiger_wsapp_recordmapping`
-  MODIFY `id` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_wsapp_sync_state`
---
-ALTER TABLE `vtiger_wsapp_sync_state`
-  MODIFY `id` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ws_entity`
---
-ALTER TABLE `vtiger_ws_entity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ws_entity_fieldtype`
---
-ALTER TABLE `vtiger_ws_entity_fieldtype`
-  MODIFY `fieldtypeid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ws_fieldtype`
---
-ALTER TABLE `vtiger_ws_fieldtype`
-  MODIFY `fieldtypeid` int(19) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ws_operation`
---
-ALTER TABLE `vtiger_ws_operation`
-  MODIFY `operationid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
---
--- AUTO_INCREMENT cho bảng `vtiger_ws_operation_parameters`
---
-ALTER TABLE `vtiger_ws_operation_parameters`
-  MODIFY `operationid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
---
--- Các ràng buộc cho các bảng đã đổ
---
-
---
--- Các ràng buộc cho bảng `vtiger_account`
---
-ALTER TABLE `vtiger_account`
-  ADD CONSTRAINT `fk_1_vtiger_account` FOREIGN KEY (`accountid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_accountbillads`
---
-ALTER TABLE `vtiger_accountbillads`
-  ADD CONSTRAINT `fk_1_vtiger_accountbillads` FOREIGN KEY (`accountaddressid`) REFERENCES `vtiger_account` (`accountid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_accountscf`
---
-ALTER TABLE `vtiger_accountscf`
-  ADD CONSTRAINT `fk_1_vtiger_accountscf` FOREIGN KEY (`accountid`) REFERENCES `vtiger_account` (`accountid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_accountshipads`
---
-ALTER TABLE `vtiger_accountshipads`
-  ADD CONSTRAINT `fk_1_vtiger_accountshipads` FOREIGN KEY (`accountaddressid`) REFERENCES `vtiger_account` (`accountid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_activity`
---
-ALTER TABLE `vtiger_activity`
-  ADD CONSTRAINT `fk_1_vtiger_activity` FOREIGN KEY (`activityid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_activitycf`
---
-ALTER TABLE `vtiger_activitycf`
-  ADD CONSTRAINT `fk_activityid_vtiger_activitycf` FOREIGN KEY (`activityid`) REFERENCES `vtiger_activity` (`activityid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_activityproductrel`
---
-ALTER TABLE `vtiger_activityproductrel`
-  ADD CONSTRAINT `fk_2_vtiger_activityproductrel` FOREIGN KEY (`productid`) REFERENCES `vtiger_products` (`productid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_activity_reminder`
---
-ALTER TABLE `vtiger_activity_reminder`
-  ADD CONSTRAINT `fk_activityid_vtiger_activity_reminder` FOREIGN KEY (`activity_id`) REFERENCES `vtiger_activity` (`activityid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_app2tab`
---
-ALTER TABLE `vtiger_app2tab`
-  ADD CONSTRAINT `vtiger_app2tab_fk_tab` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_assets`
---
-ALTER TABLE `vtiger_assets`
-  ADD CONSTRAINT `fk_1_vtiger_assets` FOREIGN KEY (`assetsid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_assetscf`
---
-ALTER TABLE `vtiger_assetscf`
-  ADD CONSTRAINT `fk_assetsid_vtiger_assetscf` FOREIGN KEY (`assetsid`) REFERENCES `vtiger_assets` (`assetsid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_attachments`
---
-ALTER TABLE `vtiger_attachments`
-  ADD CONSTRAINT `fk_1_vtiger_attachments` FOREIGN KEY (`attachmentsid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_blocks`
---
-ALTER TABLE `vtiger_blocks`
-  ADD CONSTRAINT `fk_1_vtiger_blocks` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_campaign`
---
-ALTER TABLE `vtiger_campaign`
-  ADD CONSTRAINT `fk_crmid_vtiger_campaign` FOREIGN KEY (`campaignid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_campaigncontrel`
---
-ALTER TABLE `vtiger_campaigncontrel`
-  ADD CONSTRAINT `fk_2_vtiger_campaigncontrel` FOREIGN KEY (`contactid`) REFERENCES `vtiger_contactdetails` (`contactid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_campaignleadrel`
---
-ALTER TABLE `vtiger_campaignleadrel`
-  ADD CONSTRAINT `fk_2_vtiger_campaignleadrel` FOREIGN KEY (`leadid`) REFERENCES `vtiger_leaddetails` (`leadid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_campaignscf`
---
-ALTER TABLE `vtiger_campaignscf`
-  ADD CONSTRAINT `fk_1_vtiger_campaignscf` FOREIGN KEY (`campaignid`) REFERENCES `vtiger_campaign` (`campaignid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_cntactivityrel`
---
-ALTER TABLE `vtiger_cntactivityrel`
-  ADD CONSTRAINT `fk_2_vtiger_cntactivityrel` FOREIGN KEY (`contactid`) REFERENCES `vtiger_contactdetails` (`contactid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_contactaddress`
---
-ALTER TABLE `vtiger_contactaddress`
-  ADD CONSTRAINT `fk_1_vtiger_contactaddress` FOREIGN KEY (`contactaddressid`) REFERENCES `vtiger_contactdetails` (`contactid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_contactdetails`
---
-ALTER TABLE `vtiger_contactdetails`
-  ADD CONSTRAINT `fk_1_vtiger_contactdetails` FOREIGN KEY (`contactid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_contactscf`
---
-ALTER TABLE `vtiger_contactscf`
-  ADD CONSTRAINT `fk_1_vtiger_contactscf` FOREIGN KEY (`contactid`) REFERENCES `vtiger_contactdetails` (`contactid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_contactsubdetails`
---
-ALTER TABLE `vtiger_contactsubdetails`
-  ADD CONSTRAINT `fk_1_vtiger_contactsubdetails` FOREIGN KEY (`contactsubscriptionid`) REFERENCES `vtiger_contactdetails` (`contactid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_contpotentialrel`
---
-ALTER TABLE `vtiger_contpotentialrel`
-  ADD CONSTRAINT `fk_2_vtiger_contpotentialrel` FOREIGN KEY (`potentialid`) REFERENCES `vtiger_potential` (`potentialid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_crmentity_user_field`
---
-ALTER TABLE `vtiger_crmentity_user_field`
-  ADD CONSTRAINT `fk_vtiger_crmentity_user_field_recordid` FOREIGN KEY (`recordid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_customaction`
---
-ALTER TABLE `vtiger_customaction`
-  ADD CONSTRAINT `fk_1_vtiger_customaction` FOREIGN KEY (`cvid`) REFERENCES `vtiger_customview` (`cvid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_customerdetails`
---
-ALTER TABLE `vtiger_customerdetails`
-  ADD CONSTRAINT `fk_1_vtiger_customerdetails` FOREIGN KEY (`customerid`) REFERENCES `vtiger_contactdetails` (`contactid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_customview`
---
-ALTER TABLE `vtiger_customview`
-  ADD CONSTRAINT `fk_1_vtiger_customview` FOREIGN KEY (`entitytype`) REFERENCES `vtiger_tab` (`name`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_cv2group`
---
-ALTER TABLE `vtiger_cv2group`
-  ADD CONSTRAINT `vtiger_customview_ibfk_2` FOREIGN KEY (`cvid`) REFERENCES `vtiger_customview` (`cvid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `vtiger_groups_ibfk_1` FOREIGN KEY (`groupid`) REFERENCES `vtiger_groups` (`groupid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_cv2role`
---
-ALTER TABLE `vtiger_cv2role`
-  ADD CONSTRAINT `vtiger_customview_ibfk_3` FOREIGN KEY (`cvid`) REFERENCES `vtiger_customview` (`cvid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `vtiger_role_ibfk_1` FOREIGN KEY (`roleid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_cv2rs`
---
-ALTER TABLE `vtiger_cv2rs`
-  ADD CONSTRAINT `vtiger_customview_ibfk_4` FOREIGN KEY (`cvid`) REFERENCES `vtiger_customview` (`cvid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `vtiger_rolesd_ibfk_1` FOREIGN KEY (`rsid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_cv2users`
---
-ALTER TABLE `vtiger_cv2users`
-  ADD CONSTRAINT `vtiger_customview_ibfk_1` FOREIGN KEY (`cvid`) REFERENCES `vtiger_customview` (`cvid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `vtiger_users_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_cvadvfilter`
---
-ALTER TABLE `vtiger_cvadvfilter`
-  ADD CONSTRAINT `fk_1_vtiger_cvadvfilter` FOREIGN KEY (`cvid`) REFERENCES `vtiger_customview` (`cvid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_cvcolumnlist`
---
-ALTER TABLE `vtiger_cvcolumnlist`
-  ADD CONSTRAINT `fk_1_vtiger_cvcolumnlist` FOREIGN KEY (`cvid`) REFERENCES `vtiger_customview` (`cvid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_cvstdfilter`
---
-ALTER TABLE `vtiger_cvstdfilter`
-  ADD CONSTRAINT `fk_1_vtiger_cvstdfilter` FOREIGN KEY (`cvid`) REFERENCES `vtiger_customview` (`cvid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_dashboard_tabs`
---
-ALTER TABLE `vtiger_dashboard_tabs`
-  ADD CONSTRAINT `vtiger_dashboard_tabs_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_grp2grp`
---
-ALTER TABLE `vtiger_datashare_grp2grp`
-  ADD CONSTRAINT `fk_3_vtiger_datashare_grp2grp` FOREIGN KEY (`to_groupid`) REFERENCES `vtiger_groups` (`groupid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_grp2role`
---
-ALTER TABLE `vtiger_datashare_grp2role`
-  ADD CONSTRAINT `fk_3_vtiger_datashare_grp2role` FOREIGN KEY (`to_roleid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_grp2rs`
---
-ALTER TABLE `vtiger_datashare_grp2rs`
-  ADD CONSTRAINT `fk_3_vtiger_datashare_grp2rs` FOREIGN KEY (`to_roleandsubid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_module_rel`
---
-ALTER TABLE `vtiger_datashare_module_rel`
-  ADD CONSTRAINT `fk_1_vtiger_datashare_module_rel` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_relatedmodules`
---
-ALTER TABLE `vtiger_datashare_relatedmodules`
-  ADD CONSTRAINT `fk_2_vtiger_datashare_relatedmodules` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_role2group`
---
-ALTER TABLE `vtiger_datashare_role2group`
-  ADD CONSTRAINT `fk_3_vtiger_datashare_role2group` FOREIGN KEY (`share_roleid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_role2role`
---
-ALTER TABLE `vtiger_datashare_role2role`
-  ADD CONSTRAINT `fk_3_vtiger_datashare_role2role` FOREIGN KEY (`to_roleid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_role2rs`
---
-ALTER TABLE `vtiger_datashare_role2rs`
-  ADD CONSTRAINT `fk_3_vtiger_datashare_role2rs` FOREIGN KEY (`to_roleandsubid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_rs2grp`
---
-ALTER TABLE `vtiger_datashare_rs2grp`
-  ADD CONSTRAINT `fk_3_vtiger_datashare_rs2grp` FOREIGN KEY (`share_roleandsubid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_rs2role`
---
-ALTER TABLE `vtiger_datashare_rs2role`
-  ADD CONSTRAINT `fk_3_vtiger_datashare_rs2role` FOREIGN KEY (`to_roleid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_datashare_rs2rs`
---
-ALTER TABLE `vtiger_datashare_rs2rs`
-  ADD CONSTRAINT `fk_3_vtiger_datashare_rs2rs` FOREIGN KEY (`to_roleandsubid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_defaultcv`
---
-ALTER TABLE `vtiger_defaultcv`
-  ADD CONSTRAINT `fk_1_vtiger_defaultcv` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_def_org_share`
---
-ALTER TABLE `vtiger_def_org_share`
-  ADD CONSTRAINT `fk_1_vtiger_def_org_share` FOREIGN KEY (`permission`) REFERENCES `vtiger_org_share_action_mapping` (`share_action_id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_emailslookup`
---
-ALTER TABLE `vtiger_emailslookup`
-  ADD CONSTRAINT `emailslookup_crmid_fk` FOREIGN KEY (`crmid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_entityname`
---
-ALTER TABLE `vtiger_entityname`
-  ADD CONSTRAINT `fk_1_vtiger_entityname` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_faq`
---
-ALTER TABLE `vtiger_faq`
-  ADD CONSTRAINT `fk_1_vtiger_faq` FOREIGN KEY (`id`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_faqcf`
---
-ALTER TABLE `vtiger_faqcf`
-  ADD CONSTRAINT `fk_1_vtiger_faqcf` FOREIGN KEY (`faqid`) REFERENCES `vtiger_faq` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_faqcomments`
---
-ALTER TABLE `vtiger_faqcomments`
-  ADD CONSTRAINT `fk_1_vtiger_faqcomments` FOREIGN KEY (`faqid`) REFERENCES `vtiger_faq` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_field`
---
-ALTER TABLE `vtiger_field`
-  ADD CONSTRAINT `fk_1_vtiger_field` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_group2grouprel`
---
-ALTER TABLE `vtiger_group2grouprel`
-  ADD CONSTRAINT `fk_2_vtiger_group2grouprel` FOREIGN KEY (`groupid`) REFERENCES `vtiger_groups` (`groupid`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_group2role`
---
-ALTER TABLE `vtiger_group2role`
-  ADD CONSTRAINT `fk_2_vtiger_group2role` FOREIGN KEY (`roleid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_group2rs`
---
-ALTER TABLE `vtiger_group2rs`
-  ADD CONSTRAINT `fk_2_vtiger_group2rs` FOREIGN KEY (`roleandsubid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_homedashbd`
---
-ALTER TABLE `vtiger_homedashbd`
-  ADD CONSTRAINT `fk_1_vtiger_homedashbd` FOREIGN KEY (`stuffid`) REFERENCES `vtiger_homestuff` (`stuffid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_homedefault`
---
-ALTER TABLE `vtiger_homedefault`
-  ADD CONSTRAINT `fk_1_vtiger_homedefault` FOREIGN KEY (`stuffid`) REFERENCES `vtiger_homestuff` (`stuffid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_homemodule`
---
-ALTER TABLE `vtiger_homemodule`
-  ADD CONSTRAINT `fk_1_vtiger_homemodule` FOREIGN KEY (`stuffid`) REFERENCES `vtiger_homestuff` (`stuffid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_homemoduleflds`
---
-ALTER TABLE `vtiger_homemoduleflds`
-  ADD CONSTRAINT `fk_1_vtiger_homemoduleflds` FOREIGN KEY (`stuffid`) REFERENCES `vtiger_homemodule` (`stuffid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_homerss`
---
-ALTER TABLE `vtiger_homerss`
-  ADD CONSTRAINT `fk_1_vtiger_homerss` FOREIGN KEY (`stuffid`) REFERENCES `vtiger_homestuff` (`stuffid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_homestuff`
---
-ALTER TABLE `vtiger_homestuff`
-  ADD CONSTRAINT `fk_1_vtiger_homestuff` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_inventoryproductrel`
---
-ALTER TABLE `vtiger_inventoryproductrel`
-  ADD CONSTRAINT `fk_crmid_vtiger_inventoryproductrel` FOREIGN KEY (`id`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_invoice`
---
-ALTER TABLE `vtiger_invoice`
-  ADD CONSTRAINT `fk_2_vtiger_invoice` FOREIGN KEY (`salesorderid`) REFERENCES `vtiger_salesorder` (`salesorderid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_crmid_vtiger_invoice` FOREIGN KEY (`invoiceid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_invoicebillads`
---
-ALTER TABLE `vtiger_invoicebillads`
-  ADD CONSTRAINT `fk_1_vtiger_invoicebillads` FOREIGN KEY (`invoicebilladdressid`) REFERENCES `vtiger_invoice` (`invoiceid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_invoicecf`
---
-ALTER TABLE `vtiger_invoicecf`
-  ADD CONSTRAINT `fk_1_vtiger_invoicecf` FOREIGN KEY (`invoiceid`) REFERENCES `vtiger_invoice` (`invoiceid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_invoiceshipads`
---
-ALTER TABLE `vtiger_invoiceshipads`
-  ADD CONSTRAINT `fk_1_vtiger_invoiceshipads` FOREIGN KEY (`invoiceshipaddressid`) REFERENCES `vtiger_invoice` (`invoiceid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_invoicestatushistory`
---
-ALTER TABLE `vtiger_invoicestatushistory`
-  ADD CONSTRAINT `fk_1_vtiger_invoicestatushistory` FOREIGN KEY (`invoiceid`) REFERENCES `vtiger_invoice` (`invoiceid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_invoice_recurring_info`
---
-ALTER TABLE `vtiger_invoice_recurring_info`
-  ADD CONSTRAINT `fk_salesorderid_vtiger_invoice_recurring_info` FOREIGN KEY (`salesorderid`) REFERENCES `vtiger_salesorder` (`salesorderid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_leadaddress`
---
-ALTER TABLE `vtiger_leadaddress`
-  ADD CONSTRAINT `fk_1_vtiger_leadaddress` FOREIGN KEY (`leadaddressid`) REFERENCES `vtiger_leaddetails` (`leadid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_leaddetails`
---
-ALTER TABLE `vtiger_leaddetails`
-  ADD CONSTRAINT `fk_1_vtiger_leaddetails` FOREIGN KEY (`leadid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_leadscf`
---
-ALTER TABLE `vtiger_leadscf`
-  ADD CONSTRAINT `fk_1_vtiger_leadscf` FOREIGN KEY (`leadid`) REFERENCES `vtiger_leaddetails` (`leadid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_leadsubdetails`
---
-ALTER TABLE `vtiger_leadsubdetails`
-  ADD CONSTRAINT `fk_1_vtiger_leadsubdetails` FOREIGN KEY (`leadsubscriptionid`) REFERENCES `vtiger_leaddetails` (`leadid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_modcomments`
---
-ALTER TABLE `vtiger_modcomments`
-  ADD CONSTRAINT `fk_crmid_vtiger_modcomments` FOREIGN KEY (`modcommentsid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_modcommentscf`
---
-ALTER TABLE `vtiger_modcommentscf`
-  ADD CONSTRAINT `fk_modcommentsid_vtiger_modcommentscf` FOREIGN KEY (`modcommentsid`) REFERENCES `vtiger_modcomments` (`modcommentsid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_module_dashboard_widgets`
---
-ALTER TABLE `vtiger_module_dashboard_widgets`
-  ADD CONSTRAINT `vtiger_module_dashboard_widgets_ibfk_1` FOREIGN KEY (`dashboardtabid`) REFERENCES `vtiger_dashboard_tabs` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_notes`
---
-ALTER TABLE `vtiger_notes`
-  ADD CONSTRAINT `fk_1_vtiger_notes` FOREIGN KEY (`notesid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_notescf`
---
-ALTER TABLE `vtiger_notescf`
-  ADD CONSTRAINT `fk_notesid_vtiger_notescf` FOREIGN KEY (`notesid`) REFERENCES `vtiger_notes` (`notesid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_org_share_action2tab`
---
-ALTER TABLE `vtiger_org_share_action2tab`
-  ADD CONSTRAINT `fk_2_vtiger_org_share_action2tab` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_parenttabrel`
---
-ALTER TABLE `vtiger_parenttabrel`
-  ADD CONSTRAINT `fk_1_vtiger_parenttabrel` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_2_vtiger_parenttabrel` FOREIGN KEY (`parenttabid`) REFERENCES `vtiger_parenttab` (`parenttabid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_pbxmanager`
---
-ALTER TABLE `vtiger_pbxmanager`
-  ADD CONSTRAINT `fk_crmid_vtiger_pbxmanager` FOREIGN KEY (`pbxmanagerid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_pbxmanagercf`
---
-ALTER TABLE `vtiger_pbxmanagercf`
-  ADD CONSTRAINT `fk_pbxmanagerid_vtiger_pbxmanagercf` FOREIGN KEY (`pbxmanagerid`) REFERENCES `vtiger_pbxmanager` (`pbxmanagerid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_pbxmanager_phonelookup`
---
-ALTER TABLE `vtiger_pbxmanager_phonelookup`
-  ADD CONSTRAINT `vtiger_pbxmanager_phonelookup_ibfk_1` FOREIGN KEY (`crmid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_pobillads`
---
-ALTER TABLE `vtiger_pobillads`
-  ADD CONSTRAINT `fk_1_vtiger_pobillads` FOREIGN KEY (`pobilladdressid`) REFERENCES `vtiger_purchaseorder` (`purchaseorderid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_portalinfo`
---
-ALTER TABLE `vtiger_portalinfo`
-  ADD CONSTRAINT `fk_1_vtiger_portalinfo` FOREIGN KEY (`id`) REFERENCES `vtiger_contactdetails` (`contactid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_poshipads`
---
-ALTER TABLE `vtiger_poshipads`
-  ADD CONSTRAINT `fk_1_vtiger_poshipads` FOREIGN KEY (`poshipaddressid`) REFERENCES `vtiger_purchaseorder` (`purchaseorderid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_postatushistory`
---
-ALTER TABLE `vtiger_postatushistory`
-  ADD CONSTRAINT `fk_1_vtiger_postatushistory` FOREIGN KEY (`purchaseorderid`) REFERENCES `vtiger_purchaseorder` (`purchaseorderid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_potential`
---
-ALTER TABLE `vtiger_potential`
-  ADD CONSTRAINT `fk_1_vtiger_potential` FOREIGN KEY (`potentialid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_potentialscf`
---
-ALTER TABLE `vtiger_potentialscf`
-  ADD CONSTRAINT `fk_1_vtiger_potentialscf` FOREIGN KEY (`potentialid`) REFERENCES `vtiger_potential` (`potentialid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_potstagehistory`
---
-ALTER TABLE `vtiger_potstagehistory`
-  ADD CONSTRAINT `fk_1_vtiger_potstagehistory` FOREIGN KEY (`potentialid`) REFERENCES `vtiger_potential` (`potentialid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_pricebook`
---
-ALTER TABLE `vtiger_pricebook`
-  ADD CONSTRAINT `fk_1_vtiger_pricebook` FOREIGN KEY (`pricebookid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_pricebookcf`
---
-ALTER TABLE `vtiger_pricebookcf`
-  ADD CONSTRAINT `fk_1_vtiger_pricebookcf` FOREIGN KEY (`pricebookid`) REFERENCES `vtiger_pricebook` (`pricebookid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_pricebookproductrel`
---
-ALTER TABLE `vtiger_pricebookproductrel`
-  ADD CONSTRAINT `fk_1_vtiger_pricebookproductrel` FOREIGN KEY (`pricebookid`) REFERENCES `vtiger_pricebook` (`pricebookid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_productcf`
---
-ALTER TABLE `vtiger_productcf`
-  ADD CONSTRAINT `fk_1_vtiger_productcf` FOREIGN KEY (`productid`) REFERENCES `vtiger_products` (`productid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_products`
---
-ALTER TABLE `vtiger_products`
-  ADD CONSTRAINT `fk_1_vtiger_products` FOREIGN KEY (`productid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_producttaxrel`
---
-ALTER TABLE `vtiger_producttaxrel`
-  ADD CONSTRAINT `fk_crmid_vtiger_producttaxrel` FOREIGN KEY (`productid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_profile2globalpermissions`
---
-ALTER TABLE `vtiger_profile2globalpermissions`
-  ADD CONSTRAINT `fk_1_vtiger_profile2globalpermissions` FOREIGN KEY (`profileid`) REFERENCES `vtiger_profile` (`profileid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_project`
---
-ALTER TABLE `vtiger_project`
-  ADD CONSTRAINT `fk_crmid_vtiger_project` FOREIGN KEY (`projectid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_projectcf`
---
-ALTER TABLE `vtiger_projectcf`
-  ADD CONSTRAINT `fk_projectid_vtiger_projectcf` FOREIGN KEY (`projectid`) REFERENCES `vtiger_project` (`projectid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_projectmilestone`
---
-ALTER TABLE `vtiger_projectmilestone`
-  ADD CONSTRAINT `fk_crmid_vtiger_projectmilestone` FOREIGN KEY (`projectmilestoneid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_projectmilestonecf`
---
-ALTER TABLE `vtiger_projectmilestonecf`
-  ADD CONSTRAINT `fk_projectmilestoneid_vtiger_projectmilestonecf` FOREIGN KEY (`projectmilestoneid`) REFERENCES `vtiger_projectmilestone` (`projectmilestoneid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_projecttask`
---
-ALTER TABLE `vtiger_projecttask`
-  ADD CONSTRAINT `fk_crmid_vtiger_projecttask` FOREIGN KEY (`projecttaskid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_projecttaskcf`
---
-ALTER TABLE `vtiger_projecttaskcf`
-  ADD CONSTRAINT `fk_projecttaskid_vtiger_projecttaskcf` FOREIGN KEY (`projecttaskid`) REFERENCES `vtiger_projecttask` (`projecttaskid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_purchaseorder`
---
-ALTER TABLE `vtiger_purchaseorder`
-  ADD CONSTRAINT `fk_4_vtiger_purchaseorder` FOREIGN KEY (`vendorid`) REFERENCES `vtiger_vendor` (`vendorid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_crmid_vtiger_purchaseorder` FOREIGN KEY (`purchaseorderid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_purchaseordercf`
---
-ALTER TABLE `vtiger_purchaseordercf`
-  ADD CONSTRAINT `fk_1_vtiger_purchaseordercf` FOREIGN KEY (`purchaseorderid`) REFERENCES `vtiger_purchaseorder` (`purchaseorderid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_quotes`
---
-ALTER TABLE `vtiger_quotes`
-  ADD CONSTRAINT `fk_3_vtiger_quotes` FOREIGN KEY (`potentialid`) REFERENCES `vtiger_potential` (`potentialid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_crmid_vtiger_quotes` FOREIGN KEY (`quoteid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_quotesbillads`
---
-ALTER TABLE `vtiger_quotesbillads`
-  ADD CONSTRAINT `fk_1_vtiger_quotesbillads` FOREIGN KEY (`quotebilladdressid`) REFERENCES `vtiger_quotes` (`quoteid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_quotescf`
---
-ALTER TABLE `vtiger_quotescf`
-  ADD CONSTRAINT `fk_1_vtiger_quotescf` FOREIGN KEY (`quoteid`) REFERENCES `vtiger_quotes` (`quoteid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_quotesshipads`
---
-ALTER TABLE `vtiger_quotesshipads`
-  ADD CONSTRAINT `fk_1_vtiger_quotesshipads` FOREIGN KEY (`quoteshipaddressid`) REFERENCES `vtiger_quotes` (`quoteid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_quotestagehistory`
---
-ALTER TABLE `vtiger_quotestagehistory`
-  ADD CONSTRAINT `fk_1_vtiger_quotestagehistory` FOREIGN KEY (`quoteid`) REFERENCES `vtiger_quotes` (`quoteid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_recurringevents`
---
-ALTER TABLE `vtiger_recurringevents`
-  ADD CONSTRAINT `fk_1_vtiger_recurringevents` FOREIGN KEY (`activityid`) REFERENCES `vtiger_activity` (`activityid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_relcriteria`
---
-ALTER TABLE `vtiger_relcriteria`
-  ADD CONSTRAINT `fk_1_vtiger_relcriteria` FOREIGN KEY (`queryid`) REFERENCES `vtiger_selectquery` (`queryid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_report`
---
-ALTER TABLE `vtiger_report`
-  ADD CONSTRAINT `fk_2_vtiger_report` FOREIGN KEY (`queryid`) REFERENCES `vtiger_selectquery` (`queryid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_reportdatefilter`
---
-ALTER TABLE `vtiger_reportdatefilter`
-  ADD CONSTRAINT `fk_1_vtiger_reportdatefilter` FOREIGN KEY (`datefilterid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_reportgroupbycolumn`
---
-ALTER TABLE `vtiger_reportgroupbycolumn`
-  ADD CONSTRAINT `fk_1_vtiger_reportgroupbycolumn` FOREIGN KEY (`reportid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_reportmodules`
---
-ALTER TABLE `vtiger_reportmodules`
-  ADD CONSTRAINT `fk_1_vtiger_reportmodules` FOREIGN KEY (`reportmodulesid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_reportsortcol`
---
-ALTER TABLE `vtiger_reportsortcol`
-  ADD CONSTRAINT `fk_1_vtiger_reportsortcol` FOREIGN KEY (`reportid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_reportsummary`
---
-ALTER TABLE `vtiger_reportsummary`
-  ADD CONSTRAINT `fk_1_vtiger_reportsummary` FOREIGN KEY (`reportsummaryid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_reporttype`
---
-ALTER TABLE `vtiger_reporttype`
-  ADD CONSTRAINT `fk_1_vtiger_reporttype` FOREIGN KEY (`reportid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_report_sharegroups`
---
-ALTER TABLE `vtiger_report_sharegroups`
-  ADD CONSTRAINT `vtiger_groups_groupid_ibfk_1` FOREIGN KEY (`groupid`) REFERENCES `vtiger_groups` (`groupid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `vtiger_report_reportid_ibfk_2` FOREIGN KEY (`reportid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_report_sharerole`
---
-ALTER TABLE `vtiger_report_sharerole`
-  ADD CONSTRAINT `vtiger_report_reportid_ibfk_3` FOREIGN KEY (`reportid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `vtiger_role_roleid_ibfk_1` FOREIGN KEY (`roleid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_report_sharers`
---
-ALTER TABLE `vtiger_report_sharers`
-  ADD CONSTRAINT `vtiger_report_reportid_ibfk_4` FOREIGN KEY (`reportid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `vtiger_rolesd_rsid_ibfk_1` FOREIGN KEY (`rsid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_report_shareusers`
---
-ALTER TABLE `vtiger_report_shareusers`
-  ADD CONSTRAINT `vtiger_reports_reportid_ibfk_1` FOREIGN KEY (`reportid`) REFERENCES `vtiger_report` (`reportid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `vtiger_users_userid_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_role2picklist`
---
-ALTER TABLE `vtiger_role2picklist`
-  ADD CONSTRAINT `fk_1_vtiger_role2picklist` FOREIGN KEY (`roleid`) REFERENCES `vtiger_role` (`roleid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_2_vtiger_role2picklist` FOREIGN KEY (`picklistid`) REFERENCES `vtiger_picklist` (`picklistid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_salesmanactivityrel`
---
-ALTER TABLE `vtiger_salesmanactivityrel`
-  ADD CONSTRAINT `fk_2_vtiger_salesmanactivityrel` FOREIGN KEY (`smid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_salesmanattachmentsrel`
---
-ALTER TABLE `vtiger_salesmanattachmentsrel`
-  ADD CONSTRAINT `fk_2_vtiger_salesmanattachmentsrel` FOREIGN KEY (`attachmentsid`) REFERENCES `vtiger_attachments` (`attachmentsid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_salesmanticketrel`
---
-ALTER TABLE `vtiger_salesmanticketrel`
-  ADD CONSTRAINT `fk_2_vtiger_salesmanticketrel` FOREIGN KEY (`smid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_salesorder`
---
-ALTER TABLE `vtiger_salesorder`
-  ADD CONSTRAINT `fk_3_vtiger_salesorder` FOREIGN KEY (`vendorid`) REFERENCES `vtiger_vendor` (`vendorid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_crmid_vtiger_salesorder` FOREIGN KEY (`salesorderid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_salesordercf`
---
-ALTER TABLE `vtiger_salesordercf`
-  ADD CONSTRAINT `fk_1_vtiger_salesordercf` FOREIGN KEY (`salesorderid`) REFERENCES `vtiger_salesorder` (`salesorderid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_seactivityrel`
---
-ALTER TABLE `vtiger_seactivityrel`
-  ADD CONSTRAINT `fk_2_vtiger_seactivityrel` FOREIGN KEY (`crmid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_seattachmentsrel`
---
-ALTER TABLE `vtiger_seattachmentsrel`
-  ADD CONSTRAINT `fk_2_vtiger_seattachmentsrel` FOREIGN KEY (`crmid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_selectcolumn`
---
-ALTER TABLE `vtiger_selectcolumn`
-  ADD CONSTRAINT `fk_1_vtiger_selectcolumn` FOREIGN KEY (`queryid`) REFERENCES `vtiger_selectquery` (`queryid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_senotesrel`
---
-ALTER TABLE `vtiger_senotesrel`
-  ADD CONSTRAINT `fk1_crmid` FOREIGN KEY (`crmid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_2_vtiger_senotesrel` FOREIGN KEY (`notesid`) REFERENCES `vtiger_notes` (`notesid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_seproductsrel`
---
-ALTER TABLE `vtiger_seproductsrel`
-  ADD CONSTRAINT `fk_2_vtiger_seproductsrel` FOREIGN KEY (`productid`) REFERENCES `vtiger_products` (`productid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_service`
---
-ALTER TABLE `vtiger_service`
-  ADD CONSTRAINT `fk_1_vtiger_service` FOREIGN KEY (`serviceid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_servicecf`
---
-ALTER TABLE `vtiger_servicecf`
-  ADD CONSTRAINT `fk_serviceid_vtiger_servicecf` FOREIGN KEY (`serviceid`) REFERENCES `vtiger_service` (`serviceid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_servicecontracts`
---
-ALTER TABLE `vtiger_servicecontracts`
-  ADD CONSTRAINT `fk_crmid_vtiger_servicecontracts` FOREIGN KEY (`servicecontractsid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_servicecontractscf`
---
-ALTER TABLE `vtiger_servicecontractscf`
-  ADD CONSTRAINT `fk_servicecontractsid_vtiger_servicecontractscf` FOREIGN KEY (`servicecontractsid`) REFERENCES `vtiger_servicecontracts` (`servicecontractsid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_seticketsrel`
---
-ALTER TABLE `vtiger_seticketsrel`
-  ADD CONSTRAINT `fk_2_vtiger_seticketsrel` FOREIGN KEY (`ticketid`) REFERENCES `vtiger_troubletickets` (`ticketid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_settings_field`
---
-ALTER TABLE `vtiger_settings_field`
-  ADD CONSTRAINT `fk_1_vtiger_settings_field` FOREIGN KEY (`blockid`) REFERENCES `vtiger_settings_blocks` (`blockid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_smsnotifier`
---
-ALTER TABLE `vtiger_smsnotifier`
-  ADD CONSTRAINT `fk_crmid_vtiger_smsnotifier` FOREIGN KEY (`smsnotifierid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_smsnotifiercf`
---
-ALTER TABLE `vtiger_smsnotifiercf`
-  ADD CONSTRAINT `fk_smsnotifierid_vtiger_smsnotifiercf` FOREIGN KEY (`smsnotifierid`) REFERENCES `vtiger_smsnotifier` (`smsnotifierid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_sobillads`
---
-ALTER TABLE `vtiger_sobillads`
-  ADD CONSTRAINT `fk_1_vtiger_sobillads` FOREIGN KEY (`sobilladdressid`) REFERENCES `vtiger_salesorder` (`salesorderid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_soshipads`
---
-ALTER TABLE `vtiger_soshipads`
-  ADD CONSTRAINT `fk_1_vtiger_soshipads` FOREIGN KEY (`soshipaddressid`) REFERENCES `vtiger_salesorder` (`salesorderid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_sostatushistory`
---
-ALTER TABLE `vtiger_sostatushistory`
-  ADD CONSTRAINT `fk_1_vtiger_sostatushistory` FOREIGN KEY (`salesorderid`) REFERENCES `vtiger_salesorder` (`salesorderid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_tab_info`
---
-ALTER TABLE `vtiger_tab_info`
-  ADD CONSTRAINT `fk_1_vtiger_tab_info` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_ticketcf`
---
-ALTER TABLE `vtiger_ticketcf`
-  ADD CONSTRAINT `fk_1_vtiger_ticketcf` FOREIGN KEY (`ticketid`) REFERENCES `vtiger_troubletickets` (`ticketid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_ticketcomments`
---
-ALTER TABLE `vtiger_ticketcomments`
-  ADD CONSTRAINT `fk_1_vtiger_ticketcomments` FOREIGN KEY (`ticketid`) REFERENCES `vtiger_troubletickets` (`ticketid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_tmp_read_group_rel_sharing_per`
---
-ALTER TABLE `vtiger_tmp_read_group_rel_sharing_per`
-  ADD CONSTRAINT `fk_4_vtiger_tmp_read_group_rel_sharing_per` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_tmp_read_group_sharing_per`
---
-ALTER TABLE `vtiger_tmp_read_group_sharing_per`
-  ADD CONSTRAINT `fk_3_vtiger_tmp_read_group_sharing_per` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_tmp_read_user_rel_sharing_per`
---
-ALTER TABLE `vtiger_tmp_read_user_rel_sharing_per`
-  ADD CONSTRAINT `fk_4_vtiger_tmp_read_user_rel_sharing_per` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_tmp_read_user_sharing_per`
---
-ALTER TABLE `vtiger_tmp_read_user_sharing_per`
-  ADD CONSTRAINT `fk_3_vtiger_tmp_read_user_sharing_per` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_tmp_write_group_rel_sharing_per`
---
-ALTER TABLE `vtiger_tmp_write_group_rel_sharing_per`
-  ADD CONSTRAINT `fk_4_vtiger_tmp_write_group_rel_sharing_per` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_tmp_write_group_sharing_per`
---
-ALTER TABLE `vtiger_tmp_write_group_sharing_per`
-  ADD CONSTRAINT `fk_3_vtiger_tmp_write_group_sharing_per` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_tmp_write_user_rel_sharing_per`
---
-ALTER TABLE `vtiger_tmp_write_user_rel_sharing_per`
-  ADD CONSTRAINT `fk_4_vtiger_tmp_write_user_rel_sharing_per` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_tmp_write_user_sharing_per`
---
-ALTER TABLE `vtiger_tmp_write_user_sharing_per`
-  ADD CONSTRAINT `fk_3_vtiger_tmp_write_user_sharing_per` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_troubletickets`
---
-ALTER TABLE `vtiger_troubletickets`
-  ADD CONSTRAINT `fk_1_vtiger_troubletickets` FOREIGN KEY (`ticketid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_user2role`
---
-ALTER TABLE `vtiger_user2role`
-  ADD CONSTRAINT `fk_2_vtiger_user2role` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_users2group`
---
-ALTER TABLE `vtiger_users2group`
-  ADD CONSTRAINT `fk_2_vtiger_users2group` FOREIGN KEY (`userid`) REFERENCES `vtiger_users` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_user_module_preferences`
---
-ALTER TABLE `vtiger_user_module_preferences`
-  ADD CONSTRAINT `fk_2_vtiger_user_module_preferences` FOREIGN KEY (`tabid`) REFERENCES `vtiger_tab` (`tabid`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_vendor`
---
-ALTER TABLE `vtiger_vendor`
-  ADD CONSTRAINT `fk_1_vtiger_vendor` FOREIGN KEY (`vendorid`) REFERENCES `vtiger_crmentity` (`crmid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_vendorcf`
---
-ALTER TABLE `vtiger_vendorcf`
-  ADD CONSTRAINT `fk_1_vtiger_vendorcf` FOREIGN KEY (`vendorid`) REFERENCES `vtiger_vendor` (`vendorid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_vendorcontactrel`
---
-ALTER TABLE `vtiger_vendorcontactrel`
-  ADD CONSTRAINT `fk_2_vtiger_vendorcontactrel` FOREIGN KEY (`vendorid`) REFERENCES `vtiger_vendor` (`vendorid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_webforms_field`
---
-ALTER TABLE `vtiger_webforms_field`
-  ADD CONSTRAINT `fk_1_vtiger_webforms_field` FOREIGN KEY (`webformid`) REFERENCES `vtiger_webforms` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_3_vtiger_webforms_field` FOREIGN KEY (`fieldname`) REFERENCES `vtiger_field` (`fieldname`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_webform_file_fields`
---
-ALTER TABLE `vtiger_webform_file_fields`
-  ADD CONSTRAINT `fk_vtiger_webforms` FOREIGN KEY (`webformid`) REFERENCES `vtiger_webforms` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_wsapp_logs_details`
---
-ALTER TABLE `vtiger_wsapp_logs_details`
-  ADD CONSTRAINT `vtiger_wsapp_logs_basic_ibfk_1` FOREIGN KEY (`id`) REFERENCES `vtiger_wsapp_logs_basic` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_ws_entity_referencetype`
---
-ALTER TABLE `vtiger_ws_entity_referencetype`
-  ADD CONSTRAINT `vtiger_fk_1_actors_referencetype` FOREIGN KEY (`fieldtypeid`) REFERENCES `vtiger_ws_entity_fieldtype` (`fieldtypeid`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_ws_entity_tables`
---
-ALTER TABLE `vtiger_ws_entity_tables`
-  ADD CONSTRAINT `fk_1_vtiger_ws_actor_tables` FOREIGN KEY (`webservice_entity_id`) REFERENCES `vtiger_ws_entity` (`id`) ON DELETE CASCADE;
-
---
--- Các ràng buộc cho bảng `vtiger_ws_referencetype`
---
-ALTER TABLE `vtiger_ws_referencetype`
-  ADD CONSTRAINT `fk_1_vtiger_referencetype` FOREIGN KEY (`fieldtypeid`) REFERENCES `vtiger_ws_fieldtype` (`fieldtypeid`) ON DELETE CASCADE;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
