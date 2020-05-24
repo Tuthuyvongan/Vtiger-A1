@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2020 at 05:45 AM
+-- Generation Time: May 24, 2020 at 06:23 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -29,8 +29,8 @@ USE `vtiger`;
 -- Table structure for table `com_vtiger_workflows`
 --
 
-CREATE TABLE `com_vtiger_workflows` (
-  `workflow_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflows` (
+  `workflow_id` int(11) NOT NULL AUTO_INCREMENT,
   `module_name` varchar(100) DEFAULT NULL,
   `summary` varchar(400) NOT NULL,
   `test` text DEFAULT NULL,
@@ -45,8 +45,10 @@ CREATE TABLE `com_vtiger_workflows` (
   `schtime` varchar(50) DEFAULT NULL,
   `nexttrigger_time` datetime DEFAULT NULL,
   `status` tinyint(1) DEFAULT 1,
-  `workflowname` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `workflowname` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`workflow_id`),
+  UNIQUE KEY `com_vtiger_workflows_idx` (`workflow_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `com_vtiger_workflows`
@@ -83,7 +85,7 @@ INSERT INTO `com_vtiger_workflows` (`workflow_id`, `module_name`, `summary`, `te
 -- Table structure for table `com_vtiger_workflows_seq`
 --
 
-CREATE TABLE `com_vtiger_workflows_seq` (
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflows_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -100,12 +102,14 @@ INSERT INTO `com_vtiger_workflows_seq` (`id`) VALUES
 -- Table structure for table `com_vtiger_workflowtasks`
 --
 
-CREATE TABLE `com_vtiger_workflowtasks` (
-  `task_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflowtasks` (
+  `task_id` int(11) NOT NULL AUTO_INCREMENT,
   `workflow_id` int(11) DEFAULT NULL,
   `summary` varchar(400) NOT NULL,
-  `task` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `task` text DEFAULT NULL,
+  PRIMARY KEY (`task_id`),
+  UNIQUE KEY `com_vtiger_workflowtasks_idx` (`task_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `com_vtiger_workflowtasks`
@@ -141,12 +145,14 @@ INSERT INTO `com_vtiger_workflowtasks` (`task_id`, `workflow_id`, `summary`, `ta
 -- Table structure for table `com_vtiger_workflowtasks_entitymethod`
 --
 
-CREATE TABLE `com_vtiger_workflowtasks_entitymethod` (
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflowtasks_entitymethod` (
   `workflowtasks_entitymethod_id` int(11) NOT NULL,
   `module_name` varchar(100) DEFAULT NULL,
   `method_name` varchar(100) DEFAULT NULL,
   `function_path` varchar(400) DEFAULT NULL,
-  `function_name` varchar(100) DEFAULT NULL
+  `function_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`workflowtasks_entitymethod_id`),
+  UNIQUE KEY `com_vtiger_workflowtasks_entitymethod_idx` (`workflowtasks_entitymethod_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -171,7 +177,7 @@ INSERT INTO `com_vtiger_workflowtasks_entitymethod` (`workflowtasks_entitymethod
 -- Table structure for table `com_vtiger_workflowtasks_entitymethod_seq`
 --
 
-CREATE TABLE `com_vtiger_workflowtasks_entitymethod_seq` (
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflowtasks_entitymethod_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -188,7 +194,7 @@ INSERT INTO `com_vtiger_workflowtasks_entitymethod_seq` (`id`) VALUES
 -- Table structure for table `com_vtiger_workflowtasks_seq`
 --
 
-CREATE TABLE `com_vtiger_workflowtasks_seq` (
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflowtasks_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -205,7 +211,7 @@ INSERT INTO `com_vtiger_workflowtasks_seq` (`id`) VALUES
 -- Table structure for table `com_vtiger_workflowtask_queue`
 --
 
-CREATE TABLE `com_vtiger_workflowtask_queue` (
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflowtask_queue` (
   `task_id` int(11) DEFAULT NULL,
   `entity_id` varchar(100) DEFAULT NULL,
   `do_after` int(11) DEFAULT NULL,
@@ -219,11 +225,12 @@ CREATE TABLE `com_vtiger_workflowtask_queue` (
 -- Table structure for table `com_vtiger_workflowtemplates`
 --
 
-CREATE TABLE `com_vtiger_workflowtemplates` (
-  `template_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflowtemplates` (
+  `template_id` int(11) NOT NULL AUTO_INCREMENT,
   `module_name` varchar(100) DEFAULT NULL,
   `title` varchar(400) DEFAULT NULL,
-  `template` text DEFAULT NULL
+  `template` text DEFAULT NULL,
+  PRIMARY KEY (`template_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -232,9 +239,10 @@ CREATE TABLE `com_vtiger_workflowtemplates` (
 -- Table structure for table `com_vtiger_workflow_activatedonce`
 --
 
-CREATE TABLE `com_vtiger_workflow_activatedonce` (
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflow_activatedonce` (
   `workflow_id` int(11) NOT NULL,
-  `entity_id` int(11) NOT NULL
+  `entity_id` int(11) NOT NULL,
+  PRIMARY KEY (`workflow_id`,`entity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -243,7 +251,7 @@ CREATE TABLE `com_vtiger_workflow_activatedonce` (
 -- Table structure for table `com_vtiger_workflow_tasktypes`
 --
 
-CREATE TABLE `com_vtiger_workflow_tasktypes` (
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflow_tasktypes` (
   `id` int(11) NOT NULL,
   `tasktypename` varchar(255) NOT NULL,
   `label` varchar(255) DEFAULT NULL,
@@ -273,7 +281,7 @@ INSERT INTO `com_vtiger_workflow_tasktypes` (`id`, `tasktypename`, `label`, `cla
 -- Table structure for table `com_vtiger_workflow_tasktypes_seq`
 --
 
-CREATE TABLE `com_vtiger_workflow_tasktypes_seq` (
+CREATE TABLE IF NOT EXISTS `com_vtiger_workflow_tasktypes_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -290,13 +298,14 @@ INSERT INTO `com_vtiger_workflow_tasktypes_seq` (`id`) VALUES
 -- Table structure for table `hrm_employee_history`
 --
 
-CREATE TABLE `hrm_employee_history` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `hrm_employee_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `employ_id` int(11) DEFAULT NULL,
   `note` text DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `action` varchar(255) DEFAULT NULL,
-  `si_name` varchar(255) DEFAULT NULL
+  `si_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -305,7 +314,7 @@ CREATE TABLE `hrm_employee_history` (
 -- Table structure for table `vtiger_account`
 --
 
-CREATE TABLE `vtiger_account` (
+CREATE TABLE IF NOT EXISTS `vtiger_account` (
   `accountid` int(19) NOT NULL DEFAULT 0,
   `account_no` varchar(100) NOT NULL,
   `accountname` varchar(100) NOT NULL,
@@ -327,7 +336,10 @@ CREATE TABLE `vtiger_account` (
   `emailoptout` varchar(3) DEFAULT '0',
   `notify_owner` varchar(3) DEFAULT '0',
   `isconvertedfromlead` varchar(3) DEFAULT '0',
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`accountid`),
+  KEY `account_account_type_idx` (`account_type`),
+  KEY `email_idx` (`email1`,`email2`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -336,14 +348,15 @@ CREATE TABLE `vtiger_account` (
 -- Table structure for table `vtiger_accountbillads`
 --
 
-CREATE TABLE `vtiger_accountbillads` (
+CREATE TABLE IF NOT EXISTS `vtiger_accountbillads` (
   `accountaddressid` int(19) NOT NULL DEFAULT 0,
   `bill_city` varchar(30) DEFAULT NULL,
   `bill_code` varchar(30) DEFAULT NULL,
   `bill_country` varchar(30) DEFAULT NULL,
   `bill_state` varchar(30) DEFAULT NULL,
   `bill_street` varchar(250) DEFAULT NULL,
-  `bill_pobox` varchar(30) DEFAULT NULL
+  `bill_pobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`accountaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -352,11 +365,13 @@ CREATE TABLE `vtiger_accountbillads` (
 -- Table structure for table `vtiger_accountrating`
 --
 
-CREATE TABLE `vtiger_accountrating` (
-  `accountratingid` int(19) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vtiger_accountrating` (
+  `accountratingid` int(19) NOT NULL AUTO_INCREMENT,
   `rating` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`accountratingid`),
+  UNIQUE KEY `accountrating_rating_idx` (`rating`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -365,8 +380,9 @@ CREATE TABLE `vtiger_accountrating` (
 -- Table structure for table `vtiger_accountscf`
 --
 
-CREATE TABLE `vtiger_accountscf` (
-  `accountid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_accountscf` (
+  `accountid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`accountid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -375,14 +391,15 @@ CREATE TABLE `vtiger_accountscf` (
 -- Table structure for table `vtiger_accountshipads`
 --
 
-CREATE TABLE `vtiger_accountshipads` (
+CREATE TABLE IF NOT EXISTS `vtiger_accountshipads` (
   `accountaddressid` int(19) NOT NULL DEFAULT 0,
   `ship_city` varchar(30) DEFAULT NULL,
   `ship_code` varchar(30) DEFAULT NULL,
   `ship_country` varchar(30) DEFAULT NULL,
   `ship_state` varchar(30) DEFAULT NULL,
   `ship_pobox` varchar(30) DEFAULT NULL,
-  `ship_street` varchar(250) DEFAULT NULL
+  `ship_street` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`accountaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -391,13 +408,15 @@ CREATE TABLE `vtiger_accountshipads` (
 -- Table structure for table `vtiger_accounttype`
 --
 
-CREATE TABLE `vtiger_accounttype` (
+CREATE TABLE IF NOT EXISTS `vtiger_accounttype` (
   `accounttypeid` int(19) NOT NULL,
   `accounttype` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`accounttypeid`),
+  UNIQUE KEY `accounttype_accounttype_idx` (`accounttype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -422,7 +441,7 @@ INSERT INTO `vtiger_accounttype` (`accounttypeid`, `accounttype`, `presence`, `p
 -- Table structure for table `vtiger_accounttype_seq`
 --
 
-CREATE TABLE `vtiger_accounttype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_accounttype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -439,10 +458,11 @@ INSERT INTO `vtiger_accounttype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_actionmapping`
 --
 
-CREATE TABLE `vtiger_actionmapping` (
+CREATE TABLE IF NOT EXISTS `vtiger_actionmapping` (
   `actionid` int(19) NOT NULL,
   `actionname` varchar(200) NOT NULL,
-  `securitycheck` int(19) DEFAULT NULL
+  `securitycheck` int(19) DEFAULT NULL,
+  PRIMARY KEY (`actionid`,`actionname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -481,7 +501,7 @@ INSERT INTO `vtiger_actionmapping` (`actionid`, `actionname`, `securitycheck`) V
 -- Table structure for table `vtiger_activity`
 --
 
-CREATE TABLE `vtiger_activity` (
+CREATE TABLE IF NOT EXISTS `vtiger_activity` (
   `activityid` int(19) NOT NULL DEFAULT 0,
   `subject` varchar(255) DEFAULT NULL,
   `semodule` varchar(20) DEFAULT NULL,
@@ -500,7 +520,14 @@ CREATE TABLE `vtiger_activity` (
   `notime` varchar(3) NOT NULL DEFAULT '0',
   `visibility` varchar(50) NOT NULL DEFAULT 'all',
   `recurringtype` varchar(200) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`activityid`),
+  KEY `activity_activityid_subject_idx` (`activityid`,`subject`),
+  KEY `activity_activitytype_date_start_idx` (`activitytype`,`date_start`),
+  KEY `activity_date_start_due_date_idx` (`date_start`,`due_date`),
+  KEY `activity_date_start_time_start_idx` (`date_start`,`time_start`),
+  KEY `activity_eventstatus_idx` (`eventstatus`),
+  KEY `activity_status_idx` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -509,8 +536,9 @@ CREATE TABLE `vtiger_activity` (
 -- Table structure for table `vtiger_activitycf`
 --
 
-CREATE TABLE `vtiger_activitycf` (
-  `activityid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_activitycf` (
+  `activityid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`activityid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -519,9 +547,12 @@ CREATE TABLE `vtiger_activitycf` (
 -- Table structure for table `vtiger_activityproductrel`
 --
 
-CREATE TABLE `vtiger_activityproductrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_activityproductrel` (
   `activityid` int(19) NOT NULL DEFAULT 0,
-  `productid` int(19) NOT NULL DEFAULT 0
+  `productid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`activityid`,`productid`),
+  KEY `activityproductrel_activityid_idx` (`activityid`),
+  KEY `activityproductrel_productid_idx` (`productid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -530,13 +561,15 @@ CREATE TABLE `vtiger_activityproductrel` (
 -- Table structure for table `vtiger_activitytype`
 --
 
-CREATE TABLE `vtiger_activitytype` (
+CREATE TABLE IF NOT EXISTS `vtiger_activitytype` (
   `activitytypeid` int(19) NOT NULL,
   `activitytype` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`activitytypeid`),
+  UNIQUE KEY `activitytype_activitytype_idx` (`activitytype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -554,7 +587,7 @@ INSERT INTO `vtiger_activitytype` (`activitytypeid`, `activitytype`, `presence`,
 -- Table structure for table `vtiger_activitytype_seq`
 --
 
-CREATE TABLE `vtiger_activitytype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_activitytype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -571,7 +604,7 @@ INSERT INTO `vtiger_activitytype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_activity_recurring_info`
 --
 
-CREATE TABLE `vtiger_activity_recurring_info` (
+CREATE TABLE IF NOT EXISTS `vtiger_activity_recurring_info` (
   `activityid` int(19) NOT NULL,
   `recurrenceid` int(19) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -582,11 +615,12 @@ CREATE TABLE `vtiger_activity_recurring_info` (
 -- Table structure for table `vtiger_activity_reminder`
 --
 
-CREATE TABLE `vtiger_activity_reminder` (
+CREATE TABLE IF NOT EXISTS `vtiger_activity_reminder` (
   `activity_id` int(11) NOT NULL,
   `reminder_time` int(11) NOT NULL,
   `reminder_sent` int(2) NOT NULL,
-  `recurringid` int(19) NOT NULL
+  `recurringid` int(19) NOT NULL,
+  PRIMARY KEY (`activity_id`,`recurringid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -595,13 +629,14 @@ CREATE TABLE `vtiger_activity_reminder` (
 -- Table structure for table `vtiger_activity_reminder_popup`
 --
 
-CREATE TABLE `vtiger_activity_reminder_popup` (
+CREATE TABLE IF NOT EXISTS `vtiger_activity_reminder_popup` (
   `reminderid` int(19) NOT NULL,
   `semodule` varchar(100) NOT NULL,
   `recordid` int(19) NOT NULL,
   `date_start` date NOT NULL,
   `time_start` varchar(100) NOT NULL,
-  `status` int(2) NOT NULL
+  `status` int(2) NOT NULL,
+  PRIMARY KEY (`reminderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -610,11 +645,12 @@ CREATE TABLE `vtiger_activity_reminder_popup` (
 -- Table structure for table `vtiger_activity_view`
 --
 
-CREATE TABLE `vtiger_activity_view` (
+CREATE TABLE IF NOT EXISTS `vtiger_activity_view` (
   `activity_viewid` int(19) NOT NULL,
   `activity_view` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`activity_viewid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -634,7 +670,7 @@ INSERT INTO `vtiger_activity_view` (`activity_viewid`, `activity_view`, `sortord
 -- Table structure for table `vtiger_activity_view_seq`
 --
 
-CREATE TABLE `vtiger_activity_view_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_activity_view_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -651,11 +687,13 @@ INSERT INTO `vtiger_activity_view_seq` (`id`) VALUES
 -- Table structure for table `vtiger_announcement`
 --
 
-CREATE TABLE `vtiger_announcement` (
+CREATE TABLE IF NOT EXISTS `vtiger_announcement` (
   `creatorid` int(19) NOT NULL,
   `announcement` text DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`creatorid`),
+  KEY `announcement_creatorid_idx` (`creatorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -664,11 +702,12 @@ CREATE TABLE `vtiger_announcement` (
 -- Table structure for table `vtiger_app2tab`
 --
 
-CREATE TABLE `vtiger_app2tab` (
+CREATE TABLE IF NOT EXISTS `vtiger_app2tab` (
   `tabid` int(11) DEFAULT NULL,
   `appname` varchar(20) DEFAULT NULL,
   `sequence` int(19) DEFAULT NULL,
-  `visible` int(3) DEFAULT 1
+  `visible` int(3) DEFAULT 1,
+  KEY `vtiger_app2tab_fk_tab` (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -731,7 +770,8 @@ INSERT INTO `vtiger_app2tab` (`tabid`, `appname`, `sequence`, `visible`) VALUES
 (65, 'SUPPORT', 1, 1),
 (66, 'SUPPORT', 2, 1),
 (70, 'MARKETING', NULL, 1),
-(71, 'MARKETING', NULL, 1);
+(71, 'MARKETING', NULL, 1),
+(72, 'SALES', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -739,7 +779,7 @@ INSERT INTO `vtiger_app2tab` (`tabid`, `appname`, `sequence`, `visible`) VALUES
 -- Table structure for table `vtiger_assets`
 --
 
-CREATE TABLE `vtiger_assets` (
+CREATE TABLE IF NOT EXISTS `vtiger_assets` (
   `assetsid` int(11) NOT NULL,
   `asset_no` varchar(30) NOT NULL,
   `account` int(19) DEFAULT NULL,
@@ -754,7 +794,8 @@ CREATE TABLE `vtiger_assets` (
   `shippingtrackingnumber` varchar(200) DEFAULT NULL,
   `assetname` varchar(100) DEFAULT NULL,
   `contact` int(19) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`assetsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -763,8 +804,9 @@ CREATE TABLE `vtiger_assets` (
 -- Table structure for table `vtiger_assetscf`
 --
 
-CREATE TABLE `vtiger_assetscf` (
-  `assetsid` int(19) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_assetscf` (
+  `assetsid` int(19) NOT NULL,
+  PRIMARY KEY (`assetsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -773,13 +815,14 @@ CREATE TABLE `vtiger_assetscf` (
 -- Table structure for table `vtiger_assetstatus`
 --
 
-CREATE TABLE `vtiger_assetstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_assetstatus` (
   `assetstatusid` int(11) NOT NULL,
   `assetstatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`assetstatusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -796,7 +839,7 @@ INSERT INTO `vtiger_assetstatus` (`assetstatusid`, `assetstatus`, `presence`, `p
 -- Table structure for table `vtiger_assetstatus_seq`
 --
 
-CREATE TABLE `vtiger_assetstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_assetstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -813,7 +856,7 @@ INSERT INTO `vtiger_assetstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_asterisk`
 --
 
-CREATE TABLE `vtiger_asterisk` (
+CREATE TABLE IF NOT EXISTS `vtiger_asterisk` (
   `server` varchar(30) DEFAULT NULL,
   `port` varchar(30) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
@@ -827,7 +870,7 @@ CREATE TABLE `vtiger_asterisk` (
 -- Table structure for table `vtiger_asteriskextensions`
 --
 
-CREATE TABLE `vtiger_asteriskextensions` (
+CREATE TABLE IF NOT EXISTS `vtiger_asteriskextensions` (
   `userid` int(11) DEFAULT NULL,
   `asterisk_extension` varchar(50) DEFAULT NULL,
   `use_asterisk` varchar(3) DEFAULT NULL
@@ -846,7 +889,7 @@ INSERT INTO `vtiger_asteriskextensions` (`userid`, `asterisk_extension`, `use_as
 -- Table structure for table `vtiger_asteriskincomingcalls`
 --
 
-CREATE TABLE `vtiger_asteriskincomingcalls` (
+CREATE TABLE IF NOT EXISTS `vtiger_asteriskincomingcalls` (
   `from_number` varchar(50) DEFAULT NULL,
   `from_name` varchar(50) DEFAULT NULL,
   `to_number` varchar(50) DEFAULT NULL,
@@ -862,7 +905,7 @@ CREATE TABLE `vtiger_asteriskincomingcalls` (
 -- Table structure for table `vtiger_asteriskincomingevents`
 --
 
-CREATE TABLE `vtiger_asteriskincomingevents` (
+CREATE TABLE IF NOT EXISTS `vtiger_asteriskincomingevents` (
   `uid` varchar(255) NOT NULL,
   `channel` varchar(100) DEFAULT NULL,
   `from_number` bigint(20) DEFAULT NULL,
@@ -872,7 +915,8 @@ CREATE TABLE `vtiger_asteriskincomingevents` (
   `timer` int(20) DEFAULT NULL,
   `flag` varchar(3) DEFAULT NULL,
   `pbxrecordid` int(19) DEFAULT NULL,
-  `relcrmid` int(19) DEFAULT NULL
+  `relcrmid` int(19) DEFAULT NULL,
+  PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -881,14 +925,16 @@ CREATE TABLE `vtiger_asteriskincomingevents` (
 -- Table structure for table `vtiger_attachments`
 --
 
-CREATE TABLE `vtiger_attachments` (
+CREATE TABLE IF NOT EXISTS `vtiger_attachments` (
   `attachmentsid` int(19) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `type` varchar(100) DEFAULT NULL,
   `path` text DEFAULT NULL,
   `storedname` varchar(255) DEFAULT NULL,
-  `subject` varchar(255) DEFAULT NULL
+  `subject` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`attachmentsid`),
+  KEY `attachments_attachmentsid_idx` (`attachmentsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -897,12 +943,13 @@ CREATE TABLE `vtiger_attachments` (
 -- Table structure for table `vtiger_attachmentsfolder`
 --
 
-CREATE TABLE `vtiger_attachmentsfolder` (
+CREATE TABLE IF NOT EXISTS `vtiger_attachmentsfolder` (
   `folderid` int(19) NOT NULL,
   `foldername` varchar(200) NOT NULL,
   `description` varchar(250) DEFAULT NULL,
   `createdby` int(19) NOT NULL,
-  `sequence` int(19) DEFAULT NULL
+  `sequence` int(19) DEFAULT NULL,
+  PRIMARY KEY (`folderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -918,7 +965,7 @@ INSERT INTO `vtiger_attachmentsfolder` (`folderid`, `foldername`, `description`,
 -- Table structure for table `vtiger_attachmentsfolder_seq`
 --
 
-CREATE TABLE `vtiger_attachmentsfolder_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_attachmentsfolder_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -935,13 +982,14 @@ INSERT INTO `vtiger_attachmentsfolder_seq` (`id`) VALUES
 -- Table structure for table `vtiger_audit_trial`
 --
 
-CREATE TABLE `vtiger_audit_trial` (
+CREATE TABLE IF NOT EXISTS `vtiger_audit_trial` (
   `auditid` int(19) NOT NULL,
   `userid` int(19) DEFAULT NULL,
   `module` varchar(255) DEFAULT NULL,
   `action` varchar(255) DEFAULT NULL,
   `recordid` varchar(20) DEFAULT NULL,
-  `actiondate` datetime DEFAULT NULL
+  `actiondate` datetime DEFAULT NULL,
+  PRIMARY KEY (`auditid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -950,7 +998,7 @@ CREATE TABLE `vtiger_audit_trial` (
 -- Table structure for table `vtiger_blocks`
 --
 
-CREATE TABLE `vtiger_blocks` (
+CREATE TABLE IF NOT EXISTS `vtiger_blocks` (
   `blockid` int(19) NOT NULL,
   `tabid` int(19) NOT NULL,
   `blocklabel` varchar(100) NOT NULL,
@@ -961,7 +1009,9 @@ CREATE TABLE `vtiger_blocks` (
   `edit_view` int(2) NOT NULL DEFAULT 0,
   `detail_view` int(2) NOT NULL DEFAULT 0,
   `display_status` int(1) NOT NULL DEFAULT 1,
-  `iscustom` int(1) NOT NULL DEFAULT 0
+  `iscustom` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`blockid`),
+  KEY `block_tabid_idx` (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1124,7 +1174,10 @@ INSERT INTO `vtiger_blocks` (`blockid`, `tabid`, `blocklabel`, `sequence`, `show
 (185, 70, 'LBL_PHUONGTIENTRUYENTHONG_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
 (186, 70, 'LBL_CUSTOM_INFORMATION', 2, 0, 0, 0, 0, 0, 1, 0),
 (187, 71, 'LBL_HINHTHUCTRUYENTHONG_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
-(188, 71, 'LBL_CUSTOM_INFORMATION', 2, 0, 0, 0, 0, 0, 1, 0);
+(188, 71, 'LBL_CUSTOM_INFORMATION', 2, 0, 0, 0, 0, 0, 1, 0),
+(189, 72, 'LBL_QUYTRINHBANHANG_INFORMATION', 1, 0, 0, 0, 0, 0, 1, 0),
+(190, 72, 'LBL_CUSTOM_INFORMATION', 3, 0, 0, 0, 0, 0, 1, 0),
+(191, 72, 'Giai doan ban hang', 2, 0, 0, 0, 0, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1132,7 +1185,7 @@ INSERT INTO `vtiger_blocks` (`blockid`, `tabid`, `blocklabel`, `sequence`, `show
 -- Table structure for table `vtiger_blocks_seq`
 --
 
-CREATE TABLE `vtiger_blocks_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_blocks_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1141,7 +1194,7 @@ CREATE TABLE `vtiger_blocks_seq` (
 --
 
 INSERT INTO `vtiger_blocks_seq` (`id`) VALUES
-(188);
+(191);
 
 -- --------------------------------------------------------
 
@@ -1149,11 +1202,12 @@ INSERT INTO `vtiger_blocks_seq` (`id`) VALUES
 -- Table structure for table `vtiger_calendarsharedtype`
 --
 
-CREATE TABLE `vtiger_calendarsharedtype` (
+CREATE TABLE IF NOT EXISTS `vtiger_calendarsharedtype` (
   `calendarsharedtypeid` int(11) NOT NULL,
   `calendarsharedtype` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`calendarsharedtypeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1171,7 +1225,7 @@ INSERT INTO `vtiger_calendarsharedtype` (`calendarsharedtypeid`, `calendarshared
 -- Table structure for table `vtiger_calendarsharedtype_seq`
 --
 
-CREATE TABLE `vtiger_calendarsharedtype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_calendarsharedtype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1188,13 +1242,14 @@ INSERT INTO `vtiger_calendarsharedtype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_calendar_default_activitytypes`
 --
 
-CREATE TABLE `vtiger_calendar_default_activitytypes` (
+CREATE TABLE IF NOT EXISTS `vtiger_calendar_default_activitytypes` (
   `id` int(19) NOT NULL,
   `module` varchar(50) DEFAULT NULL,
   `fieldname` varchar(50) DEFAULT NULL,
   `defaultcolor` varchar(50) DEFAULT NULL,
   `isdefault` int(11) DEFAULT 1,
-  `conditions` varchar(255) DEFAULT NULL
+  `conditions` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1217,7 +1272,7 @@ INSERT INTO `vtiger_calendar_default_activitytypes` (`id`, `module`, `fieldname`
 -- Table structure for table `vtiger_calendar_default_activitytypes_seq`
 --
 
-CREATE TABLE `vtiger_calendar_default_activitytypes_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_calendar_default_activitytypes_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1234,12 +1289,13 @@ INSERT INTO `vtiger_calendar_default_activitytypes_seq` (`id`) VALUES
 -- Table structure for table `vtiger_calendar_user_activitytypes`
 --
 
-CREATE TABLE `vtiger_calendar_user_activitytypes` (
+CREATE TABLE IF NOT EXISTS `vtiger_calendar_user_activitytypes` (
   `id` int(19) NOT NULL,
   `defaultid` int(19) DEFAULT NULL,
   `userid` int(19) DEFAULT NULL,
   `color` varchar(50) DEFAULT NULL,
-  `visible` int(19) DEFAULT 1
+  `visible` int(19) DEFAULT 1,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1262,7 +1318,7 @@ INSERT INTO `vtiger_calendar_user_activitytypes` (`id`, `defaultid`, `userid`, `
 -- Table structure for table `vtiger_calendar_user_activitytypes_seq`
 --
 
-CREATE TABLE `vtiger_calendar_user_activitytypes_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_calendar_user_activitytypes_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1279,11 +1335,12 @@ INSERT INTO `vtiger_calendar_user_activitytypes_seq` (`id`) VALUES
 -- Table structure for table `vtiger_callduration`
 --
 
-CREATE TABLE `vtiger_callduration` (
+CREATE TABLE IF NOT EXISTS `vtiger_callduration` (
   `calldurationid` int(11) NOT NULL,
   `callduration` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`calldurationid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1303,7 +1360,7 @@ INSERT INTO `vtiger_callduration` (`calldurationid`, `callduration`, `sortorderi
 -- Table structure for table `vtiger_callduration_seq`
 --
 
-CREATE TABLE `vtiger_callduration_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_callduration_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1320,7 +1377,7 @@ INSERT INTO `vtiger_callduration_seq` (`id`) VALUES
 -- Table structure for table `vtiger_campaign`
 --
 
-CREATE TABLE `vtiger_campaign` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaign` (
   `campaign_no` varchar(100) NOT NULL,
   `campaignname` varchar(255) DEFAULT NULL,
   `campaigntype` varchar(200) DEFAULT NULL,
@@ -1345,7 +1402,11 @@ CREATE TABLE `vtiger_campaign` (
   `tags` varchar(1) DEFAULT NULL,
   `cf_1251` int(10) DEFAULT NULL,
   `cf_1262` int(10) DEFAULT NULL,
-  `cf_1270` int(10) DEFAULT NULL
+  `cf_1270` int(10) DEFAULT NULL,
+  PRIMARY KEY (`campaignid`),
+  KEY `campaign_campaignstatus_idx` (`campaignstatus`),
+  KEY `campaign_campaignname_idx` (`campaignname`),
+  KEY `campaign_campaignid_idx` (`campaignid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1354,7 +1415,7 @@ CREATE TABLE `vtiger_campaign` (
 -- Table structure for table `vtiger_campaignaccountrel`
 --
 
-CREATE TABLE `vtiger_campaignaccountrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaignaccountrel` (
   `campaignid` int(19) DEFAULT NULL,
   `accountid` int(19) DEFAULT NULL,
   `campaignrelstatusid` int(19) DEFAULT NULL
@@ -1366,10 +1427,12 @@ CREATE TABLE `vtiger_campaignaccountrel` (
 -- Table structure for table `vtiger_campaigncontrel`
 --
 
-CREATE TABLE `vtiger_campaigncontrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaigncontrel` (
   `campaignid` int(19) NOT NULL DEFAULT 0,
   `contactid` int(19) NOT NULL DEFAULT 0,
-  `campaignrelstatusid` int(19) NOT NULL DEFAULT 0
+  `campaignrelstatusid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`campaignid`,`contactid`,`campaignrelstatusid`),
+  KEY `campaigncontrel_contractid_idx` (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1378,10 +1441,12 @@ CREATE TABLE `vtiger_campaigncontrel` (
 -- Table structure for table `vtiger_campaignleadrel`
 --
 
-CREATE TABLE `vtiger_campaignleadrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaignleadrel` (
   `campaignid` int(19) NOT NULL DEFAULT 0,
   `leadid` int(19) NOT NULL DEFAULT 0,
-  `campaignrelstatusid` int(19) NOT NULL DEFAULT 0
+  `campaignrelstatusid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`campaignid`,`leadid`,`campaignrelstatusid`),
+  KEY `campaignleadrel_leadid_campaignid_idx` (`leadid`,`campaignid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1390,7 +1455,7 @@ CREATE TABLE `vtiger_campaignleadrel` (
 -- Table structure for table `vtiger_campaignrelstatus`
 --
 
-CREATE TABLE `vtiger_campaignrelstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaignrelstatus` (
   `campaignrelstatusid` int(19) DEFAULT NULL,
   `campaignrelstatus` varchar(256) DEFAULT NULL,
   `sortorderid` int(19) DEFAULT NULL,
@@ -1413,7 +1478,7 @@ INSERT INTO `vtiger_campaignrelstatus` (`campaignrelstatusid`, `campaignrelstatu
 -- Table structure for table `vtiger_campaignrelstatus_seq`
 --
 
-CREATE TABLE `vtiger_campaignrelstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaignrelstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1430,8 +1495,9 @@ INSERT INTO `vtiger_campaignrelstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_campaignscf`
 --
 
-CREATE TABLE `vtiger_campaignscf` (
-  `campaignid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_campaignscf` (
+  `campaignid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`campaignid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1440,13 +1506,15 @@ CREATE TABLE `vtiger_campaignscf` (
 -- Table structure for table `vtiger_campaignstatus`
 --
 
-CREATE TABLE `vtiger_campaignstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaignstatus` (
   `campaignstatusid` int(19) NOT NULL,
   `campaignstatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`campaignstatusid`),
+  KEY `campaignstatus_campaignstatus_idx` (`campaignstatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1466,7 +1534,7 @@ INSERT INTO `vtiger_campaignstatus` (`campaignstatusid`, `campaignstatus`, `pres
 -- Table structure for table `vtiger_campaignstatus_seq`
 --
 
-CREATE TABLE `vtiger_campaignstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaignstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1483,13 +1551,15 @@ INSERT INTO `vtiger_campaignstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_campaigntype`
 --
 
-CREATE TABLE `vtiger_campaigntype` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaigntype` (
   `campaigntypeid` int(19) NOT NULL,
   `campaigntype` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`campaigntypeid`),
+  UNIQUE KEY `campaigntype_campaigntype_idx` (`campaigntype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1516,7 +1586,7 @@ INSERT INTO `vtiger_campaigntype` (`campaigntypeid`, `campaigntype`, `presence`,
 -- Table structure for table `vtiger_campaigntype_seq`
 --
 
-CREATE TABLE `vtiger_campaigntype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_campaigntype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1533,13 +1603,14 @@ INSERT INTO `vtiger_campaigntype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_candidate_action`
 --
 
-CREATE TABLE `vtiger_candidate_action` (
+CREATE TABLE IF NOT EXISTS `vtiger_candidate_action` (
   `candidate_actionid` int(11) NOT NULL,
   `candidate_action` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`candidate_actionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1567,7 +1638,7 @@ INSERT INTO `vtiger_candidate_action` (`candidate_actionid`, `candidate_action`,
 -- Table structure for table `vtiger_candidate_action_seq`
 --
 
-CREATE TABLE `vtiger_candidate_action_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_candidate_action_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1584,13 +1655,14 @@ INSERT INTO `vtiger_candidate_action_seq` (`id`) VALUES
 -- Table structure for table `vtiger_candidate_resource_cv`
 --
 
-CREATE TABLE `vtiger_candidate_resource_cv` (
+CREATE TABLE IF NOT EXISTS `vtiger_candidate_resource_cv` (
   `candidate_resource_cvid` int(11) NOT NULL,
   `candidate_resource_cv` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`candidate_resource_cvid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1610,7 +1682,7 @@ INSERT INTO `vtiger_candidate_resource_cv` (`candidate_resource_cvid`, `candidat
 -- Table structure for table `vtiger_candidate_resource_cv_seq`
 --
 
-CREATE TABLE `vtiger_candidate_resource_cv_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_candidate_resource_cv_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1627,13 +1699,15 @@ INSERT INTO `vtiger_candidate_resource_cv_seq` (`id`) VALUES
 -- Table structure for table `vtiger_carrier`
 --
 
-CREATE TABLE `vtiger_carrier` (
+CREATE TABLE IF NOT EXISTS `vtiger_carrier` (
   `carrierid` int(19) NOT NULL,
   `carrier` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`carrierid`),
+  UNIQUE KEY `carrier_carrier_idx` (`carrier`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1653,7 +1727,7 @@ INSERT INTO `vtiger_carrier` (`carrierid`, `carrier`, `presence`, `picklist_valu
 -- Table structure for table `vtiger_carrier_seq`
 --
 
-CREATE TABLE `vtiger_carrier_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_carrier_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1670,13 +1744,14 @@ INSERT INTO `vtiger_carrier_seq` (`id`) VALUES
 -- Table structure for table `vtiger_cf_1121`
 --
 
-CREATE TABLE `vtiger_cf_1121` (
-  `cf_1121id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1121` (
+  `cf_1121id` int(11) NOT NULL AUTO_INCREMENT,
   `cf_1121` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
   `presence` int(11) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1121id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vtiger_cf_1121`
@@ -1692,7 +1767,7 @@ INSERT INTO `vtiger_cf_1121` (`cf_1121id`, `cf_1121`, `sortorderid`, `presence`,
 -- Table structure for table `vtiger_cf_1121_seq`
 --
 
-CREATE TABLE `vtiger_cf_1121_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1121_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1709,13 +1784,14 @@ INSERT INTO `vtiger_cf_1121_seq` (`id`) VALUES
 -- Table structure for table `vtiger_cf_1137`
 --
 
-CREATE TABLE `vtiger_cf_1137` (
-  `cf_1137id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1137` (
+  `cf_1137id` int(11) NOT NULL AUTO_INCREMENT,
   `cf_1137` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
   `presence` int(11) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1137id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vtiger_cf_1137`
@@ -1732,7 +1808,7 @@ INSERT INTO `vtiger_cf_1137` (`cf_1137id`, `cf_1137`, `sortorderid`, `presence`,
 -- Table structure for table `vtiger_cf_1137_seq`
 --
 
-CREATE TABLE `vtiger_cf_1137_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1137_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1749,13 +1825,14 @@ INSERT INTO `vtiger_cf_1137_seq` (`id`) VALUES
 -- Table structure for table `vtiger_cf_1141`
 --
 
-CREATE TABLE `vtiger_cf_1141` (
-  `cf_1141id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1141` (
+  `cf_1141id` int(11) NOT NULL AUTO_INCREMENT,
   `cf_1141` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
   `presence` int(11) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1141id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vtiger_cf_1141`
@@ -1774,7 +1851,7 @@ INSERT INTO `vtiger_cf_1141` (`cf_1141id`, `cf_1141`, `sortorderid`, `presence`,
 -- Table structure for table `vtiger_cf_1141_seq`
 --
 
-CREATE TABLE `vtiger_cf_1141_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1141_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1791,13 +1868,14 @@ INSERT INTO `vtiger_cf_1141_seq` (`id`) VALUES
 -- Table structure for table `vtiger_cf_1143`
 --
 
-CREATE TABLE `vtiger_cf_1143` (
-  `cf_1143id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1143` (
+  `cf_1143id` int(11) NOT NULL AUTO_INCREMENT,
   `cf_1143` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
   `presence` int(11) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1143id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vtiger_cf_1143`
@@ -1815,7 +1893,7 @@ INSERT INTO `vtiger_cf_1143` (`cf_1143id`, `cf_1143`, `sortorderid`, `presence`,
 -- Table structure for table `vtiger_cf_1143_seq`
 --
 
-CREATE TABLE `vtiger_cf_1143_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1143_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1832,13 +1910,14 @@ INSERT INTO `vtiger_cf_1143_seq` (`id`) VALUES
 -- Table structure for table `vtiger_cf_1145`
 --
 
-CREATE TABLE `vtiger_cf_1145` (
-  `cf_1145id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1145` (
+  `cf_1145id` int(11) NOT NULL AUTO_INCREMENT,
   `cf_1145` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
   `presence` int(11) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1145id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vtiger_cf_1145`
@@ -1855,7 +1934,7 @@ INSERT INTO `vtiger_cf_1145` (`cf_1145id`, `cf_1145`, `sortorderid`, `presence`,
 -- Table structure for table `vtiger_cf_1145_seq`
 --
 
-CREATE TABLE `vtiger_cf_1145_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1145_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1872,13 +1951,14 @@ INSERT INTO `vtiger_cf_1145_seq` (`id`) VALUES
 -- Table structure for table `vtiger_cf_1147`
 --
 
-CREATE TABLE `vtiger_cf_1147` (
-  `cf_1147id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1147` (
+  `cf_1147id` int(11) NOT NULL AUTO_INCREMENT,
   `cf_1147` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
   `presence` int(11) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1147id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vtiger_cf_1147`
@@ -1894,7 +1974,7 @@ INSERT INTO `vtiger_cf_1147` (`cf_1147id`, `cf_1147`, `sortorderid`, `presence`,
 -- Table structure for table `vtiger_cf_1147_seq`
 --
 
-CREATE TABLE `vtiger_cf_1147_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1147_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1911,13 +1991,14 @@ INSERT INTO `vtiger_cf_1147_seq` (`id`) VALUES
 -- Table structure for table `vtiger_cf_1161`
 --
 
-CREATE TABLE `vtiger_cf_1161` (
-  `cf_1161id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1161` (
+  `cf_1161id` int(11) NOT NULL AUTO_INCREMENT,
   `cf_1161` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
   `presence` int(11) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1161id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vtiger_cf_1161`
@@ -1939,7 +2020,7 @@ INSERT INTO `vtiger_cf_1161` (`cf_1161id`, `cf_1161`, `sortorderid`, `presence`,
 -- Table structure for table `vtiger_cf_1161_seq`
 --
 
-CREATE TABLE `vtiger_cf_1161_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1161_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1956,13 +2037,14 @@ INSERT INTO `vtiger_cf_1161_seq` (`id`) VALUES
 -- Table structure for table `vtiger_cf_1221`
 --
 
-CREATE TABLE `vtiger_cf_1221` (
-  `cf_1221id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1221` (
+  `cf_1221id` int(11) NOT NULL AUTO_INCREMENT,
   `cf_1221` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
   `presence` int(11) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1221id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vtiger_cf_1221`
@@ -1978,7 +2060,7 @@ INSERT INTO `vtiger_cf_1221` (`cf_1221id`, `cf_1221`, `sortorderid`, `presence`,
 -- Table structure for table `vtiger_cf_1221_seq`
 --
 
-CREATE TABLE `vtiger_cf_1221_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1221_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1992,12 +2074,63 @@ INSERT INTO `vtiger_cf_1221_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vtiger_cf_1286`
+--
+
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1286` (
+  `cf_1286id` int(11) NOT NULL AUTO_INCREMENT,
+  `cf_1286` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1286id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1286`
+--
+
+INSERT INTO `vtiger_cf_1286` (`cf_1286id`, `cf_1286`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'Tiềm năng', 0, 1, NULL),
+(2, 'Phân tích nhu cầu và khó khăn của khách hàng', 1, 1, NULL),
+(3, 'Tìm sản phẩm hoặc dịch vụ giải quyết khó khăn và định giá', 2, 1, NULL),
+(4, 'Phân tích đánh giá của khách hàng về sản phẩm và dịch vụ', 3, 1, NULL),
+(5, 'Đề xuất giải pháp và báo giá', 4, 1, NULL),
+(6, 'Thương thảo', 5, 1, NULL),
+(7, 'Kết thúc thành công', 6, 1, NULL),
+(8, 'Kết thúc thất bại', 7, 1, NULL),
+(9, 'Xác định tiềm năng này có phải là cơ hội bán hàng hay không', 8, 1, NULL),
+(10, 'Xác định người ra quyết định', 9, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1286_seq`
+--
+
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1286_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1286_seq`
+--
+
+INSERT INTO `vtiger_cf_1286_seq` (`id`) VALUES
+(10);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vtiger_cntactivityrel`
 --
 
-CREATE TABLE `vtiger_cntactivityrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_cntactivityrel` (
   `contactid` int(19) NOT NULL DEFAULT 0,
-  `activityid` int(19) NOT NULL DEFAULT 0
+  `activityid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`contactid`,`activityid`),
+  KEY `cntactivityrel_contactid_idx` (`contactid`),
+  KEY `cntactivityrel_activityid_idx` (`activityid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2006,7 +2139,7 @@ CREATE TABLE `vtiger_cntactivityrel` (
 -- Table structure for table `vtiger_contactaddress`
 --
 
-CREATE TABLE `vtiger_contactaddress` (
+CREATE TABLE IF NOT EXISTS `vtiger_contactaddress` (
   `contactaddressid` int(19) NOT NULL DEFAULT 0,
   `mailingcity` varchar(40) DEFAULT NULL,
   `mailingstreet` varchar(250) DEFAULT NULL,
@@ -2019,7 +2152,8 @@ CREATE TABLE `vtiger_contactaddress` (
   `mailingzip` varchar(30) DEFAULT NULL,
   `otherzip` varchar(30) DEFAULT NULL,
   `otherstreet` varchar(250) DEFAULT NULL,
-  `otherpobox` varchar(30) DEFAULT NULL
+  `otherpobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`contactaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2028,7 +2162,7 @@ CREATE TABLE `vtiger_contactaddress` (
 -- Table structure for table `vtiger_contactdetails`
 --
 
-CREATE TABLE `vtiger_contactdetails` (
+CREATE TABLE IF NOT EXISTS `vtiger_contactdetails` (
   `contactid` int(19) NOT NULL DEFAULT 0,
   `contact_no` varchar(100) NOT NULL,
   `accountid` int(19) DEFAULT NULL,
@@ -2053,7 +2187,10 @@ CREATE TABLE `vtiger_contactdetails` (
   `reference` varchar(3) DEFAULT NULL,
   `notify_owner` varchar(3) DEFAULT '0',
   `isconvertedfromlead` varchar(3) DEFAULT '0',
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`contactid`),
+  KEY `contactdetails_accountid_idx` (`accountid`),
+  KEY `email_idx` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2062,8 +2199,9 @@ CREATE TABLE `vtiger_contactdetails` (
 -- Table structure for table `vtiger_contactscf`
 --
 
-CREATE TABLE `vtiger_contactscf` (
-  `contactid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_contactscf` (
+  `contactid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2072,7 +2210,7 @@ CREATE TABLE `vtiger_contactscf` (
 -- Table structure for table `vtiger_contactsubdetails`
 --
 
-CREATE TABLE `vtiger_contactsubdetails` (
+CREATE TABLE IF NOT EXISTS `vtiger_contactsubdetails` (
   `contactsubscriptionid` int(19) NOT NULL DEFAULT 0,
   `homephone` varchar(50) DEFAULT NULL,
   `otherphone` varchar(50) DEFAULT NULL,
@@ -2081,7 +2219,8 @@ CREATE TABLE `vtiger_contactsubdetails` (
   `birthday` date DEFAULT NULL,
   `laststayintouchrequest` int(30) DEFAULT 0,
   `laststayintouchsavedate` int(19) DEFAULT 0,
-  `leadsource` varchar(200) DEFAULT NULL
+  `leadsource` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`contactsubscriptionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2090,9 +2229,12 @@ CREATE TABLE `vtiger_contactsubdetails` (
 -- Table structure for table `vtiger_contpotentialrel`
 --
 
-CREATE TABLE `vtiger_contpotentialrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_contpotentialrel` (
   `contactid` int(19) NOT NULL DEFAULT 0,
-  `potentialid` int(19) NOT NULL DEFAULT 0
+  `potentialid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`contactid`,`potentialid`),
+  KEY `contpotentialrel_potentialid_idx` (`potentialid`),
+  KEY `contpotentialrel_contactid_idx` (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2101,13 +2243,14 @@ CREATE TABLE `vtiger_contpotentialrel` (
 -- Table structure for table `vtiger_contract_priority`
 --
 
-CREATE TABLE `vtiger_contract_priority` (
+CREATE TABLE IF NOT EXISTS `vtiger_contract_priority` (
   `contract_priorityid` int(11) NOT NULL,
   `contract_priority` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`contract_priorityid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2125,7 +2268,7 @@ INSERT INTO `vtiger_contract_priority` (`contract_priorityid`, `contract_priorit
 -- Table structure for table `vtiger_contract_priority_seq`
 --
 
-CREATE TABLE `vtiger_contract_priority_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_contract_priority_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2142,13 +2285,14 @@ INSERT INTO `vtiger_contract_priority_seq` (`id`) VALUES
 -- Table structure for table `vtiger_contract_status`
 --
 
-CREATE TABLE `vtiger_contract_status` (
+CREATE TABLE IF NOT EXISTS `vtiger_contract_status` (
   `contract_statusid` int(11) NOT NULL,
   `contract_status` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`contract_statusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2169,7 +2313,7 @@ INSERT INTO `vtiger_contract_status` (`contract_statusid`, `contract_status`, `p
 -- Table structure for table `vtiger_contract_status_seq`
 --
 
-CREATE TABLE `vtiger_contract_status_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_contract_status_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2186,13 +2330,14 @@ INSERT INTO `vtiger_contract_status_seq` (`id`) VALUES
 -- Table structure for table `vtiger_contract_type`
 --
 
-CREATE TABLE `vtiger_contract_type` (
+CREATE TABLE IF NOT EXISTS `vtiger_contract_type` (
   `contract_typeid` int(11) NOT NULL,
   `contract_type` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`contract_typeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2210,7 +2355,7 @@ INSERT INTO `vtiger_contract_type` (`contract_typeid`, `contract_type`, `presenc
 -- Table structure for table `vtiger_contract_type_seq`
 --
 
-CREATE TABLE `vtiger_contract_type_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_contract_type_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2227,13 +2372,14 @@ INSERT INTO `vtiger_contract_type_seq` (`id`) VALUES
 -- Table structure for table `vtiger_convertleadmapping`
 --
 
-CREATE TABLE `vtiger_convertleadmapping` (
+CREATE TABLE IF NOT EXISTS `vtiger_convertleadmapping` (
   `cfmid` int(19) NOT NULL,
   `leadfid` int(19) NOT NULL,
   `accountfid` int(19) DEFAULT NULL,
   `contactfid` int(19) DEFAULT NULL,
   `potentialfid` int(19) DEFAULT NULL,
-  `editable` int(19) DEFAULT 1
+  `editable` int(19) DEFAULT 1,
+  PRIMARY KEY (`cfmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2278,11 +2424,12 @@ INSERT INTO `vtiger_convertleadmapping` (`cfmid`, `leadfid`, `accountfid`, `cont
 -- Table structure for table `vtiger_convertpotentialmapping`
 --
 
-CREATE TABLE `vtiger_convertpotentialmapping` (
+CREATE TABLE IF NOT EXISTS `vtiger_convertpotentialmapping` (
   `cfmid` int(19) NOT NULL,
   `potentialfid` int(19) NOT NULL,
   `projectfid` int(19) DEFAULT NULL,
-  `editable` int(11) DEFAULT 1
+  `editable` int(11) DEFAULT 1,
+  PRIMARY KEY (`cfmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2299,7 +2446,7 @@ INSERT INTO `vtiger_convertpotentialmapping` (`cfmid`, `potentialfid`, `projectf
 -- Table structure for table `vtiger_crmentity`
 --
 
-CREATE TABLE `vtiger_crmentity` (
+CREATE TABLE IF NOT EXISTS `vtiger_crmentity` (
   `crmid` int(19) NOT NULL,
   `smcreatorid` int(19) NOT NULL DEFAULT 0,
   `smownerid` int(19) NOT NULL DEFAULT 0,
@@ -2315,7 +2462,13 @@ CREATE TABLE `vtiger_crmentity` (
   `deleted` int(1) NOT NULL DEFAULT 0,
   `smgroupid` int(19) DEFAULT NULL,
   `source` varchar(100) DEFAULT NULL,
-  `label` varchar(255) DEFAULT NULL
+  `label` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`crmid`),
+  KEY `crmentity_smcreatorid_idx` (`smcreatorid`),
+  KEY `crmentity_modifiedby_idx` (`modifiedby`),
+  KEY `crmentity_deleted_idx` (`deleted`),
+  KEY `crm_ownerid_del_setype_idx` (`smownerid`,`deleted`,`setype`),
+  KEY `vtiger_crmentity_labelidx` (`label`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2336,11 +2489,13 @@ INSERT INTO `vtiger_crmentity` (`crmid`, `smcreatorid`, `smownerid`, `modifiedby
 -- Table structure for table `vtiger_crmentityrel`
 --
 
-CREATE TABLE `vtiger_crmentityrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_crmentityrel` (
   `crmid` int(11) NOT NULL,
   `module` varchar(100) NOT NULL,
   `relcrmid` int(11) NOT NULL,
-  `relmodule` varchar(100) NOT NULL
+  `relmodule` varchar(100) NOT NULL,
+  KEY `crmid_idx` (`crmid`),
+  KEY `relcrmid_idx` (`relcrmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2349,7 +2504,7 @@ CREATE TABLE `vtiger_crmentityrel` (
 -- Table structure for table `vtiger_crmentity_seq`
 --
 
-CREATE TABLE `vtiger_crmentity_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_crmentity_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2366,10 +2521,11 @@ INSERT INTO `vtiger_crmentity_seq` (`id`) VALUES
 -- Table structure for table `vtiger_crmentity_user_field`
 --
 
-CREATE TABLE `vtiger_crmentity_user_field` (
+CREATE TABLE IF NOT EXISTS `vtiger_crmentity_user_field` (
   `recordid` int(19) NOT NULL,
   `userid` int(19) NOT NULL,
-  `starred` varchar(100) DEFAULT NULL
+  `starred` varchar(100) DEFAULT NULL,
+  KEY `record_user_idx` (`recordid`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2401,7 +2557,7 @@ INSERT INTO `vtiger_crmentity_user_field` (`recordid`, `userid`, `starred`) VALU
 -- Table structure for table `vtiger_crmsetup`
 --
 
-CREATE TABLE `vtiger_crmsetup` (
+CREATE TABLE IF NOT EXISTS `vtiger_crmsetup` (
   `userid` int(11) DEFAULT NULL,
   `setup_status` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2419,7 +2575,7 @@ INSERT INTO `vtiger_crmsetup` (`userid`, `setup_status`) VALUES
 -- Table structure for table `vtiger_cron_task`
 --
 
-CREATE TABLE `vtiger_cron_task` (
+CREATE TABLE IF NOT EXISTS `vtiger_cron_task` (
   `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `handler_file` varchar(100) DEFAULT NULL,
@@ -2429,7 +2585,10 @@ CREATE TABLE `vtiger_cron_task` (
   `status` int(11) DEFAULT NULL,
   `module` varchar(100) DEFAULT NULL,
   `sequence` int(11) DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `description` text DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `handler_file` (`handler_file`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2450,11 +2609,12 @@ INSERT INTO `vtiger_cron_task` (`id`, `name`, `handler_file`, `frequency`, `last
 -- Table structure for table `vtiger_currencies`
 --
 
-CREATE TABLE `vtiger_currencies` (
+CREATE TABLE IF NOT EXISTS `vtiger_currencies` (
   `currencyid` int(19) NOT NULL,
   `currency_name` varchar(200) DEFAULT NULL,
   `currency_code` varchar(50) DEFAULT NULL,
-  `currency_symbol` varchar(11) DEFAULT NULL
+  `currency_symbol` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`currencyid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2607,7 +2767,7 @@ INSERT INTO `vtiger_currencies` (`currencyid`, `currency_name`, `currency_code`,
 -- Table structure for table `vtiger_currencies_seq`
 --
 
-CREATE TABLE `vtiger_currencies_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_currencies_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2624,11 +2784,13 @@ INSERT INTO `vtiger_currencies_seq` (`id`) VALUES
 -- Table structure for table `vtiger_currency`
 --
 
-CREATE TABLE `vtiger_currency` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency` (
   `currencyid` int(19) NOT NULL,
   `currency` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`currencyid`),
+  UNIQUE KEY `currency_currency_idx` (`currency`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2637,11 +2799,12 @@ CREATE TABLE `vtiger_currency` (
 -- Table structure for table `vtiger_currency_decimal_separator`
 --
 
-CREATE TABLE `vtiger_currency_decimal_separator` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_decimal_separator` (
   `currency_decimal_separatorid` int(19) NOT NULL,
   `currency_decimal_separator` varchar(2) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`currency_decimal_separatorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2661,7 +2824,7 @@ INSERT INTO `vtiger_currency_decimal_separator` (`currency_decimal_separatorid`,
 -- Table structure for table `vtiger_currency_decimal_separator_seq`
 --
 
-CREATE TABLE `vtiger_currency_decimal_separator_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_decimal_separator_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2678,11 +2841,12 @@ INSERT INTO `vtiger_currency_decimal_separator_seq` (`id`) VALUES
 -- Table structure for table `vtiger_currency_grouping_pattern`
 --
 
-CREATE TABLE `vtiger_currency_grouping_pattern` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_grouping_pattern` (
   `currency_grouping_patternid` int(19) NOT NULL,
   `currency_grouping_pattern` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`currency_grouping_patternid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2701,7 +2865,7 @@ INSERT INTO `vtiger_currency_grouping_pattern` (`currency_grouping_patternid`, `
 -- Table structure for table `vtiger_currency_grouping_pattern_seq`
 --
 
-CREATE TABLE `vtiger_currency_grouping_pattern_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_grouping_pattern_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2718,11 +2882,12 @@ INSERT INTO `vtiger_currency_grouping_pattern_seq` (`id`) VALUES
 -- Table structure for table `vtiger_currency_grouping_separator`
 --
 
-CREATE TABLE `vtiger_currency_grouping_separator` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_grouping_separator` (
   `currency_grouping_separatorid` int(19) NOT NULL,
   `currency_grouping_separator` varchar(2) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`currency_grouping_separatorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2742,7 +2907,7 @@ INSERT INTO `vtiger_currency_grouping_separator` (`currency_grouping_separatorid
 -- Table structure for table `vtiger_currency_grouping_separator_seq`
 --
 
-CREATE TABLE `vtiger_currency_grouping_separator_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_grouping_separator_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2759,7 +2924,7 @@ INSERT INTO `vtiger_currency_grouping_separator_seq` (`id`) VALUES
 -- Table structure for table `vtiger_currency_info`
 --
 
-CREATE TABLE `vtiger_currency_info` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_info` (
   `id` int(11) NOT NULL,
   `currency_name` varchar(100) DEFAULT NULL,
   `currency_code` varchar(100) DEFAULT NULL,
@@ -2767,7 +2932,8 @@ CREATE TABLE `vtiger_currency_info` (
   `conversion_rate` decimal(12,5) DEFAULT NULL,
   `currency_status` varchar(25) DEFAULT NULL,
   `defaultid` varchar(10) NOT NULL DEFAULT '0',
-  `deleted` int(1) NOT NULL DEFAULT 0
+  `deleted` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2783,7 +2949,7 @@ INSERT INTO `vtiger_currency_info` (`id`, `currency_name`, `currency_code`, `cur
 -- Table structure for table `vtiger_currency_info_seq`
 --
 
-CREATE TABLE `vtiger_currency_info_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_info_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2800,11 +2966,12 @@ INSERT INTO `vtiger_currency_info_seq` (`id`) VALUES
 -- Table structure for table `vtiger_currency_symbol_placement`
 --
 
-CREATE TABLE `vtiger_currency_symbol_placement` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_symbol_placement` (
   `currency_symbol_placementid` int(19) NOT NULL,
   `currency_symbol_placement` varchar(30) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`currency_symbol_placementid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2821,7 +2988,7 @@ INSERT INTO `vtiger_currency_symbol_placement` (`currency_symbol_placementid`, `
 -- Table structure for table `vtiger_currency_symbol_placement_seq`
 --
 
-CREATE TABLE `vtiger_currency_symbol_placement_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_currency_symbol_placement_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2838,11 +3005,12 @@ INSERT INTO `vtiger_currency_symbol_placement_seq` (`id`) VALUES
 -- Table structure for table `vtiger_customaction`
 --
 
-CREATE TABLE `vtiger_customaction` (
+CREATE TABLE IF NOT EXISTS `vtiger_customaction` (
   `cvid` int(19) NOT NULL,
   `subject` varchar(250) NOT NULL,
   `module` varchar(50) NOT NULL,
-  `content` text DEFAULT NULL
+  `content` text DEFAULT NULL,
+  KEY `customaction_cvid_idx` (`cvid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2851,11 +3019,12 @@ CREATE TABLE `vtiger_customaction` (
 -- Table structure for table `vtiger_customerdetails`
 --
 
-CREATE TABLE `vtiger_customerdetails` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerdetails` (
   `customerid` int(19) NOT NULL,
   `portal` varchar(3) DEFAULT NULL,
   `support_start_date` date DEFAULT NULL,
-  `support_end_date` date DEFAULT NULL
+  `support_end_date` date DEFAULT NULL,
+  PRIMARY KEY (`customerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2864,10 +3033,11 @@ CREATE TABLE `vtiger_customerdetails` (
 -- Table structure for table `vtiger_customerenterprise`
 --
 
-CREATE TABLE `vtiger_customerenterprise` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerenterprise` (
   `customerenterpriseid` int(19) NOT NULL,
   `makhachhang` varchar(255) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`customerenterpriseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2883,7 +3053,7 @@ INSERT INTO `vtiger_customerenterprise` (`customerenterpriseid`, `makhachhang`, 
 -- Table structure for table `vtiger_customerenterprisecf`
 --
 
-CREATE TABLE `vtiger_customerenterprisecf` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerenterprisecf` (
   `customerenterpriseid` int(19) NOT NULL,
   `cf_1103` varchar(255) DEFAULT '',
   `cf_1105` varchar(255) DEFAULT '',
@@ -2911,7 +3081,8 @@ CREATE TABLE `vtiger_customerenterprisecf` (
   `cf_1217` date DEFAULT NULL,
   `cf_1219` text DEFAULT NULL,
   `cf_1221` varchar(255) DEFAULT '',
-  `cf_1225` varchar(255) DEFAULT ''
+  `cf_1225` varchar(255) DEFAULT '',
+  PRIMARY KEY (`customerenterpriseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2927,10 +3098,11 @@ INSERT INTO `vtiger_customerenterprisecf` (`customerenterpriseid`, `cf_1103`, `c
 -- Table structure for table `vtiger_customerportal_fields`
 --
 
-CREATE TABLE `vtiger_customerportal_fields` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerportal_fields` (
   `tabid` int(19) NOT NULL,
   `fieldinfo` text DEFAULT NULL,
-  `records_visible` int(1) DEFAULT NULL
+  `records_visible` int(1) DEFAULT NULL,
+  PRIMARY KEY (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2959,10 +3131,11 @@ INSERT INTO `vtiger_customerportal_fields` (`tabid`, `fieldinfo`, `records_visib
 -- Table structure for table `vtiger_customerportal_prefs`
 --
 
-CREATE TABLE `vtiger_customerportal_prefs` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerportal_prefs` (
   `tabid` int(19) NOT NULL,
   `prefkey` varchar(100) NOT NULL,
-  `prefvalue` int(20) DEFAULT NULL
+  `prefvalue` int(20) DEFAULT NULL,
+  PRIMARY KEY (`tabid`,`prefkey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2992,9 +3165,10 @@ INSERT INTO `vtiger_customerportal_prefs` (`tabid`, `prefkey`, `prefvalue`) VALU
 -- Table structure for table `vtiger_customerportal_relatedmoduleinfo`
 --
 
-CREATE TABLE `vtiger_customerportal_relatedmoduleinfo` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerportal_relatedmoduleinfo` (
   `tabid` int(19) NOT NULL,
-  `relatedmodules` text DEFAULT NULL
+  `relatedmodules` text DEFAULT NULL,
+  PRIMARY KEY (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3020,7 +3194,7 @@ INSERT INTO `vtiger_customerportal_relatedmoduleinfo` (`tabid`, `relatedmodules`
 -- Table structure for table `vtiger_customerportal_settings`
 --
 
-CREATE TABLE `vtiger_customerportal_settings` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerportal_settings` (
   `id` int(11) DEFAULT NULL,
   `url` varchar(250) DEFAULT NULL,
   `default_assignee` int(11) DEFAULT NULL,
@@ -3044,12 +3218,13 @@ INSERT INTO `vtiger_customerportal_settings` (`id`, `url`, `default_assignee`, `
 -- Table structure for table `vtiger_customerportal_tabs`
 --
 
-CREATE TABLE `vtiger_customerportal_tabs` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerportal_tabs` (
   `tabid` int(19) NOT NULL,
   `visible` int(1) DEFAULT 1,
   `sequence` int(1) DEFAULT NULL,
   `createrecord` tinyint(1) NOT NULL DEFAULT 0,
-  `editrecord` tinyint(1) NOT NULL DEFAULT 0
+  `editrecord` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3078,10 +3253,11 @@ INSERT INTO `vtiger_customerportal_tabs` (`tabid`, `visible`, `sequence`, `creat
 -- Table structure for table `vtiger_customerstandalone`
 --
 
-CREATE TABLE `vtiger_customerstandalone` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerstandalone` (
   `customerstandaloneid` int(19) NOT NULL,
   `makhachhang` varchar(255) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`customerstandaloneid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3098,12 +3274,13 @@ INSERT INTO `vtiger_customerstandalone` (`customerstandaloneid`, `makhachhang`, 
 -- Table structure for table `vtiger_customerstandalonecf`
 --
 
-CREATE TABLE `vtiger_customerstandalonecf` (
+CREATE TABLE IF NOT EXISTS `vtiger_customerstandalonecf` (
   `customerstandaloneid` int(19) NOT NULL,
   `cf_1193` varchar(50) DEFAULT '',
   `cf_1195` text DEFAULT NULL,
   `cf_1197` varchar(30) DEFAULT '',
-  `cf_1199` varchar(255) DEFAULT ''
+  `cf_1199` varchar(255) DEFAULT '',
+  PRIMARY KEY (`customerstandaloneid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3120,14 +3297,16 @@ INSERT INTO `vtiger_customerstandalonecf` (`customerstandaloneid`, `cf_1193`, `c
 -- Table structure for table `vtiger_customview`
 --
 
-CREATE TABLE `vtiger_customview` (
+CREATE TABLE IF NOT EXISTS `vtiger_customview` (
   `cvid` int(19) NOT NULL,
   `viewname` varchar(100) NOT NULL,
   `setdefault` int(1) DEFAULT 0,
   `setmetrics` int(1) DEFAULT 0,
   `entitytype` varchar(25) NOT NULL,
   `status` int(1) DEFAULT 1,
-  `userid` int(19) DEFAULT 1
+  `userid` int(19) DEFAULT 1,
+  PRIMARY KEY (`cvid`),
+  KEY `customview_entitytype_idx` (`entitytype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3203,7 +3382,8 @@ INSERT INTO `vtiger_customview` (`cvid`, `viewname`, `setdefault`, `setmetrics`,
 (80, 'All', 1, 0, 'ProblemCategory', 0, 1),
 (81, 'All', 1, 0, 'SupportProtocol', 0, 1),
 (86, 'All', 1, 0, 'PhuongTienTruyenThong', 0, 1),
-(87, 'All', 1, 0, 'HinhThucTruyenThong', 0, 1);
+(87, 'All', 1, 0, 'HinhThucTruyenThong', 0, 1),
+(88, 'All', 1, 0, 'QuyTrinhBanHang', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -3211,7 +3391,7 @@ INSERT INTO `vtiger_customview` (`cvid`, `viewname`, `setdefault`, `setmetrics`,
 -- Table structure for table `vtiger_customview_seq`
 --
 
-CREATE TABLE `vtiger_customview_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_customview_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -3220,7 +3400,7 @@ CREATE TABLE `vtiger_customview_seq` (
 --
 
 INSERT INTO `vtiger_customview_seq` (`id`) VALUES
-(87);
+(88);
 
 -- --------------------------------------------------------
 
@@ -3228,9 +3408,11 @@ INSERT INTO `vtiger_customview_seq` (`id`) VALUES
 -- Table structure for table `vtiger_cv2group`
 --
 
-CREATE TABLE `vtiger_cv2group` (
+CREATE TABLE IF NOT EXISTS `vtiger_cv2group` (
   `cvid` int(25) NOT NULL,
-  `groupid` int(25) NOT NULL
+  `groupid` int(25) NOT NULL,
+  KEY `vtiger_cv2group_ibfk_1` (`cvid`),
+  KEY `vtiger_groups_ibfk_1` (`groupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3239,9 +3421,11 @@ CREATE TABLE `vtiger_cv2group` (
 -- Table structure for table `vtiger_cv2role`
 --
 
-CREATE TABLE `vtiger_cv2role` (
+CREATE TABLE IF NOT EXISTS `vtiger_cv2role` (
   `cvid` int(25) NOT NULL,
-  `roleid` varchar(255) NOT NULL
+  `roleid` varchar(255) NOT NULL,
+  KEY `vtiger_cv2role_ibfk_1` (`cvid`),
+  KEY `vtiger_role_ibfk_1` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3250,9 +3434,11 @@ CREATE TABLE `vtiger_cv2role` (
 -- Table structure for table `vtiger_cv2rs`
 --
 
-CREATE TABLE `vtiger_cv2rs` (
+CREATE TABLE IF NOT EXISTS `vtiger_cv2rs` (
   `cvid` int(25) NOT NULL,
-  `rsid` varchar(255) NOT NULL
+  `rsid` varchar(255) NOT NULL,
+  KEY `vtiger_cv2role_ibfk_1` (`cvid`),
+  KEY `vtiger_rolesd_ibfk_1` (`rsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3261,9 +3447,11 @@ CREATE TABLE `vtiger_cv2rs` (
 -- Table structure for table `vtiger_cv2users`
 --
 
-CREATE TABLE `vtiger_cv2users` (
+CREATE TABLE IF NOT EXISTS `vtiger_cv2users` (
   `cvid` int(25) NOT NULL,
-  `userid` int(25) NOT NULL
+  `userid` int(25) NOT NULL,
+  KEY `vtiger_cv2users_ibfk_1` (`cvid`),
+  KEY `vtiger_users_ibfk_1` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3272,14 +3460,16 @@ CREATE TABLE `vtiger_cv2users` (
 -- Table structure for table `vtiger_cvadvfilter`
 --
 
-CREATE TABLE `vtiger_cvadvfilter` (
+CREATE TABLE IF NOT EXISTS `vtiger_cvadvfilter` (
   `cvid` int(19) NOT NULL,
   `columnindex` int(11) NOT NULL,
   `columnname` varchar(250) DEFAULT '',
   `comparator` varchar(20) DEFAULT NULL,
   `value` varchar(512) DEFAULT NULL,
   `groupid` int(11) DEFAULT 1,
-  `column_condition` varchar(255) DEFAULT 'and'
+  `column_condition` varchar(255) DEFAULT 'and',
+  PRIMARY KEY (`cvid`,`columnindex`),
+  KEY `cvadvfilter_cvid_idx` (`cvid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3310,11 +3500,12 @@ INSERT INTO `vtiger_cvadvfilter` (`cvid`, `columnindex`, `columnname`, `comparat
 -- Table structure for table `vtiger_cvadvfilter_grouping`
 --
 
-CREATE TABLE `vtiger_cvadvfilter_grouping` (
+CREATE TABLE IF NOT EXISTS `vtiger_cvadvfilter_grouping` (
   `groupid` int(11) NOT NULL,
   `cvid` int(19) NOT NULL,
   `group_condition` varchar(255) DEFAULT NULL,
-  `condition_expression` text DEFAULT NULL
+  `condition_expression` text DEFAULT NULL,
+  PRIMARY KEY (`groupid`,`cvid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3344,10 +3535,13 @@ INSERT INTO `vtiger_cvadvfilter_grouping` (`groupid`, `cvid`, `group_condition`,
 -- Table structure for table `vtiger_cvcolumnlist`
 --
 
-CREATE TABLE `vtiger_cvcolumnlist` (
+CREATE TABLE IF NOT EXISTS `vtiger_cvcolumnlist` (
   `cvid` int(19) NOT NULL,
   `columnindex` int(11) NOT NULL,
-  `columnname` varchar(250) DEFAULT ''
+  `columnname` varchar(250) DEFAULT '',
+  PRIMARY KEY (`cvid`,`columnindex`),
+  KEY `cvcolumnlist_columnindex_idx` (`columnindex`),
+  KEY `cvcolumnlist_cvid_idx` (`cvid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3715,7 +3909,9 @@ INSERT INTO `vtiger_cvcolumnlist` (`cvid`, `columnindex`, `columnname`) VALUES
 (86, 0, 'vtiger_phuongtientruyenthong:pttt:pttt:PhuongTienTruyenThong_Phuong_tien_truyen_thong:V'),
 (86, 1, 'vtiger_phuongtientruyenthong:motachitiet:motachitiet:PhuongTienTruyenThong_Mo_ta_chi_tiet:V'),
 (87, 0, 'vtiger_hinhthuctruyenthong:httt:httt:HinhThucTruyenThong_Hinh_thuc_truyen_thong:V'),
-(87, 1, 'vtiger_hinhthuctruyenthong:motachitiet:motachitiet:HinhThucTruyenThong_Mo_ta_chi_tiet:V');
+(87, 1, 'vtiger_hinhthuctruyenthong:motachitiet:motachitiet:HinhThucTruyenThong_Mo_ta_chi_tiet:V'),
+(88, 0, 'vtiger_quytrinhbanhang:tenquytrinh:tenquytrinh:QuyTrinhBanHang_Ten_quy_trinh:V'),
+(88, 1, 'vtiger_quytrinhbanhang:motachitiet:motachitiet:QuyTrinhBanHang_Mo_ta_chi_tiet:V');
 
 -- --------------------------------------------------------
 
@@ -3723,12 +3919,13 @@ INSERT INTO `vtiger_cvcolumnlist` (`cvid`, `columnindex`, `columnname`) VALUES
 -- Table structure for table `vtiger_cvstdfilter`
 --
 
-CREATE TABLE `vtiger_cvstdfilter` (
+CREATE TABLE IF NOT EXISTS `vtiger_cvstdfilter` (
   `cvid` int(19) NOT NULL,
   `columnname` varchar(250) DEFAULT '',
   `stdfilter` varchar(250) DEFAULT '',
   `startdate` date DEFAULT NULL,
-  `enddate` date DEFAULT NULL
+  `enddate` date DEFAULT NULL,
+  KEY `cvstdfilter_cvid_idx` (`cvid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3746,14 +3943,17 @@ INSERT INTO `vtiger_cvstdfilter` (`cvid`, `columnname`, `stdfilter`, `startdate`
 -- Table structure for table `vtiger_dashboard_tabs`
 --
 
-CREATE TABLE `vtiger_dashboard_tabs` (
+CREATE TABLE IF NOT EXISTS `vtiger_dashboard_tabs` (
   `id` int(19) NOT NULL,
   `tabname` varchar(50) DEFAULT NULL,
   `isdefault` int(1) DEFAULT 0,
   `sequence` int(5) DEFAULT 2,
   `appname` varchar(20) DEFAULT NULL,
   `modulename` varchar(50) DEFAULT NULL,
-  `userid` int(11) DEFAULT NULL
+  `userid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tabname` (`tabname`,`userid`),
+  KEY `vtiger_dashboard_tabs_ibfk_1` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3770,11 +3970,14 @@ INSERT INTO `vtiger_dashboard_tabs` (`id`, `tabname`, `isdefault`, `sequence`, `
 -- Table structure for table `vtiger_datashare_grp2grp`
 --
 
-CREATE TABLE `vtiger_datashare_grp2grp` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_grp2grp` (
   `shareid` int(19) NOT NULL,
   `share_groupid` int(19) DEFAULT NULL,
   `to_groupid` int(19) DEFAULT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `datashare_grp2grp_share_groupid_idx` (`share_groupid`),
+  KEY `datashare_grp2grp_to_groupid_idx` (`to_groupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3783,11 +3986,14 @@ CREATE TABLE `vtiger_datashare_grp2grp` (
 -- Table structure for table `vtiger_datashare_grp2role`
 --
 
-CREATE TABLE `vtiger_datashare_grp2role` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_grp2role` (
   `shareid` int(19) NOT NULL,
   `share_groupid` int(19) DEFAULT NULL,
   `to_roleid` varchar(255) DEFAULT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `idx_datashare_grp2role_share_groupid` (`share_groupid`),
+  KEY `idx_datashare_grp2role_to_roleid` (`to_roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3796,11 +4002,14 @@ CREATE TABLE `vtiger_datashare_grp2role` (
 -- Table structure for table `vtiger_datashare_grp2rs`
 --
 
-CREATE TABLE `vtiger_datashare_grp2rs` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_grp2rs` (
   `shareid` int(19) NOT NULL,
   `share_groupid` int(19) DEFAULT NULL,
   `to_roleandsubid` varchar(255) DEFAULT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `datashare_grp2rs_share_groupid_idx` (`share_groupid`),
+  KEY `datashare_grp2rs_to_roleandsubid_idx` (`to_roleandsubid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3809,10 +4018,12 @@ CREATE TABLE `vtiger_datashare_grp2rs` (
 -- Table structure for table `vtiger_datashare_module_rel`
 --
 
-CREATE TABLE `vtiger_datashare_module_rel` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_module_rel` (
   `shareid` int(19) NOT NULL,
   `tabid` int(19) NOT NULL,
-  `relationtype` varchar(200) DEFAULT NULL
+  `relationtype` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `idx_datashare_module_rel_tabid` (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3821,10 +4032,13 @@ CREATE TABLE `vtiger_datashare_module_rel` (
 -- Table structure for table `vtiger_datashare_relatedmodules`
 --
 
-CREATE TABLE `vtiger_datashare_relatedmodules` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_relatedmodules` (
   `datashare_relatedmodule_id` int(19) NOT NULL,
   `tabid` int(19) DEFAULT NULL,
-  `relatedto_tabid` int(19) DEFAULT NULL
+  `relatedto_tabid` int(19) DEFAULT NULL,
+  PRIMARY KEY (`datashare_relatedmodule_id`),
+  KEY `datashare_relatedmodules_tabid_idx` (`tabid`),
+  KEY `datashare_relatedmodules_relatedto_tabid_idx` (`relatedto_tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3848,7 +4062,7 @@ INSERT INTO `vtiger_datashare_relatedmodules` (`datashare_relatedmodule_id`, `ta
 -- Table structure for table `vtiger_datashare_relatedmodules_seq`
 --
 
-CREATE TABLE `vtiger_datashare_relatedmodules_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_relatedmodules_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -3865,10 +4079,12 @@ INSERT INTO `vtiger_datashare_relatedmodules_seq` (`id`) VALUES
 -- Table structure for table `vtiger_datashare_relatedmodule_permission`
 --
 
-CREATE TABLE `vtiger_datashare_relatedmodule_permission` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_relatedmodule_permission` (
   `shareid` int(19) NOT NULL,
   `datashare_relatedmodule_id` int(19) NOT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`,`datashare_relatedmodule_id`),
+  KEY `datashare_relatedmodule_permission_shareid_permissions_idx` (`shareid`,`permission`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3877,11 +4093,14 @@ CREATE TABLE `vtiger_datashare_relatedmodule_permission` (
 -- Table structure for table `vtiger_datashare_role2group`
 --
 
-CREATE TABLE `vtiger_datashare_role2group` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_role2group` (
   `shareid` int(19) NOT NULL,
   `share_roleid` varchar(255) DEFAULT NULL,
   `to_groupid` int(19) DEFAULT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `idx_datashare_role2group_share_roleid` (`share_roleid`),
+  KEY `idx_datashare_role2group_to_groupid` (`to_groupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3890,11 +4109,14 @@ CREATE TABLE `vtiger_datashare_role2group` (
 -- Table structure for table `vtiger_datashare_role2role`
 --
 
-CREATE TABLE `vtiger_datashare_role2role` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_role2role` (
   `shareid` int(19) NOT NULL,
   `share_roleid` varchar(255) DEFAULT NULL,
   `to_roleid` varchar(255) DEFAULT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `datashare_role2role_share_roleid_idx` (`share_roleid`),
+  KEY `datashare_role2role_to_roleid_idx` (`to_roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3903,11 +4125,14 @@ CREATE TABLE `vtiger_datashare_role2role` (
 -- Table structure for table `vtiger_datashare_role2rs`
 --
 
-CREATE TABLE `vtiger_datashare_role2rs` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_role2rs` (
   `shareid` int(19) NOT NULL,
   `share_roleid` varchar(255) DEFAULT NULL,
   `to_roleandsubid` varchar(255) DEFAULT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `datashare_role2s_share_roleid_idx` (`share_roleid`),
+  KEY `datashare_role2s_to_roleandsubid_idx` (`to_roleandsubid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3916,11 +4141,14 @@ CREATE TABLE `vtiger_datashare_role2rs` (
 -- Table structure for table `vtiger_datashare_rs2grp`
 --
 
-CREATE TABLE `vtiger_datashare_rs2grp` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_rs2grp` (
   `shareid` int(19) NOT NULL,
   `share_roleandsubid` varchar(255) DEFAULT NULL,
   `to_groupid` int(19) DEFAULT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `datashare_rs2grp_share_roleandsubid_idx` (`share_roleandsubid`),
+  KEY `datashare_rs2grp_to_groupid_idx` (`to_groupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3929,11 +4157,14 @@ CREATE TABLE `vtiger_datashare_rs2grp` (
 -- Table structure for table `vtiger_datashare_rs2role`
 --
 
-CREATE TABLE `vtiger_datashare_rs2role` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_rs2role` (
   `shareid` int(19) NOT NULL,
   `share_roleandsubid` varchar(255) DEFAULT NULL,
   `to_roleid` varchar(255) DEFAULT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `datashare_rs2role_share_roleandsubid_idx` (`share_roleandsubid`),
+  KEY `datashare_rs2role_to_roleid_idx` (`to_roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3942,11 +4173,14 @@ CREATE TABLE `vtiger_datashare_rs2role` (
 -- Table structure for table `vtiger_datashare_rs2rs`
 --
 
-CREATE TABLE `vtiger_datashare_rs2rs` (
+CREATE TABLE IF NOT EXISTS `vtiger_datashare_rs2rs` (
   `shareid` int(19) NOT NULL,
   `share_roleandsubid` varchar(255) DEFAULT NULL,
   `to_roleandsubid` varchar(255) DEFAULT NULL,
-  `permission` int(19) DEFAULT NULL
+  `permission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`shareid`),
+  KEY `datashare_rs2rs_share_roleandsubid_idx` (`share_roleandsubid`),
+  KEY `idx_datashare_rs2rs_to_roleandsubid_idx` (`to_roleandsubid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3955,11 +4189,12 @@ CREATE TABLE `vtiger_datashare_rs2rs` (
 -- Table structure for table `vtiger_date_format`
 --
 
-CREATE TABLE `vtiger_date_format` (
+CREATE TABLE IF NOT EXISTS `vtiger_date_format` (
   `date_formatid` int(19) NOT NULL,
   `date_format` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`date_formatid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -3977,7 +4212,7 @@ INSERT INTO `vtiger_date_format` (`date_formatid`, `date_format`, `sortorderid`,
 -- Table structure for table `vtiger_date_format_seq`
 --
 
-CREATE TABLE `vtiger_date_format_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_date_format_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -3994,11 +4229,12 @@ INSERT INTO `vtiger_date_format_seq` (`id`) VALUES
 -- Table structure for table `vtiger_dayoftheweek`
 --
 
-CREATE TABLE `vtiger_dayoftheweek` (
+CREATE TABLE IF NOT EXISTS `vtiger_dayoftheweek` (
   `dayoftheweekid` int(11) NOT NULL,
   `dayoftheweek` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`dayoftheweekid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -4020,7 +4256,7 @@ INSERT INTO `vtiger_dayoftheweek` (`dayoftheweekid`, `dayoftheweek`, `sortorderi
 -- Table structure for table `vtiger_dayoftheweek_seq`
 --
 
-CREATE TABLE `vtiger_dayoftheweek_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_dayoftheweek_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -4037,12 +4273,13 @@ INSERT INTO `vtiger_dayoftheweek_seq` (`id`) VALUES
 -- Table structure for table `vtiger_defaultactivitytype`
 --
 
-CREATE TABLE `vtiger_defaultactivitytype` (
+CREATE TABLE IF NOT EXISTS `vtiger_defaultactivitytype` (
   `defaultactivitytypeid` int(11) NOT NULL,
   `defaultactivitytype` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
-  `sortorderid` int(11) DEFAULT 0
+  `sortorderid` int(11) DEFAULT 0,
+  PRIMARY KEY (`defaultactivitytypeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -4059,7 +4296,7 @@ INSERT INTO `vtiger_defaultactivitytype` (`defaultactivitytypeid`, `defaultactiv
 -- Table structure for table `vtiger_defaultactivitytype_seq`
 --
 
-CREATE TABLE `vtiger_defaultactivitytype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_defaultactivitytype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -4076,11 +4313,12 @@ INSERT INTO `vtiger_defaultactivitytype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_defaultcalendarview`
 --
 
-CREATE TABLE `vtiger_defaultcalendarview` (
+CREATE TABLE IF NOT EXISTS `vtiger_defaultcalendarview` (
   `defaultcalendarviewid` int(11) NOT NULL,
   `defaultcalendarview` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`defaultcalendarviewid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -4098,7 +4336,7 @@ INSERT INTO `vtiger_defaultcalendarview` (`defaultcalendarviewid`, `defaultcalen
 -- Table structure for table `vtiger_defaultcalendarview_seq`
 --
 
-CREATE TABLE `vtiger_defaultcalendarview_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_defaultcalendarview_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -4115,10 +4353,11 @@ INSERT INTO `vtiger_defaultcalendarview_seq` (`id`) VALUES
 -- Table structure for table `vtiger_defaultcv`
 --
 
-CREATE TABLE `vtiger_defaultcv` (
+CREATE TABLE IF NOT EXISTS `vtiger_defaultcv` (
   `tabid` int(19) NOT NULL,
   `defaultviewname` varchar(50) NOT NULL,
-  `query` text DEFAULT NULL
+  `query` text DEFAULT NULL,
+  PRIMARY KEY (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -4127,12 +4366,13 @@ CREATE TABLE `vtiger_defaultcv` (
 -- Table structure for table `vtiger_defaulteventstatus`
 --
 
-CREATE TABLE `vtiger_defaulteventstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_defaulteventstatus` (
   `defaulteventstatusid` int(11) NOT NULL,
   `defaulteventstatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
-  `sortorderid` int(11) DEFAULT 0
+  `sortorderid` int(11) DEFAULT 0,
+  PRIMARY KEY (`defaulteventstatusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -4150,7 +4390,7 @@ INSERT INTO `vtiger_defaulteventstatus` (`defaulteventstatusid`, `defaulteventst
 -- Table structure for table `vtiger_defaulteventstatus_seq`
 --
 
-CREATE TABLE `vtiger_defaulteventstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_defaulteventstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -4167,11 +4407,12 @@ INSERT INTO `vtiger_defaulteventstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_default_record_view`
 --
 
-CREATE TABLE `vtiger_default_record_view` (
+CREATE TABLE IF NOT EXISTS `vtiger_default_record_view` (
   `default_record_viewid` int(11) NOT NULL,
   `default_record_view` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`default_record_viewid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -4188,7 +4429,7 @@ INSERT INTO `vtiger_default_record_view` (`default_record_viewid`, `default_reco
 -- Table structure for table `vtiger_default_record_view_seq`
 --
 
-CREATE TABLE `vtiger_default_record_view_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_default_record_view_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -4205,11 +4446,15 @@ INSERT INTO `vtiger_default_record_view_seq` (`id`) VALUES
 -- Table structure for table `vtiger_def_org_field`
 --
 
-CREATE TABLE `vtiger_def_org_field` (
+CREATE TABLE IF NOT EXISTS `vtiger_def_org_field` (
   `tabid` int(10) DEFAULT NULL,
   `fieldid` int(19) NOT NULL,
   `visible` int(19) DEFAULT NULL,
-  `readonly` int(19) DEFAULT NULL
+  `readonly` int(19) DEFAULT NULL,
+  PRIMARY KEY (`fieldid`),
+  KEY `def_org_field_tabid_fieldid_idx` (`tabid`,`fieldid`),
+  KEY `def_org_field_tabid_idx` (`tabid`),
+  KEY `def_org_field_visible_fieldid_idx` (`visible`,`fieldid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5372,7 +5617,18 @@ INSERT INTO `vtiger_def_org_field` (`tabid`, `fieldid`, `visible`, `readonly`) V
 (71, 1267, 0, 0),
 (71, 1268, 0, 0),
 (71, 1269, 0, 0),
-(26, 1270, 0, 0);
+(26, 1270, 0, 0),
+(72, 1271, 0, 0),
+(72, 1272, 0, 0),
+(72, 1273, 0, 0),
+(72, 1274, 0, 0),
+(72, 1275, 0, 0),
+(72, 1276, 0, 0),
+(72, 1277, 0, 0),
+(72, 1279, 0, 0),
+(72, 1281, 0, 0),
+(72, 1285, 0, 0),
+(72, 1287, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5380,11 +5636,13 @@ INSERT INTO `vtiger_def_org_field` (`tabid`, `fieldid`, `visible`, `readonly`) V
 -- Table structure for table `vtiger_def_org_share`
 --
 
-CREATE TABLE `vtiger_def_org_share` (
+CREATE TABLE IF NOT EXISTS `vtiger_def_org_share` (
   `ruleid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
   `permission` int(19) DEFAULT NULL,
-  `editstatus` int(19) DEFAULT NULL
+  `editstatus` int(19) DEFAULT NULL,
+  PRIMARY KEY (`ruleid`),
+  KEY `fk_1_vtiger_def_org_share` (`permission`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5437,7 +5695,8 @@ INSERT INTO `vtiger_def_org_share` (`ruleid`, `tabid`, `permission`, `editstatus
 (43, 67, 2, 0),
 (44, 68, 2, 0),
 (45, 70, 2, 0),
-(46, 71, 2, 0);
+(46, 71, 2, 0),
+(47, 72, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -5445,7 +5704,7 @@ INSERT INTO `vtiger_def_org_share` (`ruleid`, `tabid`, `permission`, `editstatus
 -- Table structure for table `vtiger_def_org_share_seq`
 --
 
-CREATE TABLE `vtiger_def_org_share_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_def_org_share_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5454,7 +5713,7 @@ CREATE TABLE `vtiger_def_org_share_seq` (
 --
 
 INSERT INTO `vtiger_def_org_share_seq` (`id`) VALUES
-(46);
+(47);
 
 -- --------------------------------------------------------
 
@@ -5462,11 +5721,12 @@ INSERT INTO `vtiger_def_org_share_seq` (`id`) VALUES
 -- Table structure for table `vtiger_durationhrs`
 --
 
-CREATE TABLE `vtiger_durationhrs` (
+CREATE TABLE IF NOT EXISTS `vtiger_durationhrs` (
   `hrsid` int(19) NOT NULL,
   `hrs` varchar(50) DEFAULT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`hrsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5475,11 +5735,12 @@ CREATE TABLE `vtiger_durationhrs` (
 -- Table structure for table `vtiger_durationmins`
 --
 
-CREATE TABLE `vtiger_durationmins` (
+CREATE TABLE IF NOT EXISTS `vtiger_durationmins` (
   `minsid` int(19) NOT NULL,
   `mins` varchar(50) DEFAULT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`minsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5488,12 +5749,13 @@ CREATE TABLE `vtiger_durationmins` (
 -- Table structure for table `vtiger_duration_minutes`
 --
 
-CREATE TABLE `vtiger_duration_minutes` (
+CREATE TABLE IF NOT EXISTS `vtiger_duration_minutes` (
   `minutesid` int(19) NOT NULL,
   `duration_minutes` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
   `presence` int(1) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`minutesid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5512,7 +5774,7 @@ INSERT INTO `vtiger_duration_minutes` (`minutesid`, `duration_minutes`, `sortord
 -- Table structure for table `vtiger_duration_minutes_seq`
 --
 
-CREATE TABLE `vtiger_duration_minutes_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_duration_minutes_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5529,7 +5791,7 @@ INSERT INTO `vtiger_duration_minutes_seq` (`id`) VALUES
 -- Table structure for table `vtiger_emaildetails`
 --
 
-CREATE TABLE `vtiger_emaildetails` (
+CREATE TABLE IF NOT EXISTS `vtiger_emaildetails` (
   `emailid` int(19) NOT NULL,
   `from_email` varchar(50) NOT NULL DEFAULT '',
   `to_email` text DEFAULT NULL,
@@ -5537,7 +5799,8 @@ CREATE TABLE `vtiger_emaildetails` (
   `bcc_email` text DEFAULT NULL,
   `assigned_user_email` varchar(50) NOT NULL DEFAULT '',
   `idlists` text DEFAULT NULL,
-  `email_flag` varchar(50) NOT NULL DEFAULT ''
+  `email_flag` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`emailid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5546,11 +5809,13 @@ CREATE TABLE `vtiger_emaildetails` (
 -- Table structure for table `vtiger_emailslookup`
 --
 
-CREATE TABLE `vtiger_emailslookup` (
+CREATE TABLE IF NOT EXISTS `vtiger_emailslookup` (
   `crmid` int(20) DEFAULT NULL,
   `setype` varchar(100) DEFAULT NULL,
   `value` varchar(100) DEFAULT NULL,
-  `fieldid` int(20) DEFAULT NULL
+  `fieldid` int(20) DEFAULT NULL,
+  UNIQUE KEY `emailslookup_crmid_setype_fieldname_uk` (`crmid`,`setype`,`fieldid`),
+  KEY `emailslookup_fieldid_setype_idx` (`fieldid`,`setype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5566,11 +5831,12 @@ INSERT INTO `vtiger_emailslookup` (`crmid`, `setype`, `value`, `fieldid`) VALUES
 -- Table structure for table `vtiger_emails_recipientprefs`
 --
 
-CREATE TABLE `vtiger_emails_recipientprefs` (
+CREATE TABLE IF NOT EXISTS `vtiger_emails_recipientprefs` (
   `id` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
   `prefs` varchar(255) DEFAULT NULL,
-  `userid` int(11) DEFAULT NULL
+  `userid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5579,7 +5845,7 @@ CREATE TABLE `vtiger_emails_recipientprefs` (
 -- Table structure for table `vtiger_emailtemplates`
 --
 
-CREATE TABLE `vtiger_emailtemplates` (
+CREATE TABLE IF NOT EXISTS `vtiger_emailtemplates` (
   `foldername` varchar(100) DEFAULT NULL,
   `templatename` varchar(100) DEFAULT NULL,
   `templatepath` varchar(100) DEFAULT NULL,
@@ -5589,7 +5855,9 @@ CREATE TABLE `vtiger_emailtemplates` (
   `deleted` int(1) NOT NULL DEFAULT 0,
   `templateid` int(19) NOT NULL,
   `systemtemplate` int(1) NOT NULL DEFAULT 0,
-  `module` varchar(100) DEFAULT NULL
+  `module` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`templateid`),
+  KEY `emailtemplates_foldernamd_templatename_subject_idx` (`foldername`,`templatename`,`subject`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5619,7 +5887,7 @@ INSERT INTO `vtiger_emailtemplates` (`foldername`, `templatename`, `templatepath
 -- Table structure for table `vtiger_emailtemplates_seq`
 --
 
-CREATE TABLE `vtiger_emailtemplates_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_emailtemplates_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5636,7 +5904,7 @@ INSERT INTO `vtiger_emailtemplates_seq` (`id`) VALUES
 -- Table structure for table `vtiger_email_access`
 --
 
-CREATE TABLE `vtiger_email_access` (
+CREATE TABLE IF NOT EXISTS `vtiger_email_access` (
   `crmid` int(11) DEFAULT NULL,
   `mailid` int(11) DEFAULT NULL,
   `accessdate` date DEFAULT NULL,
@@ -5649,11 +5917,12 @@ CREATE TABLE `vtiger_email_access` (
 -- Table structure for table `vtiger_email_track`
 --
 
-CREATE TABLE `vtiger_email_track` (
+CREATE TABLE IF NOT EXISTS `vtiger_email_track` (
   `crmid` int(11) DEFAULT NULL,
   `mailid` int(11) DEFAULT NULL,
   `access_count` int(11) DEFAULT NULL,
-  `click_count` int(11) NOT NULL DEFAULT 0
+  `click_count` int(11) NOT NULL DEFAULT 0,
+  UNIQUE KEY `link_tabidtype_idx` (`crmid`,`mailid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5662,13 +5931,14 @@ CREATE TABLE `vtiger_email_track` (
 -- Table structure for table `vtiger_employ_gender`
 --
 
-CREATE TABLE `vtiger_employ_gender` (
+CREATE TABLE IF NOT EXISTS `vtiger_employ_gender` (
   `employ_genderid` int(11) NOT NULL,
   `employ_gender` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`employ_genderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5688,7 +5958,7 @@ INSERT INTO `vtiger_employ_gender` (`employ_genderid`, `employ_gender`, `presenc
 -- Table structure for table `vtiger_employ_gender_seq`
 --
 
-CREATE TABLE `vtiger_employ_gender_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_employ_gender_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5705,13 +5975,14 @@ INSERT INTO `vtiger_employ_gender_seq` (`id`) VALUES
 -- Table structure for table `vtiger_employ_marital_status`
 --
 
-CREATE TABLE `vtiger_employ_marital_status` (
+CREATE TABLE IF NOT EXISTS `vtiger_employ_marital_status` (
   `employ_marital_statusid` int(11) NOT NULL,
   `employ_marital_status` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`employ_marital_statusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5728,7 +5999,7 @@ INSERT INTO `vtiger_employ_marital_status` (`employ_marital_statusid`, `employ_m
 -- Table structure for table `vtiger_employ_marital_status_seq`
 --
 
-CREATE TABLE `vtiger_employ_marital_status_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_employ_marital_status_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5745,13 +6016,15 @@ INSERT INTO `vtiger_employ_marital_status_seq` (`id`) VALUES
 -- Table structure for table `vtiger_entityname`
 --
 
-CREATE TABLE `vtiger_entityname` (
+CREATE TABLE IF NOT EXISTS `vtiger_entityname` (
   `tabid` int(19) NOT NULL DEFAULT 0,
   `modulename` varchar(100) DEFAULT NULL,
   `tablename` varchar(100) NOT NULL,
   `fieldname` varchar(150) NOT NULL,
   `entityidfield` varchar(150) NOT NULL,
-  `entityidcolumn` varchar(150) NOT NULL
+  `entityidcolumn` varchar(150) NOT NULL,
+  PRIMARY KEY (`tabid`),
+  KEY `entityname_tabid_idx` (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5801,7 +6074,8 @@ INSERT INTO `vtiger_entityname` (`tabid`, `modulename`, `tablename`, `fieldname`
 (65, 'ProblemCategory', 'vtiger_problemcategory', 'loaivande', 'problemcategoryid', 'problemcategoryid'),
 (66, 'SupportProtocol', 'vtiger_supportprotocol', 'hinhthuchotro', 'supportprotocolid', 'supportprotocolid'),
 (70, 'PhuongTienTruyenThong', 'vtiger_phuongtientruyenthong', 'pttt', 'phuongtientruyenthongid', 'phuongtientruyenthongid'),
-(71, 'HinhThucTruyenThong', 'vtiger_hinhthuctruyenthong', 'httt', 'hinhthuctruyenthongid', 'hinhthuctruyenthongid');
+(71, 'HinhThucTruyenThong', 'vtiger_hinhthuctruyenthong', 'httt', 'hinhthuctruyenthongid', 'hinhthuctruyenthongid'),
+(72, 'QuyTrinhBanHang', 'vtiger_quytrinhbanhang', 'tenquytrinh', 'quytrinhbanhangid', 'quytrinhbanhangid');
 
 -- --------------------------------------------------------
 
@@ -5809,14 +6083,16 @@ INSERT INTO `vtiger_entityname` (`tabid`, `modulename`, `tablename`, `fieldname`
 -- Table structure for table `vtiger_eventhandlers`
 --
 
-CREATE TABLE `vtiger_eventhandlers` (
+CREATE TABLE IF NOT EXISTS `vtiger_eventhandlers` (
   `eventhandler_id` int(11) NOT NULL,
   `event_name` varchar(100) NOT NULL,
   `handler_path` varchar(400) NOT NULL,
   `handler_class` varchar(100) NOT NULL,
   `cond` text DEFAULT NULL,
   `is_active` int(1) NOT NULL,
-  `dependent_on` varchar(255) DEFAULT '[]'
+  `dependent_on` varchar(255) DEFAULT '[]',
+  PRIMARY KEY (`eventhandler_id`,`event_name`,`handler_class`),
+  UNIQUE KEY `eventhandler_idx` (`eventhandler_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5861,7 +6137,7 @@ INSERT INTO `vtiger_eventhandlers` (`eventhandler_id`, `event_name`, `handler_pa
 -- Table structure for table `vtiger_eventhandlers_seq`
 --
 
-CREATE TABLE `vtiger_eventhandlers_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_eventhandlers_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5878,10 +6154,11 @@ INSERT INTO `vtiger_eventhandlers_seq` (`id`) VALUES
 -- Table structure for table `vtiger_eventhandler_module`
 --
 
-CREATE TABLE `vtiger_eventhandler_module` (
+CREATE TABLE IF NOT EXISTS `vtiger_eventhandler_module` (
   `eventhandler_module_id` int(11) NOT NULL,
   `module_name` varchar(100) DEFAULT NULL,
-  `handler_class` varchar(100) DEFAULT NULL
+  `handler_class` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`eventhandler_module_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5905,7 +6182,7 @@ INSERT INTO `vtiger_eventhandler_module` (`eventhandler_module_id`, `module_name
 -- Table structure for table `vtiger_eventhandler_module_seq`
 --
 
-CREATE TABLE `vtiger_eventhandler_module_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_eventhandler_module_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5922,13 +6199,14 @@ INSERT INTO `vtiger_eventhandler_module_seq` (`id`) VALUES
 -- Table structure for table `vtiger_eventstatus`
 --
 
-CREATE TABLE `vtiger_eventstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_eventstatus` (
   `eventstatusid` int(19) NOT NULL,
   `eventstatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`eventstatusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5946,7 +6224,7 @@ INSERT INTO `vtiger_eventstatus` (`eventstatusid`, `eventstatus`, `presence`, `p
 -- Table structure for table `vtiger_eventstatus_seq`
 --
 
-CREATE TABLE `vtiger_eventstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_eventstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5963,13 +6241,15 @@ INSERT INTO `vtiger_eventstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_expectedresponse`
 --
 
-CREATE TABLE `vtiger_expectedresponse` (
+CREATE TABLE IF NOT EXISTS `vtiger_expectedresponse` (
   `expectedresponseid` int(19) NOT NULL,
   `expectedresponse` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`expectedresponseid`),
+  UNIQUE KEY `CampaignExpRes_UK01` (`expectedresponse`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -5988,7 +6268,7 @@ INSERT INTO `vtiger_expectedresponse` (`expectedresponseid`, `expectedresponse`,
 -- Table structure for table `vtiger_expectedresponse_seq`
 --
 
-CREATE TABLE `vtiger_expectedresponse_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_expectedresponse_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -6005,13 +6285,14 @@ INSERT INTO `vtiger_expectedresponse_seq` (`id`) VALUES
 -- Table structure for table `vtiger_extnstore_users`
 --
 
-CREATE TABLE `vtiger_extnstore_users` (
+CREATE TABLE IF NOT EXISTS `vtiger_extnstore_users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(75) DEFAULT NULL,
   `instanceurl` varchar(255) DEFAULT NULL,
   `createdon` datetime DEFAULT NULL,
-  `deleted` int(1) NOT NULL DEFAULT 0
+  `deleted` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6020,7 +6301,7 @@ CREATE TABLE `vtiger_extnstore_users` (
 -- Table structure for table `vtiger_faq`
 --
 
-CREATE TABLE `vtiger_faq` (
+CREATE TABLE IF NOT EXISTS `vtiger_faq` (
   `id` int(11) NOT NULL,
   `faq_no` varchar(100) NOT NULL,
   `product_id` varchar(100) DEFAULT NULL,
@@ -6028,7 +6309,9 @@ CREATE TABLE `vtiger_faq` (
   `answer` text DEFAULT NULL,
   `category` varchar(200) NOT NULL,
   `status` varchar(200) NOT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `faq_id_idx` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6037,13 +6320,14 @@ CREATE TABLE `vtiger_faq` (
 -- Table structure for table `vtiger_faqcategories`
 --
 
-CREATE TABLE `vtiger_faqcategories` (
+CREATE TABLE IF NOT EXISTS `vtiger_faqcategories` (
   `faqcategories_id` int(19) NOT NULL,
   `faqcategories` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`faqcategories_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -6059,7 +6343,7 @@ INSERT INTO `vtiger_faqcategories` (`faqcategories_id`, `faqcategories`, `presen
 -- Table structure for table `vtiger_faqcategories_seq`
 --
 
-CREATE TABLE `vtiger_faqcategories_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_faqcategories_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -6076,8 +6360,9 @@ INSERT INTO `vtiger_faqcategories_seq` (`id`) VALUES
 -- Table structure for table `vtiger_faqcf`
 --
 
-CREATE TABLE `vtiger_faqcf` (
-  `faqid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_faqcf` (
+  `faqid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`faqid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6086,11 +6371,13 @@ CREATE TABLE `vtiger_faqcf` (
 -- Table structure for table `vtiger_faqcomments`
 --
 
-CREATE TABLE `vtiger_faqcomments` (
+CREATE TABLE IF NOT EXISTS `vtiger_faqcomments` (
   `commentid` int(19) NOT NULL,
   `faqid` int(19) DEFAULT NULL,
   `comments` text DEFAULT NULL,
-  `createdtime` datetime NOT NULL
+  `createdtime` datetime NOT NULL,
+  PRIMARY KEY (`commentid`),
+  KEY `faqcomments_faqid_idx` (`faqid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6099,13 +6386,14 @@ CREATE TABLE `vtiger_faqcomments` (
 -- Table structure for table `vtiger_faqstatus`
 --
 
-CREATE TABLE `vtiger_faqstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_faqstatus` (
   `faqstatus_id` int(19) NOT NULL,
   `faqstatus` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`faqstatus_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -6124,7 +6412,7 @@ INSERT INTO `vtiger_faqstatus` (`faqstatus_id`, `faqstatus`, `presence`, `pickli
 -- Table structure for table `vtiger_faqstatus_seq`
 --
 
-CREATE TABLE `vtiger_faqstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_faqstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -6141,7 +6429,7 @@ INSERT INTO `vtiger_faqstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_feedback`
 --
 
-CREATE TABLE `vtiger_feedback` (
+CREATE TABLE IF NOT EXISTS `vtiger_feedback` (
   `userid` int(19) DEFAULT NULL,
   `dontshow` varchar(19) DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -6152,7 +6440,7 @@ CREATE TABLE `vtiger_feedback` (
 -- Table structure for table `vtiger_field`
 --
 
-CREATE TABLE `vtiger_field` (
+CREATE TABLE IF NOT EXISTS `vtiger_field` (
   `tabid` int(19) NOT NULL,
   `fieldid` int(19) NOT NULL,
   `columnname` varchar(30) NOT NULL,
@@ -6176,7 +6464,12 @@ CREATE TABLE `vtiger_field` (
   `helpinfo` text DEFAULT NULL,
   `summaryfield` int(10) NOT NULL DEFAULT 0,
   `headerfield` int(1) DEFAULT 0,
-  `isunique` tinyint(1) DEFAULT 0
+  `isunique` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`fieldid`),
+  KEY `field_tabid_idx` (`tabid`),
+  KEY `field_fieldname_idx` (`fieldname`),
+  KEY `field_block_idx` (`block`),
+  KEY `field_displaytype_idx` (`displaytype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7257,7 +7550,18 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (71, 1267, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 5, 187, 2, 'V~O', 3, 1, 'BAS', 0, '', 0, 0, 0),
 (71, 1268, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 6, 187, 6, 'C~O', 3, 2, 'BAS', 0, '', 0, 0, 0),
 (71, 1269, 'tags', 'vtiger_hinhthuctruyenthong', 1, '1', 'tags', 'tags', 1, 2, '', 100, 7, 187, 6, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
-(26, 1270, 'cf_1270', 'vtiger_campaign', 2, '10', 'cf_1270', 'Hinh thuc truyen thong', 1, 2, '', 100, 21, 74, 1, 'I~O', 1, 0, 'BAS', 1, '', 0, 0, 0);
+(26, 1270, 'cf_1270', 'vtiger_campaign', 2, '10', 'cf_1270', 'Hinh thuc truyen thong', 1, 2, '', 100, 21, 74, 1, 'I~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(72, 1271, 'tenquytrinh', 'vtiger_quytrinhbanhang', 1, '8', 'tenquytrinh', 'Ten quy trinh', 1, 2, '', 100, 1, 189, 1, 'V~M', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(72, 1272, 'motachitiet', 'vtiger_quytrinhbanhang', 1, '21', 'motachitiet', 'Mo ta chi tiet', 1, 2, '', 100, 2, 189, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(72, 1273, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 2, '', 100, 3, 189, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(72, 1274, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 2, '', 100, 4, 189, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(72, 1275, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 5, 189, 2, 'V~O', 3, 1, 'BAS', 0, '', 0, 0, 0),
+(72, 1276, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 6, 189, 6, 'C~O', 3, 2, 'BAS', 0, '', 0, 0, 0),
+(72, 1277, 'tags', 'vtiger_quytrinhbanhang', 1, '1', 'tags', 'tags', 1, 2, '', 100, 7, 189, 6, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
+(72, 1279, 'cf_1278', 'vtiger_quytrinhbanhangcf', 2, '1', 'cf_1278', 'Ten giai doan', 1, 2, '', 100, 1, 191, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(72, 1281, 'cf_1280', 'vtiger_quytrinhbanhangcf', 2, '9', 'cf_1280', 'Ti le thanh cong', 1, 2, '', 100, 2, 191, 1, 'N~O~2~2', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(72, 1285, 'cf_1284', 'vtiger_quytrinhbanhangcf', 2, '21', 'cf_1284', 'Dien giai', 1, 2, '', 100, 4, 191, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(72, 1287, 'cf_1286', 'vtiger_quytrinhbanhangcf', 2, '16', 'cf_1286', 'Phan loai', 1, 2, ' ', 100, 5, 191, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -7265,7 +7569,7 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 -- Table structure for table `vtiger_fieldmodulerel`
 --
 
-CREATE TABLE `vtiger_fieldmodulerel` (
+CREATE TABLE IF NOT EXISTS `vtiger_fieldmodulerel` (
   `fieldid` int(11) NOT NULL,
   `module` varchar(100) NOT NULL,
   `relmodule` varchar(100) NOT NULL,
@@ -7349,7 +7653,7 @@ INSERT INTO `vtiger_fieldmodulerel` (`fieldid`, `module`, `relmodule`, `status`,
 -- Table structure for table `vtiger_field_seq`
 --
 
-CREATE TABLE `vtiger_field_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_field_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -7358,7 +7662,7 @@ CREATE TABLE `vtiger_field_seq` (
 --
 
 INSERT INTO `vtiger_field_seq` (`id`) VALUES
-(1270);
+(1287);
 
 -- --------------------------------------------------------
 
@@ -7366,12 +7670,14 @@ INSERT INTO `vtiger_field_seq` (`id`) VALUES
 -- Table structure for table `vtiger_freetagged_objects`
 --
 
-CREATE TABLE `vtiger_freetagged_objects` (
+CREATE TABLE IF NOT EXISTS `vtiger_freetagged_objects` (
   `tag_id` int(20) NOT NULL DEFAULT 0,
   `tagger_id` int(20) NOT NULL DEFAULT 0,
   `object_id` int(20) NOT NULL DEFAULT 0,
   `tagged_on` timestamp NOT NULL DEFAULT current_timestamp(),
-  `module` varchar(100) DEFAULT NULL
+  `module` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`tag_id`,`tagger_id`,`object_id`),
+  KEY `freetagged_objects_tag_id_tagger_id_object_id_idx` (`tag_id`,`tagger_id`,`object_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7380,12 +7686,13 @@ CREATE TABLE `vtiger_freetagged_objects` (
 -- Table structure for table `vtiger_freetags`
 --
 
-CREATE TABLE `vtiger_freetags` (
+CREATE TABLE IF NOT EXISTS `vtiger_freetags` (
   `id` int(19) NOT NULL,
   `tag` varchar(50) NOT NULL DEFAULT '',
   `raw_tag` varchar(50) NOT NULL DEFAULT '',
   `visibility` varchar(100) NOT NULL DEFAULT 'PRIVATE',
-  `owner` int(19) NOT NULL
+  `owner` int(19) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7401,7 +7708,7 @@ INSERT INTO `vtiger_freetags` (`id`, `tag`, `raw_tag`, `visibility`, `owner`) VA
 -- Table structure for table `vtiger_freetags_seq`
 --
 
-CREATE TABLE `vtiger_freetags_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_freetags_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -7418,13 +7725,15 @@ INSERT INTO `vtiger_freetags_seq` (`id`) VALUES
 -- Table structure for table `vtiger_glacct`
 --
 
-CREATE TABLE `vtiger_glacct` (
+CREATE TABLE IF NOT EXISTS `vtiger_glacct` (
   `glacctid` int(19) NOT NULL,
   `glacct` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`glacctid`),
+  UNIQUE KEY `glacct_glacct_idx` (`glacct`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7448,7 +7757,7 @@ INSERT INTO `vtiger_glacct` (`glacctid`, `glacct`, `presence`, `picklist_valueid
 -- Table structure for table `vtiger_glacct_seq`
 --
 
-CREATE TABLE `vtiger_glacct_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_glacct_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -7465,7 +7774,7 @@ INSERT INTO `vtiger_glacct_seq` (`id`) VALUES
 -- Table structure for table `vtiger_google_event_calendar_mapping`
 --
 
-CREATE TABLE `vtiger_google_event_calendar_mapping` (
+CREATE TABLE IF NOT EXISTS `vtiger_google_event_calendar_mapping` (
   `event_id` varchar(255) DEFAULT NULL,
   `calendar_id` varchar(255) DEFAULT NULL,
   `user_id` int(11) NOT NULL
@@ -7477,7 +7786,7 @@ CREATE TABLE `vtiger_google_event_calendar_mapping` (
 -- Table structure for table `vtiger_google_oauth2`
 --
 
-CREATE TABLE `vtiger_google_oauth2` (
+CREATE TABLE IF NOT EXISTS `vtiger_google_oauth2` (
   `service` varchar(20) DEFAULT NULL,
   `access_token` varchar(500) DEFAULT NULL,
   `refresh_token` varchar(500) DEFAULT NULL,
@@ -7490,7 +7799,7 @@ CREATE TABLE `vtiger_google_oauth2` (
 -- Table structure for table `vtiger_google_sync_fieldmapping`
 --
 
-CREATE TABLE `vtiger_google_sync_fieldmapping` (
+CREATE TABLE IF NOT EXISTS `vtiger_google_sync_fieldmapping` (
   `vtiger_field` varchar(255) DEFAULT NULL,
   `google_field` varchar(255) DEFAULT NULL,
   `google_field_type` varchar(255) DEFAULT NULL,
@@ -7504,7 +7813,7 @@ CREATE TABLE `vtiger_google_sync_fieldmapping` (
 -- Table structure for table `vtiger_google_sync_settings`
 --
 
-CREATE TABLE `vtiger_google_sync_settings` (
+CREATE TABLE IF NOT EXISTS `vtiger_google_sync_settings` (
   `user` int(11) DEFAULT NULL,
   `module` varchar(50) DEFAULT NULL,
   `clientgroup` varchar(255) DEFAULT NULL,
@@ -7518,9 +7827,10 @@ CREATE TABLE `vtiger_google_sync_settings` (
 -- Table structure for table `vtiger_group2grouprel`
 --
 
-CREATE TABLE `vtiger_group2grouprel` (
+CREATE TABLE IF NOT EXISTS `vtiger_group2grouprel` (
   `groupid` int(19) NOT NULL,
-  `containsgroupid` int(19) NOT NULL
+  `containsgroupid` int(19) NOT NULL,
+  PRIMARY KEY (`groupid`,`containsgroupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7529,9 +7839,11 @@ CREATE TABLE `vtiger_group2grouprel` (
 -- Table structure for table `vtiger_group2role`
 --
 
-CREATE TABLE `vtiger_group2role` (
+CREATE TABLE IF NOT EXISTS `vtiger_group2role` (
   `groupid` int(19) NOT NULL,
-  `roleid` varchar(255) NOT NULL
+  `roleid` varchar(255) NOT NULL,
+  PRIMARY KEY (`groupid`,`roleid`),
+  KEY `fk_2_vtiger_group2role` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7549,9 +7861,11 @@ INSERT INTO `vtiger_group2role` (`groupid`, `roleid`) VALUES
 -- Table structure for table `vtiger_group2rs`
 --
 
-CREATE TABLE `vtiger_group2rs` (
+CREATE TABLE IF NOT EXISTS `vtiger_group2rs` (
   `groupid` int(19) NOT NULL,
-  `roleandsubid` varchar(255) NOT NULL
+  `roleandsubid` varchar(255) NOT NULL,
+  PRIMARY KEY (`groupid`,`roleandsubid`),
+  KEY `fk_2_vtiger_group2rs` (`roleandsubid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7569,10 +7883,12 @@ INSERT INTO `vtiger_group2rs` (`groupid`, `roleandsubid`) VALUES
 -- Table structure for table `vtiger_groups`
 --
 
-CREATE TABLE `vtiger_groups` (
+CREATE TABLE IF NOT EXISTS `vtiger_groups` (
   `groupid` int(19) NOT NULL,
   `groupname` varchar(100) DEFAULT NULL,
-  `description` text DEFAULT NULL
+  `description` text DEFAULT NULL,
+  PRIMARY KEY (`groupid`),
+  UNIQUE KEY `groups_groupname_idx` (`groupname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7590,11 +7906,12 @@ INSERT INTO `vtiger_groups` (`groupid`, `groupname`, `description`) VALUES
 -- Table structure for table `vtiger_hinhthuctruyenthong`
 --
 
-CREATE TABLE `vtiger_hinhthuctruyenthong` (
+CREATE TABLE IF NOT EXISTS `vtiger_hinhthuctruyenthong` (
   `hinhthuctruyenthongid` int(19) NOT NULL,
   `httt` varchar(255) DEFAULT NULL,
   `motachitiet` varchar(100) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`hinhthuctruyenthongid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7610,8 +7927,9 @@ INSERT INTO `vtiger_hinhthuctruyenthong` (`hinhthuctruyenthongid`, `httt`, `mota
 -- Table structure for table `vtiger_hinhthuctruyenthongcf`
 --
 
-CREATE TABLE `vtiger_hinhthuctruyenthongcf` (
-  `hinhthuctruyenthongid` int(19) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_hinhthuctruyenthongcf` (
+  `hinhthuctruyenthongid` int(19) NOT NULL,
+  PRIMARY KEY (`hinhthuctruyenthongid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7627,10 +7945,12 @@ INSERT INTO `vtiger_hinhthuctruyenthongcf` (`hinhthuctruyenthongid`) VALUES
 -- Table structure for table `vtiger_homedashbd`
 --
 
-CREATE TABLE `vtiger_homedashbd` (
+CREATE TABLE IF NOT EXISTS `vtiger_homedashbd` (
   `stuffid` int(19) NOT NULL DEFAULT 0,
   `dashbdname` varchar(100) DEFAULT NULL,
-  `dashbdtype` varchar(100) DEFAULT NULL
+  `dashbdtype` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`stuffid`),
+  KEY `stuff_stuffid_idx` (`stuffid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7639,11 +7959,13 @@ CREATE TABLE `vtiger_homedashbd` (
 -- Table structure for table `vtiger_homedefault`
 --
 
-CREATE TABLE `vtiger_homedefault` (
+CREATE TABLE IF NOT EXISTS `vtiger_homedefault` (
   `stuffid` int(19) NOT NULL DEFAULT 0,
   `hometype` varchar(30) NOT NULL,
   `maxentries` int(19) DEFAULT NULL,
-  `setype` varchar(30) DEFAULT NULL
+  `setype` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`stuffid`),
+  KEY `stuff_stuffid_idx` (`stuffid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7672,12 +7994,14 @@ INSERT INTO `vtiger_homedefault` (`stuffid`, `hometype`, `maxentries`, `setype`)
 -- Table structure for table `vtiger_homemodule`
 --
 
-CREATE TABLE `vtiger_homemodule` (
+CREATE TABLE IF NOT EXISTS `vtiger_homemodule` (
   `stuffid` int(19) NOT NULL,
   `modulename` varchar(100) DEFAULT NULL,
   `maxentries` int(19) NOT NULL,
   `customviewid` int(19) NOT NULL,
-  `setype` varchar(30) NOT NULL
+  `setype` varchar(30) NOT NULL,
+  PRIMARY KEY (`stuffid`),
+  KEY `stuff_stuffid_idx` (`stuffid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7686,9 +8010,10 @@ CREATE TABLE `vtiger_homemodule` (
 -- Table structure for table `vtiger_homemoduleflds`
 --
 
-CREATE TABLE `vtiger_homemoduleflds` (
+CREATE TABLE IF NOT EXISTS `vtiger_homemoduleflds` (
   `stuffid` int(19) DEFAULT NULL,
-  `fieldname` varchar(100) DEFAULT NULL
+  `fieldname` varchar(100) DEFAULT NULL,
+  KEY `stuff_stuffid_idx` (`stuffid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7697,10 +8022,11 @@ CREATE TABLE `vtiger_homemoduleflds` (
 -- Table structure for table `vtiger_homereportchart`
 --
 
-CREATE TABLE `vtiger_homereportchart` (
+CREATE TABLE IF NOT EXISTS `vtiger_homereportchart` (
   `stuffid` int(11) NOT NULL,
   `reportid` int(19) DEFAULT NULL,
-  `reportcharttype` varchar(100) DEFAULT NULL
+  `reportcharttype` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`stuffid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7709,10 +8035,12 @@ CREATE TABLE `vtiger_homereportchart` (
 -- Table structure for table `vtiger_homerss`
 --
 
-CREATE TABLE `vtiger_homerss` (
+CREATE TABLE IF NOT EXISTS `vtiger_homerss` (
   `stuffid` int(19) NOT NULL DEFAULT 0,
   `url` varchar(100) DEFAULT NULL,
-  `maxentries` int(19) NOT NULL
+  `maxentries` int(19) NOT NULL,
+  PRIMARY KEY (`stuffid`),
+  KEY `stuff_stuffid_idx` (`stuffid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7721,13 +8049,16 @@ CREATE TABLE `vtiger_homerss` (
 -- Table structure for table `vtiger_homestuff`
 --
 
-CREATE TABLE `vtiger_homestuff` (
+CREATE TABLE IF NOT EXISTS `vtiger_homestuff` (
   `stuffid` int(19) NOT NULL DEFAULT 0,
   `stuffsequence` int(19) NOT NULL DEFAULT 0,
   `stufftype` varchar(100) DEFAULT NULL,
   `userid` int(19) NOT NULL,
   `visible` int(10) NOT NULL DEFAULT 0,
-  `stufftitle` varchar(100) DEFAULT NULL
+  `stufftitle` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`stuffid`),
+  KEY `stuff_stuffid_idx` (`stuffid`),
+  KEY `fk_1_vtiger_homestuff` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7757,7 +8088,7 @@ INSERT INTO `vtiger_homestuff` (`stuffid`, `stuffsequence`, `stufftype`, `userid
 -- Table structure for table `vtiger_homestuff_seq`
 --
 
-CREATE TABLE `vtiger_homestuff_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_homestuff_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -7774,9 +8105,10 @@ INSERT INTO `vtiger_homestuff_seq` (`id`) VALUES
 -- Table structure for table `vtiger_home_layout`
 --
 
-CREATE TABLE `vtiger_home_layout` (
+CREATE TABLE IF NOT EXISTS `vtiger_home_layout` (
   `userid` int(19) NOT NULL,
-  `layout` int(19) NOT NULL DEFAULT 4
+  `layout` int(19) NOT NULL DEFAULT 4,
+  PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7785,11 +8117,12 @@ CREATE TABLE `vtiger_home_layout` (
 -- Table structure for table `vtiger_hour_format`
 --
 
-CREATE TABLE `vtiger_hour_format` (
+CREATE TABLE IF NOT EXISTS `vtiger_hour_format` (
   `hour_formatid` int(11) NOT NULL,
   `hour_format` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`hour_formatid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7806,7 +8139,7 @@ INSERT INTO `vtiger_hour_format` (`hour_formatid`, `hour_format`, `sortorderid`,
 -- Table structure for table `vtiger_hour_format_seq`
 --
 
-CREATE TABLE `vtiger_hour_format_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_hour_format_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -7823,13 +8156,14 @@ INSERT INTO `vtiger_hour_format_seq` (`id`) VALUES
 -- Table structure for table `vtiger_hr`
 --
 
-CREATE TABLE `vtiger_hr` (
+CREATE TABLE IF NOT EXISTS `vtiger_hr` (
   `hrid` int(11) NOT NULL,
   `hr` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`hrid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7846,7 +8180,7 @@ INSERT INTO `vtiger_hr` (`hrid`, `hr`, `presence`, `picklist_valueid`, `sortorde
 -- Table structure for table `vtiger_hrm_candidate`
 --
 
-CREATE TABLE `vtiger_hrm_candidate` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_candidate` (
   `id` int(19) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `firstname` varchar(255) DEFAULT NULL,
@@ -7872,7 +8206,8 @@ CREATE TABLE `vtiger_hrm_candidate` (
   `mif_note` text DEFAULT NULL,
   `oj_note` text DEFAULT NULL,
   `official_salary` text DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7881,8 +8216,9 @@ CREATE TABLE `vtiger_hrm_candidate` (
 -- Table structure for table `vtiger_hrm_candidatecf`
 --
 
-CREATE TABLE `vtiger_hrm_candidatecf` (
-  `id` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_candidatecf` (
+  `id` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7891,8 +8227,9 @@ CREATE TABLE `vtiger_hrm_candidatecf` (
 -- Table structure for table `vtiger_hrm_employcf`
 --
 
-CREATE TABLE `vtiger_hrm_employcf` (
-  `employid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_employcf` (
+  `employid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`employid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7909,7 +8246,7 @@ INSERT INTO `vtiger_hrm_employcf` (`employid`) VALUES
 -- Table structure for table `vtiger_hrm_employee`
 --
 
-CREATE TABLE `vtiger_hrm_employee` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_employee` (
   `employid` int(11) NOT NULL,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
@@ -7934,7 +8271,8 @@ CREATE TABLE `vtiger_hrm_employee` (
   `official_salary` varchar(100) DEFAULT NULL,
   `private_email` varchar(100) DEFAULT NULL,
   `salary_department` varchar(100) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`employid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -7951,7 +8289,7 @@ INSERT INTO `vtiger_hrm_employee` (`employid`, `firstname`, `lastname`, `employ_
 -- Table structure for table `vtiger_hrm_jd`
 --
 
-CREATE TABLE `vtiger_hrm_jd` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_jd` (
   `id` int(19) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -7959,7 +8297,8 @@ CREATE TABLE `vtiger_hrm_jd` (
   `jd_status` varchar(255) DEFAULT NULL,
   `jd_classify` varchar(255) DEFAULT NULL,
   `position` varchar(100) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7968,8 +8307,9 @@ CREATE TABLE `vtiger_hrm_jd` (
 -- Table structure for table `vtiger_hrm_jdcf`
 --
 
-CREATE TABLE `vtiger_hrm_jdcf` (
-  `id` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_jdcf` (
+  `id` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7978,11 +8318,12 @@ CREATE TABLE `vtiger_hrm_jdcf` (
 -- Table structure for table `vtiger_hrm_jd_tasks`
 --
 
-CREATE TABLE `vtiger_hrm_jd_tasks` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_jd_tasks` (
   `id` int(11) NOT NULL,
   `task_name` varchar(255) NOT NULL,
   `task_desc` text NOT NULL,
-  `jd_id` int(11) NOT NULL
+  `jd_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -7991,7 +8332,7 @@ CREATE TABLE `vtiger_hrm_jd_tasks` (
 -- Table structure for table `vtiger_hrm_kpi`
 --
 
-CREATE TABLE `vtiger_hrm_kpi` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_kpi` (
   `id` int(11) NOT NULL,
   `kpi_name` varchar(255) NOT NULL,
   `kpi_description` varchar(255) NOT NULL,
@@ -8009,7 +8350,8 @@ CREATE TABLE `vtiger_hrm_kpi` (
   `kpi_ranking` varchar(100) NOT NULL,
   `cf_07` varchar(100) NOT NULL,
   `api_manager` varchar(100) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8018,8 +8360,9 @@ CREATE TABLE `vtiger_hrm_kpi` (
 -- Table structure for table `vtiger_hrm_kpicf`
 --
 
-CREATE TABLE `vtiger_hrm_kpicf` (
-  `id` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_kpicf` (
+  `id` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8028,7 +8371,7 @@ CREATE TABLE `vtiger_hrm_kpicf` (
 -- Table structure for table `vtiger_hrm_leave`
 --
 
-CREATE TABLE `vtiger_hrm_leave` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_leave` (
   `id` int(19) NOT NULL,
   `employ_id` int(11) DEFAULT NULL,
   `from_date` varchar(255) DEFAULT NULL,
@@ -8038,7 +8381,8 @@ CREATE TABLE `vtiger_hrm_leave` (
   `partial_day` varchar(255) DEFAULT NULL,
   `hr` varchar(255) DEFAULT NULL,
   `hrm_leave_action` varchar(255) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8047,13 +8391,14 @@ CREATE TABLE `vtiger_hrm_leave` (
 -- Table structure for table `vtiger_hrm_leave_action`
 --
 
-CREATE TABLE `vtiger_hrm_leave_action` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_leave_action` (
   `hrm_leave_actionid` int(11) NOT NULL,
   `hrm_leave_action` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`hrm_leave_actionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8070,7 +8415,7 @@ INSERT INTO `vtiger_hrm_leave_action` (`hrm_leave_actionid`, `hrm_leave_action`,
 -- Table structure for table `vtiger_hrm_leave_action_seq`
 --
 
-CREATE TABLE `vtiger_hrm_leave_action_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_leave_action_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8087,13 +8432,14 @@ INSERT INTO `vtiger_hrm_leave_action_seq` (`id`) VALUES
 -- Table structure for table `vtiger_hrm_leave_type`
 --
 
-CREATE TABLE `vtiger_hrm_leave_type` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_leave_type` (
   `hrm_leave_typeid` int(11) NOT NULL,
   `hrm_leave_type` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`hrm_leave_typeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8113,7 +8459,7 @@ INSERT INTO `vtiger_hrm_leave_type` (`hrm_leave_typeid`, `hrm_leave_type`, `pres
 -- Table structure for table `vtiger_hrm_leave_type_seq`
 --
 
-CREATE TABLE `vtiger_hrm_leave_type_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_leave_type_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8130,11 +8476,12 @@ INSERT INTO `vtiger_hrm_leave_type_seq` (`id`) VALUES
 -- Table structure for table `vtiger_hrm_position`
 --
 
-CREATE TABLE `vtiger_hrm_position` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_position` (
   `id` int(19) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8143,7 +8490,7 @@ CREATE TABLE `vtiger_hrm_position` (
 -- Table structure for table `vtiger_hrm_qcm`
 --
 
-CREATE TABLE `vtiger_hrm_qcm` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_qcm` (
   `qcmid` int(11) NOT NULL,
   `qcm_title` varchar(255) DEFAULT NULL,
   `qcm_code` varchar(255) DEFAULT NULL,
@@ -8154,7 +8501,8 @@ CREATE TABLE `vtiger_hrm_qcm` (
   `fined` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `position` varchar(100) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`qcmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8163,8 +8511,9 @@ CREATE TABLE `vtiger_hrm_qcm` (
 -- Table structure for table `vtiger_hrm_qcmcf`
 --
 
-CREATE TABLE `vtiger_hrm_qcmcf` (
-  `qcmid` int(11) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_qcmcf` (
+  `qcmid` int(11) NOT NULL,
+  PRIMARY KEY (`qcmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8173,7 +8522,7 @@ CREATE TABLE `vtiger_hrm_qcmcf` (
 -- Table structure for table `vtiger_hrm_rating`
 --
 
-CREATE TABLE `vtiger_hrm_rating` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_rating` (
   `id` int(19) NOT NULL,
   `task_name` varchar(255) DEFAULT NULL,
   `rating_weight` varchar(255) DEFAULT NULL,
@@ -8182,7 +8531,8 @@ CREATE TABLE `vtiger_hrm_rating` (
   `ranking_3` varchar(255) DEFAULT NULL,
   `ranking_4` varchar(255) DEFAULT NULL,
   `detail` text DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8191,8 +8541,9 @@ CREATE TABLE `vtiger_hrm_rating` (
 -- Table structure for table `vtiger_hrm_ratingcf`
 --
 
-CREATE TABLE `vtiger_hrm_ratingcf` (
-  `id` int(19) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_ratingcf` (
+  `id` int(19) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8201,7 +8552,7 @@ CREATE TABLE `vtiger_hrm_ratingcf` (
 -- Table structure for table `vtiger_hrm_salaryreference`
 --
 
-CREATE TABLE `vtiger_hrm_salaryreference` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_salaryreference` (
   `id` int(19) NOT NULL,
   `employ_id` int(11) DEFAULT NULL,
   `current_salary` varchar(255) DEFAULT NULL,
@@ -8211,7 +8562,8 @@ CREATE TABLE `vtiger_hrm_salaryreference` (
   `hr_salary_action` varchar(255) DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   `review_date` varchar(255) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8220,11 +8572,12 @@ CREATE TABLE `vtiger_hrm_salaryreference` (
 -- Table structure for table `vtiger_hrm_setting`
 --
 
-CREATE TABLE `vtiger_hrm_setting` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_setting` (
   `id` int(19) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8233,11 +8586,12 @@ CREATE TABLE `vtiger_hrm_setting` (
 -- Table structure for table `vtiger_hrm_settingdepartment`
 --
 
-CREATE TABLE `vtiger_hrm_settingdepartment` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_settingdepartment` (
   `id` int(19) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8246,8 +8600,9 @@ CREATE TABLE `vtiger_hrm_settingdepartment` (
 -- Table structure for table `vtiger_hrm_settingdepartmentcf`
 --
 
-CREATE TABLE `vtiger_hrm_settingdepartmentcf` (
-  `id` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_settingdepartmentcf` (
+  `id` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8256,7 +8611,7 @@ CREATE TABLE `vtiger_hrm_settingdepartmentcf` (
 -- Table structure for table `vtiger_hrm_settingdepartmentcust`
 --
 
-CREATE TABLE `vtiger_hrm_settingdepartmentcust` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_settingdepartmentcust` (
   `id` int(11) NOT NULL,
   `department_id` varchar(255) NOT NULL,
   `experience` varchar(255) DEFAULT NULL,
@@ -8266,7 +8621,8 @@ CREATE TABLE `vtiger_hrm_settingdepartmentcust` (
   `time_to_review` varchar(100) DEFAULT NULL,
   `level1` varchar(100) DEFAULT NULL,
   `level2` varchar(100) DEFAULT NULL,
-  `level3` varchar(100) DEFAULT NULL
+  `level3` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8275,10 +8631,11 @@ CREATE TABLE `vtiger_hrm_settingdepartmentcust` (
 -- Table structure for table `vtiger_hrm_weight`
 --
 
-CREATE TABLE `vtiger_hrm_weight` (
+CREATE TABLE IF NOT EXISTS `vtiger_hrm_weight` (
   `id` int(19) NOT NULL,
   `weight` varchar(255) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8287,13 +8644,14 @@ CREATE TABLE `vtiger_hrm_weight` (
 -- Table structure for table `vtiger_hr_salary_action`
 --
 
-CREATE TABLE `vtiger_hr_salary_action` (
+CREATE TABLE IF NOT EXISTS `vtiger_hr_salary_action` (
   `hr_salary_actionid` int(11) NOT NULL,
   `hr_salary_action` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`hr_salary_actionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8310,7 +8668,7 @@ INSERT INTO `vtiger_hr_salary_action` (`hr_salary_actionid`, `hr_salary_action`,
 -- Table structure for table `vtiger_hr_salary_action_seq`
 --
 
-CREATE TABLE `vtiger_hr_salary_action_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_hr_salary_action_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8327,7 +8685,7 @@ INSERT INTO `vtiger_hr_salary_action_seq` (`id`) VALUES
 -- Table structure for table `vtiger_hr_seq`
 --
 
-CREATE TABLE `vtiger_hr_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_hr_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8344,12 +8702,13 @@ INSERT INTO `vtiger_hr_seq` (`id`) VALUES
 -- Table structure for table `vtiger_import_locks`
 --
 
-CREATE TABLE `vtiger_import_locks` (
+CREATE TABLE IF NOT EXISTS `vtiger_import_locks` (
   `vtiger_import_lock_id` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
   `importid` int(11) NOT NULL,
-  `locked_since` datetime DEFAULT NULL
+  `locked_since` datetime DEFAULT NULL,
+  PRIMARY KEY (`vtiger_import_lock_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8358,7 +8717,7 @@ CREATE TABLE `vtiger_import_locks` (
 -- Table structure for table `vtiger_import_maps`
 --
 
-CREATE TABLE `vtiger_import_maps` (
+CREATE TABLE IF NOT EXISTS `vtiger_import_maps` (
   `id` int(19) NOT NULL,
   `name` varchar(36) NOT NULL,
   `module` varchar(36) NOT NULL,
@@ -8368,7 +8727,9 @@ CREATE TABLE `vtiger_import_maps` (
   `date_entered` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `date_modified` datetime DEFAULT NULL,
   `assigned_user_id` varchar(36) DEFAULT NULL,
-  `is_published` varchar(3) NOT NULL DEFAULT 'no'
+  `is_published` varchar(3) NOT NULL DEFAULT 'no',
+  PRIMARY KEY (`id`),
+  KEY `import_maps_assigned_user_id_module_name_deleted_idx` (`assigned_user_id`,`module`,`name`,`deleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8377,7 +8738,7 @@ CREATE TABLE `vtiger_import_maps` (
 -- Table structure for table `vtiger_import_queue`
 --
 
-CREATE TABLE `vtiger_import_queue` (
+CREATE TABLE IF NOT EXISTS `vtiger_import_queue` (
   `importid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
@@ -8387,7 +8748,8 @@ CREATE TABLE `vtiger_import_queue` (
   `merge_fields` text DEFAULT NULL,
   `status` int(11) DEFAULT 0,
   `lineitem_currency_id` int(5) DEFAULT NULL,
-  `paging` int(1) DEFAULT 0
+  `paging` int(1) DEFAULT 0,
+  PRIMARY KEY (`importid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8396,13 +8758,15 @@ CREATE TABLE `vtiger_import_queue` (
 -- Table structure for table `vtiger_industry`
 --
 
-CREATE TABLE `vtiger_industry` (
+CREATE TABLE IF NOT EXISTS `vtiger_industry` (
   `industryid` int(19) NOT NULL,
   `industry` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`industryid`),
+  UNIQUE KEY `industry_industry_idx` (`industry`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8448,7 +8812,7 @@ INSERT INTO `vtiger_industry` (`industryid`, `industry`, `presence`, `picklist_v
 -- Table structure for table `vtiger_industry_seq`
 --
 
-CREATE TABLE `vtiger_industry_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_industry_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8465,7 +8829,7 @@ INSERT INTO `vtiger_industry_seq` (`id`) VALUES
 -- Table structure for table `vtiger_inventorycharges`
 --
 
-CREATE TABLE `vtiger_inventorycharges` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventorycharges` (
   `chargeid` int(5) NOT NULL,
   `name` varchar(100) NOT NULL,
   `format` varchar(10) DEFAULT NULL,
@@ -8474,7 +8838,8 @@ CREATE TABLE `vtiger_inventorycharges` (
   `regions` text DEFAULT NULL,
   `istaxable` int(1) NOT NULL DEFAULT 1,
   `taxes` varchar(1024) DEFAULT NULL,
-  `deleted` int(1) NOT NULL DEFAULT 0
+  `deleted` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`chargeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8490,7 +8855,7 @@ INSERT INTO `vtiger_inventorycharges` (`chargeid`, `name`, `format`, `type`, `va
 -- Table structure for table `vtiger_inventorychargesrel`
 --
 
-CREATE TABLE `vtiger_inventorychargesrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventorychargesrel` (
   `recordid` int(19) NOT NULL,
   `charges` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -8501,13 +8866,14 @@ CREATE TABLE `vtiger_inventorychargesrel` (
 -- Table structure for table `vtiger_inventorynotification`
 --
 
-CREATE TABLE `vtiger_inventorynotification` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventorynotification` (
   `notificationid` int(19) NOT NULL,
   `notificationname` varchar(200) DEFAULT NULL,
   `notificationsubject` varchar(200) DEFAULT NULL,
   `notificationbody` text DEFAULT NULL,
   `label` varchar(50) DEFAULT NULL,
-  `status` varchar(30) DEFAULT NULL
+  `status` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`notificationid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8525,7 +8891,7 @@ INSERT INTO `vtiger_inventorynotification` (`notificationid`, `notificationname`
 -- Table structure for table `vtiger_inventorynotification_seq`
 --
 
-CREATE TABLE `vtiger_inventorynotification_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventorynotification_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8542,7 +8908,7 @@ INSERT INTO `vtiger_inventorynotification_seq` (`id`) VALUES
 -- Table structure for table `vtiger_inventoryproductrel`
 --
 
-CREATE TABLE `vtiger_inventoryproductrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventoryproductrel` (
   `id` int(19) DEFAULT NULL,
   `productid` int(19) DEFAULT NULL,
   `sequence_no` int(4) DEFAULT NULL,
@@ -8559,7 +8925,10 @@ CREATE TABLE `vtiger_inventoryproductrel` (
   `tax3` decimal(7,3) DEFAULT NULL,
   `image` varchar(2) DEFAULT NULL,
   `purchase_cost` decimal(27,8) DEFAULT NULL,
-  `margin` decimal(27,8) DEFAULT NULL
+  `margin` decimal(27,8) DEFAULT NULL,
+  PRIMARY KEY (`lineitem_id`),
+  KEY `inventoryproductrel_id_idx` (`id`),
+  KEY `inventoryproductrel_productid_idx` (`productid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8568,7 +8937,7 @@ CREATE TABLE `vtiger_inventoryproductrel` (
 -- Table structure for table `vtiger_inventoryproductrel_seq`
 --
 
-CREATE TABLE `vtiger_inventoryproductrel_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventoryproductrel_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8585,11 +8954,12 @@ INSERT INTO `vtiger_inventoryproductrel_seq` (`id`) VALUES
 -- Table structure for table `vtiger_inventoryshippingrel`
 --
 
-CREATE TABLE `vtiger_inventoryshippingrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventoryshippingrel` (
   `id` int(19) DEFAULT NULL,
   `shtax1` decimal(7,3) DEFAULT NULL,
   `shtax2` decimal(7,3) DEFAULT NULL,
-  `shtax3` decimal(7,3) DEFAULT NULL
+  `shtax3` decimal(7,3) DEFAULT NULL,
+  KEY `inventoryishippingrel_id_idx` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8598,7 +8968,7 @@ CREATE TABLE `vtiger_inventoryshippingrel` (
 -- Table structure for table `vtiger_inventorysubproductrel`
 --
 
-CREATE TABLE `vtiger_inventorysubproductrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventorysubproductrel` (
   `id` int(19) NOT NULL,
   `sequence_no` int(10) NOT NULL,
   `productid` int(19) NOT NULL,
@@ -8611,7 +8981,7 @@ CREATE TABLE `vtiger_inventorysubproductrel` (
 -- Table structure for table `vtiger_inventorytaxinfo`
 --
 
-CREATE TABLE `vtiger_inventorytaxinfo` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventorytaxinfo` (
   `taxid` int(3) NOT NULL,
   `taxname` varchar(50) DEFAULT NULL,
   `taxlabel` varchar(50) DEFAULT NULL,
@@ -8620,7 +8990,9 @@ CREATE TABLE `vtiger_inventorytaxinfo` (
   `method` varchar(10) DEFAULT NULL,
   `type` varchar(10) DEFAULT NULL,
   `compoundon` varchar(400) DEFAULT NULL,
-  `regions` text DEFAULT NULL
+  `regions` text DEFAULT NULL,
+  PRIMARY KEY (`taxid`),
+  KEY `inventorytaxinfo_taxname_idx` (`taxname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8638,7 +9010,7 @@ INSERT INTO `vtiger_inventorytaxinfo` (`taxid`, `taxname`, `taxlabel`, `percenta
 -- Table structure for table `vtiger_inventorytaxinfo_seq`
 --
 
-CREATE TABLE `vtiger_inventorytaxinfo_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventorytaxinfo_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8655,10 +9027,11 @@ INSERT INTO `vtiger_inventorytaxinfo_seq` (`id`) VALUES
 -- Table structure for table `vtiger_inventory_tandc`
 --
 
-CREATE TABLE `vtiger_inventory_tandc` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventory_tandc` (
   `id` int(19) NOT NULL,
   `type` varchar(30) NOT NULL,
-  `tandc` text DEFAULT NULL
+  `tandc` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8677,7 +9050,7 @@ INSERT INTO `vtiger_inventory_tandc` (`id`, `type`, `tandc`) VALUES
 -- Table structure for table `vtiger_inventory_tandc_seq`
 --
 
-CREATE TABLE `vtiger_inventory_tandc_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_inventory_tandc_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8694,10 +9067,11 @@ INSERT INTO `vtiger_inventory_tandc_seq` (`id`) VALUES
 -- Table structure for table `vtiger_invitees`
 --
 
-CREATE TABLE `vtiger_invitees` (
+CREATE TABLE IF NOT EXISTS `vtiger_invitees` (
   `activityid` int(19) NOT NULL,
   `inviteeid` int(19) NOT NULL,
-  `status` varchar(50) DEFAULT NULL
+  `status` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`activityid`,`inviteeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8706,7 +9080,7 @@ CREATE TABLE `vtiger_invitees` (
 -- Table structure for table `vtiger_invoice`
 --
 
-CREATE TABLE `vtiger_invoice` (
+CREATE TABLE IF NOT EXISTS `vtiger_invoice` (
   `invoiceid` int(19) NOT NULL DEFAULT 0,
   `subject` varchar(100) DEFAULT NULL,
   `salesorderid` int(19) DEFAULT NULL,
@@ -8741,7 +9115,10 @@ CREATE TABLE `vtiger_invoice` (
   `s_h_percent` decimal(25,8) DEFAULT NULL,
   `potential_id` varchar(100) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
-  `region_id` int(19) DEFAULT NULL
+  `region_id` int(19) DEFAULT NULL,
+  PRIMARY KEY (`invoiceid`),
+  KEY `invoice_purchaseorderid_idx` (`invoiceid`),
+  KEY `fk_2_vtiger_invoice` (`salesorderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8750,14 +9127,15 @@ CREATE TABLE `vtiger_invoice` (
 -- Table structure for table `vtiger_invoicebillads`
 --
 
-CREATE TABLE `vtiger_invoicebillads` (
+CREATE TABLE IF NOT EXISTS `vtiger_invoicebillads` (
   `invoicebilladdressid` int(19) NOT NULL DEFAULT 0,
   `bill_city` varchar(30) DEFAULT NULL,
   `bill_code` varchar(30) DEFAULT NULL,
   `bill_country` varchar(30) DEFAULT NULL,
   `bill_state` varchar(30) DEFAULT NULL,
   `bill_street` varchar(250) DEFAULT NULL,
-  `bill_pobox` varchar(30) DEFAULT NULL
+  `bill_pobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`invoicebilladdressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8766,8 +9144,9 @@ CREATE TABLE `vtiger_invoicebillads` (
 -- Table structure for table `vtiger_invoicecf`
 --
 
-CREATE TABLE `vtiger_invoicecf` (
-  `invoiceid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_invoicecf` (
+  `invoiceid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`invoiceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8776,14 +9155,15 @@ CREATE TABLE `vtiger_invoicecf` (
 -- Table structure for table `vtiger_invoiceshipads`
 --
 
-CREATE TABLE `vtiger_invoiceshipads` (
+CREATE TABLE IF NOT EXISTS `vtiger_invoiceshipads` (
   `invoiceshipaddressid` int(19) NOT NULL DEFAULT 0,
   `ship_city` varchar(30) DEFAULT NULL,
   `ship_code` varchar(30) DEFAULT NULL,
   `ship_country` varchar(30) DEFAULT NULL,
   `ship_state` varchar(30) DEFAULT NULL,
   `ship_street` varchar(250) DEFAULT NULL,
-  `ship_pobox` varchar(30) DEFAULT NULL
+  `ship_pobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`invoiceshipaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8792,13 +9172,15 @@ CREATE TABLE `vtiger_invoiceshipads` (
 -- Table structure for table `vtiger_invoicestatus`
 --
 
-CREATE TABLE `vtiger_invoicestatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_invoicestatus` (
   `invoicestatusid` int(19) NOT NULL,
   `invoicestatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`invoicestatusid`),
+  UNIQUE KEY `invoicestatus_invoiestatus_idx` (`invoicestatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8820,13 +9202,15 @@ INSERT INTO `vtiger_invoicestatus` (`invoicestatusid`, `invoicestatus`, `presenc
 -- Table structure for table `vtiger_invoicestatushistory`
 --
 
-CREATE TABLE `vtiger_invoicestatushistory` (
+CREATE TABLE IF NOT EXISTS `vtiger_invoicestatushistory` (
   `historyid` int(19) NOT NULL,
   `invoiceid` int(19) NOT NULL,
   `accountname` varchar(100) DEFAULT NULL,
   `total` decimal(10,0) DEFAULT NULL,
   `invoicestatus` varchar(200) DEFAULT NULL,
-  `lastmodified` datetime DEFAULT NULL
+  `lastmodified` datetime DEFAULT NULL,
+  PRIMARY KEY (`historyid`),
+  KEY `invoicestatushistory_invoiceid_idx` (`invoiceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8835,7 +9219,7 @@ CREATE TABLE `vtiger_invoicestatushistory` (
 -- Table structure for table `vtiger_invoicestatus_seq`
 --
 
-CREATE TABLE `vtiger_invoicestatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_invoicestatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8852,14 +9236,15 @@ INSERT INTO `vtiger_invoicestatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_invoice_recurring_info`
 --
 
-CREATE TABLE `vtiger_invoice_recurring_info` (
+CREATE TABLE IF NOT EXISTS `vtiger_invoice_recurring_info` (
   `salesorderid` int(11) NOT NULL,
   `recurring_frequency` varchar(200) DEFAULT NULL,
   `start_period` date DEFAULT NULL,
   `end_period` date DEFAULT NULL,
   `last_recurring_date` date DEFAULT NULL,
   `payment_duration` varchar(200) DEFAULT NULL,
-  `invoice_status` varchar(200) DEFAULT NULL
+  `invoice_status` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`salesorderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -8868,13 +9253,14 @@ CREATE TABLE `vtiger_invoice_recurring_info` (
 -- Table structure for table `vtiger_jd_category`
 --
 
-CREATE TABLE `vtiger_jd_category` (
+CREATE TABLE IF NOT EXISTS `vtiger_jd_category` (
   `jd_categoryid` int(11) NOT NULL,
   `jd_category` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`jd_categoryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8895,7 +9281,7 @@ INSERT INTO `vtiger_jd_category` (`jd_categoryid`, `jd_category`, `presence`, `p
 -- Table structure for table `vtiger_jd_category_seq`
 --
 
-CREATE TABLE `vtiger_jd_category_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_jd_category_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8912,13 +9298,14 @@ INSERT INTO `vtiger_jd_category_seq` (`id`) VALUES
 -- Table structure for table `vtiger_jd_classify`
 --
 
-CREATE TABLE `vtiger_jd_classify` (
+CREATE TABLE IF NOT EXISTS `vtiger_jd_classify` (
   `jd_classifyid` int(11) NOT NULL,
   `jd_classify` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`jd_classifyid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8938,7 +9325,7 @@ INSERT INTO `vtiger_jd_classify` (`jd_classifyid`, `jd_classify`, `presence`, `p
 -- Table structure for table `vtiger_jd_classify_seq`
 --
 
-CREATE TABLE `vtiger_jd_classify_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_jd_classify_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8955,13 +9342,14 @@ INSERT INTO `vtiger_jd_classify_seq` (`id`) VALUES
 -- Table structure for table `vtiger_jd_status`
 --
 
-CREATE TABLE `vtiger_jd_status` (
+CREATE TABLE IF NOT EXISTS `vtiger_jd_status` (
   `jd_statusid` int(11) NOT NULL,
   `jd_status` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`jd_statusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -8978,7 +9366,7 @@ INSERT INTO `vtiger_jd_status` (`jd_statusid`, `jd_status`, `presence`, `picklis
 -- Table structure for table `vtiger_jd_status_seq`
 --
 
-CREATE TABLE `vtiger_jd_status_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_jd_status_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -8995,13 +9383,14 @@ INSERT INTO `vtiger_jd_status_seq` (`id`) VALUES
 -- Table structure for table `vtiger_kpi_department`
 --
 
-CREATE TABLE `vtiger_kpi_department` (
+CREATE TABLE IF NOT EXISTS `vtiger_kpi_department` (
   `kpi_departmentid` int(11) NOT NULL,
   `kpi_department` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`kpi_departmentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9022,7 +9411,7 @@ INSERT INTO `vtiger_kpi_department` (`kpi_departmentid`, `kpi_department`, `pres
 -- Table structure for table `vtiger_kpi_department_seq`
 --
 
-CREATE TABLE `vtiger_kpi_department_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_kpi_department_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9039,13 +9428,14 @@ INSERT INTO `vtiger_kpi_department_seq` (`id`) VALUES
 -- Table structure for table `vtiger_kpi_status`
 --
 
-CREATE TABLE `vtiger_kpi_status` (
+CREATE TABLE IF NOT EXISTS `vtiger_kpi_status` (
   `kpi_statusid` int(11) NOT NULL,
   `kpi_status` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`kpi_statusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9065,7 +9455,7 @@ INSERT INTO `vtiger_kpi_status` (`kpi_statusid`, `kpi_status`, `presence`, `pick
 -- Table structure for table `vtiger_kpi_status_seq`
 --
 
-CREATE TABLE `vtiger_kpi_status_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_kpi_status_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9082,13 +9472,14 @@ INSERT INTO `vtiger_kpi_status_seq` (`id`) VALUES
 -- Table structure for table `vtiger_kpi_type`
 --
 
-CREATE TABLE `vtiger_kpi_type` (
+CREATE TABLE IF NOT EXISTS `vtiger_kpi_type` (
   `kpi_typeid` int(11) NOT NULL,
   `kpi_type` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`kpi_typeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9104,7 +9495,7 @@ INSERT INTO `vtiger_kpi_type` (`kpi_typeid`, `kpi_type`, `presence`, `picklist_v
 -- Table structure for table `vtiger_kpi_type_seq`
 --
 
-CREATE TABLE `vtiger_kpi_type_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_kpi_type_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9121,7 +9512,7 @@ INSERT INTO `vtiger_kpi_type_seq` (`id`) VALUES
 -- Table structure for table `vtiger_language`
 --
 
-CREATE TABLE `vtiger_language` (
+CREATE TABLE IF NOT EXISTS `vtiger_language` (
   `id` int(11) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `prefix` varchar(10) DEFAULT NULL,
@@ -9129,7 +9520,8 @@ CREATE TABLE `vtiger_language` (
   `lastupdated` datetime DEFAULT NULL,
   `sequence` int(11) DEFAULT NULL,
   `isdefault` int(1) DEFAULT NULL,
-  `active` int(1) DEFAULT NULL
+  `active` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9161,7 +9553,7 @@ INSERT INTO `vtiger_language` (`id`, `name`, `prefix`, `label`, `lastupdated`, `
 -- Table structure for table `vtiger_language_seq`
 --
 
-CREATE TABLE `vtiger_language_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_language_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9178,7 +9570,7 @@ INSERT INTO `vtiger_language_seq` (`id`) VALUES
 -- Table structure for table `vtiger_leadaddress`
 --
 
-CREATE TABLE `vtiger_leadaddress` (
+CREATE TABLE IF NOT EXISTS `vtiger_leadaddress` (
   `leadaddressid` int(19) NOT NULL DEFAULT 0,
   `city` varchar(30) DEFAULT NULL,
   `code` varchar(30) DEFAULT NULL,
@@ -9189,7 +9581,8 @@ CREATE TABLE `vtiger_leadaddress` (
   `mobile` varchar(50) DEFAULT NULL,
   `fax` varchar(50) DEFAULT NULL,
   `lane` varchar(250) DEFAULT NULL,
-  `leadaddresstype` varchar(30) DEFAULT 'Billing'
+  `leadaddresstype` varchar(30) DEFAULT 'Billing',
+  PRIMARY KEY (`leadaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9198,7 +9591,7 @@ CREATE TABLE `vtiger_leadaddress` (
 -- Table structure for table `vtiger_leaddetails`
 --
 
-CREATE TABLE `vtiger_leaddetails` (
+CREATE TABLE IF NOT EXISTS `vtiger_leaddetails` (
   `leadid` int(19) NOT NULL,
   `lead_no` varchar(100) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -9234,7 +9627,10 @@ CREATE TABLE `vtiger_leaddetails` (
   `secondaryemail` varchar(100) DEFAULT NULL,
   `assignleadchk` int(1) DEFAULT 0,
   `emailoptout` varchar(3) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`leadid`),
+  KEY `leaddetails_converted_leadstatus_idx` (`converted`,`leadstatus`),
+  KEY `email_idx` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9243,8 +9639,9 @@ CREATE TABLE `vtiger_leaddetails` (
 -- Table structure for table `vtiger_leadscf`
 --
 
-CREATE TABLE `vtiger_leadscf` (
-  `leadid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_leadscf` (
+  `leadid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`leadid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9253,13 +9650,14 @@ CREATE TABLE `vtiger_leadscf` (
 -- Table structure for table `vtiger_leadsource`
 --
 
-CREATE TABLE `vtiger_leadsource` (
+CREATE TABLE IF NOT EXISTS `vtiger_leadsource` (
   `leadsourceid` int(19) NOT NULL,
   `leadsource` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`leadsourceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9286,7 +9684,7 @@ INSERT INTO `vtiger_leadsource` (`leadsourceid`, `leadsource`, `presence`, `pick
 -- Table structure for table `vtiger_leadsource_seq`
 --
 
-CREATE TABLE `vtiger_leadsource_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_leadsource_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9303,11 +9701,13 @@ INSERT INTO `vtiger_leadsource_seq` (`id`) VALUES
 -- Table structure for table `vtiger_leadstage`
 --
 
-CREATE TABLE `vtiger_leadstage` (
+CREATE TABLE IF NOT EXISTS `vtiger_leadstage` (
   `leadstageid` int(19) NOT NULL,
   `stage` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`leadstageid`),
+  UNIQUE KEY `leadstage_stage_idx` (`stage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9316,13 +9716,14 @@ CREATE TABLE `vtiger_leadstage` (
 -- Table structure for table `vtiger_leadstatus`
 --
 
-CREATE TABLE `vtiger_leadstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_leadstatus` (
   `leadstatusid` int(19) NOT NULL,
   `leadstatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`leadstatusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9348,7 +9749,7 @@ INSERT INTO `vtiger_leadstatus` (`leadstatusid`, `leadstatus`, `presence`, `pick
 -- Table structure for table `vtiger_leadstatus_seq`
 --
 
-CREATE TABLE `vtiger_leadstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_leadstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9365,12 +9766,13 @@ INSERT INTO `vtiger_leadstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_leadsubdetails`
 --
 
-CREATE TABLE `vtiger_leadsubdetails` (
+CREATE TABLE IF NOT EXISTS `vtiger_leadsubdetails` (
   `leadsubscriptionid` int(19) NOT NULL DEFAULT 0,
   `website` varchar(255) DEFAULT NULL,
   `callornot` int(1) DEFAULT 0,
   `readornot` int(1) DEFAULT 0,
-  `empct` int(10) DEFAULT 0
+  `empct` int(10) DEFAULT 0,
+  PRIMARY KEY (`leadsubscriptionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9379,11 +9781,12 @@ CREATE TABLE `vtiger_leadsubdetails` (
 -- Table structure for table `vtiger_lead_view`
 --
 
-CREATE TABLE `vtiger_lead_view` (
+CREATE TABLE IF NOT EXISTS `vtiger_lead_view` (
   `lead_viewid` int(19) NOT NULL,
   `lead_view` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`lead_viewid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9401,7 +9804,7 @@ INSERT INTO `vtiger_lead_view` (`lead_viewid`, `lead_view`, `sortorderid`, `pres
 -- Table structure for table `vtiger_lead_view_seq`
 --
 
-CREATE TABLE `vtiger_lead_view_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_lead_view_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9418,7 +9821,7 @@ INSERT INTO `vtiger_lead_view_seq` (`id`) VALUES
 -- Table structure for table `vtiger_links`
 --
 
-CREATE TABLE `vtiger_links` (
+CREATE TABLE IF NOT EXISTS `vtiger_links` (
   `linkid` int(11) NOT NULL,
   `tabid` int(11) DEFAULT NULL,
   `linktype` varchar(50) DEFAULT NULL,
@@ -9429,7 +9832,9 @@ CREATE TABLE `vtiger_links` (
   `handler_path` varchar(128) DEFAULT NULL,
   `handler_class` varchar(50) DEFAULT NULL,
   `handler` varchar(50) DEFAULT NULL,
-  `parent_link` int(19) DEFAULT NULL
+  `parent_link` int(19) DEFAULT NULL,
+  PRIMARY KEY (`linkid`),
+  KEY `link_tabidtype_idx` (`tabid`,`linktype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9503,7 +9908,7 @@ INSERT INTO `vtiger_links` (`linkid`, `tabid`, `linktype`, `linklabel`, `linkurl
 -- Table structure for table `vtiger_links_seq`
 --
 
-CREATE TABLE `vtiger_links_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_links_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9520,13 +9925,14 @@ INSERT INTO `vtiger_links_seq` (`id`) VALUES
 -- Table structure for table `vtiger_loginhistory`
 --
 
-CREATE TABLE `vtiger_loginhistory` (
+CREATE TABLE IF NOT EXISTS `vtiger_loginhistory` (
   `login_id` int(11) NOT NULL,
   `user_name` varchar(255) DEFAULT NULL,
   `user_ip` varchar(25) NOT NULL,
   `logout_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `login_time` datetime DEFAULT NULL,
-  `status` varchar(25) DEFAULT NULL
+  `status` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`login_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9551,7 +9957,7 @@ INSERT INTO `vtiger_loginhistory` (`login_id`, `user_name`, `user_ip`, `logout_t
 -- Table structure for table `vtiger_mailer_queue`
 --
 
-CREATE TABLE `vtiger_mailer_queue` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailer_queue` (
   `id` int(11) NOT NULL,
   `fromname` varchar(100) DEFAULT NULL,
   `fromemail` varchar(100) DEFAULT NULL,
@@ -9561,7 +9967,8 @@ CREATE TABLE `vtiger_mailer_queue` (
   `body` text DEFAULT NULL,
   `relcrmid` int(11) DEFAULT NULL,
   `failed` int(1) NOT NULL DEFAULT 0,
-  `failreason` varchar(255) DEFAULT NULL
+  `failreason` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9570,7 +9977,7 @@ CREATE TABLE `vtiger_mailer_queue` (
 -- Table structure for table `vtiger_mailer_queueattachments`
 --
 
-CREATE TABLE `vtiger_mailer_queueattachments` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailer_queueattachments` (
   `id` int(11) DEFAULT NULL,
   `path` text DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
@@ -9584,7 +9991,7 @@ CREATE TABLE `vtiger_mailer_queueattachments` (
 -- Table structure for table `vtiger_mailer_queueinfo`
 --
 
-CREATE TABLE `vtiger_mailer_queueinfo` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailer_queueinfo` (
   `id` int(11) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -9597,14 +10004,15 @@ CREATE TABLE `vtiger_mailer_queueinfo` (
 -- Table structure for table `vtiger_mailmanager_mailattachments`
 --
 
-CREATE TABLE `vtiger_mailmanager_mailattachments` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailmanager_mailattachments` (
   `userid` int(11) DEFAULT NULL,
   `muid` int(11) DEFAULT NULL,
   `aname` varchar(100) DEFAULT NULL,
   `lastsavedtime` int(11) DEFAULT NULL,
   `attachid` int(19) NOT NULL,
   `path` varchar(200) NOT NULL,
-  `cid` varchar(100) DEFAULT NULL
+  `cid` varchar(100) DEFAULT NULL,
+  KEY `userid_muid_idx` (`userid`,`muid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9613,7 +10021,7 @@ CREATE TABLE `vtiger_mailmanager_mailattachments` (
 -- Table structure for table `vtiger_mailmanager_mailrecord`
 --
 
-CREATE TABLE `vtiger_mailmanager_mailrecord` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailmanager_mailrecord` (
   `userid` int(11) DEFAULT NULL,
   `mfrom` varchar(255) DEFAULT NULL,
   `mto` varchar(255) DEFAULT NULL,
@@ -9631,7 +10039,9 @@ CREATE TABLE `vtiger_mailmanager_mailrecord` (
   `muid` int(11) DEFAULT NULL,
   `lastsavedtime` int(11) DEFAULT NULL,
   `folder` varchar(250) DEFAULT NULL,
-  `mfolder` varchar(250) DEFAULT NULL
+  `mfolder` varchar(250) DEFAULT NULL,
+  KEY `userid_lastsavedtime_idx` (`userid`,`lastsavedtime`),
+  KEY `userid_muid_idx` (`userid`,`muid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9640,7 +10050,7 @@ CREATE TABLE `vtiger_mailmanager_mailrecord` (
 -- Table structure for table `vtiger_mailmanager_mailrel`
 --
 
-CREATE TABLE `vtiger_mailmanager_mailrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailmanager_mailrel` (
   `mailuid` varchar(999) DEFAULT NULL,
   `crmid` int(11) DEFAULT NULL,
   `emailid` int(11) DEFAULT NULL
@@ -9652,7 +10062,7 @@ CREATE TABLE `vtiger_mailmanager_mailrel` (
 -- Table structure for table `vtiger_mailscanner`
 --
 
-CREATE TABLE `vtiger_mailscanner` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailscanner` (
   `scannerid` int(11) NOT NULL,
   `scannername` varchar(30) DEFAULT NULL,
   `server` varchar(100) DEFAULT NULL,
@@ -9666,7 +10076,8 @@ CREATE TABLE `vtiger_mailscanner` (
   `markas` varchar(10) DEFAULT NULL,
   `isvalid` int(1) DEFAULT NULL,
   `scanfrom` varchar(10) DEFAULT 'ALL',
-  `time_zone` varchar(10) DEFAULT NULL
+  `time_zone` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`scannerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9675,13 +10086,14 @@ CREATE TABLE `vtiger_mailscanner` (
 -- Table structure for table `vtiger_mailscanner_actions`
 --
 
-CREATE TABLE `vtiger_mailscanner_actions` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailscanner_actions` (
   `actionid` int(11) NOT NULL,
   `scannerid` int(11) DEFAULT NULL,
   `actiontype` varchar(10) DEFAULT NULL,
   `module` varchar(30) DEFAULT NULL,
   `lookup` varchar(30) DEFAULT NULL,
-  `sequence` int(11) DEFAULT NULL
+  `sequence` int(11) DEFAULT NULL,
+  PRIMARY KEY (`actionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9690,13 +10102,15 @@ CREATE TABLE `vtiger_mailscanner_actions` (
 -- Table structure for table `vtiger_mailscanner_folders`
 --
 
-CREATE TABLE `vtiger_mailscanner_folders` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailscanner_folders` (
   `folderid` int(11) NOT NULL,
   `scannerid` int(11) DEFAULT NULL,
   `foldername` varchar(255) DEFAULT NULL,
   `lastscan` varchar(30) DEFAULT NULL,
   `rescan` int(1) DEFAULT NULL,
-  `enabled` int(1) DEFAULT NULL
+  `enabled` int(1) DEFAULT NULL,
+  PRIMARY KEY (`folderid`),
+  KEY `folderid_idx` (`folderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9705,11 +10119,13 @@ CREATE TABLE `vtiger_mailscanner_folders` (
 -- Table structure for table `vtiger_mailscanner_ids`
 --
 
-CREATE TABLE `vtiger_mailscanner_ids` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailscanner_ids` (
   `scannerid` int(11) DEFAULT NULL,
   `messageid` varchar(512) DEFAULT NULL,
   `crmid` int(11) DEFAULT NULL,
-  `refids` text DEFAULT NULL
+  `refids` text DEFAULT NULL,
+  KEY `scanner_message_ids_idx` (`scannerid`,`messageid`),
+  KEY `messageids_crmid_idx` (`crmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9718,7 +10134,7 @@ CREATE TABLE `vtiger_mailscanner_ids` (
 -- Table structure for table `vtiger_mailscanner_ruleactions`
 --
 
-CREATE TABLE `vtiger_mailscanner_ruleactions` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailscanner_ruleactions` (
   `ruleid` int(11) DEFAULT NULL,
   `actionid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -9729,7 +10145,7 @@ CREATE TABLE `vtiger_mailscanner_ruleactions` (
 -- Table structure for table `vtiger_mailscanner_rules`
 --
 
-CREATE TABLE `vtiger_mailscanner_rules` (
+CREATE TABLE IF NOT EXISTS `vtiger_mailscanner_rules` (
   `ruleid` int(11) NOT NULL,
   `scannerid` int(11) DEFAULT NULL,
   `fromaddress` varchar(255) DEFAULT NULL,
@@ -9742,7 +10158,8 @@ CREATE TABLE `vtiger_mailscanner_rules` (
   `sequence` int(11) DEFAULT NULL,
   `assigned_to` int(10) DEFAULT NULL,
   `cc` varchar(255) DEFAULT NULL,
-  `bcc` varchar(255) DEFAULT NULL
+  `bcc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ruleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9751,7 +10168,7 @@ CREATE TABLE `vtiger_mailscanner_rules` (
 -- Table structure for table `vtiger_mail_accounts`
 --
 
-CREATE TABLE `vtiger_mail_accounts` (
+CREATE TABLE IF NOT EXISTS `vtiger_mail_accounts` (
   `account_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `display_name` varchar(50) DEFAULT NULL,
@@ -9768,7 +10185,8 @@ CREATE TABLE `vtiger_mail_accounts` (
   `int_mailer` int(1) DEFAULT 0,
   `status` varchar(10) DEFAULT NULL,
   `set_default` int(2) DEFAULT NULL,
-  `sent_folder` varchar(50) DEFAULT NULL
+  `sent_folder` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9777,13 +10195,15 @@ CREATE TABLE `vtiger_mail_accounts` (
 -- Table structure for table `vtiger_manufacturer`
 --
 
-CREATE TABLE `vtiger_manufacturer` (
+CREATE TABLE IF NOT EXISTS `vtiger_manufacturer` (
   `manufacturerid` int(19) NOT NULL,
   `manufacturer` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`manufacturerid`),
+  UNIQUE KEY `manufacturer_manufacturer_idx` (`manufacturer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9801,7 +10221,7 @@ INSERT INTO `vtiger_manufacturer` (`manufacturerid`, `manufacturer`, `presence`,
 -- Table structure for table `vtiger_manufacturer_seq`
 --
 
-CREATE TABLE `vtiger_manufacturer_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_manufacturer_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9818,12 +10238,13 @@ INSERT INTO `vtiger_manufacturer_seq` (`id`) VALUES
 -- Table structure for table `vtiger_mobile_alerts`
 --
 
-CREATE TABLE `vtiger_mobile_alerts` (
+CREATE TABLE IF NOT EXISTS `vtiger_mobile_alerts` (
   `id` int(11) NOT NULL,
   `handler_path` varchar(500) DEFAULT NULL,
   `handler_class` varchar(50) DEFAULT NULL,
   `sequence` int(11) DEFAULT NULL,
-  `deleted` int(11) NOT NULL DEFAULT 0
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9845,7 +10266,7 @@ INSERT INTO `vtiger_mobile_alerts` (`id`, `handler_path`, `handler_class`, `sequ
 -- Table structure for table `vtiger_modcomments`
 --
 
-CREATE TABLE `vtiger_modcomments` (
+CREATE TABLE IF NOT EXISTS `vtiger_modcomments` (
   `modcommentsid` int(11) DEFAULT NULL,
   `commentcontent` text DEFAULT NULL,
   `related_to` int(19) DEFAULT NULL,
@@ -9855,7 +10276,9 @@ CREATE TABLE `vtiger_modcomments` (
   `reasontoedit` varchar(100) DEFAULT NULL,
   `is_private` int(1) DEFAULT 0,
   `filename` varchar(255) DEFAULT NULL,
-  `related_email_id` int(11) DEFAULT NULL
+  `related_email_id` int(11) DEFAULT NULL,
+  KEY `relatedto_idx` (`related_to`),
+  KEY `fk_crmid_vtiger_modcomments` (`modcommentsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9864,8 +10287,9 @@ CREATE TABLE `vtiger_modcomments` (
 -- Table structure for table `vtiger_modcommentscf`
 --
 
-CREATE TABLE `vtiger_modcommentscf` (
-  `modcommentsid` int(11) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_modcommentscf` (
+  `modcommentsid` int(11) NOT NULL,
+  PRIMARY KEY (`modcommentsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -9874,13 +10298,16 @@ CREATE TABLE `vtiger_modcommentscf` (
 -- Table structure for table `vtiger_modentity_num`
 --
 
-CREATE TABLE `vtiger_modentity_num` (
+CREATE TABLE IF NOT EXISTS `vtiger_modentity_num` (
   `num_id` int(19) NOT NULL,
   `semodule` varchar(100) DEFAULT NULL,
   `prefix` varchar(50) NOT NULL DEFAULT '',
   `start_id` varchar(50) NOT NULL,
   `cur_id` varchar(50) NOT NULL,
-  `active` varchar(2) NOT NULL
+  `active` varchar(2) NOT NULL,
+  PRIMARY KEY (`num_id`),
+  UNIQUE KEY `num_idx` (`num_id`),
+  KEY `semodule_active_idx` (`semodule`,`active`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9916,7 +10343,7 @@ INSERT INTO `vtiger_modentity_num` (`num_id`, `semodule`, `prefix`, `start_id`, 
 -- Table structure for table `vtiger_modentity_num_seq`
 --
 
-CREATE TABLE `vtiger_modentity_num_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_modentity_num_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9933,13 +10360,16 @@ INSERT INTO `vtiger_modentity_num_seq` (`id`) VALUES
 -- Table structure for table `vtiger_modtracker_basic`
 --
 
-CREATE TABLE `vtiger_modtracker_basic` (
+CREATE TABLE IF NOT EXISTS `vtiger_modtracker_basic` (
   `id` int(20) NOT NULL,
   `crmid` int(20) DEFAULT NULL,
   `module` varchar(50) DEFAULT NULL,
   `whodid` int(20) DEFAULT NULL,
   `changedon` datetime DEFAULT NULL,
-  `status` int(1) DEFAULT 0
+  `status` int(1) DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `crmidx` (`crmid`),
+  KEY `idx` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -9955,7 +10385,7 @@ INSERT INTO `vtiger_modtracker_basic` (`id`, `crmid`, `module`, `whodid`, `chang
 -- Table structure for table `vtiger_modtracker_basic_seq`
 --
 
-CREATE TABLE `vtiger_modtracker_basic_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_modtracker_basic_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -9972,11 +10402,12 @@ INSERT INTO `vtiger_modtracker_basic_seq` (`id`) VALUES
 -- Table structure for table `vtiger_modtracker_detail`
 --
 
-CREATE TABLE `vtiger_modtracker_detail` (
+CREATE TABLE IF NOT EXISTS `vtiger_modtracker_detail` (
   `id` int(11) DEFAULT NULL,
   `fieldname` varchar(100) DEFAULT NULL,
   `prevalue` text DEFAULT NULL,
-  `postvalue` text DEFAULT NULL
+  `postvalue` text DEFAULT NULL,
+  KEY `idx` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10006,11 +10437,12 @@ INSERT INTO `vtiger_modtracker_detail` (`id`, `fieldname`, `prevalue`, `postvalu
 -- Table structure for table `vtiger_modtracker_relations`
 --
 
-CREATE TABLE `vtiger_modtracker_relations` (
+CREATE TABLE IF NOT EXISTS `vtiger_modtracker_relations` (
   `id` int(19) NOT NULL,
   `targetmodule` varchar(100) NOT NULL,
   `targetid` int(19) NOT NULL,
-  `changedon` datetime DEFAULT NULL
+  `changedon` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10019,9 +10451,10 @@ CREATE TABLE `vtiger_modtracker_relations` (
 -- Table structure for table `vtiger_modtracker_tabs`
 --
 
-CREATE TABLE `vtiger_modtracker_tabs` (
+CREATE TABLE IF NOT EXISTS `vtiger_modtracker_tabs` (
   `tabid` int(11) NOT NULL,
-  `visible` int(11) DEFAULT 0
+  `visible` int(11) DEFAULT 0,
+  PRIMARY KEY (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10064,7 +10497,7 @@ INSERT INTO `vtiger_modtracker_tabs` (`tabid`, `visible`) VALUES
 -- Table structure for table `vtiger_module_dashboard_widgets`
 --
 
-CREATE TABLE `vtiger_module_dashboard_widgets` (
+CREATE TABLE IF NOT EXISTS `vtiger_module_dashboard_widgets` (
   `id` int(19) NOT NULL,
   `linkid` int(19) DEFAULT NULL,
   `userid` int(19) DEFAULT NULL,
@@ -10074,7 +10507,9 @@ CREATE TABLE `vtiger_module_dashboard_widgets` (
   `position` varchar(50) DEFAULT NULL,
   `reportid` int(19) DEFAULT NULL,
   `dashboardtabid` int(11) DEFAULT NULL,
-  `size` varchar(50) DEFAULT NULL
+  `size` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `dashboardtabid` (`dashboardtabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10083,7 +10518,7 @@ CREATE TABLE `vtiger_module_dashboard_widgets` (
 -- Table structure for table `vtiger_notebook_contents`
 --
 
-CREATE TABLE `vtiger_notebook_contents` (
+CREATE TABLE IF NOT EXISTS `vtiger_notebook_contents` (
   `userid` int(19) NOT NULL,
   `notebookid` int(19) NOT NULL,
   `contents` text DEFAULT NULL
@@ -10095,7 +10530,7 @@ CREATE TABLE `vtiger_notebook_contents` (
 -- Table structure for table `vtiger_notes`
 --
 
-CREATE TABLE `vtiger_notes` (
+CREATE TABLE IF NOT EXISTS `vtiger_notes` (
   `notesid` int(19) NOT NULL DEFAULT 0,
   `note_no` varchar(100) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -10108,7 +10543,10 @@ CREATE TABLE `vtiger_notes` (
   `filestatus` int(19) DEFAULT NULL,
   `filesize` int(19) NOT NULL DEFAULT 0,
   `fileversion` varchar(50) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`notesid`),
+  KEY `notes_title_idx` (`title`),
+  KEY `notes_notesid_idx` (`notesid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10117,8 +10555,9 @@ CREATE TABLE `vtiger_notes` (
 -- Table structure for table `vtiger_notescf`
 --
 
-CREATE TABLE `vtiger_notescf` (
-  `notesid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_notescf` (
+  `notesid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`notesid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10127,14 +10566,16 @@ CREATE TABLE `vtiger_notescf` (
 -- Table structure for table `vtiger_notificationscheduler`
 --
 
-CREATE TABLE `vtiger_notificationscheduler` (
+CREATE TABLE IF NOT EXISTS `vtiger_notificationscheduler` (
   `schedulednotificationid` int(19) NOT NULL,
   `schedulednotificationname` varchar(200) DEFAULT NULL,
   `active` int(1) DEFAULT NULL,
   `notificationsubject` varchar(200) DEFAULT NULL,
   `notificationbody` text DEFAULT NULL,
   `label` varchar(50) DEFAULT NULL,
-  `type` varchar(10) DEFAULT NULL
+  `type` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`schedulednotificationid`),
+  UNIQUE KEY `notificationscheduler_schedulednotificationname_idx` (`schedulednotificationname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10157,7 +10598,7 @@ INSERT INTO `vtiger_notificationscheduler` (`schedulednotificationid`, `schedule
 -- Table structure for table `vtiger_notificationscheduler_seq`
 --
 
-CREATE TABLE `vtiger_notificationscheduler_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_notificationscheduler_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10174,11 +10615,12 @@ INSERT INTO `vtiger_notificationscheduler_seq` (`id`) VALUES
 -- Table structure for table `vtiger_no_of_currency_decimals`
 --
 
-CREATE TABLE `vtiger_no_of_currency_decimals` (
+CREATE TABLE IF NOT EXISTS `vtiger_no_of_currency_decimals` (
   `no_of_currency_decimalsid` int(11) NOT NULL,
   `no_of_currency_decimals` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`no_of_currency_decimalsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10199,7 +10641,7 @@ INSERT INTO `vtiger_no_of_currency_decimals` (`no_of_currency_decimalsid`, `no_o
 -- Table structure for table `vtiger_no_of_currency_decimals_seq`
 --
 
-CREATE TABLE `vtiger_no_of_currency_decimals_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_no_of_currency_decimals_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10216,12 +10658,14 @@ INSERT INTO `vtiger_no_of_currency_decimals_seq` (`id`) VALUES
 -- Table structure for table `vtiger_opportunitystage`
 --
 
-CREATE TABLE `vtiger_opportunitystage` (
+CREATE TABLE IF NOT EXISTS `vtiger_opportunitystage` (
   `potstageid` int(19) NOT NULL,
   `stage` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
   `presence` int(1) NOT NULL DEFAULT 1,
-  `probability` decimal(3,2) DEFAULT 0.00
+  `probability` decimal(3,2) DEFAULT 0.00,
+  PRIMARY KEY (`potstageid`),
+  UNIQUE KEY `opportunitystage_stage_idx` (`stage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10230,13 +10674,15 @@ CREATE TABLE `vtiger_opportunitystage` (
 -- Table structure for table `vtiger_opportunity_type`
 --
 
-CREATE TABLE `vtiger_opportunity_type` (
+CREATE TABLE IF NOT EXISTS `vtiger_opportunity_type` (
   `opptypeid` int(19) NOT NULL,
   `opportunity_type` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`opptypeid`),
+  UNIQUE KEY `opportunity_type_opportunity_type_idx` (`opportunity_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10253,7 +10699,7 @@ INSERT INTO `vtiger_opportunity_type` (`opptypeid`, `opportunity_type`, `presenc
 -- Table structure for table `vtiger_opportunity_type_seq`
 --
 
-CREATE TABLE `vtiger_opportunity_type_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_opportunity_type_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10270,7 +10716,7 @@ INSERT INTO `vtiger_opportunity_type_seq` (`id`) VALUES
 -- Table structure for table `vtiger_organizationdetails`
 --
 
-CREATE TABLE `vtiger_organizationdetails` (
+CREATE TABLE IF NOT EXISTS `vtiger_organizationdetails` (
   `organization_id` int(11) NOT NULL,
   `organizationname` varchar(60) DEFAULT NULL,
   `address` varchar(150) DEFAULT NULL,
@@ -10283,7 +10729,8 @@ CREATE TABLE `vtiger_organizationdetails` (
   `website` varchar(100) DEFAULT NULL,
   `logoname` varchar(50) DEFAULT NULL,
   `logo` text DEFAULT NULL,
-  `vatid` varchar(100) DEFAULT NULL
+  `vatid` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`organization_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10299,7 +10746,7 @@ INSERT INTO `vtiger_organizationdetails` (`organization_id`, `organizationname`,
 -- Table structure for table `vtiger_organizationdetails_seq`
 --
 
-CREATE TABLE `vtiger_organizationdetails_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_organizationdetails_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10316,9 +10763,11 @@ INSERT INTO `vtiger_organizationdetails_seq` (`id`) VALUES
 -- Table structure for table `vtiger_org_share_action2tab`
 --
 
-CREATE TABLE `vtiger_org_share_action2tab` (
+CREATE TABLE IF NOT EXISTS `vtiger_org_share_action2tab` (
   `share_action_id` int(19) NOT NULL,
-  `tabid` int(19) NOT NULL
+  `tabid` int(19) NOT NULL,
+  PRIMARY KEY (`share_action_id`,`tabid`),
+  KEY `fk_2_vtiger_org_share_action2tab` (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10369,6 +10818,7 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (0, 66),
 (0, 70),
 (0, 71),
+(0, 72),
 (1, 2),
 (1, 4),
 (1, 6),
@@ -10412,6 +10862,7 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (1, 66),
 (1, 70),
 (1, 71),
+(1, 72),
 (2, 2),
 (2, 4),
 (2, 6),
@@ -10455,6 +10906,7 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (2, 66),
 (2, 70),
 (2, 71),
+(2, 72),
 (3, 2),
 (3, 4),
 (3, 6),
@@ -10497,7 +10949,8 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (3, 65),
 (3, 66),
 (3, 70),
-(3, 71);
+(3, 71),
+(3, 72);
 
 -- --------------------------------------------------------
 
@@ -10505,9 +10958,10 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 -- Table structure for table `vtiger_org_share_action_mapping`
 --
 
-CREATE TABLE `vtiger_org_share_action_mapping` (
+CREATE TABLE IF NOT EXISTS `vtiger_org_share_action_mapping` (
   `share_action_id` int(19) NOT NULL,
-  `share_action_name` varchar(200) DEFAULT NULL
+  `share_action_name` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`share_action_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10530,11 +10984,12 @@ INSERT INTO `vtiger_org_share_action_mapping` (`share_action_id`, `share_action_
 -- Table structure for table `vtiger_othereventduration`
 --
 
-CREATE TABLE `vtiger_othereventduration` (
+CREATE TABLE IF NOT EXISTS `vtiger_othereventduration` (
   `othereventdurationid` int(11) NOT NULL,
   `othereventduration` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`othereventdurationid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10554,7 +11009,7 @@ INSERT INTO `vtiger_othereventduration` (`othereventdurationid`, `othereventdura
 -- Table structure for table `vtiger_othereventduration_seq`
 --
 
-CREATE TABLE `vtiger_othereventduration_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_othereventduration_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10571,11 +11026,13 @@ INSERT INTO `vtiger_othereventduration_seq` (`id`) VALUES
 -- Table structure for table `vtiger_parenttab`
 --
 
-CREATE TABLE `vtiger_parenttab` (
+CREATE TABLE IF NOT EXISTS `vtiger_parenttab` (
   `parenttabid` int(19) NOT NULL,
   `parenttab_label` varchar(100) NOT NULL,
   `sequence` int(10) NOT NULL,
-  `visible` int(2) NOT NULL DEFAULT 0
+  `visible` int(2) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`parenttabid`),
+  KEY `parenttab_parenttabid_parenttabl_label_visible_idx` (`parenttabid`,`parenttab_label`,`visible`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10600,10 +11057,12 @@ INSERT INTO `vtiger_parenttab` (`parenttabid`, `parenttab_label`, `sequence`, `v
 -- Table structure for table `vtiger_parenttabrel`
 --
 
-CREATE TABLE `vtiger_parenttabrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_parenttabrel` (
   `parenttabid` int(19) NOT NULL,
   `tabid` int(19) NOT NULL,
-  `sequence` int(3) NOT NULL
+  `sequence` int(3) NOT NULL,
+  KEY `parenttabrel_tabid_parenttabid_idx` (`tabid`,`parenttabid`),
+  KEY `fk_2_vtiger_parenttabrel` (`parenttabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10708,7 +11167,8 @@ INSERT INTO `vtiger_parenttabrel` (`parenttabid`, `tabid`, `sequence`) VALUES
 (4, 66, 18),
 (10, 64, 3),
 (2, 70, 10),
-(2, 71, 11);
+(2, 71, 11),
+(3, 72, 14);
 
 -- --------------------------------------------------------
 
@@ -10716,7 +11176,7 @@ INSERT INTO `vtiger_parenttabrel` (`parenttabid`, `tabid`, `sequence`) VALUES
 -- Table structure for table `vtiger_payment_duration`
 --
 
-CREATE TABLE `vtiger_payment_duration` (
+CREATE TABLE IF NOT EXISTS `vtiger_payment_duration` (
   `payment_duration_id` int(11) DEFAULT NULL,
   `payment_duration` varchar(200) DEFAULT NULL,
   `sortorderid` int(11) DEFAULT NULL,
@@ -10739,7 +11199,7 @@ INSERT INTO `vtiger_payment_duration` (`payment_duration_id`, `payment_duration`
 -- Table structure for table `vtiger_payment_duration_seq`
 --
 
-CREATE TABLE `vtiger_payment_duration_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_payment_duration_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10756,7 +11216,7 @@ INSERT INTO `vtiger_payment_duration_seq` (`id`) VALUES
 -- Table structure for table `vtiger_pbxmanager`
 --
 
-CREATE TABLE `vtiger_pbxmanager` (
+CREATE TABLE IF NOT EXISTS `vtiger_pbxmanager` (
   `pbxmanagerid` int(20) NOT NULL,
   `direction` varchar(10) DEFAULT NULL,
   `callstatus` varchar(20) DEFAULT NULL,
@@ -10770,7 +11230,10 @@ CREATE TABLE `vtiger_pbxmanager` (
   `customer` varchar(100) DEFAULT NULL,
   `user` varchar(100) DEFAULT NULL,
   `customernumber` varchar(100) DEFAULT NULL,
-  `customertype` varchar(100) DEFAULT NULL
+  `customertype` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`pbxmanagerid`),
+  KEY `index_sourceuuid` (`sourceuuid`),
+  KEY `index_pbxmanager_id` (`pbxmanagerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10779,8 +11242,9 @@ CREATE TABLE `vtiger_pbxmanager` (
 -- Table structure for table `vtiger_pbxmanagercf`
 --
 
-CREATE TABLE `vtiger_pbxmanagercf` (
-  `pbxmanagerid` int(11) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_pbxmanagercf` (
+  `pbxmanagerid` int(11) NOT NULL,
+  PRIMARY KEY (`pbxmanagerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10789,10 +11253,11 @@ CREATE TABLE `vtiger_pbxmanagercf` (
 -- Table structure for table `vtiger_pbxmanager_gateway`
 --
 
-CREATE TABLE `vtiger_pbxmanager_gateway` (
+CREATE TABLE IF NOT EXISTS `vtiger_pbxmanager_gateway` (
   `id` int(11) NOT NULL,
   `gateway` varchar(20) DEFAULT NULL,
-  `parameters` text DEFAULT NULL
+  `parameters` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10801,12 +11266,14 @@ CREATE TABLE `vtiger_pbxmanager_gateway` (
 -- Table structure for table `vtiger_pbxmanager_phonelookup`
 --
 
-CREATE TABLE `vtiger_pbxmanager_phonelookup` (
+CREATE TABLE IF NOT EXISTS `vtiger_pbxmanager_phonelookup` (
   `crmid` int(20) DEFAULT NULL,
   `setype` varchar(30) DEFAULT NULL,
   `fnumber` varchar(100) DEFAULT NULL,
   `rnumber` varchar(100) DEFAULT NULL,
-  `fieldname` varchar(50) DEFAULT NULL
+  `fieldname` varchar(50) DEFAULT NULL,
+  UNIQUE KEY `unique_key` (`crmid`,`setype`,`fieldname`),
+  KEY `index_phone_number` (`fnumber`,`rnumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10815,11 +11282,12 @@ CREATE TABLE `vtiger_pbxmanager_phonelookup` (
 -- Table structure for table `vtiger_phuongtientruyenthong`
 --
 
-CREATE TABLE `vtiger_phuongtientruyenthong` (
+CREATE TABLE IF NOT EXISTS `vtiger_phuongtientruyenthong` (
   `phuongtientruyenthongid` int(19) NOT NULL,
   `pttt` varchar(255) DEFAULT NULL,
   `motachitiet` varchar(100) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`phuongtientruyenthongid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10835,8 +11303,9 @@ INSERT INTO `vtiger_phuongtientruyenthong` (`phuongtientruyenthongid`, `pttt`, `
 -- Table structure for table `vtiger_phuongtientruyenthongcf`
 --
 
-CREATE TABLE `vtiger_phuongtientruyenthongcf` (
-  `phuongtientruyenthongid` int(19) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_phuongtientruyenthongcf` (
+  `phuongtientruyenthongid` int(19) NOT NULL,
+  PRIMARY KEY (`phuongtientruyenthongid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10852,9 +11321,11 @@ INSERT INTO `vtiger_phuongtientruyenthongcf` (`phuongtientruyenthongid`) VALUES
 -- Table structure for table `vtiger_picklist`
 --
 
-CREATE TABLE `vtiger_picklist` (
+CREATE TABLE IF NOT EXISTS `vtiger_picklist` (
   `picklistid` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL
+  `name` varchar(200) NOT NULL,
+  PRIMARY KEY (`picklistid`),
+  UNIQUE KEY `picklist_name_idx` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -10935,7 +11406,7 @@ INSERT INTO `vtiger_picklist` (`picklistid`, `name`) VALUES
 -- Table structure for table `vtiger_picklistvalues_seq`
 --
 
-CREATE TABLE `vtiger_picklistvalues_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_picklistvalues_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10952,14 +11423,15 @@ INSERT INTO `vtiger_picklistvalues_seq` (`id`) VALUES
 -- Table structure for table `vtiger_picklist_dependency`
 --
 
-CREATE TABLE `vtiger_picklist_dependency` (
+CREATE TABLE IF NOT EXISTS `vtiger_picklist_dependency` (
   `id` int(11) NOT NULL,
   `tabid` int(19) NOT NULL,
   `sourcefield` varchar(255) DEFAULT NULL,
   `targetfield` varchar(255) DEFAULT NULL,
   `sourcevalue` varchar(100) DEFAULT NULL,
   `targetvalues` text DEFAULT NULL,
-  `criteria` text DEFAULT NULL
+  `criteria` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10968,7 +11440,7 @@ CREATE TABLE `vtiger_picklist_dependency` (
 -- Table structure for table `vtiger_picklist_seq`
 --
 
-CREATE TABLE `vtiger_picklist_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_picklist_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -10985,10 +11457,11 @@ INSERT INTO `vtiger_picklist_seq` (`id`) VALUES
 -- Table structure for table `vtiger_picklist_transitions`
 --
 
-CREATE TABLE `vtiger_picklist_transitions` (
+CREATE TABLE IF NOT EXISTS `vtiger_picklist_transitions` (
   `fieldname` varchar(255) NOT NULL,
   `module` varchar(100) NOT NULL,
-  `transition_data` varchar(1000) NOT NULL
+  `transition_data` varchar(1000) NOT NULL,
+  PRIMARY KEY (`fieldname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -10997,14 +11470,15 @@ CREATE TABLE `vtiger_picklist_transitions` (
 -- Table structure for table `vtiger_pobillads`
 --
 
-CREATE TABLE `vtiger_pobillads` (
+CREATE TABLE IF NOT EXISTS `vtiger_pobillads` (
   `pobilladdressid` int(19) NOT NULL DEFAULT 0,
   `bill_city` varchar(30) DEFAULT NULL,
   `bill_code` varchar(30) DEFAULT NULL,
   `bill_country` varchar(30) DEFAULT NULL,
   `bill_state` varchar(30) DEFAULT NULL,
   `bill_street` varchar(250) DEFAULT NULL,
-  `bill_pobox` varchar(30) DEFAULT NULL
+  `bill_pobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`pobilladdressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11013,13 +11487,15 @@ CREATE TABLE `vtiger_pobillads` (
 -- Table structure for table `vtiger_portal`
 --
 
-CREATE TABLE `vtiger_portal` (
+CREATE TABLE IF NOT EXISTS `vtiger_portal` (
   `portalid` int(19) NOT NULL,
   `portalname` varchar(200) NOT NULL,
   `portalurl` varchar(255) NOT NULL,
   `sequence` int(3) NOT NULL,
   `setdefault` int(3) NOT NULL DEFAULT 0,
-  `createdtime` datetime DEFAULT NULL
+  `createdtime` datetime DEFAULT NULL,
+  PRIMARY KEY (`portalid`),
+  KEY `portal_portalname_idx` (`portalname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11028,7 +11504,7 @@ CREATE TABLE `vtiger_portal` (
 -- Table structure for table `vtiger_portalinfo`
 --
 
-CREATE TABLE `vtiger_portalinfo` (
+CREATE TABLE IF NOT EXISTS `vtiger_portalinfo` (
   `id` int(11) NOT NULL,
   `user_name` varchar(50) DEFAULT NULL,
   `user_password` varchar(255) DEFAULT NULL,
@@ -11037,7 +11513,8 @@ CREATE TABLE `vtiger_portalinfo` (
   `last_login_time` datetime DEFAULT NULL,
   `login_time` datetime DEFAULT NULL,
   `logout_time` datetime DEFAULT NULL,
-  `isactive` int(1) DEFAULT NULL
+  `isactive` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11046,14 +11523,15 @@ CREATE TABLE `vtiger_portalinfo` (
 -- Table structure for table `vtiger_poshipads`
 --
 
-CREATE TABLE `vtiger_poshipads` (
+CREATE TABLE IF NOT EXISTS `vtiger_poshipads` (
   `poshipaddressid` int(19) NOT NULL DEFAULT 0,
   `ship_city` varchar(30) DEFAULT NULL,
   `ship_code` varchar(30) DEFAULT NULL,
   `ship_country` varchar(30) DEFAULT NULL,
   `ship_state` varchar(30) DEFAULT NULL,
   `ship_street` varchar(250) DEFAULT NULL,
-  `ship_pobox` varchar(30) DEFAULT NULL
+  `ship_pobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`poshipaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11062,13 +11540,15 @@ CREATE TABLE `vtiger_poshipads` (
 -- Table structure for table `vtiger_postatus`
 --
 
-CREATE TABLE `vtiger_postatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_postatus` (
   `postatusid` int(19) NOT NULL,
   `postatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`postatusid`),
+  UNIQUE KEY `postatus_postatus_idx` (`postatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -11088,13 +11568,15 @@ INSERT INTO `vtiger_postatus` (`postatusid`, `postatus`, `presence`, `picklist_v
 -- Table structure for table `vtiger_postatushistory`
 --
 
-CREATE TABLE `vtiger_postatushistory` (
+CREATE TABLE IF NOT EXISTS `vtiger_postatushistory` (
   `historyid` int(19) NOT NULL,
   `purchaseorderid` int(19) NOT NULL,
   `vendorname` varchar(100) DEFAULT NULL,
   `total` decimal(10,0) DEFAULT NULL,
   `postatus` varchar(200) DEFAULT NULL,
-  `lastmodified` datetime DEFAULT NULL
+  `lastmodified` datetime DEFAULT NULL,
+  PRIMARY KEY (`historyid`),
+  KEY `postatushistory_purchaseorderid_idx` (`purchaseorderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11103,7 +11585,7 @@ CREATE TABLE `vtiger_postatushistory` (
 -- Table structure for table `vtiger_postatus_seq`
 --
 
-CREATE TABLE `vtiger_postatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_postatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -11120,7 +11602,7 @@ INSERT INTO `vtiger_postatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_potential`
 --
 
-CREATE TABLE `vtiger_potential` (
+CREATE TABLE IF NOT EXISTS `vtiger_potential` (
   `potentialid` int(19) NOT NULL DEFAULT 0,
   `potential_no` varchar(100) NOT NULL,
   `related_to` int(19) DEFAULT NULL,
@@ -11151,7 +11633,11 @@ CREATE TABLE `vtiger_potential` (
   `isconvertedfromlead` varchar(3) DEFAULT '0',
   `contact_id` int(19) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
-  `converted` int(1) NOT NULL DEFAULT 0
+  `converted` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`potentialid`),
+  KEY `potential_relatedto_idx` (`related_to`),
+  KEY `potentail_sales_stage_idx` (`sales_stage`),
+  KEY `potentail_sales_stage_amount_idx` (`amount`,`sales_stage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11160,8 +11646,9 @@ CREATE TABLE `vtiger_potential` (
 -- Table structure for table `vtiger_potentialscf`
 --
 
-CREATE TABLE `vtiger_potentialscf` (
-  `potentialid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_potentialscf` (
+  `potentialid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`potentialid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11170,7 +11657,7 @@ CREATE TABLE `vtiger_potentialscf` (
 -- Table structure for table `vtiger_potstagehistory`
 --
 
-CREATE TABLE `vtiger_potstagehistory` (
+CREATE TABLE IF NOT EXISTS `vtiger_potstagehistory` (
   `historyid` int(19) NOT NULL,
   `potentialid` int(19) NOT NULL,
   `amount` decimal(10,0) DEFAULT NULL,
@@ -11178,7 +11665,9 @@ CREATE TABLE `vtiger_potstagehistory` (
   `probability` decimal(7,3) DEFAULT NULL,
   `expectedrevenue` decimal(10,0) DEFAULT NULL,
   `closedate` date DEFAULT NULL,
-  `lastmodified` datetime DEFAULT NULL
+  `lastmodified` datetime DEFAULT NULL,
+  PRIMARY KEY (`historyid`),
+  KEY `potstagehistory_potentialid_idx` (`potentialid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11187,13 +11676,14 @@ CREATE TABLE `vtiger_potstagehistory` (
 -- Table structure for table `vtiger_pricebook`
 --
 
-CREATE TABLE `vtiger_pricebook` (
+CREATE TABLE IF NOT EXISTS `vtiger_pricebook` (
   `pricebookid` int(19) NOT NULL DEFAULT 0,
   `pricebook_no` varchar(100) NOT NULL,
   `bookname` varchar(100) DEFAULT NULL,
   `active` int(1) DEFAULT NULL,
   `currency_id` int(19) NOT NULL DEFAULT 1,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`pricebookid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11202,8 +11692,9 @@ CREATE TABLE `vtiger_pricebook` (
 -- Table structure for table `vtiger_pricebookcf`
 --
 
-CREATE TABLE `vtiger_pricebookcf` (
-  `pricebookid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_pricebookcf` (
+  `pricebookid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`pricebookid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11212,11 +11703,14 @@ CREATE TABLE `vtiger_pricebookcf` (
 -- Table structure for table `vtiger_pricebookproductrel`
 --
 
-CREATE TABLE `vtiger_pricebookproductrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_pricebookproductrel` (
   `pricebookid` int(19) NOT NULL,
   `productid` int(19) NOT NULL,
   `listprice` decimal(27,8) DEFAULT NULL,
-  `usedcurrency` int(11) NOT NULL DEFAULT 1
+  `usedcurrency` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`pricebookid`,`productid`),
+  KEY `pricebookproductrel_pricebookid_idx` (`pricebookid`),
+  KEY `pricebookproductrel_productid_idx` (`productid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11225,11 +11719,13 @@ CREATE TABLE `vtiger_pricebookproductrel` (
 -- Table structure for table `vtiger_priority`
 --
 
-CREATE TABLE `vtiger_priority` (
+CREATE TABLE IF NOT EXISTS `vtiger_priority` (
   `priorityid` int(19) NOT NULL,
   `priority` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`priorityid`),
+  UNIQUE KEY `priority_priority_idx` (`priority`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11238,10 +11734,11 @@ CREATE TABLE `vtiger_priority` (
 -- Table structure for table `vtiger_problemcategory`
 --
 
-CREATE TABLE `vtiger_problemcategory` (
+CREATE TABLE IF NOT EXISTS `vtiger_problemcategory` (
   `problemcategoryid` int(19) NOT NULL,
   `loaivande` varchar(255) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`problemcategoryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11250,9 +11747,10 @@ CREATE TABLE `vtiger_problemcategory` (
 -- Table structure for table `vtiger_problemcategorycf`
 --
 
-CREATE TABLE `vtiger_problemcategorycf` (
+CREATE TABLE IF NOT EXISTS `vtiger_problemcategorycf` (
   `problemcategoryid` int(19) NOT NULL,
-  `cf_1207` text DEFAULT NULL
+  `cf_1207` text DEFAULT NULL,
+  PRIMARY KEY (`problemcategoryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11261,13 +11759,15 @@ CREATE TABLE `vtiger_problemcategorycf` (
 -- Table structure for table `vtiger_productcategory`
 --
 
-CREATE TABLE `vtiger_productcategory` (
+CREATE TABLE IF NOT EXISTS `vtiger_productcategory` (
   `productcategoryid` int(19) NOT NULL,
   `productcategory` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`productcategoryid`),
+  UNIQUE KEY `productcategory_productcategory_idx` (`productcategory`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -11285,7 +11785,7 @@ INSERT INTO `vtiger_productcategory` (`productcategoryid`, `productcategory`, `p
 -- Table structure for table `vtiger_productcategory_seq`
 --
 
-CREATE TABLE `vtiger_productcategory_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_productcategory_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -11302,8 +11802,9 @@ INSERT INTO `vtiger_productcategory_seq` (`id`) VALUES
 -- Table structure for table `vtiger_productcf`
 --
 
-CREATE TABLE `vtiger_productcf` (
-  `productid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_productcf` (
+  `productid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`productid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -11319,7 +11820,7 @@ INSERT INTO `vtiger_productcf` (`productid`) VALUES
 -- Table structure for table `vtiger_productcurrencyrel`
 --
 
-CREATE TABLE `vtiger_productcurrencyrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_productcurrencyrel` (
   `productid` int(11) NOT NULL,
   `currencyid` int(11) NOT NULL,
   `converted_price` decimal(28,8) DEFAULT NULL,
@@ -11332,7 +11833,7 @@ CREATE TABLE `vtiger_productcurrencyrel` (
 -- Table structure for table `vtiger_products`
 --
 
-CREATE TABLE `vtiger_products` (
+CREATE TABLE IF NOT EXISTS `vtiger_products` (
   `productid` int(11) NOT NULL,
   `product_no` varchar(100) NOT NULL,
   `productname` varchar(100) DEFAULT NULL,
@@ -11367,7 +11868,8 @@ CREATE TABLE `vtiger_products` (
   `currency_id` int(19) NOT NULL DEFAULT 1,
   `is_subproducts_viewable` int(1) DEFAULT 1,
   `purchase_cost` decimal(27,8) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`productid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -11383,11 +11885,13 @@ INSERT INTO `vtiger_products` (`productid`, `product_no`, `productname`, `produc
 -- Table structure for table `vtiger_producttaxrel`
 --
 
-CREATE TABLE `vtiger_producttaxrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_producttaxrel` (
   `productid` int(11) NOT NULL,
   `taxid` int(3) NOT NULL,
   `taxpercentage` decimal(7,3) DEFAULT NULL,
-  `regions` text DEFAULT NULL
+  `regions` text DEFAULT NULL,
+  KEY `producttaxrel_productid_idx` (`productid`),
+  KEY `producttaxrel_taxid_idx` (`taxid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -11396,11 +11900,12 @@ CREATE TABLE `vtiger_producttaxrel` (
 -- Table structure for table `vtiger_profile`
 --
 
-CREATE TABLE `vtiger_profile` (
+CREATE TABLE IF NOT EXISTS `vtiger_profile` (
   `profileid` int(10) NOT NULL,
   `profilename` varchar(50) NOT NULL,
   `description` text DEFAULT NULL,
-  `directly_related_to_role` int(1) DEFAULT 0
+  `directly_related_to_role` int(1) DEFAULT 0,
+  PRIMARY KEY (`profileid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -11419,12 +11924,16 @@ INSERT INTO `vtiger_profile` (`profileid`, `profilename`, `description`, `direct
 -- Table structure for table `vtiger_profile2field`
 --
 
-CREATE TABLE `vtiger_profile2field` (
+CREATE TABLE IF NOT EXISTS `vtiger_profile2field` (
   `profileid` int(11) NOT NULL,
   `tabid` int(10) DEFAULT NULL,
   `fieldid` int(19) NOT NULL,
   `visible` int(19) DEFAULT NULL,
-  `readonly` int(19) DEFAULT NULL
+  `readonly` int(19) DEFAULT NULL,
+  PRIMARY KEY (`profileid`,`fieldid`),
+  KEY `profile2field_profileid_tabid_fieldname_idx` (`profileid`,`tabid`),
+  KEY `profile2field_tabid_profileid_idx` (`tabid`,`profileid`),
+  KEY `profile2field_visible_profileid_idx` (`visible`,`profileid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -12588,6 +13097,17 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (1, 71, 1268, 0, 0),
 (1, 71, 1269, 0, 0),
 (1, 26, 1270, 0, 0),
+(1, 72, 1271, 0, 0),
+(1, 72, 1272, 0, 0),
+(1, 72, 1273, 0, 0),
+(1, 72, 1274, 0, 0),
+(1, 72, 1275, 0, 0),
+(1, 72, 1276, 0, 0),
+(1, 72, 1277, 0, 0),
+(1, 72, 1279, 0, 0),
+(1, 72, 1281, 0, 0),
+(1, 72, 1285, 0, 0),
+(1, 72, 1287, 0, 0),
 (2, 6, 1, 0, 0),
 (2, 6, 2, 0, 0),
 (2, 6, 3, 0, 0),
@@ -13744,6 +14264,17 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (2, 71, 1268, 0, 0),
 (2, 71, 1269, 0, 0),
 (2, 26, 1270, 0, 0),
+(2, 72, 1271, 0, 0),
+(2, 72, 1272, 0, 0),
+(2, 72, 1273, 0, 0),
+(2, 72, 1274, 0, 0),
+(2, 72, 1275, 0, 0),
+(2, 72, 1276, 0, 0),
+(2, 72, 1277, 0, 0),
+(2, 72, 1279, 0, 0),
+(2, 72, 1281, 0, 0),
+(2, 72, 1285, 0, 0),
+(2, 72, 1287, 0, 0),
 (3, 6, 1, 0, 0),
 (3, 6, 2, 0, 0),
 (3, 6, 3, 0, 0),
@@ -14205,7 +14736,8 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 23, 459, 0, 0),
 (3, 23, 460, 0, 0),
 (3, 23, 461, 0, 0),
-(3, 23, 462, 0, 0),
+(3, 23, 462, 0, 0);
+INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
 (3, 23, 463, 0, 0),
 (3, 23, 464, 0, 0),
 (3, 23, 465, 0, 0),
@@ -14228,8 +14760,7 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 29, 492, 0, 0),
 (3, 29, 493, 0, 0),
 (3, 29, 495, 0, 0),
-(3, 29, 496, 0, 0);
-INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
+(3, 29, 496, 0, 0),
 (3, 29, 497, 0, 0),
 (3, 29, 498, 0, 0),
 (3, 29, 499, 0, 0),
@@ -14901,6 +15432,17 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 71, 1268, 0, 0),
 (3, 71, 1269, 0, 0),
 (3, 26, 1270, 0, 0),
+(3, 72, 1271, 0, 0),
+(3, 72, 1272, 0, 0),
+(3, 72, 1273, 0, 0),
+(3, 72, 1274, 0, 0),
+(3, 72, 1275, 0, 0),
+(3, 72, 1276, 0, 0),
+(3, 72, 1277, 0, 0),
+(3, 72, 1279, 0, 0),
+(3, 72, 1281, 0, 0),
+(3, 72, 1285, 0, 0),
+(3, 72, 1287, 0, 0),
 (4, 6, 1, 0, 0),
 (4, 6, 2, 0, 0),
 (4, 6, 3, 0, 0),
@@ -16056,7 +16598,18 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (4, 71, 1267, 0, 0),
 (4, 71, 1268, 0, 0),
 (4, 71, 1269, 0, 0),
-(4, 26, 1270, 0, 0);
+(4, 26, 1270, 0, 0),
+(4, 72, 1271, 0, 0),
+(4, 72, 1272, 0, 0),
+(4, 72, 1273, 0, 0),
+(4, 72, 1274, 0, 0),
+(4, 72, 1275, 0, 0),
+(4, 72, 1276, 0, 0),
+(4, 72, 1277, 0, 0),
+(4, 72, 1279, 0, 0),
+(4, 72, 1281, 0, 0),
+(4, 72, 1285, 0, 0),
+(4, 72, 1287, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -16064,10 +16617,12 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 -- Table structure for table `vtiger_profile2globalpermissions`
 --
 
-CREATE TABLE `vtiger_profile2globalpermissions` (
+CREATE TABLE IF NOT EXISTS `vtiger_profile2globalpermissions` (
   `profileid` int(19) NOT NULL,
   `globalactionid` int(19) NOT NULL,
-  `globalactionpermission` int(19) DEFAULT NULL
+  `globalactionpermission` int(19) DEFAULT NULL,
+  PRIMARY KEY (`profileid`,`globalactionid`),
+  KEY `idx_profile2globalpermissions` (`profileid`,`globalactionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -16090,11 +16645,13 @@ INSERT INTO `vtiger_profile2globalpermissions` (`profileid`, `globalactionid`, `
 -- Table structure for table `vtiger_profile2standardpermissions`
 --
 
-CREATE TABLE `vtiger_profile2standardpermissions` (
+CREATE TABLE IF NOT EXISTS `vtiger_profile2standardpermissions` (
   `profileid` int(11) NOT NULL,
   `tabid` int(10) NOT NULL,
   `operation` int(10) NOT NULL,
-  `permissions` int(1) DEFAULT NULL
+  `permissions` int(1) DEFAULT NULL,
+  PRIMARY KEY (`profileid`,`tabid`,`operation`),
+  KEY `profile2standardpermissions_profileid_tabid_operation_idx` (`profileid`,`tabid`,`operation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -16372,6 +16929,12 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (1, 71, 3, 0),
 (1, 71, 4, 0),
 (1, 71, 7, 0),
+(1, 72, 0, 0),
+(1, 72, 1, 0),
+(1, 72, 2, 0),
+(1, 72, 3, 0),
+(1, 72, 4, 0),
+(1, 72, 7, 0),
 (2, 2, 0, 0),
 (2, 2, 1, 0),
 (2, 2, 2, 0),
@@ -16642,6 +17205,12 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (2, 71, 3, 0),
 (2, 71, 4, 0),
 (2, 71, 7, 0),
+(2, 72, 0, 0),
+(2, 72, 1, 0),
+(2, 72, 2, 0),
+(2, 72, 3, 0),
+(2, 72, 4, 0),
+(2, 72, 7, 0),
 (3, 2, 0, 1),
 (3, 2, 1, 1),
 (3, 2, 2, 1),
@@ -16912,6 +17481,12 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (3, 71, 3, 0),
 (3, 71, 4, 0),
 (3, 71, 7, 0),
+(3, 72, 0, 0),
+(3, 72, 1, 0),
+(3, 72, 2, 0),
+(3, 72, 3, 0),
+(3, 72, 4, 0),
+(3, 72, 7, 0),
 (4, 2, 0, 1),
 (4, 2, 1, 1),
 (4, 2, 2, 1),
@@ -17181,7 +17756,13 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (4, 71, 2, 0),
 (4, 71, 3, 0),
 (4, 71, 4, 0),
-(4, 71, 7, 0);
+(4, 71, 7, 0),
+(4, 72, 0, 0),
+(4, 72, 1, 0),
+(4, 72, 2, 0),
+(4, 72, 3, 0),
+(4, 72, 4, 0),
+(4, 72, 7, 0);
 
 -- --------------------------------------------------------
 
@@ -17189,10 +17770,11 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 -- Table structure for table `vtiger_profile2tab`
 --
 
-CREATE TABLE `vtiger_profile2tab` (
+CREATE TABLE IF NOT EXISTS `vtiger_profile2tab` (
   `profileid` int(11) DEFAULT NULL,
   `tabid` int(10) DEFAULT NULL,
-  `permissions` int(10) NOT NULL DEFAULT 0
+  `permissions` int(10) NOT NULL DEFAULT 0,
+  KEY `profile2tab_profileid_tabid_idx` (`profileid`,`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -17447,7 +18029,11 @@ INSERT INTO `vtiger_profile2tab` (`profileid`, `tabid`, `permissions`) VALUES
 (1, 71, 0),
 (2, 71, 0),
 (3, 71, 0),
-(4, 71, 0);
+(4, 71, 0),
+(1, 72, 0),
+(2, 72, 0),
+(3, 72, 0),
+(4, 72, 0);
 
 -- --------------------------------------------------------
 
@@ -17455,11 +18041,13 @@ INSERT INTO `vtiger_profile2tab` (`profileid`, `tabid`, `permissions`) VALUES
 -- Table structure for table `vtiger_profile2utility`
 --
 
-CREATE TABLE `vtiger_profile2utility` (
+CREATE TABLE IF NOT EXISTS `vtiger_profile2utility` (
   `profileid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
   `activityid` int(11) NOT NULL,
-  `permission` int(1) DEFAULT NULL
+  `permission` int(1) DEFAULT NULL,
+  PRIMARY KEY (`profileid`,`tabid`,`activityid`),
+  KEY `profile2utility_profileid_tabid_activityid_idx` (`profileid`,`tabid`,`activityid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -17830,7 +18418,7 @@ INSERT INTO `vtiger_profile2utility` (`profileid`, `tabid`, `activityid`, `permi
 -- Table structure for table `vtiger_profile_seq`
 --
 
-CREATE TABLE `vtiger_profile_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_profile_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -17847,13 +18435,14 @@ INSERT INTO `vtiger_profile_seq` (`id`) VALUES
 -- Table structure for table `vtiger_progress`
 --
 
-CREATE TABLE `vtiger_progress` (
+CREATE TABLE IF NOT EXISTS `vtiger_progress` (
   `progressid` int(11) NOT NULL,
   `progress` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`progressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -17878,7 +18467,7 @@ INSERT INTO `vtiger_progress` (`progressid`, `progress`, `presence`, `picklist_v
 -- Table structure for table `vtiger_progress_seq`
 --
 
-CREATE TABLE `vtiger_progress_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_progress_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -17895,7 +18484,7 @@ INSERT INTO `vtiger_progress_seq` (`id`) VALUES
 -- Table structure for table `vtiger_project`
 --
 
-CREATE TABLE `vtiger_project` (
+CREATE TABLE IF NOT EXISTS `vtiger_project` (
   `projectid` int(19) NOT NULL,
   `projectname` varchar(255) DEFAULT NULL,
   `project_no` varchar(100) DEFAULT NULL,
@@ -17911,7 +18500,8 @@ CREATE TABLE `vtiger_project` (
   `linktoaccountscontacts` varchar(100) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
   `isconvertedfrompotential` int(1) NOT NULL DEFAULT 0,
-  `potentialid` varchar(100) DEFAULT NULL
+  `potentialid` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`projectid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -17920,8 +18510,9 @@ CREATE TABLE `vtiger_project` (
 -- Table structure for table `vtiger_projectcf`
 --
 
-CREATE TABLE `vtiger_projectcf` (
-  `projectid` int(11) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_projectcf` (
+  `projectid` int(11) NOT NULL,
+  PRIMARY KEY (`projectid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -17930,14 +18521,15 @@ CREATE TABLE `vtiger_projectcf` (
 -- Table structure for table `vtiger_projectmilestone`
 --
 
-CREATE TABLE `vtiger_projectmilestone` (
+CREATE TABLE IF NOT EXISTS `vtiger_projectmilestone` (
   `projectmilestoneid` int(11) NOT NULL,
   `projectmilestonename` varchar(255) DEFAULT NULL,
   `projectmilestone_no` varchar(100) DEFAULT NULL,
   `projectmilestonedate` varchar(255) DEFAULT NULL,
   `projectid` varchar(100) DEFAULT NULL,
   `projectmilestonetype` varchar(100) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`projectmilestoneid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -17946,8 +18538,9 @@ CREATE TABLE `vtiger_projectmilestone` (
 -- Table structure for table `vtiger_projectmilestonecf`
 --
 
-CREATE TABLE `vtiger_projectmilestonecf` (
-  `projectmilestoneid` int(11) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_projectmilestonecf` (
+  `projectmilestoneid` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`projectmilestoneid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -17956,13 +18549,14 @@ CREATE TABLE `vtiger_projectmilestonecf` (
 -- Table structure for table `vtiger_projectmilestonetype`
 --
 
-CREATE TABLE `vtiger_projectmilestonetype` (
+CREATE TABLE IF NOT EXISTS `vtiger_projectmilestonetype` (
   `projectmilestonetypeid` int(11) NOT NULL,
   `projectmilestonetype` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`projectmilestonetypeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -17980,7 +18574,7 @@ INSERT INTO `vtiger_projectmilestonetype` (`projectmilestonetypeid`, `projectmil
 -- Table structure for table `vtiger_projectmilestonetype_seq`
 --
 
-CREATE TABLE `vtiger_projectmilestonetype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_projectmilestonetype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -17997,13 +18591,14 @@ INSERT INTO `vtiger_projectmilestonetype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_projectpriority`
 --
 
-CREATE TABLE `vtiger_projectpriority` (
+CREATE TABLE IF NOT EXISTS `vtiger_projectpriority` (
   `projectpriorityid` int(11) NOT NULL,
   `projectpriority` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`projectpriorityid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18021,7 +18616,7 @@ INSERT INTO `vtiger_projectpriority` (`projectpriorityid`, `projectpriority`, `p
 -- Table structure for table `vtiger_projectpriority_seq`
 --
 
-CREATE TABLE `vtiger_projectpriority_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_projectpriority_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18038,13 +18633,14 @@ INSERT INTO `vtiger_projectpriority_seq` (`id`) VALUES
 -- Table structure for table `vtiger_projectstatus`
 --
 
-CREATE TABLE `vtiger_projectstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_projectstatus` (
   `projectstatusid` int(11) NOT NULL,
   `projectstatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`projectstatusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18067,7 +18663,7 @@ INSERT INTO `vtiger_projectstatus` (`projectstatusid`, `projectstatus`, `presenc
 -- Table structure for table `vtiger_projectstatus_seq`
 --
 
-CREATE TABLE `vtiger_projectstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_projectstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18084,7 +18680,7 @@ INSERT INTO `vtiger_projectstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_projecttask`
 --
 
-CREATE TABLE `vtiger_projecttask` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttask` (
   `projecttaskid` int(11) NOT NULL,
   `projecttaskname` varchar(255) DEFAULT NULL,
   `projecttask_no` varchar(100) DEFAULT NULL,
@@ -18097,7 +18693,8 @@ CREATE TABLE `vtiger_projecttask` (
   `projectid` varchar(100) DEFAULT NULL,
   `projecttasknumber` int(11) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
-  `projecttaskstatus` varchar(100) DEFAULT NULL
+  `projecttaskstatus` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`projecttaskid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18106,8 +18703,9 @@ CREATE TABLE `vtiger_projecttask` (
 -- Table structure for table `vtiger_projecttaskcf`
 --
 
-CREATE TABLE `vtiger_projecttaskcf` (
-  `projecttaskid` int(11) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_projecttaskcf` (
+  `projecttaskid` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`projecttaskid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18116,13 +18714,14 @@ CREATE TABLE `vtiger_projecttaskcf` (
 -- Table structure for table `vtiger_projecttaskpriority`
 --
 
-CREATE TABLE `vtiger_projecttaskpriority` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttaskpriority` (
   `projecttaskpriorityid` int(11) NOT NULL,
   `projecttaskpriority` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`projecttaskpriorityid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18140,7 +18739,7 @@ INSERT INTO `vtiger_projecttaskpriority` (`projecttaskpriorityid`, `projecttaskp
 -- Table structure for table `vtiger_projecttaskpriority_seq`
 --
 
-CREATE TABLE `vtiger_projecttaskpriority_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttaskpriority_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18157,13 +18756,14 @@ INSERT INTO `vtiger_projecttaskpriority_seq` (`id`) VALUES
 -- Table structure for table `vtiger_projecttaskprogress`
 --
 
-CREATE TABLE `vtiger_projecttaskprogress` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttaskprogress` (
   `projecttaskprogressid` int(11) NOT NULL,
   `projecttaskprogress` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`projecttaskprogressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18188,7 +18788,7 @@ INSERT INTO `vtiger_projecttaskprogress` (`projecttaskprogressid`, `projecttaskp
 -- Table structure for table `vtiger_projecttaskprogress_seq`
 --
 
-CREATE TABLE `vtiger_projecttaskprogress_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttaskprogress_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18205,13 +18805,14 @@ INSERT INTO `vtiger_projecttaskprogress_seq` (`id`) VALUES
 -- Table structure for table `vtiger_projecttaskstatus`
 --
 
-CREATE TABLE `vtiger_projecttaskstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttaskstatus` (
   `projecttaskstatusid` int(11) NOT NULL,
   `projecttaskstatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`projecttaskstatusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18231,7 +18832,7 @@ INSERT INTO `vtiger_projecttaskstatus` (`projecttaskstatusid`, `projecttaskstatu
 -- Table structure for table `vtiger_projecttaskstatus_seq`
 --
 
-CREATE TABLE `vtiger_projecttaskstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttaskstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18248,13 +18849,14 @@ INSERT INTO `vtiger_projecttaskstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_projecttasktype`
 --
 
-CREATE TABLE `vtiger_projecttasktype` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttasktype` (
   `projecttasktypeid` int(11) NOT NULL,
   `projecttasktype` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`projecttasktypeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18272,7 +18874,7 @@ INSERT INTO `vtiger_projecttasktype` (`projecttasktypeid`, `projecttasktype`, `p
 -- Table structure for table `vtiger_projecttasktype_seq`
 --
 
-CREATE TABLE `vtiger_projecttasktype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttasktype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18289,10 +18891,11 @@ INSERT INTO `vtiger_projecttasktype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_projecttask_status_color`
 --
 
-CREATE TABLE `vtiger_projecttask_status_color` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttask_status_color` (
   `status` varchar(255) DEFAULT NULL,
   `defaultcolor` varchar(50) DEFAULT NULL,
-  `color` varchar(50) DEFAULT NULL
+  `color` varchar(50) DEFAULT NULL,
+  UNIQUE KEY `status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18312,13 +18915,14 @@ INSERT INTO `vtiger_projecttask_status_color` (`status`, `defaultcolor`, `color`
 -- Table structure for table `vtiger_projecttype`
 --
 
-CREATE TABLE `vtiger_projecttype` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttype` (
   `projecttypeid` int(11) NOT NULL,
   `projecttype` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`projecttypeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18336,7 +18940,7 @@ INSERT INTO `vtiger_projecttype` (`projecttypeid`, `projecttype`, `presence`, `p
 -- Table structure for table `vtiger_projecttype_seq`
 --
 
-CREATE TABLE `vtiger_projecttype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_projecttype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18353,7 +18957,7 @@ INSERT INTO `vtiger_projecttype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_purchaseorder`
 --
 
-CREATE TABLE `vtiger_purchaseorder` (
+CREATE TABLE IF NOT EXISTS `vtiger_purchaseorder` (
   `purchaseorderid` int(19) NOT NULL DEFAULT 0,
   `subject` varchar(100) DEFAULT NULL,
   `quoteid` int(19) DEFAULT NULL,
@@ -18384,7 +18988,11 @@ CREATE TABLE `vtiger_purchaseorder` (
   `balance` decimal(25,8) DEFAULT NULL,
   `s_h_percent` int(11) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
-  `region_id` int(19) DEFAULT NULL
+  `region_id` int(19) DEFAULT NULL,
+  PRIMARY KEY (`purchaseorderid`),
+  KEY `purchaseorder_vendorid_idx` (`vendorid`),
+  KEY `purchaseorder_quoteid_idx` (`quoteid`),
+  KEY `purchaseorder_contactid_idx` (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18393,8 +19001,9 @@ CREATE TABLE `vtiger_purchaseorder` (
 -- Table structure for table `vtiger_purchaseordercf`
 --
 
-CREATE TABLE `vtiger_purchaseordercf` (
-  `purchaseorderid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_purchaseordercf` (
+  `purchaseorderid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`purchaseorderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18403,13 +19012,14 @@ CREATE TABLE `vtiger_purchaseordercf` (
 -- Table structure for table `vtiger_qcm_category`
 --
 
-CREATE TABLE `vtiger_qcm_category` (
+CREATE TABLE IF NOT EXISTS `vtiger_qcm_category` (
   `qcm_categoryid` int(11) NOT NULL,
   `qcm_category` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`qcm_categoryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18430,7 +19040,7 @@ INSERT INTO `vtiger_qcm_category` (`qcm_categoryid`, `qcm_category`, `presence`,
 -- Table structure for table `vtiger_qcm_category_seq`
 --
 
-CREATE TABLE `vtiger_qcm_category_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_qcm_category_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18447,13 +19057,14 @@ INSERT INTO `vtiger_qcm_category_seq` (`id`) VALUES
 -- Table structure for table `vtiger_qcm_classify`
 --
 
-CREATE TABLE `vtiger_qcm_classify` (
+CREATE TABLE IF NOT EXISTS `vtiger_qcm_classify` (
   `qcm_classifyid` int(11) NOT NULL,
   `qcm_classify` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`qcm_classifyid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18473,7 +19084,7 @@ INSERT INTO `vtiger_qcm_classify` (`qcm_classifyid`, `qcm_classify`, `presence`,
 -- Table structure for table `vtiger_qcm_classify_seq`
 --
 
-CREATE TABLE `vtiger_qcm_classify_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_qcm_classify_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18490,13 +19101,14 @@ INSERT INTO `vtiger_qcm_classify_seq` (`id`) VALUES
 -- Table structure for table `vtiger_qcm_status`
 --
 
-CREATE TABLE `vtiger_qcm_status` (
+CREATE TABLE IF NOT EXISTS `vtiger_qcm_status` (
   `qcm_statusid` int(11) NOT NULL,
   `qcm_status` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`qcm_statusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18513,7 +19125,7 @@ INSERT INTO `vtiger_qcm_status` (`qcm_statusid`, `qcm_status`, `presence`, `pick
 -- Table structure for table `vtiger_qcm_status_seq`
 --
 
-CREATE TABLE `vtiger_qcm_status_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_qcm_status_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18530,7 +19142,7 @@ INSERT INTO `vtiger_qcm_status_seq` (`id`) VALUES
 -- Table structure for table `vtiger_quotes`
 --
 
-CREATE TABLE `vtiger_quotes` (
+CREATE TABLE IF NOT EXISTS `vtiger_quotes` (
   `quoteid` int(19) NOT NULL DEFAULT 0,
   `subject` varchar(100) DEFAULT NULL,
   `potentialid` int(19) DEFAULT NULL,
@@ -18557,7 +19169,11 @@ CREATE TABLE `vtiger_quotes` (
   `pre_tax_total` decimal(25,8) DEFAULT NULL,
   `s_h_percent` int(11) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
-  `region_id` int(19) DEFAULT NULL
+  `region_id` int(19) DEFAULT NULL,
+  PRIMARY KEY (`quoteid`),
+  KEY `quote_quotestage_idx` (`quotestage`),
+  KEY `quotes_potentialid_idx` (`potentialid`),
+  KEY `quotes_contactid_idx` (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18566,14 +19182,15 @@ CREATE TABLE `vtiger_quotes` (
 -- Table structure for table `vtiger_quotesbillads`
 --
 
-CREATE TABLE `vtiger_quotesbillads` (
+CREATE TABLE IF NOT EXISTS `vtiger_quotesbillads` (
   `quotebilladdressid` int(19) NOT NULL DEFAULT 0,
   `bill_city` varchar(30) DEFAULT NULL,
   `bill_code` varchar(30) DEFAULT NULL,
   `bill_country` varchar(30) DEFAULT NULL,
   `bill_state` varchar(30) DEFAULT NULL,
   `bill_street` varchar(250) DEFAULT NULL,
-  `bill_pobox` varchar(30) DEFAULT NULL
+  `bill_pobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`quotebilladdressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18582,8 +19199,9 @@ CREATE TABLE `vtiger_quotesbillads` (
 -- Table structure for table `vtiger_quotescf`
 --
 
-CREATE TABLE `vtiger_quotescf` (
-  `quoteid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_quotescf` (
+  `quoteid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`quoteid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18592,14 +19210,15 @@ CREATE TABLE `vtiger_quotescf` (
 -- Table structure for table `vtiger_quotesshipads`
 --
 
-CREATE TABLE `vtiger_quotesshipads` (
+CREATE TABLE IF NOT EXISTS `vtiger_quotesshipads` (
   `quoteshipaddressid` int(19) NOT NULL DEFAULT 0,
   `ship_city` varchar(30) DEFAULT NULL,
   `ship_code` varchar(30) DEFAULT NULL,
   `ship_country` varchar(30) DEFAULT NULL,
   `ship_state` varchar(30) DEFAULT NULL,
   `ship_street` varchar(250) DEFAULT NULL,
-  `ship_pobox` varchar(30) DEFAULT NULL
+  `ship_pobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`quoteshipaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18608,13 +19227,15 @@ CREATE TABLE `vtiger_quotesshipads` (
 -- Table structure for table `vtiger_quotestage`
 --
 
-CREATE TABLE `vtiger_quotestage` (
+CREATE TABLE IF NOT EXISTS `vtiger_quotestage` (
   `quotestageid` int(19) NOT NULL,
   `quotestage` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`quotestageid`),
+  UNIQUE KEY `quotestage_quotestage_idx` (`quotestage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18634,13 +19255,15 @@ INSERT INTO `vtiger_quotestage` (`quotestageid`, `quotestage`, `presence`, `pick
 -- Table structure for table `vtiger_quotestagehistory`
 --
 
-CREATE TABLE `vtiger_quotestagehistory` (
+CREATE TABLE IF NOT EXISTS `vtiger_quotestagehistory` (
   `historyid` int(19) NOT NULL,
   `quoteid` int(19) NOT NULL,
   `accountname` varchar(100) DEFAULT NULL,
   `total` decimal(10,0) DEFAULT NULL,
   `quotestage` varchar(200) DEFAULT NULL,
-  `lastmodified` datetime DEFAULT NULL
+  `lastmodified` datetime DEFAULT NULL,
+  PRIMARY KEY (`historyid`),
+  KEY `quotestagehistory_quoteid_idx` (`quoteid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18649,7 +19272,7 @@ CREATE TABLE `vtiger_quotestagehistory` (
 -- Table structure for table `vtiger_quotestage_seq`
 --
 
-CREATE TABLE `vtiger_quotestage_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_quotestage_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18663,16 +19286,46 @@ INSERT INTO `vtiger_quotestage_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vtiger_quytrinhbanhang`
+--
+
+CREATE TABLE IF NOT EXISTS `vtiger_quytrinhbanhang` (
+  `quytrinhbanhangid` int(19) NOT NULL,
+  `tenquytrinh` varchar(255) DEFAULT NULL,
+  `motachitiet` varchar(100) DEFAULT NULL,
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`quytrinhbanhangid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_quytrinhbanhangcf`
+--
+
+CREATE TABLE IF NOT EXISTS `vtiger_quytrinhbanhangcf` (
+  `quytrinhbanhangid` int(19) NOT NULL,
+  `cf_1278` varchar(255) DEFAULT '',
+  `cf_1280` decimal(5,2) DEFAULT NULL,
+  `cf_1284` text DEFAULT NULL,
+  `cf_1286` varchar(255) DEFAULT '',
+  PRIMARY KEY (`quytrinhbanhangid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vtiger_rating`
 --
 
-CREATE TABLE `vtiger_rating` (
+CREATE TABLE IF NOT EXISTS `vtiger_rating` (
   `rating_id` int(19) NOT NULL,
   `rating` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`rating_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18692,7 +19345,7 @@ INSERT INTO `vtiger_rating` (`rating_id`, `rating`, `presence`, `picklist_valuei
 -- Table structure for table `vtiger_rating_seq`
 --
 
-CREATE TABLE `vtiger_rating_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_rating_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18709,14 +19362,16 @@ INSERT INTO `vtiger_rating_seq` (`id`) VALUES
 -- Table structure for table `vtiger_recurringevents`
 --
 
-CREATE TABLE `vtiger_recurringevents` (
+CREATE TABLE IF NOT EXISTS `vtiger_recurringevents` (
   `recurringid` int(19) NOT NULL,
   `activityid` int(19) NOT NULL,
   `recurringdate` date DEFAULT NULL,
   `recurringtype` varchar(30) DEFAULT NULL,
   `recurringfreq` int(19) DEFAULT NULL,
   `recurringinfo` varchar(50) DEFAULT NULL,
-  `recurringenddate` date DEFAULT NULL
+  `recurringenddate` date DEFAULT NULL,
+  PRIMARY KEY (`recurringid`),
+  KEY `fk_1_vtiger_recurringevents` (`activityid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -18725,12 +19380,14 @@ CREATE TABLE `vtiger_recurringevents` (
 -- Table structure for table `vtiger_recurringtype`
 --
 
-CREATE TABLE `vtiger_recurringtype` (
+CREATE TABLE IF NOT EXISTS `vtiger_recurringtype` (
   `recurringeventid` int(19) NOT NULL,
   `recurringtype` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
   `presence` int(1) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`recurringeventid`),
+  UNIQUE KEY `recurringtype_status_idx` (`recurringtype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -18749,7 +19406,7 @@ INSERT INTO `vtiger_recurringtype` (`recurringeventid`, `recurringtype`, `sortor
 -- Table structure for table `vtiger_recurringtype_seq`
 --
 
-CREATE TABLE `vtiger_recurringtype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_recurringtype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18766,7 +19423,7 @@ INSERT INTO `vtiger_recurringtype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_recurring_frequency`
 --
 
-CREATE TABLE `vtiger_recurring_frequency` (
+CREATE TABLE IF NOT EXISTS `vtiger_recurring_frequency` (
   `recurring_frequency_id` int(11) DEFAULT NULL,
   `recurring_frequency` varchar(200) DEFAULT NULL,
   `sortorderid` int(11) DEFAULT NULL,
@@ -18791,7 +19448,7 @@ INSERT INTO `vtiger_recurring_frequency` (`recurring_frequency_id`, `recurring_f
 -- Table structure for table `vtiger_recurring_frequency_seq`
 --
 
-CREATE TABLE `vtiger_recurring_frequency_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_recurring_frequency_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -18808,7 +19465,7 @@ INSERT INTO `vtiger_recurring_frequency_seq` (`id`) VALUES
 -- Table structure for table `vtiger_relatedlists`
 --
 
-CREATE TABLE `vtiger_relatedlists` (
+CREATE TABLE IF NOT EXISTS `vtiger_relatedlists` (
   `relation_id` int(19) NOT NULL,
   `tabid` int(10) DEFAULT NULL,
   `related_tabid` int(10) DEFAULT NULL,
@@ -18819,7 +19476,9 @@ CREATE TABLE `vtiger_relatedlists` (
   `actions` varchar(50) NOT NULL DEFAULT '',
   `relationfieldid` int(19) DEFAULT NULL,
   `source` varchar(25) DEFAULT NULL,
-  `relationtype` varchar(10) DEFAULT NULL
+  `relationtype` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`relation_id`),
+  KEY `relatedlists_relation_id_idx` (`relation_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19004,7 +19663,7 @@ INSERT INTO `vtiger_relatedlists` (`relation_id`, `tabid`, `related_tabid`, `nam
 -- Table structure for table `vtiger_relatedlists_rb`
 --
 
-CREATE TABLE `vtiger_relatedlists_rb` (
+CREATE TABLE IF NOT EXISTS `vtiger_relatedlists_rb` (
   `entityid` int(19) DEFAULT NULL,
   `action` varchar(50) DEFAULT NULL,
   `rel_table` varchar(200) DEFAULT NULL,
@@ -19019,7 +19678,7 @@ CREATE TABLE `vtiger_relatedlists_rb` (
 -- Table structure for table `vtiger_relatedlists_seq`
 --
 
-CREATE TABLE `vtiger_relatedlists_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_relatedlists_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -19036,14 +19695,16 @@ INSERT INTO `vtiger_relatedlists_seq` (`id`) VALUES
 -- Table structure for table `vtiger_relcriteria`
 --
 
-CREATE TABLE `vtiger_relcriteria` (
+CREATE TABLE IF NOT EXISTS `vtiger_relcriteria` (
   `queryid` int(19) NOT NULL,
   `columnindex` int(11) NOT NULL,
   `columnname` varchar(250) DEFAULT '',
   `comparator` varchar(20) DEFAULT NULL,
   `value` varchar(512) DEFAULT NULL,
   `groupid` int(11) DEFAULT 1,
-  `column_condition` varchar(256) DEFAULT 'and'
+  `column_condition` varchar(256) DEFAULT 'and',
+  PRIMARY KEY (`queryid`,`columnindex`),
+  KEY `relcriteria_queryid_idx` (`queryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19069,11 +19730,12 @@ INSERT INTO `vtiger_relcriteria` (`queryid`, `columnindex`, `columnname`, `compa
 -- Table structure for table `vtiger_relcriteria_grouping`
 --
 
-CREATE TABLE `vtiger_relcriteria_grouping` (
+CREATE TABLE IF NOT EXISTS `vtiger_relcriteria_grouping` (
   `groupid` int(11) NOT NULL,
   `queryid` int(19) NOT NULL,
   `group_condition` varchar(256) DEFAULT NULL,
-  `condition_expression` text DEFAULT NULL
+  `condition_expression` text DEFAULT NULL,
+  PRIMARY KEY (`groupid`,`queryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19098,11 +19760,12 @@ INSERT INTO `vtiger_relcriteria_grouping` (`groupid`, `queryid`, `group_conditio
 -- Table structure for table `vtiger_reminder_interval`
 --
 
-CREATE TABLE `vtiger_reminder_interval` (
+CREATE TABLE IF NOT EXISTS `vtiger_reminder_interval` (
   `reminder_intervalid` int(19) NOT NULL,
   `reminder_interval` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL,
-  `presence` int(1) NOT NULL
+  `presence` int(1) NOT NULL,
+  PRIMARY KEY (`reminder_intervalid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19124,7 +19787,7 @@ INSERT INTO `vtiger_reminder_interval` (`reminder_intervalid`, `reminder_interva
 -- Table structure for table `vtiger_reminder_interval_seq`
 --
 
-CREATE TABLE `vtiger_reminder_interval_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_reminder_interval_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -19141,7 +19804,7 @@ INSERT INTO `vtiger_reminder_interval_seq` (`id`) VALUES
 -- Table structure for table `vtiger_report`
 --
 
-CREATE TABLE `vtiger_report` (
+CREATE TABLE IF NOT EXISTS `vtiger_report` (
   `reportid` int(19) NOT NULL,
   `folderid` int(19) NOT NULL,
   `reportname` varchar(100) DEFAULT '',
@@ -19152,7 +19815,10 @@ CREATE TABLE `vtiger_report` (
   `customizable` int(1) DEFAULT 1,
   `category` int(11) DEFAULT 1,
   `owner` int(11) DEFAULT 1,
-  `sharingtype` varchar(200) DEFAULT 'Private'
+  `sharingtype` varchar(200) DEFAULT 'Private',
+  PRIMARY KEY (`reportid`),
+  KEY `report_queryid_idx` (`queryid`),
+  KEY `report_folderid_idx` (`folderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19192,12 +19858,14 @@ INSERT INTO `vtiger_report` (`reportid`, `folderid`, `reportname`, `description`
 -- Table structure for table `vtiger_reportdatefilter`
 --
 
-CREATE TABLE `vtiger_reportdatefilter` (
+CREATE TABLE IF NOT EXISTS `vtiger_reportdatefilter` (
   `datefilterid` int(19) NOT NULL,
   `datecolumnname` varchar(250) DEFAULT '',
   `datefilter` varchar(250) DEFAULT '',
   `startdate` date DEFAULT NULL,
-  `enddate` date DEFAULT NULL
+  `enddate` date DEFAULT NULL,
+  PRIMARY KEY (`datefilterid`),
+  KEY `reportdatefilter_datefilterid_idx` (`datefilterid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19214,7 +19882,7 @@ INSERT INTO `vtiger_reportdatefilter` (`datefilterid`, `datecolumnname`, `datefi
 -- Table structure for table `vtiger_reportfilters`
 --
 
-CREATE TABLE `vtiger_reportfilters` (
+CREATE TABLE IF NOT EXISTS `vtiger_reportfilters` (
   `filterid` int(19) NOT NULL,
   `name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -19234,11 +19902,12 @@ INSERT INTO `vtiger_reportfilters` (`filterid`, `name`) VALUES
 -- Table structure for table `vtiger_reportfolder`
 --
 
-CREATE TABLE `vtiger_reportfolder` (
+CREATE TABLE IF NOT EXISTS `vtiger_reportfolder` (
   `folderid` int(19) NOT NULL,
   `foldername` varchar(100) NOT NULL DEFAULT '',
   `description` varchar(250) DEFAULT '',
-  `state` varchar(50) DEFAULT 'SAVED'
+  `state` varchar(50) DEFAULT 'SAVED',
+  PRIMARY KEY (`folderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19265,11 +19934,12 @@ INSERT INTO `vtiger_reportfolder` (`folderid`, `foldername`, `description`, `sta
 -- Table structure for table `vtiger_reportgroupbycolumn`
 --
 
-CREATE TABLE `vtiger_reportgroupbycolumn` (
+CREATE TABLE IF NOT EXISTS `vtiger_reportgroupbycolumn` (
   `reportid` int(19) DEFAULT NULL,
   `sortid` int(19) DEFAULT NULL,
   `sortcolname` varchar(250) DEFAULT NULL,
-  `dategroupbycriteria` varchar(250) DEFAULT NULL
+  `dategroupbycriteria` varchar(250) DEFAULT NULL,
+  KEY `fk_1_vtiger_reportgroupbycolumn` (`reportid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -19278,10 +19948,11 @@ CREATE TABLE `vtiger_reportgroupbycolumn` (
 -- Table structure for table `vtiger_reportmodules`
 --
 
-CREATE TABLE `vtiger_reportmodules` (
+CREATE TABLE IF NOT EXISTS `vtiger_reportmodules` (
   `reportmodulesid` int(19) NOT NULL,
   `primarymodule` varchar(100) DEFAULT NULL,
-  `secondarymodules` varchar(250) DEFAULT ''
+  `secondarymodules` varchar(250) DEFAULT '',
+  PRIMARY KEY (`reportmodulesid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19321,7 +19992,7 @@ INSERT INTO `vtiger_reportmodules` (`reportmodulesid`, `primarymodule`, `seconda
 -- Table structure for table `vtiger_reportsharing`
 --
 
-CREATE TABLE `vtiger_reportsharing` (
+CREATE TABLE IF NOT EXISTS `vtiger_reportsharing` (
   `reportid` int(19) NOT NULL,
   `shareid` int(19) NOT NULL,
   `setype` varchar(200) NOT NULL
@@ -19333,11 +20004,13 @@ CREATE TABLE `vtiger_reportsharing` (
 -- Table structure for table `vtiger_reportsortcol`
 --
 
-CREATE TABLE `vtiger_reportsortcol` (
+CREATE TABLE IF NOT EXISTS `vtiger_reportsortcol` (
   `sortcolid` int(19) NOT NULL,
   `reportid` int(19) NOT NULL,
   `columnname` varchar(250) DEFAULT '',
-  `sortorder` varchar(250) DEFAULT 'Asc'
+  `sortorder` varchar(250) DEFAULT 'Asc',
+  PRIMARY KEY (`sortcolid`,`reportid`),
+  KEY `fk_1_vtiger_reportsortcol` (`reportid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19356,10 +20029,12 @@ INSERT INTO `vtiger_reportsortcol` (`sortcolid`, `reportid`, `columnname`, `sort
 -- Table structure for table `vtiger_reportsummary`
 --
 
-CREATE TABLE `vtiger_reportsummary` (
+CREATE TABLE IF NOT EXISTS `vtiger_reportsummary` (
   `reportsummaryid` int(19) NOT NULL,
   `summarytype` int(19) NOT NULL,
-  `columnname` varchar(250) NOT NULL DEFAULT ''
+  `columnname` varchar(250) NOT NULL DEFAULT '',
+  PRIMARY KEY (`reportsummaryid`,`summarytype`,`columnname`),
+  KEY `reportsummary_reportsummaryid_idx` (`reportsummaryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -19368,9 +20043,10 @@ CREATE TABLE `vtiger_reportsummary` (
 -- Table structure for table `vtiger_reporttype`
 --
 
-CREATE TABLE `vtiger_reporttype` (
+CREATE TABLE IF NOT EXISTS `vtiger_reporttype` (
   `reportid` int(10) NOT NULL,
-  `data` text DEFAULT NULL
+  `data` text DEFAULT NULL,
+  PRIMARY KEY (`reportid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -19379,9 +20055,11 @@ CREATE TABLE `vtiger_reporttype` (
 -- Table structure for table `vtiger_report_sharegroups`
 --
 
-CREATE TABLE `vtiger_report_sharegroups` (
+CREATE TABLE IF NOT EXISTS `vtiger_report_sharegroups` (
   `reportid` int(25) NOT NULL,
-  `groupid` int(25) NOT NULL
+  `groupid` int(25) NOT NULL,
+  KEY `vtiger_report_sharegroups_ibfk_1` (`reportid`),
+  KEY `vtiger_groups_groupid_ibfk_1` (`groupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -19390,9 +20068,11 @@ CREATE TABLE `vtiger_report_sharegroups` (
 -- Table structure for table `vtiger_report_sharerole`
 --
 
-CREATE TABLE `vtiger_report_sharerole` (
+CREATE TABLE IF NOT EXISTS `vtiger_report_sharerole` (
   `reportid` int(25) NOT NULL,
-  `roleid` varchar(255) NOT NULL
+  `roleid` varchar(255) NOT NULL,
+  KEY `vtiger_report_sharerole_ibfk_1` (`reportid`),
+  KEY `vtiger_role_roleid_ibfk_1` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -19401,9 +20081,11 @@ CREATE TABLE `vtiger_report_sharerole` (
 -- Table structure for table `vtiger_report_sharers`
 --
 
-CREATE TABLE `vtiger_report_sharers` (
+CREATE TABLE IF NOT EXISTS `vtiger_report_sharers` (
   `reportid` int(25) NOT NULL,
-  `rsid` varchar(255) NOT NULL
+  `rsid` varchar(255) NOT NULL,
+  KEY `vtiger_report_sharers_ibfk_1` (`reportid`),
+  KEY `vtiger_rolesd_rsid_ibfk_1` (`rsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -19412,9 +20094,11 @@ CREATE TABLE `vtiger_report_sharers` (
 -- Table structure for table `vtiger_report_shareusers`
 --
 
-CREATE TABLE `vtiger_report_shareusers` (
+CREATE TABLE IF NOT EXISTS `vtiger_report_shareusers` (
   `reportid` int(25) NOT NULL,
-  `userid` int(25) NOT NULL
+  `userid` int(25) NOT NULL,
+  KEY `vtiger_report_shareusers_ibfk_1` (`reportid`),
+  KEY `vtiger_users_userid_ibfk_1` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -19423,12 +20107,13 @@ CREATE TABLE `vtiger_report_shareusers` (
 -- Table structure for table `vtiger_role`
 --
 
-CREATE TABLE `vtiger_role` (
+CREATE TABLE IF NOT EXISTS `vtiger_role` (
   `roleid` varchar(255) NOT NULL,
   `rolename` varchar(200) DEFAULT NULL,
   `parentrole` varchar(255) DEFAULT NULL,
   `depth` int(19) DEFAULT NULL,
-  `allowassignedrecordsto` int(2) NOT NULL DEFAULT 1
+  `allowassignedrecordsto` int(2) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -19448,11 +20133,14 @@ INSERT INTO `vtiger_role` (`roleid`, `rolename`, `parentrole`, `depth`, `allowas
 -- Table structure for table `vtiger_role2picklist`
 --
 
-CREATE TABLE `vtiger_role2picklist` (
+CREATE TABLE IF NOT EXISTS `vtiger_role2picklist` (
   `roleid` varchar(255) NOT NULL,
   `picklistvalueid` int(11) NOT NULL,
   `picklistid` int(11) NOT NULL,
-  `sortid` int(11) DEFAULT NULL
+  `sortid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`roleid`,`picklistvalueid`,`picklistid`),
+  KEY `role2picklist_roleid_picklistid_idx` (`roleid`,`picklistid`,`picklistvalueid`),
+  KEY `fk_2_vtiger_role2picklist` (`picklistid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -21382,9 +22070,11 @@ INSERT INTO `vtiger_role2picklist` (`roleid`, `picklistvalueid`, `picklistid`, `
 -- Table structure for table `vtiger_role2profile`
 --
 
-CREATE TABLE `vtiger_role2profile` (
+CREATE TABLE IF NOT EXISTS `vtiger_role2profile` (
   `roleid` varchar(255) NOT NULL,
-  `profileid` int(11) NOT NULL
+  `profileid` int(11) NOT NULL,
+  PRIMARY KEY (`roleid`,`profileid`),
+  KEY `role2profile_roleid_profileid_idx` (`roleid`,`profileid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -21403,7 +22093,7 @@ INSERT INTO `vtiger_role2profile` (`roleid`, `profileid`) VALUES
 -- Table structure for table `vtiger_role_seq`
 --
 
-CREATE TABLE `vtiger_role_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_role_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21420,11 +22110,12 @@ INSERT INTO `vtiger_role_seq` (`id`) VALUES
 -- Table structure for table `vtiger_rollupcomments_settings`
 --
 
-CREATE TABLE `vtiger_rollupcomments_settings` (
+CREATE TABLE IF NOT EXISTS `vtiger_rollupcomments_settings` (
   `rollupid` int(19) NOT NULL,
   `userid` int(19) NOT NULL,
   `tabid` int(19) NOT NULL,
-  `rollup_status` int(2) NOT NULL DEFAULT 0
+  `rollup_status` int(2) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`rollupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21433,11 +22124,12 @@ CREATE TABLE `vtiger_rollupcomments_settings` (
 -- Table structure for table `vtiger_rowheight`
 --
 
-CREATE TABLE `vtiger_rowheight` (
+CREATE TABLE IF NOT EXISTS `vtiger_rowheight` (
   `rowheightid` int(11) NOT NULL,
   `rowheight` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`rowheightid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -21455,7 +22147,7 @@ INSERT INTO `vtiger_rowheight` (`rowheightid`, `rowheight`, `sortorderid`, `pres
 -- Table structure for table `vtiger_rowheight_seq`
 --
 
-CREATE TABLE `vtiger_rowheight_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_rowheight_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21472,12 +22164,13 @@ INSERT INTO `vtiger_rowheight_seq` (`id`) VALUES
 -- Table structure for table `vtiger_rss`
 --
 
-CREATE TABLE `vtiger_rss` (
+CREATE TABLE IF NOT EXISTS `vtiger_rss` (
   `rssid` int(19) NOT NULL,
   `rssurl` varchar(200) NOT NULL DEFAULT '',
   `rsstitle` varchar(200) DEFAULT NULL,
   `rsstype` int(10) DEFAULT 0,
-  `starred` int(1) DEFAULT 0
+  `starred` int(1) DEFAULT 0,
+  PRIMARY KEY (`rssid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21486,9 +22179,12 @@ CREATE TABLE `vtiger_rss` (
 -- Table structure for table `vtiger_salesmanactivityrel`
 --
 
-CREATE TABLE `vtiger_salesmanactivityrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_salesmanactivityrel` (
   `smid` int(19) NOT NULL DEFAULT 0,
-  `activityid` int(19) NOT NULL DEFAULT 0
+  `activityid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`smid`,`activityid`),
+  KEY `salesmanactivityrel_activityid_idx` (`activityid`),
+  KEY `salesmanactivityrel_smid_idx` (`smid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21497,9 +22193,12 @@ CREATE TABLE `vtiger_salesmanactivityrel` (
 -- Table structure for table `vtiger_salesmanattachmentsrel`
 --
 
-CREATE TABLE `vtiger_salesmanattachmentsrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_salesmanattachmentsrel` (
   `smid` int(19) NOT NULL DEFAULT 0,
-  `attachmentsid` int(19) NOT NULL DEFAULT 0
+  `attachmentsid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`smid`,`attachmentsid`),
+  KEY `salesmanattachmentsrel_smid_idx` (`smid`),
+  KEY `salesmanattachmentsrel_attachmentsid_idx` (`attachmentsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21508,9 +22207,12 @@ CREATE TABLE `vtiger_salesmanattachmentsrel` (
 -- Table structure for table `vtiger_salesmanticketrel`
 --
 
-CREATE TABLE `vtiger_salesmanticketrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_salesmanticketrel` (
   `smid` int(19) NOT NULL DEFAULT 0,
-  `id` int(19) NOT NULL DEFAULT 0
+  `id` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`smid`,`id`),
+  KEY `salesmanticketrel_smid_idx` (`smid`),
+  KEY `salesmanticketrel_id_idx` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21519,7 +22221,7 @@ CREATE TABLE `vtiger_salesmanticketrel` (
 -- Table structure for table `vtiger_salesorder`
 --
 
-CREATE TABLE `vtiger_salesorder` (
+CREATE TABLE IF NOT EXISTS `vtiger_salesorder` (
   `salesorderid` int(19) NOT NULL DEFAULT 0,
   `subject` varchar(100) DEFAULT NULL,
   `potentialid` int(19) DEFAULT NULL,
@@ -21553,7 +22255,10 @@ CREATE TABLE `vtiger_salesorder` (
   `pre_tax_total` decimal(25,8) DEFAULT NULL,
   `s_h_percent` int(11) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
-  `region_id` int(19) DEFAULT NULL
+  `region_id` int(19) DEFAULT NULL,
+  PRIMARY KEY (`salesorderid`),
+  KEY `salesorder_vendorid_idx` (`vendorid`),
+  KEY `salesorder_contactid_idx` (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21562,8 +22267,9 @@ CREATE TABLE `vtiger_salesorder` (
 -- Table structure for table `vtiger_salesordercf`
 --
 
-CREATE TABLE `vtiger_salesordercf` (
-  `salesorderid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_salesordercf` (
+  `salesorderid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`salesorderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21572,13 +22278,14 @@ CREATE TABLE `vtiger_salesordercf` (
 -- Table structure for table `vtiger_sales_stage`
 --
 
-CREATE TABLE `vtiger_sales_stage` (
+CREATE TABLE IF NOT EXISTS `vtiger_sales_stage` (
   `sales_stage_id` int(19) NOT NULL,
   `sales_stage` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`sales_stage_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -21603,7 +22310,7 @@ INSERT INTO `vtiger_sales_stage` (`sales_stage_id`, `sales_stage`, `presence`, `
 -- Table structure for table `vtiger_sales_stage_seq`
 --
 
-CREATE TABLE `vtiger_sales_stage_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_sales_stage_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21620,13 +22327,14 @@ INSERT INTO `vtiger_sales_stage_seq` (`id`) VALUES
 -- Table structure for table `vtiger_salutationtype`
 --
 
-CREATE TABLE `vtiger_salutationtype` (
+CREATE TABLE IF NOT EXISTS `vtiger_salutationtype` (
   `salutationid` int(19) NOT NULL,
   `salutationtype` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`salutationid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -21646,7 +22354,7 @@ INSERT INTO `vtiger_salutationtype` (`salutationid`, `salutationtype`, `presence
 -- Table structure for table `vtiger_salutationtype_seq`
 --
 
-CREATE TABLE `vtiger_salutationtype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_salutationtype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21663,12 +22371,13 @@ INSERT INTO `vtiger_salutationtype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_scheduled_reports`
 --
 
-CREATE TABLE `vtiger_scheduled_reports` (
+CREATE TABLE IF NOT EXISTS `vtiger_scheduled_reports` (
   `reportid` int(11) NOT NULL,
   `recipients` text DEFAULT NULL,
   `schedule` text DEFAULT NULL,
   `format` varchar(10) DEFAULT NULL,
-  `next_trigger_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `next_trigger_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`reportid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21677,7 +22386,7 @@ CREATE TABLE `vtiger_scheduled_reports` (
 -- Table structure for table `vtiger_schedulereports`
 --
 
-CREATE TABLE `vtiger_schedulereports` (
+CREATE TABLE IF NOT EXISTS `vtiger_schedulereports` (
   `reportid` int(10) DEFAULT NULL,
   `scheduleid` int(3) DEFAULT NULL,
   `recipients` text DEFAULT NULL,
@@ -21697,9 +22406,12 @@ CREATE TABLE `vtiger_schedulereports` (
 -- Table structure for table `vtiger_seactivityrel`
 --
 
-CREATE TABLE `vtiger_seactivityrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_seactivityrel` (
   `crmid` int(19) NOT NULL,
-  `activityid` int(19) NOT NULL
+  `activityid` int(19) NOT NULL,
+  PRIMARY KEY (`crmid`,`activityid`),
+  KEY `seactivityrel_activityid_idx` (`activityid`),
+  KEY `seactivityrel_crmid_idx` (`crmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21708,7 +22420,7 @@ CREATE TABLE `vtiger_seactivityrel` (
 -- Table structure for table `vtiger_seactivityrel_seq`
 --
 
-CREATE TABLE `vtiger_seactivityrel_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_seactivityrel_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21725,9 +22437,13 @@ INSERT INTO `vtiger_seactivityrel_seq` (`id`) VALUES
 -- Table structure for table `vtiger_seattachmentsrel`
 --
 
-CREATE TABLE `vtiger_seattachmentsrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_seattachmentsrel` (
   `crmid` int(19) NOT NULL DEFAULT 0,
-  `attachmentsid` int(19) NOT NULL DEFAULT 0
+  `attachmentsid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`crmid`,`attachmentsid`),
+  KEY `seattachmentsrel_attachmentsid_idx` (`attachmentsid`),
+  KEY `seattachmentsrel_crmid_idx` (`crmid`),
+  KEY `seattachmentsrel_attachmentsid_crmid_idx` (`attachmentsid`,`crmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21736,10 +22452,12 @@ CREATE TABLE `vtiger_seattachmentsrel` (
 -- Table structure for table `vtiger_selectcolumn`
 --
 
-CREATE TABLE `vtiger_selectcolumn` (
+CREATE TABLE IF NOT EXISTS `vtiger_selectcolumn` (
   `queryid` int(19) NOT NULL,
   `columnindex` int(11) NOT NULL DEFAULT 0,
-  `columnname` varchar(250) DEFAULT ''
+  `columnname` varchar(250) DEFAULT '',
+  PRIMARY KEY (`queryid`,`columnindex`),
+  KEY `selectcolumn_queryid_idx` (`queryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -21908,10 +22626,12 @@ INSERT INTO `vtiger_selectcolumn` (`queryid`, `columnindex`, `columnname`) VALUE
 -- Table structure for table `vtiger_selectquery`
 --
 
-CREATE TABLE `vtiger_selectquery` (
+CREATE TABLE IF NOT EXISTS `vtiger_selectquery` (
   `queryid` int(19) NOT NULL,
   `startindex` int(19) DEFAULT 0,
-  `numofobjects` int(19) DEFAULT 0
+  `numofobjects` int(19) DEFAULT 0,
+  PRIMARY KEY (`queryid`),
+  KEY `selectquery_queryid_idx` (`queryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -21951,7 +22671,7 @@ INSERT INTO `vtiger_selectquery` (`queryid`, `startindex`, `numofobjects`) VALUE
 -- Table structure for table `vtiger_selectquery_seq`
 --
 
-CREATE TABLE `vtiger_selectquery_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_selectquery_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21968,9 +22688,12 @@ INSERT INTO `vtiger_selectquery_seq` (`id`) VALUES
 -- Table structure for table `vtiger_senotesrel`
 --
 
-CREATE TABLE `vtiger_senotesrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_senotesrel` (
   `crmid` int(19) NOT NULL DEFAULT 0,
-  `notesid` int(19) NOT NULL DEFAULT 0
+  `notesid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`crmid`,`notesid`),
+  KEY `senotesrel_notesid_idx` (`notesid`),
+  KEY `senotesrel_crmid_idx` (`crmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21979,11 +22702,14 @@ CREATE TABLE `vtiger_senotesrel` (
 -- Table structure for table `vtiger_seproductsrel`
 --
 
-CREATE TABLE `vtiger_seproductsrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_seproductsrel` (
   `crmid` int(19) NOT NULL DEFAULT 0,
   `productid` int(19) NOT NULL DEFAULT 0,
   `setype` varchar(30) NOT NULL,
-  `quantity` int(19) DEFAULT 1
+  `quantity` int(19) DEFAULT 1,
+  PRIMARY KEY (`crmid`,`productid`),
+  KEY `seproductsrel_productid_idx` (`productid`),
+  KEY `seproductrel_crmid_idx` (`crmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -21992,7 +22718,7 @@ CREATE TABLE `vtiger_seproductsrel` (
 -- Table structure for table `vtiger_service`
 --
 
-CREATE TABLE `vtiger_service` (
+CREATE TABLE IF NOT EXISTS `vtiger_service` (
   `serviceid` int(11) NOT NULL,
   `service_no` varchar(100) NOT NULL,
   `servicename` varchar(50) NOT NULL,
@@ -22010,7 +22736,8 @@ CREATE TABLE `vtiger_service` (
   `currency_id` int(19) NOT NULL DEFAULT 1,
   `commissionrate` decimal(7,3) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
-  `purchase_cost` decimal(27,8) DEFAULT NULL
+  `purchase_cost` decimal(27,8) DEFAULT NULL,
+  PRIMARY KEY (`serviceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22019,13 +22746,14 @@ CREATE TABLE `vtiger_service` (
 -- Table structure for table `vtiger_servicecategory`
 --
 
-CREATE TABLE `vtiger_servicecategory` (
+CREATE TABLE IF NOT EXISTS `vtiger_servicecategory` (
   `servicecategoryid` int(11) NOT NULL,
   `servicecategory` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`servicecategoryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22045,7 +22773,7 @@ INSERT INTO `vtiger_servicecategory` (`servicecategoryid`, `servicecategory`, `p
 -- Table structure for table `vtiger_servicecategory_seq`
 --
 
-CREATE TABLE `vtiger_servicecategory_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_servicecategory_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22062,8 +22790,9 @@ INSERT INTO `vtiger_servicecategory_seq` (`id`) VALUES
 -- Table structure for table `vtiger_servicecf`
 --
 
-CREATE TABLE `vtiger_servicecf` (
-  `serviceid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_servicecf` (
+  `serviceid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`serviceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22072,7 +22801,7 @@ CREATE TABLE `vtiger_servicecf` (
 -- Table structure for table `vtiger_servicecontracts`
 --
 
-CREATE TABLE `vtiger_servicecontracts` (
+CREATE TABLE IF NOT EXISTS `vtiger_servicecontracts` (
   `servicecontractsid` int(11) DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
@@ -22089,7 +22818,8 @@ CREATE TABLE `vtiger_servicecontracts` (
   `contract_type` varchar(200) DEFAULT NULL,
   `progress` decimal(5,2) DEFAULT NULL,
   `contract_no` varchar(100) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  KEY `fk_crmid_vtiger_servicecontracts` (`servicecontractsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22098,8 +22828,9 @@ CREATE TABLE `vtiger_servicecontracts` (
 -- Table structure for table `vtiger_servicecontractscf`
 --
 
-CREATE TABLE `vtiger_servicecontractscf` (
-  `servicecontractsid` int(11) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_servicecontractscf` (
+  `servicecontractsid` int(11) NOT NULL,
+  PRIMARY KEY (`servicecontractsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22108,13 +22839,14 @@ CREATE TABLE `vtiger_servicecontractscf` (
 -- Table structure for table `vtiger_service_usageunit`
 --
 
-CREATE TABLE `vtiger_service_usageunit` (
+CREATE TABLE IF NOT EXISTS `vtiger_service_usageunit` (
   `service_usageunitid` int(11) NOT NULL,
   `service_usageunit` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`service_usageunitid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22132,7 +22864,7 @@ INSERT INTO `vtiger_service_usageunit` (`service_usageunitid`, `service_usageuni
 -- Table structure for table `vtiger_service_usageunit_seq`
 --
 
-CREATE TABLE `vtiger_service_usageunit_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_service_usageunit_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22149,9 +22881,12 @@ INSERT INTO `vtiger_service_usageunit_seq` (`id`) VALUES
 -- Table structure for table `vtiger_seticketsrel`
 --
 
-CREATE TABLE `vtiger_seticketsrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_seticketsrel` (
   `crmid` int(19) NOT NULL DEFAULT 0,
-  `ticketid` int(19) NOT NULL DEFAULT 0
+  `ticketid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`crmid`,`ticketid`),
+  KEY `seticketsrel_crmid_idx` (`crmid`),
+  KEY `seticketsrel_ticketid_idx` (`ticketid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22160,10 +22895,11 @@ CREATE TABLE `vtiger_seticketsrel` (
 -- Table structure for table `vtiger_settings_blocks`
 --
 
-CREATE TABLE `vtiger_settings_blocks` (
+CREATE TABLE IF NOT EXISTS `vtiger_settings_blocks` (
   `blockid` int(19) NOT NULL,
   `label` varchar(250) DEFAULT NULL,
-  `sequence` int(19) DEFAULT NULL
+  `sequence` int(19) DEFAULT NULL,
+  PRIMARY KEY (`blockid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22188,7 +22924,7 @@ INSERT INTO `vtiger_settings_blocks` (`blockid`, `label`, `sequence`) VALUES
 -- Table structure for table `vtiger_settings_blocks_seq`
 --
 
-CREATE TABLE `vtiger_settings_blocks_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_settings_blocks_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22205,7 +22941,7 @@ INSERT INTO `vtiger_settings_blocks_seq` (`id`) VALUES
 -- Table structure for table `vtiger_settings_field`
 --
 
-CREATE TABLE `vtiger_settings_field` (
+CREATE TABLE IF NOT EXISTS `vtiger_settings_field` (
   `fieldid` int(19) NOT NULL,
   `blockid` int(19) DEFAULT NULL,
   `name` varchar(250) DEFAULT NULL,
@@ -22214,7 +22950,9 @@ CREATE TABLE `vtiger_settings_field` (
   `linkto` text DEFAULT NULL,
   `sequence` int(19) DEFAULT NULL,
   `active` int(19) DEFAULT 0,
-  `pinned` int(1) DEFAULT 0
+  `pinned` int(1) DEFAULT 0,
+  PRIMARY KEY (`fieldid`),
+  KEY `fk_1_vtiger_settings_field` (`blockid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22249,7 +22987,7 @@ INSERT INTO `vtiger_settings_field` (`fieldid`, `blockid`, `name`, `iconpath`, `
 (31, 7, 'Webforms', 'modules/Webforms/img/Webform.png', 'LBL_WEBFORMS_DESCRIPTION', 'index.php?module=Webforms&parent=Settings&view=List', 1, 1, 0),
 (32, 5, 'LBL_EDIT_FIELDS', '', 'LBL_LAYOUT_EDITOR_DESCRIPTION', 'index.php?module=LayoutEditor&parent=Settings&view=Index', 2, 0, 0),
 (33, 9, 'LBL_LEAD_MAPPING', 'NULL', 'NULL', 'index.php?parent=Settings&module=Leads&view=MappingDetail', 1, 0, 1),
-(34, 9, 'LBL_OPPORTUNITY_MAPPING', 'NULL', 'NULL', 'index.php?parent=Settings&module=Potentials&view=MappingDetail', 2, 1, 1),
+(34, 9, 'LBL_OPPORTUNITY_MAPPING', 'NULL', 'NULL', 'index.php?parent=Settings&module=Potentials&view=MappingDetail', 2, 0, 1),
 (35, 11, 'My Preferences', 'NULL', 'NULL', 'index.php?module=Users&view=PreferenceDetail&parent=Settings&record=1', 1, 0, 1),
 (36, 11, 'Calendar Settings', 'NULL', 'NULL', 'index.php?module=Users&parent=Settings&view=Calendar&record=1', 2, 0, 1),
 (37, 11, 'LBL_MY_TAGS', 'NULL', 'NULL', 'index.php?module=Tags&parent=Settings&view=List&record=1', 3, 0, 1),
@@ -22263,7 +23001,7 @@ INSERT INTO `vtiger_settings_field` (`fieldid`, `blockid`, `name`, `iconpath`, `
 -- Table structure for table `vtiger_settings_field_seq`
 --
 
-CREATE TABLE `vtiger_settings_field_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_settings_field_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22280,9 +23018,10 @@ INSERT INTO `vtiger_settings_field_seq` (`id`) VALUES
 -- Table structure for table `vtiger_sharedcalendar`
 --
 
-CREATE TABLE `vtiger_sharedcalendar` (
+CREATE TABLE IF NOT EXISTS `vtiger_sharedcalendar` (
   `userid` int(19) NOT NULL,
-  `sharedid` int(19) NOT NULL
+  `sharedid` int(19) NOT NULL,
+  PRIMARY KEY (`userid`,`sharedid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22291,7 +23030,7 @@ CREATE TABLE `vtiger_sharedcalendar` (
 -- Table structure for table `vtiger_shareduserinfo`
 --
 
-CREATE TABLE `vtiger_shareduserinfo` (
+CREATE TABLE IF NOT EXISTS `vtiger_shareduserinfo` (
   `userid` int(19) NOT NULL DEFAULT 0,
   `shareduserid` int(19) NOT NULL DEFAULT 0,
   `color` varchar(50) DEFAULT NULL,
@@ -22304,7 +23043,7 @@ CREATE TABLE `vtiger_shareduserinfo` (
 -- Table structure for table `vtiger_shippingtaxinfo`
 --
 
-CREATE TABLE `vtiger_shippingtaxinfo` (
+CREATE TABLE IF NOT EXISTS `vtiger_shippingtaxinfo` (
   `taxid` int(3) NOT NULL,
   `taxname` varchar(50) DEFAULT NULL,
   `taxlabel` varchar(50) DEFAULT NULL,
@@ -22313,7 +23052,9 @@ CREATE TABLE `vtiger_shippingtaxinfo` (
   `method` varchar(10) DEFAULT NULL,
   `type` varchar(10) DEFAULT NULL,
   `compoundon` varchar(400) DEFAULT NULL,
-  `regions` text DEFAULT NULL
+  `regions` text DEFAULT NULL,
+  PRIMARY KEY (`taxid`),
+  KEY `shippingtaxinfo_taxname_idx` (`taxname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22331,7 +23072,7 @@ INSERT INTO `vtiger_shippingtaxinfo` (`taxid`, `taxname`, `taxlabel`, `percentag
 -- Table structure for table `vtiger_shippingtaxinfo_seq`
 --
 
-CREATE TABLE `vtiger_shippingtaxinfo_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_shippingtaxinfo_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22348,14 +23089,16 @@ INSERT INTO `vtiger_shippingtaxinfo_seq` (`id`) VALUES
 -- Table structure for table `vtiger_shorturls`
 --
 
-CREATE TABLE `vtiger_shorturls` (
+CREATE TABLE IF NOT EXISTS `vtiger_shorturls` (
   `id` int(11) NOT NULL,
   `uid` varchar(50) DEFAULT NULL,
   `handler_path` varchar(400) DEFAULT NULL,
   `handler_class` varchar(100) DEFAULT NULL,
   `handler_function` varchar(100) DEFAULT NULL,
   `handler_data` varchar(255) DEFAULT NULL,
-  `onetime` int(5) DEFAULT NULL
+  `onetime` int(5) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22364,10 +23107,11 @@ CREATE TABLE `vtiger_shorturls` (
 -- Table structure for table `vtiger_smsnotifier`
 --
 
-CREATE TABLE `vtiger_smsnotifier` (
+CREATE TABLE IF NOT EXISTS `vtiger_smsnotifier` (
   `smsnotifierid` int(19) NOT NULL,
   `message` text DEFAULT NULL,
-  `status` varchar(100) DEFAULT NULL
+  `status` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`smsnotifierid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22376,8 +23120,9 @@ CREATE TABLE `vtiger_smsnotifier` (
 -- Table structure for table `vtiger_smsnotifiercf`
 --
 
-CREATE TABLE `vtiger_smsnotifiercf` (
-  `smsnotifierid` int(19) NOT NULL
+CREATE TABLE IF NOT EXISTS `vtiger_smsnotifiercf` (
+  `smsnotifierid` int(19) NOT NULL,
+  PRIMARY KEY (`smsnotifierid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22386,13 +23131,14 @@ CREATE TABLE `vtiger_smsnotifiercf` (
 -- Table structure for table `vtiger_smsnotifier_servers`
 --
 
-CREATE TABLE `vtiger_smsnotifier_servers` (
+CREATE TABLE IF NOT EXISTS `vtiger_smsnotifier_servers` (
   `id` int(11) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `isactive` int(1) DEFAULT NULL,
   `providertype` varchar(50) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
-  `parameters` text DEFAULT NULL
+  `parameters` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22401,14 +23147,15 @@ CREATE TABLE `vtiger_smsnotifier_servers` (
 -- Table structure for table `vtiger_smsnotifier_status`
 --
 
-CREATE TABLE `vtiger_smsnotifier_status` (
+CREATE TABLE IF NOT EXISTS `vtiger_smsnotifier_status` (
   `smsnotifierid` int(19) DEFAULT NULL,
   `tonumber` varchar(20) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
   `smsmessageid` varchar(50) DEFAULT NULL,
   `needlookup` int(1) DEFAULT 1,
   `statusid` int(11) NOT NULL,
-  `statusmessage` varchar(100) DEFAULT NULL
+  `statusmessage` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`statusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22417,7 +23164,7 @@ CREATE TABLE `vtiger_smsnotifier_status` (
 -- Table structure for table `vtiger_soapservice`
 --
 
-CREATE TABLE `vtiger_soapservice` (
+CREATE TABLE IF NOT EXISTS `vtiger_soapservice` (
   `id` int(19) DEFAULT NULL,
   `type` varchar(25) DEFAULT NULL,
   `sessionid` varchar(100) DEFAULT NULL
@@ -22429,14 +23176,15 @@ CREATE TABLE `vtiger_soapservice` (
 -- Table structure for table `vtiger_sobillads`
 --
 
-CREATE TABLE `vtiger_sobillads` (
+CREATE TABLE IF NOT EXISTS `vtiger_sobillads` (
   `sobilladdressid` int(19) NOT NULL DEFAULT 0,
   `bill_city` varchar(30) DEFAULT NULL,
   `bill_code` varchar(30) DEFAULT NULL,
   `bill_country` varchar(30) DEFAULT NULL,
   `bill_state` varchar(30) DEFAULT NULL,
   `bill_street` varchar(250) DEFAULT NULL,
-  `bill_pobox` varchar(30) DEFAULT NULL
+  `bill_pobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`sobilladdressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22445,14 +23193,15 @@ CREATE TABLE `vtiger_sobillads` (
 -- Table structure for table `vtiger_soshipads`
 --
 
-CREATE TABLE `vtiger_soshipads` (
+CREATE TABLE IF NOT EXISTS `vtiger_soshipads` (
   `soshipaddressid` int(19) NOT NULL DEFAULT 0,
   `ship_city` varchar(30) DEFAULT NULL,
   `ship_code` varchar(30) DEFAULT NULL,
   `ship_country` varchar(30) DEFAULT NULL,
   `ship_state` varchar(30) DEFAULT NULL,
   `ship_street` varchar(250) DEFAULT NULL,
-  `ship_pobox` varchar(30) DEFAULT NULL
+  `ship_pobox` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`soshipaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22461,13 +23210,15 @@ CREATE TABLE `vtiger_soshipads` (
 -- Table structure for table `vtiger_sostatus`
 --
 
-CREATE TABLE `vtiger_sostatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_sostatus` (
   `sostatusid` int(19) NOT NULL,
   `sostatus` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`sostatusid`),
+  UNIQUE KEY `sostatus_sostatus_idx` (`sostatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22486,13 +23237,15 @@ INSERT INTO `vtiger_sostatus` (`sostatusid`, `sostatus`, `presence`, `picklist_v
 -- Table structure for table `vtiger_sostatushistory`
 --
 
-CREATE TABLE `vtiger_sostatushistory` (
+CREATE TABLE IF NOT EXISTS `vtiger_sostatushistory` (
   `historyid` int(19) NOT NULL,
   `salesorderid` int(19) NOT NULL,
   `accountname` varchar(100) DEFAULT NULL,
   `total` decimal(10,0) DEFAULT NULL,
   `sostatus` varchar(200) DEFAULT NULL,
-  `lastmodified` datetime DEFAULT NULL
+  `lastmodified` datetime DEFAULT NULL,
+  PRIMARY KEY (`historyid`),
+  KEY `sostatushistory_salesorderid_idx` (`salesorderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22501,7 +23254,7 @@ CREATE TABLE `vtiger_sostatushistory` (
 -- Table structure for table `vtiger_sostatus_seq`
 --
 
-CREATE TABLE `vtiger_sostatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_sostatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22518,7 +23271,7 @@ INSERT INTO `vtiger_sostatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_sqltimelog`
 --
 
-CREATE TABLE `vtiger_sqltimelog` (
+CREATE TABLE IF NOT EXISTS `vtiger_sqltimelog` (
   `id` int(11) DEFAULT NULL,
   `type` varchar(10) DEFAULT NULL,
   `data` text DEFAULT NULL,
@@ -22533,11 +23286,12 @@ CREATE TABLE `vtiger_sqltimelog` (
 -- Table structure for table `vtiger_start_hour`
 --
 
-CREATE TABLE `vtiger_start_hour` (
+CREATE TABLE IF NOT EXISTS `vtiger_start_hour` (
   `start_hourid` int(11) NOT NULL,
   `start_hour` varchar(200) NOT NULL,
   `sortorderid` int(11) DEFAULT NULL,
-  `presence` int(11) NOT NULL DEFAULT 1
+  `presence` int(11) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`start_hourid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22576,7 +23330,7 @@ INSERT INTO `vtiger_start_hour` (`start_hourid`, `start_hour`, `sortorderid`, `p
 -- Table structure for table `vtiger_start_hour_seq`
 --
 
-CREATE TABLE `vtiger_start_hour_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_start_hour_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22593,11 +23347,12 @@ INSERT INTO `vtiger_start_hour_seq` (`id`) VALUES
 -- Table structure for table `vtiger_status`
 --
 
-CREATE TABLE `vtiger_status` (
+CREATE TABLE IF NOT EXISTS `vtiger_status` (
   `statusid` int(19) NOT NULL,
   `status` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
-  `picklist_valueid` int(19) NOT NULL DEFAULT 0
+  `picklist_valueid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`statusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22614,7 +23369,7 @@ INSERT INTO `vtiger_status` (`statusid`, `status`, `presence`, `picklist_valueid
 -- Table structure for table `vtiger_status_seq`
 --
 
-CREATE TABLE `vtiger_status_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_status_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22631,10 +23386,11 @@ INSERT INTO `vtiger_status_seq` (`id`) VALUES
 -- Table structure for table `vtiger_supportprotocol`
 --
 
-CREATE TABLE `vtiger_supportprotocol` (
+CREATE TABLE IF NOT EXISTS `vtiger_supportprotocol` (
   `supportprotocolid` int(19) NOT NULL,
   `hinhthuchotro` varchar(255) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`supportprotocolid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22643,9 +23399,10 @@ CREATE TABLE `vtiger_supportprotocol` (
 -- Table structure for table `vtiger_supportprotocolcf`
 --
 
-CREATE TABLE `vtiger_supportprotocolcf` (
+CREATE TABLE IF NOT EXISTS `vtiger_supportprotocolcf` (
   `supportprotocolid` int(19) NOT NULL,
-  `cf_1215` text DEFAULT NULL
+  `cf_1215` text DEFAULT NULL,
+  PRIMARY KEY (`supportprotocolid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22654,7 +23411,7 @@ CREATE TABLE `vtiger_supportprotocolcf` (
 -- Table structure for table `vtiger_systems`
 --
 
-CREATE TABLE `vtiger_systems` (
+CREATE TABLE IF NOT EXISTS `vtiger_systems` (
   `id` int(19) NOT NULL,
   `server` varchar(100) DEFAULT NULL,
   `server_port` int(19) DEFAULT NULL,
@@ -22663,7 +23420,8 @@ CREATE TABLE `vtiger_systems` (
   `server_type` varchar(20) DEFAULT NULL,
   `smtp_auth` varchar(5) DEFAULT NULL,
   `server_path` varchar(256) DEFAULT NULL,
-  `from_email_field` varchar(50) DEFAULT NULL
+  `from_email_field` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22672,7 +23430,7 @@ CREATE TABLE `vtiger_systems` (
 -- Table structure for table `vtiger_tab`
 --
 
-CREATE TABLE `vtiger_tab` (
+CREATE TABLE IF NOT EXISTS `vtiger_tab` (
   `tabid` int(19) NOT NULL DEFAULT 0,
   `name` varchar(25) NOT NULL,
   `presence` int(19) NOT NULL DEFAULT 1,
@@ -22689,7 +23447,11 @@ CREATE TABLE `vtiger_tab` (
   `source` varchar(255) DEFAULT 'custom',
   `issyncable` tinyint(1) DEFAULT 0,
   `allowduplicates` tinyint(1) DEFAULT 1,
-  `sync_action_for_duplicates` int(1) DEFAULT 1
+  `sync_action_for_duplicates` int(1) DEFAULT 1,
+  PRIMARY KEY (`tabid`),
+  UNIQUE KEY `tab_name_idx` (`name`),
+  KEY `tab_modifiedby_idx` (`modifiedby`),
+  KEY `tab_tabid_idx` (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22698,26 +23460,26 @@ CREATE TABLE `vtiger_tab` (
 
 INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`, `modifiedby`, `modifiedtime`, `customized`, `ownedby`, `isentitytype`, `trial`, `version`, `parent`, `source`, `issyncable`, `allowduplicates`, `sync_action_for_duplicates`) VALUES
 (1, 'Dashboard', 0, 12, 'Dashboards', NULL, NULL, 0, 1, 0, 0, NULL, 'Analytics', NULL, 1, 1, 1),
-(2, 'Potentials', 1, 7, 'Potentials', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
+(2, 'Potentials', 0, 7, 'Potentials', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (3, 'Home', 0, 1, 'Home', NULL, NULL, 0, 1, 0, 0, NULL, NULL, NULL, 1, 1, 1),
 (4, 'Contacts', 1, 6, 'Contacts', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (6, 'Accounts', 1, 5, 'Accounts', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 0, 1),
 (7, 'Leads', 0, 4, 'Leads', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (8, 'Documents', 1, 9, 'Documents', NULL, NULL, 0, 0, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
-(9, 'Calendar', 1, 3, 'Calendar', NULL, NULL, 0, 0, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
+(9, 'Calendar', 0, 3, 'Calendar', NULL, NULL, 0, 0, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
 (10, 'Emails', 1, 10, 'Emails', NULL, NULL, 0, 1, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
 (13, 'HelpDesk', 1, 11, 'HelpDesk', NULL, NULL, 0, 0, 1, 0, NULL, 'Support', NULL, 1, 1, 1),
 (14, 'Products', 0, 8, 'Products', NULL, NULL, 0, 0, 1, 0, NULL, 'Inventory', NULL, 1, 1, 1),
 (15, 'Faq', 1, -1, 'Faq', NULL, NULL, 0, 1, 1, 0, NULL, 'Support', NULL, 1, 1, 1),
 (16, 'Events', 2, -1, 'Events', NULL, NULL, 0, 0, 1, 0, NULL, NULL, NULL, 1, 1, 1),
-(18, 'Vendors', 1, -1, 'Vendors', NULL, NULL, 0, 0, 1, 0, NULL, 'Inventory', NULL, 1, 1, 1),
+(18, 'Vendors', 0, -1, 'Vendors', NULL, NULL, 0, 0, 1, 0, NULL, 'Inventory', NULL, 1, 1, 1),
 (19, 'PriceBooks', 1, -1, 'PriceBooks', NULL, NULL, 0, 1, 1, 0, NULL, 'Inventory', NULL, 1, 1, 1),
-(20, 'Quotes', 1, -1, 'Quotes', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
+(20, 'Quotes', 0, -1, 'Quotes', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (21, 'PurchaseOrder', 1, -1, 'PurchaseOrder', NULL, NULL, 0, 0, 1, 0, NULL, 'Inventory', NULL, 1, 1, 1),
 (22, 'SalesOrder', 0, -1, 'SalesOrder', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (23, 'Invoice', 0, -1, 'Invoice', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (24, 'Rss', 1, -1, 'Rss', NULL, NULL, 0, 1, 0, 0, NULL, 'Tools', NULL, 1, 1, 1),
-(25, 'Reports', 1, -1, 'Reports', NULL, NULL, 0, 1, 0, 0, NULL, 'Analytics', NULL, 1, 1, 1),
+(25, 'Reports', 0, -1, 'Reports', NULL, NULL, 0, 1, 0, 0, NULL, 'Analytics', NULL, 1, 1, 1),
 (26, 'Campaigns', 0, -1, 'Campaigns', NULL, NULL, 0, 0, 1, 0, NULL, 'Marketing', NULL, 1, 1, 1),
 (27, 'Portal', 1, -1, 'Portal', NULL, NULL, 0, 1, 0, 0, NULL, 'Tools', NULL, 1, 1, 1),
 (28, 'Webmails', 1, -1, 'Webmails', NULL, NULL, 0, 1, 1, 0, NULL, NULL, NULL, 1, 1, 1),
@@ -22760,7 +23522,8 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 (66, 'SupportProtocol', 0, -1, 'SupportProtocol', NULL, NULL, 1, 0, 1, 0, '0', 'Support', 'custom', 0, 1, 1),
 (69, 'VGSRelatedFields', 0, -1, 'VGS Related Fields', NULL, NULL, 1, 0, 0, 0, '2.0', '', 'custom', 0, 1, 1),
 (70, 'PhuongTienTruyenThong', 0, -1, 'PhuongTienTruyenThong', NULL, NULL, 1, 0, 1, 0, '0', 'Marketing', 'custom', 0, 1, 1),
-(71, 'HinhThucTruyenThong', 0, -1, 'HinhThucTruyenThong', NULL, NULL, 1, 0, 1, 0, '0', 'Marketing', 'custom', 0, 1, 1);
+(71, 'HinhThucTruyenThong', 0, -1, 'HinhThucTruyenThong', NULL, NULL, 1, 0, 1, 0, '0', 'Marketing', 'custom', 0, 1, 1),
+(72, 'QuyTrinhBanHang', 0, -1, 'QuyTrinhBanHang', NULL, NULL, 1, 0, 1, 0, '0', 'Sales', 'custom', 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -22768,10 +23531,11 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 -- Table structure for table `vtiger_tab_info`
 --
 
-CREATE TABLE `vtiger_tab_info` (
+CREATE TABLE IF NOT EXISTS `vtiger_tab_info` (
   `tabid` int(19) DEFAULT NULL,
   `prefname` varchar(256) DEFAULT NULL,
-  `prefvalue` varchar(256) DEFAULT NULL
+  `prefvalue` varchar(256) DEFAULT NULL,
+  KEY `fk_1_vtiger_tab_info` (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22845,13 +23609,14 @@ INSERT INTO `vtiger_tab_info` (`tabid`, `prefname`, `prefvalue`) VALUES
 -- Table structure for table `vtiger_taskpriority`
 --
 
-CREATE TABLE `vtiger_taskpriority` (
+CREATE TABLE IF NOT EXISTS `vtiger_taskpriority` (
   `taskpriorityid` int(19) NOT NULL,
   `taskpriority` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`taskpriorityid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22869,7 +23634,7 @@ INSERT INTO `vtiger_taskpriority` (`taskpriorityid`, `taskpriority`, `presence`,
 -- Table structure for table `vtiger_taskpriority_seq`
 --
 
-CREATE TABLE `vtiger_taskpriority_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_taskpriority_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22886,13 +23651,14 @@ INSERT INTO `vtiger_taskpriority_seq` (`id`) VALUES
 -- Table structure for table `vtiger_taskstatus`
 --
 
-CREATE TABLE `vtiger_taskstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_taskstatus` (
   `taskstatusid` int(19) NOT NULL,
   `taskstatus` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`taskstatusid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22913,7 +23679,7 @@ INSERT INTO `vtiger_taskstatus` (`taskstatusid`, `taskstatus`, `presence`, `pick
 -- Table structure for table `vtiger_taskstatus_seq`
 --
 
-CREATE TABLE `vtiger_taskstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_taskstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22930,11 +23696,13 @@ INSERT INTO `vtiger_taskstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_taxclass`
 --
 
-CREATE TABLE `vtiger_taxclass` (
+CREATE TABLE IF NOT EXISTS `vtiger_taxclass` (
   `taxclassid` int(19) NOT NULL,
   `taxclass` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`taxclassid`),
+  UNIQUE KEY `taxclass_carrier_idx` (`taxclass`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -22951,7 +23719,7 @@ INSERT INTO `vtiger_taxclass` (`taxclassid`, `taxclass`, `sortorderid`, `presenc
 -- Table structure for table `vtiger_taxclass_seq`
 --
 
-CREATE TABLE `vtiger_taxclass_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_taxclass_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -22968,9 +23736,10 @@ INSERT INTO `vtiger_taxclass_seq` (`id`) VALUES
 -- Table structure for table `vtiger_taxregions`
 --
 
-CREATE TABLE `vtiger_taxregions` (
+CREATE TABLE IF NOT EXISTS `vtiger_taxregions` (
   `regionid` int(10) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`regionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -22979,13 +23748,14 @@ CREATE TABLE `vtiger_taxregions` (
 -- Table structure for table `vtiger_ticketcategories`
 --
 
-CREATE TABLE `vtiger_ticketcategories` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketcategories` (
   `ticketcategories_id` int(19) NOT NULL,
   `ticketcategories` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 0,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`ticketcategories_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23003,7 +23773,7 @@ INSERT INTO `vtiger_ticketcategories` (`ticketcategories_id`, `ticketcategories`
 -- Table structure for table `vtiger_ticketcategories_seq`
 --
 
-CREATE TABLE `vtiger_ticketcategories_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketcategories_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23020,9 +23790,10 @@ INSERT INTO `vtiger_ticketcategories_seq` (`id`) VALUES
 -- Table structure for table `vtiger_ticketcf`
 --
 
-CREATE TABLE `vtiger_ticketcf` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketcf` (
   `ticketid` int(19) NOT NULL DEFAULT 0,
-  `from_portal` varchar(3) DEFAULT NULL
+  `from_portal` varchar(3) DEFAULT NULL,
+  PRIMARY KEY (`ticketid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23031,13 +23802,15 @@ CREATE TABLE `vtiger_ticketcf` (
 -- Table structure for table `vtiger_ticketcomments`
 --
 
-CREATE TABLE `vtiger_ticketcomments` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketcomments` (
   `commentid` int(19) NOT NULL,
   `ticketid` int(19) DEFAULT NULL,
   `comments` text DEFAULT NULL,
   `ownerid` int(19) NOT NULL DEFAULT 0,
   `ownertype` varchar(10) DEFAULT NULL,
-  `createdtime` datetime NOT NULL
+  `createdtime` datetime NOT NULL,
+  PRIMARY KEY (`commentid`),
+  KEY `ticketcomments_ticketid_idx` (`ticketid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23046,13 +23819,14 @@ CREATE TABLE `vtiger_ticketcomments` (
 -- Table structure for table `vtiger_ticketpriorities`
 --
 
-CREATE TABLE `vtiger_ticketpriorities` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketpriorities` (
   `ticketpriorities_id` int(19) NOT NULL,
   `ticketpriorities` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 0,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`ticketpriorities_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23071,7 +23845,7 @@ INSERT INTO `vtiger_ticketpriorities` (`ticketpriorities_id`, `ticketpriorities`
 -- Table structure for table `vtiger_ticketpriorities_seq`
 --
 
-CREATE TABLE `vtiger_ticketpriorities_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketpriorities_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23088,13 +23862,14 @@ INSERT INTO `vtiger_ticketpriorities_seq` (`id`) VALUES
 -- Table structure for table `vtiger_ticketseverities`
 --
 
-CREATE TABLE `vtiger_ticketseverities` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketseverities` (
   `ticketseverities_id` int(19) NOT NULL,
   `ticketseverities` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 0,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`ticketseverities_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23113,7 +23888,7 @@ INSERT INTO `vtiger_ticketseverities` (`ticketseverities_id`, `ticketseverities`
 -- Table structure for table `vtiger_ticketseverities_seq`
 --
 
-CREATE TABLE `vtiger_ticketseverities_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketseverities_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23130,13 +23905,14 @@ INSERT INTO `vtiger_ticketseverities_seq` (`id`) VALUES
 -- Table structure for table `vtiger_ticketstatus`
 --
 
-CREATE TABLE `vtiger_ticketstatus` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketstatus` (
   `ticketstatus_id` int(19) NOT NULL,
   `ticketstatus` varchar(200) DEFAULT NULL,
   `presence` int(1) NOT NULL DEFAULT 0,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`ticketstatus_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23155,7 +23931,7 @@ INSERT INTO `vtiger_ticketstatus` (`ticketstatus_id`, `ticketstatus`, `presence`
 -- Table structure for table `vtiger_ticketstatus_seq`
 --
 
-CREATE TABLE `vtiger_ticketstatus_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_ticketstatus_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23172,11 +23948,12 @@ INSERT INTO `vtiger_ticketstatus_seq` (`id`) VALUES
 -- Table structure for table `vtiger_time_zone`
 --
 
-CREATE TABLE `vtiger_time_zone` (
+CREATE TABLE IF NOT EXISTS `vtiger_time_zone` (
   `time_zoneid` int(19) NOT NULL,
   `time_zone` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
-  `presence` int(1) NOT NULL DEFAULT 1
+  `presence` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`time_zoneid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23288,7 +24065,7 @@ INSERT INTO `vtiger_time_zone` (`time_zoneid`, `time_zone`, `sortorderid`, `pres
 -- Table structure for table `vtiger_time_zone_seq`
 --
 
-CREATE TABLE `vtiger_time_zone_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_time_zone_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23305,11 +24082,13 @@ INSERT INTO `vtiger_time_zone_seq` (`id`) VALUES
 -- Table structure for table `vtiger_tmp_read_group_rel_sharing_per`
 --
 
-CREATE TABLE `vtiger_tmp_read_group_rel_sharing_per` (
+CREATE TABLE IF NOT EXISTS `vtiger_tmp_read_group_rel_sharing_per` (
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
   `relatedtabid` int(11) NOT NULL,
-  `sharedgroupid` int(11) NOT NULL
+  `sharedgroupid` int(11) NOT NULL,
+  PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`sharedgroupid`),
+  KEY `tmp_read_group_rel_sharing_per_userid_sharedgroupid_tabid` (`userid`,`sharedgroupid`,`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23318,10 +24097,12 @@ CREATE TABLE `vtiger_tmp_read_group_rel_sharing_per` (
 -- Table structure for table `vtiger_tmp_read_group_sharing_per`
 --
 
-CREATE TABLE `vtiger_tmp_read_group_sharing_per` (
+CREATE TABLE IF NOT EXISTS `vtiger_tmp_read_group_sharing_per` (
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
-  `sharedgroupid` int(11) NOT NULL
+  `sharedgroupid` int(11) NOT NULL,
+  PRIMARY KEY (`userid`,`tabid`,`sharedgroupid`),
+  KEY `tmp_read_group_sharing_per_userid_sharedgroupid_idx` (`userid`,`sharedgroupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23330,11 +24111,13 @@ CREATE TABLE `vtiger_tmp_read_group_sharing_per` (
 -- Table structure for table `vtiger_tmp_read_user_rel_sharing_per`
 --
 
-CREATE TABLE `vtiger_tmp_read_user_rel_sharing_per` (
+CREATE TABLE IF NOT EXISTS `vtiger_tmp_read_user_rel_sharing_per` (
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
   `relatedtabid` int(11) NOT NULL,
-  `shareduserid` int(11) NOT NULL
+  `shareduserid` int(11) NOT NULL,
+  PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`shareduserid`),
+  KEY `tmp_read_user_rel_sharing_per_userid_shared_reltabid_idx` (`userid`,`shareduserid`,`relatedtabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23343,10 +24126,12 @@ CREATE TABLE `vtiger_tmp_read_user_rel_sharing_per` (
 -- Table structure for table `vtiger_tmp_read_user_sharing_per`
 --
 
-CREATE TABLE `vtiger_tmp_read_user_sharing_per` (
+CREATE TABLE IF NOT EXISTS `vtiger_tmp_read_user_sharing_per` (
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
-  `shareduserid` int(11) NOT NULL
+  `shareduserid` int(11) NOT NULL,
+  PRIMARY KEY (`userid`,`tabid`,`shareduserid`),
+  KEY `tmp_read_user_sharing_per_userid_shareduserid_idx` (`userid`,`shareduserid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23355,11 +24140,13 @@ CREATE TABLE `vtiger_tmp_read_user_sharing_per` (
 -- Table structure for table `vtiger_tmp_write_group_rel_sharing_per`
 --
 
-CREATE TABLE `vtiger_tmp_write_group_rel_sharing_per` (
+CREATE TABLE IF NOT EXISTS `vtiger_tmp_write_group_rel_sharing_per` (
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
   `relatedtabid` int(11) NOT NULL,
-  `sharedgroupid` int(11) NOT NULL
+  `sharedgroupid` int(11) NOT NULL,
+  PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`sharedgroupid`),
+  KEY `tmp_write_group_rel_sharing_per_userid_sharedgroupid_tabid_idx` (`userid`,`sharedgroupid`,`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23368,10 +24155,12 @@ CREATE TABLE `vtiger_tmp_write_group_rel_sharing_per` (
 -- Table structure for table `vtiger_tmp_write_group_sharing_per`
 --
 
-CREATE TABLE `vtiger_tmp_write_group_sharing_per` (
+CREATE TABLE IF NOT EXISTS `vtiger_tmp_write_group_sharing_per` (
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
-  `sharedgroupid` int(11) NOT NULL
+  `sharedgroupid` int(11) NOT NULL,
+  PRIMARY KEY (`userid`,`tabid`,`sharedgroupid`),
+  KEY `tmp_write_group_sharing_per_UK1` (`userid`,`sharedgroupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23380,11 +24169,13 @@ CREATE TABLE `vtiger_tmp_write_group_sharing_per` (
 -- Table structure for table `vtiger_tmp_write_user_rel_sharing_per`
 --
 
-CREATE TABLE `vtiger_tmp_write_user_rel_sharing_per` (
+CREATE TABLE IF NOT EXISTS `vtiger_tmp_write_user_rel_sharing_per` (
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
   `relatedtabid` int(11) NOT NULL,
-  `shareduserid` int(11) NOT NULL
+  `shareduserid` int(11) NOT NULL,
+  PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`shareduserid`),
+  KEY `tmp_write_user_rel_sharing_per_userid_sharduserid_tabid_idx` (`userid`,`shareduserid`,`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23393,10 +24184,12 @@ CREATE TABLE `vtiger_tmp_write_user_rel_sharing_per` (
 -- Table structure for table `vtiger_tmp_write_user_sharing_per`
 --
 
-CREATE TABLE `vtiger_tmp_write_user_sharing_per` (
+CREATE TABLE IF NOT EXISTS `vtiger_tmp_write_user_sharing_per` (
   `userid` int(11) NOT NULL,
   `tabid` int(11) NOT NULL,
-  `shareduserid` int(11) NOT NULL
+  `shareduserid` int(11) NOT NULL,
+  PRIMARY KEY (`userid`,`tabid`,`shareduserid`),
+  KEY `tmp_write_user_sharing_per_userid_shareduserid_idx` (`userid`,`shareduserid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23405,12 +24198,13 @@ CREATE TABLE `vtiger_tmp_write_user_sharing_per` (
 -- Table structure for table `vtiger_tracker`
 --
 
-CREATE TABLE `vtiger_tracker` (
+CREATE TABLE IF NOT EXISTS `vtiger_tracker` (
   `id` int(11) NOT NULL,
   `user_id` varchar(36) DEFAULT NULL,
   `module_name` varchar(25) DEFAULT NULL,
   `item_id` varchar(36) DEFAULT NULL,
-  `item_summary` varchar(255) DEFAULT NULL
+  `item_summary` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23419,13 +24213,14 @@ CREATE TABLE `vtiger_tracker` (
 -- Table structure for table `vtiger_tracking_unit`
 --
 
-CREATE TABLE `vtiger_tracking_unit` (
+CREATE TABLE IF NOT EXISTS `vtiger_tracking_unit` (
   `tracking_unitid` int(11) NOT NULL,
   `tracking_unit` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(11) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT 0,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`tracking_unitid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23443,7 +24238,7 @@ INSERT INTO `vtiger_tracking_unit` (`tracking_unitid`, `tracking_unit`, `presenc
 -- Table structure for table `vtiger_tracking_unit_seq`
 --
 
-CREATE TABLE `vtiger_tracking_unit_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_tracking_unit_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23460,7 +24255,7 @@ INSERT INTO `vtiger_tracking_unit_seq` (`id`) VALUES
 -- Table structure for table `vtiger_troubletickets`
 --
 
-CREATE TABLE `vtiger_troubletickets` (
+CREATE TABLE IF NOT EXISTS `vtiger_troubletickets` (
   `ticketid` int(19) NOT NULL,
   `ticket_no` varchar(100) NOT NULL,
   `groupname` varchar(100) DEFAULT NULL,
@@ -23477,7 +24272,10 @@ CREATE TABLE `vtiger_troubletickets` (
   `hours` decimal(25,8) DEFAULT NULL,
   `days` decimal(25,8) DEFAULT NULL,
   `contact_id` int(19) DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`ticketid`),
+  KEY `troubletickets_ticketid_idx` (`ticketid`),
+  KEY `troubletickets_status_idx` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23486,13 +24284,15 @@ CREATE TABLE `vtiger_troubletickets` (
 -- Table structure for table `vtiger_usageunit`
 --
 
-CREATE TABLE `vtiger_usageunit` (
+CREATE TABLE IF NOT EXISTS `vtiger_usageunit` (
   `usageunitid` int(19) NOT NULL,
   `usageunit` varchar(200) NOT NULL,
   `presence` int(1) NOT NULL DEFAULT 1,
   `picklist_valueid` int(19) NOT NULL DEFAULT 0,
   `sortorderid` int(11) DEFAULT NULL,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`usageunitid`),
+  UNIQUE KEY `usageunit_usageunit_idx` (`usageunit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23523,7 +24323,7 @@ INSERT INTO `vtiger_usageunit` (`usageunitid`, `usageunit`, `presence`, `picklis
 -- Table structure for table `vtiger_usageunit_seq`
 --
 
-CREATE TABLE `vtiger_usageunit_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_usageunit_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23540,11 +24340,12 @@ INSERT INTO `vtiger_usageunit_seq` (`id`) VALUES
 -- Table structure for table `vtiger_user2mergefields`
 --
 
-CREATE TABLE `vtiger_user2mergefields` (
+CREATE TABLE IF NOT EXISTS `vtiger_user2mergefields` (
   `userid` int(11) DEFAULT NULL,
   `tabid` int(19) DEFAULT NULL,
   `fieldid` int(19) DEFAULT NULL,
-  `visible` int(2) DEFAULT NULL
+  `visible` int(2) DEFAULT NULL,
+  KEY `userid_tabid_idx` (`userid`,`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23553,9 +24354,11 @@ CREATE TABLE `vtiger_user2mergefields` (
 -- Table structure for table `vtiger_user2role`
 --
 
-CREATE TABLE `vtiger_user2role` (
+CREATE TABLE IF NOT EXISTS `vtiger_user2role` (
   `userid` int(11) NOT NULL,
-  `roleid` varchar(255) NOT NULL
+  `roleid` varchar(255) NOT NULL,
+  PRIMARY KEY (`userid`),
+  KEY `user2role_roleid_idx` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23571,7 +24374,7 @@ INSERT INTO `vtiger_user2role` (`userid`, `roleid`) VALUES
 -- Table structure for table `vtiger_users`
 --
 
-CREATE TABLE `vtiger_users` (
+CREATE TABLE IF NOT EXISTS `vtiger_users` (
   `id` int(11) NOT NULL,
   `user_name` varchar(255) DEFAULT NULL,
   `user_password` varchar(200) DEFAULT NULL,
@@ -23644,7 +24447,10 @@ CREATE TABLE `vtiger_users` (
   `defaultactivitytype` varchar(50) DEFAULT NULL,
   `hidecompletedevents` int(11) DEFAULT NULL,
   `defaultcalendarview` varchar(100) DEFAULT NULL,
-  `candidate` varchar(255) DEFAULT NULL
+  `candidate` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_user_name_idx` (`user_name`),
+  KEY `user_user_password_idx` (`user_password`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23660,9 +24466,12 @@ INSERT INTO `vtiger_users` (`id`, `user_name`, `user_password`, `cal_color`, `fi
 -- Table structure for table `vtiger_users2group`
 --
 
-CREATE TABLE `vtiger_users2group` (
+CREATE TABLE IF NOT EXISTS `vtiger_users2group` (
   `groupid` int(19) NOT NULL,
-  `userid` int(19) NOT NULL
+  `userid` int(19) NOT NULL,
+  PRIMARY KEY (`groupid`,`userid`),
+  KEY `users2group_groupname_uerid_idx` (`groupid`,`userid`),
+  KEY `fk_2_vtiger_users2group` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23678,12 +24487,14 @@ INSERT INTO `vtiger_users2group` (`groupid`, `userid`) VALUES
 -- Table structure for table `vtiger_users_last_import`
 --
 
-CREATE TABLE `vtiger_users_last_import` (
+CREATE TABLE IF NOT EXISTS `vtiger_users_last_import` (
   `id` int(36) NOT NULL,
   `assigned_user_id` varchar(36) DEFAULT NULL,
   `bean_type` varchar(36) DEFAULT NULL,
   `bean_id` varchar(36) DEFAULT NULL,
-  `deleted` int(1) NOT NULL DEFAULT 0
+  `deleted` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `idx_user_id` (`assigned_user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23692,7 +24503,7 @@ CREATE TABLE `vtiger_users_last_import` (
 -- Table structure for table `vtiger_users_seq`
 --
 
-CREATE TABLE `vtiger_users_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_users_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23709,10 +24520,12 @@ INSERT INTO `vtiger_users_seq` (`id`) VALUES
 -- Table structure for table `vtiger_user_module_preferences`
 --
 
-CREATE TABLE `vtiger_user_module_preferences` (
+CREATE TABLE IF NOT EXISTS `vtiger_user_module_preferences` (
   `userid` int(19) NOT NULL,
   `tabid` int(19) NOT NULL,
-  `default_cvid` int(19) NOT NULL
+  `default_cvid` int(19) NOT NULL,
+  PRIMARY KEY (`userid`,`tabid`),
+  KEY `fk_2_vtiger_user_module_preferences` (`tabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23728,7 +24541,7 @@ INSERT INTO `vtiger_user_module_preferences` (`userid`, `tabid`, `default_cvid`)
 -- Table structure for table `vtiger_vendor`
 --
 
-CREATE TABLE `vtiger_vendor` (
+CREATE TABLE IF NOT EXISTS `vtiger_vendor` (
   `vendorid` int(19) NOT NULL DEFAULT 0,
   `vendor_no` varchar(100) NOT NULL,
   `vendorname` varchar(100) DEFAULT NULL,
@@ -23744,7 +24557,8 @@ CREATE TABLE `vtiger_vendor` (
   `postalcode` varchar(100) DEFAULT NULL,
   `country` varchar(100) DEFAULT NULL,
   `description` text DEFAULT NULL,
-  `tags` varchar(1) DEFAULT NULL
+  `tags` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`vendorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23753,8 +24567,9 @@ CREATE TABLE `vtiger_vendor` (
 -- Table structure for table `vtiger_vendorcf`
 --
 
-CREATE TABLE `vtiger_vendorcf` (
-  `vendorid` int(19) NOT NULL DEFAULT 0
+CREATE TABLE IF NOT EXISTS `vtiger_vendorcf` (
+  `vendorid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vendorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23763,9 +24578,12 @@ CREATE TABLE `vtiger_vendorcf` (
 -- Table structure for table `vtiger_vendorcontactrel`
 --
 
-CREATE TABLE `vtiger_vendorcontactrel` (
+CREATE TABLE IF NOT EXISTS `vtiger_vendorcontactrel` (
   `vendorid` int(19) NOT NULL DEFAULT 0,
-  `contactid` int(19) NOT NULL DEFAULT 0
+  `contactid` int(19) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`vendorid`,`contactid`),
+  KEY `vendorcontactrel_vendorid_idx` (`vendorid`),
+  KEY `vendorcontactrel_contact_idx` (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23774,10 +24592,11 @@ CREATE TABLE `vtiger_vendorcontactrel` (
 -- Table structure for table `vtiger_version`
 --
 
-CREATE TABLE `vtiger_version` (
+CREATE TABLE IF NOT EXISTS `vtiger_version` (
   `id` int(11) NOT NULL,
   `old_version` varchar(30) DEFAULT NULL,
-  `current_version` varchar(30) DEFAULT NULL
+  `current_version` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23793,7 +24612,7 @@ INSERT INTO `vtiger_version` (`id`, `old_version`, `current_version`) VALUES
 -- Table structure for table `vtiger_version_seq`
 --
 
-CREATE TABLE `vtiger_version_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_version_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23810,12 +24629,14 @@ INSERT INTO `vtiger_version_seq` (`id`) VALUES
 -- Table structure for table `vtiger_visibility`
 --
 
-CREATE TABLE `vtiger_visibility` (
+CREATE TABLE IF NOT EXISTS `vtiger_visibility` (
   `visibilityid` int(19) NOT NULL,
   `visibility` varchar(200) NOT NULL,
   `sortorderid` int(19) NOT NULL DEFAULT 0,
   `presence` int(1) NOT NULL DEFAULT 1,
-  `color` varchar(10) DEFAULT NULL
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`visibilityid`),
+  UNIQUE KEY `visibility_visibility_idx` (`visibility`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23832,7 +24653,7 @@ INSERT INTO `vtiger_visibility` (`visibilityid`, `visibility`, `sortorderid`, `p
 -- Table structure for table `vtiger_visibility_seq`
 --
 
-CREATE TABLE `vtiger_visibility_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_visibility_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -23849,7 +24670,7 @@ INSERT INTO `vtiger_visibility_seq` (`id`) VALUES
 -- Table structure for table `vtiger_webforms`
 --
 
-CREATE TABLE `vtiger_webforms` (
+CREATE TABLE IF NOT EXISTS `vtiger_webforms` (
   `id` int(19) NOT NULL,
   `name` varchar(100) NOT NULL,
   `publicid` varchar(100) NOT NULL,
@@ -23861,7 +24682,11 @@ CREATE TABLE `vtiger_webforms` (
   `captcha` int(1) NOT NULL DEFAULT 0,
   `roundrobin` int(1) NOT NULL DEFAULT 0,
   `roundrobin_userid` varchar(256) DEFAULT NULL,
-  `roundrobin_logic` int(11) NOT NULL DEFAULT 0
+  `roundrobin_logic` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `webformname` (`name`),
+  UNIQUE KEY `publicid` (`id`),
+  KEY `webforms_webforms_id_idx` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23870,7 +24695,7 @@ CREATE TABLE `vtiger_webforms` (
 -- Table structure for table `vtiger_webforms_field`
 --
 
-CREATE TABLE `vtiger_webforms_field` (
+CREATE TABLE IF NOT EXISTS `vtiger_webforms_field` (
   `id` int(19) NOT NULL,
   `webformid` int(19) NOT NULL,
   `fieldname` varchar(50) NOT NULL,
@@ -23878,7 +24703,11 @@ CREATE TABLE `vtiger_webforms_field` (
   `defaultvalue` text DEFAULT NULL,
   `required` int(10) NOT NULL DEFAULT 0,
   `sequence` int(10) DEFAULT NULL,
-  `hidden` int(10) DEFAULT NULL
+  `hidden` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `webforms_webforms_field_idx` (`id`),
+  KEY `fk_1_vtiger_webforms_field` (`webformid`),
+  KEY `fk_2_vtiger_webforms_field` (`fieldname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23887,12 +24716,14 @@ CREATE TABLE `vtiger_webforms_field` (
 -- Table structure for table `vtiger_webform_file_fields`
 --
 
-CREATE TABLE `vtiger_webform_file_fields` (
+CREATE TABLE IF NOT EXISTS `vtiger_webform_file_fields` (
   `id` int(19) NOT NULL,
   `webformid` int(19) NOT NULL,
   `fieldname` varchar(100) NOT NULL,
   `fieldlabel` varchar(100) NOT NULL,
-  `required` int(1) NOT NULL DEFAULT 0
+  `required` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  KEY `fk_vtiger_webforms` (`webformid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23901,7 +24732,7 @@ CREATE TABLE `vtiger_webform_file_fields` (
 -- Table structure for table `vtiger_wordtemplates`
 --
 
-CREATE TABLE `vtiger_wordtemplates` (
+CREATE TABLE IF NOT EXISTS `vtiger_wordtemplates` (
   `templateid` int(19) NOT NULL,
   `filename` varchar(100) NOT NULL,
   `module` varchar(30) NOT NULL,
@@ -23911,7 +24742,8 @@ CREATE TABLE `vtiger_wordtemplates` (
   `description` text DEFAULT NULL,
   `filesize` varchar(50) NOT NULL,
   `filetype` varchar(20) NOT NULL,
-  `deleted` int(1) NOT NULL DEFAULT 0
+  `deleted` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`templateid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23920,11 +24752,12 @@ CREATE TABLE `vtiger_wordtemplates` (
 -- Table structure for table `vtiger_wsapp`
 --
 
-CREATE TABLE `vtiger_wsapp` (
+CREATE TABLE IF NOT EXISTS `vtiger_wsapp` (
   `appid` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `appkey` varchar(255) DEFAULT NULL,
-  `type` varchar(100) DEFAULT NULL
+  `type` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`appid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -23940,7 +24773,7 @@ INSERT INTO `vtiger_wsapp` (`appid`, `name`, `appkey`, `type`) VALUES
 -- Table structure for table `vtiger_wsapp_handlerdetails`
 --
 
-CREATE TABLE `vtiger_wsapp_handlerdetails` (
+CREATE TABLE IF NOT EXISTS `vtiger_wsapp_handlerdetails` (
   `type` varchar(200) NOT NULL,
   `handlerclass` varchar(100) DEFAULT NULL,
   `handlerpath` varchar(300) DEFAULT NULL
@@ -23963,7 +24796,7 @@ INSERT INTO `vtiger_wsapp_handlerdetails` (`type`, `handlerclass`, `handlerpath`
 -- Table structure for table `vtiger_wsapp_logs_basic`
 --
 
-CREATE TABLE `vtiger_wsapp_logs_basic` (
+CREATE TABLE IF NOT EXISTS `vtiger_wsapp_logs_basic` (
   `id` int(25) NOT NULL,
   `extensiontabid` int(19) DEFAULT NULL,
   `module` varchar(50) NOT NULL,
@@ -23976,7 +24809,8 @@ CREATE TABLE `vtiger_wsapp_logs_basic` (
   `vt_update_count` int(11) DEFAULT NULL,
   `vt_delete_count` int(11) DEFAULT NULL,
   `vt_skip_count` int(11) DEFAULT NULL,
-  `userid` int(11) DEFAULT NULL
+  `userid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -23985,7 +24819,7 @@ CREATE TABLE `vtiger_wsapp_logs_basic` (
 -- Table structure for table `vtiger_wsapp_logs_details`
 --
 
-CREATE TABLE `vtiger_wsapp_logs_details` (
+CREATE TABLE IF NOT EXISTS `vtiger_wsapp_logs_details` (
   `id` int(25) NOT NULL,
   `app_create_ids` mediumtext DEFAULT NULL,
   `app_update_ids` mediumtext DEFAULT NULL,
@@ -23994,7 +24828,8 @@ CREATE TABLE `vtiger_wsapp_logs_details` (
   `vt_create_ids` mediumtext DEFAULT NULL,
   `vt_update_ids` mediumtext DEFAULT NULL,
   `vt_delete_ids` mediumtext DEFAULT NULL,
-  `vt_skip_info` mediumtext DEFAULT NULL
+  `vt_skip_info` mediumtext DEFAULT NULL,
+  KEY `vtiger_wsapp_logs_basic_ibfk_1` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -24003,7 +24838,7 @@ CREATE TABLE `vtiger_wsapp_logs_details` (
 -- Table structure for table `vtiger_wsapp_queuerecords`
 --
 
-CREATE TABLE `vtiger_wsapp_queuerecords` (
+CREATE TABLE IF NOT EXISTS `vtiger_wsapp_queuerecords` (
   `syncserverid` int(19) DEFAULT NULL,
   `details` varchar(300) DEFAULT NULL,
   `flag` varchar(100) DEFAULT NULL,
@@ -24016,14 +24851,15 @@ CREATE TABLE `vtiger_wsapp_queuerecords` (
 -- Table structure for table `vtiger_wsapp_recordmapping`
 --
 
-CREATE TABLE `vtiger_wsapp_recordmapping` (
+CREATE TABLE IF NOT EXISTS `vtiger_wsapp_recordmapping` (
   `id` int(19) NOT NULL,
   `serverid` varchar(10) DEFAULT NULL,
   `clientid` varchar(255) DEFAULT NULL,
   `clientmodifiedtime` datetime DEFAULT NULL,
   `appid` int(11) DEFAULT NULL,
   `servermodifiedtime` datetime DEFAULT NULL,
-  `serverappid` int(11) DEFAULT NULL
+  `serverappid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -24032,11 +24868,12 @@ CREATE TABLE `vtiger_wsapp_recordmapping` (
 -- Table structure for table `vtiger_wsapp_sync_state`
 --
 
-CREATE TABLE `vtiger_wsapp_sync_state` (
+CREATE TABLE IF NOT EXISTS `vtiger_wsapp_sync_state` (
   `id` int(19) NOT NULL,
   `name` varchar(200) DEFAULT NULL,
   `stateencodedvalues` varchar(300) NOT NULL,
-  `userid` int(19) DEFAULT NULL
+  `userid` int(19) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -24045,12 +24882,13 @@ CREATE TABLE `vtiger_wsapp_sync_state` (
 -- Table structure for table `vtiger_ws_entity`
 --
 
-CREATE TABLE `vtiger_ws_entity` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_entity` (
   `id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
   `handler_path` varchar(255) NOT NULL,
   `handler_class` varchar(64) NOT NULL,
-  `ismodule` int(3) NOT NULL
+  `ismodule` int(3) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24110,7 +24948,8 @@ INSERT INTO `vtiger_ws_entity` (`id`, `name`, `handler_path`, `handler_class`, `
 (61, 'ProblemCategory', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
 (62, 'SupportProtocol', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
 (67, 'PhuongTienTruyenThong', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
-(68, 'HinhThucTruyenThong', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1);
+(68, 'HinhThucTruyenThong', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1),
+(69, 'QuyTrinhBanHang', 'include/Webservices/VtigerModuleOperation.php', 'VtigerModuleOperation', 1);
 
 -- --------------------------------------------------------
 
@@ -24118,11 +24957,13 @@ INSERT INTO `vtiger_ws_entity` (`id`, `name`, `handler_path`, `handler_class`, `
 -- Table structure for table `vtiger_ws_entity_fieldtype`
 --
 
-CREATE TABLE `vtiger_ws_entity_fieldtype` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_entity_fieldtype` (
   `fieldtypeid` int(19) NOT NULL,
   `table_name` varchar(50) NOT NULL,
   `field_name` varchar(50) NOT NULL,
-  `fieldtype` varchar(200) NOT NULL
+  `fieldtype` varchar(200) NOT NULL,
+  PRIMARY KEY (`fieldtypeid`),
+  UNIQUE KEY `vtiger_idx_1_tablename_fieldname` (`table_name`,`field_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24147,7 +24988,7 @@ INSERT INTO `vtiger_ws_entity_fieldtype` (`fieldtypeid`, `table_name`, `field_na
 -- Table structure for table `vtiger_ws_entity_fieldtype_seq`
 --
 
-CREATE TABLE `vtiger_ws_entity_fieldtype_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_entity_fieldtype_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -24164,11 +25005,12 @@ INSERT INTO `vtiger_ws_entity_fieldtype_seq` (`id`) VALUES
 -- Table structure for table `vtiger_ws_entity_name`
 --
 
-CREATE TABLE `vtiger_ws_entity_name` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_entity_name` (
   `entity_id` int(11) NOT NULL,
   `name_fields` varchar(50) NOT NULL,
   `index_field` varchar(50) NOT NULL,
-  `table_name` varchar(50) NOT NULL
+  `table_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`entity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24188,9 +25030,10 @@ INSERT INTO `vtiger_ws_entity_name` (`entity_id`, `name_fields`, `index_field`, 
 -- Table structure for table `vtiger_ws_entity_referencetype`
 --
 
-CREATE TABLE `vtiger_ws_entity_referencetype` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_entity_referencetype` (
   `fieldtypeid` int(19) NOT NULL,
-  `type` varchar(25) NOT NULL
+  `type` varchar(25) NOT NULL,
+  PRIMARY KEY (`fieldtypeid`,`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24213,7 +25056,7 @@ INSERT INTO `vtiger_ws_entity_referencetype` (`fieldtypeid`, `type`) VALUES
 -- Table structure for table `vtiger_ws_entity_seq`
 --
 
-CREATE TABLE `vtiger_ws_entity_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_entity_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -24222,7 +25065,7 @@ CREATE TABLE `vtiger_ws_entity_seq` (
 --
 
 INSERT INTO `vtiger_ws_entity_seq` (`id`) VALUES
-(68);
+(69);
 
 -- --------------------------------------------------------
 
@@ -24230,9 +25073,10 @@ INSERT INTO `vtiger_ws_entity_seq` (`id`) VALUES
 -- Table structure for table `vtiger_ws_entity_tables`
 --
 
-CREATE TABLE `vtiger_ws_entity_tables` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_entity_tables` (
   `webservice_entity_id` int(11) NOT NULL,
-  `table_name` varchar(50) NOT NULL
+  `table_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`webservice_entity_id`,`table_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24254,10 +25098,11 @@ INSERT INTO `vtiger_ws_entity_tables` (`webservice_entity_id`, `table_name`) VAL
 -- Table structure for table `vtiger_ws_fieldinfo`
 --
 
-CREATE TABLE `vtiger_ws_fieldinfo` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_fieldinfo` (
   `id` varchar(64) NOT NULL,
   `property_name` varchar(32) DEFAULT NULL,
-  `property_value` varchar(64) DEFAULT NULL
+  `property_value` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24273,10 +25118,12 @@ INSERT INTO `vtiger_ws_fieldinfo` (`id`, `property_name`, `property_value`) VALU
 -- Table structure for table `vtiger_ws_fieldtype`
 --
 
-CREATE TABLE `vtiger_ws_fieldtype` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_fieldtype` (
   `fieldtypeid` int(19) NOT NULL,
   `uitype` varchar(30) NOT NULL,
-  `fieldtype` varchar(200) NOT NULL
+  `fieldtype` varchar(200) NOT NULL,
+  PRIMARY KEY (`fieldtypeid`),
+  UNIQUE KEY `uitype_idx` (`uitype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24331,13 +25178,14 @@ INSERT INTO `vtiger_ws_fieldtype` (`fieldtypeid`, `uitype`, `fieldtype`) VALUES
 -- Table structure for table `vtiger_ws_operation`
 --
 
-CREATE TABLE `vtiger_ws_operation` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_operation` (
   `operationid` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `handler_path` varchar(255) NOT NULL,
   `handler_method` varchar(64) NOT NULL,
   `type` varchar(8) NOT NULL,
-  `prelogin` int(3) NOT NULL
+  `prelogin` int(3) NOT NULL,
+  PRIMARY KEY (`operationid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24389,11 +25237,12 @@ INSERT INTO `vtiger_ws_operation` (`operationid`, `name`, `handler_path`, `handl
 -- Table structure for table `vtiger_ws_operation_parameters`
 --
 
-CREATE TABLE `vtiger_ws_operation_parameters` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_operation_parameters` (
   `operationid` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `type` varchar(64) NOT NULL,
-  `sequence` int(11) NOT NULL
+  `sequence` int(11) NOT NULL,
+  PRIMARY KEY (`operationid`,`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24474,7 +25323,7 @@ INSERT INTO `vtiger_ws_operation_parameters` (`operationid`, `name`, `type`, `se
 -- Table structure for table `vtiger_ws_operation_seq`
 --
 
-CREATE TABLE `vtiger_ws_operation_seq` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_operation_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -24491,9 +25340,10 @@ INSERT INTO `vtiger_ws_operation_seq` (`id`) VALUES
 -- Table structure for table `vtiger_ws_referencetype`
 --
 
-CREATE TABLE `vtiger_ws_referencetype` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_referencetype` (
   `fieldtypeid` int(19) NOT NULL,
-  `type` varchar(25) NOT NULL
+  `type` varchar(25) NOT NULL,
+  PRIMARY KEY (`fieldtypeid`,`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -24536,2892 +25386,13 @@ INSERT INTO `vtiger_ws_referencetype` (`fieldtypeid`, `type`) VALUES
 -- Table structure for table `vtiger_ws_userauthtoken`
 --
 
-CREATE TABLE `vtiger_ws_userauthtoken` (
+CREATE TABLE IF NOT EXISTS `vtiger_ws_userauthtoken` (
   `userid` int(19) NOT NULL,
   `token` varchar(36) NOT NULL,
-  `expiretime` int(19) NOT NULL
+  `expiretime` int(19) NOT NULL,
+  PRIMARY KEY (`userid`,`expiretime`),
+  UNIQUE KEY `userid_idx` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `com_vtiger_workflows`
---
-ALTER TABLE `com_vtiger_workflows`
-  ADD PRIMARY KEY (`workflow_id`),
-  ADD UNIQUE KEY `com_vtiger_workflows_idx` (`workflow_id`);
-
---
--- Indexes for table `com_vtiger_workflowtasks`
---
-ALTER TABLE `com_vtiger_workflowtasks`
-  ADD PRIMARY KEY (`task_id`),
-  ADD UNIQUE KEY `com_vtiger_workflowtasks_idx` (`task_id`);
-
---
--- Indexes for table `com_vtiger_workflowtasks_entitymethod`
---
-ALTER TABLE `com_vtiger_workflowtasks_entitymethod`
-  ADD PRIMARY KEY (`workflowtasks_entitymethod_id`),
-  ADD UNIQUE KEY `com_vtiger_workflowtasks_entitymethod_idx` (`workflowtasks_entitymethod_id`);
-
---
--- Indexes for table `com_vtiger_workflowtemplates`
---
-ALTER TABLE `com_vtiger_workflowtemplates`
-  ADD PRIMARY KEY (`template_id`);
-
---
--- Indexes for table `com_vtiger_workflow_activatedonce`
---
-ALTER TABLE `com_vtiger_workflow_activatedonce`
-  ADD PRIMARY KEY (`workflow_id`,`entity_id`);
-
---
--- Indexes for table `hrm_employee_history`
---
-ALTER TABLE `hrm_employee_history`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_account`
---
-ALTER TABLE `vtiger_account`
-  ADD PRIMARY KEY (`accountid`),
-  ADD KEY `account_account_type_idx` (`account_type`),
-  ADD KEY `email_idx` (`email1`,`email2`);
-
---
--- Indexes for table `vtiger_accountbillads`
---
-ALTER TABLE `vtiger_accountbillads`
-  ADD PRIMARY KEY (`accountaddressid`);
-
---
--- Indexes for table `vtiger_accountrating`
---
-ALTER TABLE `vtiger_accountrating`
-  ADD PRIMARY KEY (`accountratingid`),
-  ADD UNIQUE KEY `accountrating_rating_idx` (`rating`);
-
---
--- Indexes for table `vtiger_accountscf`
---
-ALTER TABLE `vtiger_accountscf`
-  ADD PRIMARY KEY (`accountid`);
-
---
--- Indexes for table `vtiger_accountshipads`
---
-ALTER TABLE `vtiger_accountshipads`
-  ADD PRIMARY KEY (`accountaddressid`);
-
---
--- Indexes for table `vtiger_accounttype`
---
-ALTER TABLE `vtiger_accounttype`
-  ADD PRIMARY KEY (`accounttypeid`),
-  ADD UNIQUE KEY `accounttype_accounttype_idx` (`accounttype`);
-
---
--- Indexes for table `vtiger_actionmapping`
---
-ALTER TABLE `vtiger_actionmapping`
-  ADD PRIMARY KEY (`actionid`,`actionname`);
-
---
--- Indexes for table `vtiger_activity`
---
-ALTER TABLE `vtiger_activity`
-  ADD PRIMARY KEY (`activityid`),
-  ADD KEY `activity_activityid_subject_idx` (`activityid`,`subject`),
-  ADD KEY `activity_activitytype_date_start_idx` (`activitytype`,`date_start`),
-  ADD KEY `activity_date_start_due_date_idx` (`date_start`,`due_date`),
-  ADD KEY `activity_date_start_time_start_idx` (`date_start`,`time_start`),
-  ADD KEY `activity_eventstatus_idx` (`eventstatus`),
-  ADD KEY `activity_status_idx` (`status`);
-
---
--- Indexes for table `vtiger_activitycf`
---
-ALTER TABLE `vtiger_activitycf`
-  ADD PRIMARY KEY (`activityid`);
-
---
--- Indexes for table `vtiger_activityproductrel`
---
-ALTER TABLE `vtiger_activityproductrel`
-  ADD PRIMARY KEY (`activityid`,`productid`),
-  ADD KEY `activityproductrel_activityid_idx` (`activityid`),
-  ADD KEY `activityproductrel_productid_idx` (`productid`);
-
---
--- Indexes for table `vtiger_activitytype`
---
-ALTER TABLE `vtiger_activitytype`
-  ADD PRIMARY KEY (`activitytypeid`),
-  ADD UNIQUE KEY `activitytype_activitytype_idx` (`activitytype`);
-
---
--- Indexes for table `vtiger_activity_reminder`
---
-ALTER TABLE `vtiger_activity_reminder`
-  ADD PRIMARY KEY (`activity_id`,`recurringid`);
-
---
--- Indexes for table `vtiger_activity_reminder_popup`
---
-ALTER TABLE `vtiger_activity_reminder_popup`
-  ADD PRIMARY KEY (`reminderid`);
-
---
--- Indexes for table `vtiger_activity_view`
---
-ALTER TABLE `vtiger_activity_view`
-  ADD PRIMARY KEY (`activity_viewid`);
-
---
--- Indexes for table `vtiger_announcement`
---
-ALTER TABLE `vtiger_announcement`
-  ADD PRIMARY KEY (`creatorid`),
-  ADD KEY `announcement_creatorid_idx` (`creatorid`);
-
---
--- Indexes for table `vtiger_app2tab`
---
-ALTER TABLE `vtiger_app2tab`
-  ADD KEY `vtiger_app2tab_fk_tab` (`tabid`);
-
---
--- Indexes for table `vtiger_assets`
---
-ALTER TABLE `vtiger_assets`
-  ADD PRIMARY KEY (`assetsid`);
-
---
--- Indexes for table `vtiger_assetscf`
---
-ALTER TABLE `vtiger_assetscf`
-  ADD PRIMARY KEY (`assetsid`);
-
---
--- Indexes for table `vtiger_assetstatus`
---
-ALTER TABLE `vtiger_assetstatus`
-  ADD PRIMARY KEY (`assetstatusid`);
-
---
--- Indexes for table `vtiger_asteriskincomingevents`
---
-ALTER TABLE `vtiger_asteriskincomingevents`
-  ADD PRIMARY KEY (`uid`);
-
---
--- Indexes for table `vtiger_attachments`
---
-ALTER TABLE `vtiger_attachments`
-  ADD PRIMARY KEY (`attachmentsid`),
-  ADD KEY `attachments_attachmentsid_idx` (`attachmentsid`);
-
---
--- Indexes for table `vtiger_attachmentsfolder`
---
-ALTER TABLE `vtiger_attachmentsfolder`
-  ADD PRIMARY KEY (`folderid`);
-
---
--- Indexes for table `vtiger_audit_trial`
---
-ALTER TABLE `vtiger_audit_trial`
-  ADD PRIMARY KEY (`auditid`);
-
---
--- Indexes for table `vtiger_blocks`
---
-ALTER TABLE `vtiger_blocks`
-  ADD PRIMARY KEY (`blockid`),
-  ADD KEY `block_tabid_idx` (`tabid`);
-
---
--- Indexes for table `vtiger_calendarsharedtype`
---
-ALTER TABLE `vtiger_calendarsharedtype`
-  ADD PRIMARY KEY (`calendarsharedtypeid`);
-
---
--- Indexes for table `vtiger_calendar_default_activitytypes`
---
-ALTER TABLE `vtiger_calendar_default_activitytypes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_calendar_user_activitytypes`
---
-ALTER TABLE `vtiger_calendar_user_activitytypes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_callduration`
---
-ALTER TABLE `vtiger_callduration`
-  ADD PRIMARY KEY (`calldurationid`);
-
---
--- Indexes for table `vtiger_campaign`
---
-ALTER TABLE `vtiger_campaign`
-  ADD PRIMARY KEY (`campaignid`),
-  ADD KEY `campaign_campaignstatus_idx` (`campaignstatus`),
-  ADD KEY `campaign_campaignname_idx` (`campaignname`),
-  ADD KEY `campaign_campaignid_idx` (`campaignid`);
-
---
--- Indexes for table `vtiger_campaigncontrel`
---
-ALTER TABLE `vtiger_campaigncontrel`
-  ADD PRIMARY KEY (`campaignid`,`contactid`,`campaignrelstatusid`),
-  ADD KEY `campaigncontrel_contractid_idx` (`contactid`);
-
---
--- Indexes for table `vtiger_campaignleadrel`
---
-ALTER TABLE `vtiger_campaignleadrel`
-  ADD PRIMARY KEY (`campaignid`,`leadid`,`campaignrelstatusid`),
-  ADD KEY `campaignleadrel_leadid_campaignid_idx` (`leadid`,`campaignid`);
-
---
--- Indexes for table `vtiger_campaignscf`
---
-ALTER TABLE `vtiger_campaignscf`
-  ADD PRIMARY KEY (`campaignid`);
-
---
--- Indexes for table `vtiger_campaignstatus`
---
-ALTER TABLE `vtiger_campaignstatus`
-  ADD PRIMARY KEY (`campaignstatusid`),
-  ADD KEY `campaignstatus_campaignstatus_idx` (`campaignstatus`);
-
---
--- Indexes for table `vtiger_campaigntype`
---
-ALTER TABLE `vtiger_campaigntype`
-  ADD PRIMARY KEY (`campaigntypeid`),
-  ADD UNIQUE KEY `campaigntype_campaigntype_idx` (`campaigntype`);
-
---
--- Indexes for table `vtiger_candidate_action`
---
-ALTER TABLE `vtiger_candidate_action`
-  ADD PRIMARY KEY (`candidate_actionid`);
-
---
--- Indexes for table `vtiger_candidate_resource_cv`
---
-ALTER TABLE `vtiger_candidate_resource_cv`
-  ADD PRIMARY KEY (`candidate_resource_cvid`);
-
---
--- Indexes for table `vtiger_carrier`
---
-ALTER TABLE `vtiger_carrier`
-  ADD PRIMARY KEY (`carrierid`),
-  ADD UNIQUE KEY `carrier_carrier_idx` (`carrier`);
-
---
--- Indexes for table `vtiger_cf_1121`
---
-ALTER TABLE `vtiger_cf_1121`
-  ADD PRIMARY KEY (`cf_1121id`);
-
---
--- Indexes for table `vtiger_cf_1137`
---
-ALTER TABLE `vtiger_cf_1137`
-  ADD PRIMARY KEY (`cf_1137id`);
-
---
--- Indexes for table `vtiger_cf_1141`
---
-ALTER TABLE `vtiger_cf_1141`
-  ADD PRIMARY KEY (`cf_1141id`);
-
---
--- Indexes for table `vtiger_cf_1143`
---
-ALTER TABLE `vtiger_cf_1143`
-  ADD PRIMARY KEY (`cf_1143id`);
-
---
--- Indexes for table `vtiger_cf_1145`
---
-ALTER TABLE `vtiger_cf_1145`
-  ADD PRIMARY KEY (`cf_1145id`);
-
---
--- Indexes for table `vtiger_cf_1147`
---
-ALTER TABLE `vtiger_cf_1147`
-  ADD PRIMARY KEY (`cf_1147id`);
-
---
--- Indexes for table `vtiger_cf_1161`
---
-ALTER TABLE `vtiger_cf_1161`
-  ADD PRIMARY KEY (`cf_1161id`);
-
---
--- Indexes for table `vtiger_cf_1221`
---
-ALTER TABLE `vtiger_cf_1221`
-  ADD PRIMARY KEY (`cf_1221id`);
-
---
--- Indexes for table `vtiger_cntactivityrel`
---
-ALTER TABLE `vtiger_cntactivityrel`
-  ADD PRIMARY KEY (`contactid`,`activityid`),
-  ADD KEY `cntactivityrel_contactid_idx` (`contactid`),
-  ADD KEY `cntactivityrel_activityid_idx` (`activityid`);
-
---
--- Indexes for table `vtiger_contactaddress`
---
-ALTER TABLE `vtiger_contactaddress`
-  ADD PRIMARY KEY (`contactaddressid`);
-
---
--- Indexes for table `vtiger_contactdetails`
---
-ALTER TABLE `vtiger_contactdetails`
-  ADD PRIMARY KEY (`contactid`),
-  ADD KEY `contactdetails_accountid_idx` (`accountid`),
-  ADD KEY `email_idx` (`email`);
-
---
--- Indexes for table `vtiger_contactscf`
---
-ALTER TABLE `vtiger_contactscf`
-  ADD PRIMARY KEY (`contactid`);
-
---
--- Indexes for table `vtiger_contactsubdetails`
---
-ALTER TABLE `vtiger_contactsubdetails`
-  ADD PRIMARY KEY (`contactsubscriptionid`);
-
---
--- Indexes for table `vtiger_contpotentialrel`
---
-ALTER TABLE `vtiger_contpotentialrel`
-  ADD PRIMARY KEY (`contactid`,`potentialid`),
-  ADD KEY `contpotentialrel_potentialid_idx` (`potentialid`),
-  ADD KEY `contpotentialrel_contactid_idx` (`contactid`);
-
---
--- Indexes for table `vtiger_contract_priority`
---
-ALTER TABLE `vtiger_contract_priority`
-  ADD PRIMARY KEY (`contract_priorityid`);
-
---
--- Indexes for table `vtiger_contract_status`
---
-ALTER TABLE `vtiger_contract_status`
-  ADD PRIMARY KEY (`contract_statusid`);
-
---
--- Indexes for table `vtiger_contract_type`
---
-ALTER TABLE `vtiger_contract_type`
-  ADD PRIMARY KEY (`contract_typeid`);
-
---
--- Indexes for table `vtiger_convertleadmapping`
---
-ALTER TABLE `vtiger_convertleadmapping`
-  ADD PRIMARY KEY (`cfmid`);
-
---
--- Indexes for table `vtiger_convertpotentialmapping`
---
-ALTER TABLE `vtiger_convertpotentialmapping`
-  ADD PRIMARY KEY (`cfmid`);
-
---
--- Indexes for table `vtiger_crmentity`
---
-ALTER TABLE `vtiger_crmentity`
-  ADD PRIMARY KEY (`crmid`),
-  ADD KEY `crmentity_smcreatorid_idx` (`smcreatorid`),
-  ADD KEY `crmentity_modifiedby_idx` (`modifiedby`),
-  ADD KEY `crmentity_deleted_idx` (`deleted`),
-  ADD KEY `crm_ownerid_del_setype_idx` (`smownerid`,`deleted`,`setype`),
-  ADD KEY `vtiger_crmentity_labelidx` (`label`);
-
---
--- Indexes for table `vtiger_crmentityrel`
---
-ALTER TABLE `vtiger_crmentityrel`
-  ADD KEY `crmid_idx` (`crmid`),
-  ADD KEY `relcrmid_idx` (`relcrmid`);
-
---
--- Indexes for table `vtiger_crmentity_user_field`
---
-ALTER TABLE `vtiger_crmentity_user_field`
-  ADD KEY `record_user_idx` (`recordid`,`userid`);
-
---
--- Indexes for table `vtiger_cron_task`
---
-ALTER TABLE `vtiger_cron_task`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`),
-  ADD UNIQUE KEY `handler_file` (`handler_file`);
-
---
--- Indexes for table `vtiger_currencies`
---
-ALTER TABLE `vtiger_currencies`
-  ADD PRIMARY KEY (`currencyid`);
-
---
--- Indexes for table `vtiger_currency`
---
-ALTER TABLE `vtiger_currency`
-  ADD PRIMARY KEY (`currencyid`),
-  ADD UNIQUE KEY `currency_currency_idx` (`currency`);
-
---
--- Indexes for table `vtiger_currency_decimal_separator`
---
-ALTER TABLE `vtiger_currency_decimal_separator`
-  ADD PRIMARY KEY (`currency_decimal_separatorid`);
-
---
--- Indexes for table `vtiger_currency_grouping_pattern`
---
-ALTER TABLE `vtiger_currency_grouping_pattern`
-  ADD PRIMARY KEY (`currency_grouping_patternid`);
-
---
--- Indexes for table `vtiger_currency_grouping_separator`
---
-ALTER TABLE `vtiger_currency_grouping_separator`
-  ADD PRIMARY KEY (`currency_grouping_separatorid`);
-
---
--- Indexes for table `vtiger_currency_info`
---
-ALTER TABLE `vtiger_currency_info`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_currency_symbol_placement`
---
-ALTER TABLE `vtiger_currency_symbol_placement`
-  ADD PRIMARY KEY (`currency_symbol_placementid`);
-
---
--- Indexes for table `vtiger_customaction`
---
-ALTER TABLE `vtiger_customaction`
-  ADD KEY `customaction_cvid_idx` (`cvid`);
-
---
--- Indexes for table `vtiger_customerdetails`
---
-ALTER TABLE `vtiger_customerdetails`
-  ADD PRIMARY KEY (`customerid`);
-
---
--- Indexes for table `vtiger_customerenterprise`
---
-ALTER TABLE `vtiger_customerenterprise`
-  ADD PRIMARY KEY (`customerenterpriseid`);
-
---
--- Indexes for table `vtiger_customerenterprisecf`
---
-ALTER TABLE `vtiger_customerenterprisecf`
-  ADD PRIMARY KEY (`customerenterpriseid`);
-
---
--- Indexes for table `vtiger_customerportal_fields`
---
-ALTER TABLE `vtiger_customerportal_fields`
-  ADD PRIMARY KEY (`tabid`);
-
---
--- Indexes for table `vtiger_customerportal_prefs`
---
-ALTER TABLE `vtiger_customerportal_prefs`
-  ADD PRIMARY KEY (`tabid`,`prefkey`);
-
---
--- Indexes for table `vtiger_customerportal_relatedmoduleinfo`
---
-ALTER TABLE `vtiger_customerportal_relatedmoduleinfo`
-  ADD PRIMARY KEY (`tabid`);
-
---
--- Indexes for table `vtiger_customerportal_tabs`
---
-ALTER TABLE `vtiger_customerportal_tabs`
-  ADD PRIMARY KEY (`tabid`);
-
---
--- Indexes for table `vtiger_customerstandalone`
---
-ALTER TABLE `vtiger_customerstandalone`
-  ADD PRIMARY KEY (`customerstandaloneid`);
-
---
--- Indexes for table `vtiger_customerstandalonecf`
---
-ALTER TABLE `vtiger_customerstandalonecf`
-  ADD PRIMARY KEY (`customerstandaloneid`);
-
---
--- Indexes for table `vtiger_customview`
---
-ALTER TABLE `vtiger_customview`
-  ADD PRIMARY KEY (`cvid`),
-  ADD KEY `customview_entitytype_idx` (`entitytype`);
-
---
--- Indexes for table `vtiger_cv2group`
---
-ALTER TABLE `vtiger_cv2group`
-  ADD KEY `vtiger_cv2group_ibfk_1` (`cvid`),
-  ADD KEY `vtiger_groups_ibfk_1` (`groupid`);
-
---
--- Indexes for table `vtiger_cv2role`
---
-ALTER TABLE `vtiger_cv2role`
-  ADD KEY `vtiger_cv2role_ibfk_1` (`cvid`),
-  ADD KEY `vtiger_role_ibfk_1` (`roleid`);
-
---
--- Indexes for table `vtiger_cv2rs`
---
-ALTER TABLE `vtiger_cv2rs`
-  ADD KEY `vtiger_cv2role_ibfk_1` (`cvid`),
-  ADD KEY `vtiger_rolesd_ibfk_1` (`rsid`);
-
---
--- Indexes for table `vtiger_cv2users`
---
-ALTER TABLE `vtiger_cv2users`
-  ADD KEY `vtiger_cv2users_ibfk_1` (`cvid`),
-  ADD KEY `vtiger_users_ibfk_1` (`userid`);
-
---
--- Indexes for table `vtiger_cvadvfilter`
---
-ALTER TABLE `vtiger_cvadvfilter`
-  ADD PRIMARY KEY (`cvid`,`columnindex`),
-  ADD KEY `cvadvfilter_cvid_idx` (`cvid`);
-
---
--- Indexes for table `vtiger_cvadvfilter_grouping`
---
-ALTER TABLE `vtiger_cvadvfilter_grouping`
-  ADD PRIMARY KEY (`groupid`,`cvid`);
-
---
--- Indexes for table `vtiger_cvcolumnlist`
---
-ALTER TABLE `vtiger_cvcolumnlist`
-  ADD PRIMARY KEY (`cvid`,`columnindex`),
-  ADD KEY `cvcolumnlist_columnindex_idx` (`columnindex`),
-  ADD KEY `cvcolumnlist_cvid_idx` (`cvid`);
-
---
--- Indexes for table `vtiger_cvstdfilter`
---
-ALTER TABLE `vtiger_cvstdfilter`
-  ADD KEY `cvstdfilter_cvid_idx` (`cvid`);
-
---
--- Indexes for table `vtiger_dashboard_tabs`
---
-ALTER TABLE `vtiger_dashboard_tabs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `tabname` (`tabname`,`userid`),
-  ADD KEY `vtiger_dashboard_tabs_ibfk_1` (`userid`);
-
---
--- Indexes for table `vtiger_datashare_grp2grp`
---
-ALTER TABLE `vtiger_datashare_grp2grp`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `datashare_grp2grp_share_groupid_idx` (`share_groupid`),
-  ADD KEY `datashare_grp2grp_to_groupid_idx` (`to_groupid`);
-
---
--- Indexes for table `vtiger_datashare_grp2role`
---
-ALTER TABLE `vtiger_datashare_grp2role`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `idx_datashare_grp2role_share_groupid` (`share_groupid`),
-  ADD KEY `idx_datashare_grp2role_to_roleid` (`to_roleid`);
-
---
--- Indexes for table `vtiger_datashare_grp2rs`
---
-ALTER TABLE `vtiger_datashare_grp2rs`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `datashare_grp2rs_share_groupid_idx` (`share_groupid`),
-  ADD KEY `datashare_grp2rs_to_roleandsubid_idx` (`to_roleandsubid`);
-
---
--- Indexes for table `vtiger_datashare_module_rel`
---
-ALTER TABLE `vtiger_datashare_module_rel`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `idx_datashare_module_rel_tabid` (`tabid`);
-
---
--- Indexes for table `vtiger_datashare_relatedmodules`
---
-ALTER TABLE `vtiger_datashare_relatedmodules`
-  ADD PRIMARY KEY (`datashare_relatedmodule_id`),
-  ADD KEY `datashare_relatedmodules_tabid_idx` (`tabid`),
-  ADD KEY `datashare_relatedmodules_relatedto_tabid_idx` (`relatedto_tabid`);
-
---
--- Indexes for table `vtiger_datashare_relatedmodule_permission`
---
-ALTER TABLE `vtiger_datashare_relatedmodule_permission`
-  ADD PRIMARY KEY (`shareid`,`datashare_relatedmodule_id`),
-  ADD KEY `datashare_relatedmodule_permission_shareid_permissions_idx` (`shareid`,`permission`);
-
---
--- Indexes for table `vtiger_datashare_role2group`
---
-ALTER TABLE `vtiger_datashare_role2group`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `idx_datashare_role2group_share_roleid` (`share_roleid`),
-  ADD KEY `idx_datashare_role2group_to_groupid` (`to_groupid`);
-
---
--- Indexes for table `vtiger_datashare_role2role`
---
-ALTER TABLE `vtiger_datashare_role2role`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `datashare_role2role_share_roleid_idx` (`share_roleid`),
-  ADD KEY `datashare_role2role_to_roleid_idx` (`to_roleid`);
-
---
--- Indexes for table `vtiger_datashare_role2rs`
---
-ALTER TABLE `vtiger_datashare_role2rs`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `datashare_role2s_share_roleid_idx` (`share_roleid`),
-  ADD KEY `datashare_role2s_to_roleandsubid_idx` (`to_roleandsubid`);
-
---
--- Indexes for table `vtiger_datashare_rs2grp`
---
-ALTER TABLE `vtiger_datashare_rs2grp`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `datashare_rs2grp_share_roleandsubid_idx` (`share_roleandsubid`),
-  ADD KEY `datashare_rs2grp_to_groupid_idx` (`to_groupid`);
-
---
--- Indexes for table `vtiger_datashare_rs2role`
---
-ALTER TABLE `vtiger_datashare_rs2role`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `datashare_rs2role_share_roleandsubid_idx` (`share_roleandsubid`),
-  ADD KEY `datashare_rs2role_to_roleid_idx` (`to_roleid`);
-
---
--- Indexes for table `vtiger_datashare_rs2rs`
---
-ALTER TABLE `vtiger_datashare_rs2rs`
-  ADD PRIMARY KEY (`shareid`),
-  ADD KEY `datashare_rs2rs_share_roleandsubid_idx` (`share_roleandsubid`),
-  ADD KEY `idx_datashare_rs2rs_to_roleandsubid_idx` (`to_roleandsubid`);
-
---
--- Indexes for table `vtiger_date_format`
---
-ALTER TABLE `vtiger_date_format`
-  ADD PRIMARY KEY (`date_formatid`);
-
---
--- Indexes for table `vtiger_dayoftheweek`
---
-ALTER TABLE `vtiger_dayoftheweek`
-  ADD PRIMARY KEY (`dayoftheweekid`);
-
---
--- Indexes for table `vtiger_defaultactivitytype`
---
-ALTER TABLE `vtiger_defaultactivitytype`
-  ADD PRIMARY KEY (`defaultactivitytypeid`);
-
---
--- Indexes for table `vtiger_defaultcalendarview`
---
-ALTER TABLE `vtiger_defaultcalendarview`
-  ADD PRIMARY KEY (`defaultcalendarviewid`);
-
---
--- Indexes for table `vtiger_defaultcv`
---
-ALTER TABLE `vtiger_defaultcv`
-  ADD PRIMARY KEY (`tabid`);
-
---
--- Indexes for table `vtiger_defaulteventstatus`
---
-ALTER TABLE `vtiger_defaulteventstatus`
-  ADD PRIMARY KEY (`defaulteventstatusid`);
-
---
--- Indexes for table `vtiger_default_record_view`
---
-ALTER TABLE `vtiger_default_record_view`
-  ADD PRIMARY KEY (`default_record_viewid`);
-
---
--- Indexes for table `vtiger_def_org_field`
---
-ALTER TABLE `vtiger_def_org_field`
-  ADD PRIMARY KEY (`fieldid`),
-  ADD KEY `def_org_field_tabid_fieldid_idx` (`tabid`,`fieldid`),
-  ADD KEY `def_org_field_tabid_idx` (`tabid`),
-  ADD KEY `def_org_field_visible_fieldid_idx` (`visible`,`fieldid`);
-
---
--- Indexes for table `vtiger_def_org_share`
---
-ALTER TABLE `vtiger_def_org_share`
-  ADD PRIMARY KEY (`ruleid`),
-  ADD KEY `fk_1_vtiger_def_org_share` (`permission`);
-
---
--- Indexes for table `vtiger_durationhrs`
---
-ALTER TABLE `vtiger_durationhrs`
-  ADD PRIMARY KEY (`hrsid`);
-
---
--- Indexes for table `vtiger_durationmins`
---
-ALTER TABLE `vtiger_durationmins`
-  ADD PRIMARY KEY (`minsid`);
-
---
--- Indexes for table `vtiger_duration_minutes`
---
-ALTER TABLE `vtiger_duration_minutes`
-  ADD PRIMARY KEY (`minutesid`);
-
---
--- Indexes for table `vtiger_emaildetails`
---
-ALTER TABLE `vtiger_emaildetails`
-  ADD PRIMARY KEY (`emailid`);
-
---
--- Indexes for table `vtiger_emailslookup`
---
-ALTER TABLE `vtiger_emailslookup`
-  ADD UNIQUE KEY `emailslookup_crmid_setype_fieldname_uk` (`crmid`,`setype`,`fieldid`),
-  ADD KEY `emailslookup_fieldid_setype_idx` (`fieldid`,`setype`);
-
---
--- Indexes for table `vtiger_emails_recipientprefs`
---
-ALTER TABLE `vtiger_emails_recipientprefs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_emailtemplates`
---
-ALTER TABLE `vtiger_emailtemplates`
-  ADD PRIMARY KEY (`templateid`),
-  ADD KEY `emailtemplates_foldernamd_templatename_subject_idx` (`foldername`,`templatename`,`subject`);
-
---
--- Indexes for table `vtiger_email_track`
---
-ALTER TABLE `vtiger_email_track`
-  ADD UNIQUE KEY `link_tabidtype_idx` (`crmid`,`mailid`);
-
---
--- Indexes for table `vtiger_employ_gender`
---
-ALTER TABLE `vtiger_employ_gender`
-  ADD PRIMARY KEY (`employ_genderid`);
-
---
--- Indexes for table `vtiger_employ_marital_status`
---
-ALTER TABLE `vtiger_employ_marital_status`
-  ADD PRIMARY KEY (`employ_marital_statusid`);
-
---
--- Indexes for table `vtiger_entityname`
---
-ALTER TABLE `vtiger_entityname`
-  ADD PRIMARY KEY (`tabid`),
-  ADD KEY `entityname_tabid_idx` (`tabid`);
-
---
--- Indexes for table `vtiger_eventhandlers`
---
-ALTER TABLE `vtiger_eventhandlers`
-  ADD PRIMARY KEY (`eventhandler_id`,`event_name`,`handler_class`),
-  ADD UNIQUE KEY `eventhandler_idx` (`eventhandler_id`);
-
---
--- Indexes for table `vtiger_eventhandler_module`
---
-ALTER TABLE `vtiger_eventhandler_module`
-  ADD PRIMARY KEY (`eventhandler_module_id`);
-
---
--- Indexes for table `vtiger_eventstatus`
---
-ALTER TABLE `vtiger_eventstatus`
-  ADD PRIMARY KEY (`eventstatusid`);
-
---
--- Indexes for table `vtiger_expectedresponse`
---
-ALTER TABLE `vtiger_expectedresponse`
-  ADD PRIMARY KEY (`expectedresponseid`),
-  ADD UNIQUE KEY `CampaignExpRes_UK01` (`expectedresponse`);
-
---
--- Indexes for table `vtiger_extnstore_users`
---
-ALTER TABLE `vtiger_extnstore_users`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_faq`
---
-ALTER TABLE `vtiger_faq`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `faq_id_idx` (`id`);
-
---
--- Indexes for table `vtiger_faqcategories`
---
-ALTER TABLE `vtiger_faqcategories`
-  ADD PRIMARY KEY (`faqcategories_id`);
-
---
--- Indexes for table `vtiger_faqcf`
---
-ALTER TABLE `vtiger_faqcf`
-  ADD PRIMARY KEY (`faqid`);
-
---
--- Indexes for table `vtiger_faqcomments`
---
-ALTER TABLE `vtiger_faqcomments`
-  ADD PRIMARY KEY (`commentid`),
-  ADD KEY `faqcomments_faqid_idx` (`faqid`);
-
---
--- Indexes for table `vtiger_faqstatus`
---
-ALTER TABLE `vtiger_faqstatus`
-  ADD PRIMARY KEY (`faqstatus_id`);
-
---
--- Indexes for table `vtiger_field`
---
-ALTER TABLE `vtiger_field`
-  ADD PRIMARY KEY (`fieldid`),
-  ADD KEY `field_tabid_idx` (`tabid`),
-  ADD KEY `field_fieldname_idx` (`fieldname`),
-  ADD KEY `field_block_idx` (`block`),
-  ADD KEY `field_displaytype_idx` (`displaytype`);
-
---
--- Indexes for table `vtiger_freetagged_objects`
---
-ALTER TABLE `vtiger_freetagged_objects`
-  ADD PRIMARY KEY (`tag_id`,`tagger_id`,`object_id`),
-  ADD KEY `freetagged_objects_tag_id_tagger_id_object_id_idx` (`tag_id`,`tagger_id`,`object_id`);
-
---
--- Indexes for table `vtiger_freetags`
---
-ALTER TABLE `vtiger_freetags`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_glacct`
---
-ALTER TABLE `vtiger_glacct`
-  ADD PRIMARY KEY (`glacctid`),
-  ADD UNIQUE KEY `glacct_glacct_idx` (`glacct`);
-
---
--- Indexes for table `vtiger_group2grouprel`
---
-ALTER TABLE `vtiger_group2grouprel`
-  ADD PRIMARY KEY (`groupid`,`containsgroupid`);
-
---
--- Indexes for table `vtiger_group2role`
---
-ALTER TABLE `vtiger_group2role`
-  ADD PRIMARY KEY (`groupid`,`roleid`),
-  ADD KEY `fk_2_vtiger_group2role` (`roleid`);
-
---
--- Indexes for table `vtiger_group2rs`
---
-ALTER TABLE `vtiger_group2rs`
-  ADD PRIMARY KEY (`groupid`,`roleandsubid`),
-  ADD KEY `fk_2_vtiger_group2rs` (`roleandsubid`);
-
---
--- Indexes for table `vtiger_groups`
---
-ALTER TABLE `vtiger_groups`
-  ADD PRIMARY KEY (`groupid`),
-  ADD UNIQUE KEY `groups_groupname_idx` (`groupname`);
-
---
--- Indexes for table `vtiger_hinhthuctruyenthong`
---
-ALTER TABLE `vtiger_hinhthuctruyenthong`
-  ADD PRIMARY KEY (`hinhthuctruyenthongid`);
-
---
--- Indexes for table `vtiger_hinhthuctruyenthongcf`
---
-ALTER TABLE `vtiger_hinhthuctruyenthongcf`
-  ADD PRIMARY KEY (`hinhthuctruyenthongid`);
-
---
--- Indexes for table `vtiger_homedashbd`
---
-ALTER TABLE `vtiger_homedashbd`
-  ADD PRIMARY KEY (`stuffid`),
-  ADD KEY `stuff_stuffid_idx` (`stuffid`);
-
---
--- Indexes for table `vtiger_homedefault`
---
-ALTER TABLE `vtiger_homedefault`
-  ADD PRIMARY KEY (`stuffid`),
-  ADD KEY `stuff_stuffid_idx` (`stuffid`);
-
---
--- Indexes for table `vtiger_homemodule`
---
-ALTER TABLE `vtiger_homemodule`
-  ADD PRIMARY KEY (`stuffid`),
-  ADD KEY `stuff_stuffid_idx` (`stuffid`);
-
---
--- Indexes for table `vtiger_homemoduleflds`
---
-ALTER TABLE `vtiger_homemoduleflds`
-  ADD KEY `stuff_stuffid_idx` (`stuffid`);
-
---
--- Indexes for table `vtiger_homereportchart`
---
-ALTER TABLE `vtiger_homereportchart`
-  ADD PRIMARY KEY (`stuffid`);
-
---
--- Indexes for table `vtiger_homerss`
---
-ALTER TABLE `vtiger_homerss`
-  ADD PRIMARY KEY (`stuffid`),
-  ADD KEY `stuff_stuffid_idx` (`stuffid`);
-
---
--- Indexes for table `vtiger_homestuff`
---
-ALTER TABLE `vtiger_homestuff`
-  ADD PRIMARY KEY (`stuffid`),
-  ADD KEY `stuff_stuffid_idx` (`stuffid`),
-  ADD KEY `fk_1_vtiger_homestuff` (`userid`);
-
---
--- Indexes for table `vtiger_home_layout`
---
-ALTER TABLE `vtiger_home_layout`
-  ADD PRIMARY KEY (`userid`);
-
---
--- Indexes for table `vtiger_hour_format`
---
-ALTER TABLE `vtiger_hour_format`
-  ADD PRIMARY KEY (`hour_formatid`);
-
---
--- Indexes for table `vtiger_hr`
---
-ALTER TABLE `vtiger_hr`
-  ADD PRIMARY KEY (`hrid`);
-
---
--- Indexes for table `vtiger_hrm_candidate`
---
-ALTER TABLE `vtiger_hrm_candidate`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_candidatecf`
---
-ALTER TABLE `vtiger_hrm_candidatecf`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_employcf`
---
-ALTER TABLE `vtiger_hrm_employcf`
-  ADD PRIMARY KEY (`employid`);
-
---
--- Indexes for table `vtiger_hrm_employee`
---
-ALTER TABLE `vtiger_hrm_employee`
-  ADD PRIMARY KEY (`employid`);
-
---
--- Indexes for table `vtiger_hrm_jd`
---
-ALTER TABLE `vtiger_hrm_jd`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_jdcf`
---
-ALTER TABLE `vtiger_hrm_jdcf`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_jd_tasks`
---
-ALTER TABLE `vtiger_hrm_jd_tasks`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_kpi`
---
-ALTER TABLE `vtiger_hrm_kpi`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_kpicf`
---
-ALTER TABLE `vtiger_hrm_kpicf`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_leave`
---
-ALTER TABLE `vtiger_hrm_leave`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_leave_action`
---
-ALTER TABLE `vtiger_hrm_leave_action`
-  ADD PRIMARY KEY (`hrm_leave_actionid`);
-
---
--- Indexes for table `vtiger_hrm_leave_type`
---
-ALTER TABLE `vtiger_hrm_leave_type`
-  ADD PRIMARY KEY (`hrm_leave_typeid`);
-
---
--- Indexes for table `vtiger_hrm_position`
---
-ALTER TABLE `vtiger_hrm_position`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_qcm`
---
-ALTER TABLE `vtiger_hrm_qcm`
-  ADD PRIMARY KEY (`qcmid`);
-
---
--- Indexes for table `vtiger_hrm_qcmcf`
---
-ALTER TABLE `vtiger_hrm_qcmcf`
-  ADD PRIMARY KEY (`qcmid`);
-
---
--- Indexes for table `vtiger_hrm_rating`
---
-ALTER TABLE `vtiger_hrm_rating`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_ratingcf`
---
-ALTER TABLE `vtiger_hrm_ratingcf`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_salaryreference`
---
-ALTER TABLE `vtiger_hrm_salaryreference`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_setting`
---
-ALTER TABLE `vtiger_hrm_setting`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_settingdepartment`
---
-ALTER TABLE `vtiger_hrm_settingdepartment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_settingdepartmentcf`
---
-ALTER TABLE `vtiger_hrm_settingdepartmentcf`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_settingdepartmentcust`
---
-ALTER TABLE `vtiger_hrm_settingdepartmentcust`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hrm_weight`
---
-ALTER TABLE `vtiger_hrm_weight`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_hr_salary_action`
---
-ALTER TABLE `vtiger_hr_salary_action`
-  ADD PRIMARY KEY (`hr_salary_actionid`);
-
---
--- Indexes for table `vtiger_import_locks`
---
-ALTER TABLE `vtiger_import_locks`
-  ADD PRIMARY KEY (`vtiger_import_lock_id`);
-
---
--- Indexes for table `vtiger_import_maps`
---
-ALTER TABLE `vtiger_import_maps`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `import_maps_assigned_user_id_module_name_deleted_idx` (`assigned_user_id`,`module`,`name`,`deleted`);
-
---
--- Indexes for table `vtiger_import_queue`
---
-ALTER TABLE `vtiger_import_queue`
-  ADD PRIMARY KEY (`importid`);
-
---
--- Indexes for table `vtiger_industry`
---
-ALTER TABLE `vtiger_industry`
-  ADD PRIMARY KEY (`industryid`),
-  ADD UNIQUE KEY `industry_industry_idx` (`industry`);
-
---
--- Indexes for table `vtiger_inventorycharges`
---
-ALTER TABLE `vtiger_inventorycharges`
-  ADD PRIMARY KEY (`chargeid`);
-
---
--- Indexes for table `vtiger_inventorynotification`
---
-ALTER TABLE `vtiger_inventorynotification`
-  ADD PRIMARY KEY (`notificationid`);
-
---
--- Indexes for table `vtiger_inventoryproductrel`
---
-ALTER TABLE `vtiger_inventoryproductrel`
-  ADD PRIMARY KEY (`lineitem_id`),
-  ADD KEY `inventoryproductrel_id_idx` (`id`),
-  ADD KEY `inventoryproductrel_productid_idx` (`productid`);
-
---
--- Indexes for table `vtiger_inventoryshippingrel`
---
-ALTER TABLE `vtiger_inventoryshippingrel`
-  ADD KEY `inventoryishippingrel_id_idx` (`id`);
-
---
--- Indexes for table `vtiger_inventorytaxinfo`
---
-ALTER TABLE `vtiger_inventorytaxinfo`
-  ADD PRIMARY KEY (`taxid`),
-  ADD KEY `inventorytaxinfo_taxname_idx` (`taxname`);
-
---
--- Indexes for table `vtiger_inventory_tandc`
---
-ALTER TABLE `vtiger_inventory_tandc`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_invitees`
---
-ALTER TABLE `vtiger_invitees`
-  ADD PRIMARY KEY (`activityid`,`inviteeid`);
-
---
--- Indexes for table `vtiger_invoice`
---
-ALTER TABLE `vtiger_invoice`
-  ADD PRIMARY KEY (`invoiceid`),
-  ADD KEY `invoice_purchaseorderid_idx` (`invoiceid`),
-  ADD KEY `fk_2_vtiger_invoice` (`salesorderid`);
-
---
--- Indexes for table `vtiger_invoicebillads`
---
-ALTER TABLE `vtiger_invoicebillads`
-  ADD PRIMARY KEY (`invoicebilladdressid`);
-
---
--- Indexes for table `vtiger_invoicecf`
---
-ALTER TABLE `vtiger_invoicecf`
-  ADD PRIMARY KEY (`invoiceid`);
-
---
--- Indexes for table `vtiger_invoiceshipads`
---
-ALTER TABLE `vtiger_invoiceshipads`
-  ADD PRIMARY KEY (`invoiceshipaddressid`);
-
---
--- Indexes for table `vtiger_invoicestatus`
---
-ALTER TABLE `vtiger_invoicestatus`
-  ADD PRIMARY KEY (`invoicestatusid`),
-  ADD UNIQUE KEY `invoicestatus_invoiestatus_idx` (`invoicestatus`);
-
---
--- Indexes for table `vtiger_invoicestatushistory`
---
-ALTER TABLE `vtiger_invoicestatushistory`
-  ADD PRIMARY KEY (`historyid`),
-  ADD KEY `invoicestatushistory_invoiceid_idx` (`invoiceid`);
-
---
--- Indexes for table `vtiger_invoice_recurring_info`
---
-ALTER TABLE `vtiger_invoice_recurring_info`
-  ADD PRIMARY KEY (`salesorderid`);
-
---
--- Indexes for table `vtiger_jd_category`
---
-ALTER TABLE `vtiger_jd_category`
-  ADD PRIMARY KEY (`jd_categoryid`);
-
---
--- Indexes for table `vtiger_jd_classify`
---
-ALTER TABLE `vtiger_jd_classify`
-  ADD PRIMARY KEY (`jd_classifyid`);
-
---
--- Indexes for table `vtiger_jd_status`
---
-ALTER TABLE `vtiger_jd_status`
-  ADD PRIMARY KEY (`jd_statusid`);
-
---
--- Indexes for table `vtiger_kpi_department`
---
-ALTER TABLE `vtiger_kpi_department`
-  ADD PRIMARY KEY (`kpi_departmentid`);
-
---
--- Indexes for table `vtiger_kpi_status`
---
-ALTER TABLE `vtiger_kpi_status`
-  ADD PRIMARY KEY (`kpi_statusid`);
-
---
--- Indexes for table `vtiger_kpi_type`
---
-ALTER TABLE `vtiger_kpi_type`
-  ADD PRIMARY KEY (`kpi_typeid`);
-
---
--- Indexes for table `vtiger_language`
---
-ALTER TABLE `vtiger_language`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_leadaddress`
---
-ALTER TABLE `vtiger_leadaddress`
-  ADD PRIMARY KEY (`leadaddressid`);
-
---
--- Indexes for table `vtiger_leaddetails`
---
-ALTER TABLE `vtiger_leaddetails`
-  ADD PRIMARY KEY (`leadid`),
-  ADD KEY `leaddetails_converted_leadstatus_idx` (`converted`,`leadstatus`),
-  ADD KEY `email_idx` (`email`);
-
---
--- Indexes for table `vtiger_leadscf`
---
-ALTER TABLE `vtiger_leadscf`
-  ADD PRIMARY KEY (`leadid`);
-
---
--- Indexes for table `vtiger_leadsource`
---
-ALTER TABLE `vtiger_leadsource`
-  ADD PRIMARY KEY (`leadsourceid`);
-
---
--- Indexes for table `vtiger_leadstage`
---
-ALTER TABLE `vtiger_leadstage`
-  ADD PRIMARY KEY (`leadstageid`),
-  ADD UNIQUE KEY `leadstage_stage_idx` (`stage`);
-
---
--- Indexes for table `vtiger_leadstatus`
---
-ALTER TABLE `vtiger_leadstatus`
-  ADD PRIMARY KEY (`leadstatusid`);
-
---
--- Indexes for table `vtiger_leadsubdetails`
---
-ALTER TABLE `vtiger_leadsubdetails`
-  ADD PRIMARY KEY (`leadsubscriptionid`);
-
---
--- Indexes for table `vtiger_lead_view`
---
-ALTER TABLE `vtiger_lead_view`
-  ADD PRIMARY KEY (`lead_viewid`);
-
---
--- Indexes for table `vtiger_links`
---
-ALTER TABLE `vtiger_links`
-  ADD PRIMARY KEY (`linkid`),
-  ADD KEY `link_tabidtype_idx` (`tabid`,`linktype`);
-
---
--- Indexes for table `vtiger_loginhistory`
---
-ALTER TABLE `vtiger_loginhistory`
-  ADD PRIMARY KEY (`login_id`);
-
---
--- Indexes for table `vtiger_mailer_queue`
---
-ALTER TABLE `vtiger_mailer_queue`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_mailmanager_mailattachments`
---
-ALTER TABLE `vtiger_mailmanager_mailattachments`
-  ADD KEY `userid_muid_idx` (`userid`,`muid`);
-
---
--- Indexes for table `vtiger_mailmanager_mailrecord`
---
-ALTER TABLE `vtiger_mailmanager_mailrecord`
-  ADD KEY `userid_lastsavedtime_idx` (`userid`,`lastsavedtime`),
-  ADD KEY `userid_muid_idx` (`userid`,`muid`);
-
---
--- Indexes for table `vtiger_mailscanner`
---
-ALTER TABLE `vtiger_mailscanner`
-  ADD PRIMARY KEY (`scannerid`);
-
---
--- Indexes for table `vtiger_mailscanner_actions`
---
-ALTER TABLE `vtiger_mailscanner_actions`
-  ADD PRIMARY KEY (`actionid`);
-
---
--- Indexes for table `vtiger_mailscanner_folders`
---
-ALTER TABLE `vtiger_mailscanner_folders`
-  ADD PRIMARY KEY (`folderid`),
-  ADD KEY `folderid_idx` (`folderid`);
-
---
--- Indexes for table `vtiger_mailscanner_ids`
---
-ALTER TABLE `vtiger_mailscanner_ids`
-  ADD KEY `scanner_message_ids_idx` (`scannerid`,`messageid`),
-  ADD KEY `messageids_crmid_idx` (`crmid`);
-
---
--- Indexes for table `vtiger_mailscanner_rules`
---
-ALTER TABLE `vtiger_mailscanner_rules`
-  ADD PRIMARY KEY (`ruleid`);
-
---
--- Indexes for table `vtiger_mail_accounts`
---
-ALTER TABLE `vtiger_mail_accounts`
-  ADD PRIMARY KEY (`account_id`);
-
---
--- Indexes for table `vtiger_manufacturer`
---
-ALTER TABLE `vtiger_manufacturer`
-  ADD PRIMARY KEY (`manufacturerid`),
-  ADD UNIQUE KEY `manufacturer_manufacturer_idx` (`manufacturer`);
-
---
--- Indexes for table `vtiger_mobile_alerts`
---
-ALTER TABLE `vtiger_mobile_alerts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_modcomments`
---
-ALTER TABLE `vtiger_modcomments`
-  ADD KEY `relatedto_idx` (`related_to`),
-  ADD KEY `fk_crmid_vtiger_modcomments` (`modcommentsid`);
-
---
--- Indexes for table `vtiger_modcommentscf`
---
-ALTER TABLE `vtiger_modcommentscf`
-  ADD PRIMARY KEY (`modcommentsid`);
-
---
--- Indexes for table `vtiger_modentity_num`
---
-ALTER TABLE `vtiger_modentity_num`
-  ADD PRIMARY KEY (`num_id`),
-  ADD UNIQUE KEY `num_idx` (`num_id`),
-  ADD KEY `semodule_active_idx` (`semodule`,`active`);
-
---
--- Indexes for table `vtiger_modtracker_basic`
---
-ALTER TABLE `vtiger_modtracker_basic`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `crmidx` (`crmid`),
-  ADD KEY `idx` (`id`);
-
---
--- Indexes for table `vtiger_modtracker_detail`
---
-ALTER TABLE `vtiger_modtracker_detail`
-  ADD KEY `idx` (`id`);
-
---
--- Indexes for table `vtiger_modtracker_relations`
---
-ALTER TABLE `vtiger_modtracker_relations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_modtracker_tabs`
---
-ALTER TABLE `vtiger_modtracker_tabs`
-  ADD PRIMARY KEY (`tabid`);
-
---
--- Indexes for table `vtiger_module_dashboard_widgets`
---
-ALTER TABLE `vtiger_module_dashboard_widgets`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `dashboardtabid` (`dashboardtabid`);
-
---
--- Indexes for table `vtiger_notes`
---
-ALTER TABLE `vtiger_notes`
-  ADD PRIMARY KEY (`notesid`),
-  ADD KEY `notes_title_idx` (`title`),
-  ADD KEY `notes_notesid_idx` (`notesid`);
-
---
--- Indexes for table `vtiger_notescf`
---
-ALTER TABLE `vtiger_notescf`
-  ADD PRIMARY KEY (`notesid`);
-
---
--- Indexes for table `vtiger_notificationscheduler`
---
-ALTER TABLE `vtiger_notificationscheduler`
-  ADD PRIMARY KEY (`schedulednotificationid`),
-  ADD UNIQUE KEY `notificationscheduler_schedulednotificationname_idx` (`schedulednotificationname`);
-
---
--- Indexes for table `vtiger_no_of_currency_decimals`
---
-ALTER TABLE `vtiger_no_of_currency_decimals`
-  ADD PRIMARY KEY (`no_of_currency_decimalsid`);
-
---
--- Indexes for table `vtiger_opportunitystage`
---
-ALTER TABLE `vtiger_opportunitystage`
-  ADD PRIMARY KEY (`potstageid`),
-  ADD UNIQUE KEY `opportunitystage_stage_idx` (`stage`);
-
---
--- Indexes for table `vtiger_opportunity_type`
---
-ALTER TABLE `vtiger_opportunity_type`
-  ADD PRIMARY KEY (`opptypeid`),
-  ADD UNIQUE KEY `opportunity_type_opportunity_type_idx` (`opportunity_type`);
-
---
--- Indexes for table `vtiger_organizationdetails`
---
-ALTER TABLE `vtiger_organizationdetails`
-  ADD PRIMARY KEY (`organization_id`);
-
---
--- Indexes for table `vtiger_org_share_action2tab`
---
-ALTER TABLE `vtiger_org_share_action2tab`
-  ADD PRIMARY KEY (`share_action_id`,`tabid`),
-  ADD KEY `fk_2_vtiger_org_share_action2tab` (`tabid`);
-
---
--- Indexes for table `vtiger_org_share_action_mapping`
---
-ALTER TABLE `vtiger_org_share_action_mapping`
-  ADD PRIMARY KEY (`share_action_id`);
-
---
--- Indexes for table `vtiger_othereventduration`
---
-ALTER TABLE `vtiger_othereventduration`
-  ADD PRIMARY KEY (`othereventdurationid`);
-
---
--- Indexes for table `vtiger_parenttab`
---
-ALTER TABLE `vtiger_parenttab`
-  ADD PRIMARY KEY (`parenttabid`),
-  ADD KEY `parenttab_parenttabid_parenttabl_label_visible_idx` (`parenttabid`,`parenttab_label`,`visible`);
-
---
--- Indexes for table `vtiger_parenttabrel`
---
-ALTER TABLE `vtiger_parenttabrel`
-  ADD KEY `parenttabrel_tabid_parenttabid_idx` (`tabid`,`parenttabid`),
-  ADD KEY `fk_2_vtiger_parenttabrel` (`parenttabid`);
-
---
--- Indexes for table `vtiger_pbxmanager`
---
-ALTER TABLE `vtiger_pbxmanager`
-  ADD PRIMARY KEY (`pbxmanagerid`),
-  ADD KEY `index_sourceuuid` (`sourceuuid`),
-  ADD KEY `index_pbxmanager_id` (`pbxmanagerid`);
-
---
--- Indexes for table `vtiger_pbxmanagercf`
---
-ALTER TABLE `vtiger_pbxmanagercf`
-  ADD PRIMARY KEY (`pbxmanagerid`);
-
---
--- Indexes for table `vtiger_pbxmanager_gateway`
---
-ALTER TABLE `vtiger_pbxmanager_gateway`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_pbxmanager_phonelookup`
---
-ALTER TABLE `vtiger_pbxmanager_phonelookup`
-  ADD UNIQUE KEY `unique_key` (`crmid`,`setype`,`fieldname`),
-  ADD KEY `index_phone_number` (`fnumber`,`rnumber`);
-
---
--- Indexes for table `vtiger_phuongtientruyenthong`
---
-ALTER TABLE `vtiger_phuongtientruyenthong`
-  ADD PRIMARY KEY (`phuongtientruyenthongid`);
-
---
--- Indexes for table `vtiger_phuongtientruyenthongcf`
---
-ALTER TABLE `vtiger_phuongtientruyenthongcf`
-  ADD PRIMARY KEY (`phuongtientruyenthongid`);
-
---
--- Indexes for table `vtiger_picklist`
---
-ALTER TABLE `vtiger_picklist`
-  ADD PRIMARY KEY (`picklistid`),
-  ADD UNIQUE KEY `picklist_name_idx` (`name`);
-
---
--- Indexes for table `vtiger_picklist_dependency`
---
-ALTER TABLE `vtiger_picklist_dependency`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_picklist_transitions`
---
-ALTER TABLE `vtiger_picklist_transitions`
-  ADD PRIMARY KEY (`fieldname`);
-
---
--- Indexes for table `vtiger_pobillads`
---
-ALTER TABLE `vtiger_pobillads`
-  ADD PRIMARY KEY (`pobilladdressid`);
-
---
--- Indexes for table `vtiger_portal`
---
-ALTER TABLE `vtiger_portal`
-  ADD PRIMARY KEY (`portalid`),
-  ADD KEY `portal_portalname_idx` (`portalname`);
-
---
--- Indexes for table `vtiger_portalinfo`
---
-ALTER TABLE `vtiger_portalinfo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_poshipads`
---
-ALTER TABLE `vtiger_poshipads`
-  ADD PRIMARY KEY (`poshipaddressid`);
-
---
--- Indexes for table `vtiger_postatus`
---
-ALTER TABLE `vtiger_postatus`
-  ADD PRIMARY KEY (`postatusid`),
-  ADD UNIQUE KEY `postatus_postatus_idx` (`postatus`);
-
---
--- Indexes for table `vtiger_postatushistory`
---
-ALTER TABLE `vtiger_postatushistory`
-  ADD PRIMARY KEY (`historyid`),
-  ADD KEY `postatushistory_purchaseorderid_idx` (`purchaseorderid`);
-
---
--- Indexes for table `vtiger_potential`
---
-ALTER TABLE `vtiger_potential`
-  ADD PRIMARY KEY (`potentialid`),
-  ADD KEY `potential_relatedto_idx` (`related_to`),
-  ADD KEY `potentail_sales_stage_idx` (`sales_stage`),
-  ADD KEY `potentail_sales_stage_amount_idx` (`amount`,`sales_stage`);
-
---
--- Indexes for table `vtiger_potentialscf`
---
-ALTER TABLE `vtiger_potentialscf`
-  ADD PRIMARY KEY (`potentialid`);
-
---
--- Indexes for table `vtiger_potstagehistory`
---
-ALTER TABLE `vtiger_potstagehistory`
-  ADD PRIMARY KEY (`historyid`),
-  ADD KEY `potstagehistory_potentialid_idx` (`potentialid`);
-
---
--- Indexes for table `vtiger_pricebook`
---
-ALTER TABLE `vtiger_pricebook`
-  ADD PRIMARY KEY (`pricebookid`);
-
---
--- Indexes for table `vtiger_pricebookcf`
---
-ALTER TABLE `vtiger_pricebookcf`
-  ADD PRIMARY KEY (`pricebookid`);
-
---
--- Indexes for table `vtiger_pricebookproductrel`
---
-ALTER TABLE `vtiger_pricebookproductrel`
-  ADD PRIMARY KEY (`pricebookid`,`productid`),
-  ADD KEY `pricebookproductrel_pricebookid_idx` (`pricebookid`),
-  ADD KEY `pricebookproductrel_productid_idx` (`productid`);
-
---
--- Indexes for table `vtiger_priority`
---
-ALTER TABLE `vtiger_priority`
-  ADD PRIMARY KEY (`priorityid`),
-  ADD UNIQUE KEY `priority_priority_idx` (`priority`);
-
---
--- Indexes for table `vtiger_problemcategory`
---
-ALTER TABLE `vtiger_problemcategory`
-  ADD PRIMARY KEY (`problemcategoryid`);
-
---
--- Indexes for table `vtiger_problemcategorycf`
---
-ALTER TABLE `vtiger_problemcategorycf`
-  ADD PRIMARY KEY (`problemcategoryid`);
-
---
--- Indexes for table `vtiger_productcategory`
---
-ALTER TABLE `vtiger_productcategory`
-  ADD PRIMARY KEY (`productcategoryid`),
-  ADD UNIQUE KEY `productcategory_productcategory_idx` (`productcategory`);
-
---
--- Indexes for table `vtiger_productcf`
---
-ALTER TABLE `vtiger_productcf`
-  ADD PRIMARY KEY (`productid`);
-
---
--- Indexes for table `vtiger_products`
---
-ALTER TABLE `vtiger_products`
-  ADD PRIMARY KEY (`productid`);
-
---
--- Indexes for table `vtiger_producttaxrel`
---
-ALTER TABLE `vtiger_producttaxrel`
-  ADD KEY `producttaxrel_productid_idx` (`productid`),
-  ADD KEY `producttaxrel_taxid_idx` (`taxid`);
-
---
--- Indexes for table `vtiger_profile`
---
-ALTER TABLE `vtiger_profile`
-  ADD PRIMARY KEY (`profileid`);
-
---
--- Indexes for table `vtiger_profile2field`
---
-ALTER TABLE `vtiger_profile2field`
-  ADD PRIMARY KEY (`profileid`,`fieldid`),
-  ADD KEY `profile2field_profileid_tabid_fieldname_idx` (`profileid`,`tabid`),
-  ADD KEY `profile2field_tabid_profileid_idx` (`tabid`,`profileid`),
-  ADD KEY `profile2field_visible_profileid_idx` (`visible`,`profileid`);
-
---
--- Indexes for table `vtiger_profile2globalpermissions`
---
-ALTER TABLE `vtiger_profile2globalpermissions`
-  ADD PRIMARY KEY (`profileid`,`globalactionid`),
-  ADD KEY `idx_profile2globalpermissions` (`profileid`,`globalactionid`);
-
---
--- Indexes for table `vtiger_profile2standardpermissions`
---
-ALTER TABLE `vtiger_profile2standardpermissions`
-  ADD PRIMARY KEY (`profileid`,`tabid`,`operation`),
-  ADD KEY `profile2standardpermissions_profileid_tabid_operation_idx` (`profileid`,`tabid`,`operation`);
-
---
--- Indexes for table `vtiger_profile2tab`
---
-ALTER TABLE `vtiger_profile2tab`
-  ADD KEY `profile2tab_profileid_tabid_idx` (`profileid`,`tabid`);
-
---
--- Indexes for table `vtiger_profile2utility`
---
-ALTER TABLE `vtiger_profile2utility`
-  ADD PRIMARY KEY (`profileid`,`tabid`,`activityid`),
-  ADD KEY `profile2utility_profileid_tabid_activityid_idx` (`profileid`,`tabid`,`activityid`);
-
---
--- Indexes for table `vtiger_progress`
---
-ALTER TABLE `vtiger_progress`
-  ADD PRIMARY KEY (`progressid`);
-
---
--- Indexes for table `vtiger_project`
---
-ALTER TABLE `vtiger_project`
-  ADD PRIMARY KEY (`projectid`);
-
---
--- Indexes for table `vtiger_projectcf`
---
-ALTER TABLE `vtiger_projectcf`
-  ADD PRIMARY KEY (`projectid`);
-
---
--- Indexes for table `vtiger_projectmilestone`
---
-ALTER TABLE `vtiger_projectmilestone`
-  ADD PRIMARY KEY (`projectmilestoneid`);
-
---
--- Indexes for table `vtiger_projectmilestonecf`
---
-ALTER TABLE `vtiger_projectmilestonecf`
-  ADD PRIMARY KEY (`projectmilestoneid`);
-
---
--- Indexes for table `vtiger_projectmilestonetype`
---
-ALTER TABLE `vtiger_projectmilestonetype`
-  ADD PRIMARY KEY (`projectmilestonetypeid`);
-
---
--- Indexes for table `vtiger_projectpriority`
---
-ALTER TABLE `vtiger_projectpriority`
-  ADD PRIMARY KEY (`projectpriorityid`);
-
---
--- Indexes for table `vtiger_projectstatus`
---
-ALTER TABLE `vtiger_projectstatus`
-  ADD PRIMARY KEY (`projectstatusid`);
-
---
--- Indexes for table `vtiger_projecttask`
---
-ALTER TABLE `vtiger_projecttask`
-  ADD PRIMARY KEY (`projecttaskid`);
-
---
--- Indexes for table `vtiger_projecttaskcf`
---
-ALTER TABLE `vtiger_projecttaskcf`
-  ADD PRIMARY KEY (`projecttaskid`);
-
---
--- Indexes for table `vtiger_projecttaskpriority`
---
-ALTER TABLE `vtiger_projecttaskpriority`
-  ADD PRIMARY KEY (`projecttaskpriorityid`);
-
---
--- Indexes for table `vtiger_projecttaskprogress`
---
-ALTER TABLE `vtiger_projecttaskprogress`
-  ADD PRIMARY KEY (`projecttaskprogressid`);
-
---
--- Indexes for table `vtiger_projecttaskstatus`
---
-ALTER TABLE `vtiger_projecttaskstatus`
-  ADD PRIMARY KEY (`projecttaskstatusid`);
-
---
--- Indexes for table `vtiger_projecttasktype`
---
-ALTER TABLE `vtiger_projecttasktype`
-  ADD PRIMARY KEY (`projecttasktypeid`);
-
---
--- Indexes for table `vtiger_projecttask_status_color`
---
-ALTER TABLE `vtiger_projecttask_status_color`
-  ADD UNIQUE KEY `status` (`status`);
-
---
--- Indexes for table `vtiger_projecttype`
---
-ALTER TABLE `vtiger_projecttype`
-  ADD PRIMARY KEY (`projecttypeid`);
-
---
--- Indexes for table `vtiger_purchaseorder`
---
-ALTER TABLE `vtiger_purchaseorder`
-  ADD PRIMARY KEY (`purchaseorderid`),
-  ADD KEY `purchaseorder_vendorid_idx` (`vendorid`),
-  ADD KEY `purchaseorder_quoteid_idx` (`quoteid`),
-  ADD KEY `purchaseorder_contactid_idx` (`contactid`);
-
---
--- Indexes for table `vtiger_purchaseordercf`
---
-ALTER TABLE `vtiger_purchaseordercf`
-  ADD PRIMARY KEY (`purchaseorderid`);
-
---
--- Indexes for table `vtiger_qcm_category`
---
-ALTER TABLE `vtiger_qcm_category`
-  ADD PRIMARY KEY (`qcm_categoryid`);
-
---
--- Indexes for table `vtiger_qcm_classify`
---
-ALTER TABLE `vtiger_qcm_classify`
-  ADD PRIMARY KEY (`qcm_classifyid`);
-
---
--- Indexes for table `vtiger_qcm_status`
---
-ALTER TABLE `vtiger_qcm_status`
-  ADD PRIMARY KEY (`qcm_statusid`);
-
---
--- Indexes for table `vtiger_quotes`
---
-ALTER TABLE `vtiger_quotes`
-  ADD PRIMARY KEY (`quoteid`),
-  ADD KEY `quote_quotestage_idx` (`quotestage`),
-  ADD KEY `quotes_potentialid_idx` (`potentialid`),
-  ADD KEY `quotes_contactid_idx` (`contactid`);
-
---
--- Indexes for table `vtiger_quotesbillads`
---
-ALTER TABLE `vtiger_quotesbillads`
-  ADD PRIMARY KEY (`quotebilladdressid`);
-
---
--- Indexes for table `vtiger_quotescf`
---
-ALTER TABLE `vtiger_quotescf`
-  ADD PRIMARY KEY (`quoteid`);
-
---
--- Indexes for table `vtiger_quotesshipads`
---
-ALTER TABLE `vtiger_quotesshipads`
-  ADD PRIMARY KEY (`quoteshipaddressid`);
-
---
--- Indexes for table `vtiger_quotestage`
---
-ALTER TABLE `vtiger_quotestage`
-  ADD PRIMARY KEY (`quotestageid`),
-  ADD UNIQUE KEY `quotestage_quotestage_idx` (`quotestage`);
-
---
--- Indexes for table `vtiger_quotestagehistory`
---
-ALTER TABLE `vtiger_quotestagehistory`
-  ADD PRIMARY KEY (`historyid`),
-  ADD KEY `quotestagehistory_quoteid_idx` (`quoteid`);
-
---
--- Indexes for table `vtiger_rating`
---
-ALTER TABLE `vtiger_rating`
-  ADD PRIMARY KEY (`rating_id`);
-
---
--- Indexes for table `vtiger_recurringevents`
---
-ALTER TABLE `vtiger_recurringevents`
-  ADD PRIMARY KEY (`recurringid`),
-  ADD KEY `fk_1_vtiger_recurringevents` (`activityid`);
-
---
--- Indexes for table `vtiger_recurringtype`
---
-ALTER TABLE `vtiger_recurringtype`
-  ADD PRIMARY KEY (`recurringeventid`),
-  ADD UNIQUE KEY `recurringtype_status_idx` (`recurringtype`);
-
---
--- Indexes for table `vtiger_relatedlists`
---
-ALTER TABLE `vtiger_relatedlists`
-  ADD PRIMARY KEY (`relation_id`),
-  ADD KEY `relatedlists_relation_id_idx` (`relation_id`);
-
---
--- Indexes for table `vtiger_relcriteria`
---
-ALTER TABLE `vtiger_relcriteria`
-  ADD PRIMARY KEY (`queryid`,`columnindex`),
-  ADD KEY `relcriteria_queryid_idx` (`queryid`);
-
---
--- Indexes for table `vtiger_relcriteria_grouping`
---
-ALTER TABLE `vtiger_relcriteria_grouping`
-  ADD PRIMARY KEY (`groupid`,`queryid`);
-
---
--- Indexes for table `vtiger_reminder_interval`
---
-ALTER TABLE `vtiger_reminder_interval`
-  ADD PRIMARY KEY (`reminder_intervalid`);
-
---
--- Indexes for table `vtiger_report`
---
-ALTER TABLE `vtiger_report`
-  ADD PRIMARY KEY (`reportid`),
-  ADD KEY `report_queryid_idx` (`queryid`),
-  ADD KEY `report_folderid_idx` (`folderid`);
-
---
--- Indexes for table `vtiger_reportdatefilter`
---
-ALTER TABLE `vtiger_reportdatefilter`
-  ADD PRIMARY KEY (`datefilterid`),
-  ADD KEY `reportdatefilter_datefilterid_idx` (`datefilterid`);
-
---
--- Indexes for table `vtiger_reportfolder`
---
-ALTER TABLE `vtiger_reportfolder`
-  ADD PRIMARY KEY (`folderid`);
-
---
--- Indexes for table `vtiger_reportgroupbycolumn`
---
-ALTER TABLE `vtiger_reportgroupbycolumn`
-  ADD KEY `fk_1_vtiger_reportgroupbycolumn` (`reportid`);
-
---
--- Indexes for table `vtiger_reportmodules`
---
-ALTER TABLE `vtiger_reportmodules`
-  ADD PRIMARY KEY (`reportmodulesid`);
-
---
--- Indexes for table `vtiger_reportsortcol`
---
-ALTER TABLE `vtiger_reportsortcol`
-  ADD PRIMARY KEY (`sortcolid`,`reportid`),
-  ADD KEY `fk_1_vtiger_reportsortcol` (`reportid`);
-
---
--- Indexes for table `vtiger_reportsummary`
---
-ALTER TABLE `vtiger_reportsummary`
-  ADD PRIMARY KEY (`reportsummaryid`,`summarytype`,`columnname`),
-  ADD KEY `reportsummary_reportsummaryid_idx` (`reportsummaryid`);
-
---
--- Indexes for table `vtiger_reporttype`
---
-ALTER TABLE `vtiger_reporttype`
-  ADD PRIMARY KEY (`reportid`);
-
---
--- Indexes for table `vtiger_report_sharegroups`
---
-ALTER TABLE `vtiger_report_sharegroups`
-  ADD KEY `vtiger_report_sharegroups_ibfk_1` (`reportid`),
-  ADD KEY `vtiger_groups_groupid_ibfk_1` (`groupid`);
-
---
--- Indexes for table `vtiger_report_sharerole`
---
-ALTER TABLE `vtiger_report_sharerole`
-  ADD KEY `vtiger_report_sharerole_ibfk_1` (`reportid`),
-  ADD KEY `vtiger_role_roleid_ibfk_1` (`roleid`);
-
---
--- Indexes for table `vtiger_report_sharers`
---
-ALTER TABLE `vtiger_report_sharers`
-  ADD KEY `vtiger_report_sharers_ibfk_1` (`reportid`),
-  ADD KEY `vtiger_rolesd_rsid_ibfk_1` (`rsid`);
-
---
--- Indexes for table `vtiger_report_shareusers`
---
-ALTER TABLE `vtiger_report_shareusers`
-  ADD KEY `vtiger_report_shareusers_ibfk_1` (`reportid`),
-  ADD KEY `vtiger_users_userid_ibfk_1` (`userid`);
-
---
--- Indexes for table `vtiger_role`
---
-ALTER TABLE `vtiger_role`
-  ADD PRIMARY KEY (`roleid`);
-
---
--- Indexes for table `vtiger_role2picklist`
---
-ALTER TABLE `vtiger_role2picklist`
-  ADD PRIMARY KEY (`roleid`,`picklistvalueid`,`picklistid`),
-  ADD KEY `role2picklist_roleid_picklistid_idx` (`roleid`,`picklistid`,`picklistvalueid`),
-  ADD KEY `fk_2_vtiger_role2picklist` (`picklistid`);
-
---
--- Indexes for table `vtiger_role2profile`
---
-ALTER TABLE `vtiger_role2profile`
-  ADD PRIMARY KEY (`roleid`,`profileid`),
-  ADD KEY `role2profile_roleid_profileid_idx` (`roleid`,`profileid`);
-
---
--- Indexes for table `vtiger_rollupcomments_settings`
---
-ALTER TABLE `vtiger_rollupcomments_settings`
-  ADD PRIMARY KEY (`rollupid`);
-
---
--- Indexes for table `vtiger_rowheight`
---
-ALTER TABLE `vtiger_rowheight`
-  ADD PRIMARY KEY (`rowheightid`);
-
---
--- Indexes for table `vtiger_rss`
---
-ALTER TABLE `vtiger_rss`
-  ADD PRIMARY KEY (`rssid`);
-
---
--- Indexes for table `vtiger_salesmanactivityrel`
---
-ALTER TABLE `vtiger_salesmanactivityrel`
-  ADD PRIMARY KEY (`smid`,`activityid`),
-  ADD KEY `salesmanactivityrel_activityid_idx` (`activityid`),
-  ADD KEY `salesmanactivityrel_smid_idx` (`smid`);
-
---
--- Indexes for table `vtiger_salesmanattachmentsrel`
---
-ALTER TABLE `vtiger_salesmanattachmentsrel`
-  ADD PRIMARY KEY (`smid`,`attachmentsid`),
-  ADD KEY `salesmanattachmentsrel_smid_idx` (`smid`),
-  ADD KEY `salesmanattachmentsrel_attachmentsid_idx` (`attachmentsid`);
-
---
--- Indexes for table `vtiger_salesmanticketrel`
---
-ALTER TABLE `vtiger_salesmanticketrel`
-  ADD PRIMARY KEY (`smid`,`id`),
-  ADD KEY `salesmanticketrel_smid_idx` (`smid`),
-  ADD KEY `salesmanticketrel_id_idx` (`id`);
-
---
--- Indexes for table `vtiger_salesorder`
---
-ALTER TABLE `vtiger_salesorder`
-  ADD PRIMARY KEY (`salesorderid`),
-  ADD KEY `salesorder_vendorid_idx` (`vendorid`),
-  ADD KEY `salesorder_contactid_idx` (`contactid`);
-
---
--- Indexes for table `vtiger_salesordercf`
---
-ALTER TABLE `vtiger_salesordercf`
-  ADD PRIMARY KEY (`salesorderid`);
-
---
--- Indexes for table `vtiger_sales_stage`
---
-ALTER TABLE `vtiger_sales_stage`
-  ADD PRIMARY KEY (`sales_stage_id`);
-
---
--- Indexes for table `vtiger_salutationtype`
---
-ALTER TABLE `vtiger_salutationtype`
-  ADD PRIMARY KEY (`salutationid`);
-
---
--- Indexes for table `vtiger_scheduled_reports`
---
-ALTER TABLE `vtiger_scheduled_reports`
-  ADD PRIMARY KEY (`reportid`);
-
---
--- Indexes for table `vtiger_seactivityrel`
---
-ALTER TABLE `vtiger_seactivityrel`
-  ADD PRIMARY KEY (`crmid`,`activityid`),
-  ADD KEY `seactivityrel_activityid_idx` (`activityid`),
-  ADD KEY `seactivityrel_crmid_idx` (`crmid`);
-
---
--- Indexes for table `vtiger_seattachmentsrel`
---
-ALTER TABLE `vtiger_seattachmentsrel`
-  ADD PRIMARY KEY (`crmid`,`attachmentsid`),
-  ADD KEY `seattachmentsrel_attachmentsid_idx` (`attachmentsid`),
-  ADD KEY `seattachmentsrel_crmid_idx` (`crmid`),
-  ADD KEY `seattachmentsrel_attachmentsid_crmid_idx` (`attachmentsid`,`crmid`);
-
---
--- Indexes for table `vtiger_selectcolumn`
---
-ALTER TABLE `vtiger_selectcolumn`
-  ADD PRIMARY KEY (`queryid`,`columnindex`),
-  ADD KEY `selectcolumn_queryid_idx` (`queryid`);
-
---
--- Indexes for table `vtiger_selectquery`
---
-ALTER TABLE `vtiger_selectquery`
-  ADD PRIMARY KEY (`queryid`),
-  ADD KEY `selectquery_queryid_idx` (`queryid`);
-
---
--- Indexes for table `vtiger_senotesrel`
---
-ALTER TABLE `vtiger_senotesrel`
-  ADD PRIMARY KEY (`crmid`,`notesid`),
-  ADD KEY `senotesrel_notesid_idx` (`notesid`),
-  ADD KEY `senotesrel_crmid_idx` (`crmid`);
-
---
--- Indexes for table `vtiger_seproductsrel`
---
-ALTER TABLE `vtiger_seproductsrel`
-  ADD PRIMARY KEY (`crmid`,`productid`),
-  ADD KEY `seproductsrel_productid_idx` (`productid`),
-  ADD KEY `seproductrel_crmid_idx` (`crmid`);
-
---
--- Indexes for table `vtiger_service`
---
-ALTER TABLE `vtiger_service`
-  ADD PRIMARY KEY (`serviceid`);
-
---
--- Indexes for table `vtiger_servicecategory`
---
-ALTER TABLE `vtiger_servicecategory`
-  ADD PRIMARY KEY (`servicecategoryid`);
-
---
--- Indexes for table `vtiger_servicecf`
---
-ALTER TABLE `vtiger_servicecf`
-  ADD PRIMARY KEY (`serviceid`);
-
---
--- Indexes for table `vtiger_servicecontracts`
---
-ALTER TABLE `vtiger_servicecontracts`
-  ADD KEY `fk_crmid_vtiger_servicecontracts` (`servicecontractsid`);
-
---
--- Indexes for table `vtiger_servicecontractscf`
---
-ALTER TABLE `vtiger_servicecontractscf`
-  ADD PRIMARY KEY (`servicecontractsid`);
-
---
--- Indexes for table `vtiger_service_usageunit`
---
-ALTER TABLE `vtiger_service_usageunit`
-  ADD PRIMARY KEY (`service_usageunitid`);
-
---
--- Indexes for table `vtiger_seticketsrel`
---
-ALTER TABLE `vtiger_seticketsrel`
-  ADD PRIMARY KEY (`crmid`,`ticketid`),
-  ADD KEY `seticketsrel_crmid_idx` (`crmid`),
-  ADD KEY `seticketsrel_ticketid_idx` (`ticketid`);
-
---
--- Indexes for table `vtiger_settings_blocks`
---
-ALTER TABLE `vtiger_settings_blocks`
-  ADD PRIMARY KEY (`blockid`);
-
---
--- Indexes for table `vtiger_settings_field`
---
-ALTER TABLE `vtiger_settings_field`
-  ADD PRIMARY KEY (`fieldid`),
-  ADD KEY `fk_1_vtiger_settings_field` (`blockid`);
-
---
--- Indexes for table `vtiger_sharedcalendar`
---
-ALTER TABLE `vtiger_sharedcalendar`
-  ADD PRIMARY KEY (`userid`,`sharedid`);
-
---
--- Indexes for table `vtiger_shippingtaxinfo`
---
-ALTER TABLE `vtiger_shippingtaxinfo`
-  ADD PRIMARY KEY (`taxid`),
-  ADD KEY `shippingtaxinfo_taxname_idx` (`taxname`);
-
---
--- Indexes for table `vtiger_shorturls`
---
-ALTER TABLE `vtiger_shorturls`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `uid` (`uid`);
-
---
--- Indexes for table `vtiger_smsnotifier`
---
-ALTER TABLE `vtiger_smsnotifier`
-  ADD PRIMARY KEY (`smsnotifierid`);
-
---
--- Indexes for table `vtiger_smsnotifiercf`
---
-ALTER TABLE `vtiger_smsnotifiercf`
-  ADD PRIMARY KEY (`smsnotifierid`);
-
---
--- Indexes for table `vtiger_smsnotifier_servers`
---
-ALTER TABLE `vtiger_smsnotifier_servers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_smsnotifier_status`
---
-ALTER TABLE `vtiger_smsnotifier_status`
-  ADD PRIMARY KEY (`statusid`);
-
---
--- Indexes for table `vtiger_sobillads`
---
-ALTER TABLE `vtiger_sobillads`
-  ADD PRIMARY KEY (`sobilladdressid`);
-
---
--- Indexes for table `vtiger_soshipads`
---
-ALTER TABLE `vtiger_soshipads`
-  ADD PRIMARY KEY (`soshipaddressid`);
-
---
--- Indexes for table `vtiger_sostatus`
---
-ALTER TABLE `vtiger_sostatus`
-  ADD PRIMARY KEY (`sostatusid`),
-  ADD UNIQUE KEY `sostatus_sostatus_idx` (`sostatus`);
-
---
--- Indexes for table `vtiger_sostatushistory`
---
-ALTER TABLE `vtiger_sostatushistory`
-  ADD PRIMARY KEY (`historyid`),
-  ADD KEY `sostatushistory_salesorderid_idx` (`salesorderid`);
-
---
--- Indexes for table `vtiger_start_hour`
---
-ALTER TABLE `vtiger_start_hour`
-  ADD PRIMARY KEY (`start_hourid`);
-
---
--- Indexes for table `vtiger_status`
---
-ALTER TABLE `vtiger_status`
-  ADD PRIMARY KEY (`statusid`);
-
---
--- Indexes for table `vtiger_supportprotocol`
---
-ALTER TABLE `vtiger_supportprotocol`
-  ADD PRIMARY KEY (`supportprotocolid`);
-
---
--- Indexes for table `vtiger_supportprotocolcf`
---
-ALTER TABLE `vtiger_supportprotocolcf`
-  ADD PRIMARY KEY (`supportprotocolid`);
-
---
--- Indexes for table `vtiger_systems`
---
-ALTER TABLE `vtiger_systems`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_tab`
---
-ALTER TABLE `vtiger_tab`
-  ADD PRIMARY KEY (`tabid`),
-  ADD UNIQUE KEY `tab_name_idx` (`name`),
-  ADD KEY `tab_modifiedby_idx` (`modifiedby`),
-  ADD KEY `tab_tabid_idx` (`tabid`);
-
---
--- Indexes for table `vtiger_tab_info`
---
-ALTER TABLE `vtiger_tab_info`
-  ADD KEY `fk_1_vtiger_tab_info` (`tabid`);
-
---
--- Indexes for table `vtiger_taskpriority`
---
-ALTER TABLE `vtiger_taskpriority`
-  ADD PRIMARY KEY (`taskpriorityid`);
-
---
--- Indexes for table `vtiger_taskstatus`
---
-ALTER TABLE `vtiger_taskstatus`
-  ADD PRIMARY KEY (`taskstatusid`);
-
---
--- Indexes for table `vtiger_taxclass`
---
-ALTER TABLE `vtiger_taxclass`
-  ADD PRIMARY KEY (`taxclassid`),
-  ADD UNIQUE KEY `taxclass_carrier_idx` (`taxclass`);
-
---
--- Indexes for table `vtiger_taxregions`
---
-ALTER TABLE `vtiger_taxregions`
-  ADD PRIMARY KEY (`regionid`);
-
---
--- Indexes for table `vtiger_ticketcategories`
---
-ALTER TABLE `vtiger_ticketcategories`
-  ADD PRIMARY KEY (`ticketcategories_id`);
-
---
--- Indexes for table `vtiger_ticketcf`
---
-ALTER TABLE `vtiger_ticketcf`
-  ADD PRIMARY KEY (`ticketid`);
-
---
--- Indexes for table `vtiger_ticketcomments`
---
-ALTER TABLE `vtiger_ticketcomments`
-  ADD PRIMARY KEY (`commentid`),
-  ADD KEY `ticketcomments_ticketid_idx` (`ticketid`);
-
---
--- Indexes for table `vtiger_ticketpriorities`
---
-ALTER TABLE `vtiger_ticketpriorities`
-  ADD PRIMARY KEY (`ticketpriorities_id`);
-
---
--- Indexes for table `vtiger_ticketseverities`
---
-ALTER TABLE `vtiger_ticketseverities`
-  ADD PRIMARY KEY (`ticketseverities_id`);
-
---
--- Indexes for table `vtiger_ticketstatus`
---
-ALTER TABLE `vtiger_ticketstatus`
-  ADD PRIMARY KEY (`ticketstatus_id`);
-
---
--- Indexes for table `vtiger_time_zone`
---
-ALTER TABLE `vtiger_time_zone`
-  ADD PRIMARY KEY (`time_zoneid`);
-
---
--- Indexes for table `vtiger_tmp_read_group_rel_sharing_per`
---
-ALTER TABLE `vtiger_tmp_read_group_rel_sharing_per`
-  ADD PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`sharedgroupid`),
-  ADD KEY `tmp_read_group_rel_sharing_per_userid_sharedgroupid_tabid` (`userid`,`sharedgroupid`,`tabid`);
-
---
--- Indexes for table `vtiger_tmp_read_group_sharing_per`
---
-ALTER TABLE `vtiger_tmp_read_group_sharing_per`
-  ADD PRIMARY KEY (`userid`,`tabid`,`sharedgroupid`),
-  ADD KEY `tmp_read_group_sharing_per_userid_sharedgroupid_idx` (`userid`,`sharedgroupid`);
-
---
--- Indexes for table `vtiger_tmp_read_user_rel_sharing_per`
---
-ALTER TABLE `vtiger_tmp_read_user_rel_sharing_per`
-  ADD PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`shareduserid`),
-  ADD KEY `tmp_read_user_rel_sharing_per_userid_shared_reltabid_idx` (`userid`,`shareduserid`,`relatedtabid`);
-
---
--- Indexes for table `vtiger_tmp_read_user_sharing_per`
---
-ALTER TABLE `vtiger_tmp_read_user_sharing_per`
-  ADD PRIMARY KEY (`userid`,`tabid`,`shareduserid`),
-  ADD KEY `tmp_read_user_sharing_per_userid_shareduserid_idx` (`userid`,`shareduserid`);
-
---
--- Indexes for table `vtiger_tmp_write_group_rel_sharing_per`
---
-ALTER TABLE `vtiger_tmp_write_group_rel_sharing_per`
-  ADD PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`sharedgroupid`),
-  ADD KEY `tmp_write_group_rel_sharing_per_userid_sharedgroupid_tabid_idx` (`userid`,`sharedgroupid`,`tabid`);
-
---
--- Indexes for table `vtiger_tmp_write_group_sharing_per`
---
-ALTER TABLE `vtiger_tmp_write_group_sharing_per`
-  ADD PRIMARY KEY (`userid`,`tabid`,`sharedgroupid`),
-  ADD KEY `tmp_write_group_sharing_per_UK1` (`userid`,`sharedgroupid`);
-
---
--- Indexes for table `vtiger_tmp_write_user_rel_sharing_per`
---
-ALTER TABLE `vtiger_tmp_write_user_rel_sharing_per`
-  ADD PRIMARY KEY (`userid`,`tabid`,`relatedtabid`,`shareduserid`),
-  ADD KEY `tmp_write_user_rel_sharing_per_userid_sharduserid_tabid_idx` (`userid`,`shareduserid`,`tabid`);
-
---
--- Indexes for table `vtiger_tmp_write_user_sharing_per`
---
-ALTER TABLE `vtiger_tmp_write_user_sharing_per`
-  ADD PRIMARY KEY (`userid`,`tabid`,`shareduserid`),
-  ADD KEY `tmp_write_user_sharing_per_userid_shareduserid_idx` (`userid`,`shareduserid`);
-
---
--- Indexes for table `vtiger_tracker`
---
-ALTER TABLE `vtiger_tracker`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_tracking_unit`
---
-ALTER TABLE `vtiger_tracking_unit`
-  ADD PRIMARY KEY (`tracking_unitid`);
-
---
--- Indexes for table `vtiger_troubletickets`
---
-ALTER TABLE `vtiger_troubletickets`
-  ADD PRIMARY KEY (`ticketid`),
-  ADD KEY `troubletickets_ticketid_idx` (`ticketid`),
-  ADD KEY `troubletickets_status_idx` (`status`);
-
---
--- Indexes for table `vtiger_usageunit`
---
-ALTER TABLE `vtiger_usageunit`
-  ADD PRIMARY KEY (`usageunitid`),
-  ADD UNIQUE KEY `usageunit_usageunit_idx` (`usageunit`);
-
---
--- Indexes for table `vtiger_user2mergefields`
---
-ALTER TABLE `vtiger_user2mergefields`
-  ADD KEY `userid_tabid_idx` (`userid`,`tabid`);
-
---
--- Indexes for table `vtiger_user2role`
---
-ALTER TABLE `vtiger_user2role`
-  ADD PRIMARY KEY (`userid`),
-  ADD KEY `user2role_roleid_idx` (`roleid`);
-
---
--- Indexes for table `vtiger_users`
---
-ALTER TABLE `vtiger_users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_user_name_idx` (`user_name`),
-  ADD KEY `user_user_password_idx` (`user_password`);
-
---
--- Indexes for table `vtiger_users2group`
---
-ALTER TABLE `vtiger_users2group`
-  ADD PRIMARY KEY (`groupid`,`userid`),
-  ADD KEY `users2group_groupname_uerid_idx` (`groupid`,`userid`),
-  ADD KEY `fk_2_vtiger_users2group` (`userid`);
-
---
--- Indexes for table `vtiger_users_last_import`
---
-ALTER TABLE `vtiger_users_last_import`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_user_id` (`assigned_user_id`);
-
---
--- Indexes for table `vtiger_user_module_preferences`
---
-ALTER TABLE `vtiger_user_module_preferences`
-  ADD PRIMARY KEY (`userid`,`tabid`),
-  ADD KEY `fk_2_vtiger_user_module_preferences` (`tabid`);
-
---
--- Indexes for table `vtiger_vendor`
---
-ALTER TABLE `vtiger_vendor`
-  ADD PRIMARY KEY (`vendorid`);
-
---
--- Indexes for table `vtiger_vendorcf`
---
-ALTER TABLE `vtiger_vendorcf`
-  ADD PRIMARY KEY (`vendorid`);
-
---
--- Indexes for table `vtiger_vendorcontactrel`
---
-ALTER TABLE `vtiger_vendorcontactrel`
-  ADD PRIMARY KEY (`vendorid`,`contactid`),
-  ADD KEY `vendorcontactrel_vendorid_idx` (`vendorid`),
-  ADD KEY `vendorcontactrel_contact_idx` (`contactid`);
-
---
--- Indexes for table `vtiger_version`
---
-ALTER TABLE `vtiger_version`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_visibility`
---
-ALTER TABLE `vtiger_visibility`
-  ADD PRIMARY KEY (`visibilityid`),
-  ADD UNIQUE KEY `visibility_visibility_idx` (`visibility`);
-
---
--- Indexes for table `vtiger_webforms`
---
-ALTER TABLE `vtiger_webforms`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `webformname` (`name`),
-  ADD UNIQUE KEY `publicid` (`id`),
-  ADD KEY `webforms_webforms_id_idx` (`id`);
-
---
--- Indexes for table `vtiger_webforms_field`
---
-ALTER TABLE `vtiger_webforms_field`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `webforms_webforms_field_idx` (`id`),
-  ADD KEY `fk_1_vtiger_webforms_field` (`webformid`),
-  ADD KEY `fk_2_vtiger_webforms_field` (`fieldname`);
-
---
--- Indexes for table `vtiger_webform_file_fields`
---
-ALTER TABLE `vtiger_webform_file_fields`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_vtiger_webforms` (`webformid`);
-
---
--- Indexes for table `vtiger_wordtemplates`
---
-ALTER TABLE `vtiger_wordtemplates`
-  ADD PRIMARY KEY (`templateid`);
-
---
--- Indexes for table `vtiger_wsapp`
---
-ALTER TABLE `vtiger_wsapp`
-  ADD PRIMARY KEY (`appid`);
-
---
--- Indexes for table `vtiger_wsapp_logs_basic`
---
-ALTER TABLE `vtiger_wsapp_logs_basic`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_wsapp_logs_details`
---
-ALTER TABLE `vtiger_wsapp_logs_details`
-  ADD KEY `vtiger_wsapp_logs_basic_ibfk_1` (`id`);
-
---
--- Indexes for table `vtiger_wsapp_recordmapping`
---
-ALTER TABLE `vtiger_wsapp_recordmapping`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_wsapp_sync_state`
---
-ALTER TABLE `vtiger_wsapp_sync_state`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_ws_entity`
---
-ALTER TABLE `vtiger_ws_entity`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_ws_entity_fieldtype`
---
-ALTER TABLE `vtiger_ws_entity_fieldtype`
-  ADD PRIMARY KEY (`fieldtypeid`),
-  ADD UNIQUE KEY `vtiger_idx_1_tablename_fieldname` (`table_name`,`field_name`);
-
---
--- Indexes for table `vtiger_ws_entity_name`
---
-ALTER TABLE `vtiger_ws_entity_name`
-  ADD PRIMARY KEY (`entity_id`);
-
---
--- Indexes for table `vtiger_ws_entity_referencetype`
---
-ALTER TABLE `vtiger_ws_entity_referencetype`
-  ADD PRIMARY KEY (`fieldtypeid`,`type`);
-
---
--- Indexes for table `vtiger_ws_entity_tables`
---
-ALTER TABLE `vtiger_ws_entity_tables`
-  ADD PRIMARY KEY (`webservice_entity_id`,`table_name`);
-
---
--- Indexes for table `vtiger_ws_fieldinfo`
---
-ALTER TABLE `vtiger_ws_fieldinfo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `vtiger_ws_fieldtype`
---
-ALTER TABLE `vtiger_ws_fieldtype`
-  ADD PRIMARY KEY (`fieldtypeid`),
-  ADD UNIQUE KEY `uitype_idx` (`uitype`);
-
---
--- Indexes for table `vtiger_ws_operation`
---
-ALTER TABLE `vtiger_ws_operation`
-  ADD PRIMARY KEY (`operationid`);
-
---
--- Indexes for table `vtiger_ws_operation_parameters`
---
-ALTER TABLE `vtiger_ws_operation_parameters`
-  ADD PRIMARY KEY (`operationid`,`name`);
-
---
--- Indexes for table `vtiger_ws_referencetype`
---
-ALTER TABLE `vtiger_ws_referencetype`
-  ADD PRIMARY KEY (`fieldtypeid`,`type`);
-
---
--- Indexes for table `vtiger_ws_userauthtoken`
---
-ALTER TABLE `vtiger_ws_userauthtoken`
-  ADD PRIMARY KEY (`userid`,`expiretime`),
-  ADD UNIQUE KEY `userid_idx` (`userid`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `com_vtiger_workflows`
---
-ALTER TABLE `com_vtiger_workflows`
-  MODIFY `workflow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
---
--- AUTO_INCREMENT for table `com_vtiger_workflowtasks`
---
-ALTER TABLE `com_vtiger_workflowtasks`
-  MODIFY `task_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `com_vtiger_workflowtemplates`
---
-ALTER TABLE `com_vtiger_workflowtemplates`
-  MODIFY `template_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `hrm_employee_history`
---
-ALTER TABLE `hrm_employee_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `vtiger_accountrating`
---
-ALTER TABLE `vtiger_accountrating`
-  MODIFY `accountratingid` int(19) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `vtiger_cf_1121`
---
-ALTER TABLE `vtiger_cf_1121`
-  MODIFY `cf_1121id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `vtiger_cf_1137`
---
-ALTER TABLE `vtiger_cf_1137`
-  MODIFY `cf_1137id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `vtiger_cf_1141`
---
-ALTER TABLE `vtiger_cf_1141`
-  MODIFY `cf_1141id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `vtiger_cf_1143`
---
-ALTER TABLE `vtiger_cf_1143`
-  MODIFY `cf_1143id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `vtiger_cf_1145`
---
-ALTER TABLE `vtiger_cf_1145`
-  MODIFY `cf_1145id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `vtiger_cf_1147`
---
-ALTER TABLE `vtiger_cf_1147`
-  MODIFY `cf_1147id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `vtiger_cf_1161`
---
-ALTER TABLE `vtiger_cf_1161`
-  MODIFY `cf_1161id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `vtiger_cf_1221`
---
-ALTER TABLE `vtiger_cf_1221`
-  MODIFY `cf_1221id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
