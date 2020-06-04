@@ -14,6 +14,7 @@ div.button.group.for.data.block
   	justify-content: center;
 }
 </style>
+{assign var=TEMP value='LBL_CAMPAIGN_INFORMATION'}
 {strip}
 	<div class="main-container clearfix">
 		<div id="modnavigator" class="module-nav editViewModNavigator">
@@ -23,7 +24,7 @@ div.button.group.for.data.block
 		</div>
 		<div class="button group for data block" style="background: #fbfbfb">
 			<button class="campaign-detail" >Campaign Detail</button>
-			<button class="expected-reality" >Expected & Reality</button>
+			<button class="expected-reality">Expected & Reality</button>
 			<button class="description-detail" >Description Detail</button>
 		</div>
 		<div class="editViewPageDiv viewContent">
