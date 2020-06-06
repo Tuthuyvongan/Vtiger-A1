@@ -23,8 +23,8 @@ div.button.group.for.data.block
 		</div>
 		<!--This is hardcode - Need to fix with Smarty-->
 		<div class="button group for data block" style="background: #fbfbfb">
-			<button class="campaign-detail" onclick="showCampaignDetail()">Campaign Detail</button>
-			<button class="expected-reality" onclick="showExpectedReality()">Expected & Reality</button>
+			<button class="leadInformation" onclick="showLeadInformation()">Lead Information</button>
+			<button class="addressDetails" onclick="showAddressDetails()">Address Details</button>
 			<button class="description-detail" onclick ="showDescription()">Description</button>
 		</div>
 		<div class="editViewPageDiv viewContent">

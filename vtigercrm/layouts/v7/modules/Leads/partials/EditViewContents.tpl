@@ -19,7 +19,7 @@ td.fieldLabel.alignMiddle
 		<input type="hidden" name="picklistDependency" value='{Vtiger_Util_Helper::toSafeHTML($PICKIST_DEPENDENCY_DATASOURCE)}' />
 	{/if}
 
-	<div name='editContent' id="editContent">
+	<div name='editContent' id='editContent'>
 		{if $DUPLICATE_RECORDS}
 			<div class="fieldBlockContainer duplicationMessageContainer">
 				<div class="duplicationMessageHeader"><b>{vtranslate('LBL_DUPLICATES_DETECTED', $MODULE)}</b></div>
@@ -136,9 +136,8 @@ td.fieldLabel.alignMiddle
 		{
 			temp[i].remove();
 		}
-		
 	};
-	function showCampaignDetail()
+	function showLeadInformation()
 	{
 		var element = document.createElement("div");
 		element = global[0];
@@ -147,7 +146,7 @@ td.fieldLabel.alignMiddle
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		temp[1].remove();
 	}
-	function showExpectedReality()
+	function showAddressDetails()
 	{
 		var element = document.createElement("div");
 		element = global[1];

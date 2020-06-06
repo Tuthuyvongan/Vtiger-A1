@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2020-06-06 14:55:37
-         compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Campaigns\partials\EditViewContents.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6539915165ed7c293611298-14893797%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.7, created on 2020-06-06 15:00:51
+         compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Leads\partials\EditViewContents.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:5486611065edba97d35cc65-27067544%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '5c0a350584edfaa5f903627fbe9d90b03fe6db86' => 
+    '27ada5695f9254daaf53b257f8840878fb930b29' => 
     array (
-      0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Campaigns\\partials\\EditViewContents.tpl',
-      1 => 1591455334,
+      0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Leads\\partials\\EditViewContents.tpl',
+      1 => 1591455648,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6539915165ed7c293611298-14893797',
+  'nocache_hash' => '5486611065edba97d35cc65-27067544',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5ed7c2937ef90',
+  'unifunc' => 'content_5edba97d4bff1',
   'variables' => 
   array (
     'PICKIST_DEPENDENCY_DATASOURCE' => 0,
@@ -40,7 +40,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5ed7c2937ef90')) {function content_5ed7c2937ef90($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5edba97d4bff1')) {function content_5edba97d4bff1($_smarty_tpl) {?>
 <style>
 td.fieldLabel.alignMiddle
 {
@@ -48,7 +48,7 @@ td.fieldLabel.alignMiddle
 }
 </style>
 <?php if (!empty($_smarty_tpl->tpl_vars['PICKIST_DEPENDENCY_DATASOURCE']->value)){?><input type="hidden" name="picklistDependency" value='<?php echo Vtiger_Util_Helper::toSafeHTML($_smarty_tpl->tpl_vars['PICKIST_DEPENDENCY_DATASOURCE']->value);?>
-' /><?php }?><div name='editContent' id="editContent"><?php if ($_smarty_tpl->tpl_vars['DUPLICATE_RECORDS']->value){?><div class="fieldBlockContainer duplicationMessageContainer"><div class="duplicationMessageHeader"><b><?php echo vtranslate('LBL_DUPLICATES_DETECTED',$_smarty_tpl->tpl_vars['MODULE']->value);?>
+' /><?php }?><div name='editContent' id='editContent'><?php if ($_smarty_tpl->tpl_vars['DUPLICATE_RECORDS']->value){?><div class="fieldBlockContainer duplicationMessageContainer"><div class="duplicationMessageHeader"><b><?php echo vtranslate('LBL_DUPLICATES_DETECTED',$_smarty_tpl->tpl_vars['MODULE']->value);?>
 </b></div><div><?php echo getDuplicatesPreventionMessage($_smarty_tpl->tpl_vars['MODULE']->value,$_smarty_tpl->tpl_vars['DUPLICATE_RECORDS']->value);?>
 </div></div><?php }?><?php  $_smarty_tpl->tpl_vars['BLOCK_FIELDS'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['BLOCK_FIELDS']->_loop = false;
  $_smarty_tpl->tpl_vars['BLOCK_LABEL'] = new Smarty_Variable;
@@ -100,11 +100,8 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 		{
 			temp[i].remove();
 		}
-		
-		console.log(temp);
-		console.log(global);
 	};
-	function showCampaignDetail()
+	function showLeadInformation()
 	{
 		var element = document.createElement("div");
 		element = global[0];
@@ -113,7 +110,7 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		temp[1].remove();
 	}
-	function showExpectedReality()
+	function showAddressDetails()
 	{
 		var element = document.createElement("div");
 		element = global[1];
