@@ -116,3 +116,70 @@ td.fieldLabel.alignMiddle
 		{/foreach}
 	</div>
 {/strip}
+
+<script>
+	//This is very bad code - Rely heavily on hardcode
+	//TODO: Clean up this mess
+
+	var global =[];
+
+	// Save block data to global variabl
+	window.onload = function()
+	{
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		for(var i = 0; i < temp.length;i++)
+		{
+			var t = temp[i];
+			global.push(t);
+		}
+		for(var i = temp.length - 1; i > 0; i--)
+		{
+			temp[i].remove();
+		}
+	};
+	function showProductInformation()
+	{
+		var element = document.createElement("div");
+		element = global[0];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showPriceInformation()
+	{
+		var element = document.createElement("div");
+		element = global[1];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showStockInformation()
+	{
+		var element = document.createElement("div");
+		element = global[2];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showImageInformation()
+	{
+		var element = document.createElement("div");
+		element = global[3];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showDescription()
+	{
+		var element = document.createElement("div");
+		element = global[4];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+</script>
