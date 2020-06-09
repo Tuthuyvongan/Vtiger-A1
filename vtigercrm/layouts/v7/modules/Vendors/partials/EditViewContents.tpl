@@ -116,3 +116,55 @@ td.fieldLabel.alignMiddle
 		{/foreach}
 	</div>
 {/strip}
+
+<script>
+	//This is very bad code - Rely heavily on hardcode
+	//TODO: Clean up this mess
+	
+	var dataBlocks =[];
+	// Save block data to dataBlocks variabl
+	window.onload = function() 
+	{
+		var temp = document.getElementsByClassName("fieldBlockContainer");	
+		for(var i = 0; i < temp.length;i++)
+		{ 
+			var t = temp[i];
+			dataBlocks.push(t);
+		}
+		for(var i = temp.length - 1; i > 0; i--)
+		{
+			temp[i].remove();
+		}	
+		console.log(dataBlocks);
+	};
+	function showVendorInformation()
+	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[0]) return;
+		var element = document.createElement("div");
+		element = dataBlocks[0];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showVendorAddress()
+	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[1]) return;
+		var element = document.createElement("div");
+		element = dataBlocks[1];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showDescription()
+	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[2]) return;
+		var element = document.createElement("div");
+		element = dataBlocks[2];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+</script>

@@ -6,13 +6,26 @@
 * Portions created by vtiger are Copyright (C) vtiger.
 * All Rights Reserved.
 ************************************************************************************}
-
+<style>
+div.button.group.for.data.block
+{
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+</style>
 {strip}
 	<div class="main-container clearfix">
 		<div id="modnavigator" class="module-nav editViewModNavigator">
 			<div class="hidden-xs hidden-sm mod-switcher-container">
 				{include file="partials/Menubar.tpl"|vtemplate_path:$MODULE}
 			</div>
+		</div>
+		<!--This is hardcode - Need to fix with Smarty-->
+		<div class="button group for data block" style="background: #fbfbfb">
+			<button class="vendorInformation" onclick="showVendorInformation()">Vendor Information</button>
+			<button class="vendorAddress" onclick="showVendorAddress()">Vendor Address</button>
+			<button class="description" onclick="showDescription()">Description</button>
 		</div>
 		<div class="editViewPageDiv viewContent">
 			<div class="col-sm-12 col-xs-12 content-area {if $LEFTPANELHIDE eq '1'} full-width {/if}">

@@ -6,13 +6,28 @@
  * Portions created by vtiger are Copyright (C) vtiger.
  * All Rights Reserved.
  ************************************************************************************}
-
+<style>
+div.button.group.for.data.block
+{
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+</style>
 <div class="main-container clearfix">
         <div id="modnavigator" class="module-nav editViewModNavigator">
             <div class="hidden-xs hidden-sm mod-switcher-container">
                 {include file="modules/Vtiger/partials/Menubar.tpl"}
             </div>
         </div>
+        <!--This is hardcode - Need to fix with Smarty-->
+		<div class="button group for data block" style="background: #fbfbfb">
+			<button class="quoteInformation" onclick="showQuoteInformation()">Quote Information</button>
+			<button class="addressInformation" onclick="showAddressInformation()">Address Information</button>
+			<button class="termInformation" onclick="showTermInformation()">Term Information</button>
+			<button class="description" onclick="showDescription()">Description</button>
+			<button class="item" onclick="showItem()">Item</button>
+		</div>
         <div class="editViewPageDiv viewContent">
             <div class="col-sm-12 col-xs-12 content-area {if $LEFTPANELHIDE eq '1'} full-width {/if}">
                 <form class="form-horizontal recordEditView" id="EditView" name="edit" method="post" action="index.php" enctype="multipart/form-data">
@@ -82,3 +97,93 @@
             </div>
         </div>
 </div>
+
+<script>
+	//This is very bad code - Rely heavily on hardcode
+	//TODO: Clean up this mess
+	
+	var global =[];
+	var item = document.getElementById("editContentItem");
+	// Save block data to global variabl
+	window.onload = function() 
+	{
+		var temp = document.getElementsByClassName("fieldBlockContainer");	
+		for(var i = 0; i < temp.length;i++)
+		{ 
+			var t = temp[i];
+			global.push(t);
+		}
+		for(var i = temp.length - 1; i > 0; i--)
+		{
+			temp[i].remove();
+		}	
+		item.remove();
+		console.log(global);
+		console.log(item);	
+	};
+	function showQuoteInformation()
+	{
+		if(document.getElementById("editContentItem") != null)
+		{
+			document.getElementById("editContentItem").remove();
+		}
+		if(document.getElementById("editContent").firstChild === global[0]) return;
+		var element = document.createElement("div");
+		element = global[0];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showAddressInformation()
+	{
+		if(document.getElementById("editContentItem") != null)
+		{
+			document.getElementById("editContentItem").remove();
+		}
+		if(document.getElementById("editContent").firstChild === global[1]) return;
+		var element = document.createElement("div");
+		element = global[1];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showTermInformation()
+	{
+		if(document.getElementById("editContentItem") != null)
+		{
+			document.getElementById("editContentItem").remove();
+		}
+		if(document.getElementById("editContent").firstChild === global[2]) return;
+		var element = document.createElement("div");
+		element = global[2];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showDescription()
+	{
+		if(document.getElementById("editContentItem") != null)
+		{
+			document.getElementById("editContentItem").remove();
+		}
+		if(document.getElementById("editContent").firstChild === global[3]) return;
+		var element = document.createElement("div");
+		element = global[3];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showItem()
+	{
+		if(document.getElementById("editContent").firstChild != null)
+		{
+			document.getElementById("editContent").firstChild.remove();
+		}
+		var parent = document.getElementsByClassName("editViewBody");
+		parent[0].appendChild(item);
+	}
+</script>

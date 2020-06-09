@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2020-06-09 08:36:06
-         compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Campaigns\partials\EditViewContents.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6539915165ed7c293611298-14893797%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.7, created on 2020-06-09 13:54:58
+         compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Vendors\partials\EditViewContents.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:5046166715edf82e764ae30-93901899%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '5c0a350584edfaa5f903627fbe9d90b03fe6db86' => 
+    '10bf65a3e45272a5ea08745118ad6a6b2a09a78f' => 
     array (
-      0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Campaigns\\partials\\EditViewContents.tpl',
-      1 => 1591455505,
+      0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Vendors\\partials\\EditViewContents.tpl',
+      1 => 1591710896,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6539915165ed7c293611298-14893797',
+  'nocache_hash' => '5046166715edf82e764ae30-93901899',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5ed7c2937ef90',
+  'unifunc' => 'content_5edf82e77aa42',
   'variables' => 
   array (
     'PICKIST_DEPENDENCY_DATASOURCE' => 0,
@@ -40,7 +40,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5ed7c2937ef90')) {function content_5ed7c2937ef90($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5edf82e77aa42')) {function content_5edf82e77aa42($_smarty_tpl) {?>
 <style>
 td.fieldLabel.alignMiddle
 {
@@ -85,36 +85,37 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 	//This is very bad code - Rely heavily on hardcode
 	//TODO: Clean up this mess
 	
-	var global =[];
-	
-	// Save block data to global variabl
+	var dataBlocks =[];
+	// Save block data to dataBlocks variabl
 	window.onload = function() 
 	{
 		var temp = document.getElementsByClassName("fieldBlockContainer");	
 		for(var i = 0; i < temp.length;i++)
 		{ 
 			var t = temp[i];
-			global.push(t);
+			dataBlocks.push(t);
 		}
 		for(var i = temp.length - 1; i > 0; i--)
 		{
 			temp[i].remove();
-		}
-		
+		}	
+		console.log(dataBlocks);
 	};
-	function showCampaignDetail()
+	function showVendorInformation()
 	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[0]) return;
 		var element = document.createElement("div");
-		element = global[0];
+		element = dataBlocks[0];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		temp[1].remove();
 	}
-	function showExpectedReality()
+	function showVendorAddress()
 	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[1]) return;
 		var element = document.createElement("div");
-		element = global[1];
+		element = dataBlocks[1];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");
@@ -122,12 +123,12 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 	}
 	function showDescription()
 	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[2]) return;
 		var element = document.createElement("div");
-		element = global[2];
+		element = dataBlocks[2];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		temp[1].remove();
 	}
-	
 </script><?php }} ?>

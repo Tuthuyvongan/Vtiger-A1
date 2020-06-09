@@ -139,6 +139,7 @@ td.fieldLabel.alignMiddle
 	};
 	function showProductInformation()
 	{
+		if(document.getElementById("editContent").firstChild === global[0]) return;
 		var element = document.createElement("div");
 		element = global[0];
 		var parent = document.getElementById("editContent");
@@ -148,6 +149,7 @@ td.fieldLabel.alignMiddle
 	}
 	function showPriceInformation()
 	{
+		if(document.getElementById("editContent").firstChild === global[1]) return;
 		var element = document.createElement("div");
 		element = global[1];
 		var parent = document.getElementById("editContent");
@@ -157,6 +159,7 @@ td.fieldLabel.alignMiddle
 	}
 	function showStockInformation()
 	{
+		if(document.getElementById("editContent").firstChild === global[2]) return;
 		var element = document.createElement("div");
 		element = global[2];
 		var parent = document.getElementById("editContent");
@@ -166,6 +169,7 @@ td.fieldLabel.alignMiddle
 	}
 	function showImageInformation()
 	{
+		if(document.getElementById("editContent").firstChild === global[3]) return;
 		var element = document.createElement("div");
 		element = global[3];
 		var parent = document.getElementById("editContent");
@@ -175,6 +179,7 @@ td.fieldLabel.alignMiddle
 	}
 	function showDescription()
 	{
+		if(document.getElementById("editContent").firstChild === global[4]) return;
 		var element = document.createElement("div");
 		element = global[4];
 		var parent = document.getElementById("editContent");

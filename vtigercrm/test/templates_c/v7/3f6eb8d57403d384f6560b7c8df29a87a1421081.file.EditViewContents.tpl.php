@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2020-06-09 08:36:06
-         compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Campaigns\partials\EditViewContents.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6539915165ed7c293611298-14893797%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.7, created on 2020-06-09 12:26:31
+         compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Products\partials\EditViewContents.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:4743489605edf43097200b2-10000518%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '5c0a350584edfaa5f903627fbe9d90b03fe6db86' => 
+    '3f6eb8d57403d384f6560b7c8df29a87a1421081' => 
     array (
-      0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Campaigns\\partials\\EditViewContents.tpl',
-      1 => 1591455505,
+      0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Products\\partials\\EditViewContents.tpl',
+      1 => 1591705527,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6539915165ed7c293611298-14893797',
+  'nocache_hash' => '4743489605edf43097200b2-10000518',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5ed7c2937ef90',
+  'unifunc' => 'content_5edf4309883a7',
   'variables' => 
   array (
     'PICKIST_DEPENDENCY_DATASOURCE' => 0,
@@ -40,7 +40,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5ed7c2937ef90')) {function content_5ed7c2937ef90($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5edf4309883a7')) {function content_5edf4309883a7($_smarty_tpl) {?>
 <style>
 td.fieldLabel.alignMiddle
 {
@@ -84,15 +84,15 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 <script>
 	//This is very bad code - Rely heavily on hardcode
 	//TODO: Clean up this mess
-	
+
 	var global =[];
-	
+
 	// Save block data to global variabl
-	window.onload = function() 
+	window.onload = function()
 	{
-		var temp = document.getElementsByClassName("fieldBlockContainer");	
+		var temp = document.getElementsByClassName("fieldBlockContainer");
 		for(var i = 0; i < temp.length;i++)
-		{ 
+		{
 			var t = temp[i];
 			global.push(t);
 		}
@@ -100,10 +100,10 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 		{
 			temp[i].remove();
 		}
-		
 	};
-	function showCampaignDetail()
+	function showProductInformation()
 	{
+		if(document.getElementById("editContent").firstChild === global[0]) return;
 		var element = document.createElement("div");
 		element = global[0];
 		var parent = document.getElementById("editContent");
@@ -111,8 +111,9 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		temp[1].remove();
 	}
-	function showExpectedReality()
+	function showPriceInformation()
 	{
+		if(document.getElementById("editContent").firstChild === global[1]) return;
 		var element = document.createElement("div");
 		element = global[1];
 		var parent = document.getElementById("editContent");
@@ -120,8 +121,9 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		temp[1].remove();
 	}
-	function showDescription()
+	function showStockInformation()
 	{
+		if(document.getElementById("editContent").firstChild === global[2]) return;
 		var element = document.createElement("div");
 		element = global[2];
 		var parent = document.getElementById("editContent");
@@ -129,5 +131,24 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		temp[1].remove();
 	}
-	
+	function showImageInformation()
+	{
+		if(document.getElementById("editContent").firstChild === global[3]) return;
+		var element = document.createElement("div");
+		element = global[3];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showDescription()
+	{
+		if(document.getElementById("editContent").firstChild === global[4]) return;
+		var element = document.createElement("div");
+		element = global[4];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
 </script><?php }} ?>

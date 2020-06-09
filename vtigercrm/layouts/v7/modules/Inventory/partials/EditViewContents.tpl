@@ -9,11 +9,17 @@
   *
  ********************************************************************************/
 -->*}
+<style>
+td.fieldLabel.alignMiddle
+{
+	font-size: 17px;
+}
+</style>
 {strip}
 {if !empty($PICKIST_DEPENDENCY_DATASOURCE)}
     <input type="hidden" name="picklistDependency" value='{Vtiger_Util_Helper::toSafeHTML($PICKIST_DEPENDENCY_DATASOURCE)}' />
 {/if}
-<div name='editContent'>
+<div name='editContent' id ='editContent'>
 	{if $DUPLICATE_RECORDS}
 		<div class="fieldBlockContainer duplicationMessageContainer">
 			<div class="duplicationMessageHeader"><b>{vtranslate('LBL_DUPLICATES_DETECTED', $MODULE)}</b></div>
@@ -161,4 +167,6 @@
          {/if}
      {/foreach}
 </div>
+
 {include file="partials/LineItemsEdit.tpl"|@vtemplate_path:'Inventory'}
+

@@ -68,12 +68,12 @@
 <input type="hidden" name="subtotal" id="subtotal" value="" />
 <input type="hidden" name="total" id="total" value="" />
 
-<div name='editContent'>
+<div name='editContent' id='editContentItem'>
 	{assign var=LINE_ITEM_BLOCK_LABEL value="LBL_ITEM_DETAILS"}
 	{assign var=BLOCK_FIELDS value=$RECORD_STRUCTURE.$LINE_ITEM_BLOCK_LABEL}
 	{assign var=BLOCK_LABEL value=$LINE_ITEM_BLOCK_LABEL}
 	{if $BLOCK_FIELDS|@count gt 0}
-		<div class='fieldBlockContainer'>
+		<div class='fieldBlockContainerItem'>
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-5">
 					<div class="row">
@@ -226,7 +226,7 @@
 			</div>
 		</div>
 		<br>
-		<div class="fieldBlockContainer">
+		<div class="fieldBlockContainerItem">
 			<table class="table table-bordered blockContainer lineItemTable" id="lineItemResult">
 				<tr>
 					<td width="83%">

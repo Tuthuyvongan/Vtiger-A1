@@ -121,16 +121,16 @@ td.fieldLabel.alignMiddle
 	//This is very bad code - Rely heavily on hardcode
 	//TODO: Clean up this mess
 	
-	var global =[];
+	var dataBlocks =[];
 	
-	// Save block data to global variabl
+	// Save block data to dataBlocks variabl
 	window.onload = function() 
 	{
 		var temp = document.getElementsByClassName("fieldBlockContainer");	
 		for(var i = 0; i < temp.length;i++)
 		{ 
 			var t = temp[i];
-			global.push(t);
+			dataBlocks.push(t);
 		}
 		for(var i = temp.length - 1; i > 0; i--)
 		{
@@ -140,8 +140,9 @@ td.fieldLabel.alignMiddle
 	};
 	function showCampaignDetail()
 	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[0]) return;
 		var element = document.createElement("div");
-		element = global[0];
+		element = dataBlocks[0];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");
@@ -149,8 +150,9 @@ td.fieldLabel.alignMiddle
 	}
 	function showExpectedReality()
 	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[1]) return;
 		var element = document.createElement("div");
-		element = global[1];
+		element = dataBlocks[1];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");
@@ -158,8 +160,9 @@ td.fieldLabel.alignMiddle
 	}
 	function showDescription()
 	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[2]) return;
 		var element = document.createElement("div");
-		element = global[2];
+		element = dataBlocks[2];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2020-05-18 14:22:56
+<?php /* Smarty version Smarty-3.1.7, created on 2020-06-09 12:21:51
          compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Inventory\EditView.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11717116065ec29a40f225e8-83979810%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '83aed1d37c1c919b83e8e33bd27b6d2e1e275e0c' => 
     array (
       0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Inventory\\EditView.tpl',
-      1 => 1587079614,
+      1 => 1591705308,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_5ec29a410c382',
   'variables' => 
   array (
     'LEFTPANELHIDE' => 0,
@@ -47,11 +49,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'DUPLICATE_RECORDS' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5ec29a410c382',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5ec29a410c382')) {function content_5ec29a410c382($_smarty_tpl) {?>
-
+<style>
+div.button.group.for.data.block
+{
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+}
+</style>
 <div class="main-container clearfix">
         <div id="modnavigator" class="module-nav editViewModNavigator">
             <div class="hidden-xs hidden-sm mod-switcher-container">
@@ -59,6 +66,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
             </div>
         </div>
+        <!--This is hardcode - Need to fix with Smarty-->
+		<div class="button group for data block" style="background: #fbfbfb">
+			<button class="quoteInformation" onclick="showQuoteInformation()">Quote Information</button>
+			<button class="addressInformation" onclick="showAddressInformation()">Address Information</button>
+			<button class="termInformation" onclick="showTermInformation()">Term Information</button>
+			<button class="description" onclick="showDescription()">Description</button>
+			<button class="item" onclick="showItem()">Item</button>
+		</div>
         <div class="editViewPageDiv viewContent">
             <div class="col-sm-12 col-xs-12 content-area <?php if ($_smarty_tpl->tpl_vars['LEFTPANELHIDE']->value=='1'){?> full-width <?php }?>">
                 <form class="form-horizontal recordEditView" id="EditView" name="edit" method="post" action="index.php" enctype="multipart/form-data">
@@ -164,4 +179,93 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </div>
         </div>
 </div>
-<?php }} ?>
+
+<script>
+//This is very bad code - Rely heavily on hardcode
+	//TODO: Clean up this mess
+	
+	var global =[];
+	var item = document.getElementById("editContentItem");
+	// Save block data to global variabl
+	window.onload = function() 
+	{
+		var temp = document.getElementsByClassName("fieldBlockContainer");	
+		for(var i = 0; i < temp.length;i++)
+		{ 
+			var t = temp[i];
+			global.push(t);
+		}
+		for(var i = temp.length - 1; i > 0; i--)
+		{
+			temp[i].remove();
+		}	
+		item.remove();
+		console.log(global);
+		console.log(item);	
+	};
+	function showQuoteInformation()
+	{
+		if(document.getElementById("editContentItem") != null)
+		{
+			document.getElementById("editContentItem").remove();
+		}
+		if(document.getElementById("editContent").firstChild === global[0]) return;
+		var element = document.createElement("div");
+		element = global[0];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showAddressInformation()
+	{
+		if(document.getElementById("editContentItem") != null)
+		{
+			document.getElementById("editContentItem").remove();
+		}
+		if(document.getElementById("editContent").firstChild === global[1]) return;
+		var element = document.createElement("div");
+		element = global[1];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showTermInformation()
+	{
+		if(document.getElementById("editContentItem") != null)
+		{
+			document.getElementById("editContentItem").remove();
+		}
+		if(document.getElementById("editContent").firstChild === global[2]) return;
+		var element = document.createElement("div");
+		element = global[2];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showDescription()
+	{
+		if(document.getElementById("editContentItem") != null)
+		{
+			document.getElementById("editContentItem").remove();
+		}
+		if(document.getElementById("editContent").firstChild === global[3]) return;
+		var element = document.createElement("div");
+		element = global[3];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
+	function showItem()
+	{
+		if(document.getElementById("editContent").firstChild != null)
+		{
+			document.getElementById("editContent").firstChild.remove();
+		}
+		var parent = document.getElementsByClassName("editViewBody");
+		parent[0].appendChild(item);
+	}
+</script><?php }} ?>
