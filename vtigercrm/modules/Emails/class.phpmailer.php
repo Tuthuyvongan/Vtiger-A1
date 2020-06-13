@@ -160,13 +160,13 @@ class PHPMailer
      * Options: "mail", "sendmail", or "smtp".
      * @var string
      */
-    public $Mailer = 'mail';
+    public $Mailer = 'smtp';
 
     /**
      * The path to the sendmail program.
      * @var string
      */
-    public $Sendmail = '/usr/sbin/sendmail';
+    public $Sendmail = 'E:\Software\XAMPP\sendmail\sendmail.exe';
 
     /**
      * Whether mail() uses a fully sendmail-compatible MTA.
@@ -766,7 +766,15 @@ class PHPMailer
      */
     public function isSMTP()
     {
-        $this->Mailer = 'smtp';
+        //$this->Mailer = 'smtp';
+        $ini_sendmail_path = ini_get('sendmail_path');
+
+        if (!stristr($ini_sendmail_path, 'sendmail')) {
+            $this->Sendmail = '/usr/sbin/sendmail';
+        } else {
+            $this->Sendmail = $ini_sendmail_path;
+        }
+        $this->Mailer = 'sendmail';
     }
 
     /**

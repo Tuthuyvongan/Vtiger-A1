@@ -31,7 +31,7 @@ $CALENDAR_DISPLAY = 'true';
 $USE_RTE = 'true';
 
 // helpdesk support email id and support name (Example: 'support@vtiger.com' and 'vtiger support')
-$HELPDESK_SUPPORT_EMAIL_ID = 'ThienLang99999@gmail.com';
+$HELPDESK_SUPPORT_EMAIL_ID = 'master@localhost';
 $HELPDESK_SUPPORT_NAME = 'your-support name';
 $HELPDESK_SUPPORT_EMAIL_REPLY_ID = $HELPDESK_SUPPORT_EMAIL_ID;
 
