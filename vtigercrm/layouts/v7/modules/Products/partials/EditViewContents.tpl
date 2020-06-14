@@ -121,67 +121,27 @@ td.fieldLabel.alignMiddle
 	//This is very bad code - Rely heavily on hardcode
 	//TODO: Clean up this mess
 
-	var global =[];
+	var dataBlocks =[];
 
-	// Save block data to global variabl
+	// Save block data to dataBlocks variabl
 	window.onload = function()
 	{
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		for(var i = 0; i < temp.length;i++)
 		{
 			var t = temp[i];
-			global.push(t);
+			dataBlocks.push(t);
 		}
 		for(var i = temp.length - 1; i > 0; i--)
 		{
 			temp[i].remove();
 		}
 	};
-	function showProductInformation()
+	function showDataBlock(index)
 	{
-		if(document.getElementById("editContent").firstChild === global[0]) return;
+		if(document.getElementById("editContent").firstChild === dataBlocks[index]) return;
 		var element = document.createElement("div");
-		element = global[0];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showPriceInformation()
-	{
-		if(document.getElementById("editContent").firstChild === global[1]) return;
-		var element = document.createElement("div");
-		element = global[1];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showStockInformation()
-	{
-		if(document.getElementById("editContent").firstChild === global[2]) return;
-		var element = document.createElement("div");
-		element = global[2];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showImageInformation()
-	{
-		if(document.getElementById("editContent").firstChild === global[3]) return;
-		var element = document.createElement("div");
-		element = global[3];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showDescription()
-	{
-		if(document.getElementById("editContent").firstChild === global[4]) return;
-		var element = document.createElement("div");
-		element = global[4];
+		element = dataBlocks[index];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");

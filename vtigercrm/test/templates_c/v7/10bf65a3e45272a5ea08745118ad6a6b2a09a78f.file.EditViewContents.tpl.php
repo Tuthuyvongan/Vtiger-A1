@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2020-06-09 13:54:58
+<?php /* Smarty version Smarty-3.1.7, created on 2020-06-14 14:07:25
          compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Vendors\partials\EditViewContents.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:5046166715edf82e764ae30-93901899%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '10bf65a3e45272a5ea08745118ad6a6b2a09a78f' => 
     array (
       0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Vendors\\partials\\EditViewContents.tpl',
-      1 => 1591710896,
+      1 => 1592143610,
       2 => 'file',
     ),
   ),
@@ -101,31 +101,11 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 		}	
 		console.log(dataBlocks);
 	};
-	function showVendorInformation()
+	function showDataBlock(index)
 	{
-		if(document.getElementById("editContent").firstChild === dataBlocks[0]) return;
+		if(document.getElementById("editContent").firstChild === dataBlocks[index]) return;
 		var element = document.createElement("div");
-		element = dataBlocks[0];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showVendorAddress()
-	{
-		if(document.getElementById("editContent").firstChild === dataBlocks[1]) return;
-		var element = document.createElement("div");
-		element = dataBlocks[1];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showDescription()
-	{
-		if(document.getElementById("editContent").firstChild === dataBlocks[2]) return;
-		var element = document.createElement("div");
-		element = dataBlocks[2];
+		element = dataBlocks[index];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");

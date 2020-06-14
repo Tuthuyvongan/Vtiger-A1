@@ -21,11 +21,12 @@ div.button.group.for.data.block
 				{include file="partials/Menubar.tpl"|vtemplate_path:$MODULE}
 			</div>
 		</div>
-		<!--This is hardcode - Need to fix with Smarty-->
 		<div class="button group for data block" style="background: #fbfbfb">
-			<button class="leadInformation" onclick="showLeadInformation()">Lead Information</button>
-			<button class="addressDetails" onclick="showAddressDetails()">Address Details</button>
-			<button class="description-detail" onclick ="showDescription()">Description</button>
+			{assign var=index value=0}
+			{foreach key=BLOCK_LABEL item=BLOCK_FIELDS from=$RECORD_STRUCTURE name=blockIterator}
+				<button class ="{$BLOCK_LABEL}" onclick="showDataBlock({$index})">{vtranslate($BLOCK_LABEL, $MODULE)}</button>
+				{assign var=index value=$index+1}
+			{/foreach}
 		</div>
 		<div class="editViewPageDiv viewContent">
 			<div class="col-sm-12 col-xs-12 content-area {if $LEFTPANELHIDE eq '1'} full-width {/if}">

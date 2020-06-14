@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2020-06-09 08:36:06
+<?php /* Smarty version Smarty-3.1.7, created on 2020-06-14 14:14:17
          compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Campaigns\partials\EditViewContents.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6539915165ed7c293611298-14893797%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5c0a350584edfaa5f903627fbe9d90b03fe6db86' => 
     array (
       0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Campaigns\\partials\\EditViewContents.tpl',
-      1 => 1591455505,
+      1 => 1592142849,
       2 => 'file',
     ),
   ),
@@ -85,16 +85,16 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 	//This is very bad code - Rely heavily on hardcode
 	//TODO: Clean up this mess
 	
-	var global =[];
+	var dataBlocks =[];
 	
-	// Save block data to global variabl
+	// Save block data to dataBlocks variabl
 	window.onload = function() 
 	{
 		var temp = document.getElementsByClassName("fieldBlockContainer");	
 		for(var i = 0; i < temp.length;i++)
 		{ 
 			var t = temp[i];
-			global.push(t);
+			dataBlocks.push(t);
 		}
 		for(var i = temp.length - 1; i > 0; i--)
 		{
@@ -102,32 +102,14 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 		}
 		
 	};
-	function showCampaignDetail()
+	function showDataBlock(index)
 	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[index]) return;
 		var element = document.createElement("div");
-		element = global[0];
+		element = dataBlocks[index];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		temp[1].remove();
 	}
-	function showExpectedReality()
-	{
-		var element = document.createElement("div");
-		element = global[1];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showDescription()
-	{
-		var element = document.createElement("div");
-		element = global[2];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	
 </script><?php }} ?>

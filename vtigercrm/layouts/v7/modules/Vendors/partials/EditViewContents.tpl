@@ -137,31 +137,11 @@ td.fieldLabel.alignMiddle
 		}	
 		console.log(dataBlocks);
 	};
-	function showVendorInformation()
+	function showDataBlock(index)
 	{
-		if(document.getElementById("editContent").firstChild === dataBlocks[0]) return;
+		if(document.getElementById("editContent").firstChild === dataBlocks[index]) return;
 		var element = document.createElement("div");
-		element = dataBlocks[0];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showVendorAddress()
-	{
-		if(document.getElementById("editContent").firstChild === dataBlocks[1]) return;
-		var element = document.createElement("div");
-		element = dataBlocks[1];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showDescription()
-	{
-		if(document.getElementById("editContent").firstChild === dataBlocks[2]) return;
-		var element = document.createElement("div");
-		element = dataBlocks[2];
+		element = dataBlocks[index];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");

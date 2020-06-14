@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2020-06-09 12:21:51
+<?php /* Smarty version Smarty-3.1.7, created on 2020-06-14 14:39:27
          compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Inventory\EditView.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11717116065ec29a40f225e8-83979810%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '83aed1d37c1c919b83e8e33bd27b6d2e1e275e0c' => 
     array (
       0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Inventory\\EditView.tpl',
-      1 => 1591705308,
+      1 => 1592145564,
       2 => 'file',
     ),
   ),
@@ -19,8 +19,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5ec29a410c382',
   'variables' => 
   array (
-    'LEFTPANELHIDE' => 0,
+    'RECORD_STRUCTURE' => 0,
+    'BLOCK_LABEL' => 0,
+    'index' => 0,
     'MODULE' => 0,
+    'LEFTPANELHIDE' => 0,
     'RECORD_ID' => 0,
     'SINGLE_MODULE_NAME' => 0,
     'RECORD_STRUCTURE_MODEL' => 0,
@@ -66,13 +69,27 @@ div.button.group.for.data.block
 
             </div>
         </div>
-        <!--This is hardcode - Need to fix with Smarty-->
 		<div class="button group for data block" style="background: #fbfbfb">
-			<button class="quoteInformation" onclick="showQuoteInformation()">Quote Information</button>
-			<button class="addressInformation" onclick="showAddressInformation()">Address Information</button>
-			<button class="termInformation" onclick="showTermInformation()">Term Information</button>
-			<button class="description" onclick="showDescription()">Description</button>
-			<button class="item" onclick="showItem()">Item</button>
+			<?php $_smarty_tpl->tpl_vars['index'] = new Smarty_variable(0, null, 0);?>
+			<?php  $_smarty_tpl->tpl_vars['BLOCK_FIELDS'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['BLOCK_FIELDS']->_loop = false;
+ $_smarty_tpl->tpl_vars['BLOCK_LABEL'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['RECORD_STRUCTURE']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['BLOCK_FIELDS']->key => $_smarty_tpl->tpl_vars['BLOCK_FIELDS']->value){
+$_smarty_tpl->tpl_vars['BLOCK_FIELDS']->_loop = true;
+ $_smarty_tpl->tpl_vars['BLOCK_LABEL']->value = $_smarty_tpl->tpl_vars['BLOCK_FIELDS']->key;
+?>
+				<?php if ($_smarty_tpl->tpl_vars['BLOCK_LABEL']->value=='LBL_ITEM_DETAILS'){?>
+					<!--Special button-->
+					<button class="item" onclick="showItem()">Item</button>
+				<?php }else{ ?>
+					<button class ="<?php echo $_smarty_tpl->tpl_vars['BLOCK_LABEL']->value;?>
+" onclick="showDataBlock(<?php echo $_smarty_tpl->tpl_vars['index']->value;?>
+)"><?php echo vtranslate($_smarty_tpl->tpl_vars['BLOCK_LABEL']->value,$_smarty_tpl->tpl_vars['MODULE']->value);?>
+</button>
+					<?php $_smarty_tpl->tpl_vars['index'] = new Smarty_variable($_smarty_tpl->tpl_vars['index']->value+1, null, 0);?>
+				<?php }?>
+				
+			<?php } ?>
 		</div>
         <div class="editViewPageDiv viewContent">
             <div class="col-sm-12 col-xs-12 content-area <?php if ($_smarty_tpl->tpl_vars['LEFTPANELHIDE']->value=='1'){?> full-width <?php }?>">
@@ -181,87 +198,47 @@ div.button.group.for.data.block
 </div>
 
 <script>
-//This is very bad code - Rely heavily on hardcode
+	//This is very bad code - Rely heavily on hardcode
 	//TODO: Clean up this mess
 	
-	var global =[];
+	var dataBlocks =[];
 	var item = document.getElementById("editContentItem");
-	// Save block data to global variabl
+	// Save block data to dataBlocks variabl
 	window.onload = function() 
 	{
 		var temp = document.getElementsByClassName("fieldBlockContainer");	
 		for(var i = 0; i < temp.length;i++)
 		{ 
 			var t = temp[i];
-			global.push(t);
+			dataBlocks.push(t);
 		}
 		for(var i = temp.length - 1; i > 0; i--)
 		{
 			temp[i].remove();
 		}	
 		item.remove();
-		console.log(global);
+		console.log(dataBlocks);
 		console.log(item);	
 	};
-	function showQuoteInformation()
+	function showDataBlock(index)
 	{
-		if(document.getElementById("editContentItem") != null)
+		if(document.getElementById("editContent").firstChild === dataBlocks[index]) return;
+		if(document.getElementById("editContentItem") !== null)
 		{
 			document.getElementById("editContentItem").remove();
 		}
-		if(document.getElementById("editContent").firstChild === global[0]) return;
-		var element = document.createElement("div");
-		element = global[0];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showAddressInformation()
-	{
-		if(document.getElementById("editContentItem") != null)
+		else
 		{
-			document.getElementById("editContentItem").remove();
+			document.getElementById("editContent").firstChild.remove();
 		}
-		if(document.getElementById("editContent").firstChild === global[1]) return;
 		var element = document.createElement("div");
-		element = global[1];
+		element = dataBlocks[index];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showTermInformation()
-	{
-		if(document.getElementById("editContentItem") != null)
-		{
-			document.getElementById("editContentItem").remove();
-		}
-		if(document.getElementById("editContent").firstChild === global[2]) return;
-		var element = document.createElement("div");
-		element = global[2];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showDescription()
-	{
-		if(document.getElementById("editContentItem") != null)
-		{
-			document.getElementById("editContentItem").remove();
-		}
-		if(document.getElementById("editContent").firstChild === global[3]) return;
-		var element = document.createElement("div");
-		element = global[3];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
 	}
 	function showItem()
 	{
-		if(document.getElementById("editContent").firstChild != null)
+		while(document.getElementById("editContent").firstChild != null)
 		{
 			document.getElementById("editContent").firstChild.remove();
 		}

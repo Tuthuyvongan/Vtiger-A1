@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2020-06-09 12:26:31
+<?php /* Smarty version Smarty-3.1.7, created on 2020-06-14 14:05:57
          compiled from "E:\Software\XAMPP\htdocs\Project\Vtiger-A1\vtigercrm\includes\runtime/../../layouts/v7\modules\Products\partials\EditViewContents.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4743489605edf43097200b2-10000518%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3f6eb8d57403d384f6560b7c8df29a87a1421081' => 
     array (
       0 => 'E:\\Software\\XAMPP\\htdocs\\Project\\Vtiger-A1\\vtigercrm\\includes\\runtime/../../layouts/v7\\modules\\Products\\partials\\EditViewContents.tpl',
-      1 => 1591705527,
+      1 => 1592143553,
       2 => 'file',
     ),
   ),
@@ -85,67 +85,27 @@ $_smarty_tpl->tpl_vars['value']->_loop = true;
 	//This is very bad code - Rely heavily on hardcode
 	//TODO: Clean up this mess
 
-	var global =[];
+	var dataBlocks =[];
 
-	// Save block data to global variabl
+	// Save block data to dataBlocks variabl
 	window.onload = function()
 	{
 		var temp = document.getElementsByClassName("fieldBlockContainer");
 		for(var i = 0; i < temp.length;i++)
 		{
 			var t = temp[i];
-			global.push(t);
+			dataBlocks.push(t);
 		}
 		for(var i = temp.length - 1; i > 0; i--)
 		{
 			temp[i].remove();
 		}
 	};
-	function showProductInformation()
+	function showDataBlock(index)
 	{
-		if(document.getElementById("editContent").firstChild === global[0]) return;
+		if(document.getElementById("editContent").firstChild === dataBlocks[index]) return;
 		var element = document.createElement("div");
-		element = global[0];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showPriceInformation()
-	{
-		if(document.getElementById("editContent").firstChild === global[1]) return;
-		var element = document.createElement("div");
-		element = global[1];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showStockInformation()
-	{
-		if(document.getElementById("editContent").firstChild === global[2]) return;
-		var element = document.createElement("div");
-		element = global[2];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showImageInformation()
-	{
-		if(document.getElementById("editContent").firstChild === global[3]) return;
-		var element = document.createElement("div");
-		element = global[3];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showDescription()
-	{
-		if(document.getElementById("editContent").firstChild === global[4]) return;
-		var element = document.createElement("div");
-		element = global[4];
+		element = dataBlocks[index];
 		var parent = document.getElementById("editContent");
 		parent.insertBefore(element,parent.firstChild);
 		var temp = document.getElementsByClassName("fieldBlockContainer");

@@ -121,48 +121,31 @@ td.fieldLabel.alignMiddle
 	//This is very bad code - Rely heavily on hardcode
 	//TODO: Clean up this mess
 	
-	var global =[];
+	var dataBlocks =[];
 	
-	// Save block data to global variabl
+	// Save block data to dataBlocks variabl
 	window.onload = function() 
 	{
 		var temp = document.getElementsByClassName("fieldBlockContainer");	
 		for(var i = 0; i < temp.length;i++)
 		{ 
 			var t = temp[i];
-			global.push(t);
+			dataBlocks.push(t);
 		}
 		for(var i = temp.length - 1; i > 0; i--)
 		{
 			temp[i].remove();
 		}
 	};
-	function showLeadInformation()
-	{
-		var element = document.createElement("div");
-		element = global[0];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showAddressDetails()
-	{
-		var element = document.createElement("div");
-		element = global[1];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
-	function showDescription()
-	{
-		var element = document.createElement("div");
-		element = global[2];
-		var parent = document.getElementById("editContent");
-		parent.insertBefore(element,parent.firstChild);
-		var temp = document.getElementsByClassName("fieldBlockContainer");
-		temp[1].remove();
-	}
 	
+	function showDataBlock(index)
+	{
+		if(document.getElementById("editContent").firstChild === dataBlocks[index]) return;
+		var element = document.createElement("div");
+		element = dataBlocks[index];
+		var parent = document.getElementById("editContent");
+		parent.insertBefore(element,parent.firstChild);
+		var temp = document.getElementsByClassName("fieldBlockContainer");
+		temp[1].remove();
+	}
 </script>
