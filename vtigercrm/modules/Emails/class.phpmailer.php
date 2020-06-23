@@ -766,15 +766,8 @@ class PHPMailer
      */
     public function isSMTP()
     {
-        //$this->Mailer = 'smtp';
-        $ini_sendmail_path = ini_get('sendmail_path');
-
-        if (!stristr($ini_sendmail_path, 'sendmail')) {
-            $this->Sendmail = '/usr/sbin/sendmail';
-        } else {
-            $this->Sendmail = $ini_sendmail_path;
-        }
-        $this->Mailer = 'sendmail';
+        $this->Mailer = 'smtp';
+        //$this->isSendmail();
     }
 
     /**

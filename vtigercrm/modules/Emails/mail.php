@@ -9,7 +9,7 @@
  *
  ********************************************************************************/
 
-require_once('modules/Emails/class.smtp.php');
+include_once('modules/Emails/class.smtp.php');
 require_once("modules/Emails/class.phpmailer.php");
 require_once 'include/utils/CommonUtils.php';
 require_once 'include/utils/VTCacheUtils.php';
@@ -95,9 +95,17 @@ function send_mail($module,$to_email,$from_name,$from_email,$subject,$contents,$
 		return 0;
 	}
 	// END
-
+	
+	//Error-Checking
+	$mail->SMTPDebug = 2;
+	$debug = '';
+	$mail->Debugoutput = function($str, $level) {
+	    $GLOBALS['debug'] .= "$level: $str<br/>";
+	};
+	
 	$mail_status = MailSend($mail);
-
+    
+	echo $debug;
 	if($mail_status != 1)
 	{
 		$mail_error = getMailError($mail,$mail_status,$mailto);

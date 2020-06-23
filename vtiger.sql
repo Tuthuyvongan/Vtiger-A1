@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2020 at 06:23 PM
+-- Generation Time: Jun 23, 2020 at 02:46 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -530,6 +530,30 @@ CREATE TABLE IF NOT EXISTS `vtiger_activity` (
   KEY `activity_status_idx` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_activity`
+--
+
+INSERT INTO `vtiger_activity` (`activityid`, `subject`, `semodule`, `activitytype`, `date_start`, `due_date`, `time_start`, `time_end`, `sendnotification`, `duration_hours`, `duration_minutes`, `status`, `eventstatus`, `priority`, `location`, `notime`, `visibility`, `recurringtype`, `tags`) VALUES
+(40, 'Testing', '', 'Emails', '2020-06-14', NULL, '14:44', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(41, 'Testing', '', 'Emails', '2020-06-14', NULL, '14:45', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(42, '1', '', 'Emails', '2020-06-14', NULL, '14:47', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(43, '1', '', 'Emails', '2020-06-14', NULL, '14:51', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(44, '1', '', 'Emails', '2020-06-14', NULL, '14:56', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(45, '1', '', 'Emails', '2020-06-14', NULL, '15:08', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(46, '1', '', 'Emails', '2020-06-14', NULL, '15:10', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(47, '1', '', 'Emails', '2020-06-14', NULL, '15:10', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(48, '1', '', 'Emails', '2020-06-18', NULL, '13:38', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(49, '1', '', 'Emails', '2020-06-18', NULL, '13:40', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(51, '1', '', 'Emails', '2020-06-18', NULL, '13:51', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(52, 'test', '', 'Emails', '2020-06-18', NULL, '14:03', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(53, '1', '', 'Emails', '2020-06-18', NULL, '14:06', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(54, 'test', '', 'Emails', '2020-06-18', NULL, '14:08', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(55, 'test', '', 'Emails', '2020-06-18', NULL, '14:17', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(56, 'test', '', 'Emails', '2020-06-20', NULL, '09:37', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(57, 'saved', '', 'Emails', '2020-06-20', NULL, '09:46', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, ''),
+(58, '3', '', 'Emails', '2020-06-20', NULL, '09:47', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '0', 'all', NULL, '');
+
 -- --------------------------------------------------------
 
 --
@@ -936,6 +960,14 @@ CREATE TABLE IF NOT EXISTS `vtiger_attachments` (
   PRIMARY KEY (`attachmentsid`),
   KEY `attachments_attachmentsid_idx` (`attachmentsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_attachments`
+--
+
+INSERT INTO `vtiger_attachments` (`attachmentsid`, `name`, `description`, `type`, `path`, `storedname`, `subject`) VALUES
+(38, '820.bmp', '820.bmp', 'image/bmp', 'storage/2020/June/week2/', NULL, NULL),
+(39, '820.bmp', '820.bmp', 'image/bmp', 'storage/2020/June/week2/', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1409,6 +1441,15 @@ CREATE TABLE IF NOT EXISTS `vtiger_campaign` (
   KEY `campaign_campaignid_idx` (`campaignid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_campaign`
+--
+
+INSERT INTO `vtiger_campaign` (`campaign_no`, `campaignname`, `campaigntype`, `campaignstatus`, `expectedrevenue`, `budgetcost`, `actualcost`, `expectedresponse`, `numsent`, `product_id`, `sponsor`, `targetaudience`, `targetsize`, `expectedresponsecount`, `expectedsalescount`, `expectedroi`, `actualresponsecount`, `actualsalescount`, `actualroi`, `campaignid`, `closingdate`, `tags`, `cf_1251`, `cf_1262`, `cf_1270`) VALUES
+('CAM1', 'Ha', '', '', '0.00000000', '0.00000000', '0.00000000', '', '0', 0, '', '', 0, 0, 0, '0.00000000', 0, 0, '0.00000000', 35, '2020-06-17', '', NULL, 0, 0),
+('CAM2', 'ga', '', '', '0.00000000', '0.00000000', '0.00000000', '', '0', 0, '', '', 0, 0, 0, '0.00000000', 0, 0, '0.00000000', 36, '2020-06-11', '', NULL, 0, 0),
+('CAM3', 'Hel', '', '', '0.00000000', '0.00000000', '0.00000000', '', '0', 0, '', '', 0, 0, 0, '0.00000000', 0, 0, '0.00000000', 37, '2020-06-23', '', NULL, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -1499,6 +1540,15 @@ CREATE TABLE IF NOT EXISTS `vtiger_campaignscf` (
   `campaignid` int(19) NOT NULL DEFAULT 0,
   PRIMARY KEY (`campaignid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_campaignscf`
+--
+
+INSERT INTO `vtiger_campaignscf` (`campaignid`) VALUES
+(35),
+(36),
+(37);
 
 -- --------------------------------------------------------
 
@@ -2122,6 +2172,46 @@ INSERT INTO `vtiger_cf_1286_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vtiger_cf_1288`
+--
+
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1288` (
+  `cf_1288id` int(11) NOT NULL AUTO_INCREMENT,
+  `cf_1288` varchar(200) NOT NULL,
+  `sortorderid` int(11) DEFAULT NULL,
+  `presence` int(11) NOT NULL DEFAULT 1,
+  `color` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cf_1288id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_cf_1288`
+--
+
+INSERT INTO `vtiger_cf_1288` (`cf_1288id`, `cf_1288`, `sortorderid`, `presence`, `color`) VALUES
+(1, 'pdf', 0, 1, NULL),
+(2, 'doc', 1, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_cf_1288_seq`
+--
+
+CREATE TABLE IF NOT EXISTS `vtiger_cf_1288_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_cf_1288_seq`
+--
+
+INSERT INTO `vtiger_cf_1288_seq` (`id`) VALUES
+(2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vtiger_cntactivityrel`
 --
 
@@ -2481,7 +2571,31 @@ INSERT INTO `vtiger_crmentity` (`crmid`, `smcreatorid`, `smownerid`, `modifiedby
 (31, 1, 1, 1, 'Products', '', '2020-05-21 16:58:20', '2020-05-21 16:58:20', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Máy tính'),
 (32, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-05-22 15:27:08', '2020-05-22 15:27:08', NULL, NULL, 0, 1, 0, 0, 'CRM', NULL),
 (33, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-05-22 15:35:35', '2020-05-22 15:35:35', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Facebook\"]'),
-(34, 1, 1, 1, 'HinhThucTruyenThong', NULL, '2020-05-22 16:23:05', '2020-05-22 16:23:05', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Ch\\u1ea1y qu\\u1ea3ng c\\u00e1o\"]');
+(34, 1, 1, 1, 'HinhThucTruyenThong', NULL, '2020-05-22 16:23:05', '2020-05-22 16:23:05', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Ch\\u1ea1y qu\\u1ea3ng c\\u00e1o\"]'),
+(35, 1, 1, 1, 'Campaigns', '', '2020-06-02 15:15:42', '2020-06-02 15:15:50', NULL, NULL, 0, 1, 1, 0, 'CRM', 'Ha'),
+(36, 1, 1, 1, 'Campaigns', '', '2020-06-02 15:16:01', '2020-06-02 15:16:08', NULL, NULL, 0, 1, 1, 0, 'CRM', 'ga'),
+(37, 1, 1, 1, 'Campaigns', '', '2020-06-06 14:21:03', '2020-06-06 14:21:17', NULL, NULL, 0, 1, 1, 0, 'CRM', 'Hel'),
+(38, 1, 1, 1, 'MailManager Attachment', '820.bmp', '2020-06-11 14:38:35', '2020-06-11 14:38:35', NULL, NULL, 0, 1, 1, NULL, NULL, NULL),
+(39, 1, 1, 1, 'MailManager Attachment', '820.bmp', '2020-06-11 17:26:37', '2020-06-11 17:26:37', NULL, NULL, 0, 1, 1, NULL, NULL, NULL),
+(40, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>Hello</body>\r\n</html>\r\n', '2020-06-14 14:44:47', '2020-06-14 14:44:47', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Testing'),
+(41, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>hello</body>\r\n</html>\r\n', '2020-06-14 14:45:45', '2020-06-14 14:45:45', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Testing'),
+(42, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n', '2020-06-14 14:47:45', '2020-06-14 14:47:45', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(43, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n', '2020-06-14 14:51:16', '2020-06-14 14:51:16', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(44, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n', '2020-06-14 14:56:59', '2020-06-14 14:56:59', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(45, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n', '2020-06-14 15:08:37', '2020-06-14 15:08:37', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(46, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n', '2020-06-14 15:10:08', '2020-06-14 15:10:08', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(47, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n', '2020-06-14 15:10:27', '2020-06-14 15:10:27', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(48, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>2</body>\r\n</html>\r\n', '2020-06-18 13:38:42', '2020-06-18 13:38:42', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(49, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>2</body>\r\n</html>\r\n', '2020-06-18 13:40:06', '2020-06-18 13:40:06', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(50, 1, 1, 1, 'Vendors', '', '2020-06-18 13:51:41', '2020-06-20 09:47:50', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Dell'),
+(51, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>2</body>\r\n</html>\r\n', '2020-06-18 13:51:54', '2020-06-18 13:51:54', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(52, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>2</body>\r\n</html>\r\n', '2020-06-18 14:03:24', '2020-06-18 14:03:24', NULL, NULL, 0, 1, 0, 0, 'CRM', 'test'),
+(53, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n', '2020-06-18 14:06:10', '2020-06-18 14:06:10', NULL, NULL, 0, 1, 0, 0, 'CRM', '1'),
+(54, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n', '2020-06-18 14:08:24', '2020-06-18 14:08:24', NULL, NULL, 0, 1, 0, 0, 'CRM', 'test'),
+(55, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>rw</body>\r\n</html>\r\n', '2020-06-18 14:17:25', '2020-06-18 14:17:25', NULL, NULL, 0, 1, 0, 0, 'CRM', 'test'),
+(56, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>mail is sent from vtiger</body>\r\n</html>\r\n', '2020-06-20 09:37:41', '2020-06-20 09:37:41', NULL, NULL, 0, 1, 0, 0, 'CRM', 'test'),
+(57, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>test thu nhap</body>\r\n</html>\r\n', '2020-06-20 09:46:59', '2020-06-20 09:46:59', NULL, NULL, 0, 1, 0, 0, 'CRM', 'saved'),
+(58, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>3</body>\r\n</html>\r\n', '2020-06-20 09:47:50', '2020-06-20 09:47:50', NULL, NULL, 0, 1, 0, 0, 'CRM', '3');
 
 -- --------------------------------------------------------
 
@@ -2498,6 +2612,20 @@ CREATE TABLE IF NOT EXISTS `vtiger_crmentityrel` (
   KEY `relcrmid_idx` (`relcrmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_crmentityrel`
+--
+
+INSERT INTO `vtiger_crmentityrel` (`crmid`, `module`, `relcrmid`, `relmodule`) VALUES
+(50, 'Vendors', 51, 'Emails'),
+(50, 'Vendors', 52, 'Emails'),
+(50, 'Vendors', 53, 'Emails'),
+(50, 'Vendors', 54, 'Emails'),
+(50, 'Vendors', 55, 'Emails'),
+(50, 'Vendors', 56, 'Emails'),
+(50, 'Vendors', 57, 'Emails'),
+(50, 'Vendors', 58, 'Emails');
+
 -- --------------------------------------------------------
 
 --
@@ -2513,7 +2641,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_crmentity_seq` (
 --
 
 INSERT INTO `vtiger_crmentity_seq` (`id`) VALUES
-(34);
+(58);
 
 -- --------------------------------------------------------
 
@@ -2549,7 +2677,29 @@ INSERT INTO `vtiger_crmentity_user_field` (`recordid`, `userid`, `starred`) VALU
 (31, 1, '0'),
 (32, 1, '0'),
 (33, 1, '0'),
-(34, 1, '0');
+(34, 1, '0'),
+(35, 1, '0'),
+(36, 1, '0'),
+(37, 1, '0'),
+(40, 1, '0'),
+(41, 1, '0'),
+(42, 1, '0'),
+(43, 1, '0'),
+(44, 1, '0'),
+(45, 1, '0'),
+(46, 1, '0'),
+(47, 1, '0'),
+(48, 1, '0'),
+(49, 1, '0'),
+(50, 1, '0'),
+(51, 1, '0'),
+(52, 1, '0'),
+(53, 1, '0'),
+(54, 1, '0'),
+(55, 1, '0'),
+(56, 1, '0'),
+(57, 1, '0'),
+(58, 1, '0');
 
 -- --------------------------------------------------------
 
@@ -5628,7 +5778,8 @@ INSERT INTO `vtiger_def_org_field` (`tabid`, `fieldid`, `visible`, `readonly`) V
 (72, 1279, 0, 0),
 (72, 1281, 0, 0),
 (72, 1285, 0, 0),
-(72, 1287, 0, 0);
+(72, 1287, 0, 0),
+(8, 1289, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5803,6 +5954,30 @@ CREATE TABLE IF NOT EXISTS `vtiger_emaildetails` (
   PRIMARY KEY (`emailid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_emaildetails`
+--
+
+INSERT INTO `vtiger_emaildetails` (`emailid`, `from_email`, `to_email`, `cc_email`, `bcc_email`, `assigned_user_email`, `idlists`, `email_flag`) VALUES
+(40, 'ThienLang99999@gmail.com', '[\"vendor@example.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(41, 'ThienLang99999@gmail.com', '[\"vendor@example.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(42, 'ThienLang99999@gmail.com', '[\"vendor@example.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(43, 'ThienLang99999@gmail.com', '[\"vendor@example.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(44, 'ThienLang99999@gmail.com', '[\"vendor@example.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(45, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(46, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(47, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(48, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(49, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '', 'SAVED'),
+(51, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '50@1|', 'SENT'),
+(52, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '50@1|', 'SAVED'),
+(53, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '50@1|', 'SAVED'),
+(54, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '50@1|', 'SENT'),
+(55, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '50@1|', 'SENT'),
+(56, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '50@1|', 'SENT'),
+(57, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '50@1|', 'SAVED'),
+(58, 'ThienLang99999@gmail.com', '[\"vendor@vendor.com\"]', '[\"\"]', '[\"\"]', '', '50@1|', 'SAVED');
+
 -- --------------------------------------------------------
 
 --
@@ -5823,7 +5998,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_emailslookup` (
 --
 
 INSERT INTO `vtiger_emailslookup` (`crmid`, `setype`, `value`, `fieldid`) VALUES
-(29, 'Employee', 'ThienLang99999@gmail.com', 999);
+(29, 'Employee', 'master@localhost', 999),
+(50, 'Vendors', 'vendor@vendor.com', 292);
 
 -- --------------------------------------------------------
 
@@ -5924,6 +6100,16 @@ CREATE TABLE IF NOT EXISTS `vtiger_email_track` (
   `click_count` int(11) NOT NULL DEFAULT 0,
   UNIQUE KEY `link_tabidtype_idx` (`crmid`,`mailid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_email_track`
+--
+
+INSERT INTO `vtiger_email_track` (`crmid`, `mailid`, `access_count`, `click_count`) VALUES
+(50, 51, 0, 0),
+(50, 54, 0, 0),
+(50, 55, 0, 0),
+(50, 56, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -7561,7 +7747,8 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (72, 1279, 'cf_1278', 'vtiger_quytrinhbanhangcf', 2, '1', 'cf_1278', 'Ten giai doan', 1, 2, '', 100, 1, 191, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (72, 1281, 'cf_1280', 'vtiger_quytrinhbanhangcf', 2, '9', 'cf_1280', 'Ti le thanh cong', 1, 2, '', 100, 2, 191, 1, 'N~O~2~2', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (72, 1285, 'cf_1284', 'vtiger_quytrinhbanhangcf', 2, '21', 'cf_1284', 'Dien giai', 1, 2, '', 100, 4, 191, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
-(72, 1287, 'cf_1286', 'vtiger_quytrinhbanhangcf', 2, '16', 'cf_1286', 'Phan loai', 1, 2, ' ', 100, 5, 191, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0);
+(72, 1287, 'cf_1286', 'vtiger_quytrinhbanhangcf', 2, '16', 'cf_1286', 'Phan loai', 1, 2, ' ', 100, 5, 191, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(8, 1289, 'cf_1288', 'vtiger_notescf', 2, '16', 'cf_1288', 'Đuôi file', 1, 2, ' ', 100, 8, 18, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -7662,7 +7849,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_field_seq` (
 --
 
 INSERT INTO `vtiger_field_seq` (`id`) VALUES
-(1287);
+(1289);
 
 -- --------------------------------------------------------
 
@@ -9949,7 +10136,7 @@ INSERT INTO `vtiger_loginhistory` (`login_id`, `user_name`, `user_ip`, `logout_t
 (6, 'admin', '::1', '2020-04-12 19:02:17', '2020-04-13 09:02:17', 'Signed in'),
 (7, 'admin', '::1', '2020-04-12 20:05:04', '2020-04-13 10:05:04', 'Signed in'),
 (8, 'admin', '::1', '2020-04-15 22:32:33', '2020-04-16 12:32:33', 'Signed in'),
-(9, 'admin', '::1', '2020-05-05 03:53:36', '2020-04-17 12:56:26', 'Signed off');
+(9, 'admin', '::1', '2020-06-20 04:28:09', '2020-04-17 12:56:26', 'Signed off');
 
 -- --------------------------------------------------------
 
@@ -10044,6 +10231,30 @@ CREATE TABLE IF NOT EXISTS `vtiger_mailmanager_mailrecord` (
   KEY `userid_muid_idx` (`userid`,`muid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_mailmanager_mailrecord`
+--
+
+INSERT INTO `vtiger_mailmanager_mailrecord` (`userid`, `mfrom`, `mto`, `mcc`, `mbcc`, `mdate`, `msubject`, `mbody`, `mcharset`, `misbodyhtml`, `mplainmessage`, `mhtmlmessage`, `muniqueid`, `mbodyparsed`, `muid`, `lastsavedtime`, `folder`, `mfolder`) VALUES
+(1, '[\"webserver@example.com\"]', '[\"bob@localhost\"]', '[]', '[]', '1591369965', 'Feedback from website', 'Customer name: thu\r\nCustomer email: yo@bigcustomer.com\r\nCustomer comment: \r\ni want you to contact me at sunday\n\n', NULL, 0, 0, 0, NULL, 1, 1, 1592645738, NULL, 'INBOX'),
+(1, '[\"vendor@vendor.com\"]', '[\"bob@localhost\"]', '[]', '[]', '1592147337', '1', '1\n\n', 'utf-8', 0, 1, 0, '<6c6b4635-ad26-f1db-1a61-46d056b8e025@vendor.com>', 1, 3, 1592645738, NULL, 'INBOX'),
+(1, '[]', '[\"bob@localhost\"]', '[]', '[]', '1592644528', 'Message delivery status', 'This is a delivery status message from the electronic mail server at\r\nlocalhost. A message appearing to originate from your address\r\nhas been delayed during delivery.\r\n\r\nMessage details:\r\n------------------------------------------------------------------\r\nOriginally submitted:      18 Jun 20, 21:19:16\r\nOriginator address:        bob@localhost\r\nMessage\'s subject:         f\r\nMessage\'s ID:              <a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>\r\n\r\nAfter 24 hours, the following addresses had delivery problems:\r\n\r\n   vendor@vendor.com [Temporary failure - still trying to deliver]\r\n\r\nThe server will continue to attempt to deliver your message to any\r\naddresses showing temporary errors. You do not need to take any\r\nfurther action at this time - this message is for your information\r\nonly.\n\n', 'US-ASCII', 0, 0, 0, NULL, 1, 4, 1592645738, NULL, 'INBOX'),
+(1, '[\"master@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489846', 'test', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>rw</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 0, 0, '<5q95sau0xg1i.n4xfuspdf3b2@DESKTOP-4S6HHAJ>', 1, 5, 1592645738, NULL, 'INBOX'),
+(1, '[\"master@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489306', 'test', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 1, 0, '<1pig1j0s0uai.eh92uvhxv7gb@DESKTOP-4S6HHAJ>', 1, 6, 1592645738, NULL, 'INBOX'),
+(1, '[\"ThienLang99999@gmail.com\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592488315', '1', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>2</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 2, 0, '<1zjc3bdhfce3.2otd92uw8em80@DESKTOP-4S6HHAJ>', 1, 7, 1592645738, NULL, 'INBOX'),
+(1, '[]', '[\"bob@localhost\"]', '[]', '[]', '1592645430', 'Message delivery status', 'This is a delivery status message from the electronic mail server at\r\nlocalhost. A message appearing to originate from your address\r\nhas been delayed during delivery.\r\n\r\nMessage details:\r\n------------------------------------------------------------------\r\nOriginally submitted:      18 Jun 20, 21:19:16\r\nOriginator address:        bob@localhost\r\nMessage\'s subject:         f\r\nMessage\'s ID:              <a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>\r\n\r\nAfter 3 hours, the following addresses had delivery problems:\r\n\r\n   vendor@vendor.com [Temporary failure - still trying to deliver]\r\n\r\nThe server will continue to attempt to deliver your message to any\r\naddresses showing temporary errors. You do not need to take any\r\nfurther action at this time - this message is for your information\r\nonly.\n\n', 'US-ASCII', 0, 0, 0, NULL, 1, 8, 1592645738, NULL, 'INBOX'),
+(1, '[\"master@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592645863', 'test', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>mail is sent from vtiger</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 0, 0, '<2cwgkvoo8vdz.2fo1rqexvxus0@DESKTOP-4S6HHAJ>', 1, 9, 1592646242, NULL, 'INBOX'),
+(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489940', 'f', 'f\n\n', 'utf-8', 0, 0, 0, '<a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>', 1, 1, 1592646433, NULL, 'Sent'),
+(1, '[\"bob@localhost\"]', '[\"vendor@localhost\"]', '[]', '[]', '1592490060', 'f', '2\n\n', 'utf-8', 0, 2, 0, '<7441ae58-9fc9-ae32-32a3-bd8b88c44f7a@localhost>', 1, 2, 1592646433, NULL, 'Sent'),
+(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592645640', 'Untitled', 'hi my friend\n\n', 'utf-8', 0, 0, 0, '<8588cdbf-a4be-35ad-d0a3-4640f68dbbf3@localhost>', 1, 3, 1592646433, NULL, 'Sent'),
+(1, '[\"ThienLang99999@gmail.com\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592488260', '1', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>2</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 2, 0, '<1zjc3bdhfce3.2otd92uw8em80@DESKTOP-4S6HHAJ>', 1, 1, 1592666939, NULL, 'Trash'),
+(1, '[]', '[\"bob@localhost\"]', '[]', '[]', '1592644500', 'Message delivery status', 'This is a delivery status message from the electronic mail server at\r\nlocalhost. A message appearing to originate from your address\r\nhas been delayed during delivery.\r\n\r\nMessage details:\r\n------------------------------------------------------------------\r\nOriginally submitted:      18 Jun 20, 21:19:16\r\nOriginator address:        bob@localhost\r\nMessage\'s subject:         f\r\nMessage\'s ID:              <a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>\r\n\r\nAfter 24 hours, the following addresses had delivery problems:\r\n\r\n   vendor@vendor.com [Temporary failure - still trying to deliver]\r\n\r\nThe server will continue to attempt to deliver your message to any\r\naddresses showing temporary errors. You do not need to take any\r\nfurther action at this time - this message is for your information\r\nonly.\n\n', 'US-ASCII', 0, 0, 0, NULL, 1, 2, 1592666939, NULL, 'Trash'),
+(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592667420', 'td', 'dg\n\n', 'utf-8', 0, 0, 0, '<f64a201a-dc14-9c50-22c2-24efff08d3ed@localhost>', 1, 4, 1592667589, NULL, 'Sent'),
+(1, '[\"webserver@example.com\"]', '[\"bob@localhost\"]', '[]', '[]', '1591369965', 'Feedback from website', 'Customer name: thu\r\nCustomer email: yo@bigcustomer.com\r\nCustomer comment: \r\ni want you to contact me at sunday\n\n', NULL, 0, 0, 0, NULL, 1, 3, 1592667614, NULL, 'Trash'),
+(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489940', 'f', 'f\n\n', 'utf-8', 0, 0, 0, '<a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>', 1, 4, 1592667614, NULL, 'Trash'),
+(1, '[\"bob@localhost\"]', '[\"vendor@localhost\"]', '[]', '[]', '1592490060', 'f', '2\n\n', 'utf-8', 0, 2, 0, '<7441ae58-9fc9-ae32-32a3-bd8b88c44f7a@localhost>', 1, 5, 1592667614, NULL, 'Trash'),
+(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592645640', 'Untitled', 'hi my friend\n\n', 'utf-8', 0, 0, 0, '<8588cdbf-a4be-35ad-d0a3-4640f68dbbf3@localhost>', 1, 6, 1592667614, NULL, 'Trash');
+
 -- --------------------------------------------------------
 
 --
@@ -10128,6 +10339,16 @@ CREATE TABLE IF NOT EXISTS `vtiger_mailscanner_ids` (
   KEY `messageids_crmid_idx` (`crmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_mailscanner_ids`
+--
+
+INSERT INTO `vtiger_mailscanner_ids` (`scannerid`, `messageid`, `crmid`, `refids`) VALUES
+(NULL, '<1zjc3bdhfce3.2otd92uw8em80@DESKTOP-4S6HHAJ>', 50, NULL),
+(NULL, '<1pig1j0s0uai.eh92uvhxv7gb@DESKTOP-4S6HHAJ>', 50, NULL),
+(NULL, '<5q95sau0xg1i.n4xfuspdf3b2@DESKTOP-4S6HHAJ>', 50, NULL),
+(NULL, '<2cwgkvoo8vdz.2fo1rqexvxus0@DESKTOP-4S6HHAJ>', 50, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -10188,6 +10409,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_mail_accounts` (
   `sent_folder` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_mail_accounts`
+--
+
+INSERT INTO `vtiger_mail_accounts` (`account_id`, `user_id`, `display_name`, `mail_id`, `account_name`, `mail_protocol`, `mail_username`, `mail_password`, `mail_servername`, `box_refresh`, `mails_per_page`, `ssltype`, `sslmeth`, `int_mailer`, `status`, `set_default`, `sent_folder`) VALUES
+(1, 1, 'bob@localhost', NULL, 'master@localhost', 'IMAP4', 'bob@localhost', 'z8_Ozs_Pz84.', 'localhost', 0, 20, 'notls', 'novalidate-cert', 0, '1', 0, 'INBOX');
 
 -- --------------------------------------------------------
 
@@ -10317,7 +10545,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_modentity_num` (
 INSERT INTO `vtiger_modentity_num` (`num_id`, `semodule`, `prefix`, `start_id`, `cur_id`, `active`) VALUES
 (1, 'Leads', 'LEA', '1', '1', '1'),
 (2, 'Accounts', 'ACC', '1', '1', '1'),
-(3, 'Campaigns', 'CAM', '1', '1', '1'),
+(3, 'Campaigns', 'CAM', '1', '4', '1'),
 (4, 'Contacts', 'CON', '1', '1', '1'),
 (5, 'Potentials', 'POT', '1', '1', '1'),
 (6, 'HelpDesk', 'TT', '1', '1', '1'),
@@ -10326,7 +10554,7 @@ INSERT INTO `vtiger_modentity_num` (`num_id`, `semodule`, `prefix`, `start_id`, 
 (9, 'PurchaseOrder', 'PO', '1', '1', '1'),
 (10, 'Invoice', 'INV', '1', '1', '1'),
 (11, 'Products', 'PRO', '1', '2', '1'),
-(12, 'Vendors', 'VEN', '1', '1', '1'),
+(12, 'Vendors', 'VEN', '1', '2', '1'),
 (13, 'PriceBooks', 'PB', '1', '1', '1'),
 (14, 'Faq', 'FAQ', '1', '1', '1'),
 (15, 'Documents', 'DOC', '1', '1', '1'),
@@ -10377,7 +10605,42 @@ CREATE TABLE IF NOT EXISTS `vtiger_modtracker_basic` (
 --
 
 INSERT INTO `vtiger_modtracker_basic` (`id`, `crmid`, `module`, `whodid`, `changedon`, `status`) VALUES
-(1, 31, 'Products', 1, '2020-05-21 16:58:20', 2);
+(1, 31, 'Products', 1, '2020-05-21 16:58:20', 2),
+(2, 35, 'Campaigns', 1, '2020-06-02 15:15:42', 2),
+(3, 35, 'Campaigns', 1, '2020-06-02 15:15:50', 1),
+(4, 36, 'Campaigns', 1, '2020-06-02 15:16:01', 2),
+(5, 36, 'Campaigns', 1, '2020-06-02 15:16:08', 1),
+(6, 37, 'Campaigns', 1, '2020-06-06 14:21:03', 2),
+(7, 37, 'Campaigns', 1, '2020-06-06 14:21:17', 1),
+(8, 40, 'Emails', 1, '2020-06-14 14:44:47', 2),
+(9, 41, 'Emails', 1, '2020-06-14 14:45:45', 2),
+(10, 42, 'Emails', 1, '2020-06-14 14:47:45', 2),
+(11, 43, 'Emails', 1, '2020-06-14 14:51:16', 2),
+(12, 44, 'Emails', 1, '2020-06-14 14:56:59', 2),
+(13, 45, 'Emails', 1, '2020-06-14 15:08:37', 2),
+(14, 46, 'Emails', 1, '2020-06-14 15:10:08', 2),
+(15, 47, 'Emails', 1, '2020-06-14 15:10:27', 2),
+(16, 48, 'Emails', 1, '2020-06-18 13:38:42', 2),
+(17, 49, 'Emails', 1, '2020-06-18 13:40:06', 2),
+(18, 50, 'Vendors', 1, '2020-06-18 13:51:41', 2),
+(19, 51, 'Emails', 1, '2020-06-18 13:51:54', 2),
+(20, 50, 'Vendors', 1, '2020-06-18 13:51:55', 4),
+(21, 52, 'Emails', 1, '2020-06-18 14:03:24', 2),
+(22, 50, 'Vendors', 1, '2020-06-18 14:03:25', 4),
+(23, 53, 'Emails', 1, '2020-06-18 14:06:10', 2),
+(24, 50, 'Vendors', 1, '2020-06-18 14:06:11', 4),
+(25, 54, 'Emails', 1, '2020-06-18 14:08:24', 2),
+(26, 50, 'Vendors', 1, '2020-06-18 14:08:25', 4),
+(27, 55, 'Emails', 1, '2020-06-18 14:17:25', 2),
+(28, 50, 'Vendors', 1, '2020-06-18 14:17:26', 4),
+(29, 50, 'Vendors', 1, '2020-06-18 14:28:48', 1),
+(30, 50, 'Vendors', 1, '2020-06-20 09:36:55', 3),
+(31, 56, 'Emails', 1, '2020-06-20 09:37:41', 2),
+(32, 50, 'Vendors', 1, '2020-06-20 09:37:42', 4),
+(33, 57, 'Emails', 1, '2020-06-20 09:46:59', 2),
+(34, 50, 'Vendors', 1, '2020-06-20 09:47:00', 4),
+(35, 58, 'Emails', 1, '2020-06-20 09:47:50', 2),
+(36, 50, 'Vendors', 1, '2020-06-20 09:47:50', 4);
 
 -- --------------------------------------------------------
 
@@ -10394,7 +10657,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_modtracker_basic_seq` (
 --
 
 INSERT INTO `vtiger_modtracker_basic_seq` (`id`) VALUES
-(1);
+(36);
 
 -- --------------------------------------------------------
 
@@ -10429,7 +10692,376 @@ INSERT INTO `vtiger_modtracker_detail` (`id`, `fieldname`, `prevalue`, `postvalu
 (1, 'purchase_cost', NULL, '0.00000000'),
 (1, 'source', NULL, 'CRM'),
 (1, 'record_id', NULL, '31'),
-(1, 'record_module', NULL, 'Products');
+(1, 'record_module', NULL, 'Products'),
+(2, 'label', NULL, 'Ha'),
+(2, 'campaignname', NULL, 'Ha'),
+(2, 'campaign_no', NULL, 'CAM1'),
+(2, 'closingdate', NULL, '2020-06-17'),
+(2, 'assigned_user_id', NULL, '1'),
+(2, 'createdtime', NULL, '2020-06-02 15:15:42'),
+(2, 'modifiedby', NULL, '1'),
+(2, 'expectedrevenue', NULL, '0.00000000'),
+(2, 'budgetcost', NULL, '0.00000000'),
+(2, 'actualcost', NULL, '0.00000000'),
+(2, 'expectedroi', NULL, '0.00000000'),
+(2, 'actualroi', NULL, '0.00000000'),
+(2, 'source', NULL, 'CRM'),
+(2, 'record_id', NULL, '35'),
+(2, 'record_module', NULL, 'Campaigns'),
+(4, 'label', NULL, 'ga'),
+(4, 'campaignname', NULL, 'ga'),
+(4, 'campaign_no', NULL, 'CAM2'),
+(4, 'closingdate', NULL, '2020-06-11'),
+(4, 'assigned_user_id', NULL, '1'),
+(4, 'createdtime', NULL, '2020-06-02 15:16:01'),
+(4, 'modifiedby', NULL, '1'),
+(4, 'expectedrevenue', NULL, '0.00000000'),
+(4, 'budgetcost', NULL, '0.00000000'),
+(4, 'actualcost', NULL, '0.00000000'),
+(4, 'expectedroi', NULL, '0.00000000'),
+(4, 'actualroi', NULL, '0.00000000'),
+(4, 'source', NULL, 'CRM'),
+(4, 'record_id', NULL, '36'),
+(4, 'record_module', NULL, 'Campaigns'),
+(6, 'label', NULL, 'Hel'),
+(6, 'campaignname', NULL, 'Hel'),
+(6, 'campaign_no', NULL, 'CAM3'),
+(6, 'closingdate', NULL, '2020-06-23'),
+(6, 'assigned_user_id', NULL, '1'),
+(6, 'createdtime', NULL, '2020-06-06 14:21:03'),
+(6, 'modifiedby', NULL, '1'),
+(6, 'expectedrevenue', NULL, '0.00000000'),
+(6, 'budgetcost', NULL, '0.00000000'),
+(6, 'actualcost', NULL, '0.00000000'),
+(6, 'expectedroi', NULL, '0.00000000'),
+(6, 'actualroi', NULL, '0.00000000'),
+(6, 'source', NULL, 'CRM'),
+(6, 'record_id', NULL, '37'),
+(6, 'record_module', NULL, 'Campaigns'),
+(8, 'label', NULL, 'Testing'),
+(8, 'date_start', NULL, '2020-06-14'),
+(8, 'activitytype', NULL, 'Emails'),
+(8, 'assigned_user_id', NULL, '1'),
+(8, 'subject', NULL, 'Testing'),
+(8, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;Hello&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(8, 'time_start', NULL, '14:44'),
+(8, 'createdtime', NULL, '2020-06-14 14:44:47'),
+(8, 'modifiedby', NULL, '1'),
+(8, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(8, 'saved_toid', NULL, '[&quot;vendor@example.com&quot;]'),
+(8, 'ccmail', NULL, '[&quot;&quot;]'),
+(8, 'bccmail', NULL, '[&quot;&quot;]'),
+(8, 'email_flag', NULL, 'SENT'),
+(8, 'source', NULL, 'CRM'),
+(8, 'record_id', NULL, '40'),
+(8, 'record_module', NULL, 'Emails'),
+(9, 'label', NULL, 'Testing'),
+(9, 'date_start', NULL, '2020-06-14'),
+(9, 'activitytype', NULL, 'Emails'),
+(9, 'assigned_user_id', NULL, '1'),
+(9, 'subject', NULL, 'Testing'),
+(9, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;hello&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(9, 'time_start', NULL, '14:45'),
+(9, 'createdtime', NULL, '2020-06-14 14:45:45'),
+(9, 'modifiedby', NULL, '1'),
+(9, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(9, 'saved_toid', NULL, '[&quot;vendor@example.com&quot;]'),
+(9, 'ccmail', NULL, '[&quot;&quot;]'),
+(9, 'bccmail', NULL, '[&quot;&quot;]'),
+(9, 'email_flag', NULL, 'SENT'),
+(9, 'source', NULL, 'CRM'),
+(9, 'record_id', NULL, '41'),
+(9, 'record_module', NULL, 'Emails'),
+(10, 'label', NULL, '1'),
+(10, 'date_start', NULL, '2020-06-14'),
+(10, 'activitytype', NULL, 'Emails'),
+(10, 'assigned_user_id', NULL, '1'),
+(10, 'subject', NULL, '1'),
+(10, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;1&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(10, 'time_start', NULL, '14:47'),
+(10, 'createdtime', NULL, '2020-06-14 14:47:45'),
+(10, 'modifiedby', NULL, '1'),
+(10, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(10, 'saved_toid', NULL, '[&quot;vendor@example.com&quot;]'),
+(10, 'ccmail', NULL, '[&quot;&quot;]'),
+(10, 'bccmail', NULL, '[&quot;&quot;]'),
+(10, 'email_flag', NULL, 'SENT'),
+(10, 'source', NULL, 'CRM'),
+(10, 'record_id', NULL, '42'),
+(10, 'record_module', NULL, 'Emails'),
+(11, 'label', NULL, '1'),
+(11, 'date_start', NULL, '2020-06-14'),
+(11, 'activitytype', NULL, 'Emails'),
+(11, 'assigned_user_id', NULL, '1'),
+(11, 'subject', NULL, '1'),
+(11, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;1&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(11, 'time_start', NULL, '14:51'),
+(11, 'createdtime', NULL, '2020-06-14 14:51:16'),
+(11, 'modifiedby', NULL, '1'),
+(11, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(11, 'saved_toid', NULL, '[&quot;vendor@example.com&quot;]'),
+(11, 'ccmail', NULL, '[&quot;&quot;]'),
+(11, 'bccmail', NULL, '[&quot;&quot;]'),
+(11, 'email_flag', NULL, 'SENT'),
+(11, 'source', NULL, 'CRM'),
+(11, 'record_id', NULL, '43'),
+(11, 'record_module', NULL, 'Emails'),
+(12, 'label', NULL, '1'),
+(12, 'date_start', NULL, '2020-06-14'),
+(12, 'activitytype', NULL, 'Emails'),
+(12, 'assigned_user_id', NULL, '1'),
+(12, 'subject', NULL, '1'),
+(12, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;1&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(12, 'time_start', NULL, '14:56'),
+(12, 'createdtime', NULL, '2020-06-14 14:56:59'),
+(12, 'modifiedby', NULL, '1'),
+(12, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(12, 'saved_toid', NULL, '[&quot;vendor@example.com&quot;]'),
+(12, 'ccmail', NULL, '[&quot;&quot;]'),
+(12, 'bccmail', NULL, '[&quot;&quot;]'),
+(12, 'email_flag', NULL, 'SENT'),
+(12, 'source', NULL, 'CRM'),
+(12, 'record_id', NULL, '44'),
+(12, 'record_module', NULL, 'Emails'),
+(13, 'label', NULL, '1'),
+(13, 'date_start', NULL, '2020-06-14'),
+(13, 'activitytype', NULL, 'Emails'),
+(13, 'assigned_user_id', NULL, '1'),
+(13, 'subject', NULL, '1'),
+(13, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;1&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(13, 'time_start', NULL, '15:08'),
+(13, 'createdtime', NULL, '2020-06-14 15:08:37'),
+(13, 'modifiedby', NULL, '1'),
+(13, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(13, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(13, 'ccmail', NULL, '[&quot;&quot;]'),
+(13, 'bccmail', NULL, '[&quot;&quot;]'),
+(13, 'email_flag', NULL, 'SENT'),
+(13, 'source', NULL, 'CRM'),
+(13, 'record_id', NULL, '45'),
+(13, 'record_module', NULL, 'Emails'),
+(14, 'label', NULL, '1'),
+(14, 'date_start', NULL, '2020-06-14'),
+(14, 'activitytype', NULL, 'Emails'),
+(14, 'assigned_user_id', NULL, '1'),
+(14, 'subject', NULL, '1'),
+(14, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;1&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(14, 'time_start', NULL, '15:10'),
+(14, 'createdtime', NULL, '2020-06-14 15:10:08'),
+(14, 'modifiedby', NULL, '1'),
+(14, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(14, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(14, 'ccmail', NULL, '[&quot;&quot;]'),
+(14, 'bccmail', NULL, '[&quot;&quot;]'),
+(14, 'email_flag', NULL, 'SENT'),
+(14, 'source', NULL, 'CRM'),
+(14, 'record_id', NULL, '46'),
+(14, 'record_module', NULL, 'Emails'),
+(15, 'label', NULL, '1'),
+(15, 'date_start', NULL, '2020-06-14'),
+(15, 'activitytype', NULL, 'Emails'),
+(15, 'assigned_user_id', NULL, '1'),
+(15, 'subject', NULL, '1'),
+(15, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;1&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(15, 'time_start', NULL, '15:10'),
+(15, 'createdtime', NULL, '2020-06-14 15:10:27'),
+(15, 'modifiedby', NULL, '1'),
+(15, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(15, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(15, 'ccmail', NULL, '[&quot;&quot;]'),
+(15, 'bccmail', NULL, '[&quot;&quot;]'),
+(15, 'email_flag', NULL, 'SAVED'),
+(15, 'source', NULL, 'CRM'),
+(15, 'record_id', NULL, '47'),
+(15, 'record_module', NULL, 'Emails'),
+(16, 'label', NULL, '1'),
+(16, 'date_start', NULL, '2020-06-18'),
+(16, 'activitytype', NULL, 'Emails'),
+(16, 'assigned_user_id', NULL, '1'),
+(16, 'subject', NULL, '1'),
+(16, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;2&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(16, 'time_start', NULL, '13:38'),
+(16, 'createdtime', NULL, '2020-06-18 13:38:42'),
+(16, 'modifiedby', NULL, '1'),
+(16, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(16, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(16, 'ccmail', NULL, '[&quot;&quot;]'),
+(16, 'bccmail', NULL, '[&quot;&quot;]'),
+(16, 'email_flag', NULL, 'SENT'),
+(16, 'source', NULL, 'CRM'),
+(16, 'record_id', NULL, '48'),
+(16, 'record_module', NULL, 'Emails'),
+(17, 'label', NULL, '1'),
+(17, 'date_start', NULL, '2020-06-18'),
+(17, 'activitytype', NULL, 'Emails'),
+(17, 'assigned_user_id', NULL, '1'),
+(17, 'subject', NULL, '1'),
+(17, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;2&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(17, 'time_start', NULL, '13:40'),
+(17, 'createdtime', NULL, '2020-06-18 13:40:06'),
+(17, 'modifiedby', NULL, '1'),
+(17, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(17, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(17, 'ccmail', NULL, '[&quot;&quot;]'),
+(17, 'bccmail', NULL, '[&quot;&quot;]'),
+(17, 'email_flag', NULL, 'SENT'),
+(17, 'source', NULL, 'CRM'),
+(17, 'record_id', NULL, '49'),
+(17, 'record_module', NULL, 'Emails'),
+(18, 'label', NULL, 'Dell'),
+(18, 'vendorname', NULL, 'Dell'),
+(18, 'vendor_no', NULL, 'VEN1'),
+(18, 'email', NULL, 'vendor@vendor.com'),
+(18, 'createdtime', NULL, '2020-06-18 13:51:41'),
+(18, 'modifiedby', NULL, '1'),
+(18, 'assigned_user_id', NULL, '1'),
+(18, 'source', NULL, 'CRM'),
+(18, 'record_id', NULL, '50'),
+(18, 'record_module', NULL, 'Vendors'),
+(19, 'label', NULL, '1'),
+(19, 'date_start', NULL, '2020-06-18'),
+(19, 'activitytype', NULL, 'Emails'),
+(19, 'assigned_user_id', NULL, '1'),
+(19, 'subject', NULL, '1'),
+(19, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;2&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(19, 'time_start', NULL, '13:51'),
+(19, 'createdtime', NULL, '2020-06-18 13:51:54'),
+(19, 'modifiedby', NULL, '1'),
+(19, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(19, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(19, 'ccmail', NULL, '[&quot;&quot;]'),
+(19, 'bccmail', NULL, '[&quot;&quot;]'),
+(19, 'parent_id', NULL, '50@1|'),
+(19, 'email_flag', NULL, 'SENT'),
+(19, 'source', NULL, 'CRM'),
+(19, 'record_id', NULL, '51'),
+(19, 'record_module', NULL, 'Emails'),
+(21, 'label', NULL, 'test'),
+(21, 'date_start', NULL, '2020-06-18'),
+(21, 'activitytype', NULL, 'Emails'),
+(21, 'assigned_user_id', NULL, '1'),
+(21, 'subject', NULL, 'test'),
+(21, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;2&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(21, 'time_start', NULL, '14:03'),
+(21, 'createdtime', NULL, '2020-06-18 14:03:24'),
+(21, 'modifiedby', NULL, '1'),
+(21, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(21, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(21, 'ccmail', NULL, '[&quot;&quot;]'),
+(21, 'bccmail', NULL, '[&quot;&quot;]'),
+(21, 'parent_id', NULL, '50@1|'),
+(21, 'email_flag', NULL, 'SENT'),
+(21, 'source', NULL, 'CRM'),
+(21, 'record_id', NULL, '52'),
+(21, 'record_module', NULL, 'Emails'),
+(23, 'label', NULL, '1'),
+(23, 'date_start', NULL, '2020-06-18'),
+(23, 'activitytype', NULL, 'Emails'),
+(23, 'assigned_user_id', NULL, '1'),
+(23, 'subject', NULL, '1'),
+(23, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;1&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(23, 'time_start', NULL, '14:06'),
+(23, 'createdtime', NULL, '2020-06-18 14:06:10'),
+(23, 'modifiedby', NULL, '1'),
+(23, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(23, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(23, 'ccmail', NULL, '[&quot;&quot;]'),
+(23, 'bccmail', NULL, '[&quot;&quot;]'),
+(23, 'parent_id', NULL, '50@1|'),
+(23, 'email_flag', NULL, 'SENT'),
+(23, 'source', NULL, 'CRM'),
+(23, 'record_id', NULL, '53'),
+(23, 'record_module', NULL, 'Emails'),
+(25, 'label', NULL, 'test'),
+(25, 'date_start', NULL, '2020-06-18'),
+(25, 'activitytype', NULL, 'Emails'),
+(25, 'assigned_user_id', NULL, '1'),
+(25, 'subject', NULL, 'test'),
+(25, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;1&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(25, 'time_start', NULL, '14:08'),
+(25, 'createdtime', NULL, '2020-06-18 14:08:24'),
+(25, 'modifiedby', NULL, '1'),
+(25, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(25, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(25, 'ccmail', NULL, '[&quot;&quot;]'),
+(25, 'bccmail', NULL, '[&quot;&quot;]'),
+(25, 'parent_id', NULL, '50@1|'),
+(25, 'email_flag', NULL, 'SENT'),
+(25, 'source', NULL, 'CRM'),
+(25, 'record_id', NULL, '54'),
+(25, 'record_module', NULL, 'Emails'),
+(27, 'label', NULL, 'test'),
+(27, 'date_start', NULL, '2020-06-18'),
+(27, 'activitytype', NULL, 'Emails'),
+(27, 'assigned_user_id', NULL, '1'),
+(27, 'subject', NULL, 'test'),
+(27, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;rw&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(27, 'time_start', NULL, '14:17'),
+(27, 'createdtime', NULL, '2020-06-18 14:17:25'),
+(27, 'modifiedby', NULL, '1'),
+(27, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(27, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(27, 'ccmail', NULL, '[&quot;&quot;]'),
+(27, 'bccmail', NULL, '[&quot;&quot;]'),
+(27, 'parent_id', NULL, '50@1|'),
+(27, 'email_flag', NULL, 'SENT'),
+(27, 'source', NULL, 'CRM'),
+(27, 'record_id', NULL, '55'),
+(27, 'record_module', NULL, 'Emails'),
+(31, 'label', NULL, 'test'),
+(31, 'date_start', NULL, '2020-06-20'),
+(31, 'activitytype', NULL, 'Emails'),
+(31, 'assigned_user_id', NULL, '1'),
+(31, 'subject', NULL, 'test'),
+(31, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;mail is sent from vtiger&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(31, 'time_start', NULL, '09:37'),
+(31, 'createdtime', NULL, '2020-06-20 09:37:41'),
+(31, 'modifiedby', NULL, '1'),
+(31, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(31, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(31, 'ccmail', NULL, '[&quot;&quot;]'),
+(31, 'bccmail', NULL, '[&quot;&quot;]'),
+(31, 'parent_id', NULL, '50@1|'),
+(31, 'email_flag', NULL, 'SENT'),
+(31, 'source', NULL, 'CRM'),
+(31, 'record_id', NULL, '56'),
+(31, 'record_module', NULL, 'Emails'),
+(33, 'label', NULL, 'saved'),
+(33, 'date_start', NULL, '2020-06-20'),
+(33, 'activitytype', NULL, 'Emails'),
+(33, 'assigned_user_id', NULL, '1'),
+(33, 'subject', NULL, 'saved'),
+(33, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;test thu nhap&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(33, 'time_start', NULL, '09:46'),
+(33, 'createdtime', NULL, '2020-06-20 09:46:59'),
+(33, 'modifiedby', NULL, '1'),
+(33, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(33, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(33, 'ccmail', NULL, '[&quot;&quot;]'),
+(33, 'bccmail', NULL, '[&quot;&quot;]'),
+(33, 'parent_id', NULL, '50@1|'),
+(33, 'email_flag', NULL, 'SAVED'),
+(33, 'source', NULL, 'CRM'),
+(33, 'record_id', NULL, '57'),
+(33, 'record_module', NULL, 'Emails'),
+(35, 'label', NULL, '3'),
+(35, 'date_start', NULL, '2020-06-20'),
+(35, 'activitytype', NULL, 'Emails'),
+(35, 'assigned_user_id', NULL, '1'),
+(35, 'subject', NULL, '3'),
+(35, 'description', NULL, '&lt;html&gt;\r\n&lt;head&gt;\r\n	&lt;title&gt;&lt;/title&gt;\r\n&lt;/head&gt;\r\n&lt;body&gt;3&lt;/body&gt;\r\n&lt;/html&gt;\r\n'),
+(35, 'time_start', NULL, '09:47'),
+(35, 'createdtime', NULL, '2020-06-20 09:47:50'),
+(35, 'modifiedby', NULL, '1'),
+(35, 'from_email', NULL, 'ThienLang99999@gmail.com'),
+(35, 'saved_toid', NULL, '[&quot;vendor@vendor.com&quot;]'),
+(35, 'ccmail', NULL, '[&quot;&quot;]'),
+(35, 'bccmail', NULL, '[&quot;&quot;]'),
+(35, 'parent_id', NULL, '50@1|'),
+(35, 'email_flag', NULL, 'SAVED'),
+(35, 'source', NULL, 'CRM'),
+(35, 'record_id', NULL, '58'),
+(35, 'record_module', NULL, 'Emails');
 
 -- --------------------------------------------------------
 
@@ -10444,6 +11076,20 @@ CREATE TABLE IF NOT EXISTS `vtiger_modtracker_relations` (
   `changedon` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_modtracker_relations`
+--
+
+INSERT INTO `vtiger_modtracker_relations` (`id`, `targetmodule`, `targetid`, `changedon`) VALUES
+(20, 'Emails', 51, '2020-06-18 13:51:55'),
+(22, 'Emails', 52, '2020-06-18 14:03:25'),
+(24, 'Emails', 53, '2020-06-18 14:06:11'),
+(26, 'Emails', 54, '2020-06-18 14:08:25'),
+(28, 'Emails', 55, '2020-06-18 14:17:26'),
+(32, 'Emails', 56, '2020-06-20 09:37:42'),
+(34, 'Emails', 57, '2020-06-20 09:47:00'),
+(36, 'Emails', 58, '2020-06-20 09:47:50');
 
 -- --------------------------------------------------------
 
@@ -10512,6 +11158,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_module_dashboard_widgets` (
   KEY `dashboardtabid` (`dashboardtabid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_module_dashboard_widgets`
+--
+
+INSERT INTO `vtiger_module_dashboard_widgets` (`id`, `linkid`, `userid`, `filterid`, `title`, `data`, `position`, `reportid`, `dashboardtabid`, `size`) VALUES
+(0, 57, 1, NULL, NULL, 'null', '{\"row\":\"1\",\"col\":\"1\"}', NULL, 2, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -10557,6 +11210,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_notes` (
 
 CREATE TABLE IF NOT EXISTS `vtiger_notescf` (
   `notesid` int(19) NOT NULL DEFAULT 0,
+  `cf_1288` varchar(255) DEFAULT '',
   PRIMARY KEY (`notesid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -13108,6 +13762,7 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (1, 72, 1281, 0, 0),
 (1, 72, 1285, 0, 0),
 (1, 72, 1287, 0, 0),
+(1, 8, 1289, 0, 0),
 (2, 6, 1, 0, 0),
 (2, 6, 2, 0, 0),
 (2, 6, 3, 0, 0),
@@ -14275,6 +14930,7 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (2, 72, 1281, 0, 0),
 (2, 72, 1285, 0, 0),
 (2, 72, 1287, 0, 0),
+(2, 8, 1289, 0, 0),
 (3, 6, 1, 0, 0),
 (3, 6, 2, 0, 0),
 (3, 6, 3, 0, 0),
@@ -14734,10 +15390,10 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 23, 457, 0, 0),
 (3, 23, 458, 0, 0),
 (3, 23, 459, 0, 0),
-(3, 23, 460, 0, 0),
-(3, 23, 461, 0, 0),
-(3, 23, 462, 0, 0);
+(3, 23, 460, 0, 0);
 INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
+(3, 23, 461, 0, 0),
+(3, 23, 462, 0, 0),
 (3, 23, 463, 0, 0),
 (3, 23, 464, 0, 0),
 (3, 23, 465, 0, 0),
@@ -15443,6 +16099,7 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 72, 1281, 0, 0),
 (3, 72, 1285, 0, 0),
 (3, 72, 1287, 0, 0),
+(3, 8, 1289, 0, 0),
 (4, 6, 1, 0, 0),
 (4, 6, 2, 0, 0),
 (4, 6, 3, 0, 0),
@@ -16609,7 +17266,8 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (4, 72, 1279, 0, 0),
 (4, 72, 1281, 0, 0),
 (4, 72, 1285, 0, 0),
-(4, 72, 1287, 0, 0);
+(4, 72, 1287, 0, 0),
+(4, 8, 1289, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -22414,6 +23072,20 @@ CREATE TABLE IF NOT EXISTS `vtiger_seactivityrel` (
   KEY `seactivityrel_crmid_idx` (`crmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_seactivityrel`
+--
+
+INSERT INTO `vtiger_seactivityrel` (`crmid`, `activityid`) VALUES
+(50, 51),
+(50, 52),
+(50, 53),
+(50, 54),
+(50, 55),
+(50, 56),
+(50, 57),
+(50, 58);
+
 -- --------------------------------------------------------
 
 --
@@ -23101,6 +23773,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_shorturls` (
   KEY `uid` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_shorturls`
+--
+
+INSERT INTO `vtiger_shorturls` (`id`, `uid`, `handler_path`, `handler_class`, `handler_function`, `handler_data`, `onetime`) VALUES
+(0, '5eeb717b3273d5.15884336', 'modules/Emails/handlers/ViewInBrowser.php', 'Emails_ViewInBrowser_Handler', 'viewInBrowser', '{\"emailId\":51,\"parentModule\":\"Vendors\"}', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -23424,6 +24103,30 @@ CREATE TABLE IF NOT EXISTS `vtiger_systems` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_systems`
+--
+
+INSERT INTO `vtiger_systems` (`id`, `server`, `server_port`, `server_username`, `server_password`, `server_type`, `smtp_auth`, `server_path`, `from_email_field`) VALUES
+(1, 'localhost', 25, 'master@localhost', '$ve$z8_Ozs_Pz84.', 'email', '0', NULL, 'master@localhost');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_systems_seq`
+--
+
+CREATE TABLE IF NOT EXISTS `vtiger_systems_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_systems_seq`
+--
+
+INSERT INTO `vtiger_systems_seq` (`id`) VALUES
+(1);
+
 -- --------------------------------------------------------
 
 --
@@ -23465,9 +24168,9 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 (4, 'Contacts', 1, 6, 'Contacts', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
 (6, 'Accounts', 1, 5, 'Accounts', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 0, 1),
 (7, 'Leads', 0, 4, 'Leads', NULL, NULL, 0, 0, 1, 0, NULL, 'Sales', NULL, 1, 1, 1),
-(8, 'Documents', 1, 9, 'Documents', NULL, NULL, 0, 0, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
+(8, 'Documents', 0, 9, 'Documents', NULL, NULL, 0, 0, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
 (9, 'Calendar', 0, 3, 'Calendar', NULL, NULL, 0, 0, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
-(10, 'Emails', 1, 10, 'Emails', NULL, NULL, 0, 1, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
+(10, 'Emails', 0, 10, 'Emails', NULL, NULL, 0, 1, 1, 0, NULL, 'Tools', NULL, 1, 1, 1),
 (13, 'HelpDesk', 1, 11, 'HelpDesk', NULL, NULL, 0, 0, 1, 0, NULL, 'Support', NULL, 1, 1, 1),
 (14, 'Products', 0, 8, 'Products', NULL, NULL, 0, 0, 1, 0, NULL, 'Inventory', NULL, 1, 1, 1),
 (15, 'Faq', 1, -1, 'Faq', NULL, NULL, 0, 1, 1, 0, NULL, 'Support', NULL, 1, 1, 1),
@@ -23482,10 +24185,10 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 (25, 'Reports', 0, -1, 'Reports', NULL, NULL, 0, 1, 0, 0, NULL, 'Analytics', NULL, 1, 1, 1),
 (26, 'Campaigns', 0, -1, 'Campaigns', NULL, NULL, 0, 0, 1, 0, NULL, 'Marketing', NULL, 1, 1, 1),
 (27, 'Portal', 1, -1, 'Portal', NULL, NULL, 0, 1, 0, 0, NULL, 'Tools', NULL, 1, 1, 1),
-(28, 'Webmails', 1, -1, 'Webmails', NULL, NULL, 0, 1, 1, 0, NULL, NULL, NULL, 1, 1, 1),
+(28, 'Webmails', 0, -1, 'Webmails', NULL, NULL, 0, 1, 1, 0, NULL, NULL, NULL, 1, 1, 1),
 (29, 'Users', 0, -1, 'Users', NULL, NULL, 0, 1, 0, 0, NULL, NULL, NULL, 1, 1, 1),
 (30, 'Import', 0, -1, 'Import', NULL, NULL, 1, 0, 0, 0, '1.7', '', NULL, 1, 1, 1),
-(31, 'MailManager', 1, -1, 'MailManager', NULL, NULL, 1, 0, 0, 0, '1.9', 'Tools', NULL, 1, 1, 1),
+(31, 'MailManager', 0, -1, 'MailManager', NULL, NULL, 1, 0, 0, 0, '1.9', 'Tools', NULL, 1, 1, 1),
 (32, 'Mobile', 0, -1, 'Mobile', NULL, NULL, 1, 0, 0, 0, '2.0', '', NULL, 1, 1, 1),
 (33, 'ModTracker', 0, -1, 'ModTracker', NULL, NULL, 0, 0, 0, 0, '1.2', '', NULL, 1, 1, 1),
 (34, 'PBXManager', 1, -1, 'PBXManager', NULL, NULL, 1, 0, 1, 0, '2.2', 'Tools', NULL, 1, 1, 1),
@@ -24561,6 +25264,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_vendor` (
   PRIMARY KEY (`vendorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_vendor`
+--
+
+INSERT INTO `vtiger_vendor` (`vendorid`, `vendor_no`, `vendorname`, `phone`, `email`, `website`, `glacct`, `category`, `street`, `city`, `state`, `pobox`, `postalcode`, `country`, `description`, `tags`) VALUES
+(50, 'VEN1', 'Dell', '', 'vendor@vendor.com', '', '', '', '', '', '', '', '', '', NULL, '');
+
 -- --------------------------------------------------------
 
 --
@@ -24571,6 +25281,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_vendorcf` (
   `vendorid` int(19) NOT NULL DEFAULT 0,
   PRIMARY KEY (`vendorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_vendorcf`
+--
+
+INSERT INTO `vtiger_vendorcf` (`vendorid`) VALUES
+(50);
 
 -- --------------------------------------------------------
 
