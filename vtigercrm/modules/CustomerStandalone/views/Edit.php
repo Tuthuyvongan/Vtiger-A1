@@ -20,70 +20,6 @@ Class CustomerStandalone_Edit_View extends Vtiger_Edit_View {
 	        echo $e->message;
 	    }
 	}
-	public function requiresPermission(\Vtiger_Request $request) {
-		$permissions = parent::requiresPermission($request);
-		$record = $request->get('record');
-		$actionName = 'CreateView';
-		if ($record && !$request->get('isDuplicate')) {
-			$actionName = 'EditView';
-		}
-		$permissions[] = array('module_parameter' => 'module', 'action' => $actionName, 'record_parameter' => 'record');
-		return $permissions;
-	}
-	
-	public function checkPermission(Vtiger_Request $request) {
-		$moduleName = $request->getModule();
-		$record = $request->get('record');
-
-		$nonEntityModules = array('Users', 'Events', 'Calendar', 'Portal', 'Reports', 'Rss', 'EmailTemplates');
-		if ($record && !in_array($moduleName, $nonEntityModules)) {
-			$recordEntityName = getSalesEntityType($record);
-			if ($recordEntityName !== $moduleName) {
-				throw new AppException(vtranslate('LBL_PERMISSION_DENIED'));
-			}
-		}
-		return parent::checkPermission($request);
-	}
-
-	public function setModuleInfo($request, $moduleModel) {
-		$fieldsInfo = array();
-		$basicLinks = array();
-		$settingLinks = array();
-
-		$moduleFields = $moduleModel->getFields();
-		foreach($moduleFields as $fieldName => $fieldModel){
-			$fieldsInfo[$fieldName] = $fieldModel->getFieldInfo();
-		}
-
-		$viewer = $this->getViewer($request);
-		$viewer->assign('FIELDS_INFO', json_encode($fieldsInfo));
-		$viewer->assign('MODULE_BASIC_ACTIONS', $basicLinks);
-		$viewer->assign('MODULE_SETTING_ACTIONS', $settingLinks);
-	}
-
-	function preProcess(Vtiger_Request $request, $display=true) { 
-		//Vtiger7 - TO show custom view name in Module Header
-		$viewer = $this->getViewer ($request); 
-		$moduleName = $request->getModule(); 
-		$viewer->assign('CUSTOM_VIEWS', CustomView_Record_Model::getAllByGroup($moduleName)); 
-		$moduleModel = Vtiger_Module_Model::getInstance($moduleName);
-		$record = $request->get('record'); 
-		if(!empty($record) && $moduleModel->isEntityModule()) { 
-			$recordModel = $this->record?$this->record:Vtiger_Record_Model::getInstanceById($record, $moduleName); 
-			$viewer->assign('RECORD',$recordModel); 
-		}  
-
-		$duplicateRecordsList = array();
-		$duplicateRecords = $request->get('duplicateRecords');
-		if (is_array($duplicateRecords)) {
-			$duplicateRecordsList = $duplicateRecords;
-		}
-
-		$viewer = $this->getViewer($request);
-		$viewer->assign('DUPLICATE_RECORDS', $duplicateRecordsList);
-		parent::preProcess($request, $display); 
-	}
-
 	public function process(Vtiger_Request $request) {
 		$viewer = $this->getViewer ($request);
 		$moduleName = $request->getModule();
@@ -182,13 +118,14 @@ Class CustomerStandalone_Edit_View extends Vtiger_Edit_View {
 			$viewer->view('EditView.tpl', $moduleName);
 		}
 	}
-
-	public function getOverlayHeaderScripts(Vtiger_Request $request) {
-		$moduleName = $request->getModule();
-		$jsFileNames = array(
-			"modules.$moduleName.resources.Edit",
-		);
-		$jsScriptInstances = $this->checkAndConvertJsScripts($jsFileNames);
-		return $jsScriptInstances;
+	
+	public function getHeaderCss(Vtiger_Request $request) {
+	    $headerCssInstances = parent::getHeaderCss($request);
+	    $cssFileNames = array(
+	        "~layouts/".Vtiger_Viewer::getDefaultLayoutName()."/lib/jquery/perfect-scrollbar/css/perfect-scrollbar.css",
+	    );
+	    $cssInstances = $this->checkAndConvertCssStyles($cssFileNames);
+	    $headerCssInstances = array_merge($headerCssInstances, $cssInstances);
+	    return $headerCssInstances;
 	}
 }

@@ -41,7 +41,6 @@
         {foreach key=index item=cssModel from=$STYLES}
 			<link type="text/css" rel="{$cssModel->getRel()}" href="{vresource_url($cssModel->getHref())}" media="{$cssModel->getMedia()}" />
 		{/foreach}
-
 		{* For making pages - print friendly *}
 		<style type="text/css">
             @media print {
