@@ -182,8 +182,11 @@ class Users_Module_Model extends Vtiger_Module_Model {
 
 		$userIPAddress = $_SERVER['REMOTE_ADDR'];
 		$loginTime = date("Y-m-d H:i:s");
-		$query = "INSERT INTO vtiger_loginhistory (user_name, user_ip, logout_time, login_time, status) VALUES (?,?,?,?,?)";
-		$params = array($username, $userIPAddress, $loginTime,  $loginTime, 'Signed in');
+		$result = $adb->pquery("SELECT MAX(login_id) AS login_id FROM vtiger_loginhistory");
+		$maxid = $adb->query_result($result,0,'login_id');
+		$maxid = $maxid + 1;
+		$query = "INSERT INTO vtiger_loginhistory (login_id, user_name, user_ip, logout_time, login_time, status) VALUES (?,?,?,?,?,?)";
+		$params = array($maxid, $username, $userIPAddress, $loginTime,  $loginTime, 'Signed in');
 		//Mysql 5.7 doesn't support invalid date in Timestamp field
 		//$params = array($username, $userIPAddress, '0000-00-00 00:00:00',  $loginTime, 'Signed in');
 		$adb->pquery($query, $params);

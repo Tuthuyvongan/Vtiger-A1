@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2020 at 02:46 PM
+-- Generation Time: Jul 05, 2020 at 06:57 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -795,7 +795,8 @@ INSERT INTO `vtiger_app2tab` (`tabid`, `appname`, `sequence`, `visible`) VALUES
 (66, 'SUPPORT', 2, 1),
 (70, 'MARKETING', NULL, 1),
 (71, 'MARKETING', NULL, 1),
-(72, 'SALES', NULL, 1);
+(72, 'SALES', NULL, 1),
+(73, 'TOOLS', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -905,7 +906,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_asteriskextensions` (
 --
 
 INSERT INTO `vtiger_asteriskextensions` (`userid`, `asterisk_extension`, `use_asterisk`) VALUES
-(1, NULL, NULL);
+(1, NULL, NULL),
+(5, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1226,7 +1228,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_blocks_seq` (
 --
 
 INSERT INTO `vtiger_blocks_seq` (`id`) VALUES
-(191);
+(193);
 
 -- --------------------------------------------------------
 
@@ -1342,7 +1344,15 @@ INSERT INTO `vtiger_calendar_user_activitytypes` (`id`, `defaultid`, `userid`, `
 (5, 5, 1, '#545252', 1),
 (6, 6, 1, '#87865D', 1),
 (7, 7, 1, '#C71585', 1),
-(8, 8, 1, '#006400', 1);
+(8, 8, 1, '#006400', 1),
+(9, 1, 5, '#17309A', 1),
+(10, 2, 5, '#3A87AD', 1),
+(11, 3, 5, '#AA6705', 1),
+(12, 4, 5, '#953B39', 1),
+(13, 5, 5, '#545252', 1),
+(14, 6, 5, '#87865D', 1),
+(15, 7, 5, '#C71585', 1),
+(16, 8, 5, '#006400', 1);
 
 -- --------------------------------------------------------
 
@@ -1359,7 +1369,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_calendar_user_activitytypes_seq` (
 --
 
 INSERT INTO `vtiger_calendar_user_activitytypes_seq` (`id`) VALUES
-(8);
+(16);
 
 -- --------------------------------------------------------
 
@@ -2212,6 +2222,29 @@ INSERT INTO `vtiger_cf_1288_seq` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vtiger_chatmessage`
+--
+
+CREATE TABLE IF NOT EXISTS `vtiger_chatmessage` (
+  `chat_message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `to_user_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `chat_message` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` int(1) NOT NULL,
+  PRIMARY KEY (`chat_message_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_chatmessage`
+--
+
+INSERT INTO `vtiger_chatmessage` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`) VALUES
+(3, 1, 5, 'Hello mr.Wang', '2020-07-05 16:20:37', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vtiger_cntactivityrel`
 --
 
@@ -2595,7 +2628,8 @@ INSERT INTO `vtiger_crmentity` (`crmid`, `smcreatorid`, `smownerid`, `modifiedby
 (55, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>rw</body>\r\n</html>\r\n', '2020-06-18 14:17:25', '2020-06-18 14:17:25', NULL, NULL, 0, 1, 0, 0, 'CRM', 'test'),
 (56, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>mail is sent from vtiger</body>\r\n</html>\r\n', '2020-06-20 09:37:41', '2020-06-20 09:37:41', NULL, NULL, 0, 1, 0, 0, 'CRM', 'test'),
 (57, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>test thu nhap</body>\r\n</html>\r\n', '2020-06-20 09:46:59', '2020-06-20 09:46:59', NULL, NULL, 0, 1, 0, 0, 'CRM', 'saved'),
-(58, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>3</body>\r\n</html>\r\n', '2020-06-20 09:47:50', '2020-06-20 09:47:50', NULL, NULL, 0, 1, 0, 0, 'CRM', '3');
+(58, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>3</body>\r\n</html>\r\n', '2020-06-20 09:47:50', '2020-06-20 09:47:50', NULL, NULL, 0, 1, 0, 0, 'CRM', '3'),
+(59, 1, 1, 1, 'Vendors', '', '2020-06-23 13:35:09', '2020-06-23 13:35:37', NULL, NULL, 0, 1, 1, 0, 'CRM', 'HP');
 
 -- --------------------------------------------------------
 
@@ -2641,7 +2675,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_crmentity_seq` (
 --
 
 INSERT INTO `vtiger_crmentity_seq` (`id`) VALUES
-(58);
+(59);
 
 -- --------------------------------------------------------
 
@@ -2699,7 +2733,8 @@ INSERT INTO `vtiger_crmentity_user_field` (`recordid`, `userid`, `starred`) VALU
 (55, 1, '0'),
 (56, 1, '0'),
 (57, 1, '0'),
-(58, 1, '0');
+(58, 1, '0'),
+(59, 1, '0');
 
 -- --------------------------------------------------------
 
@@ -2717,7 +2752,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_crmsetup` (
 --
 
 INSERT INTO `vtiger_crmsetup` (`userid`, `setup_status`) VALUES
-(1, 1);
+(1, 1),
+(5, 1);
 
 -- --------------------------------------------------------
 
@@ -3550,7 +3586,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_customview_seq` (
 --
 
 INSERT INTO `vtiger_customview_seq` (`id`) VALUES
-(88);
+(89);
 
 -- --------------------------------------------------------
 
@@ -4111,6 +4147,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_dashboard_tabs` (
 --
 
 INSERT INTO `vtiger_dashboard_tabs` (`id`, `tabname`, `isdefault`, `sequence`, `appname`, `modulename`, `userid`) VALUES
+(0, 'My Dashboard', 1, 1, '', '', 5),
 (1, 'Default', 0, 2, NULL, NULL, 1),
 (2, 'My Dashboard', 1, 1, '', '', 1);
 
@@ -5779,7 +5816,18 @@ INSERT INTO `vtiger_def_org_field` (`tabid`, `fieldid`, `visible`, `readonly`) V
 (72, 1281, 0, 0),
 (72, 1285, 0, 0),
 (72, 1287, 0, 0),
-(8, 1289, 0, 0);
+(8, 1289, 0, 0),
+(73, 1292, 0, 0),
+(73, 1293, 0, 0),
+(73, 1294, 0, 0),
+(73, 1295, 0, 0),
+(73, 1296, 0, 0),
+(73, 1297, 0, 0),
+(73, 1298, 0, 0),
+(73, 1299, 0, 0),
+(73, 1300, 0, 0),
+(73, 1301, 0, 0),
+(73, 1302, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5847,7 +5895,8 @@ INSERT INTO `vtiger_def_org_share` (`ruleid`, `tabid`, `permission`, `editstatus
 (44, 68, 2, 0),
 (45, 70, 2, 0),
 (46, 71, 2, 0),
-(47, 72, 2, 0);
+(47, 72, 2, 0),
+(48, 73, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -5864,7 +5913,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_def_org_share_seq` (
 --
 
 INSERT INTO `vtiger_def_org_share_seq` (`id`) VALUES
-(47);
+(48);
 
 -- --------------------------------------------------------
 
@@ -7849,7 +7898,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_field_seq` (
 --
 
 INSERT INTO `vtiger_field_seq` (`id`) VALUES
-(1289);
+(1302);
 
 -- --------------------------------------------------------
 
@@ -8173,7 +8222,21 @@ INSERT INTO `vtiger_homedefault` (`stuffid`, `hometype`, `maxentries`, `setype`)
 (11, 'MNL', 5, 'Leads'),
 (12, 'OLTPO', 5, 'PurchaseOrder'),
 (13, 'PA', 5, 'Calendar'),
-(14, 'LTFAQ', 5, 'Faq');
+(14, 'LTFAQ', 5, 'Faq'),
+(16, 'ALVT', 5, 'Accounts'),
+(17, 'HDB', 5, 'Dashboard'),
+(18, 'PLVT', 5, 'Potentials'),
+(19, 'QLTQ', 5, 'Quotes'),
+(20, 'CVLVT', 5, 'NULL'),
+(21, 'HLT', 5, 'HelpDesk'),
+(22, 'UA', 5, 'Calendar'),
+(23, 'GRT', 5, 'NULL'),
+(24, 'OLTSO', 5, 'SalesOrder'),
+(25, 'ILTI', 5, 'Invoice'),
+(26, 'MNL', 5, 'Leads'),
+(27, 'OLTPO', 5, 'PurchaseOrder'),
+(28, 'PA', 5, 'Calendar'),
+(29, 'LTFAQ', 5, 'Faq');
 
 -- --------------------------------------------------------
 
@@ -8267,7 +8330,22 @@ INSERT INTO `vtiger_homestuff` (`stuffid`, `stuffsequence`, `stufftype`, `userid
 (12, 12, 'Default', 1, 1, 'Top Purchase Orders'),
 (13, 13, 'Default', 1, 1, 'Pending Activities'),
 (14, 14, 'Default', 1, 1, 'My Recent FAQs'),
-(15, 15, 'Tag Cloud', 1, 0, 'Tag Cloud');
+(15, 15, 'Tag Cloud', 1, 0, 'Tag Cloud'),
+(16, 1, 'Default', 5, 1, 'Top Accounts'),
+(17, 2, 'Default', 5, 1, 'Home Page Dashboard'),
+(18, 3, 'Default', 5, 1, 'Top Potentials'),
+(19, 4, 'Default', 5, 1, 'Top Quotes'),
+(20, 5, 'Default', 5, 1, 'Key Metrics'),
+(21, 6, 'Default', 5, 1, 'Top Trouble Tickets'),
+(22, 7, 'Default', 5, 1, 'Upcoming Activities'),
+(23, 8, 'Default', 5, 1, 'My Group Allocation'),
+(24, 9, 'Default', 5, 1, 'Top Sales Orders'),
+(25, 10, 'Default', 5, 1, 'Top Invoices'),
+(26, 11, 'Default', 5, 1, 'My New Leads'),
+(27, 12, 'Default', 5, 1, 'Top Purchase Orders'),
+(28, 13, 'Default', 5, 1, 'Pending Activities'),
+(29, 14, 'Default', 5, 1, 'My Recent FAQs'),
+(30, 15, 'Tag Cloud', 5, 0, 'Tag Cloud');
 
 -- --------------------------------------------------------
 
@@ -8284,7 +8362,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_homestuff_seq` (
 --
 
 INSERT INTO `vtiger_homestuff_seq` (`id`) VALUES
-(15);
+(30);
 
 -- --------------------------------------------------------
 
@@ -10136,7 +10214,14 @@ INSERT INTO `vtiger_loginhistory` (`login_id`, `user_name`, `user_ip`, `logout_t
 (6, 'admin', '::1', '2020-04-12 19:02:17', '2020-04-13 09:02:17', 'Signed in'),
 (7, 'admin', '::1', '2020-04-12 20:05:04', '2020-04-13 10:05:04', 'Signed in'),
 (8, 'admin', '::1', '2020-04-15 22:32:33', '2020-04-16 12:32:33', 'Signed in'),
-(9, 'admin', '::1', '2020-06-20 04:28:09', '2020-04-17 12:56:26', 'Signed off');
+(9, 'admin', '::1', '2020-07-04 09:12:49', '2020-04-17 12:56:26', 'Signed off'),
+(10, 'admin', '::1', '2020-07-04 09:13:16', '2020-07-04 16:12:56', 'Signed off'),
+(11, 'admin', '::1', '2020-07-04 09:13:32', '2020-07-04 16:13:32', 'Signed in'),
+(12, 'admin', '::1', '2020-07-05 02:19:35', '2020-07-05 09:19:35', 'Signed in'),
+(13, 'tung', '::1', '2020-07-05 03:35:28', '2020-07-05 10:35:28', 'Signed in'),
+(14, 'admin', '::1', '2020-07-05 09:19:55', '2020-07-05 14:09:50', 'Signed off'),
+(15, 'tung', '::1', '2020-07-05 09:20:41', '2020-07-05 16:20:03', 'Signed off'),
+(16, 'admin', '::1', '2020-07-05 09:20:50', '2020-07-05 16:20:50', 'Signed in');
 
 -- --------------------------------------------------------
 
@@ -10554,7 +10639,7 @@ INSERT INTO `vtiger_modentity_num` (`num_id`, `semodule`, `prefix`, `start_id`, 
 (9, 'PurchaseOrder', 'PO', '1', '1', '1'),
 (10, 'Invoice', 'INV', '1', '1', '1'),
 (11, 'Products', 'PRO', '1', '2', '1'),
-(12, 'Vendors', 'VEN', '1', '2', '1'),
+(12, 'Vendors', 'VEN', '1', '3', '1'),
 (13, 'PriceBooks', 'PB', '1', '1', '1'),
 (14, 'Faq', 'FAQ', '1', '1', '1'),
 (15, 'Documents', 'DOC', '1', '1', '1'),
@@ -10640,7 +10725,9 @@ INSERT INTO `vtiger_modtracker_basic` (`id`, `crmid`, `module`, `whodid`, `chang
 (33, 57, 'Emails', 1, '2020-06-20 09:46:59', 2),
 (34, 50, 'Vendors', 1, '2020-06-20 09:47:00', 4),
 (35, 58, 'Emails', 1, '2020-06-20 09:47:50', 2),
-(36, 50, 'Vendors', 1, '2020-06-20 09:47:50', 4);
+(36, 50, 'Vendors', 1, '2020-06-20 09:47:50', 4),
+(37, 59, 'Vendors', 1, '2020-06-23 13:35:09', 2),
+(38, 59, 'Vendors', 1, '2020-06-23 13:35:37', 1);
 
 -- --------------------------------------------------------
 
@@ -10657,7 +10744,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_modtracker_basic_seq` (
 --
 
 INSERT INTO `vtiger_modtracker_basic_seq` (`id`) VALUES
-(36);
+(38);
 
 -- --------------------------------------------------------
 
@@ -11061,7 +11148,16 @@ INSERT INTO `vtiger_modtracker_detail` (`id`, `fieldname`, `prevalue`, `postvalu
 (35, 'email_flag', NULL, 'SAVED'),
 (35, 'source', NULL, 'CRM'),
 (35, 'record_id', NULL, '58'),
-(35, 'record_module', NULL, 'Emails');
+(35, 'record_module', NULL, 'Emails'),
+(37, 'label', NULL, 'HP'),
+(37, 'vendorname', NULL, 'HP'),
+(37, 'vendor_no', NULL, 'VEN2'),
+(37, 'createdtime', NULL, '2020-06-23 13:35:09'),
+(37, 'modifiedby', NULL, '1'),
+(37, 'assigned_user_id', NULL, '1'),
+(37, 'source', NULL, 'CRM'),
+(37, 'record_id', NULL, '59'),
+(37, 'record_module', NULL, 'Vendors');
 
 -- --------------------------------------------------------
 
@@ -11473,6 +11569,7 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (0, 70),
 (0, 71),
 (0, 72),
+(0, 73),
 (1, 2),
 (1, 4),
 (1, 6),
@@ -11517,6 +11614,7 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (1, 70),
 (1, 71),
 (1, 72),
+(1, 73),
 (2, 2),
 (2, 4),
 (2, 6),
@@ -11561,6 +11659,7 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (2, 70),
 (2, 71),
 (2, 72),
+(2, 73),
 (3, 2),
 (3, 4),
 (3, 6),
@@ -11604,7 +11703,8 @@ INSERT INTO `vtiger_org_share_action2tab` (`share_action_id`, `tabid`) VALUES
 (3, 66),
 (3, 70),
 (3, 71),
-(3, 72);
+(3, 72),
+(3, 73);
 
 -- --------------------------------------------------------
 
@@ -11822,7 +11922,8 @@ INSERT INTO `vtiger_parenttabrel` (`parenttabid`, `tabid`, `sequence`) VALUES
 (10, 64, 3),
 (2, 70, 10),
 (2, 71, 11),
-(3, 72, 14);
+(3, 72, 14),
+(7, 73, 18);
 
 -- --------------------------------------------------------
 
@@ -13763,6 +13864,17 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (1, 72, 1285, 0, 0),
 (1, 72, 1287, 0, 0),
 (1, 8, 1289, 0, 0),
+(1, 73, 1292, 0, 0),
+(1, 73, 1293, 0, 0),
+(1, 73, 1294, 0, 0),
+(1, 73, 1295, 0, 0),
+(1, 73, 1296, 0, 0),
+(1, 73, 1297, 0, 0),
+(1, 73, 1298, 0, 0),
+(1, 73, 1299, 0, 0),
+(1, 73, 1300, 0, 0),
+(1, 73, 1301, 0, 0),
+(1, 73, 1302, 0, 0),
 (2, 6, 1, 0, 0),
 (2, 6, 2, 0, 0),
 (2, 6, 3, 0, 0),
@@ -14931,6 +15043,17 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (2, 72, 1285, 0, 0),
 (2, 72, 1287, 0, 0),
 (2, 8, 1289, 0, 0),
+(2, 73, 1292, 0, 0),
+(2, 73, 1293, 0, 0),
+(2, 73, 1294, 0, 0),
+(2, 73, 1295, 0, 0),
+(2, 73, 1296, 0, 0),
+(2, 73, 1297, 0, 0),
+(2, 73, 1298, 0, 0),
+(2, 73, 1299, 0, 0),
+(2, 73, 1300, 0, 0),
+(2, 73, 1301, 0, 0),
+(2, 73, 1302, 0, 0),
 (3, 6, 1, 0, 0),
 (3, 6, 2, 0, 0),
 (3, 6, 3, 0, 0),
@@ -15367,7 +15490,8 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 22, 434, 0, 0),
 (3, 22, 435, 0, 0),
 (3, 23, 436, 0, 0),
-(3, 23, 437, 0, 0),
+(3, 23, 437, 0, 0);
+INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
 (3, 23, 438, 0, 0),
 (3, 23, 439, 0, 0),
 (3, 23, 440, 0, 0),
@@ -15390,8 +15514,7 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 23, 457, 0, 0),
 (3, 23, 458, 0, 0),
 (3, 23, 459, 0, 0),
-(3, 23, 460, 0, 0);
-INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
+(3, 23, 460, 0, 0),
 (3, 23, 461, 0, 0),
 (3, 23, 462, 0, 0),
 (3, 23, 463, 0, 0),
@@ -16100,6 +16223,17 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 72, 1285, 0, 0),
 (3, 72, 1287, 0, 0),
 (3, 8, 1289, 0, 0),
+(3, 73, 1292, 0, 0),
+(3, 73, 1293, 0, 0),
+(3, 73, 1294, 0, 0),
+(3, 73, 1295, 0, 0),
+(3, 73, 1296, 0, 0),
+(3, 73, 1297, 0, 0),
+(3, 73, 1298, 0, 0),
+(3, 73, 1299, 0, 0),
+(3, 73, 1300, 0, 0),
+(3, 73, 1301, 0, 0),
+(3, 73, 1302, 0, 0),
 (4, 6, 1, 0, 0),
 (4, 6, 2, 0, 0),
 (4, 6, 3, 0, 0),
@@ -17267,7 +17401,18 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (4, 72, 1281, 0, 0),
 (4, 72, 1285, 0, 0),
 (4, 72, 1287, 0, 0),
-(4, 8, 1289, 0, 0);
+(4, 8, 1289, 0, 0),
+(4, 73, 1292, 0, 0),
+(4, 73, 1293, 0, 0),
+(4, 73, 1294, 0, 0),
+(4, 73, 1295, 0, 0),
+(4, 73, 1296, 0, 0),
+(4, 73, 1297, 0, 0),
+(4, 73, 1298, 0, 0),
+(4, 73, 1299, 0, 0),
+(4, 73, 1300, 0, 0),
+(4, 73, 1301, 0, 0),
+(4, 73, 1302, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -17593,6 +17738,12 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (1, 72, 3, 0),
 (1, 72, 4, 0),
 (1, 72, 7, 0),
+(1, 73, 0, 0),
+(1, 73, 1, 0),
+(1, 73, 2, 0),
+(1, 73, 3, 0),
+(1, 73, 4, 0),
+(1, 73, 7, 0),
 (2, 2, 0, 0),
 (2, 2, 1, 0),
 (2, 2, 2, 0),
@@ -17869,6 +18020,12 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (2, 72, 3, 0),
 (2, 72, 4, 0),
 (2, 72, 7, 0),
+(2, 73, 0, 0),
+(2, 73, 1, 0),
+(2, 73, 2, 0),
+(2, 73, 3, 0),
+(2, 73, 4, 0),
+(2, 73, 7, 0),
 (3, 2, 0, 1),
 (3, 2, 1, 1),
 (3, 2, 2, 1),
@@ -18145,6 +18302,12 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (3, 72, 3, 0),
 (3, 72, 4, 0),
 (3, 72, 7, 0),
+(3, 73, 0, 0),
+(3, 73, 1, 0),
+(3, 73, 2, 0),
+(3, 73, 3, 0),
+(3, 73, 4, 0),
+(3, 73, 7, 0),
 (4, 2, 0, 1),
 (4, 2, 1, 1),
 (4, 2, 2, 1),
@@ -18420,7 +18583,13 @@ INSERT INTO `vtiger_profile2standardpermissions` (`profileid`, `tabid`, `operati
 (4, 72, 2, 0),
 (4, 72, 3, 0),
 (4, 72, 4, 0),
-(4, 72, 7, 0);
+(4, 72, 7, 0),
+(4, 73, 0, 0),
+(4, 73, 1, 0),
+(4, 73, 2, 0),
+(4, 73, 3, 0),
+(4, 73, 4, 0),
+(4, 73, 7, 0);
 
 -- --------------------------------------------------------
 
@@ -18691,7 +18860,11 @@ INSERT INTO `vtiger_profile2tab` (`profileid`, `tabid`, `permissions`) VALUES
 (1, 72, 0),
 (2, 72, 0),
 (3, 72, 0),
-(4, 72, 0);
+(4, 72, 0),
+(1, 73, 0),
+(2, 73, 0),
+(3, 73, 0),
+(4, 73, 0);
 
 -- --------------------------------------------------------
 
@@ -20329,6 +20502,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_relatedlists_rb` (
   `ref_column` varchar(200) DEFAULT NULL,
   `related_crm_ids` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_relatedlists_rb`
+--
+
+INSERT INTO `vtiger_relatedlists_rb` (`entityid`, `action`, `rel_table`, `rel_column`, `ref_column`, `related_crm_ids`) VALUES
+(59, 'update', 'vtiger_crmentity', 'deleted', 'crmid', '');
 
 -- --------------------------------------------------------
 
@@ -24226,7 +24406,8 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 (69, 'VGSRelatedFields', 0, -1, 'VGS Related Fields', NULL, NULL, 1, 0, 0, 0, '2.0', '', 'custom', 0, 1, 1),
 (70, 'PhuongTienTruyenThong', 0, -1, 'PhuongTienTruyenThong', NULL, NULL, 1, 0, 1, 0, '0', 'Marketing', 'custom', 0, 1, 1),
 (71, 'HinhThucTruyenThong', 0, -1, 'HinhThucTruyenThong', NULL, NULL, 1, 0, 1, 0, '0', 'Marketing', 'custom', 0, 1, 1),
-(72, 'QuyTrinhBanHang', 0, -1, 'QuyTrinhBanHang', NULL, NULL, 1, 0, 1, 0, '0', 'Sales', 'custom', 0, 1, 1);
+(72, 'QuyTrinhBanHang', 0, -1, 'QuyTrinhBanHang', NULL, NULL, 1, 0, 1, 0, '0', 'Sales', 'custom', 0, 1, 1),
+(73, 'ChatRoom', 0, -1, 'ChatRoom', NULL, NULL, 1, 0, 1, 0, '0', 'Tools', 'custom', 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -25069,7 +25250,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_user2role` (
 --
 
 INSERT INTO `vtiger_user2role` (`userid`, `roleid`) VALUES
-(1, 'H2');
+(1, 'H2'),
+(5, 'H3');
 
 -- --------------------------------------------------------
 
@@ -25161,7 +25343,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_users` (
 --
 
 INSERT INTO `vtiger_users` (`id`, `user_name`, `user_password`, `cal_color`, `first_name`, `last_name`, `reports_to_id`, `is_admin`, `currency_id`, `description`, `date_entered`, `date_modified`, `modified_user_id`, `title`, `department`, `phone_home`, `phone_mobile`, `phone_work`, `phone_other`, `phone_fax`, `email1`, `email2`, `secondaryemail`, `status`, `signature`, `address_street`, `address_city`, `address_state`, `address_country`, `address_postalcode`, `user_preferences`, `tz`, `holidays`, `namedays`, `workdays`, `weekstart`, `date_format`, `hour_format`, `start_hour`, `end_hour`, `is_owner`, `activity_view`, `lead_view`, `imagename`, `deleted`, `confirm_password`, `internal_mailer`, `reminder_interval`, `reminder_next_time`, `crypt_type`, `accesskey`, `theme`, `language`, `time_zone`, `currency_grouping_pattern`, `currency_decimal_separator`, `currency_grouping_separator`, `currency_symbol_placement`, `phone_crm_extension`, `no_of_currency_decimals`, `truncate_trailing_zeros`, `dayoftheweek`, `callduration`, `othereventduration`, `calendarsharedtype`, `default_record_view`, `leftpanelhide`, `rowheight`, `defaulteventstatus`, `defaultactivitytype`, `hidecompletedevents`, `defaultcalendarview`, `candidate`) VALUES
-(1, 'admin', '$2y$10$PkfxKe/NIdgDNOGBoFlmZelbtZ6d1eLQchtfVMyHMEXxnDcf6Er1K', '#E6FAD8', 'Leonce', 'Wang', '', 'on', 1, '', '2020-04-08 05:38:54', NULL, NULL, '', '', '', '', '', '', '', 'ThienLang99999@gmail.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'dd-mm-yyyy', '12', '00:00', '23:00', '1', 'This Week', 'Today', '', 0, '$2y$10$JGKsxD9u2tKpopO6tI9Zr.1/Y8GVGSfzSjr1cy1KNqqJapljAa0Ci', '1', '1 Minute', NULL, 'PHASH', 'jNG2wZe7gv9Rk0fl', 'alphagrey', 'vn_vn', 'Asia/Bangkok', '123,456,789', '.', ',', '1.0$', '', '2', '1', 'Sunday', '5', '5', 'public', 'Summary', '0', '', 'Planned', 'Call', 0, 'MyCalendar', NULL);
+(1, 'admin', '$2y$10$PkfxKe/NIdgDNOGBoFlmZelbtZ6d1eLQchtfVMyHMEXxnDcf6Er1K', '#E6FAD8', 'Leonce', 'Wang', '', 'on', 1, '', '2020-04-08 05:38:54', NULL, NULL, '', '', '', '', '', '', '', 'ThienLang99999@gmail.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'dd-mm-yyyy', '12', '00:00', '23:00', '1', 'This Week', 'Today', '', 0, '$2y$10$JGKsxD9u2tKpopO6tI9Zr.1/Y8GVGSfzSjr1cy1KNqqJapljAa0Ci', '1', '1 Minute', NULL, 'PHASH', 'jNG2wZe7gv9Rk0fl', 'alphagrey', 'vn_vn', 'Asia/Bangkok', '123,456,789', '.', ',', '1.0$', '', '2', '1', 'Sunday', '5', '5', 'public', 'Summary', '0', '', 'Planned', 'Call', 0, 'MyCalendar', NULL),
+(5, 'tung', '$2y$10$nRxVs.AN85Ga9POabWfbY.jJ6UNj6c7iP11hIMnoWT7niWd0urAN.', '#E6FAD8', 'Tùng', 'Đồng Việt', '', 'off', 1, '', '2020-07-05 10:35:51', NULL, NULL, '', '', '', '', '', '', '', 'vendor@vendor.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'yyyy-mm-dd', '12', '09:00', '', '', 'Today', 'Today', '', 0, '$2y$10$lbrf.VzTlTbKYFjYL3TwjeeD1l4u.rw300CV1qI7GX8nCgSpiEjxK', '0', '', NULL, 'PHASH', 'LEp34FhZTGJH8Ibx', 'softed', 'vn_vn', 'Asia/Bangkok', '123,456,789', '.', ',', '$1.0', '', '2', '0', 'Sunday', '5', '5', 'public', 'Summary', '0', 'medium', NULL, NULL, 0, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -25215,7 +25398,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_users_seq` (
 --
 
 INSERT INTO `vtiger_users_seq` (`id`) VALUES
-(4);
+(5);
 
 -- --------------------------------------------------------
 
@@ -25269,7 +25452,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_vendor` (
 --
 
 INSERT INTO `vtiger_vendor` (`vendorid`, `vendor_no`, `vendorname`, `phone`, `email`, `website`, `glacct`, `category`, `street`, `city`, `state`, `pobox`, `postalcode`, `country`, `description`, `tags`) VALUES
-(50, 'VEN1', 'Dell', '', 'vendor@vendor.com', '', '', '', '', '', '', '', '', '', NULL, '');
+(50, 'VEN1', 'Dell', '', 'vendor@vendor.com', '', '', '', '', '', '', '', '', '', NULL, ''),
+(59, 'VEN2', 'HP', '', '', '', '', '', '', '', '', '', '', '', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -25287,7 +25471,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_vendorcf` (
 --
 
 INSERT INTO `vtiger_vendorcf` (`vendorid`) VALUES
-(50);
+(50),
+(59);
 
 -- --------------------------------------------------------
 
@@ -25782,7 +25967,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_ws_entity_seq` (
 --
 
 INSERT INTO `vtiger_ws_entity_seq` (`id`) VALUES
-(69);
+(70);
 
 -- --------------------------------------------------------
 
