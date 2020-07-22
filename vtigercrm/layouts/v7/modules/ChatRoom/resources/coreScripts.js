@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	fetch_user();
+	
 	setInterval(function(){
 			fetch_user();
 			update_chat_history_data();
@@ -23,7 +24,7 @@ $(document).ready(function(){
 	
 	function make_chat_dialog_box(to_user_id, to_user_name) {
 		var model_content = '<div id="user_dialog_'+to_user_id+'" class="user_dialog" title="You have chat with '+to_user_name+'">';
-			model_content += '<div style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
+			model_content += '<div style="height: 700px; solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;" class="chat_history" data-touserid="'+to_user_id+'" id="chat_history_'+to_user_id+'">';
 			model_content += fetch_user_chat_history(to_user_id);
 			model_content +='</div>';
 			model_content += '<div class="form-group">';
@@ -38,12 +39,6 @@ $(document).ready(function(){
 			var to_user_id = $(this).data('touserid');
 			var to_user_name = $(this).data('tousername');
 			make_chat_dialog_box(to_user_id, to_user_name);
-			$("#user_dialog_"+to_user_id).dialog({
-				autoOpen: false,
-				width: 400
-			});
-
-			$('#user_dialog_'+to_user_id).dialog('open');
 		});
 		
 	$(document).on('click','.send_chat',function(){

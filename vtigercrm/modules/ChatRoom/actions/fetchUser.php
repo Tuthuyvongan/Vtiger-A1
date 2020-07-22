@@ -12,9 +12,9 @@ class ChatRoom_fetchUser_Action extends Vtiger_Action_Controller {
 		$Output = '
 		<table class="table table-bodered table-striped">
         <tr>
-            <td>Username</td>
-            <td>Status</td>
-            <td>Action</td>
+            <td hidden>Username</td>
+            <td hidden>Status</td>
+            <td hidden>Action</td>
         </tr>
 		';
 		$query = "SELECT * FROM vtiger_users";

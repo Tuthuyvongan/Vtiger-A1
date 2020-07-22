@@ -182,11 +182,11 @@ class CustomerEnterprise_Edit_View extends Vtiger_Edit_View {
 	public function generateMaKhachHang()
 	{
 	    try {
-	        
-	        $current_user = vglobal('current_user');
-	        $query = "SELECT COUNT(*) FROM CustomerEnterprise;";
-	        $records = vtws_query($query, $current_user);
-	        $makhachhang = 'DN-'.$records[0][count];
+	        $adb = PearDatabase::getInstance();
+	        $query = "SELECT COUNT(*) FROM vtiger_customerenterprise";
+			$result = $adb->pquery($query,array());
+			$records = $adb->query_result($result,0,0);
+	        $makhachhang = 'DN-'.$records;
 	        return $makhachhang;
 	    } catch (WebServiceException $e) {
 	        echo $e->message;

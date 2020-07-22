@@ -27,7 +27,6 @@ div.button.group.for.data.block
 				<button class ="{$BLOCK_LABEL}" onclick="showDataBlock({$index})">{vtranslate($BLOCK_LABEL, $MODULE)}</button>
 				{assign var=index value=$index+1}
 			{/foreach}
-			{$RECORD_STRUCTURE|count}
 		</div>
 		<div class="editViewPageDiv viewContent">
 			<div class="col-sm-12 col-xs-12 content-area {if $LEFTPANELHIDE eq '1'} full-width {/if}">

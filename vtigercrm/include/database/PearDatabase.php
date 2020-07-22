@@ -677,6 +677,7 @@ class PearDatabase{
 	                throw new Exception("result is not an object");
 		$result->Move($row);
 		$rowdata = $this->change_key_case($result->FetchRow());
+		//$this->database->debug = true;
 		//$this->println($rowdata);
 		//Commented strip_selected_tags and added to_html function for HTML tags vulnerability
 		if($col == 'fieldlabel') $coldata = $rowdata[$col];
