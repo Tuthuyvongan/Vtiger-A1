@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2020 at 06:57 PM
+-- Generation Time: Jul 22, 2020 at 06:36 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -18,8 +18,98 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
+-- Database: `chat`
+--
+DROP DATABASE IF EXISTS `chat`;
+CREATE DATABASE IF NOT EXISTS `chat` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `chat`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat_message`
+--
+
+CREATE TABLE IF NOT EXISTS `chat_message` (
+  `chat_message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `to_user_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `chat_message` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` int(1) NOT NULL,
+  PRIMARY KEY (`chat_message_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chat_message`
+--
+
+INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`) VALUES
+(1, 1, 2, 'hello\n', '2020-06-30 14:58:00', 0),
+(2, 2, 1, 'my man', '2020-06-30 14:58:21', 0),
+(3, 2, 1, 'want some cookies?', '2020-06-30 14:59:16', 0),
+(4, 1, 2, 'sure why not', '2020-06-30 14:59:33', 0),
+(5, 2, 1, 'test test test', '2020-07-01 13:21:33', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE IF NOT EXISTS `login` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`user_id`, `username`, `password`) VALUES
+(1, 'johnsmith', '$2y$10$4REfvTZpxLgkAR/lKG9QiOkSdahOYIR3MeoGJAyiWmRkEFfjH3396'),
+(2, 'peterParker', '$2y$10$4REfvTZpxLgkAR/lKG9QiOkSdahOYIR3MeoGJAyiWmRkEFfjH3396'),
+(3, 'davidMoore', '$2y$10$4REfvTZpxLgkAR/lKG9QiOkSdahOYIR3MeoGJAyiWmRkEFfjH3396');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login_details`
+--
+
+CREATE TABLE IF NOT EXISTS `login_details` (
+  `login_details_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `last_activity` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_type` enum('no','yes') NOT NULL,
+  PRIMARY KEY (`login_details_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login_details`
+--
+
+INSERT INTO `login_details` (`login_details_id`, `user_id`, `last_activity`, `is_type`) VALUES
+(1, 1, '2020-06-26 14:03:34', 'no'),
+(2, 1, '2020-06-26 14:08:11', 'no'),
+(3, 1, '2020-06-26 15:01:13', 'no'),
+(4, 1, '2020-06-30 09:35:57', 'no'),
+(5, 2, '2020-06-30 14:58:03', 'no'),
+(6, 1, '2020-06-30 09:43:40', 'no'),
+(7, 1, '2020-06-30 09:54:26', 'no'),
+(8, 1, '2020-06-30 09:57:42', 'no'),
+(9, 1, '2020-06-30 14:59:15', 'no'),
+(10, 2, '2020-06-30 14:59:41', 'no'),
+(11, 1, '2020-07-01 13:21:32', 'no'),
+(12, 2, '2020-07-01 13:28:37', 'no'),
+(13, 1, '2020-07-01 13:29:17', 'no'),
+(14, 1, '2020-07-04 14:42:38', 'no');
+--
 -- Database: `vtiger`
 --
+DROP DATABASE IF EXISTS `vtiger`;
 CREATE DATABASE IF NOT EXISTS `vtiger` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `vtiger`;
 
@@ -218,6 +308,13 @@ CREATE TABLE IF NOT EXISTS `com_vtiger_workflowtask_queue` (
   `relatedinfo` varchar(255) DEFAULT NULL,
   `task_contents` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `com_vtiger_workflowtask_queue`
+--
+
+INSERT INTO `com_vtiger_workflowtask_queue` (`task_id`, `entity_id`, `do_after`, `relatedinfo`, `task_contents`) VALUES
+(5, '13x66', 0, 'false', '{\"fromEmail\":\"ThienLang99999@gmail.com\",\"fromName\":\"Leonce Wang\",\"replyTo\":\"master@localhost\",\"toEmail\":\"ThienLang99999@gmail.com\",\"ccEmail\":\"\",\"bccEmail\":\"\",\"subject\":\"Regarding Potential Assignment\",\"content\":\"An Potential has been assigned to you on vtigerCRM<br>Details of Potential are :<br><br>Potential No:<b>POT1<\\/b><br>Potential Name:<b>H\\u1ed9i ch\\u1ee3 Samsung 2020<\\/b><br>Amount:<b>0\\u20ab<\\/b><br>Expected Close Date:<b>25-07-2020 (dd-mm-yyyy)<\\/b><br>Type:<b>Kh\\u00e1ch h\\u00e0ng m\\u01a1\\u0301i<\\/b><br><br><br>Description :<br><br>Thank You<br>Admin<br><br>\"}');
 
 -- --------------------------------------------------------
 
@@ -907,7 +1004,9 @@ CREATE TABLE IF NOT EXISTS `vtiger_asteriskextensions` (
 
 INSERT INTO `vtiger_asteriskextensions` (`userid`, `asterisk_extension`, `use_asterisk`) VALUES
 (1, NULL, NULL),
-(5, NULL, NULL);
+(5, NULL, NULL),
+(6, NULL, NULL),
+(7, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -969,7 +1068,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_attachments` (
 
 INSERT INTO `vtiger_attachments` (`attachmentsid`, `name`, `description`, `type`, `path`, `storedname`, `subject`) VALUES
 (38, '820.bmp', '820.bmp', 'image/bmp', 'storage/2020/June/week2/', NULL, NULL),
-(39, '820.bmp', '820.bmp', 'image/bmp', 'storage/2020/June/week2/', NULL, NULL);
+(39, '820.bmp', '820.bmp', 'image/bmp', 'storage/2020/June/week2/', NULL, NULL),
+(79, 'mau-bang-bao-gia-excel.xls', NULL, 'application/octet-stream', 'storage/2020/July/week3/', '81d9b67a3044b8e1f6d35c075007a6ad.xls', NULL);
 
 -- --------------------------------------------------------
 
@@ -1352,7 +1452,23 @@ INSERT INTO `vtiger_calendar_user_activitytypes` (`id`, `defaultid`, `userid`, `
 (13, 5, 5, '#545252', 1),
 (14, 6, 5, '#87865D', 1),
 (15, 7, 5, '#C71585', 1),
-(16, 8, 5, '#006400', 1);
+(16, 8, 5, '#006400', 1),
+(17, 1, 6, '#17309A', 1),
+(18, 2, 6, '#3A87AD', 1),
+(19, 3, 6, '#AA6705', 1),
+(20, 4, 6, '#953B39', 1),
+(21, 5, 6, '#545252', 1),
+(22, 6, 6, '#87865D', 1),
+(23, 7, 6, '#C71585', 1),
+(24, 8, 6, '#006400', 1),
+(25, 1, 7, '#17309A', 1),
+(26, 2, 7, '#3A87AD', 1),
+(27, 3, 7, '#AA6705', 1),
+(28, 4, 7, '#953B39', 1),
+(29, 5, 7, '#545252', 1),
+(30, 6, 7, '#87865D', 1),
+(31, 7, 7, '#C71585', 1),
+(32, 8, 7, '#006400', 1);
 
 -- --------------------------------------------------------
 
@@ -1369,7 +1485,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_calendar_user_activitytypes_seq` (
 --
 
 INSERT INTO `vtiger_calendar_user_activitytypes_seq` (`id`) VALUES
-(16);
+(32);
 
 -- --------------------------------------------------------
 
@@ -1458,7 +1574,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_campaign` (
 INSERT INTO `vtiger_campaign` (`campaign_no`, `campaignname`, `campaigntype`, `campaignstatus`, `expectedrevenue`, `budgetcost`, `actualcost`, `expectedresponse`, `numsent`, `product_id`, `sponsor`, `targetaudience`, `targetsize`, `expectedresponsecount`, `expectedsalescount`, `expectedroi`, `actualresponsecount`, `actualsalescount`, `actualroi`, `campaignid`, `closingdate`, `tags`, `cf_1251`, `cf_1262`, `cf_1270`) VALUES
 ('CAM1', 'Ha', '', '', '0.00000000', '0.00000000', '0.00000000', '', '0', 0, '', '', 0, 0, 0, '0.00000000', 0, 0, '0.00000000', 35, '2020-06-17', '', NULL, 0, 0),
 ('CAM2', 'ga', '', '', '0.00000000', '0.00000000', '0.00000000', '', '0', 0, '', '', 0, 0, 0, '0.00000000', 0, 0, '0.00000000', 36, '2020-06-11', '', NULL, 0, 0),
-('CAM3', 'Hel', '', '', '0.00000000', '0.00000000', '0.00000000', '', '0', 0, '', '', 0, 0, 0, '0.00000000', 0, 0, '0.00000000', 37, '2020-06-23', '', NULL, 0, 0);
+('CAM3', 'Hel', '', '', '0.00000000', '0.00000000', '0.00000000', '', '0', 0, '', '', 0, 0, 0, '0.00000000', 0, 0, '0.00000000', 37, '2020-06-23', '', NULL, 0, 0),
+('CAM4', 'Quảng cáo chương trình khuyến mãi', 'Advertisement', 'Planning', '0.00000000', '0.00000000', '0.00000000', '', '0', 0, '', 'Khách hàng tiềm năng', 0, 0, 0, '0.00000000', 0, 0, '0.00000000', 63, '2021-02-19', '', NULL, 62, 34);
 
 -- --------------------------------------------------------
 
@@ -1558,7 +1675,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_campaignscf` (
 INSERT INTO `vtiger_campaignscf` (`campaignid`) VALUES
 (35),
 (36),
-(37);
+(37),
+(63);
 
 -- --------------------------------------------------------
 
@@ -2599,9 +2717,9 @@ CREATE TABLE IF NOT EXISTS `vtiger_crmentity` (
 --
 
 INSERT INTO `vtiger_crmentity` (`crmid`, `smcreatorid`, `smownerid`, `modifiedby`, `setype`, `description`, `createdtime`, `modifiedtime`, `viewedtime`, `status`, `version`, `presence`, `deleted`, `smgroupid`, `source`, `label`) VALUES
-(29, 1, 1, 1, 'Employee', NULL, '2020-05-18 15:18:04', '2020-05-18 15:18:04', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Wang'),
+(29, 1, 1, 1, 'Employee', NULL, '2020-05-18 15:18:04', '2020-07-19 13:21:03', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Wang'),
 (30, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-05-20 17:19:54', '2020-05-21 17:47:01', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"\"]'),
-(31, 1, 1, 1, 'Products', '', '2020-05-21 16:58:20', '2020-05-21 16:58:20', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Máy tính'),
+(31, 1, 1, 1, 'Products', '', '2020-05-21 16:58:20', '2020-07-19 08:25:41', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Máy tính'),
 (32, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-05-22 15:27:08', '2020-05-22 15:27:08', NULL, NULL, 0, 1, 0, 0, 'CRM', NULL),
 (33, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-05-22 15:35:35', '2020-05-22 15:35:35', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Facebook\"]'),
 (34, 1, 1, 1, 'HinhThucTruyenThong', NULL, '2020-05-22 16:23:05', '2020-05-22 16:23:05', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Ch\\u1ea1y qu\\u1ea3ng c\\u00e1o\"]'),
@@ -2629,7 +2747,29 @@ INSERT INTO `vtiger_crmentity` (`crmid`, `smcreatorid`, `smownerid`, `modifiedby
 (56, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>mail is sent from vtiger</body>\r\n</html>\r\n', '2020-06-20 09:37:41', '2020-06-20 09:37:41', NULL, NULL, 0, 1, 0, 0, 'CRM', 'test'),
 (57, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>test thu nhap</body>\r\n</html>\r\n', '2020-06-20 09:46:59', '2020-06-20 09:46:59', NULL, NULL, 0, 1, 0, 0, 'CRM', 'saved'),
 (58, 1, 1, 1, 'Emails', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>3</body>\r\n</html>\r\n', '2020-06-20 09:47:50', '2020-06-20 09:47:50', NULL, NULL, 0, 1, 0, 0, 'CRM', '3'),
-(59, 1, 1, 1, 'Vendors', '', '2020-06-23 13:35:09', '2020-06-23 13:35:37', NULL, NULL, 0, 1, 1, 0, 'CRM', 'HP');
+(59, 1, 1, 1, 'Vendors', '', '2020-06-23 13:35:09', '2020-06-23 13:35:37', NULL, NULL, 0, 1, 1, 0, 'CRM', 'HP'),
+(60, 1, 1, 1, 'HinhThucTruyenThong', NULL, '2020-07-16 13:44:13', '2020-07-16 13:44:13', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Ph\\u00e1t t\\u1edd r\\u01a1i\"]'),
+(61, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-07-16 13:45:43', '2020-07-16 13:45:43', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Google\"]'),
+(62, 1, 1, 1, 'PhuongTienTruyenThong', NULL, '2020-07-16 13:45:58', '2020-07-16 13:45:58', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Youtube\"]'),
+(63, 1, 5, 1, 'Campaigns', '', '2020-07-16 14:02:43', '2020-07-16 14:02:43', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Quảng cáo chương trình khuyến mãi'),
+(64, 1, 2, 1, 'Leads', '', '2020-07-16 14:08:00', '2020-07-16 14:08:00', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Thư Bùi Nguyễn'),
+(65, 1, 1, 1, 'QuyTrinhBanHang', NULL, '2020-07-16 14:22:57', '2020-07-16 14:23:37', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"Quy tr\\u00ecnh b\\u00e1n h\\u00e0ng 5 b\\u01b0\\u1edbc\"]'),
+(66, 1, 1, 1, 'Potentials', '', '2020-07-16 14:34:53', '2020-07-16 14:34:53', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Hội chợ Samsung 2020'),
+(67, 1, 1, 1, 'Quotes', '', '2020-07-16 15:03:21', '2020-07-16 15:04:41', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Báo giá cho hội chợ'),
+(68, 1, 1, 1, 'CustomerEnterprise', NULL, '2020-07-16 15:17:42', '2020-07-16 15:20:08', NULL, NULL, 0, 1, 1, 0, 'CRM', '[\"\"]'),
+(69, 1, 1, 1, 'CustomerEnterprise', NULL, '2020-07-16 15:31:28', '2020-07-16 15:40:47', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"DN-2\"]'),
+(70, 1, 1, 1, 'CustomerEnterprise', NULL, '2020-07-16 15:41:36', '2020-07-16 15:41:36', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"DN-3\"]'),
+(71, 1, 1, 1, 'Products', '', '2020-07-19 09:05:53', '2020-07-19 09:11:14', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Chuot'),
+(72, 1, 1, 1, 'ProblemCategory', NULL, '2020-07-19 12:12:19', '2020-07-19 12:12:19', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"L\\u1ed7i k\\u0129 thu\\u1eadt\"]'),
+(73, 1, 1, 1, 'SupportProtocol', NULL, '2020-07-19 12:26:41', '2020-07-19 12:26:41', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"B\\u1ed3i th\\u01b0\\u1eddng\"]'),
+(74, 1, 1, 1, 'SettingPosition', '', '2020-07-19 13:17:57', '2020-07-19 13:17:57', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Vice President'),
+(75, 1, 1, 1, 'JD', 'Chịu trách nhiệm giám sát các hoạt động về tài chính\r\nĐiều phối nhân sự', '2020-07-19 13:19:59', '2020-07-19 13:19:59', NULL, NULL, 0, 1, 0, 0, 'CRM', 'JD for Vice President'),
+(76, 1, 5, 1, 'Employee', NULL, '2020-07-19 13:21:04', '2020-07-19 13:21:04', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Đồng Việt'),
+(77, 1, 1, 1, 'CustomerStandalone', NULL, '2020-07-19 13:24:36', '2020-07-19 13:24:36', NULL, NULL, 0, 1, 0, 0, 'CRM', '[\"VL-4\"]'),
+(78, 1, 5, 1, 'Documents', NULL, '2020-07-19 13:37:45', '2020-07-19 13:37:45', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Mẫu báo giá'),
+(79, 1, 5, 0, 'Documents Attachment', NULL, '2020-07-19 13:37:45', '2020-07-19 13:37:45', NULL, NULL, 0, 1, 0, NULL, NULL, NULL),
+(80, 1, 1, 1, 'SalesOrder', '', '2020-07-19 16:08:46', '2020-07-19 16:10:40', NULL, NULL, 0, 1, 0, 0, 'CRM', 'S'),
+(81, 1, 1, 1, 'Invoice', '', '2020-07-19 16:45:52', '2020-07-19 16:46:32', NULL, NULL, 0, 1, 0, 0, 'CRM', 'Hóa đơn Test');
 
 -- --------------------------------------------------------
 
@@ -2675,7 +2815,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_crmentity_seq` (
 --
 
 INSERT INTO `vtiger_crmentity_seq` (`id`) VALUES
-(59);
+(81);
 
 -- --------------------------------------------------------
 
@@ -2734,7 +2874,28 @@ INSERT INTO `vtiger_crmentity_user_field` (`recordid`, `userid`, `starred`) VALU
 (56, 1, '0'),
 (57, 1, '0'),
 (58, 1, '0'),
-(59, 1, '0');
+(59, 1, '0'),
+(60, 1, '0'),
+(61, 1, '0'),
+(62, 1, '0'),
+(63, 1, '0'),
+(64, 1, '0'),
+(65, 1, '0'),
+(66, 1, '0'),
+(67, 1, '0'),
+(68, 1, '0'),
+(69, 1, '0'),
+(70, 1, '0'),
+(71, 1, '0'),
+(72, 1, '0'),
+(73, 1, '0'),
+(74, 1, '0'),
+(75, 1, '0'),
+(76, 1, '0'),
+(77, 1, '0'),
+(78, 1, '0'),
+(80, 1, '0'),
+(81, 1, '0');
 
 -- --------------------------------------------------------
 
@@ -3231,7 +3392,10 @@ CREATE TABLE IF NOT EXISTS `vtiger_customerenterprise` (
 --
 
 INSERT INTO `vtiger_customerenterprise` (`customerenterpriseid`, `makhachhang`, `tags`) VALUES
-(20, '[\"DN-0\"]', '');
+(20, '[\"DN-0\"]', ''),
+(68, '[\"\"]', ''),
+(69, '[\"DN-2\"]', ''),
+(70, '[\"DN-3\"]', '');
 
 -- --------------------------------------------------------
 
@@ -3276,7 +3440,10 @@ CREATE TABLE IF NOT EXISTS `vtiger_customerenterprisecf` (
 --
 
 INSERT INTO `vtiger_customerenterprisecf` (`customerenterpriseid`, `cf_1103`, `cf_1105`, `cf_1107`, `cf_1109`, `cf_1111`, `cf_1113`, `cf_1115`, `cf_1119`, `cf_1121`, `cf_1123`, `cf_1135`, `cf_1137`, `cf_1141`, `cf_1143`, `cf_1145`, `cf_1147`, `cf_1149`, `cf_1151`, `cf_1153`, `cf_1155`, `cf_1157`, `cf_1159`, `cf_1161`, `cf_1217`, `cf_1219`, `cf_1221`, `cf_1225`) VALUES
-(20, '', 'tung', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', '');
+(20, '', 'tung', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, '', ''),
+(68, '', '', '', '', '', '', '', '', '', '', '', 'Mới', '', '', '', 'Công ty cổ phần', '', '', '', '', '', '', 'Tài chính', NULL, '', '', ''),
+(69, '', 'Tuân', '', '', '', '', '', '', 'Anh', 'Liên Tuân', '', 'Mới', 'Sales', 'Trưởng phòng', '', 'Công ty cổ phần', '', '', '', '', '', '', 'Công nghệ thông tin', '2017-03-02', '', '', ''),
+(70, '', 'Liêm', '', '', '', '8445148100', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3452,7 +3619,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_customerstandalone` (
 
 INSERT INTO `vtiger_customerstandalone` (`customerstandaloneid`, `makhachhang`, `tags`) VALUES
 (27, '[\"VL-0\"]', ''),
-(28, '[\"VL-0\"]', '');
+(28, '[\"VL-0\"]', ''),
+(77, '[\"VL-4\"]', '');
 
 -- --------------------------------------------------------
 
@@ -3475,7 +3643,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_customerstandalonecf` (
 
 INSERT INTO `vtiger_customerstandalonecf` (`customerstandaloneid`, `cf_1193`, `cf_1195`, `cf_1197`, `cf_1199`) VALUES
 (27, '', '', '093821111', 'Đồng Việt Tùng'),
-(28, '', '', '3', '4');
+(28, '', '', '3', '4'),
+(77, '', '', '3179481455', 'Tô Diệp Lâm');
 
 -- --------------------------------------------------------
 
@@ -3876,8 +4045,8 @@ INSERT INTO `vtiger_cvcolumnlist` (`cvid`, `columnindex`, `columnname`) VALUES
 (23, 3, 'vtiger_pricebook:currency_id:currency_id:PriceBooks_Currency:V'),
 (24, 0, 'vtiger_products:productcode:productcode:Products_Part_Number:V'),
 (24, 1, 'vtiger_products:productname:productname:Products_Product_Name:V'),
-(24, 2, 'vtiger_products:qty_per_unit:qty_per_unit:Products_Qty/Unit:N'),
-(24, 3, 'vtiger_products:productcategory:productcategory:Products_Product_Category:V'),
+(24, 2, 'vtiger_products:productcategory:productcategory:Products_Product_Category:V'),
+(24, 3, 'vtiger_products:qtyinstock:qtyinstock:Products_Qty_In_Stock:NN'),
 (24, 4, 'vtiger_products:unit_price:unit_price:Products_Unit_Price:N'),
 (24, 5, 'vtiger_crmentity:description:description:Products_Description:V'),
 (25, 0, 'vtiger_purchaseorder:purchaseorder_no:purchaseorder_no:PurchaseOrder_PurchaseOrder_No:V'),
@@ -4147,7 +4316,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_dashboard_tabs` (
 --
 
 INSERT INTO `vtiger_dashboard_tabs` (`id`, `tabname`, `isdefault`, `sequence`, `appname`, `modulename`, `userid`) VALUES
-(0, 'My Dashboard', 1, 1, '', '', 5),
+(0, 'My Dashboard', 1, 1, '', '', 7),
 (1, 'Default', 0, 2, NULL, NULL, 1),
 (2, 'My Dashboard', 1, 1, '', '', 1);
 
@@ -5126,12 +5295,14 @@ INSERT INTO `vtiger_def_org_field` (`tabid`, `fieldid`, `visible`, `readonly`) V
 (29, 475, 0, 0),
 (29, 479, 0, 0),
 (29, 480, 0, 0),
+(29, 481, 0, 0),
 (29, 482, 0, 0),
 (29, 489, 0, 0),
 (29, 490, 0, 0),
 (29, 491, 0, 0),
 (29, 492, 0, 0),
 (29, 493, 0, 0),
+(29, 494, 0, 0),
 (29, 495, 0, 0),
 (29, 496, 0, 0),
 (29, 497, 0, 0),
@@ -5141,6 +5312,7 @@ INSERT INTO `vtiger_def_org_field` (`tabid`, `fieldid`, `visible`, `readonly`) V
 (29, 505, 0, 0),
 (29, 506, 0, 0),
 (29, 507, 0, 0),
+(29, 510, 0, 0),
 (29, 515, 0, 0),
 (10, 520, 0, 0),
 (10, 521, 0, 0),
@@ -5827,7 +5999,9 @@ INSERT INTO `vtiger_def_org_field` (`tabid`, `fieldid`, `visible`, `readonly`) V
 (73, 1299, 0, 0),
 (73, 1300, 0, 0),
 (73, 1301, 0, 0),
-(73, 1302, 0, 0);
+(73, 1302, 0, 0),
+(20, 1303, 0, 0),
+(23, 1304, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -6047,8 +6221,10 @@ CREATE TABLE IF NOT EXISTS `vtiger_emailslookup` (
 --
 
 INSERT INTO `vtiger_emailslookup` (`crmid`, `setype`, `value`, `fieldid`) VALUES
-(29, 'Employee', 'master@localhost', 999),
-(50, 'Vendors', 'vendor@vendor.com', 292);
+(29, 'Employee', 'ThienLang99999@gmail.com', 999),
+(50, 'Vendors', 'vendor@vendor.com', 292),
+(64, 'Leads', 'vendor@vendor.com', 46),
+(76, 'Employee', 'vendor@vendor.com', 999);
 
 -- --------------------------------------------------------
 
@@ -7030,7 +7206,7 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (20, 316, 'potentialid', 'vtiger_quotes', 1, '76', 'potential_id', 'Potential Name', 1, 2, '', 100, 2, 49, 1, 'I~O', 3, NULL, 'BAS', 1, NULL, 1, 0, 0),
 (20, 317, 'quotestage', 'vtiger_quotes', 1, '15', 'quotestage', 'Quote Stage', 1, 2, '', 100, 4, 49, 1, 'V~M', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
 (20, 318, 'validtill', 'vtiger_quotes', 1, '5', 'validtill', 'Valid Till', 1, 2, '', 100, 5, 49, 1, 'D~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
-(20, 319, 'contactid', 'vtiger_quotes', 1, '57', 'contact_id', 'Contact Name', 1, 2, '', 100, 6, 49, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
+(20, 319, 'contactid', 'vtiger_quotes', 1, '57', 'contact_id', 'Contact Name', 1, 1, '', 100, 6, 49, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
 (20, 320, 'carrier', 'vtiger_quotes', 1, '15', 'carrier', 'Carrier', 1, 2, '', 100, 8, 49, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (20, 321, 'subtotal', 'vtiger_quotes', 1, '72', 'hdnSubTotal', 'Sub Total', 1, 2, '', 100, 9, 49, 3, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (20, 322, 'shipping', 'vtiger_quotes', 1, '1', 'shipping', 'Shipping', 1, 2, '', 100, 10, 49, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
@@ -7041,7 +7217,7 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (20, 327, 'discount_percent', 'vtiger_quotes', 1, '1', 'hdnDiscountPercent', 'Discount Percent', 1, 2, '', 100, 14, 116, 5, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (20, 328, 'discount_amount', 'vtiger_quotes', 1, '72', 'hdnDiscountAmount', 'Discount Amount', 1, 2, '', 100, 14, 116, 5, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (20, 329, 's_h_amount', 'vtiger_quotes', 1, '72', 'hdnS_H_Amount', 'S&H Amount', 1, 2, '', 100, 14, 49, 3, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
-(20, 330, 'accountid', 'vtiger_quotes', 1, '73', 'account_id', 'Account Name', 1, 2, '', 100, 16, 49, 1, 'I~M', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
+(20, 330, 'accountid', 'vtiger_quotes', 1, '73', 'account_id', 'Account Name', 1, 1, '', 100, 16, 49, 1, 'I~O', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
 (20, 331, 'smownerid', 'vtiger_crmentity', 1, '53', 'assigned_user_id', 'Assigned To', 1, 0, '', 100, 17, 49, 1, 'V~M', 3, NULL, 'BAS', 1, NULL, 1, 0, 0),
 (20, 332, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 0, '', 100, 18, 49, 2, 'DT~O', 3, NULL, 'BAS', 0, NULL, 0, 0, 0),
 (20, 333, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 0, '', 100, 19, 49, 2, 'DT~O', 3, NULL, 'BAS', 0, NULL, 0, 0, 0),
@@ -7105,9 +7281,9 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (22, 390, 'subject', 'vtiger_salesorder', 1, '2', 'subject', 'Subject', 1, 0, '', 100, 1, 61, 1, 'V~M', 3, NULL, 'BAS', 1, NULL, 1, 0, 0),
 (22, 391, 'potentialid', 'vtiger_salesorder', 1, '76', 'potential_id', 'Potential Name', 1, 2, '', 100, 2, 61, 1, 'I~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (22, 392, 'customerno', 'vtiger_salesorder', 1, '1', 'customerno', 'Customer No', 1, 2, '', 100, 3, 61, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
-(22, 393, 'quoteid', 'vtiger_salesorder', 1, '78', 'quote_id', 'Quote Name', 1, 2, '', 100, 5, 61, 1, 'I~O', 3, NULL, 'BAS', 0, NULL, 1, 0, 0),
+(22, 393, 'quoteid', 'vtiger_salesorder', 1, '78', 'quote_id', 'Quote Name', 1, 2, '', 100, 5, 61, 1, 'I~O', 3, NULL, 'BAS', 0, NULL, 0, 0, 0),
 (22, 394, 'purchaseorder', 'vtiger_salesorder', 1, '1', 'vtiger_purchaseorder', 'Purchase Order', 1, 2, '', 100, 5, 61, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
-(22, 395, 'contactid', 'vtiger_salesorder', 1, '57', 'contact_id', 'Contact Name', 1, 2, '', 100, 6, 61, 1, 'I~O', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
+(22, 395, 'contactid', 'vtiger_salesorder', 1, '57', 'contact_id', 'Contact Name', 1, 1, '', 100, 6, 61, 1, 'I~O', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
 (22, 396, 'duedate', 'vtiger_salesorder', 1, '5', 'duedate', 'Due Date', 1, 2, '', 100, 8, 61, 1, 'D~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (22, 397, 'carrier', 'vtiger_salesorder', 1, '15', 'carrier', 'Carrier', 1, 2, '', 100, 9, 61, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (22, 398, 'pending', 'vtiger_salesorder', 1, '1', 'pending', 'Pending', 1, 2, '', 100, 10, 61, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
@@ -7121,7 +7297,7 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (22, 406, 'discount_percent', 'vtiger_salesorder', 1, '1', 'hdnDiscountPercent', 'Discount Percent', 1, 2, '', 100, 15, 114, 5, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (22, 407, 'discount_amount', 'vtiger_salesorder', 1, '72', 'hdnDiscountAmount', 'Discount Amount', 1, 0, '', 100, 15, 114, 5, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (22, 408, 's_h_amount', 'vtiger_salesorder', 1, '72', 'hdnS_H_Amount', 'S&H Amount', 1, 2, '', 100, 15, 61, 3, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
-(22, 409, 'accountid', 'vtiger_salesorder', 1, '73', 'account_id', 'Account Name', 1, 2, '', 100, 16, 61, 1, 'I~M', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
+(22, 409, 'accountid', 'vtiger_salesorder', 1, '73', 'account_id', 'Account Name', 1, 1, '', 100, 27, 61, 1, 'I~O', 2, NULL, 'BAS', 1, NULL, 0, 1, 0),
 (22, 410, 'smownerid', 'vtiger_crmentity', 1, '53', 'assigned_user_id', 'Assigned To', 1, 0, '', 100, 17, 61, 1, 'V~M', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
 (22, 411, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 0, '', 100, 18, 61, 2, 'DT~O', 3, NULL, 'BAS', 0, NULL, 0, 0, 0),
 (22, 412, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 0, '', 100, 19, 61, 2, 'DT~O', 3, NULL, 'BAS', 0, NULL, 0, 0, 0),
@@ -7150,8 +7326,8 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (22, 435, 'invoice_status', 'vtiger_invoice_recurring_info', 1, '15', 'invoicestatus', 'Invoice Status', 1, 0, '', 100, 6, 85, 1, 'V~M', 3, NULL, 'BAS', 0, NULL, 0, 0, 0),
 (23, 436, 'subject', 'vtiger_invoice', 1, '2', 'subject', 'Subject', 1, 0, '', 100, 1, 67, 1, 'V~M', 3, NULL, 'BAS', 1, NULL, 1, 0, 0),
 (23, 437, 'salesorderid', 'vtiger_invoice', 1, '80', 'salesorder_id', 'Sales Order', 1, 2, '', 100, 2, 67, 1, 'I~O', 3, NULL, 'BAS', 0, NULL, 1, 0, 0),
-(23, 438, 'customerno', 'vtiger_invoice', 1, '1', 'customerno', 'Customer No', 1, 2, '', 100, 3, 67, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
-(23, 439, 'contactid', 'vtiger_invoice', 1, '57', 'contact_id', 'Contact Name', 1, 2, '', 100, 4, 67, 1, 'I~O', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
+(23, 438, 'customerno', 'vtiger_invoice', 1, '1', 'customerno', 'Customer No', 1, 1, '', 100, 3, 67, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
+(23, 439, 'contactid', 'vtiger_invoice', 1, '57', 'contact_id', 'Contact Name', 1, 1, '', 100, 4, 67, 1, 'I~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (23, 440, 'invoicedate', 'vtiger_invoice', 1, '5', 'invoicedate', 'Invoice Date', 1, 2, '', 100, 5, 67, 1, 'D~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (23, 441, 'duedate', 'vtiger_invoice', 1, '5', 'duedate', 'Due Date', 1, 2, '', 100, 6, 67, 1, 'D~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (23, 442, 'purchaseorder', 'vtiger_invoice', 1, '1', 'vtiger_purchaseorder', 'Purchase Order', 1, 2, '', 100, 8, 67, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
@@ -7164,7 +7340,7 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (23, 449, 'discount_percent', 'vtiger_invoice', 1, '1', 'hdnDiscountPercent', 'Discount Percent', 1, 2, '', 100, 13, 113, 5, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (23, 450, 'discount_amount', 'vtiger_invoice', 1, '72', 'hdnDiscountAmount', 'Discount Amount', 1, 2, '', 100, 13, 113, 5, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (23, 451, 's_h_amount', 'vtiger_invoice', 1, '72', 'hdnS_H_Amount', 'S&H Amount', 1, 2, '', 100, 14, 69, 3, 'N~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
-(23, 452, 'accountid', 'vtiger_invoice', 1, '73', 'account_id', 'Account Name', 1, 2, '', 100, 14, 67, 1, 'I~M', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
+(23, 452, 'accountid', 'vtiger_invoice', 1, '73', 'account_id', 'Account Name', 1, 1, '', 100, 14, 67, 1, 'I~O', 3, NULL, 'BAS', 1, NULL, 0, 0, 0),
 (23, 453, 'invoicestatus', 'vtiger_invoice', 1, '15', 'invoicestatus', 'Status', 1, 2, '', 100, 15, 67, 1, 'V~O', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
 (23, 454, 'smownerid', 'vtiger_crmentity', 1, '53', 'assigned_user_id', 'Assigned To', 1, 0, '', 100, 16, 67, 1, 'V~M', 3, NULL, 'BAS', 1, NULL, 0, 1, 0),
 (23, 455, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 0, '', 100, 17, 67, 2, 'DT~O', 3, NULL, 'BAS', 0, NULL, 0, 0, 0),
@@ -7366,7 +7542,7 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (45, 651, 'actualenddate', 'vtiger_project', 1, '23', 'actualenddate', 'Actual End Date', 1, 2, '', 100, 6, 107, 1, 'D~O~OTH~GE~startdate~Start Date', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (45, 652, 'projectstatus', 'vtiger_project', 1, '15', 'projectstatus', 'Status', 1, 2, '', 100, 7, 107, 1, 'V~O', 1, 0, 'BAS', 1, '', 1, 0, 0),
 (45, 653, 'projecttype', 'vtiger_project', 1, '15', 'projecttype', 'Type', 1, 2, '', 100, 8, 107, 1, 'V~O', 1, 0, 'BAS', 1, '', 1, 0, 0),
-(45, 654, 'linktoaccountscontacts', 'vtiger_project', 1, '10', 'linktoaccountscontacts', 'Related to', 1, 2, '', 100, 9, 107, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 1, 0),
+(45, 654, 'linktoaccountscontacts', 'vtiger_project', 1, '10', 'linktoaccountscontacts', 'Related to', 1, 1, '', 100, 9, 107, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (45, 655, 'smownerid', 'vtiger_crmentity', 1, '53', 'assigned_user_id', 'Assigned To', 1, 2, '', 100, 4, 107, 1, 'V~M', 0, 2, 'BAS', 1, '', 1, 0, 0),
 (45, 656, 'project_no', 'vtiger_project', 2, '4', 'project_no', 'Project No', 1, 0, '', 100, 2, 107, 1, 'V~O', 3, 0, 'BAS', 0, '', 0, 0, 0),
 (45, 657, 'targetbudget', 'vtiger_project', 1, '7', 'targetbudget', 'Target Budget', 1, 2, '', 100, 1, 108, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
@@ -7712,7 +7888,7 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (61, 1022, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 29, 141, 2, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
 (61, 1023, 'starred', 'vtiger_crmentity_user_field', 1, '56', 'starred', 'starred', 1, 2, '', 100, 30, 141, 6, 'C~O', 3, 4, 'BAS', 0, '', 0, 0, 0),
 (61, 1024, 'tags', 'vtiger_hrm_employee', 1, '1', 'tags', 'tags', 1, 2, '', 100, 31, 141, 6, 'V~O', 3, 5, 'BAS', 0, '', 0, 0, 0),
-(63, 1097, 'makhachhang', 'vtiger_customerenterprise', 1, '8', 'makhachhang', 'Ma Khach Hang', 1, 2, '', 100, 1, 159, 1, 'V~M', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1097, 'makhachhang', 'vtiger_customerenterprise', 1, '8', 'makhachhang', 'Ma Khach Hang', 1, 2, '', 100, 1, 159, 1, 'V~M', 2, 0, 'BAS', 2, '', 0, 0, 0),
 (63, 1098, 'createdtime', 'vtiger_crmentity', 1, '70', 'createdtime', 'Created Time', 1, 2, '', 100, 2, 159, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (63, 1099, 'modifiedtime', 'vtiger_crmentity', 1, '70', 'modifiedtime', 'Modified Time', 1, 2, '', 100, 3, 159, 2, 'DT~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (63, 1100, 'source', 'vtiger_crmentity', 1, '1', 'source', 'Source', 1, 2, '', 100, 4, 159, 2, 'V~O', 3, 1, 'BAS', 0, '', 0, 0, 0),
@@ -7720,7 +7896,7 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `generatedtype`, `uitype`, `fieldname`, `fieldlabel`, `readonly`, `presence`, `defaultvalue`, `maximumlength`, `sequence`, `block`, `displaytype`, `typeofdata`, `quickcreate`, `quickcreatesequence`, `info_type`, `masseditable`, `helpinfo`, `summaryfield`, `headerfield`, `isunique`) VALUES
 (63, 1102, 'tags', 'vtiger_customerenterprise', 1, '1', 'tags', 'tags', 1, 2, '', 100, 6, 159, 6, 'V~O', 3, 3, 'BAS', 0, '', 0, 0, 0),
 (63, 1104, 'cf_1103', 'vtiger_customerenterprisecf', 2, '1', 'cf_1103', 'Mã số thuế', 1, 2, '', 100, 7, 159, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
-(63, 1106, 'cf_1105', 'vtiger_customerenterprisecf', 2, '1', 'cf_1105', 'Tên khách hàng', 1, 2, '', 100, 8, 159, 1, 'V~M~LE~255', 2, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1106, 'cf_1105', 'vtiger_customerenterprisecf', 2, '1', 'cf_1105', 'Tên khách hàng', 1, 2, '', 100, 8, 159, 1, 'V~M~LE~255', 2, 0, 'BAS', 2, '', 0, 1, 0),
 (63, 1108, 'cf_1107', 'vtiger_customerenterprisecf', 2, '1', 'cf_1107', 'Tên viết tắt', 1, 2, '', 100, 9, 159, 1, 'V~O~LE~10', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (63, 1110, 'cf_1109', 'vtiger_customerenterprisecf', 2, '1', 'cf_1109', 'Mã NS', 1, 2, '', 100, 10, 159, 1, 'V~O~LE~10', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (63, 1112, 'cf_1111', 'vtiger_customerenterprisecf', 2, '1', 'cf_1111', 'Mã số KD', 1, 2, '', 100, 11, 159, 1, 'V~O~LE~10', 1, 0, 'BAS', 1, '', 0, 0, 0),
@@ -7728,7 +7904,7 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (63, 1116, 'cf_1115', 'vtiger_customerenterprisecf', 2, '1', 'cf_1115', 'Fax', 1, 2, '', 100, 13, 159, 1, 'V~O~LE~50', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (63, 1120, 'cf_1119', 'vtiger_customerenterprisecf', 2, '1', 'cf_1119', 'Email', 1, 2, '', 100, 14, 159, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (63, 1122, 'cf_1121', 'vtiger_customerenterprisecf', 2, '16', 'cf_1121', 'Xưng hô', 1, 2, ' ', 100, 1, 161, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
-(63, 1124, 'cf_1123', 'vtiger_customerenterprisecf', 2, '1', 'cf_1123', 'Họ và Tên', 1, 2, '', 100, 2, 161, 1, 'V~O~LE~255', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(63, 1124, 'cf_1123', 'vtiger_customerenterprisecf', 2, '1', 'cf_1123', 'Họ và Tên', 1, 2, '', 100, 2, 161, 1, 'V~O~LE~255', 1, 0, 'BAS', 2, '', 0, 0, 0),
 (63, 1136, 'cf_1135', 'vtiger_customerenterprisecf', 2, '21', 'cf_1135', 'Ghi chú', 1, 2, '', 100, 1, 160, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (63, 1138, 'cf_1137', 'vtiger_customerenterprisecf', 2, '16', 'cf_1137', 'Phân loại khách hàng', 1, 2, ' ', 100, 1, 162, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (63, 1142, 'cf_1141', 'vtiger_customerenterprisecf', 2, '16', 'cf_1141', 'Phòng ban', 1, 2, ' ', 100, 9, 161, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
@@ -7797,7 +7973,9 @@ INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `gene
 (72, 1281, 'cf_1280', 'vtiger_quytrinhbanhangcf', 2, '9', 'cf_1280', 'Ti le thanh cong', 1, 2, '', 100, 2, 191, 1, 'N~O~2~2', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (72, 1285, 'cf_1284', 'vtiger_quytrinhbanhangcf', 2, '21', 'cf_1284', 'Dien giai', 1, 2, '', 100, 4, 191, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
 (72, 1287, 'cf_1286', 'vtiger_quytrinhbanhangcf', 2, '16', 'cf_1286', 'Phan loai', 1, 2, ' ', 100, 5, 191, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
-(8, 1289, 'cf_1288', 'vtiger_notescf', 2, '16', 'cf_1288', 'Đuôi file', 1, 2, ' ', 100, 8, 18, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0);
+(8, 1289, 'cf_1288', 'vtiger_notescf', 2, '16', 'cf_1288', 'Đuôi file', 1, 2, ' ', 100, 8, 18, 1, 'V~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(20, 1303, 'cf_1290', 'vtiger_quotes', 2, '10', 'cf_1290', 'Tên Khách Hàng', 1, 2, '', 100, 27, 49, 1, 'I~O', 1, 0, 'BAS', 1, '', 0, 0, 0),
+(23, 1304, 'cf_1304', 'vtiger_invoice', 2, '10', 'cf_1304', 'Tên khách hàng', 1, 2, '', 100, 30, 67, 1, 'I~O', 1, 0, 'BAS', 1, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -7881,7 +8059,9 @@ INSERT INTO `vtiger_fieldmodulerel` (`fieldid`, `module`, `relmodule`, `status`,
 (1021, 'Employee', 'SalaryComponent', NULL, NULL),
 (1254, 'Campaigns', 'PhuongTienTruyenThong', NULL, NULL),
 (1262, 'Campaigns', 'PhuongTienTruyenThong', NULL, NULL),
-(1270, 'Campaigns', 'HinhThucTruyenThong', NULL, NULL);
+(1270, 'Campaigns', 'HinhThucTruyenThong', NULL, NULL),
+(1303, 'Quotes', 'CustomerEnterprise', NULL, NULL),
+(1304, 'Invoice', 'CustomerEnterprise', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -7898,7 +8078,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_field_seq` (
 --
 
 INSERT INTO `vtiger_field_seq` (`id`) VALUES
-(1302);
+(1304);
 
 -- --------------------------------------------------------
 
@@ -8155,7 +8335,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_hinhthuctruyenthong` (
 --
 
 INSERT INTO `vtiger_hinhthuctruyenthong` (`hinhthuctruyenthongid`, `httt`, `motachitiet`, `tags`) VALUES
-(34, '[\"Ch\\u1ea1y qu\\u1ea3ng c\\u00e1o\"]', '', '');
+(34, '[\"Ch\\u1ea1y qu\\u1ea3ng c\\u00e1o\"]', '', ''),
+(60, '[\"Ph\\u00e1t t\\u1edd r\\u01a1i\"]', '', '');
 
 -- --------------------------------------------------------
 
@@ -8173,7 +8354,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_hinhthuctruyenthongcf` (
 --
 
 INSERT INTO `vtiger_hinhthuctruyenthongcf` (`hinhthuctruyenthongid`) VALUES
-(34);
+(34),
+(60);
 
 -- --------------------------------------------------------
 
@@ -8236,7 +8418,35 @@ INSERT INTO `vtiger_homedefault` (`stuffid`, `hometype`, `maxentries`, `setype`)
 (26, 'MNL', 5, 'Leads'),
 (27, 'OLTPO', 5, 'PurchaseOrder'),
 (28, 'PA', 5, 'Calendar'),
-(29, 'LTFAQ', 5, 'Faq');
+(29, 'LTFAQ', 5, 'Faq'),
+(31, 'ALVT', 5, 'Accounts'),
+(32, 'HDB', 5, 'Dashboard'),
+(33, 'PLVT', 5, 'Potentials'),
+(34, 'QLTQ', 5, 'Quotes'),
+(35, 'CVLVT', 5, 'NULL'),
+(36, 'HLT', 5, 'HelpDesk'),
+(37, 'UA', 5, 'Calendar'),
+(38, 'GRT', 5, 'NULL'),
+(39, 'OLTSO', 5, 'SalesOrder'),
+(40, 'ILTI', 5, 'Invoice'),
+(41, 'MNL', 5, 'Leads'),
+(42, 'OLTPO', 5, 'PurchaseOrder'),
+(43, 'PA', 5, 'Calendar'),
+(44, 'LTFAQ', 5, 'Faq'),
+(46, 'ALVT', 5, 'Accounts'),
+(47, 'HDB', 5, 'Dashboard'),
+(48, 'PLVT', 5, 'Potentials'),
+(49, 'QLTQ', 5, 'Quotes'),
+(50, 'CVLVT', 5, 'NULL'),
+(51, 'HLT', 5, 'HelpDesk'),
+(52, 'UA', 5, 'Calendar'),
+(53, 'GRT', 5, 'NULL'),
+(54, 'OLTSO', 5, 'SalesOrder'),
+(55, 'ILTI', 5, 'Invoice'),
+(56, 'MNL', 5, 'Leads'),
+(57, 'OLTPO', 5, 'PurchaseOrder'),
+(58, 'PA', 5, 'Calendar'),
+(59, 'LTFAQ', 5, 'Faq');
 
 -- --------------------------------------------------------
 
@@ -8345,7 +8555,37 @@ INSERT INTO `vtiger_homestuff` (`stuffid`, `stuffsequence`, `stufftype`, `userid
 (27, 12, 'Default', 5, 1, 'Top Purchase Orders'),
 (28, 13, 'Default', 5, 1, 'Pending Activities'),
 (29, 14, 'Default', 5, 1, 'My Recent FAQs'),
-(30, 15, 'Tag Cloud', 5, 0, 'Tag Cloud');
+(30, 15, 'Tag Cloud', 5, 0, 'Tag Cloud'),
+(31, 1, 'Default', 6, 1, 'Top Accounts'),
+(32, 2, 'Default', 6, 1, 'Home Page Dashboard'),
+(33, 3, 'Default', 6, 1, 'Top Potentials'),
+(34, 4, 'Default', 6, 1, 'Top Quotes'),
+(35, 5, 'Default', 6, 1, 'Key Metrics'),
+(36, 6, 'Default', 6, 1, 'Top Trouble Tickets'),
+(37, 7, 'Default', 6, 1, 'Upcoming Activities'),
+(38, 8, 'Default', 6, 1, 'My Group Allocation'),
+(39, 9, 'Default', 6, 1, 'Top Sales Orders'),
+(40, 10, 'Default', 6, 1, 'Top Invoices'),
+(41, 11, 'Default', 6, 1, 'My New Leads'),
+(42, 12, 'Default', 6, 1, 'Top Purchase Orders'),
+(43, 13, 'Default', 6, 1, 'Pending Activities'),
+(44, 14, 'Default', 6, 1, 'My Recent FAQs'),
+(45, 15, 'Tag Cloud', 6, 0, 'Tag Cloud'),
+(46, 1, 'Default', 7, 1, 'Top Accounts'),
+(47, 2, 'Default', 7, 1, 'Home Page Dashboard'),
+(48, 3, 'Default', 7, 0, 'Top Potentials'),
+(49, 4, 'Default', 7, 1, 'Top Quotes'),
+(50, 5, 'Default', 7, 0, 'Key Metrics'),
+(51, 6, 'Default', 7, 1, 'Top Trouble Tickets'),
+(52, 7, 'Default', 7, 0, 'Upcoming Activities'),
+(53, 8, 'Default', 7, 1, 'My Group Allocation'),
+(54, 9, 'Default', 7, 1, 'Top Sales Orders'),
+(55, 10, 'Default', 7, 1, 'Top Invoices'),
+(56, 11, 'Default', 7, 1, 'My New Leads'),
+(57, 12, 'Default', 7, 1, 'Top Purchase Orders'),
+(58, 13, 'Default', 7, 1, 'Pending Activities'),
+(59, 14, 'Default', 7, 1, 'My Recent FAQs'),
+(60, 15, 'Tag Cloud', 7, 0, 'Tag Cloud');
 
 -- --------------------------------------------------------
 
@@ -8362,7 +8602,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_homestuff_seq` (
 --
 
 INSERT INTO `vtiger_homestuff_seq` (`id`) VALUES
-(30);
+(60);
 
 -- --------------------------------------------------------
 
@@ -8503,7 +8743,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_hrm_employcf` (
 
 INSERT INTO `vtiger_hrm_employcf` (`employid`) VALUES
 (2),
-(29);
+(29),
+(76);
 
 -- --------------------------------------------------------
 
@@ -8546,7 +8787,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_hrm_employee` (
 
 INSERT INTO `vtiger_hrm_employee` (`employid`, `firstname`, `lastname`, `employ_gender`, `email`, `user_id`, `date_of_birth`, `mobile`, `position`, `employ_marital_status`, `address`, `city`, `country`, `flag`, `candidate_id`, `action`, `start_work_date`, `employ_number`, `official_date`, `desired_salary`, `probality_period`, `official_salary`, `private_email`, `salary_department`, `tags`) VALUES
 (2, 'Leonce', 'Wang', '', 'ThienLang99999@gmail.com', '1', NULL, '', '', '', '', '', '', '', '', '', NULL, 'EMPL1', NULL, '', '', '', '', '', ''),
-(29, 'Leonce', 'Wang', '', 'ThienLang99999@gmail.com', '1', NULL, '', '', '', '', '', '', '', '', '', NULL, 'EMPL1', NULL, '', '', '', '', '', '');
+(29, 'Leonce', 'Wang', '', 'ThienLang99999@gmail.com', '1', NULL, '', '', '', '', '', '', '', '', '', NULL, 'EMPL1', NULL, '', '', '', '', '', ''),
+(76, 'Tùng', 'Đồng Việt', '', 'vendor@vendor.com', '5', NULL, '', '', '', '', '', '', '', '', '', NULL, 'EMPL5', NULL, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -8566,6 +8808,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_hrm_jd` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_hrm_jd`
+--
+
+INSERT INTO `vtiger_hrm_jd` (`id`, `name`, `description`, `jd_category`, `jd_status`, `jd_classify`, `position`, `tags`) VALUES
+(75, 'JD for Vice President', 'Chịu trách nhiệm giám sát các hoạt động về tài chính\r\nĐiều phối nhân sự', 'Manager', 'Active', 'Responsibility', '74', '');
+
 -- --------------------------------------------------------
 
 --
@@ -8576,6 +8825,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_hrm_jdcf` (
   `id` int(19) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_hrm_jdcf`
+--
+
+INSERT INTO `vtiger_hrm_jdcf` (`id`) VALUES
+(75);
 
 -- --------------------------------------------------------
 
@@ -8748,6 +9004,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_hrm_position` (
   `tags` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_hrm_position`
+--
+
+INSERT INTO `vtiger_hrm_position` (`id`, `name`, `description`, `tags`) VALUES
+(74, 'Vice President', '', '');
 
 -- --------------------------------------------------------
 
@@ -9125,6 +9388,15 @@ CREATE TABLE IF NOT EXISTS `vtiger_inventorychargesrel` (
   `charges` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_inventorychargesrel`
+--
+
+INSERT INTO `vtiger_inventorychargesrel` (`recordid`, `charges`) VALUES
+(67, '{\"1\":{\"value\":\"0\",\"taxes\":{\"1\":\"4.500\",\"2\":\"10.000\",\"3\":\"12.500\"}}}'),
+(80, '{\"1\":{\"value\":\"0\",\"taxes\":{\"1\":\"4.500\",\"2\":\"10.000\",\"3\":\"12.500\"}}}'),
+(81, '{\"1\":{\"value\":\"0\",\"taxes\":{\"1\":\"4.500\",\"2\":\"10.000\",\"3\":\"12.500\"}}}');
+
 -- --------------------------------------------------------
 
 --
@@ -9174,7 +9446,7 @@ INSERT INTO `vtiger_inventorynotification_seq` (`id`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `vtiger_inventoryproductrel` (
-  `id` int(19) DEFAULT NULL,
+  `id` int(19) NOT NULL,
   `productid` int(19) DEFAULT NULL,
   `sequence_no` int(4) DEFAULT NULL,
   `quantity` decimal(25,3) DEFAULT NULL,
@@ -9191,10 +9463,18 @@ CREATE TABLE IF NOT EXISTS `vtiger_inventoryproductrel` (
   `image` varchar(2) DEFAULT NULL,
   `purchase_cost` decimal(27,8) DEFAULT NULL,
   `margin` decimal(27,8) DEFAULT NULL,
-  PRIMARY KEY (`lineitem_id`),
+  PRIMARY KEY (`id`),
   KEY `inventoryproductrel_id_idx` (`id`),
   KEY `inventoryproductrel_productid_idx` (`productid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_inventoryproductrel`
+--
+
+INSERT INTO `vtiger_inventoryproductrel` (`id`, `productid`, `sequence_no`, `quantity`, `listprice`, `discount_percent`, `discount_amount`, `comment`, `description`, `incrementondel`, `lineitem_id`, `tax1`, `tax2`, `tax3`, `image`, `purchase_cost`, `margin`) VALUES
+(80, 71, 1, '5.000', '50000.00000000', NULL, NULL, '', NULL, 0, 0, '4.500', '10.000', '12.500', NULL, '0.00000000', '250000.00000000'),
+(81, 71, 1, '5.000', '50000.00000000', NULL, NULL, '', NULL, 1, 0, '4.500', '10.000', '12.500', NULL, '0.00000000', '250000.00000000');
 
 -- --------------------------------------------------------
 
@@ -9205,13 +9485,6 @@ CREATE TABLE IF NOT EXISTS `vtiger_inventoryproductrel` (
 CREATE TABLE IF NOT EXISTS `vtiger_inventoryproductrel_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `vtiger_inventoryproductrel_seq`
---
-
-INSERT INTO `vtiger_inventoryproductrel_seq` (`id`) VALUES
-(0);
 
 -- --------------------------------------------------------
 
@@ -9381,10 +9654,18 @@ CREATE TABLE IF NOT EXISTS `vtiger_invoice` (
   `potential_id` varchar(100) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
   `region_id` int(19) DEFAULT NULL,
+  `cf_1304` int(10) DEFAULT NULL,
   PRIMARY KEY (`invoiceid`),
   KEY `invoice_purchaseorderid_idx` (`invoiceid`),
   KEY `fk_2_vtiger_invoice` (`salesorderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_invoice`
+--
+
+INSERT INTO `vtiger_invoice` (`invoiceid`, `subject`, `salesorderid`, `customerno`, `contactid`, `notes`, `invoicedate`, `duedate`, `invoiceterms`, `type`, `adjustment`, `salescommission`, `exciseduty`, `subtotal`, `total`, `taxtype`, `discount_percent`, `discount_amount`, `s_h_amount`, `shipping`, `accountid`, `terms_conditions`, `purchaseorder`, `invoicestatus`, `invoice_no`, `currency_id`, `conversion_rate`, `compound_taxes_info`, `pre_tax_total`, `received`, `balance`, `s_h_percent`, `potential_id`, `tags`, `region_id`, `cf_1304`) VALUES
+(81, 'Hóa đơn Test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.00000000', '0.000', '0.000', '250000.00000000', '317500.00000000', 'group', NULL, NULL, '0.00000000', NULL, NULL, '', '', '', 'INV1', 1, '1.000', '[]', '250000.00000000', '0.00000000', '317500.00000000', '0.00000000', '0', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -9403,6 +9684,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_invoicebillads` (
   PRIMARY KEY (`invoicebilladdressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_invoicebillads`
+--
+
+INSERT INTO `vtiger_invoicebillads` (`invoicebilladdressid`, `bill_city`, `bill_code`, `bill_country`, `bill_state`, `bill_street`, `bill_pobox`) VALUES
+(81, '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -9413,6 +9701,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_invoicecf` (
   `invoiceid` int(19) NOT NULL DEFAULT 0,
   PRIMARY KEY (`invoiceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_invoicecf`
+--
+
+INSERT INTO `vtiger_invoicecf` (`invoiceid`) VALUES
+(81);
 
 -- --------------------------------------------------------
 
@@ -9430,6 +9725,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_invoiceshipads` (
   `ship_pobox` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`invoiceshipaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_invoiceshipads`
+--
+
+INSERT INTO `vtiger_invoiceshipads` (`invoiceshipaddressid`, `ship_city`, `ship_code`, `ship_country`, `ship_state`, `ship_street`, `ship_pobox`) VALUES
+(81, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -9850,6 +10152,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_leadaddress` (
   PRIMARY KEY (`leadaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_leadaddress`
+--
+
+INSERT INTO `vtiger_leadaddress` (`leadaddressid`, `city`, `code`, `state`, `pobox`, `country`, `phone`, `mobile`, `fax`, `lane`, `leadaddresstype`) VALUES
+(64, '', '', '', '', '', '038918086', '', '', '', 'Billing');
+
 -- --------------------------------------------------------
 
 --
@@ -9898,6 +10207,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_leaddetails` (
   KEY `email_idx` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_leaddetails`
+--
+
+INSERT INTO `vtiger_leaddetails` (`leadid`, `lead_no`, `email`, `interest`, `firstname`, `salutation`, `lastname`, `company`, `annualrevenue`, `industry`, `campaign`, `rating`, `leadstatus`, `leadsource`, `converted`, `designation`, `licencekeystatus`, `space`, `comments`, `priority`, `demorequest`, `partnercontact`, `productversion`, `product`, `maildate`, `nextstepdate`, `fundingsituation`, `purpose`, `evaluationstatus`, `transferdate`, `revenuetype`, `noofemployees`, `secondaryemail`, `assignleadchk`, `emailoptout`, `tags`) VALUES
+(64, 'LEA1', 'vendor@vendor.com', NULL, 'Thư', 'Mrs.', 'Bùi Nguyễn', 'BNT', '0.00000000', 'Shipping', NULL, '', 'Contacted', 'Conference', 0, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, '', 0, '0', '');
+
 -- --------------------------------------------------------
 
 --
@@ -9908,6 +10224,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_leadscf` (
   `leadid` int(19) NOT NULL DEFAULT 0,
   PRIMARY KEY (`leadid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_leadscf`
+--
+
+INSERT INTO `vtiger_leadscf` (`leadid`) VALUES
+(64);
 
 -- --------------------------------------------------------
 
@@ -10039,6 +10362,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_leadsubdetails` (
   `empct` int(10) DEFAULT 0,
   PRIMARY KEY (`leadsubscriptionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_leadsubdetails`
+--
+
+INSERT INTO `vtiger_leadsubdetails` (`leadsubscriptionid`, `website`, `callornot`, `readornot`, `empct`) VALUES
+(64, '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -10221,7 +10551,13 @@ INSERT INTO `vtiger_loginhistory` (`login_id`, `user_name`, `user_ip`, `logout_t
 (13, 'tung', '::1', '2020-07-05 03:35:28', '2020-07-05 10:35:28', 'Signed in'),
 (14, 'admin', '::1', '2020-07-05 09:19:55', '2020-07-05 14:09:50', 'Signed off'),
 (15, 'tung', '::1', '2020-07-05 09:20:41', '2020-07-05 16:20:03', 'Signed off'),
-(16, 'admin', '::1', '2020-07-05 09:20:50', '2020-07-05 16:20:50', 'Signed in');
+(16, 'admin', '::1', '2020-07-05 09:20:50', '2020-07-05 16:20:50', 'Signed in'),
+(17, 'admin', '::1', '2020-07-15 07:56:38', '2020-07-15 14:56:38', 'Signed in'),
+(18, 'admin', '::1', '2020-07-16 06:42:57', '2020-07-16 13:42:57', 'Signed in'),
+(19, 'admin', '::1', '2020-07-18 10:43:17', '2020-07-18 17:43:17', 'Signed in'),
+(20, 'admin', '::1', '2020-07-19 01:25:22', '2020-07-19 08:25:22', 'Signed in'),
+(21, 'admin', '::1', '2020-07-19 02:22:04', '2020-07-19 09:22:04', 'Signed in'),
+(22, 'admin', '::1', '2020-07-22 07:53:44', '2020-07-22 14:53:44', 'Signed in');
 
 -- --------------------------------------------------------
 
@@ -10321,24 +10657,15 @@ CREATE TABLE IF NOT EXISTS `vtiger_mailmanager_mailrecord` (
 --
 
 INSERT INTO `vtiger_mailmanager_mailrecord` (`userid`, `mfrom`, `mto`, `mcc`, `mbcc`, `mdate`, `msubject`, `mbody`, `mcharset`, `misbodyhtml`, `mplainmessage`, `mhtmlmessage`, `muniqueid`, `mbodyparsed`, `muid`, `lastsavedtime`, `folder`, `mfolder`) VALUES
-(1, '[\"webserver@example.com\"]', '[\"bob@localhost\"]', '[]', '[]', '1591369965', 'Feedback from website', 'Customer name: thu\r\nCustomer email: yo@bigcustomer.com\r\nCustomer comment: \r\ni want you to contact me at sunday\n\n', NULL, 0, 0, 0, NULL, 1, 1, 1592645738, NULL, 'INBOX'),
-(1, '[\"vendor@vendor.com\"]', '[\"bob@localhost\"]', '[]', '[]', '1592147337', '1', '1\n\n', 'utf-8', 0, 1, 0, '<6c6b4635-ad26-f1db-1a61-46d056b8e025@vendor.com>', 1, 3, 1592645738, NULL, 'INBOX'),
-(1, '[]', '[\"bob@localhost\"]', '[]', '[]', '1592644528', 'Message delivery status', 'This is a delivery status message from the electronic mail server at\r\nlocalhost. A message appearing to originate from your address\r\nhas been delayed during delivery.\r\n\r\nMessage details:\r\n------------------------------------------------------------------\r\nOriginally submitted:      18 Jun 20, 21:19:16\r\nOriginator address:        bob@localhost\r\nMessage\'s subject:         f\r\nMessage\'s ID:              <a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>\r\n\r\nAfter 24 hours, the following addresses had delivery problems:\r\n\r\n   vendor@vendor.com [Temporary failure - still trying to deliver]\r\n\r\nThe server will continue to attempt to deliver your message to any\r\naddresses showing temporary errors. You do not need to take any\r\nfurther action at this time - this message is for your information\r\nonly.\n\n', 'US-ASCII', 0, 0, 0, NULL, 1, 4, 1592645738, NULL, 'INBOX'),
-(1, '[\"master@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489846', 'test', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>rw</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 0, 0, '<5q95sau0xg1i.n4xfuspdf3b2@DESKTOP-4S6HHAJ>', 1, 5, 1592645738, NULL, 'INBOX'),
-(1, '[\"master@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489306', 'test', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 1, 0, '<1pig1j0s0uai.eh92uvhxv7gb@DESKTOP-4S6HHAJ>', 1, 6, 1592645738, NULL, 'INBOX'),
-(1, '[\"ThienLang99999@gmail.com\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592488315', '1', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>2</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 2, 0, '<1zjc3bdhfce3.2otd92uw8em80@DESKTOP-4S6HHAJ>', 1, 7, 1592645738, NULL, 'INBOX'),
-(1, '[]', '[\"bob@localhost\"]', '[]', '[]', '1592645430', 'Message delivery status', 'This is a delivery status message from the electronic mail server at\r\nlocalhost. A message appearing to originate from your address\r\nhas been delayed during delivery.\r\n\r\nMessage details:\r\n------------------------------------------------------------------\r\nOriginally submitted:      18 Jun 20, 21:19:16\r\nOriginator address:        bob@localhost\r\nMessage\'s subject:         f\r\nMessage\'s ID:              <a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>\r\n\r\nAfter 3 hours, the following addresses had delivery problems:\r\n\r\n   vendor@vendor.com [Temporary failure - still trying to deliver]\r\n\r\nThe server will continue to attempt to deliver your message to any\r\naddresses showing temporary errors. You do not need to take any\r\nfurther action at this time - this message is for your information\r\nonly.\n\n', 'US-ASCII', 0, 0, 0, NULL, 1, 8, 1592645738, NULL, 'INBOX'),
-(1, '[\"master@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592645863', 'test', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>mail is sent from vtiger</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 0, 0, '<2cwgkvoo8vdz.2fo1rqexvxus0@DESKTOP-4S6HHAJ>', 1, 9, 1592646242, NULL, 'INBOX'),
-(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489940', 'f', 'f\n\n', 'utf-8', 0, 0, 0, '<a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>', 1, 1, 1592646433, NULL, 'Sent'),
-(1, '[\"bob@localhost\"]', '[\"vendor@localhost\"]', '[]', '[]', '1592490060', 'f', '2\n\n', 'utf-8', 0, 2, 0, '<7441ae58-9fc9-ae32-32a3-bd8b88c44f7a@localhost>', 1, 2, 1592646433, NULL, 'Sent'),
-(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592645640', 'Untitled', 'hi my friend\n\n', 'utf-8', 0, 0, 0, '<8588cdbf-a4be-35ad-d0a3-4640f68dbbf3@localhost>', 1, 3, 1592646433, NULL, 'Sent'),
-(1, '[\"ThienLang99999@gmail.com\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592488260', '1', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>2</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 2, 0, '<1zjc3bdhfce3.2otd92uw8em80@DESKTOP-4S6HHAJ>', 1, 1, 1592666939, NULL, 'Trash'),
-(1, '[]', '[\"bob@localhost\"]', '[]', '[]', '1592644500', 'Message delivery status', 'This is a delivery status message from the electronic mail server at\r\nlocalhost. A message appearing to originate from your address\r\nhas been delayed during delivery.\r\n\r\nMessage details:\r\n------------------------------------------------------------------\r\nOriginally submitted:      18 Jun 20, 21:19:16\r\nOriginator address:        bob@localhost\r\nMessage\'s subject:         f\r\nMessage\'s ID:              <a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>\r\n\r\nAfter 24 hours, the following addresses had delivery problems:\r\n\r\n   vendor@vendor.com [Temporary failure - still trying to deliver]\r\n\r\nThe server will continue to attempt to deliver your message to any\r\naddresses showing temporary errors. You do not need to take any\r\nfurther action at this time - this message is for your information\r\nonly.\n\n', 'US-ASCII', 0, 0, 0, NULL, 1, 2, 1592666939, NULL, 'Trash'),
-(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592667420', 'td', 'dg\n\n', 'utf-8', 0, 0, 0, '<f64a201a-dc14-9c50-22c2-24efff08d3ed@localhost>', 1, 4, 1592667589, NULL, 'Sent'),
-(1, '[\"webserver@example.com\"]', '[\"bob@localhost\"]', '[]', '[]', '1591369965', 'Feedback from website', 'Customer name: thu\r\nCustomer email: yo@bigcustomer.com\r\nCustomer comment: \r\ni want you to contact me at sunday\n\n', NULL, 0, 0, 0, NULL, 1, 3, 1592667614, NULL, 'Trash'),
-(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489940', 'f', 'f\n\n', 'utf-8', 0, 0, 0, '<a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>', 1, 4, 1592667614, NULL, 'Trash'),
-(1, '[\"bob@localhost\"]', '[\"vendor@localhost\"]', '[]', '[]', '1592490060', 'f', '2\n\n', 'utf-8', 0, 2, 0, '<7441ae58-9fc9-ae32-32a3-bd8b88c44f7a@localhost>', 1, 5, 1592667614, NULL, 'Trash'),
-(1, '[\"bob@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592645640', 'Untitled', 'hi my friend\n\n', 'utf-8', 0, 0, 0, '<8588cdbf-a4be-35ad-d0a3-4640f68dbbf3@localhost>', 1, 6, 1592667614, NULL, 'Trash');
+(1, '[\"webserver@example.com\"]', '[\"bob@localhost\"]', '[]', '[]', '1591369965', 'Feedback from website', 'Customer name: thu\r\nCustomer email: yo@bigcustomer.com\r\nCustomer comment: \r\ni want you to contact me at sunday\n\n', NULL, 0, 0, 0, NULL, 1, 1, 1595165185, NULL, ''),
+(1, '[\"vendor@vendor.com\"]', '[\"bob@localhost\"]', '[]', '[]', '1592147337', '1', '1\n\n', 'utf-8', 0, 1, 0, '<6c6b4635-ad26-f1db-1a61-46d056b8e025@vendor.com>', 1, 3, 1595165185, NULL, ''),
+(1, '[]', '[\"bob@localhost\"]', '[]', '[]', '1592644528', 'Message delivery status', 'This is a delivery status message from the electronic mail server at\r\nlocalhost. A message appearing to originate from your address\r\nhas been delayed during delivery.\r\n\r\nMessage details:\r\n------------------------------------------------------------------\r\nOriginally submitted:      18 Jun 20, 21:19:16\r\nOriginator address:        bob@localhost\r\nMessage\'s subject:         f\r\nMessage\'s ID:              <a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>\r\n\r\nAfter 24 hours, the following addresses had delivery problems:\r\n\r\n   vendor@vendor.com [Temporary failure - still trying to deliver]\r\n\r\nThe server will continue to attempt to deliver your message to any\r\naddresses showing temporary errors. You do not need to take any\r\nfurther action at this time - this message is for your information\r\nonly.\n\n', 'US-ASCII', 0, 0, 0, NULL, 1, 4, 1595165185, NULL, ''),
+(1, '[\"master@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489846', 'test', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>rw</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 0, 0, '<5q95sau0xg1i.n4xfuspdf3b2@DESKTOP-4S6HHAJ>', 1, 5, 1595165185, NULL, ''),
+(1, '[\"master@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592489306', 'test', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>1</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 1, 0, '<1pig1j0s0uai.eh92uvhxv7gb@DESKTOP-4S6HHAJ>', 1, 6, 1595165185, NULL, ''),
+(1, '[\"ThienLang99999@gmail.com\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592488315', '1', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>2</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 2, 0, '<1zjc3bdhfce3.2otd92uw8em80@DESKTOP-4S6HHAJ>', 1, 7, 1595165185, NULL, ''),
+(1, '[]', '[\"bob@localhost\"]', '[]', '[]', '1592645430', 'Message delivery status', 'This is a delivery status message from the electronic mail server at\r\nlocalhost. A message appearing to originate from your address\r\nhas been delayed during delivery.\r\n\r\nMessage details:\r\n------------------------------------------------------------------\r\nOriginally submitted:      18 Jun 20, 21:19:16\r\nOriginator address:        bob@localhost\r\nMessage\'s subject:         f\r\nMessage\'s ID:              <a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>\r\n\r\nAfter 3 hours, the following addresses had delivery problems:\r\n\r\n   vendor@vendor.com [Temporary failure - still trying to deliver]\r\n\r\nThe server will continue to attempt to deliver your message to any\r\naddresses showing temporary errors. You do not need to take any\r\nfurther action at this time - this message is for your information\r\nonly.\n\n', 'US-ASCII', 0, 0, 0, NULL, 1, 8, 1595165185, NULL, ''),
+(1, '[\"master@localhost\"]', '[\"vendor@vendor.com\"]', '[]', '[]', '1592645863', 'test', '<html>\r\n<head>\r\n	<title></title>\r\n</head>\r\n<body>mail is sent from vtiger</body>\r\n</html>\r\n\r\n\r\n\r\n<br><br>', 'us-ascii', 1, 0, 0, '<2cwgkvoo8vdz.2fo1rqexvxus0@DESKTOP-4S6HHAJ>', 1, 9, 1595165185, NULL, ''),
+(1, '[]', '[\"bob@localhost\"]', '[]', '[]', '1592887273', 'Message delivery status', 'This is a delivery status message from the electronic mail server at\r\nlocalhost. A message appearing to originate from your address\r\nhas been delayed during delivery.\r\n\r\nMessage details:\r\n------------------------------------------------------------------\r\nOriginally submitted:      18 Jun 20, 21:19:16\r\nOriginator address:        bob@localhost\r\nMessage\'s subject:         f\r\nMessage\'s ID:              <a9a7fa93-3394-48c0-3c9f-14d6d3dbc21f@localhost>\r\n\r\nAfter 72 hours, the following addresses had delivery problems:\r\n\r\n   vendor@vendor.com [Temporary failure - still trying to deliver]\r\n\r\nThe server will continue to attempt to deliver your message to any\r\naddresses showing temporary errors. You do not need to take any\r\nfurther action at this time - this message is for your information\r\nonly.\n\n', 'US-ASCII', 0, 0, 0, NULL, 1, 10, 1595165185, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -10628,21 +10955,21 @@ CREATE TABLE IF NOT EXISTS `vtiger_modentity_num` (
 --
 
 INSERT INTO `vtiger_modentity_num` (`num_id`, `semodule`, `prefix`, `start_id`, `cur_id`, `active`) VALUES
-(1, 'Leads', 'LEA', '1', '1', '1'),
+(1, 'Leads', 'LEA', '1', '2', '1'),
 (2, 'Accounts', 'ACC', '1', '1', '1'),
-(3, 'Campaigns', 'CAM', '1', '4', '1'),
+(3, 'Campaigns', 'CAM', '1', '5', '1'),
 (4, 'Contacts', 'CON', '1', '1', '1'),
-(5, 'Potentials', 'POT', '1', '1', '1'),
+(5, 'Potentials', 'POT', '1', '2', '1'),
 (6, 'HelpDesk', 'TT', '1', '1', '1'),
-(7, 'Quotes', 'QUO', '1', '1', '1'),
-(8, 'SalesOrder', 'SO', '1', '1', '1'),
+(7, 'Quotes', 'QUO', '1', '2', '1'),
+(8, 'SalesOrder', 'SO', '1', '2', '1'),
 (9, 'PurchaseOrder', 'PO', '1', '1', '1'),
-(10, 'Invoice', 'INV', '1', '1', '1'),
-(11, 'Products', 'PRO', '1', '2', '1'),
+(10, 'Invoice', 'INV', '1', '2', '1'),
+(11, 'Products', 'PRO', '1', '3', '1'),
 (12, 'Vendors', 'VEN', '1', '3', '1'),
 (13, 'PriceBooks', 'PB', '1', '1', '1'),
 (14, 'Faq', 'FAQ', '1', '1', '1'),
-(15, 'Documents', 'DOC', '1', '1', '1'),
+(15, 'Documents', 'DOC', '1', '2', '1'),
 (16, 'ServiceContracts', 'SERCON', '1', '1', '1'),
 (17, 'Services', 'SER', '1', '1', '1'),
 (18, 'Assets', 'ASSET', '1', '1', '1'),
@@ -10727,7 +11054,33 @@ INSERT INTO `vtiger_modtracker_basic` (`id`, `crmid`, `module`, `whodid`, `chang
 (35, 58, 'Emails', 1, '2020-06-20 09:47:50', 2),
 (36, 50, 'Vendors', 1, '2020-06-20 09:47:50', 4),
 (37, 59, 'Vendors', 1, '2020-06-23 13:35:09', 2),
-(38, 59, 'Vendors', 1, '2020-06-23 13:35:37', 1);
+(38, 59, 'Vendors', 1, '2020-06-23 13:35:37', 1),
+(39, 63, 'Campaigns', 1, '2020-07-16 14:02:43', 2),
+(40, 64, 'Leads', 1, '2020-07-16 14:08:00', 2),
+(41, 66, 'Potentials', 1, '2020-07-16 14:34:53', 2),
+(42, 31, 'Products', 1, '2020-07-16 14:46:11', 0),
+(43, 31, 'Products', 1, '2020-07-16 14:46:18', 0),
+(44, 31, 'Products', 1, '2020-07-16 14:59:31', 0),
+(45, 31, 'Products', 1, '2020-07-16 14:59:41', 0),
+(46, 67, 'Quotes', 1, '2020-07-16 15:03:21', 2),
+(47, 67, 'Quotes', 1, '2020-07-16 15:04:06', 0),
+(48, 67, 'Quotes', 1, '2020-07-16 15:04:23', 0),
+(49, 67, 'Quotes', 1, '2020-07-16 15:04:41', 0),
+(50, 31, 'Products', 1, '2020-07-19 08:25:41', 0),
+(51, 71, 'Products', 1, '2020-07-19 09:05:53', 2),
+(52, 71, 'Products', 1, '2020-07-19 09:10:53', 0),
+(53, 71, 'Products', 1, '2020-07-19 09:11:00', 0),
+(54, 71, 'Products', 1, '2020-07-19 09:11:07', 0),
+(55, 71, 'Products', 1, '2020-07-19 09:11:11', 0),
+(56, 71, 'Products', 1, '2020-07-19 09:11:14', 0),
+(57, 78, 'Documents', 1, '2020-07-19 13:37:45', 2),
+(58, 80, 'SalesOrder', 1, '2020-07-19 16:08:46', 2),
+(59, 80, 'SalesOrder', 1, '2020-07-19 16:09:12', 0),
+(60, 80, 'SalesOrder', 1, '2020-07-19 16:09:25', 0),
+(61, 80, 'SalesOrder', 1, '2020-07-19 16:09:30', 0),
+(62, 80, 'SalesOrder', 1, '2020-07-19 16:10:40', 0),
+(63, 81, 'Invoice', 1, '2020-07-19 16:45:52', 2),
+(64, 81, 'Invoice', 1, '2020-07-19 16:46:32', 0);
 
 -- --------------------------------------------------------
 
@@ -10744,7 +11097,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_modtracker_basic_seq` (
 --
 
 INSERT INTO `vtiger_modtracker_basic_seq` (`id`) VALUES
-(38);
+(64);
 
 -- --------------------------------------------------------
 
@@ -11157,7 +11510,181 @@ INSERT INTO `vtiger_modtracker_detail` (`id`, `fieldname`, `prevalue`, `postvalu
 (37, 'assigned_user_id', NULL, '1'),
 (37, 'source', NULL, 'CRM'),
 (37, 'record_id', NULL, '59'),
-(37, 'record_module', NULL, 'Vendors');
+(37, 'record_module', NULL, 'Vendors'),
+(39, 'label', NULL, 'Quảng c&aacute;o chương tr&igrave;nh khuyến m&atilde;i'),
+(39, 'campaignname', NULL, 'Quảng c&aacute;o chương tr&igrave;nh khuyến m&atilde;i'),
+(39, 'campaign_no', NULL, 'CAM4'),
+(39, 'campaigntype', NULL, 'Advertisement'),
+(39, 'campaignstatus', NULL, 'Planning'),
+(39, 'closingdate', NULL, '2021-02-19'),
+(39, 'assigned_user_id', NULL, '5'),
+(39, 'targetaudience', NULL, 'Kh&aacute;ch h&agrave;ng tiềm năng'),
+(39, 'createdtime', NULL, '2020-07-16 14:02:43'),
+(39, 'modifiedby', NULL, '1'),
+(39, 'expectedrevenue', NULL, '0.00000000'),
+(39, 'budgetcost', NULL, '0.00000000'),
+(39, 'actualcost', NULL, '0.00000000'),
+(39, 'expectedroi', NULL, '0.00000000'),
+(39, 'actualroi', NULL, '0.00000000'),
+(39, 'source', NULL, 'CRM'),
+(39, 'cf_1262', NULL, '62'),
+(39, 'cf_1270', NULL, '34'),
+(39, 'record_id', NULL, '63'),
+(39, 'record_module', NULL, 'Campaigns'),
+(40, 'label', NULL, 'Thư B&ugrave;i Nguyễn'),
+(40, 'salutationtype', NULL, 'Mrs.'),
+(40, 'firstname', NULL, 'Thư'),
+(40, 'lead_no', NULL, 'LEA1'),
+(40, 'phone', NULL, '038918086'),
+(40, 'lastname', NULL, 'B&ugrave;i Nguyễn'),
+(40, 'company', NULL, 'BNT'),
+(40, 'email', NULL, 'vendor@vendor.com'),
+(40, 'leadsource', NULL, 'Conference'),
+(40, 'industry', NULL, 'Shipping'),
+(40, 'leadstatus', NULL, 'Contacted'),
+(40, 'annualrevenue', NULL, '0.00000000'),
+(40, 'noofemployees', NULL, '10'),
+(40, 'assigned_user_id', NULL, '2'),
+(40, 'createdtime', NULL, '2020-07-16 14:08:00'),
+(40, 'modifiedby', NULL, '1'),
+(40, 'source', NULL, 'CRM'),
+(40, 'record_id', NULL, '64'),
+(40, 'record_module', NULL, 'Leads'),
+(41, 'label', NULL, 'Hội chợ Samsung 2020'),
+(41, 'potentialname', NULL, 'Hội chợ Samsung 2020'),
+(41, 'potential_no', NULL, 'POT1'),
+(41, 'amount', NULL, '0.00000000'),
+(41, 'closingdate', NULL, '2020-07-25'),
+(41, 'opportunity_type', NULL, 'New Business'),
+(41, 'leadsource', NULL, 'Trade Show'),
+(41, 'sales_stage', NULL, 'Prospecting'),
+(41, 'assigned_user_id', NULL, '1'),
+(41, 'probability', NULL, '0.000'),
+(41, 'createdtime', NULL, '2020-07-16 14:34:53'),
+(41, 'modifiedby', NULL, '1'),
+(41, 'forecast_amount', NULL, '0.00000000'),
+(41, 'source', NULL, 'CRM'),
+(41, 'record_id', NULL, '66'),
+(41, 'record_module', NULL, 'Potentials'),
+(42, 'usageunit', '', 'Pack'),
+(43, 'qty_per_unit', '0.00', '20.00'),
+(44, 'qtyinstock', '0.000', '20.000'),
+(45, 'qty_per_unit', '20.00', '0.00'),
+(46, 'quote_no', NULL, 'QUO1'),
+(46, 'hdnSubTotal', NULL, '2000000.00000000'),
+(46, 'txtAdjustment', NULL, '0.00000000'),
+(46, 'hdnGrandTotal', NULL, '2540000.00000000'),
+(46, 'hdnTaxType', NULL, 'group'),
+(46, 'hdnS_H_Amount', NULL, '0.00000000'),
+(46, 'assigned_user_id', NULL, '1'),
+(46, 'createdtime', NULL, '2020-07-16 15:03:21'),
+(46, 'modifiedby', NULL, '1'),
+(46, 'currency_id', NULL, '1'),
+(46, 'conversion_rate', NULL, '1.000'),
+(46, 'productid', NULL, '31'),
+(46, 'quantity', NULL, '20.000'),
+(46, 'listprice', NULL, '100000.00000000'),
+(46, 'tax1', NULL, '4.500'),
+(46, 'tax2', NULL, '10.000'),
+(46, 'tax3', NULL, '12.500'),
+(46, 'pre_tax_total', NULL, '2000000.00000000'),
+(46, 'source', NULL, 'CRM'),
+(46, 'record_id', NULL, '67'),
+(46, 'record_module', NULL, 'Quotes'),
+(47, 'potential_id', '', '66'),
+(48, 'label', '', 'B&aacute;o gi&aacute; cho hội chợ'),
+(48, 'subject', '', 'B&aacute;o gi&aacute; cho hội chợ'),
+(49, 'quotestage', '', 'Created'),
+(50, 'qty_per_unit', '0.00', '20.00'),
+(51, 'product_no', NULL, 'PRO2'),
+(51, 'createdtime', NULL, '2020-07-19 09:05:53'),
+(51, 'modifiedby', NULL, '1'),
+(51, 'unit_price', NULL, '50000.00000000'),
+(51, 'commissionrate', NULL, '0.000'),
+(51, 'qty_per_unit', NULL, '0.00'),
+(51, 'qtyinstock', NULL, '0.000'),
+(51, 'assigned_user_id', NULL, '1'),
+(51, 'purchase_cost', NULL, '0.00000000'),
+(51, 'source', NULL, 'CRM'),
+(51, 'record_id', NULL, '71'),
+(51, 'record_module', NULL, 'Products'),
+(52, 'label', '', 'Chuot'),
+(52, 'productname', '', 'Chuot'),
+(53, 'discontinued', '0', '1'),
+(54, 'usageunit', '', 'Box'),
+(55, 'qtyinstock', '0.000', '20.000'),
+(56, 'qty_per_unit', '0.00', '20.00'),
+(57, 'label', NULL, 'Mẫu b&aacute;o gi&aacute;'),
+(57, 'notes_title', NULL, 'Mẫu b&aacute;o gi&aacute;'),
+(57, 'createdtime', NULL, '2020-07-19 13:37:45'),
+(57, 'filename', NULL, 'mau-bang-bao-gia-excel.xls'),
+(57, 'assigned_user_id', NULL, '5'),
+(57, 'filetype', NULL, 'application/octet-stream'),
+(57, 'filesize', NULL, '69120'),
+(57, 'filelocationtype', NULL, 'I'),
+(57, 'filestatus', NULL, '1'),
+(57, 'folderid', NULL, '1'),
+(57, 'note_no', NULL, 'DOC1'),
+(57, 'modifiedby', NULL, '1'),
+(57, 'source', NULL, 'CRM'),
+(57, 'record_id', NULL, '78'),
+(57, 'record_module', NULL, 'Documents'),
+(58, 'salesorder_no', NULL, 'SO1'),
+(58, 'txtAdjustment', NULL, '0.00000000'),
+(58, 'salescommission', NULL, '0.000'),
+(58, 'exciseduty', NULL, '0.000'),
+(58, 'hdnGrandTotal', NULL, '317500.00000000'),
+(58, 'hdnSubTotal', NULL, '250000.00000000'),
+(58, 'hdnTaxType', NULL, 'group'),
+(58, 'hdnS_H_Amount', NULL, '0.00000000'),
+(58, 'assigned_user_id', NULL, '1'),
+(58, 'createdtime', NULL, '2020-07-19 16:08:46'),
+(58, 'modifiedby', NULL, '1'),
+(58, 'currency_id', NULL, '1'),
+(58, 'conversion_rate', NULL, '1.000'),
+(58, 'productid', NULL, '71'),
+(58, 'quantity', NULL, '5.000'),
+(58, 'listprice', NULL, '50000.00000000'),
+(58, 'tax1', NULL, '4.500'),
+(58, 'tax2', NULL, '10.000'),
+(58, 'tax3', NULL, '12.500'),
+(58, 'pre_tax_total', NULL, '250000.00000000'),
+(58, 'source', NULL, 'CRM'),
+(58, 'record_id', NULL, '80'),
+(58, 'record_module', NULL, 'SalesOrder'),
+(59, 'label', '', 'S'),
+(59, 'subject', '', 'S'),
+(60, 'bill_street', '', 'A'),
+(61, 'ship_street', '', 'V'),
+(62, 'customerno', '', 'DN-0'),
+(63, 'txtAdjustment', NULL, '0.00000000'),
+(63, 'salescommission', NULL, '0.000'),
+(63, 'exciseduty', NULL, '0.000'),
+(63, 'hdnSubTotal', NULL, '250000.00000000'),
+(63, 'hdnGrandTotal', NULL, '317500.00000000'),
+(63, 'hdnTaxType', NULL, 'group'),
+(63, 'hdnS_H_Amount', NULL, '0.00000000'),
+(63, 'assigned_user_id', NULL, '1'),
+(63, 'createdtime', NULL, '2020-07-19 16:45:52'),
+(63, 'modifiedby', NULL, '1'),
+(63, 'currency_id', NULL, '1'),
+(63, 'conversion_rate', NULL, '1.000'),
+(63, 'invoice_no', NULL, 'INV1'),
+(63, 'productid', NULL, '71'),
+(63, 'quantity', NULL, '5.000'),
+(63, 'listprice', NULL, '50000.00000000'),
+(63, 'tax1', NULL, '4.500'),
+(63, 'tax2', NULL, '10.000'),
+(63, 'tax3', NULL, '12.500'),
+(63, 'pre_tax_total', NULL, '250000.00000000'),
+(63, 'received', NULL, '0.00000000'),
+(63, 'balance', NULL, '317500.00000000'),
+(63, 'hdnS_H_Percent', NULL, '0.00000000'),
+(63, 'source', NULL, 'CRM'),
+(63, 'record_id', NULL, '81'),
+(63, 'record_module', NULL, 'Invoice'),
+(64, 'label', '', 'H&oacute;a đơn Test'),
+(64, 'subject', '', 'H&oacute;a đơn Test');
 
 -- --------------------------------------------------------
 
@@ -11298,6 +11825,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_notes` (
   KEY `notes_notesid_idx` (`notesid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_notes`
+--
+
+INSERT INTO `vtiger_notes` (`notesid`, `note_no`, `title`, `filename`, `notecontent`, `folderid`, `filetype`, `filelocationtype`, `filedownloadcount`, `filestatus`, `filesize`, `fileversion`, `tags`) VALUES
+(78, 'DOC1', 'Mẫu báo giá', 'mau-bang-bao-gia-excel.xls', '', 1, 'application/octet-stream', 'I', 1, 1, 69120, '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -11309,6 +11843,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_notescf` (
   `cf_1288` varchar(255) DEFAULT '',
   PRIMARY KEY (`notesid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_notescf`
+--
+
+INSERT INTO `vtiger_notescf` (`notesid`, `cf_1288`) VALUES
+(78, '');
 
 -- --------------------------------------------------------
 
@@ -12050,7 +12591,9 @@ CREATE TABLE IF NOT EXISTS `vtiger_phuongtientruyenthong` (
 --
 
 INSERT INTO `vtiger_phuongtientruyenthong` (`phuongtientruyenthongid`, `pttt`, `motachitiet`, `tags`) VALUES
-(33, '[\"Facebook\"]', 'Chạy Facebook ads', '');
+(33, '[\"Facebook\"]', 'Chạy Facebook ads', ''),
+(61, '[\"Google\"]', 'SEO', ''),
+(62, '[\"Youtube\"]', '', '');
 
 -- --------------------------------------------------------
 
@@ -12068,7 +12611,9 @@ CREATE TABLE IF NOT EXISTS `vtiger_phuongtientruyenthongcf` (
 --
 
 INSERT INTO `vtiger_phuongtientruyenthongcf` (`phuongtientruyenthongid`) VALUES
-(33);
+(33),
+(61),
+(62);
 
 -- --------------------------------------------------------
 
@@ -12395,6 +12940,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_potential` (
   KEY `potentail_sales_stage_amount_idx` (`amount`,`sales_stage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_potential`
+--
+
+INSERT INTO `vtiger_potential` (`potentialid`, `potential_no`, `related_to`, `potentialname`, `amount`, `currency`, `closingdate`, `typeofrevenue`, `nextstep`, `private`, `probability`, `campaignid`, `sales_stage`, `potentialtype`, `leadsource`, `productid`, `productversion`, `quotationref`, `partnercontact`, `remarks`, `runtimefee`, `followupdate`, `evaluationstatus`, `description`, `forecastcategory`, `outcomeanalysis`, `forecast_amount`, `isconvertedfromlead`, `contact_id`, `tags`, `converted`) VALUES
+(66, 'POT1', 0, 'Hội chợ Samsung 2020', '0.00000000', NULL, '2020-07-25', NULL, '', 0, '0.000', 0, 'Prospecting', 'New Business', 'Trade Show', NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, 0, 0, '0.00000000', '0', 0, '', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -12405,6 +12957,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_potentialscf` (
   `potentialid` int(19) NOT NULL DEFAULT 0,
   PRIMARY KEY (`potentialid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_potentialscf`
+--
+
+INSERT INTO `vtiger_potentialscf` (`potentialid`) VALUES
+(66);
 
 -- --------------------------------------------------------
 
@@ -12496,6 +13055,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_problemcategory` (
   PRIMARY KEY (`problemcategoryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_problemcategory`
+--
+
+INSERT INTO `vtiger_problemcategory` (`problemcategoryid`, `loaivande`, `tags`) VALUES
+(72, '[\"L\\u1ed7i k\\u0129 thu\\u1eadt\"]', '');
+
 -- --------------------------------------------------------
 
 --
@@ -12507,6 +13073,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_problemcategorycf` (
   `cf_1207` text DEFAULT NULL,
   PRIMARY KEY (`problemcategoryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_problemcategorycf`
+--
+
+INSERT INTO `vtiger_problemcategorycf` (`problemcategoryid`, `cf_1207`) VALUES
+(72, 'Ghi chú và thông báo lại');
 
 -- --------------------------------------------------------
 
@@ -12567,7 +13140,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_productcf` (
 --
 
 INSERT INTO `vtiger_productcf` (`productid`) VALUES
-(31);
+(31),
+(71);
 
 -- --------------------------------------------------------
 
@@ -12581,6 +13155,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_productcurrencyrel` (
   `converted_price` decimal(28,8) DEFAULT NULL,
   `actual_price` decimal(28,8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_productcurrencyrel`
+--
+
+INSERT INTO `vtiger_productcurrencyrel` (`productid`, `currencyid`, `converted_price`, `actual_price`) VALUES
+(71, 1, '50000.00000000', '50000.00000000');
 
 -- --------------------------------------------------------
 
@@ -12632,7 +13213,8 @@ CREATE TABLE IF NOT EXISTS `vtiger_products` (
 --
 
 INSERT INTO `vtiger_products` (`productid`, `product_no`, `productname`, `productcode`, `productcategory`, `manufacturer`, `qty_per_unit`, `unit_price`, `weight`, `pack_size`, `sales_start_date`, `sales_end_date`, `start_date`, `expiry_date`, `cost_factor`, `commissionrate`, `commissionmethod`, `discontinued`, `usageunit`, `reorderlevel`, `website`, `taxclass`, `mfr_part_no`, `vendor_part_no`, `serialno`, `qtyinstock`, `productsheet`, `qtyindemand`, `glacct`, `vendor_id`, `imagename`, `currency_id`, `is_subproducts_viewable`, `purchase_cost`, `tags`) VALUES
-(31, 'PRO1', 'Máy tính', '', '', '', '0.00', '100000.00000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.000', NULL, 1, '', 0, '', '', '', '', '', '0.000', '', 0, '', 0, '', 1, 1, '0.00000000', '');
+(31, 'PRO1', 'Máy tính', '', '', '', '20.00', '100000.00000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.000', NULL, 1, 'Pack', 0, '', '', '', '', '', '20.000', '', 0, '', 0, '', 1, 1, '0.00000000', ''),
+(71, 'PRO2', 'Chuot', '', '', '', '20.00', '50000.00000000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.000', NULL, 1, 'Box', 0, '', '', '', '', '', '15.000', '', 0, '', 0, '', 1, 1, '0.00000000', '');
 
 -- --------------------------------------------------------
 
@@ -12671,7 +13253,10 @@ INSERT INTO `vtiger_profile` (`profileid`, `profilename`, `description`, `direct
 (1, 'Administrator', 'Admin Profile', 0),
 (2, 'Sales Profile', 'Profile Related to Sales', 0),
 (3, 'Support Profile', 'Profile Related to Support', 0),
-(4, 'Guest Profile', 'Guest Profile for Test Users', 0);
+(4, 'Guest Profile', 'Guest Profile for Test Users', 0),
+(5, 'Marketing Manager+Profile', NULL, 1),
+(6, 'Marketing Person+Profile', NULL, 1),
+(7, 'Marketing Profile', 'Profile related to Marketing', 0);
 
 -- --------------------------------------------------------
 
@@ -13875,6 +14460,8 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (1, 73, 1300, 0, 0),
 (1, 73, 1301, 0, 0),
 (1, 73, 1302, 0, 0),
+(1, 20, 1303, 0, 0),
+(1, 23, 1304, 0, 0),
 (2, 6, 1, 0, 0),
 (2, 6, 2, 0, 0),
 (2, 6, 3, 0, 0),
@@ -15054,6 +15641,8 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (2, 73, 1300, 0, 0),
 (2, 73, 1301, 0, 0),
 (2, 73, 1302, 0, 0),
+(2, 20, 1303, 0, 0),
+(2, 23, 1304, 0, 0),
 (3, 6, 1, 0, 0),
 (3, 6, 2, 0, 0),
 (3, 6, 3, 0, 0),
@@ -15485,13 +16074,13 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 22, 429, 0, 0),
 (3, 22, 430, 0, 0),
 (3, 22, 431, 0, 0),
-(3, 22, 432, 0, 0),
+(3, 22, 432, 0, 0);
+INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
 (3, 22, 433, 0, 0),
 (3, 22, 434, 0, 0),
 (3, 22, 435, 0, 0),
 (3, 23, 436, 0, 0),
-(3, 23, 437, 0, 0);
-INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
+(3, 23, 437, 0, 0),
 (3, 23, 438, 0, 0),
 (3, 23, 439, 0, 0),
 (3, 23, 440, 0, 0),
@@ -16234,6 +16823,8 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (3, 73, 1300, 0, 0),
 (3, 73, 1301, 0, 0),
 (3, 73, 1302, 0, 0),
+(3, 20, 1303, 0, 0),
+(3, 23, 1304, 0, 0),
 (4, 6, 1, 0, 0),
 (4, 6, 2, 0, 0),
 (4, 6, 3, 0, 0),
@@ -17412,7 +18003,1681 @@ INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, 
 (4, 73, 1299, 0, 0),
 (4, 73, 1300, 0, 0),
 (4, 73, 1301, 0, 0),
-(4, 73, 1302, 0, 0);
+(4, 73, 1302, 0, 0),
+(4, 20, 1303, 0, 0),
+(4, 23, 1304, 0, 0),
+(5, 7, 37, 0, 0),
+(5, 7, 38, 0, 0),
+(5, 7, 39, 0, 0),
+(5, 7, 40, 0, 0),
+(5, 7, 41, 0, 0),
+(5, 7, 42, 0, 0),
+(5, 7, 43, 0, 0),
+(5, 7, 44, 0, 0),
+(5, 7, 45, 0, 0),
+(5, 7, 46, 0, 0),
+(5, 7, 47, 0, 0),
+(5, 7, 48, 0, 0),
+(5, 7, 49, 0, 0),
+(5, 7, 50, 0, 0),
+(5, 7, 51, 0, 0),
+(5, 7, 52, 0, 0),
+(5, 7, 53, 0, 0),
+(5, 7, 54, 0, 0),
+(5, 7, 55, 0, 0),
+(5, 7, 56, 0, 1),
+(5, 7, 57, 0, 1),
+(5, 7, 58, 0, 0),
+(5, 7, 59, 0, 0),
+(5, 7, 60, 0, 0),
+(5, 7, 61, 0, 0),
+(5, 7, 62, 0, 0),
+(5, 7, 63, 0, 0),
+(5, 7, 64, 0, 0),
+(5, 7, 65, 0, 0),
+(5, 2, 110, 0, 0),
+(5, 2, 111, 0, 0),
+(5, 2, 112, 0, 0),
+(5, 2, 113, 0, 0),
+(5, 2, 114, 0, 0),
+(5, 2, 115, 0, 0),
+(5, 2, 116, 0, 0),
+(5, 2, 117, 0, 0),
+(5, 2, 118, 0, 0),
+(5, 2, 119, 0, 0),
+(5, 2, 120, 0, 0),
+(5, 2, 121, 0, 0),
+(5, 2, 122, 0, 1),
+(5, 2, 123, 0, 1),
+(5, 2, 124, 0, 0),
+(5, 2, 125, 0, 0),
+(5, 26, 126, 0, 0),
+(5, 26, 127, 0, 0),
+(5, 26, 128, 0, 0),
+(5, 26, 129, 0, 0),
+(5, 26, 130, 0, 0),
+(5, 26, 131, 0, 0),
+(5, 26, 132, 0, 0),
+(5, 26, 133, 0, 0),
+(5, 26, 134, 0, 0),
+(5, 26, 135, 0, 0),
+(5, 26, 136, 0, 0),
+(5, 26, 137, 0, 1),
+(5, 26, 138, 0, 1),
+(5, 26, 139, 0, 0),
+(5, 26, 140, 0, 0),
+(5, 26, 141, 0, 0),
+(5, 26, 142, 0, 0),
+(5, 26, 143, 0, 0),
+(5, 26, 144, 0, 0),
+(5, 26, 145, 0, 0),
+(5, 26, 146, 0, 0),
+(5, 26, 147, 0, 0),
+(5, 26, 148, 0, 0),
+(5, 26, 149, 0, 0),
+(5, 26, 150, 0, 0),
+(5, 14, 174, 0, 0),
+(5, 14, 175, 0, 0),
+(5, 14, 176, 0, 0),
+(5, 14, 177, 0, 0),
+(5, 14, 178, 0, 0),
+(5, 14, 179, 0, 0),
+(5, 14, 180, 0, 0),
+(5, 14, 181, 0, 0),
+(5, 14, 182, 0, 0),
+(5, 14, 183, 0, 0),
+(5, 14, 184, 0, 0),
+(5, 14, 185, 0, 0),
+(5, 14, 186, 0, 0),
+(5, 14, 187, 0, 0),
+(5, 14, 188, 0, 0),
+(5, 14, 189, 0, 0),
+(5, 14, 190, 0, 0),
+(5, 14, 191, 0, 1),
+(5, 14, 192, 0, 1),
+(5, 14, 193, 0, 0),
+(5, 14, 194, 0, 0),
+(5, 14, 195, 0, 0),
+(5, 14, 197, 0, 0),
+(5, 14, 198, 0, 0),
+(5, 14, 199, 0, 0),
+(5, 14, 200, 0, 0),
+(5, 14, 201, 0, 0),
+(5, 14, 202, 0, 0),
+(5, 14, 203, 0, 0),
+(5, 14, 204, 0, 0),
+(5, 8, 205, 0, 0),
+(5, 8, 206, 0, 1),
+(5, 8, 207, 0, 1),
+(5, 8, 208, 0, 0),
+(5, 8, 209, 0, 0),
+(5, 8, 210, 0, 0),
+(5, 8, 211, 0, 1),
+(5, 8, 212, 0, 1),
+(5, 8, 213, 0, 0),
+(5, 8, 214, 0, 0),
+(5, 8, 215, 0, 0),
+(5, 8, 216, 0, 1),
+(5, 8, 217, 0, 0),
+(5, 8, 218, 0, 0),
+(5, 8, 219, 0, 0),
+(5, 10, 220, 0, 0),
+(5, 10, 221, 0, 0),
+(5, 10, 222, 0, 0),
+(5, 10, 223, 0, 0),
+(5, 10, 224, 0, 0),
+(5, 10, 225, 0, 0),
+(5, 10, 226, 0, 0),
+(5, 10, 227, 0, 0),
+(5, 10, 228, 0, 0),
+(5, 10, 229, 0, 1),
+(5, 10, 230, 0, 0),
+(5, 10, 231, 0, 0),
+(5, 9, 232, 0, 0),
+(5, 9, 233, 0, 0),
+(5, 9, 234, 0, 0),
+(5, 9, 235, 0, 0),
+(5, 9, 236, 0, 0),
+(5, 9, 237, 0, 0),
+(5, 9, 238, 0, 0),
+(5, 9, 239, 0, 0),
+(5, 9, 240, 0, 0),
+(5, 9, 241, 0, 0),
+(5, 9, 242, 0, 0),
+(5, 9, 243, 0, 0),
+(5, 9, 244, 0, 1),
+(5, 9, 245, 0, 1),
+(5, 9, 246, 0, 0),
+(5, 9, 247, 0, 0),
+(5, 9, 248, 0, 0),
+(5, 9, 249, 0, 0),
+(5, 9, 250, 0, 0),
+(5, 9, 251, 0, 0),
+(5, 9, 252, 0, 0),
+(5, 9, 253, 0, 0),
+(5, 9, 254, 0, 0),
+(5, 9, 255, 0, 0),
+(5, 16, 256, 0, 0),
+(5, 16, 257, 0, 0),
+(5, 16, 258, 0, 0),
+(5, 16, 259, 0, 0),
+(5, 16, 260, 0, 0),
+(5, 16, 261, 0, 0),
+(5, 16, 262, 0, 0),
+(5, 16, 263, 0, 0),
+(5, 16, 264, 0, 0),
+(5, 16, 265, 0, 0),
+(5, 16, 266, 0, 0),
+(5, 16, 267, 0, 0),
+(5, 16, 268, 0, 0),
+(5, 16, 269, 0, 0),
+(5, 16, 270, 0, 1),
+(5, 16, 271, 0, 1),
+(5, 16, 272, 0, 0),
+(5, 16, 273, 0, 0),
+(5, 16, 274, 0, 0),
+(5, 16, 275, 0, 0),
+(5, 16, 276, 0, 0),
+(5, 16, 277, 0, 0),
+(5, 16, 278, 0, 0),
+(5, 18, 289, 0, 0),
+(5, 18, 290, 0, 0),
+(5, 18, 291, 0, 0),
+(5, 18, 292, 0, 0),
+(5, 18, 293, 0, 0),
+(5, 18, 294, 0, 0),
+(5, 18, 295, 0, 0),
+(5, 18, 296, 0, 1),
+(5, 18, 297, 0, 1),
+(5, 18, 298, 0, 0),
+(5, 18, 299, 0, 0),
+(5, 18, 300, 0, 0),
+(5, 18, 301, 0, 0),
+(5, 18, 302, 0, 0),
+(5, 18, 303, 0, 0),
+(5, 18, 304, 0, 0),
+(5, 18, 305, 0, 0),
+(5, 20, 314, 0, 0),
+(5, 20, 315, 0, 0),
+(5, 20, 316, 0, 0),
+(5, 20, 317, 0, 0),
+(5, 20, 318, 0, 0),
+(5, 20, 320, 0, 0),
+(5, 20, 321, 0, 0),
+(5, 20, 322, 0, 0),
+(5, 20, 323, 0, 0),
+(5, 20, 324, 0, 0),
+(5, 20, 325, 0, 0),
+(5, 20, 326, 0, 0),
+(5, 20, 327, 0, 0),
+(5, 20, 328, 0, 0),
+(5, 20, 329, 0, 0),
+(5, 20, 331, 0, 0),
+(5, 20, 332, 0, 1),
+(5, 20, 333, 0, 1),
+(5, 20, 334, 0, 0),
+(5, 20, 335, 0, 0),
+(5, 20, 336, 0, 0),
+(5, 20, 337, 0, 0),
+(5, 20, 338, 0, 0),
+(5, 20, 339, 0, 0),
+(5, 20, 340, 0, 0),
+(5, 20, 341, 0, 0),
+(5, 20, 342, 0, 0),
+(5, 20, 343, 0, 0),
+(5, 20, 344, 0, 0),
+(5, 20, 345, 0, 0),
+(5, 20, 346, 0, 0),
+(5, 20, 347, 0, 0),
+(5, 20, 348, 0, 0),
+(5, 20, 349, 0, 0),
+(5, 20, 350, 0, 0),
+(5, 22, 389, 0, 0),
+(5, 22, 390, 0, 0),
+(5, 22, 391, 0, 0),
+(5, 22, 392, 0, 0),
+(5, 22, 393, 0, 0),
+(5, 22, 394, 0, 0),
+(5, 22, 396, 0, 0),
+(5, 22, 397, 0, 0),
+(5, 22, 398, 0, 0),
+(5, 22, 399, 0, 0),
+(5, 22, 400, 0, 0),
+(5, 22, 401, 0, 0),
+(5, 22, 402, 0, 0),
+(5, 22, 403, 0, 0),
+(5, 22, 404, 0, 0),
+(5, 22, 405, 0, 0),
+(5, 22, 406, 0, 0),
+(5, 22, 407, 0, 0),
+(5, 22, 408, 0, 0),
+(5, 22, 410, 0, 0),
+(5, 22, 411, 0, 1),
+(5, 22, 412, 0, 1),
+(5, 22, 413, 0, 0),
+(5, 22, 414, 0, 0),
+(5, 22, 415, 0, 0),
+(5, 22, 416, 0, 0),
+(5, 22, 417, 0, 0),
+(5, 22, 418, 0, 0),
+(5, 22, 419, 0, 0),
+(5, 22, 420, 0, 0),
+(5, 22, 421, 0, 0),
+(5, 22, 422, 0, 0),
+(5, 22, 423, 0, 0),
+(5, 22, 424, 0, 0),
+(5, 22, 425, 0, 0),
+(5, 22, 426, 0, 0),
+(5, 22, 427, 0, 0),
+(5, 22, 428, 0, 0),
+(5, 22, 429, 0, 0),
+(5, 22, 430, 0, 0),
+(5, 22, 431, 0, 0),
+(5, 22, 432, 0, 0),
+(5, 22, 433, 0, 0),
+(5, 22, 434, 0, 0),
+(5, 22, 435, 0, 0),
+(5, 23, 436, 0, 0),
+(5, 23, 437, 0, 0),
+(5, 23, 440, 0, 0),
+(5, 23, 441, 0, 0),
+(5, 23, 442, 0, 0),
+(5, 23, 443, 0, 0),
+(5, 23, 444, 0, 0),
+(5, 23, 445, 0, 0),
+(5, 23, 446, 0, 0),
+(5, 23, 447, 0, 0),
+(5, 23, 448, 0, 0),
+(5, 23, 449, 0, 0),
+(5, 23, 450, 0, 0),
+(5, 23, 451, 0, 0),
+(5, 23, 453, 0, 0),
+(5, 23, 454, 0, 0),
+(5, 23, 455, 0, 1),
+(5, 23, 456, 0, 1),
+(5, 23, 457, 0, 0),
+(5, 23, 458, 0, 0),
+(5, 23, 459, 0, 0),
+(5, 23, 460, 0, 0),
+(5, 23, 461, 0, 0),
+(5, 23, 462, 0, 0),
+(5, 23, 463, 0, 0),
+(5, 23, 464, 0, 0),
+(5, 23, 465, 0, 0),
+(5, 23, 466, 0, 0),
+(5, 23, 467, 0, 0),
+(5, 23, 468, 0, 0),
+(5, 23, 469, 0, 0),
+(5, 23, 470, 0, 0),
+(5, 23, 471, 0, 0),
+(5, 23, 472, 0, 0),
+(5, 23, 473, 0, 0),
+(5, 23, 474, 0, 0),
+(5, 29, 475, 0, 0),
+(5, 29, 479, 0, 0),
+(5, 29, 480, 0, 0),
+(5, 29, 481, 0, 0),
+(5, 29, 482, 0, 0),
+(5, 29, 489, 0, 0),
+(5, 29, 490, 0, 0),
+(5, 29, 491, 0, 0),
+(5, 29, 492, 0, 0),
+(5, 29, 493, 0, 0),
+(5, 29, 494, 0, 0),
+(5, 29, 495, 0, 0),
+(5, 29, 496, 0, 0),
+(5, 29, 497, 0, 0),
+(5, 29, 498, 0, 0),
+(5, 29, 499, 0, 0),
+(5, 29, 504, 0, 0),
+(5, 29, 505, 0, 0),
+(5, 29, 506, 0, 0),
+(5, 29, 507, 0, 0),
+(5, 29, 510, 0, 0),
+(5, 10, 520, 0, 0),
+(5, 10, 521, 0, 0),
+(5, 10, 522, 0, 0),
+(5, 10, 523, 0, 0),
+(5, 10, 524, 0, 0),
+(5, 10, 525, 0, 0),
+(5, 29, 543, 0, 0),
+(5, 42, 609, 0, 0),
+(5, 42, 610, 0, 0),
+(5, 42, 611, 0, 1),
+(5, 42, 612, 0, 1),
+(5, 42, 613, 0, 0),
+(5, 42, 614, 0, 1),
+(5, 42, 615, 0, 0),
+(5, 42, 616, 0, 1),
+(5, 2, 674, 0, 0),
+(5, 23, 676, 0, 0),
+(5, 23, 677, 0, 0),
+(5, 23, 678, 0, 0),
+(5, 23, 679, 0, 0),
+(5, 23, 680, 0, 0),
+(5, 23, 681, 0, 0),
+(5, 22, 685, 0, 0),
+(5, 22, 686, 0, 0),
+(5, 22, 687, 0, 0),
+(5, 22, 688, 0, 0),
+(5, 22, 689, 0, 0),
+(5, 22, 690, 0, 0),
+(5, 20, 703, 0, 0),
+(5, 20, 704, 0, 0),
+(5, 20, 705, 0, 0),
+(5, 20, 706, 0, 0),
+(5, 20, 707, 0, 0),
+(5, 20, 708, 0, 0),
+(5, 42, 714, 0, 0),
+(5, 23, 718, 0, 0),
+(5, 22, 719, 0, 0),
+(5, 20, 721, 0, 0),
+(5, 2, 725, 0, 1),
+(5, 23, 727, 0, 0),
+(5, 23, 728, 0, 0),
+(5, 18, 731, 0, 0),
+(5, 7, 732, 0, 0),
+(5, 42, 733, 0, 0),
+(5, 42, 734, 0, 0),
+(5, 23, 735, 0, 0),
+(5, 20, 736, 0, 0),
+(5, 22, 738, 0, 0),
+(5, 2, 740, 0, 0),
+(5, 14, 772, 0, 0),
+(5, 23, 774, 0, 0),
+(5, 42, 786, 0, 0),
+(5, 42, 787, 0, 0),
+(5, 42, 788, 0, 0),
+(5, 2, 789, 0, 1),
+(5, 7, 792, 0, 1),
+(5, 8, 793, 0, 1),
+(5, 9, 794, 0, 1),
+(5, 10, 795, 0, 1),
+(5, 14, 797, 0, 1),
+(5, 16, 799, 0, 1),
+(5, 18, 800, 0, 1),
+(5, 20, 802, 0, 1),
+(5, 22, 804, 0, 1),
+(5, 23, 805, 0, 1),
+(5, 26, 806, 0, 1),
+(5, 10, 807, 0, 0),
+(5, 2, 808, 0, 0),
+(5, 7, 811, 0, 0),
+(5, 8, 812, 0, 0),
+(5, 9, 813, 0, 0),
+(5, 10, 814, 0, 0),
+(5, 14, 816, 0, 0),
+(5, 16, 818, 0, 1),
+(5, 18, 819, 0, 0),
+(5, 20, 821, 0, 0),
+(5, 22, 823, 0, 0),
+(5, 23, 824, 0, 0),
+(5, 26, 825, 0, 0),
+(5, 2, 826, 0, 0),
+(5, 7, 829, 0, 0),
+(5, 8, 830, 0, 0),
+(5, 9, 831, 0, 0),
+(5, 10, 832, 0, 0),
+(5, 14, 834, 0, 0),
+(5, 16, 836, 0, 1),
+(5, 18, 837, 0, 0),
+(5, 20, 839, 0, 0),
+(5, 22, 841, 0, 0),
+(5, 23, 842, 0, 0),
+(5, 26, 843, 0, 0),
+(5, 20, 844, 0, 0),
+(5, 22, 846, 0, 0),
+(5, 23, 847, 0, 0),
+(5, 51, 857, 0, 0),
+(5, 51, 858, 0, 0),
+(5, 51, 859, 0, 1),
+(5, 51, 860, 0, 1),
+(5, 51, 861, 0, 1),
+(5, 51, 862, 0, 0),
+(5, 51, 863, 0, 0),
+(5, 56, 903, 0, 0),
+(5, 56, 904, 0, 0),
+(5, 56, 905, 0, 1),
+(5, 56, 906, 0, 0),
+(5, 56, 907, 0, 0),
+(5, 56, 908, 0, 0),
+(5, 56, 909, 0, 0),
+(5, 56, 910, 0, 1),
+(5, 56, 911, 0, 0),
+(5, 56, 912, 0, 1),
+(5, 56, 913, 0, 0),
+(5, 56, 914, 0, 0),
+(5, 61, 996, 0, 0),
+(5, 61, 997, 0, 0),
+(5, 61, 998, 0, 0),
+(5, 61, 999, 0, 0),
+(5, 61, 1000, 0, 1),
+(5, 61, 1001, 0, 0),
+(5, 61, 1002, 0, 0),
+(5, 61, 1003, 0, 0),
+(5, 61, 1004, 0, 0),
+(5, 61, 1005, 0, 0),
+(5, 61, 1006, 0, 0),
+(5, 61, 1007, 0, 0),
+(5, 61, 1008, 0, 0),
+(5, 61, 1009, 0, 1),
+(5, 61, 1010, 0, 1),
+(5, 61, 1011, 0, 1),
+(5, 61, 1012, 0, 1),
+(5, 61, 1013, 0, 1),
+(5, 61, 1014, 0, 0),
+(5, 61, 1015, 0, 0),
+(5, 61, 1016, 0, 0),
+(5, 61, 1017, 0, 0),
+(5, 61, 1018, 0, 0),
+(5, 61, 1019, 0, 0),
+(5, 61, 1020, 0, 0),
+(5, 61, 1021, 0, 0),
+(5, 61, 1022, 0, 1),
+(5, 61, 1023, 0, 0),
+(5, 61, 1024, 0, 0),
+(5, 63, 1097, 0, 0),
+(5, 63, 1098, 0, 1),
+(5, 63, 1099, 0, 1),
+(5, 63, 1100, 0, 1),
+(5, 63, 1101, 0, 0),
+(5, 63, 1102, 0, 0),
+(5, 63, 1104, 0, 0),
+(5, 63, 1106, 0, 0),
+(5, 63, 1108, 0, 0),
+(5, 63, 1110, 0, 0),
+(5, 63, 1112, 0, 0),
+(5, 63, 1114, 0, 0),
+(5, 63, 1116, 0, 0),
+(5, 63, 1120, 0, 0),
+(5, 63, 1122, 0, 0),
+(5, 63, 1124, 0, 0),
+(5, 63, 1136, 0, 0),
+(5, 63, 1138, 0, 0),
+(5, 63, 1142, 0, 0),
+(5, 63, 1144, 0, 0),
+(5, 63, 1146, 0, 0),
+(5, 63, 1148, 0, 0),
+(5, 63, 1150, 0, 0),
+(5, 63, 1152, 0, 0),
+(5, 63, 1154, 0, 0),
+(5, 63, 1156, 0, 0),
+(5, 63, 1158, 0, 0),
+(5, 63, 1160, 0, 0),
+(5, 63, 1162, 0, 0),
+(5, 64, 1187, 0, 0),
+(5, 64, 1188, 0, 1),
+(5, 64, 1189, 0, 1),
+(5, 64, 1190, 0, 1),
+(5, 64, 1191, 0, 0),
+(5, 64, 1192, 0, 0),
+(5, 64, 1194, 0, 0),
+(5, 64, 1196, 0, 0),
+(5, 64, 1198, 0, 0),
+(5, 64, 1200, 0, 0),
+(5, 65, 1201, 0, 0),
+(5, 65, 1202, 0, 1),
+(5, 65, 1203, 0, 1),
+(5, 65, 1204, 0, 1),
+(5, 65, 1205, 0, 0),
+(5, 65, 1206, 0, 0),
+(5, 65, 1208, 0, 0),
+(5, 66, 1209, 0, 0),
+(5, 66, 1210, 0, 1),
+(5, 66, 1211, 0, 1),
+(5, 66, 1212, 0, 1),
+(5, 66, 1213, 0, 0),
+(5, 66, 1214, 0, 0),
+(5, 66, 1216, 0, 0),
+(5, 63, 1218, 0, 0),
+(5, 63, 1220, 0, 0),
+(5, 63, 1222, 0, 0),
+(5, 63, 1226, 0, 0),
+(5, 70, 1255, 0, 0),
+(5, 70, 1256, 0, 0),
+(5, 70, 1257, 0, 1),
+(5, 70, 1258, 0, 1),
+(5, 70, 1259, 0, 1),
+(5, 70, 1260, 0, 0),
+(5, 70, 1261, 0, 0),
+(5, 26, 1262, 0, 0),
+(5, 71, 1263, 0, 0),
+(5, 71, 1264, 0, 0),
+(5, 71, 1265, 0, 1),
+(5, 71, 1266, 0, 1),
+(5, 71, 1267, 0, 1),
+(5, 71, 1268, 0, 0),
+(5, 71, 1269, 0, 0),
+(5, 26, 1270, 0, 0),
+(5, 72, 1271, 0, 0),
+(5, 72, 1272, 0, 0),
+(5, 72, 1273, 0, 1),
+(5, 72, 1274, 0, 1),
+(5, 72, 1275, 0, 1),
+(5, 72, 1276, 0, 0),
+(5, 72, 1277, 0, 0),
+(5, 72, 1279, 0, 0),
+(5, 72, 1281, 0, 0),
+(5, 72, 1285, 0, 0),
+(5, 72, 1287, 0, 0),
+(5, 8, 1289, 0, 0),
+(5, 20, 1303, 0, 0),
+(5, 23, 1304, 0, 0),
+(6, 7, 37, 0, 0),
+(6, 7, 38, 0, 0),
+(6, 7, 39, 0, 0),
+(6, 7, 40, 0, 0),
+(6, 7, 41, 0, 0),
+(6, 7, 42, 0, 0),
+(6, 7, 43, 0, 0),
+(6, 7, 44, 0, 0),
+(6, 7, 45, 0, 0),
+(6, 7, 46, 0, 0),
+(6, 7, 47, 0, 0),
+(6, 7, 48, 0, 0),
+(6, 7, 49, 0, 0),
+(6, 7, 50, 0, 0),
+(6, 7, 51, 0, 0),
+(6, 7, 52, 0, 0),
+(6, 7, 53, 0, 0),
+(6, 7, 54, 0, 0),
+(6, 7, 55, 0, 0),
+(6, 7, 56, 0, 1),
+(6, 7, 57, 0, 1),
+(6, 7, 58, 0, 0),
+(6, 7, 59, 0, 0),
+(6, 7, 60, 0, 0),
+(6, 7, 61, 0, 0),
+(6, 7, 62, 0, 0),
+(6, 7, 63, 0, 0),
+(6, 7, 64, 0, 0),
+(6, 7, 65, 0, 0),
+(6, 2, 110, 0, 0),
+(6, 2, 111, 0, 0),
+(6, 2, 112, 0, 0),
+(6, 2, 113, 0, 0),
+(6, 2, 114, 0, 0),
+(6, 2, 115, 0, 0),
+(6, 2, 116, 0, 0),
+(6, 2, 117, 0, 0),
+(6, 2, 118, 0, 0),
+(6, 2, 119, 0, 0),
+(6, 2, 120, 0, 0),
+(6, 2, 121, 0, 0),
+(6, 2, 122, 0, 1),
+(6, 2, 123, 0, 1),
+(6, 2, 124, 0, 0),
+(6, 2, 125, 0, 0),
+(6, 26, 126, 0, 0),
+(6, 26, 127, 0, 0),
+(6, 26, 128, 0, 0),
+(6, 26, 129, 0, 0),
+(6, 26, 130, 0, 0),
+(6, 26, 131, 0, 0),
+(6, 26, 132, 0, 0),
+(6, 26, 133, 0, 0),
+(6, 26, 134, 0, 0),
+(6, 26, 135, 0, 0),
+(6, 26, 136, 0, 0),
+(6, 26, 137, 0, 1),
+(6, 26, 138, 0, 1),
+(6, 26, 139, 0, 0),
+(6, 26, 140, 0, 0),
+(6, 26, 141, 0, 0),
+(6, 26, 142, 0, 0),
+(6, 26, 143, 0, 0),
+(6, 26, 144, 0, 0),
+(6, 26, 145, 0, 0),
+(6, 26, 146, 0, 0),
+(6, 26, 147, 0, 0),
+(6, 26, 148, 0, 0),
+(6, 26, 149, 0, 0),
+(6, 26, 150, 0, 0),
+(6, 14, 174, 0, 0),
+(6, 14, 175, 0, 0),
+(6, 14, 176, 0, 0),
+(6, 14, 177, 0, 0),
+(6, 14, 178, 0, 0),
+(6, 14, 179, 0, 0),
+(6, 14, 180, 0, 0),
+(6, 14, 181, 0, 0),
+(6, 14, 182, 0, 0),
+(6, 14, 183, 0, 0),
+(6, 14, 184, 0, 0),
+(6, 14, 185, 0, 0),
+(6, 14, 186, 0, 0),
+(6, 14, 187, 0, 0),
+(6, 14, 188, 0, 0),
+(6, 14, 189, 0, 0),
+(6, 14, 190, 0, 0),
+(6, 14, 191, 0, 1),
+(6, 14, 192, 0, 1),
+(6, 14, 193, 0, 0),
+(6, 14, 194, 0, 0),
+(6, 14, 195, 0, 0),
+(6, 14, 197, 0, 0),
+(6, 14, 198, 0, 0),
+(6, 14, 199, 0, 0),
+(6, 14, 200, 0, 0),
+(6, 14, 201, 0, 0),
+(6, 14, 202, 0, 0),
+(6, 14, 203, 0, 0),
+(6, 14, 204, 0, 0),
+(6, 8, 205, 0, 0),
+(6, 8, 206, 0, 1),
+(6, 8, 207, 0, 1),
+(6, 8, 208, 0, 0),
+(6, 8, 209, 0, 0),
+(6, 8, 210, 0, 0),
+(6, 8, 211, 0, 1),
+(6, 8, 212, 0, 1),
+(6, 8, 213, 0, 0),
+(6, 8, 214, 0, 0),
+(6, 8, 215, 0, 0),
+(6, 8, 216, 0, 1),
+(6, 8, 217, 0, 0),
+(6, 8, 218, 0, 0),
+(6, 8, 219, 0, 0),
+(6, 10, 220, 0, 0),
+(6, 10, 221, 0, 0),
+(6, 10, 222, 0, 0),
+(6, 10, 223, 0, 0),
+(6, 10, 224, 0, 0),
+(6, 10, 225, 0, 0),
+(6, 10, 226, 0, 0),
+(6, 10, 227, 0, 0),
+(6, 10, 228, 0, 0),
+(6, 10, 229, 0, 1),
+(6, 10, 230, 0, 0),
+(6, 10, 231, 0, 0),
+(6, 9, 232, 0, 0),
+(6, 9, 233, 0, 0),
+(6, 9, 234, 0, 0),
+(6, 9, 235, 0, 0),
+(6, 9, 236, 0, 0),
+(6, 9, 237, 0, 0),
+(6, 9, 238, 0, 0),
+(6, 9, 239, 0, 0),
+(6, 9, 240, 0, 0),
+(6, 9, 241, 0, 0),
+(6, 9, 242, 0, 0),
+(6, 9, 243, 0, 0),
+(6, 9, 244, 0, 1),
+(6, 9, 245, 0, 1),
+(6, 9, 246, 0, 0),
+(6, 9, 247, 0, 0),
+(6, 9, 248, 0, 0),
+(6, 9, 249, 0, 0),
+(6, 9, 250, 0, 0),
+(6, 9, 251, 0, 0),
+(6, 9, 252, 0, 0),
+(6, 9, 253, 0, 0),
+(6, 9, 254, 0, 0),
+(6, 9, 255, 0, 0),
+(6, 16, 256, 0, 0),
+(6, 16, 257, 0, 0),
+(6, 16, 258, 0, 0),
+(6, 16, 259, 0, 0),
+(6, 16, 260, 0, 0),
+(6, 16, 261, 0, 0),
+(6, 16, 262, 0, 0),
+(6, 16, 263, 0, 0),
+(6, 16, 264, 0, 0),
+(6, 16, 265, 0, 0),
+(6, 16, 266, 0, 0),
+(6, 16, 267, 0, 0),
+(6, 16, 268, 0, 0),
+(6, 16, 269, 0, 0),
+(6, 16, 270, 0, 1),
+(6, 16, 271, 0, 1),
+(6, 16, 272, 0, 0),
+(6, 16, 273, 0, 0),
+(6, 16, 274, 0, 0),
+(6, 16, 275, 0, 0),
+(6, 16, 276, 0, 0),
+(6, 16, 277, 0, 0),
+(6, 16, 278, 0, 0),
+(6, 18, 289, 0, 0),
+(6, 18, 290, 0, 0),
+(6, 18, 291, 0, 0),
+(6, 18, 292, 0, 0),
+(6, 18, 293, 0, 0),
+(6, 18, 294, 0, 0),
+(6, 18, 295, 0, 0),
+(6, 18, 296, 0, 1),
+(6, 18, 297, 0, 1),
+(6, 18, 298, 0, 0),
+(6, 18, 299, 0, 0),
+(6, 18, 300, 0, 0),
+(6, 18, 301, 0, 0),
+(6, 18, 302, 0, 0),
+(6, 18, 303, 0, 0),
+(6, 18, 304, 0, 0),
+(6, 18, 305, 0, 0),
+(6, 20, 314, 0, 0),
+(6, 20, 315, 0, 0),
+(6, 20, 316, 0, 0),
+(6, 20, 317, 0, 0),
+(6, 20, 318, 0, 0),
+(6, 20, 320, 0, 0),
+(6, 20, 321, 0, 0),
+(6, 20, 322, 0, 0),
+(6, 20, 323, 0, 0),
+(6, 20, 324, 0, 0),
+(6, 20, 325, 0, 0),
+(6, 20, 326, 0, 0),
+(6, 20, 327, 0, 0),
+(6, 20, 328, 0, 0),
+(6, 20, 329, 0, 0),
+(6, 20, 331, 0, 0),
+(6, 20, 332, 0, 1),
+(6, 20, 333, 0, 1),
+(6, 20, 334, 0, 0),
+(6, 20, 335, 0, 0),
+(6, 20, 336, 0, 0),
+(6, 20, 337, 0, 0),
+(6, 20, 338, 0, 0),
+(6, 20, 339, 0, 0),
+(6, 20, 340, 0, 0),
+(6, 20, 341, 0, 0),
+(6, 20, 342, 0, 0),
+(6, 20, 343, 0, 0),
+(6, 20, 344, 0, 0),
+(6, 20, 345, 0, 0),
+(6, 20, 346, 0, 0),
+(6, 20, 347, 0, 0),
+(6, 20, 348, 0, 0),
+(6, 20, 349, 0, 0),
+(6, 20, 350, 0, 0),
+(6, 22, 389, 0, 0),
+(6, 22, 390, 0, 0),
+(6, 22, 391, 0, 0),
+(6, 22, 392, 0, 0),
+(6, 22, 393, 0, 0),
+(6, 22, 394, 0, 0),
+(6, 22, 396, 0, 0),
+(6, 22, 397, 0, 0),
+(6, 22, 398, 0, 0),
+(6, 22, 399, 0, 0),
+(6, 22, 400, 0, 0),
+(6, 22, 401, 0, 0),
+(6, 22, 402, 0, 0),
+(6, 22, 403, 0, 0),
+(6, 22, 404, 0, 0),
+(6, 22, 405, 0, 0),
+(6, 22, 406, 0, 0),
+(6, 22, 407, 0, 0),
+(6, 22, 408, 0, 0),
+(6, 22, 410, 0, 0),
+(6, 22, 411, 0, 1),
+(6, 22, 412, 0, 1),
+(6, 22, 413, 0, 0),
+(6, 22, 414, 0, 0),
+(6, 22, 415, 0, 0),
+(6, 22, 416, 0, 0),
+(6, 22, 417, 0, 0),
+(6, 22, 418, 0, 0),
+(6, 22, 419, 0, 0),
+(6, 22, 420, 0, 0),
+(6, 22, 421, 0, 0),
+(6, 22, 422, 0, 0),
+(6, 22, 423, 0, 0),
+(6, 22, 424, 0, 0),
+(6, 22, 425, 0, 0),
+(6, 22, 426, 0, 0),
+(6, 22, 427, 0, 0),
+(6, 22, 428, 0, 0),
+(6, 22, 429, 0, 0),
+(6, 22, 430, 0, 0),
+(6, 22, 431, 0, 0),
+(6, 22, 432, 0, 0),
+(6, 22, 433, 0, 0),
+(6, 22, 434, 0, 0),
+(6, 22, 435, 0, 0),
+(6, 23, 436, 0, 0),
+(6, 23, 437, 0, 0),
+(6, 23, 440, 0, 0),
+(6, 23, 441, 0, 0),
+(6, 23, 442, 0, 0),
+(6, 23, 443, 0, 0),
+(6, 23, 444, 0, 0),
+(6, 23, 445, 0, 0),
+(6, 23, 446, 0, 0),
+(6, 23, 447, 0, 0),
+(6, 23, 448, 0, 0),
+(6, 23, 449, 0, 0),
+(6, 23, 450, 0, 0);
+INSERT INTO `vtiger_profile2field` (`profileid`, `tabid`, `fieldid`, `visible`, `readonly`) VALUES
+(6, 23, 451, 0, 0),
+(6, 23, 453, 0, 0),
+(6, 23, 454, 0, 0),
+(6, 23, 455, 0, 1),
+(6, 23, 456, 0, 1),
+(6, 23, 457, 0, 0),
+(6, 23, 458, 0, 0),
+(6, 23, 459, 0, 0),
+(6, 23, 460, 0, 0),
+(6, 23, 461, 0, 0),
+(6, 23, 462, 0, 0),
+(6, 23, 463, 0, 0),
+(6, 23, 464, 0, 0),
+(6, 23, 465, 0, 0),
+(6, 23, 466, 0, 0),
+(6, 23, 467, 0, 0),
+(6, 23, 468, 0, 0),
+(6, 23, 469, 0, 0),
+(6, 23, 470, 0, 0),
+(6, 23, 471, 0, 0),
+(6, 23, 472, 0, 0),
+(6, 23, 473, 0, 0),
+(6, 23, 474, 0, 0),
+(6, 29, 475, 0, 0),
+(6, 29, 479, 0, 0),
+(6, 29, 480, 0, 0),
+(6, 29, 481, 0, 0),
+(6, 29, 482, 0, 0),
+(6, 29, 489, 0, 0),
+(6, 29, 490, 0, 0),
+(6, 29, 491, 0, 0),
+(6, 29, 492, 0, 0),
+(6, 29, 493, 0, 0),
+(6, 29, 494, 0, 0),
+(6, 29, 495, 0, 0),
+(6, 29, 496, 0, 0),
+(6, 29, 497, 0, 0),
+(6, 29, 498, 0, 0),
+(6, 29, 499, 0, 0),
+(6, 29, 504, 0, 0),
+(6, 29, 505, 0, 0),
+(6, 29, 506, 0, 0),
+(6, 29, 507, 0, 0),
+(6, 29, 510, 0, 0),
+(6, 10, 520, 0, 0),
+(6, 10, 521, 0, 0),
+(6, 10, 522, 0, 0),
+(6, 10, 523, 0, 0),
+(6, 10, 524, 0, 0),
+(6, 10, 525, 0, 0),
+(6, 29, 543, 0, 0),
+(6, 42, 609, 0, 0),
+(6, 42, 610, 0, 0),
+(6, 42, 611, 0, 1),
+(6, 42, 612, 0, 1),
+(6, 42, 613, 0, 0),
+(6, 42, 614, 0, 1),
+(6, 42, 615, 0, 0),
+(6, 42, 616, 0, 1),
+(6, 2, 674, 0, 0),
+(6, 23, 676, 0, 0),
+(6, 23, 677, 0, 0),
+(6, 23, 678, 0, 0),
+(6, 23, 679, 0, 0),
+(6, 23, 680, 0, 0),
+(6, 23, 681, 0, 0),
+(6, 22, 685, 0, 0),
+(6, 22, 686, 0, 0),
+(6, 22, 687, 0, 0),
+(6, 22, 688, 0, 0),
+(6, 22, 689, 0, 0),
+(6, 22, 690, 0, 0),
+(6, 20, 703, 0, 0),
+(6, 20, 704, 0, 0),
+(6, 20, 705, 0, 0),
+(6, 20, 706, 0, 0),
+(6, 20, 707, 0, 0),
+(6, 20, 708, 0, 0),
+(6, 42, 714, 0, 0),
+(6, 23, 718, 0, 0),
+(6, 22, 719, 0, 0),
+(6, 20, 721, 0, 0),
+(6, 2, 725, 0, 1),
+(6, 23, 727, 0, 0),
+(6, 23, 728, 0, 0),
+(6, 18, 731, 0, 0),
+(6, 7, 732, 0, 0),
+(6, 42, 733, 0, 0),
+(6, 42, 734, 0, 0),
+(6, 23, 735, 0, 0),
+(6, 20, 736, 0, 0),
+(6, 22, 738, 0, 0),
+(6, 2, 740, 0, 0),
+(6, 14, 772, 0, 0),
+(6, 23, 774, 0, 0),
+(6, 42, 786, 0, 0),
+(6, 42, 787, 0, 0),
+(6, 42, 788, 0, 0),
+(6, 2, 789, 0, 1),
+(6, 7, 792, 0, 1),
+(6, 8, 793, 0, 1),
+(6, 9, 794, 0, 1),
+(6, 10, 795, 0, 1),
+(6, 14, 797, 0, 1),
+(6, 16, 799, 0, 1),
+(6, 18, 800, 0, 1),
+(6, 20, 802, 0, 1),
+(6, 22, 804, 0, 1),
+(6, 23, 805, 0, 1),
+(6, 26, 806, 0, 1),
+(6, 10, 807, 0, 0),
+(6, 2, 808, 0, 0),
+(6, 7, 811, 0, 0),
+(6, 8, 812, 0, 0),
+(6, 9, 813, 0, 0),
+(6, 10, 814, 0, 0),
+(6, 14, 816, 0, 0),
+(6, 16, 818, 0, 1),
+(6, 18, 819, 0, 0),
+(6, 20, 821, 0, 0),
+(6, 22, 823, 0, 0),
+(6, 23, 824, 0, 0),
+(6, 26, 825, 0, 0),
+(6, 2, 826, 0, 0),
+(6, 7, 829, 0, 0),
+(6, 8, 830, 0, 0),
+(6, 9, 831, 0, 0),
+(6, 10, 832, 0, 0),
+(6, 14, 834, 0, 0),
+(6, 16, 836, 0, 1),
+(6, 18, 837, 0, 0),
+(6, 20, 839, 0, 0),
+(6, 22, 841, 0, 0),
+(6, 23, 842, 0, 0),
+(6, 26, 843, 0, 0),
+(6, 20, 844, 0, 0),
+(6, 22, 846, 0, 0),
+(6, 23, 847, 0, 0),
+(6, 51, 857, 0, 0),
+(6, 51, 858, 0, 0),
+(6, 51, 859, 0, 1),
+(6, 51, 860, 0, 1),
+(6, 51, 861, 0, 1),
+(6, 51, 862, 0, 0),
+(6, 51, 863, 0, 0),
+(6, 56, 903, 0, 0),
+(6, 56, 904, 0, 0),
+(6, 56, 905, 0, 1),
+(6, 56, 906, 0, 0),
+(6, 56, 907, 0, 0),
+(6, 56, 908, 0, 0),
+(6, 56, 909, 0, 0),
+(6, 56, 910, 0, 1),
+(6, 56, 911, 0, 0),
+(6, 56, 912, 0, 1),
+(6, 56, 913, 0, 0),
+(6, 56, 914, 0, 0),
+(6, 61, 996, 0, 0),
+(6, 61, 997, 0, 0),
+(6, 61, 998, 0, 0),
+(6, 61, 999, 0, 0),
+(6, 61, 1000, 0, 1),
+(6, 61, 1001, 0, 0),
+(6, 61, 1002, 0, 0),
+(6, 61, 1003, 0, 0),
+(6, 61, 1004, 0, 0),
+(6, 61, 1005, 0, 0),
+(6, 61, 1006, 0, 0),
+(6, 61, 1007, 0, 0),
+(6, 61, 1008, 0, 0),
+(6, 61, 1009, 0, 1),
+(6, 61, 1010, 0, 1),
+(6, 61, 1011, 0, 1),
+(6, 61, 1012, 0, 1),
+(6, 61, 1013, 0, 1),
+(6, 61, 1014, 0, 0),
+(6, 61, 1015, 0, 0),
+(6, 61, 1016, 0, 0),
+(6, 61, 1017, 0, 0),
+(6, 61, 1018, 0, 0),
+(6, 61, 1019, 0, 0),
+(6, 61, 1020, 0, 0),
+(6, 61, 1021, 0, 0),
+(6, 61, 1022, 0, 1),
+(6, 61, 1023, 0, 0),
+(6, 61, 1024, 0, 0),
+(6, 63, 1097, 0, 0),
+(6, 63, 1098, 0, 1),
+(6, 63, 1099, 0, 1),
+(6, 63, 1100, 0, 1),
+(6, 63, 1101, 0, 0),
+(6, 63, 1102, 0, 0),
+(6, 63, 1104, 0, 0),
+(6, 63, 1106, 0, 0),
+(6, 63, 1108, 0, 0),
+(6, 63, 1110, 0, 0),
+(6, 63, 1112, 0, 0),
+(6, 63, 1114, 0, 0),
+(6, 63, 1116, 0, 0),
+(6, 63, 1120, 0, 0),
+(6, 63, 1122, 0, 0),
+(6, 63, 1124, 0, 0),
+(6, 63, 1136, 0, 0),
+(6, 63, 1138, 0, 0),
+(6, 63, 1142, 0, 0),
+(6, 63, 1144, 0, 0),
+(6, 63, 1146, 0, 0),
+(6, 63, 1148, 0, 0),
+(6, 63, 1150, 0, 0),
+(6, 63, 1152, 0, 0),
+(6, 63, 1154, 0, 0),
+(6, 63, 1156, 0, 0),
+(6, 63, 1158, 0, 0),
+(6, 63, 1160, 0, 0),
+(6, 63, 1162, 0, 0),
+(6, 64, 1187, 0, 0),
+(6, 64, 1188, 0, 1),
+(6, 64, 1189, 0, 1),
+(6, 64, 1190, 0, 1),
+(6, 64, 1191, 0, 0),
+(6, 64, 1192, 0, 0),
+(6, 64, 1194, 0, 0),
+(6, 64, 1196, 0, 0),
+(6, 64, 1198, 0, 0),
+(6, 64, 1200, 0, 0),
+(6, 65, 1201, 0, 0),
+(6, 65, 1202, 0, 1),
+(6, 65, 1203, 0, 1),
+(6, 65, 1204, 0, 1),
+(6, 65, 1205, 0, 0),
+(6, 65, 1206, 0, 0),
+(6, 65, 1208, 0, 0),
+(6, 66, 1209, 0, 0),
+(6, 66, 1210, 0, 1),
+(6, 66, 1211, 0, 1),
+(6, 66, 1212, 0, 1),
+(6, 66, 1213, 0, 0),
+(6, 66, 1214, 0, 0),
+(6, 66, 1216, 0, 0),
+(6, 63, 1218, 0, 0),
+(6, 63, 1220, 0, 0),
+(6, 63, 1222, 0, 0),
+(6, 63, 1226, 0, 0),
+(6, 70, 1255, 0, 0),
+(6, 70, 1256, 0, 0),
+(6, 70, 1257, 0, 1),
+(6, 70, 1258, 0, 1),
+(6, 70, 1259, 0, 1),
+(6, 70, 1260, 0, 0),
+(6, 70, 1261, 0, 0),
+(6, 26, 1262, 0, 0),
+(6, 71, 1263, 0, 0),
+(6, 71, 1264, 0, 0),
+(6, 71, 1265, 0, 1),
+(6, 71, 1266, 0, 1),
+(6, 71, 1267, 0, 1),
+(6, 71, 1268, 0, 0),
+(6, 71, 1269, 0, 0),
+(6, 26, 1270, 0, 0),
+(6, 72, 1271, 0, 0),
+(6, 72, 1272, 0, 0),
+(6, 72, 1273, 0, 1),
+(6, 72, 1274, 0, 1),
+(6, 72, 1275, 0, 1),
+(6, 72, 1276, 0, 0),
+(6, 72, 1277, 0, 0),
+(6, 72, 1279, 0, 0),
+(6, 72, 1281, 0, 0),
+(6, 72, 1285, 0, 0),
+(6, 72, 1287, 0, 0),
+(6, 8, 1289, 0, 0),
+(6, 20, 1303, 0, 0),
+(6, 23, 1304, 0, 0),
+(7, 7, 37, 0, 0),
+(7, 7, 38, 0, 0),
+(7, 7, 39, 0, 0),
+(7, 7, 40, 0, 0),
+(7, 7, 41, 0, 0),
+(7, 7, 42, 0, 0),
+(7, 7, 43, 0, 0),
+(7, 7, 44, 0, 0),
+(7, 7, 45, 0, 0),
+(7, 7, 46, 0, 0),
+(7, 7, 47, 0, 0),
+(7, 7, 48, 0, 0),
+(7, 7, 49, 0, 0),
+(7, 7, 50, 0, 0),
+(7, 7, 51, 0, 0),
+(7, 7, 52, 0, 0),
+(7, 7, 53, 0, 0),
+(7, 7, 54, 0, 0),
+(7, 7, 55, 0, 0),
+(7, 7, 56, 0, 1),
+(7, 7, 57, 0, 1),
+(7, 7, 58, 0, 0),
+(7, 7, 59, 0, 0),
+(7, 7, 60, 0, 0),
+(7, 7, 61, 0, 0),
+(7, 7, 62, 0, 0),
+(7, 7, 63, 0, 0),
+(7, 7, 64, 0, 0),
+(7, 7, 65, 0, 0),
+(7, 2, 110, 0, 0),
+(7, 2, 111, 0, 0),
+(7, 2, 112, 0, 0),
+(7, 2, 113, 0, 0),
+(7, 2, 114, 0, 0),
+(7, 2, 115, 0, 0),
+(7, 2, 116, 0, 0),
+(7, 2, 117, 0, 0),
+(7, 2, 118, 0, 0),
+(7, 2, 119, 0, 0),
+(7, 2, 120, 0, 0),
+(7, 2, 121, 0, 0),
+(7, 2, 122, 0, 1),
+(7, 2, 123, 0, 1),
+(7, 2, 124, 0, 0),
+(7, 2, 125, 0, 0),
+(7, 26, 126, 0, 0),
+(7, 26, 127, 0, 0),
+(7, 26, 128, 0, 0),
+(7, 26, 129, 0, 0),
+(7, 26, 130, 0, 0),
+(7, 26, 131, 0, 0),
+(7, 26, 132, 0, 0),
+(7, 26, 133, 0, 0),
+(7, 26, 134, 0, 0),
+(7, 26, 135, 0, 0),
+(7, 26, 136, 0, 0),
+(7, 26, 137, 0, 1),
+(7, 26, 138, 0, 1),
+(7, 26, 139, 0, 0),
+(7, 26, 140, 0, 0),
+(7, 26, 141, 0, 0),
+(7, 26, 142, 0, 0),
+(7, 26, 143, 0, 0),
+(7, 26, 144, 0, 0),
+(7, 26, 145, 0, 0),
+(7, 26, 146, 0, 0),
+(7, 26, 147, 0, 0),
+(7, 26, 148, 0, 0),
+(7, 26, 149, 0, 0),
+(7, 26, 150, 0, 0),
+(7, 14, 174, 0, 0),
+(7, 14, 175, 0, 0),
+(7, 14, 176, 0, 0),
+(7, 14, 177, 0, 0),
+(7, 14, 178, 0, 0),
+(7, 14, 179, 0, 0),
+(7, 14, 180, 0, 0),
+(7, 14, 181, 0, 0),
+(7, 14, 182, 0, 0),
+(7, 14, 183, 0, 0),
+(7, 14, 184, 0, 0),
+(7, 14, 185, 0, 0),
+(7, 14, 186, 0, 0),
+(7, 14, 187, 0, 0),
+(7, 14, 188, 0, 0),
+(7, 14, 189, 0, 0),
+(7, 14, 190, 0, 0),
+(7, 14, 191, 0, 1),
+(7, 14, 192, 0, 1),
+(7, 14, 193, 0, 0),
+(7, 14, 194, 0, 0),
+(7, 14, 195, 0, 0),
+(7, 14, 197, 0, 0),
+(7, 14, 198, 0, 0),
+(7, 14, 199, 0, 0),
+(7, 14, 200, 0, 0),
+(7, 14, 201, 0, 0),
+(7, 14, 202, 0, 0),
+(7, 14, 203, 0, 0),
+(7, 14, 204, 0, 0),
+(7, 8, 205, 0, 0),
+(7, 8, 206, 0, 1),
+(7, 8, 207, 0, 1),
+(7, 8, 208, 0, 0),
+(7, 8, 209, 0, 0),
+(7, 8, 210, 0, 0),
+(7, 8, 211, 0, 1),
+(7, 8, 212, 0, 1),
+(7, 8, 213, 0, 0),
+(7, 8, 214, 0, 0),
+(7, 8, 215, 0, 0),
+(7, 8, 216, 0, 1),
+(7, 8, 217, 0, 0),
+(7, 8, 218, 0, 0),
+(7, 8, 219, 0, 0),
+(7, 10, 220, 0, 0),
+(7, 10, 221, 0, 0),
+(7, 10, 222, 0, 0),
+(7, 10, 223, 0, 0),
+(7, 10, 224, 0, 0),
+(7, 10, 225, 0, 0),
+(7, 10, 226, 0, 0),
+(7, 10, 227, 0, 0),
+(7, 10, 228, 0, 0),
+(7, 10, 229, 0, 1),
+(7, 10, 230, 0, 0),
+(7, 10, 231, 0, 0),
+(7, 9, 232, 0, 0),
+(7, 9, 233, 0, 0),
+(7, 9, 234, 0, 0),
+(7, 9, 235, 0, 0),
+(7, 9, 236, 0, 0),
+(7, 9, 237, 0, 0),
+(7, 9, 238, 0, 0),
+(7, 9, 239, 0, 0),
+(7, 9, 240, 0, 0),
+(7, 9, 241, 0, 0),
+(7, 9, 242, 0, 0),
+(7, 9, 243, 0, 0),
+(7, 9, 244, 0, 1),
+(7, 9, 245, 0, 1),
+(7, 9, 246, 0, 0),
+(7, 9, 247, 0, 0),
+(7, 9, 248, 0, 0),
+(7, 9, 249, 0, 0),
+(7, 9, 250, 0, 0),
+(7, 9, 251, 0, 0),
+(7, 9, 252, 0, 0),
+(7, 9, 253, 0, 0),
+(7, 9, 254, 0, 0),
+(7, 9, 255, 0, 0),
+(7, 16, 256, 0, 0),
+(7, 16, 257, 0, 0),
+(7, 16, 258, 0, 0),
+(7, 16, 259, 0, 0),
+(7, 16, 260, 0, 0),
+(7, 16, 261, 0, 0),
+(7, 16, 262, 0, 0),
+(7, 16, 263, 0, 0),
+(7, 16, 264, 0, 0),
+(7, 16, 265, 0, 0),
+(7, 16, 266, 0, 0),
+(7, 16, 267, 0, 0),
+(7, 16, 268, 0, 0),
+(7, 16, 269, 0, 0),
+(7, 16, 270, 0, 1),
+(7, 16, 271, 0, 1),
+(7, 16, 272, 0, 0),
+(7, 16, 273, 0, 0),
+(7, 16, 274, 0, 0),
+(7, 16, 275, 0, 0),
+(7, 16, 276, 0, 0),
+(7, 16, 277, 0, 0),
+(7, 16, 278, 0, 0),
+(7, 18, 289, 0, 0),
+(7, 18, 290, 0, 0),
+(7, 18, 291, 0, 0),
+(7, 18, 292, 0, 0),
+(7, 18, 293, 0, 0),
+(7, 18, 294, 0, 0),
+(7, 18, 295, 0, 0),
+(7, 18, 296, 0, 1),
+(7, 18, 297, 0, 1),
+(7, 18, 298, 0, 0),
+(7, 18, 299, 0, 0),
+(7, 18, 300, 0, 0),
+(7, 18, 301, 0, 0),
+(7, 18, 302, 0, 0),
+(7, 18, 303, 0, 0),
+(7, 18, 304, 0, 0),
+(7, 18, 305, 0, 0),
+(7, 20, 314, 0, 0),
+(7, 20, 315, 0, 0),
+(7, 20, 316, 0, 0),
+(7, 20, 317, 0, 0),
+(7, 20, 318, 0, 0),
+(7, 20, 320, 0, 0),
+(7, 20, 321, 0, 0),
+(7, 20, 322, 0, 0),
+(7, 20, 323, 0, 0),
+(7, 20, 324, 0, 0),
+(7, 20, 325, 0, 0),
+(7, 20, 326, 0, 0),
+(7, 20, 327, 0, 0),
+(7, 20, 328, 0, 0),
+(7, 20, 329, 0, 0),
+(7, 20, 331, 0, 0),
+(7, 20, 332, 0, 1),
+(7, 20, 333, 0, 1),
+(7, 20, 334, 0, 0),
+(7, 20, 335, 0, 0),
+(7, 20, 336, 0, 0),
+(7, 20, 337, 0, 0),
+(7, 20, 338, 0, 0),
+(7, 20, 339, 0, 0),
+(7, 20, 340, 0, 0),
+(7, 20, 341, 0, 0),
+(7, 20, 342, 0, 0),
+(7, 20, 343, 0, 0),
+(7, 20, 344, 0, 0),
+(7, 20, 345, 0, 0),
+(7, 20, 346, 0, 0),
+(7, 20, 347, 0, 0),
+(7, 20, 348, 0, 0),
+(7, 20, 349, 0, 0),
+(7, 20, 350, 0, 0),
+(7, 22, 389, 0, 0),
+(7, 22, 390, 0, 0),
+(7, 22, 391, 0, 0),
+(7, 22, 392, 0, 0),
+(7, 22, 393, 0, 0),
+(7, 22, 394, 0, 0),
+(7, 22, 396, 0, 0),
+(7, 22, 397, 0, 0),
+(7, 22, 398, 0, 0),
+(7, 22, 399, 0, 0),
+(7, 22, 400, 0, 0),
+(7, 22, 401, 0, 0),
+(7, 22, 402, 0, 0),
+(7, 22, 403, 0, 0),
+(7, 22, 404, 0, 0),
+(7, 22, 405, 0, 0),
+(7, 22, 406, 0, 0),
+(7, 22, 407, 0, 0),
+(7, 22, 408, 0, 0),
+(7, 22, 410, 0, 0),
+(7, 22, 411, 0, 1),
+(7, 22, 412, 0, 1),
+(7, 22, 413, 0, 0),
+(7, 22, 414, 0, 0),
+(7, 22, 415, 0, 0),
+(7, 22, 416, 0, 0),
+(7, 22, 417, 0, 0),
+(7, 22, 418, 0, 0),
+(7, 22, 419, 0, 0),
+(7, 22, 420, 0, 0),
+(7, 22, 421, 0, 0),
+(7, 22, 422, 0, 0),
+(7, 22, 423, 0, 0),
+(7, 22, 424, 0, 0),
+(7, 22, 425, 0, 0),
+(7, 22, 426, 0, 0),
+(7, 22, 427, 0, 0),
+(7, 22, 428, 0, 0),
+(7, 22, 429, 0, 0),
+(7, 22, 430, 0, 0),
+(7, 22, 431, 0, 0),
+(7, 22, 432, 0, 0),
+(7, 22, 433, 0, 0),
+(7, 22, 434, 0, 0),
+(7, 22, 435, 0, 0),
+(7, 23, 436, 0, 0),
+(7, 23, 437, 0, 0),
+(7, 23, 440, 0, 0),
+(7, 23, 441, 0, 0),
+(7, 23, 442, 0, 0),
+(7, 23, 443, 0, 0),
+(7, 23, 444, 0, 0),
+(7, 23, 445, 0, 0),
+(7, 23, 446, 0, 0),
+(7, 23, 447, 0, 0),
+(7, 23, 448, 0, 0),
+(7, 23, 449, 0, 0),
+(7, 23, 450, 0, 0),
+(7, 23, 451, 0, 0),
+(7, 23, 453, 0, 0),
+(7, 23, 454, 0, 0),
+(7, 23, 455, 0, 1),
+(7, 23, 456, 0, 1),
+(7, 23, 457, 0, 0),
+(7, 23, 458, 0, 0),
+(7, 23, 459, 0, 0),
+(7, 23, 460, 0, 0),
+(7, 23, 461, 0, 0),
+(7, 23, 462, 0, 0),
+(7, 23, 463, 0, 0),
+(7, 23, 464, 0, 0),
+(7, 23, 465, 0, 0),
+(7, 23, 466, 0, 0),
+(7, 23, 467, 0, 0),
+(7, 23, 468, 0, 0),
+(7, 23, 469, 0, 0),
+(7, 23, 470, 0, 0),
+(7, 23, 471, 0, 0),
+(7, 23, 472, 0, 0),
+(7, 23, 473, 0, 0),
+(7, 23, 474, 0, 0),
+(7, 29, 475, 0, 0),
+(7, 29, 479, 0, 0),
+(7, 29, 480, 0, 0),
+(7, 29, 481, 0, 0),
+(7, 29, 482, 0, 0),
+(7, 29, 489, 0, 0),
+(7, 29, 490, 0, 0),
+(7, 29, 491, 0, 0),
+(7, 29, 492, 0, 0),
+(7, 29, 493, 0, 0),
+(7, 29, 494, 0, 0),
+(7, 29, 495, 0, 0),
+(7, 29, 496, 0, 0),
+(7, 29, 497, 0, 0),
+(7, 29, 498, 0, 0),
+(7, 29, 499, 0, 0),
+(7, 29, 504, 0, 0),
+(7, 29, 505, 0, 0),
+(7, 29, 506, 0, 0),
+(7, 29, 507, 0, 0),
+(7, 29, 510, 0, 0),
+(7, 10, 520, 0, 0),
+(7, 10, 521, 0, 0),
+(7, 10, 522, 0, 0),
+(7, 10, 523, 0, 0),
+(7, 10, 524, 0, 0),
+(7, 10, 525, 0, 0),
+(7, 29, 543, 0, 0),
+(7, 42, 609, 0, 0),
+(7, 42, 610, 0, 0),
+(7, 42, 611, 0, 1),
+(7, 42, 612, 0, 1),
+(7, 42, 613, 0, 0),
+(7, 42, 614, 0, 1),
+(7, 42, 615, 0, 0),
+(7, 42, 616, 0, 1),
+(7, 2, 674, 0, 0),
+(7, 23, 676, 0, 0),
+(7, 23, 677, 0, 0),
+(7, 23, 678, 0, 0),
+(7, 23, 679, 0, 0),
+(7, 23, 680, 0, 0),
+(7, 23, 681, 0, 0),
+(7, 22, 685, 0, 0),
+(7, 22, 686, 0, 0),
+(7, 22, 687, 0, 0),
+(7, 22, 688, 0, 0),
+(7, 22, 689, 0, 0),
+(7, 22, 690, 0, 0),
+(7, 20, 703, 0, 0),
+(7, 20, 704, 0, 0),
+(7, 20, 705, 0, 0),
+(7, 20, 706, 0, 0),
+(7, 20, 707, 0, 0),
+(7, 20, 708, 0, 0),
+(7, 42, 714, 0, 0),
+(7, 23, 718, 0, 0),
+(7, 22, 719, 0, 0),
+(7, 20, 721, 0, 0),
+(7, 2, 725, 0, 1),
+(7, 23, 727, 0, 0),
+(7, 23, 728, 0, 0),
+(7, 18, 731, 0, 0),
+(7, 7, 732, 0, 0),
+(7, 42, 733, 0, 0),
+(7, 42, 734, 0, 0),
+(7, 23, 735, 0, 0),
+(7, 20, 736, 0, 0),
+(7, 22, 738, 0, 0),
+(7, 2, 740, 0, 0),
+(7, 14, 772, 0, 0),
+(7, 23, 774, 0, 0),
+(7, 42, 786, 0, 0),
+(7, 42, 787, 0, 0),
+(7, 42, 788, 0, 0),
+(7, 2, 789, 0, 1),
+(7, 7, 792, 0, 1),
+(7, 8, 793, 0, 1),
+(7, 9, 794, 0, 1),
+(7, 10, 795, 0, 1),
+(7, 14, 797, 0, 1),
+(7, 16, 799, 0, 1),
+(7, 18, 800, 0, 1),
+(7, 20, 802, 0, 1),
+(7, 22, 804, 0, 1),
+(7, 23, 805, 0, 1),
+(7, 26, 806, 0, 1),
+(7, 10, 807, 0, 0),
+(7, 2, 808, 0, 0),
+(7, 7, 811, 0, 0),
+(7, 8, 812, 0, 0),
+(7, 9, 813, 0, 0),
+(7, 10, 814, 0, 0),
+(7, 14, 816, 0, 0),
+(7, 16, 818, 0, 1),
+(7, 18, 819, 0, 0),
+(7, 20, 821, 0, 0),
+(7, 22, 823, 0, 0),
+(7, 23, 824, 0, 0),
+(7, 26, 825, 0, 0),
+(7, 2, 826, 0, 0),
+(7, 7, 829, 0, 0),
+(7, 8, 830, 0, 0),
+(7, 9, 831, 0, 0),
+(7, 10, 832, 0, 0),
+(7, 14, 834, 0, 0),
+(7, 16, 836, 0, 1),
+(7, 18, 837, 0, 0),
+(7, 20, 839, 0, 0),
+(7, 22, 841, 0, 0),
+(7, 23, 842, 0, 0),
+(7, 26, 843, 0, 0),
+(7, 20, 844, 0, 0),
+(7, 22, 846, 0, 0),
+(7, 23, 847, 0, 0),
+(7, 51, 857, 0, 0),
+(7, 51, 858, 0, 0),
+(7, 51, 859, 0, 1),
+(7, 51, 860, 0, 1),
+(7, 51, 861, 0, 1),
+(7, 51, 862, 0, 0),
+(7, 51, 863, 0, 0),
+(7, 56, 903, 0, 0),
+(7, 56, 904, 0, 0),
+(7, 56, 905, 0, 1),
+(7, 56, 906, 0, 0),
+(7, 56, 907, 0, 0),
+(7, 56, 908, 0, 0),
+(7, 56, 909, 0, 0),
+(7, 56, 910, 0, 1),
+(7, 56, 911, 0, 0),
+(7, 56, 912, 0, 1),
+(7, 56, 913, 0, 0),
+(7, 56, 914, 0, 0),
+(7, 61, 996, 0, 0),
+(7, 61, 997, 0, 0),
+(7, 61, 998, 0, 0),
+(7, 61, 999, 0, 0),
+(7, 61, 1000, 0, 1),
+(7, 61, 1001, 0, 0),
+(7, 61, 1002, 0, 0),
+(7, 61, 1003, 0, 0),
+(7, 61, 1004, 0, 0),
+(7, 61, 1005, 0, 0),
+(7, 61, 1006, 0, 0),
+(7, 61, 1007, 0, 0),
+(7, 61, 1008, 0, 0),
+(7, 61, 1009, 0, 1),
+(7, 61, 1010, 0, 1),
+(7, 61, 1011, 0, 1),
+(7, 61, 1012, 0, 1),
+(7, 61, 1013, 0, 1),
+(7, 61, 1014, 0, 0),
+(7, 61, 1015, 0, 0),
+(7, 61, 1016, 0, 0),
+(7, 61, 1017, 0, 0),
+(7, 61, 1018, 0, 0),
+(7, 61, 1019, 0, 0),
+(7, 61, 1020, 0, 0),
+(7, 61, 1021, 0, 0),
+(7, 61, 1022, 0, 1),
+(7, 61, 1023, 0, 0),
+(7, 61, 1024, 0, 0),
+(7, 63, 1097, 0, 0),
+(7, 63, 1098, 0, 1),
+(7, 63, 1099, 0, 1),
+(7, 63, 1100, 0, 1),
+(7, 63, 1101, 0, 0),
+(7, 63, 1102, 0, 0),
+(7, 63, 1104, 0, 0),
+(7, 63, 1106, 0, 0),
+(7, 63, 1108, 0, 0),
+(7, 63, 1110, 0, 0),
+(7, 63, 1112, 0, 0),
+(7, 63, 1114, 0, 0),
+(7, 63, 1116, 0, 0),
+(7, 63, 1120, 0, 0),
+(7, 63, 1122, 0, 0),
+(7, 63, 1124, 0, 0),
+(7, 63, 1136, 0, 0),
+(7, 63, 1138, 0, 0),
+(7, 63, 1142, 0, 0),
+(7, 63, 1144, 0, 0),
+(7, 63, 1146, 0, 0),
+(7, 63, 1148, 0, 0),
+(7, 63, 1150, 0, 0),
+(7, 63, 1152, 0, 0),
+(7, 63, 1154, 0, 0),
+(7, 63, 1156, 0, 0),
+(7, 63, 1158, 0, 0),
+(7, 63, 1160, 0, 0),
+(7, 63, 1162, 0, 0),
+(7, 64, 1187, 0, 0),
+(7, 64, 1188, 0, 1),
+(7, 64, 1189, 0, 1),
+(7, 64, 1190, 0, 1),
+(7, 64, 1191, 0, 0),
+(7, 64, 1192, 0, 0),
+(7, 64, 1194, 0, 0),
+(7, 64, 1196, 0, 0),
+(7, 64, 1198, 0, 0),
+(7, 64, 1200, 0, 0),
+(7, 65, 1201, 0, 0),
+(7, 65, 1202, 0, 1),
+(7, 65, 1203, 0, 1),
+(7, 65, 1204, 0, 1),
+(7, 65, 1205, 0, 0),
+(7, 65, 1206, 0, 0),
+(7, 65, 1208, 0, 0),
+(7, 66, 1209, 0, 0),
+(7, 66, 1210, 0, 1),
+(7, 66, 1211, 0, 1),
+(7, 66, 1212, 0, 1),
+(7, 66, 1213, 0, 0),
+(7, 66, 1214, 0, 0),
+(7, 66, 1216, 0, 0),
+(7, 63, 1218, 0, 0),
+(7, 63, 1220, 0, 0),
+(7, 63, 1222, 0, 0),
+(7, 63, 1226, 0, 0),
+(7, 70, 1255, 0, 0),
+(7, 70, 1256, 0, 0),
+(7, 70, 1257, 0, 1),
+(7, 70, 1258, 0, 1),
+(7, 70, 1259, 0, 1),
+(7, 70, 1260, 0, 0),
+(7, 70, 1261, 0, 0),
+(7, 26, 1262, 0, 0),
+(7, 71, 1263, 0, 0),
+(7, 71, 1264, 0, 0),
+(7, 71, 1265, 0, 1),
+(7, 71, 1266, 0, 1),
+(7, 71, 1267, 0, 1),
+(7, 71, 1268, 0, 0),
+(7, 71, 1269, 0, 0),
+(7, 26, 1270, 0, 0),
+(7, 72, 1271, 0, 0),
+(7, 72, 1272, 0, 0),
+(7, 72, 1273, 0, 1),
+(7, 72, 1274, 0, 1),
+(7, 72, 1275, 0, 1),
+(7, 72, 1276, 0, 0),
+(7, 72, 1277, 0, 0),
+(7, 72, 1279, 0, 0),
+(7, 72, 1281, 0, 0),
+(7, 72, 1285, 0, 0),
+(7, 72, 1287, 0, 0),
+(7, 8, 1289, 0, 0),
+(7, 20, 1303, 0, 0),
+(7, 23, 1304, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -17440,7 +19705,13 @@ INSERT INTO `vtiger_profile2globalpermissions` (`profileid`, `globalactionid`, `
 (3, 1, 1),
 (3, 2, 1),
 (4, 1, 1),
-(4, 2, 1);
+(4, 2, 1),
+(5, 1, 1),
+(5, 2, 1),
+(6, 1, 1),
+(6, 2, 1),
+(7, 1, 1),
+(7, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -18864,7 +21135,97 @@ INSERT INTO `vtiger_profile2tab` (`profileid`, `tabid`, `permissions`) VALUES
 (1, 73, 0),
 (2, 73, 0),
 (3, 73, 0),
-(4, 73, 0);
+(4, 73, 0),
+(5, 1, 0),
+(5, 2, 0),
+(5, 7, 0),
+(5, 8, 0),
+(5, 9, 0),
+(5, 10, 0),
+(5, 14, 0),
+(5, 18, 1),
+(5, 20, 0),
+(5, 22, 1),
+(5, 23, 1),
+(5, 25, 0),
+(5, 26, 0),
+(5, 31, 0),
+(5, 40, 0),
+(5, 42, 0),
+(5, 46, 0),
+(5, 51, 1),
+(5, 56, 1),
+(5, 61, 1),
+(5, 63, 0),
+(5, 64, 0),
+(5, 65, 0),
+(5, 66, 0),
+(5, 69, 1),
+(5, 70, 0),
+(5, 71, 0),
+(5, 72, 0),
+(5, 73, 0),
+(5, 16, 0),
+(6, 1, 0),
+(6, 2, 0),
+(6, 7, 0),
+(6, 8, 0),
+(6, 9, 0),
+(6, 10, 0),
+(6, 14, 0),
+(6, 18, 1),
+(6, 20, 1),
+(6, 22, 1),
+(6, 23, 1),
+(6, 25, 0),
+(6, 26, 0),
+(6, 31, 0),
+(6, 40, 0),
+(6, 42, 0),
+(6, 46, 0),
+(6, 51, 1),
+(6, 56, 1),
+(6, 61, 1),
+(6, 63, 0),
+(6, 64, 0),
+(6, 65, 0),
+(6, 66, 0),
+(6, 69, 1),
+(6, 70, 0),
+(6, 71, 0),
+(6, 72, 0),
+(6, 73, 0),
+(6, 16, 0),
+(7, 1, 0),
+(7, 2, 0),
+(7, 7, 0),
+(7, 8, 0),
+(7, 9, 0),
+(7, 10, 0),
+(7, 14, 0),
+(7, 18, 1),
+(7, 20, 1),
+(7, 22, 1),
+(7, 23, 1),
+(7, 25, 0),
+(7, 26, 0),
+(7, 31, 0),
+(7, 40, 0),
+(7, 42, 0),
+(7, 46, 0),
+(7, 51, 1),
+(7, 56, 1),
+(7, 61, 1),
+(7, 63, 0),
+(7, 64, 0),
+(7, 65, 0),
+(7, 66, 0),
+(7, 69, 1),
+(7, 70, 0),
+(7, 71, 0),
+(7, 72, 0),
+(7, 73, 0),
+(7, 16, 0);
 
 -- --------------------------------------------------------
 
@@ -19258,7 +21619,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_profile_seq` (
 --
 
 INSERT INTO `vtiger_profile_seq` (`id`) VALUES
-(4);
+(7);
 
 -- --------------------------------------------------------
 
@@ -20001,11 +22362,19 @@ CREATE TABLE IF NOT EXISTS `vtiger_quotes` (
   `s_h_percent` int(11) DEFAULT NULL,
   `tags` varchar(1) DEFAULT NULL,
   `region_id` int(19) DEFAULT NULL,
+  `cf_1290` int(10) DEFAULT NULL,
   PRIMARY KEY (`quoteid`),
   KEY `quote_quotestage_idx` (`quotestage`),
   KEY `quotes_potentialid_idx` (`potentialid`),
   KEY `quotes_contactid_idx` (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_quotes`
+--
+
+INSERT INTO `vtiger_quotes` (`quoteid`, `subject`, `potentialid`, `quotestage`, `validtill`, `contactid`, `quote_no`, `subtotal`, `carrier`, `shipping`, `inventorymanager`, `type`, `adjustment`, `total`, `taxtype`, `discount_percent`, `discount_amount`, `s_h_amount`, `accountid`, `terms_conditions`, `currency_id`, `conversion_rate`, `compound_taxes_info`, `pre_tax_total`, `s_h_percent`, `tags`, `region_id`, `cf_1290`) VALUES
+(67, 'Báo giá cho hội chợ', 66, 'Created', NULL, NULL, 'QUO1', '2000000.00000000', '', '', 0, NULL, '0.00000000', '2540000.00000000', 'group', NULL, NULL, '0.00000000', NULL, '', 1, '1.000', '[]', '2000000.00000000', 0, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -20024,6 +22393,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_quotesbillads` (
   PRIMARY KEY (`quotebilladdressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_quotesbillads`
+--
+
+INSERT INTO `vtiger_quotesbillads` (`quotebilladdressid`, `bill_city`, `bill_code`, `bill_country`, `bill_state`, `bill_street`, `bill_pobox`) VALUES
+(67, '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -20034,6 +22410,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_quotescf` (
   `quoteid` int(19) NOT NULL DEFAULT 0,
   PRIMARY KEY (`quoteid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_quotescf`
+--
+
+INSERT INTO `vtiger_quotescf` (`quoteid`) VALUES
+(67);
 
 -- --------------------------------------------------------
 
@@ -20051,6 +22434,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_quotesshipads` (
   `ship_pobox` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`quoteshipaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_quotesshipads`
+--
+
+INSERT INTO `vtiger_quotesshipads` (`quoteshipaddressid`, `ship_city`, `ship_code`, `ship_country`, `ship_state`, `ship_street`, `ship_pobox`) VALUES
+(67, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -20128,6 +22518,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_quytrinhbanhang` (
   PRIMARY KEY (`quytrinhbanhangid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_quytrinhbanhang`
+--
+
+INSERT INTO `vtiger_quytrinhbanhang` (`quytrinhbanhangid`, `tenquytrinh`, `motachitiet`, `tags`) VALUES
+(65, '[\"Quy tr\\u00ecnh b\\u00e1n h\\u00e0ng 5 b\\u01b0\\u1edbc\"]', '1. Lên kế hoạch giao dịch\r\n2. Tìm kiếm khách hàng tiềm năng\r\n3. Tiếp cận khách hàng\r\n4. Giao dịch ho', '');
+
 -- --------------------------------------------------------
 
 --
@@ -20142,6 +22539,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_quytrinhbanhangcf` (
   `cf_1286` varchar(255) DEFAULT '',
   PRIMARY KEY (`quytrinhbanhangid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_quytrinhbanhangcf`
+--
+
+INSERT INTO `vtiger_quytrinhbanhangcf` (`quytrinhbanhangid`, `cf_1278`, `cf_1280`, `cf_1284`, `cf_1286`) VALUES
+(65, '', '78.93', '', 'Tiềm năng');
 
 -- --------------------------------------------------------
 
@@ -20486,7 +22890,9 @@ INSERT INTO `vtiger_relatedlists` (`relation_id`, `tabid`, `related_tabid`, `nam
 (177, 61, 56, 'get_related_list', 5, 'JD', 0, 'SELECT,ADD', NULL, NULL, NULL),
 (178, 61, 58, 'get_related_list', 6, 'KPI', 0, 'ADD', NULL, NULL, NULL),
 (179, 61, 60, 'get_related_list', 7, 'Leave', 0, '', NULL, NULL, NULL),
-(180, 61, 54, 'get_related_list', 8, 'Salary', 0, 'ADD', NULL, NULL, NULL);
+(180, 61, 54, 'get_related_list', 8, 'Salary', 0, 'ADD', NULL, NULL, NULL),
+(186, 63, 20, 'get_dependents_list', 1, 'Quotes', 0, 'ADD', NULL, NULL, NULL),
+(187, 63, 23, 'get_dependents_list', 2, 'Invoice', 0, 'ADD', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -20525,7 +22931,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_relatedlists_seq` (
 --
 
 INSERT INTO `vtiger_relatedlists_seq` (`id`) VALUES
-(185);
+(187);
 
 -- --------------------------------------------------------
 
@@ -20963,7 +23369,9 @@ INSERT INTO `vtiger_role` (`roleid`, `rolename`, `parentrole`, `depth`, `allowas
 ('H2', 'CEO', 'H1::H2', 1, 1),
 ('H3', 'Vice President', 'H1::H2::H3', 2, 1),
 ('H4', 'Sales Manager', 'H1::H2::H3::H4', 3, 1),
-('H5', 'Sales Person', 'H1::H2::H3::H4::H5', 4, 1);
+('H5', 'Sales Person', 'H1::H2::H3::H4::H5', 4, 1),
+('H6', 'Marketing Manager', 'H1::H2::H3::H6', 3, 1),
+('H7', 'Marketing Person', 'H1::H2::H3::H6::H7', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -22900,7 +25308,773 @@ INSERT INTO `vtiger_role2picklist` (`roleid`, `picklistvalueid`, `picklistid`, `
 ('H5', 382, 66, 6),
 ('H5', 383, 66, 7),
 ('H5', 384, 66, 8),
-('H5', 385, 66, 9);
+('H5', 385, 66, 9),
+('H6', 1, 1, 0),
+('H6', 2, 1, 1),
+('H6', 3, 1, 2),
+('H6', 4, 1, 3),
+('H6', 5, 1, 4),
+('H6', 6, 1, 5),
+('H6', 7, 1, 6),
+('H6', 8, 1, 7),
+('H6', 9, 1, 8),
+('H6', 10, 1, 9),
+('H6', 11, 1, 10),
+('H6', 12, 2, 0),
+('H6', 13, 2, 1),
+('H6', 14, 3, 0),
+('H6', 15, 3, 1),
+('H6', 16, 3, 2),
+('H6', 17, 3, 3),
+('H6', 18, 3, 4),
+('H6', 19, 3, 5),
+('H6', 20, 4, 0),
+('H6', 21, 4, 1),
+('H6', 22, 4, 2),
+('H6', 23, 4, 3),
+('H6', 24, 4, 4),
+('H6', 25, 4, 5),
+('H6', 26, 4, 6),
+('H6', 27, 4, 7),
+('H6', 28, 4, 8),
+('H6', 29, 4, 9),
+('H6', 30, 4, 10),
+('H6', 31, 4, 11),
+('H6', 32, 4, 12),
+('H6', 33, 5, 0),
+('H6', 34, 5, 1),
+('H6', 35, 5, 2),
+('H6', 36, 5, 3),
+('H6', 37, 5, 4),
+('H6', 38, 6, 0),
+('H6', 39, 6, 1),
+('H6', 40, 6, 2),
+('H6', 41, 7, 0),
+('H6', 42, 7, 1),
+('H6', 43, 7, 2),
+('H6', 44, 7, 3),
+('H6', 45, 7, 4),
+('H6', 46, 8, 0),
+('H6', 47, 9, 0),
+('H6', 48, 9, 1),
+('H6', 49, 9, 2),
+('H6', 50, 9, 3),
+('H6', 51, 10, 0),
+('H6', 52, 10, 1),
+('H6', 53, 10, 2),
+('H6', 54, 10, 3),
+('H6', 55, 10, 4),
+('H6', 56, 10, 5),
+('H6', 57, 10, 6),
+('H6', 58, 10, 7),
+('H6', 59, 10, 8),
+('H6', 60, 11, 0),
+('H6', 61, 11, 1),
+('H6', 62, 11, 2),
+('H6', 63, 11, 3),
+('H6', 64, 11, 4),
+('H6', 65, 11, 5),
+('H6', 66, 11, 6),
+('H6', 67, 11, 7),
+('H6', 68, 11, 8),
+('H6', 69, 11, 9),
+('H6', 70, 11, 10),
+('H6', 71, 11, 11),
+('H6', 72, 11, 12),
+('H6', 73, 11, 13),
+('H6', 74, 11, 14),
+('H6', 75, 11, 15),
+('H6', 76, 11, 16),
+('H6', 77, 11, 17),
+('H6', 78, 11, 18),
+('H6', 79, 11, 19),
+('H6', 80, 11, 20),
+('H6', 81, 11, 21),
+('H6', 82, 11, 22),
+('H6', 83, 11, 23),
+('H6', 84, 11, 24),
+('H6', 85, 11, 25),
+('H6', 86, 11, 26),
+('H6', 87, 11, 27),
+('H6', 88, 11, 28),
+('H6', 89, 11, 29),
+('H6', 90, 11, 30),
+('H6', 91, 11, 31),
+('H6', 92, 12, 0),
+('H6', 93, 12, 1),
+('H6', 94, 12, 2),
+('H6', 95, 12, 3),
+('H6', 96, 12, 4),
+('H6', 97, 12, 5),
+('H6', 98, 13, 0),
+('H6', 99, 13, 1),
+('H6', 100, 13, 2),
+('H6', 101, 13, 3),
+('H6', 102, 13, 4),
+('H6', 103, 13, 5),
+('H6', 104, 13, 6),
+('H6', 105, 13, 7),
+('H6', 106, 13, 8),
+('H6', 107, 13, 9),
+('H6', 108, 13, 10),
+('H6', 109, 13, 11),
+('H6', 110, 13, 12),
+('H6', 111, 14, 0),
+('H6', 112, 14, 1),
+('H6', 113, 14, 2),
+('H6', 114, 14, 3),
+('H6', 115, 14, 4),
+('H6', 116, 14, 5),
+('H6', 117, 14, 6),
+('H6', 118, 14, 7),
+('H6', 119, 14, 8),
+('H6', 120, 14, 9),
+('H6', 121, 14, 10),
+('H6', 122, 14, 11),
+('H6', 123, 15, 0),
+('H6', 124, 15, 1),
+('H6', 125, 15, 2),
+('H6', 126, 15, 3),
+('H6', 127, 16, 0),
+('H6', 128, 16, 1),
+('H6', 129, 16, 2),
+('H6', 130, 17, 0),
+('H6', 131, 17, 1),
+('H6', 132, 17, 2),
+('H6', 133, 17, 3),
+('H6', 134, 17, 4),
+('H6', 135, 18, 0),
+('H6', 136, 18, 1),
+('H6', 137, 18, 2),
+('H6', 138, 18, 3),
+('H6', 139, 19, 0),
+('H6', 140, 19, 1),
+('H6', 141, 19, 2),
+('H6', 142, 19, 3),
+('H6', 143, 19, 4),
+('H6', 144, 20, 0),
+('H6', 145, 20, 1),
+('H6', 146, 20, 2),
+('H6', 147, 20, 3),
+('H6', 148, 20, 4),
+('H6', 149, 20, 5),
+('H6', 150, 21, 0),
+('H6', 151, 21, 1),
+('H6', 152, 21, 2),
+('H6', 153, 21, 3),
+('H6', 154, 21, 4),
+('H6', 155, 21, 5),
+('H6', 156, 21, 6),
+('H6', 157, 21, 7),
+('H6', 158, 21, 8),
+('H6', 159, 21, 9),
+('H6', 160, 22, 0),
+('H6', 161, 22, 1),
+('H6', 162, 22, 2),
+('H6', 163, 22, 3),
+('H6', 164, 22, 4),
+('H6', 165, 22, 5),
+('H6', 166, 23, 0),
+('H6', 167, 23, 1),
+('H6', 168, 23, 2),
+('H6', 169, 23, 3),
+('H6', 170, 24, 0),
+('H6', 171, 24, 1),
+('H6', 172, 24, 2),
+('H6', 173, 25, 0),
+('H6', 174, 25, 1),
+('H6', 175, 25, 2),
+('H6', 176, 25, 3),
+('H6', 177, 25, 4),
+('H6', 178, 25, 5),
+('H6', 179, 26, 0),
+('H6', 180, 26, 1),
+('H6', 181, 26, 2),
+('H6', 182, 27, 0),
+('H6', 183, 27, 1),
+('H6', 184, 27, 2),
+('H6', 185, 27, 3),
+('H6', 186, 28, 0),
+('H6', 187, 28, 1),
+('H6', 188, 28, 2),
+('H6', 189, 28, 3),
+('H6', 190, 29, 0),
+('H6', 191, 29, 1),
+('H6', 192, 29, 2),
+('H6', 193, 29, 3),
+('H6', 194, 30, 0),
+('H6', 195, 30, 1),
+('H6', 196, 30, 2),
+('H6', 197, 30, 3),
+('H6', 198, 30, 4),
+('H6', 199, 30, 5),
+('H6', 200, 30, 6),
+('H6', 201, 30, 7),
+('H6', 202, 30, 8),
+('H6', 203, 30, 9),
+('H6', 204, 30, 10),
+('H6', 205, 30, 11),
+('H6', 206, 30, 12),
+('H6', 207, 30, 13),
+('H6', 208, 30, 14),
+('H6', 209, 30, 15),
+('H6', 210, 31, 1),
+('H6', 211, 31, 2),
+('H6', 212, 31, 3),
+('H6', 213, 31, 4),
+('H6', 214, 32, 1),
+('H6', 215, 32, 2),
+('H6', 216, 32, 3),
+('H6', 217, 32, 4),
+('H6', 218, 32, 5),
+('H6', 219, 32, 6),
+('H6', 220, 33, 1),
+('H6', 221, 33, 2),
+('H6', 222, 33, 3),
+('H6', 223, 34, 1),
+('H6', 224, 34, 2),
+('H6', 225, 34, 3),
+('H6', 226, 35, 1),
+('H6', 227, 35, 2),
+('H6', 228, 35, 3),
+('H6', 229, 36, 1),
+('H6', 230, 36, 2),
+('H6', 231, 36, 3),
+('H6', 232, 36, 4),
+('H6', 233, 36, 5),
+('H6', 234, 36, 6),
+('H6', 235, 37, 1),
+('H6', 236, 37, 2),
+('H6', 237, 38, 1),
+('H6', 238, 38, 2),
+('H6', 239, 38, 3),
+('H6', 240, 38, 4),
+('H6', 241, 39, 1),
+('H6', 242, 39, 2),
+('H6', 243, 39, 3),
+('H6', 244, 39, 4),
+('H6', 245, 40, 1),
+('H6', 246, 40, 2),
+('H6', 247, 40, 3),
+('H6', 248, 40, 4),
+('H6', 249, 41, 1),
+('H6', 250, 41, 2),
+('H6', 251, 41, 3),
+('H6', 252, 41, 4),
+('H6', 253, 41, 5),
+('H6', 254, 41, 6),
+('H6', 255, 41, 7),
+('H6', 256, 41, 8),
+('H6', 257, 41, 9),
+('H6', 258, 41, 10),
+('H6', 259, 41, 11),
+('H6', 260, 42, 1),
+('H6', 261, 42, 2),
+('H6', 262, 42, 3),
+('H6', 263, 42, 4),
+('H6', 264, 42, 5),
+('H6', 265, 42, 6),
+('H6', 266, 42, 7),
+('H6', 267, 42, 8),
+('H6', 268, 42, 9),
+('H6', 269, 43, 1),
+('H6', 270, 43, 2),
+('H6', 271, 43, 3),
+('H6', 272, 43, 4),
+('H6', 273, 44, 1),
+('H6', 274, 44, 2),
+('H6', 275, 44, 3),
+('H6', 276, 44, 4),
+('H6', 277, 45, 1),
+('H6', 278, 45, 2),
+('H6', 279, 45, 3),
+('H6', 280, 45, 4),
+('H6', 281, 45, 5),
+('H6', 282, 45, 6),
+('H6', 283, 45, 7),
+('H6', 284, 45, 8),
+('H6', 285, 45, 9),
+('H6', 286, 45, 10),
+('H6', 287, 45, 11),
+('H6', 288, 12, 1),
+('H6', 289, 46, 1),
+('H6', 290, 46, 2),
+('H6', 291, 46, 3),
+('H6', 292, 46, 4),
+('H6', 293, 46, 5),
+('H6', 294, 46, 6),
+('H6', 295, 2, 1),
+('H6', 296, 47, 1),
+('H6', 297, 47, 2),
+('H6', 298, 47, 3),
+('H6', 299, 48, 1),
+('H6', 300, 48, 2),
+('H6', 303, 49, 1),
+('H6', 304, 49, 2),
+('H6', 305, 50, 1),
+('H6', 306, 50, 2),
+('H6', 307, 51, 1),
+('H6', 308, 51, 2),
+('H6', 309, 51, 3),
+('H6', 310, 51, 4),
+('H6', 311, 51, 5),
+('H6', 312, 51, 6),
+('H6', 313, 52, 1),
+('H6', 314, 52, 2),
+('H6', 315, 52, 3),
+('H6', 316, 52, 4),
+('H6', 317, 52, 5),
+('H6', 318, 53, 1),
+('H6', 319, 53, 2),
+('H6', 320, 53, 3),
+('H6', 321, 53, 4),
+('H6', 322, 53, 5),
+('H6', 323, 53, 6),
+('H6', 324, 54, 1),
+('H6', 325, 54, 2),
+('H6', 326, 54, 3),
+('H6', 327, 54, 4),
+('H6', 328, 54, 5),
+('H6', 329, 55, 1),
+('H6', 330, 55, 2),
+('H6', 331, 56, 1),
+('H6', 332, 57, 1),
+('H6', 333, 57, 2),
+('H6', 334, 57, 3),
+('H6', 335, 57, 4),
+('H6', 336, 57, 5),
+('H6', 337, 57, 6),
+('H6', 338, 58, 1),
+('H6', 339, 58, 2),
+('H6', 340, 58, 3),
+('H6', 341, 58, 4),
+('H6', 342, 58, 5),
+('H6', 343, 59, 1),
+('H6', 344, 59, 2),
+('H6', 345, 59, 3),
+('H6', 346, 59, 4),
+('H6', 347, 59, 5),
+('H6', 348, 60, 1),
+('H6', 349, 60, 2),
+('H6', 350, 60, 3),
+('H6', 351, 60, 4),
+('H6', 352, 60, 5),
+('H6', 353, 60, 6),
+('H6', 354, 60, 7),
+('H6', 355, 60, 8),
+('H6', 356, 60, 9),
+('H6', 357, 60, 10),
+('H6', 358, 60, 11),
+('H6', 359, 60, 12),
+('H6', 360, 60, 13),
+('H6', 361, 61, 1),
+('H6', 362, 61, 2),
+('H6', 363, 61, 3),
+('H6', 364, 61, 4),
+('H6', 365, 61, 5),
+('H6', 366, 62, 1),
+('H6', 367, 62, 2),
+('H6', 368, 63, 1),
+('H6', 369, 63, 2),
+('H6', 370, 64, 1),
+('H6', 371, 64, 2),
+('H6', 372, 64, 3),
+('H6', 373, 64, 4),
+('H6', 374, 64, 5),
+('H6', 375, 65, 1),
+('H6', 376, 65, 2),
+('H6', 377, 66, 1),
+('H6', 378, 66, 2),
+('H6', 379, 66, 3),
+('H6', 380, 66, 4),
+('H6', 381, 66, 5),
+('H6', 382, 66, 6),
+('H6', 383, 66, 7),
+('H6', 384, 66, 8),
+('H6', 385, 66, 9),
+('H7', 1, 1, 0),
+('H7', 2, 1, 1),
+('H7', 3, 1, 2),
+('H7', 4, 1, 3),
+('H7', 5, 1, 4),
+('H7', 6, 1, 5),
+('H7', 7, 1, 6),
+('H7', 8, 1, 7),
+('H7', 9, 1, 8),
+('H7', 10, 1, 9),
+('H7', 11, 1, 10),
+('H7', 12, 2, 0),
+('H7', 13, 2, 1),
+('H7', 14, 3, 0),
+('H7', 15, 3, 1),
+('H7', 16, 3, 2),
+('H7', 17, 3, 3),
+('H7', 18, 3, 4),
+('H7', 19, 3, 5),
+('H7', 20, 4, 0),
+('H7', 21, 4, 1),
+('H7', 22, 4, 2),
+('H7', 23, 4, 3),
+('H7', 24, 4, 4),
+('H7', 25, 4, 5),
+('H7', 26, 4, 6),
+('H7', 27, 4, 7),
+('H7', 28, 4, 8),
+('H7', 29, 4, 9),
+('H7', 30, 4, 10),
+('H7', 31, 4, 11),
+('H7', 32, 4, 12),
+('H7', 33, 5, 0),
+('H7', 34, 5, 1),
+('H7', 35, 5, 2),
+('H7', 36, 5, 3),
+('H7', 37, 5, 4),
+('H7', 38, 6, 0),
+('H7', 39, 6, 1),
+('H7', 40, 6, 2),
+('H7', 41, 7, 0),
+('H7', 42, 7, 1),
+('H7', 43, 7, 2),
+('H7', 44, 7, 3),
+('H7', 45, 7, 4),
+('H7', 46, 8, 0),
+('H7', 47, 9, 0),
+('H7', 48, 9, 1),
+('H7', 49, 9, 2),
+('H7', 50, 9, 3),
+('H7', 51, 10, 0),
+('H7', 52, 10, 1),
+('H7', 53, 10, 2),
+('H7', 54, 10, 3),
+('H7', 55, 10, 4),
+('H7', 56, 10, 5),
+('H7', 57, 10, 6),
+('H7', 58, 10, 7),
+('H7', 59, 10, 8),
+('H7', 60, 11, 0),
+('H7', 61, 11, 1),
+('H7', 62, 11, 2),
+('H7', 63, 11, 3),
+('H7', 64, 11, 4),
+('H7', 65, 11, 5),
+('H7', 66, 11, 6),
+('H7', 67, 11, 7),
+('H7', 68, 11, 8),
+('H7', 69, 11, 9),
+('H7', 70, 11, 10),
+('H7', 71, 11, 11),
+('H7', 72, 11, 12),
+('H7', 73, 11, 13),
+('H7', 74, 11, 14),
+('H7', 75, 11, 15),
+('H7', 76, 11, 16),
+('H7', 77, 11, 17),
+('H7', 78, 11, 18),
+('H7', 79, 11, 19),
+('H7', 80, 11, 20),
+('H7', 81, 11, 21),
+('H7', 82, 11, 22),
+('H7', 83, 11, 23),
+('H7', 84, 11, 24),
+('H7', 85, 11, 25),
+('H7', 86, 11, 26),
+('H7', 87, 11, 27),
+('H7', 88, 11, 28),
+('H7', 89, 11, 29),
+('H7', 90, 11, 30),
+('H7', 91, 11, 31),
+('H7', 92, 12, 0),
+('H7', 93, 12, 1),
+('H7', 94, 12, 2),
+('H7', 95, 12, 3),
+('H7', 96, 12, 4),
+('H7', 97, 12, 5),
+('H7', 98, 13, 0),
+('H7', 99, 13, 1),
+('H7', 100, 13, 2),
+('H7', 101, 13, 3),
+('H7', 102, 13, 4),
+('H7', 103, 13, 5),
+('H7', 104, 13, 6),
+('H7', 105, 13, 7),
+('H7', 106, 13, 8),
+('H7', 107, 13, 9),
+('H7', 108, 13, 10),
+('H7', 109, 13, 11),
+('H7', 110, 13, 12),
+('H7', 111, 14, 0),
+('H7', 112, 14, 1),
+('H7', 113, 14, 2),
+('H7', 114, 14, 3),
+('H7', 115, 14, 4),
+('H7', 116, 14, 5),
+('H7', 117, 14, 6),
+('H7', 118, 14, 7),
+('H7', 119, 14, 8),
+('H7', 120, 14, 9),
+('H7', 121, 14, 10),
+('H7', 122, 14, 11),
+('H7', 123, 15, 0),
+('H7', 124, 15, 1),
+('H7', 125, 15, 2),
+('H7', 126, 15, 3),
+('H7', 127, 16, 0),
+('H7', 128, 16, 1),
+('H7', 129, 16, 2),
+('H7', 130, 17, 0),
+('H7', 131, 17, 1),
+('H7', 132, 17, 2),
+('H7', 133, 17, 3),
+('H7', 134, 17, 4),
+('H7', 135, 18, 0),
+('H7', 136, 18, 1),
+('H7', 137, 18, 2),
+('H7', 138, 18, 3),
+('H7', 139, 19, 0),
+('H7', 140, 19, 1),
+('H7', 141, 19, 2),
+('H7', 142, 19, 3),
+('H7', 143, 19, 4),
+('H7', 144, 20, 0),
+('H7', 145, 20, 1),
+('H7', 146, 20, 2),
+('H7', 147, 20, 3),
+('H7', 148, 20, 4),
+('H7', 149, 20, 5),
+('H7', 150, 21, 0),
+('H7', 151, 21, 1),
+('H7', 152, 21, 2),
+('H7', 153, 21, 3),
+('H7', 154, 21, 4),
+('H7', 155, 21, 5),
+('H7', 156, 21, 6),
+('H7', 157, 21, 7),
+('H7', 158, 21, 8),
+('H7', 159, 21, 9),
+('H7', 160, 22, 0),
+('H7', 161, 22, 1),
+('H7', 162, 22, 2),
+('H7', 163, 22, 3),
+('H7', 164, 22, 4),
+('H7', 165, 22, 5),
+('H7', 166, 23, 0),
+('H7', 167, 23, 1),
+('H7', 168, 23, 2),
+('H7', 169, 23, 3),
+('H7', 170, 24, 0),
+('H7', 171, 24, 1),
+('H7', 172, 24, 2),
+('H7', 173, 25, 0),
+('H7', 174, 25, 1),
+('H7', 175, 25, 2),
+('H7', 176, 25, 3),
+('H7', 177, 25, 4),
+('H7', 178, 25, 5),
+('H7', 179, 26, 0),
+('H7', 180, 26, 1),
+('H7', 181, 26, 2),
+('H7', 182, 27, 0),
+('H7', 183, 27, 1),
+('H7', 184, 27, 2),
+('H7', 185, 27, 3),
+('H7', 186, 28, 0),
+('H7', 187, 28, 1),
+('H7', 188, 28, 2),
+('H7', 189, 28, 3),
+('H7', 190, 29, 0),
+('H7', 191, 29, 1),
+('H7', 192, 29, 2),
+('H7', 193, 29, 3),
+('H7', 194, 30, 0),
+('H7', 195, 30, 1),
+('H7', 196, 30, 2),
+('H7', 197, 30, 3),
+('H7', 198, 30, 4),
+('H7', 199, 30, 5),
+('H7', 200, 30, 6),
+('H7', 201, 30, 7),
+('H7', 202, 30, 8),
+('H7', 203, 30, 9),
+('H7', 204, 30, 10),
+('H7', 205, 30, 11),
+('H7', 206, 30, 12),
+('H7', 207, 30, 13),
+('H7', 208, 30, 14),
+('H7', 209, 30, 15),
+('H7', 210, 31, 1),
+('H7', 211, 31, 2),
+('H7', 212, 31, 3),
+('H7', 213, 31, 4),
+('H7', 214, 32, 1),
+('H7', 215, 32, 2),
+('H7', 216, 32, 3),
+('H7', 217, 32, 4),
+('H7', 218, 32, 5),
+('H7', 219, 32, 6),
+('H7', 220, 33, 1),
+('H7', 221, 33, 2),
+('H7', 222, 33, 3),
+('H7', 223, 34, 1),
+('H7', 224, 34, 2),
+('H7', 225, 34, 3),
+('H7', 226, 35, 1),
+('H7', 227, 35, 2),
+('H7', 228, 35, 3),
+('H7', 229, 36, 1),
+('H7', 230, 36, 2),
+('H7', 231, 36, 3),
+('H7', 232, 36, 4),
+('H7', 233, 36, 5),
+('H7', 234, 36, 6),
+('H7', 235, 37, 1),
+('H7', 236, 37, 2),
+('H7', 237, 38, 1),
+('H7', 238, 38, 2),
+('H7', 239, 38, 3),
+('H7', 240, 38, 4),
+('H7', 241, 39, 1),
+('H7', 242, 39, 2),
+('H7', 243, 39, 3),
+('H7', 244, 39, 4),
+('H7', 245, 40, 1),
+('H7', 246, 40, 2),
+('H7', 247, 40, 3),
+('H7', 248, 40, 4),
+('H7', 249, 41, 1),
+('H7', 250, 41, 2),
+('H7', 251, 41, 3),
+('H7', 252, 41, 4),
+('H7', 253, 41, 5),
+('H7', 254, 41, 6),
+('H7', 255, 41, 7),
+('H7', 256, 41, 8),
+('H7', 257, 41, 9),
+('H7', 258, 41, 10),
+('H7', 259, 41, 11),
+('H7', 260, 42, 1),
+('H7', 261, 42, 2),
+('H7', 262, 42, 3),
+('H7', 263, 42, 4),
+('H7', 264, 42, 5),
+('H7', 265, 42, 6),
+('H7', 266, 42, 7),
+('H7', 267, 42, 8),
+('H7', 268, 42, 9),
+('H7', 269, 43, 1),
+('H7', 270, 43, 2),
+('H7', 271, 43, 3),
+('H7', 272, 43, 4),
+('H7', 273, 44, 1),
+('H7', 274, 44, 2),
+('H7', 275, 44, 3),
+('H7', 276, 44, 4),
+('H7', 277, 45, 1),
+('H7', 278, 45, 2),
+('H7', 279, 45, 3),
+('H7', 280, 45, 4),
+('H7', 281, 45, 5),
+('H7', 282, 45, 6),
+('H7', 283, 45, 7),
+('H7', 284, 45, 8),
+('H7', 285, 45, 9),
+('H7', 286, 45, 10),
+('H7', 287, 45, 11),
+('H7', 288, 12, 1),
+('H7', 289, 46, 1),
+('H7', 290, 46, 2),
+('H7', 291, 46, 3),
+('H7', 292, 46, 4),
+('H7', 293, 46, 5),
+('H7', 294, 46, 6),
+('H7', 295, 2, 1),
+('H7', 296, 47, 1),
+('H7', 297, 47, 2),
+('H7', 298, 47, 3),
+('H7', 299, 48, 1),
+('H7', 300, 48, 2),
+('H7', 303, 49, 1),
+('H7', 304, 49, 2),
+('H7', 305, 50, 1),
+('H7', 306, 50, 2),
+('H7', 307, 51, 1),
+('H7', 308, 51, 2),
+('H7', 309, 51, 3),
+('H7', 310, 51, 4),
+('H7', 311, 51, 5),
+('H7', 312, 51, 6),
+('H7', 313, 52, 1),
+('H7', 314, 52, 2),
+('H7', 315, 52, 3),
+('H7', 316, 52, 4),
+('H7', 317, 52, 5),
+('H7', 318, 53, 1),
+('H7', 319, 53, 2),
+('H7', 320, 53, 3),
+('H7', 321, 53, 4),
+('H7', 322, 53, 5),
+('H7', 323, 53, 6),
+('H7', 324, 54, 1),
+('H7', 325, 54, 2),
+('H7', 326, 54, 3),
+('H7', 327, 54, 4),
+('H7', 328, 54, 5),
+('H7', 329, 55, 1),
+('H7', 330, 55, 2),
+('H7', 331, 56, 1),
+('H7', 332, 57, 1),
+('H7', 333, 57, 2),
+('H7', 334, 57, 3),
+('H7', 335, 57, 4),
+('H7', 336, 57, 5),
+('H7', 337, 57, 6),
+('H7', 338, 58, 1),
+('H7', 339, 58, 2),
+('H7', 340, 58, 3),
+('H7', 341, 58, 4),
+('H7', 342, 58, 5),
+('H7', 343, 59, 1),
+('H7', 344, 59, 2),
+('H7', 345, 59, 3),
+('H7', 346, 59, 4),
+('H7', 347, 59, 5),
+('H7', 348, 60, 1),
+('H7', 349, 60, 2),
+('H7', 350, 60, 3),
+('H7', 351, 60, 4),
+('H7', 352, 60, 5),
+('H7', 353, 60, 6),
+('H7', 354, 60, 7),
+('H7', 355, 60, 8),
+('H7', 356, 60, 9),
+('H7', 357, 60, 10),
+('H7', 358, 60, 11),
+('H7', 359, 60, 12),
+('H7', 360, 60, 13),
+('H7', 361, 61, 1),
+('H7', 362, 61, 2),
+('H7', 363, 61, 3),
+('H7', 364, 61, 4),
+('H7', 365, 61, 5),
+('H7', 366, 62, 1),
+('H7', 367, 62, 2),
+('H7', 368, 63, 1),
+('H7', 369, 63, 2),
+('H7', 370, 64, 1),
+('H7', 371, 64, 2),
+('H7', 372, 64, 3),
+('H7', 373, 64, 4),
+('H7', 374, 64, 5),
+('H7', 375, 65, 1),
+('H7', 376, 65, 2),
+('H7', 377, 66, 1),
+('H7', 378, 66, 2),
+('H7', 379, 66, 3),
+('H7', 380, 66, 4),
+('H7', 381, 66, 5),
+('H7', 382, 66, 6),
+('H7', 383, 66, 7),
+('H7', 384, 66, 8),
+('H7', 385, 66, 9);
 
 -- --------------------------------------------------------
 
@@ -22923,7 +26097,9 @@ INSERT INTO `vtiger_role2profile` (`roleid`, `profileid`) VALUES
 ('H2', 1),
 ('H3', 2),
 ('H4', 2),
-('H5', 2);
+('H5', 2),
+('H6', 5),
+('H7', 6);
 
 -- --------------------------------------------------------
 
@@ -22940,7 +26116,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_role_seq` (
 --
 
 INSERT INTO `vtiger_role_seq` (`id`) VALUES
-(5);
+(7);
 
 -- --------------------------------------------------------
 
@@ -23010,6 +26186,23 @@ CREATE TABLE IF NOT EXISTS `vtiger_rss` (
   `starred` int(1) DEFAULT 0,
   PRIMARY KEY (`rssid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vtiger_rss_seq`
+--
+
+CREATE TABLE IF NOT EXISTS `vtiger_rss_seq` (
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vtiger_rss_seq`
+--
+
+INSERT INTO `vtiger_rss_seq` (`id`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
@@ -23099,6 +26292,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_salesorder` (
   KEY `salesorder_contactid_idx` (`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_salesorder`
+--
+
+INSERT INTO `vtiger_salesorder` (`salesorderid`, `subject`, `potentialid`, `customerno`, `salesorder_no`, `quoteid`, `vendorterms`, `contactid`, `vendorid`, `duedate`, `carrier`, `pending`, `type`, `adjustment`, `salescommission`, `exciseduty`, `total`, `subtotal`, `taxtype`, `discount_percent`, `discount_amount`, `s_h_amount`, `accountid`, `terms_conditions`, `purchaseorder`, `sostatus`, `currency_id`, `conversion_rate`, `enable_recurring`, `compound_taxes_info`, `pre_tax_total`, `s_h_percent`, `tags`, `region_id`) VALUES
+(80, 'S', 0, 'DN-0', 'SO1', 0, NULL, NULL, NULL, NULL, '', '', NULL, '0.00000000', '0.000', '0.000', '317500.00000000', '250000.00000000', 'group', NULL, NULL, '0.00000000', NULL, '', '', '', 1, '1.000', 0, '[]', '250000.00000000', 0, '', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -23109,6 +26309,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_salesordercf` (
   `salesorderid` int(19) NOT NULL DEFAULT 0,
   PRIMARY KEY (`salesorderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_salesordercf`
+--
+
+INSERT INTO `vtiger_salesordercf` (`salesorderid`) VALUES
+(80);
 
 -- --------------------------------------------------------
 
@@ -23297,6 +26504,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_seattachmentsrel` (
   KEY `seattachmentsrel_crmid_idx` (`crmid`),
   KEY `seattachmentsrel_attachmentsid_crmid_idx` (`attachmentsid`,`crmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_seattachmentsrel`
+--
+
+INSERT INTO `vtiger_seattachmentsrel` (`crmid`, `attachmentsid`) VALUES
+(78, 79);
 
 -- --------------------------------------------------------
 
@@ -24046,6 +27260,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_sobillads` (
   PRIMARY KEY (`sobilladdressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_sobillads`
+--
+
+INSERT INTO `vtiger_sobillads` (`sobilladdressid`, `bill_city`, `bill_code`, `bill_country`, `bill_state`, `bill_street`, `bill_pobox`) VALUES
+(80, '', '', '', '', 'A', '');
+
 -- --------------------------------------------------------
 
 --
@@ -24062,6 +27283,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_soshipads` (
   `ship_pobox` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`soshipaddressid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_soshipads`
+--
+
+INSERT INTO `vtiger_soshipads` (`soshipaddressid`, `ship_city`, `ship_code`, `ship_country`, `ship_state`, `ship_street`, `ship_pobox`) VALUES
+(80, '', '', '', '', 'V', '');
 
 -- --------------------------------------------------------
 
@@ -24252,6 +27480,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_supportprotocol` (
   PRIMARY KEY (`supportprotocolid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `vtiger_supportprotocol`
+--
+
+INSERT INTO `vtiger_supportprotocol` (`supportprotocolid`, `hinhthuchotro`, `tags`) VALUES
+(73, '[\"B\\u1ed3i th\\u01b0\\u1eddng\"]', '');
+
 -- --------------------------------------------------------
 
 --
@@ -24263,6 +27498,13 @@ CREATE TABLE IF NOT EXISTS `vtiger_supportprotocolcf` (
   `cf_1215` text DEFAULT NULL,
   PRIMARY KEY (`supportprotocolid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vtiger_supportprotocolcf`
+--
+
+INSERT INTO `vtiger_supportprotocolcf` (`supportprotocolid`, `cf_1215`) VALUES
+(73, 'Đại diện bên công ty sẽ thỏa thuận');
 
 -- --------------------------------------------------------
 
@@ -24373,22 +27615,22 @@ INSERT INTO `vtiger_tab` (`tabid`, `name`, `presence`, `tabsequence`, `tablabel`
 (33, 'ModTracker', 0, -1, 'ModTracker', NULL, NULL, 0, 0, 0, 0, '1.2', '', NULL, 1, 1, 1),
 (34, 'PBXManager', 1, -1, 'PBXManager', NULL, NULL, 1, 0, 1, 0, '2.2', 'Tools', NULL, 1, 1, 1),
 (35, 'ServiceContracts', 1, -1, 'Service Contracts', NULL, NULL, 0, 0, 1, 0, '2.4', 'Support', NULL, 1, 1, 1),
-(36, 'Services', 1, -1, 'Services', NULL, NULL, 0, 0, 1, 0, '2.6', 'Inventory', NULL, 1, 1, 1),
+(36, 'Services', 0, -1, 'Services', NULL, NULL, 0, 0, 1, 0, '2.6', 'Inventory', NULL, 1, 1, 1),
 (37, 'WSAPP', 0, -1, 'WSAPP', NULL, NULL, 1, 0, 0, 0, '3.4.4', '', NULL, 1, 1, 1),
 (38, 'Assets', 1, -1, 'Assets', NULL, NULL, 0, 0, 1, 0, '2.0', 'Inventory', NULL, 1, 1, 1),
 (39, 'CustomerPortal', 0, -1, 'CustomerPortal', NULL, NULL, 0, 0, 0, 0, '1.4', '', NULL, 1, 1, 1),
 (40, 'EmailTemplates', 0, -1, 'Email Templates', NULL, NULL, 1, 0, 0, 0, '1.0', 'Tools', NULL, 1, 1, 1),
 (41, 'Google', 1, -1, 'Google', NULL, NULL, 0, 0, 0, 0, '1.5', '', NULL, 1, 1, 1),
 (42, 'ModComments', 0, -1, 'Comments', NULL, NULL, 0, 0, 1, 0, '2.1', '', NULL, 1, 1, 1),
-(43, 'ProjectMilestone', 1, -1, 'ProjectMilestone', NULL, NULL, 0, 0, 1, 0, '3.0', 'Support', NULL, 1, 1, 1),
-(44, 'ProjectTask', 1, -1, 'ProjectTask', NULL, NULL, 0, 0, 1, 0, '3.1', 'Support', NULL, 1, 1, 1),
-(45, 'Project', 1, -1, 'Project', NULL, NULL, 0, 0, 1, 0, '3.3', 'Support', NULL, 1, 1, 1),
+(43, 'ProjectMilestone', 0, -1, 'ProjectMilestone', NULL, NULL, 0, 0, 1, 0, '3.0', 'Support', NULL, 1, 1, 1),
+(44, 'ProjectTask', 0, -1, 'ProjectTask', NULL, NULL, 0, 0, 1, 0, '3.1', 'Support', NULL, 1, 1, 1),
+(45, 'Project', 0, -1, 'Project', NULL, NULL, 0, 0, 1, 0, '3.3', 'Support', NULL, 1, 1, 1),
 (46, 'RecycleBin', 0, -1, 'Recycle Bin', NULL, NULL, 0, 0, 0, 0, '1.5', 'Tools', NULL, 1, 1, 1),
 (47, 'SMSNotifier', 1, -1, 'SMSNotifier', NULL, NULL, 0, 0, 1, 0, '2.1', 'Sales', NULL, 1, 1, 1),
 (48, 'Webforms', 1, -1, 'Webforms', NULL, NULL, 0, 0, 0, 0, '1.6', '', NULL, 1, 1, 1),
 (49, 'ExtensionStore', 0, -1, 'Extension Store', NULL, NULL, 1, 0, 0, 0, '1.2', NULL, NULL, 1, 1, 1),
 (50, 'SettingHrm', 1, -1, 'Setting Hrm', NULL, NULL, 1, 0, 1, 0, '1.0', 'Tools', 'custom', 0, 1, 1),
-(51, 'SettingPosition', 1, -1, 'Setting Position', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1),
+(51, 'SettingPosition', 0, -1, 'Setting Position', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1),
 (52, 'SettingWeight', 1, -1, 'Setting Weight', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1),
 (53, 'SalaryComponent', 1, -1, 'Salary Components', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1),
 (54, 'Salary', 1, -1, 'Salary', NULL, NULL, 1, 0, 1, 0, '1.0', 'HRM', 'custom', 0, 1, 1),
@@ -25251,7 +28493,9 @@ CREATE TABLE IF NOT EXISTS `vtiger_user2role` (
 
 INSERT INTO `vtiger_user2role` (`userid`, `roleid`) VALUES
 (1, 'H2'),
-(5, 'H3');
+(5, 'H3'),
+(6, 'H6'),
+(7, 'H7');
 
 -- --------------------------------------------------------
 
@@ -25344,7 +28588,9 @@ CREATE TABLE IF NOT EXISTS `vtiger_users` (
 
 INSERT INTO `vtiger_users` (`id`, `user_name`, `user_password`, `cal_color`, `first_name`, `last_name`, `reports_to_id`, `is_admin`, `currency_id`, `description`, `date_entered`, `date_modified`, `modified_user_id`, `title`, `department`, `phone_home`, `phone_mobile`, `phone_work`, `phone_other`, `phone_fax`, `email1`, `email2`, `secondaryemail`, `status`, `signature`, `address_street`, `address_city`, `address_state`, `address_country`, `address_postalcode`, `user_preferences`, `tz`, `holidays`, `namedays`, `workdays`, `weekstart`, `date_format`, `hour_format`, `start_hour`, `end_hour`, `is_owner`, `activity_view`, `lead_view`, `imagename`, `deleted`, `confirm_password`, `internal_mailer`, `reminder_interval`, `reminder_next_time`, `crypt_type`, `accesskey`, `theme`, `language`, `time_zone`, `currency_grouping_pattern`, `currency_decimal_separator`, `currency_grouping_separator`, `currency_symbol_placement`, `phone_crm_extension`, `no_of_currency_decimals`, `truncate_trailing_zeros`, `dayoftheweek`, `callduration`, `othereventduration`, `calendarsharedtype`, `default_record_view`, `leftpanelhide`, `rowheight`, `defaulteventstatus`, `defaultactivitytype`, `hidecompletedevents`, `defaultcalendarview`, `candidate`) VALUES
 (1, 'admin', '$2y$10$PkfxKe/NIdgDNOGBoFlmZelbtZ6d1eLQchtfVMyHMEXxnDcf6Er1K', '#E6FAD8', 'Leonce', 'Wang', '', 'on', 1, '', '2020-04-08 05:38:54', NULL, NULL, '', '', '', '', '', '', '', 'ThienLang99999@gmail.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'dd-mm-yyyy', '12', '00:00', '23:00', '1', 'This Week', 'Today', '', 0, '$2y$10$JGKsxD9u2tKpopO6tI9Zr.1/Y8GVGSfzSjr1cy1KNqqJapljAa0Ci', '1', '1 Minute', NULL, 'PHASH', 'jNG2wZe7gv9Rk0fl', 'alphagrey', 'vn_vn', 'Asia/Bangkok', '123,456,789', '.', ',', '1.0$', '', '2', '1', 'Sunday', '5', '5', 'public', 'Summary', '0', '', 'Planned', 'Call', 0, 'MyCalendar', NULL),
-(5, 'tung', '$2y$10$nRxVs.AN85Ga9POabWfbY.jJ6UNj6c7iP11hIMnoWT7niWd0urAN.', '#E6FAD8', 'Tùng', 'Đồng Việt', '', 'off', 1, '', '2020-07-05 10:35:51', NULL, NULL, '', '', '', '', '', '', '', 'vendor@vendor.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'yyyy-mm-dd', '12', '09:00', '', '', 'Today', 'Today', '', 0, '$2y$10$lbrf.VzTlTbKYFjYL3TwjeeD1l4u.rw300CV1qI7GX8nCgSpiEjxK', '0', '', NULL, 'PHASH', 'LEp34FhZTGJH8Ibx', 'softed', 'vn_vn', 'Asia/Bangkok', '123,456,789', '.', ',', '$1.0', '', '2', '0', 'Sunday', '5', '5', 'public', 'Summary', '0', 'medium', NULL, NULL, 0, '', NULL);
+(5, 'tung', '$2y$10$nRxVs.AN85Ga9POabWfbY.jJ6UNj6c7iP11hIMnoWT7niWd0urAN.', '#E6FAD8', 'Tùng', 'Đồng Việt', '', 'off', 1, '', '2020-07-05 10:35:51', NULL, NULL, '', '', '', '', '', '', '', 'vendor@vendor.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'yyyy-mm-dd', '12', '09:00', '', '', 'Today', 'Today', '', 0, '$2y$10$lbrf.VzTlTbKYFjYL3TwjeeD1l4u.rw300CV1qI7GX8nCgSpiEjxK', '0', '', NULL, 'PHASH', 'LEp34FhZTGJH8Ibx', 'softed', 'vn_vn', 'Asia/Bangkok', '123,456,789', '.', ',', '$1.0', '', '2', '0', 'Sunday', '5', '5', 'public', 'Summary', '0', 'medium', NULL, NULL, 0, '', NULL),
+(6, 'marketing', '$2y$10$jU7aLQphwNf959vcixyOauiemMYQknKi969dnTldMXYi3QDgvsHJu', '#E6FAD8', '', 'Minh', '', 'off', 1, '', '2020-07-22 15:05:55', NULL, NULL, '', '', '', '', '', '', '', 'marketing@marketing.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'yyyy-mm-dd', '12', '09:00', '', '', 'Today', 'Today', '', 0, '$2y$10$oQ.ICtsyv4TthuoeTvGyGeEf3noNI.spHz3LzhKtR.UrWSKX6TmLe', '0', '', NULL, 'PHASH', 'WwhFhvTea2L06lQ6', 'softed', 'vn_vn', 'UTC', '123,456,789', '.', ',', '$1.0', '', '2', '0', 'Sunday', '5', '5', 'public', 'Summary', '0', 'medium', NULL, NULL, 0, '', NULL),
+(7, 'marketingperson', '$2y$10$A/B23srQInd2/rEjhh1q7.o/w/PC.u7vyfqYBmx04rf93tVWVdxka', '#E6FAD8', '', 'Lưu', '', 'off', 1, '', '2020-07-22 15:07:28', NULL, NULL, '', '', '', '', '', '', '', 'marketingperson@marketing.com', '', '', 'Active', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'yyyy-mm-dd', '12', '09:00', '', '', 'Today', 'Today', '', 0, '$2y$10$riiRFXeFaV26sYmHYvBN4.bhBTbFBqVnF4580guARFk2Cj1uHG2aS', '0', '', NULL, 'PHASH', 'QoHjJBp5nQow08ga', 'softed', 'vn_vn', 'UTC', '123,456,789', '.', ',', '$1.0', '', '2', '0', 'Sunday', '5', '5', 'public', 'Summary', '0', 'medium', NULL, NULL, 0, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -25398,7 +28644,7 @@ CREATE TABLE IF NOT EXISTS `vtiger_users_seq` (
 --
 
 INSERT INTO `vtiger_users_seq` (`id`) VALUES
-(5);
+(7);
 
 -- --------------------------------------------------------
 
